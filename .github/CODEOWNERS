@@ -1,0 +1,9 @@
+# Default reviewers for this team repo
+* @Noah-TaeHwan @Liam-Son
+
+/research/src/ls_crude/data/ @Noah-TaeHwan
+/research/src/ls_crude/features/ @Noah-TaeHwan
+/app/ @Noah-TaeHwan
+
+/research/src/ls_crude/models/ @Liam-Son
+/research/src/ls_crude/backtest/ @Liam-Son

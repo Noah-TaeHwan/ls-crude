@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.python-version
+
+# Research data (keep directory, drop files)
+research/data/**
+!research/data/.gitkeep
+*.parquet
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.csv
+!docs/**/*.md
+
+# Node / React Router
+node_modules/
+.react-router/
+build/
+dist/
+.vite/
+.cache/
+*.tsbuildinfo
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
