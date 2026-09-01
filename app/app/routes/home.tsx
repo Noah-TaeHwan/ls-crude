@@ -157,7 +157,7 @@ export async function action({ request }: Route.ActionArgs) {
 
   const supabase = getSupabaseServerClient();
   if (!supabase) {
-    return fail("Supabase 환경변수가 없어 뉴스 CRUD를 저장할 수 없습니다.");
+    return fail("Supabase 환경변수가 없어서 뉴스를 저장할 수 없습니다.");
   }
 
   const intent: NewsIntent = rawIntent;
@@ -258,8 +258,8 @@ export default function Home({
             호가가 아니라, 부엌이 바빠졌는지.
           </h1>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            타겟은 유가. 지금 깔린 한 스푼은 Oil Slice 초안입니다. 찾을 피자는
-            크립토의 뭐 × 뉴스의 무슨. 레시피는 아직 없습니다.
+            타겟은 유가입니다. 한 스푼으로 Oil Slice 초안을 깔아 두었고, 찾을
+            피자는 크립토의 뭐 × 뉴스의 무슨입니다. 레시피는 아직 없습니다.
           </p>
           <p className="font-mono text-[11px] text-muted-foreground">
             {loaderData.source === "supabase" ? "supabase" : "snapshot"} · {loaderData.ticker} ·
@@ -325,7 +325,7 @@ export default function Home({
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  아직 비어 있습니다. 없으면 없다고 쓰는 것도 과제입니다.
+                  아직 비어 있습니다. 후보가 없으면 없다고 적는 것도 과제입니다.
                 </p>
               </CardContent>
             </Card>
@@ -367,7 +367,9 @@ export default function Home({
           <Card>
             <CardHeader>
               <CardTitle>헤드라인 넣기</CardTitle>
-              <CardDescription>긁지 않습니다. CSV/폼만.</CardDescription>
+              <CardDescription>
+                사이트를 긁지 않습니다. CSV나 폼만 받습니다.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Form method="post" className="space-y-3">
@@ -408,7 +410,9 @@ export default function Home({
           <Card>
             <CardHeader>
               <CardTitle>부엌 장부</CardTitle>
-              <CardDescription>뉴스 CRUD. 스냅샷에는 수정 칸이 없습니다.</CardDescription>
+              <CardDescription>
+                뉴스를 추가·수정·삭제합니다. 스냅샷일 때는 수정 칸이 없습니다.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
