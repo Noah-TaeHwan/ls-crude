@@ -1,0 +1,27 @@
+[project]
+name = "ls-crude"
+version = "0.1.0"
+description = "LS CRUDE research pipeline"
+requires-python = ">=3.11"
+dependencies = [
+  "pandas>=2.2",
+  "numpy>=2.0",
+  "yfinance>=0.2.50",
+  "scikit-learn>=1.5",
+  "matplotlib>=3.9",
+  "pyarrow>=17.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3"]
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

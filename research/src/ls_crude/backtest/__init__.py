@@ -1,1 +1,1 @@
-"""Walk-forward backtest and performance metrics."""
+"""Walk-forward backtest package. Owned by Liam-Son."""

@@ -1,1 +1,5 @@
-"""Rule-based and ML models for long / flat / short signals."""
+"""Baseline overlays. ML entry/exit lives with Liam-Son."""
+
+from ls_crude.models.rsi_overlay import rsi_position
+
+__all__ = ["rsi_position"]
