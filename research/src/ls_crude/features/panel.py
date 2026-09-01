@@ -15,7 +15,7 @@ def build_daily_panel(
 ) -> pd.DataFrame:
     panel = add_sample_split(prices)
     panel[f"rsi_{RSI_PERIOD}"] = rsi(panel["Close"])
-    slice_frame = oil_slice(news)
+    slice_frame = oil_slice(news, calendar=panel.index)
     panel = panel.join(slice_frame, how="left")
     count_columns = [
         "hormuz_count",
