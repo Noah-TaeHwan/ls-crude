@@ -13,14 +13,6 @@ import {
 } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "~/components/ui/table";
 import { readSnapshotFile, normalizeFeatureRow, normalizeNewsRow } from "~/lib/snapshot.server";
 import { getSupabaseServerClient } from "~/lib/supabase.server";
 import type { ActionResult, DailyFeatureRow, NewsEventRow } from "~/lib/types";
@@ -29,8 +21,8 @@ type NewsIntent = "create-news" | "update-news" | "delete-news";
 type NewsTag = "hormuz" | "inflation_policy" | "other";
 
 const TAG_LABELS: Record<NewsTag, string> = {
-  hormuz: "호르무즈",
-  inflation_policy: "인플레/정책",
+  hormuz: "오븐 · 호르무즈",
+  inflation_policy: "점심 · 연준/CPI",
   other: "기타",
 };
 
@@ -45,6 +37,12 @@ function parseNewsTag(value: string): NewsTag | null {
   return null;
 }
 
+/**
+ * 숫자 표시. 없으면 대시.
+ * @param value 표시할 값
+ * @param digits 소수 자리
+ * @returns 포맷 문자열
+ */
 function formatNumber(value: number | null, digits = 2): string {
   if (value == null) {
     return "—";
@@ -60,12 +58,35 @@ function ok(message: string) {
   return { ok: true, message } satisfies ActionResult;
 }
 
+/**
+ * 종가 스파크라인 path.
+ * @param values 종가 배열
+ * @returns SVG path `d`
+ */
+function sparklinePath(values: number[]): string {
+  if (values.length < 2) {
+    return "";
+  }
+  const width = 320;
+  const height = 64;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const span = max - min || 1;
+  return values
+    .map((value, index) => {
+      const x = (index / (values.length - 1)) * width;
+      const y = height - ((value - min) / span) * height;
+      return `${index === 0 ? "M" : "L"}${x.toFixed(1)} ${y.toFixed(1)}`;
+    })
+    .join(" ");
+}
+
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "LS CRUDE — WTI · RSI · Oil Slice" },
+    { title: "LS CRUDE — 부엌이 바빠졌는가" },
     {
       name: "description",
-      content: "Yahoo WTI 가격, RSI, Investing.com 뉴스, 호르무즈·인플레 Oil Slice 대시보드",
+      content: "유가 타겟. 피자인덱스처럼 부엌 열기를 보는 웹 틀.",
     },
   ];
 }
@@ -206,185 +227,236 @@ export default function Home({
   actionData,
 }: Route.ComponentProps) {
   const latest = loaderData.rows.at(-1) ?? null;
-  const recent = loaderData.rows.slice(-12).reverse();
+  const closes = loaderData.rows
+    .map((row) => row.close)
+    .filter((value): value is number => value != null);
+  const ovenCount = loaderData.news.filter((item) => item.tags.includes("hormuz")).length;
+  const lunchCount = loaderData.news.filter((item) =>
+    item.tags.includes("inflation_policy"),
+  ).length;
+  const heatTotal = ovenCount + lunchCount || 1;
 
   return (
-    <main className="mx-auto max-w-6xl space-y-8 px-4 py-8">
-      <header className="flex flex-col gap-2 border-b pb-6">
-        <p className="text-xs uppercase tracking-[0.2em] text-primary">LS CRUDE</p>
-        <h1 className="text-3xl font-semibold">WTI 기본 + Oil Slice 한 스푼</h1>
-        <p className="max-w-3xl text-sm text-muted-foreground">
-          가격은 Yahoo Finance <code>CL=F</code>, 기본 지표는 RSI, 서사는
-          Investing.com 뉴스(호르무즈·미국 인플레/정책). 피자인덱스처럼 호가가
-          아니라 부엌 열기를 보는 값이 Oil Slice입니다.
-        </p>
-        <p className="text-xs text-muted-foreground">
-          데이터 소스: {loaderData.source === "supabase" ? "Supabase" : "로컬 스냅샷"} · 티커{" "}
-          {loaderData.ticker}
-        </p>
-      </header>
+    <main className="relative min-h-screen overflow-hidden">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_60%_at_15%_0%,rgba(232,168,72,0.16),transparent_55%),radial-gradient(70%_50%_at_90%_10%,rgba(120,80,40,0.18),transparent_50%)]"
+      />
+      <div className="relative mx-auto max-w-6xl space-y-10 px-4 py-10">
+        <header className="space-y-4">
+          <p className="text-xs tracking-[0.28em] text-primary uppercase">
+            LS CRUDE · 늦은 밤 부엌
+          </p>
+          <h1 className="font-serif max-w-3xl text-4xl leading-tight font-medium sm:text-5xl">
+            호가가 아니라, 부엌이 바빠졌는지.
+          </h1>
+          <p className="max-w-2xl text-sm text-muted-foreground">
+            타겟은 유가. 지금 깔린 한 스푼은 Oil Slice 초안입니다. 찾을 피자는
+            크립토의 뭐 × 뉴스의 무슨. 레시피는 아직 없습니다.
+          </p>
+          <p className="font-mono text-[11px] text-muted-foreground">
+            {loaderData.source === "supabase" ? "supabase" : "snapshot"} · {loaderData.ticker} ·
+            in 2015–2023 · out 2024~
+          </p>
+        </header>
 
-      {actionData ? (
-        <Alert variant={actionData.ok ? "default" : "destructive"}>
-          <AlertDescription>{actionData.message}</AlertDescription>
-        </Alert>
-      ) : null}
+        {actionData ? (
+          <Alert variant={actionData.ok ? "default" : "destructive"}>
+            <AlertDescription>{actionData.message}</AlertDescription>
+          </Alert>
+        ) : null}
 
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <MetricCard label="종가" value={formatNumber(latest?.close ?? null)} hint="Yahoo CL=F" />
-        <MetricCard
-          label="RSI(14)"
-          value={formatNumber(latest?.rsi_14 ?? null)}
-          hint={latest?.rsi_position ?? "flat"}
-        />
-        <MetricCard
-          label="Slice z"
-          value={formatNumber(latest?.slice_z ?? null)}
-          hint="호르무즈 2 + 인플레 1"
-        />
-        <MetricCard
-          label="샘플"
-          value={latest?.sample === "out" ? "OUT" : "IN"}
-          hint="인샘플 ~2023 / 아웃 2024~"
-        />
-      </section>
-
-      <section className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-        <Card>
-          <CardHeader>
-            <CardTitle>최근 세션</CardTitle>
-            <CardDescription>Yahoo 일봉 + RSI + Oil Slice</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>날짜</TableHead>
-                  <TableHead>종가</TableHead>
-                  <TableHead>RSI</TableHead>
-                  <TableHead>Slice z</TableHead>
-                  <TableHead>샘플</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {recent.length === 0 ? (
-                  <TableRow>
-                    <TableCell className="py-6 text-muted-foreground" colSpan={5}>
-                      스냅샷이 비어 있습니다. research에서 `python -m ls_crude.build`를 실행하세요.
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  recent.map((row) => <PriceRow key={row.date} row={row} />)
-                )}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Investing.com 헤드라인 입력</CardTitle>
-            <CardDescription>스크래핑하지 않고 CSV/폼으로만 넣습니다.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Form method="post" className="space-y-3">
-              <input type="hidden" name="intent" value="create-news" />
-              <div className="space-y-1.5">
-                <Label htmlFor="published_at">날짜</Label>
-                <Input id="published_at" type="date" name="published_at" required />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="title">제목</Label>
-                <Input
-                  id="title"
-                  name="title"
-                  placeholder="Strait of Hormuz tanker ..."
-                  required
-                />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="url">URL</Label>
-                <Input
-                  id="url"
-                  name="url"
-                  placeholder="https://www.investing.com/..."
-                />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="tag">태그</Label>
-                <select
-                  id="tag"
-                  name="tag"
-                  defaultValue="hormuz"
-                  className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm dark:bg-input/30"
+        <section className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+          <Card className="overflow-hidden border-primary/20 bg-card/80">
+            <CardHeader className="gap-1">
+              <CardDescription>타겟 · Yahoo {loaderData.ticker}</CardDescription>
+              <CardTitle className="font-serif text-6xl font-medium tracking-tight">
+                {formatNumber(latest?.close ?? null)}
+              </CardTitle>
+              <p className="font-mono text-xs text-muted-foreground">
+                {latest?.date ?? "—"} · RSI {formatNumber(latest?.rsi_14 ?? null)} · {latest?.rsi_position ?? "flat"}
+              </p>
+            </CardHeader>
+            <CardContent className="pb-2">
+              {closes.length > 1 ? (
+                <svg
+                  viewBox="0 0 320 64"
+                  className="h-20 w-full text-primary"
+                  aria-label="최근 종가 흐름"
                 >
-                  <option value="hormuz">호르무즈</option>
-                  <option value="inflation_policy">인플레/정책</option>
-                  <option value="other">기타</option>
-                </select>
-              </div>
-              <Button className="w-full" type="submit">
-                헤드라인 추가
-              </Button>
-            </Form>
-          </CardContent>
-        </Card>
-      </section>
+                  <path
+                    d={sparklinePath(closes)}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  />
+                </svg>
+              ) : (
+                <p className="text-sm text-muted-foreground">가격 스냅샷이 없습니다.</p>
+              )}
+            </CardContent>
+          </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>뉴스 북 (CRUD)</CardTitle>
-          <CardDescription>
-            정본은 Investing.com. 피자인덱스처럼 호르무즈가 오븐, 연준/CPI는 점심 수요입니다.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-3">
-            {loaderData.news.length === 0 ? (
-              <li className="text-sm text-muted-foreground">아직 헤드라인이 없습니다.</li>
-            ) : (
-              loaderData.news.map((item) => (
-                <NewsItem key={item.id ?? `${item.published_at}-${item.title}`} item={item} />
-              ))
-            )}
-          </ul>
-        </CardContent>
-      </Card>
+          <div className="grid gap-4">
+            <Card className="border-amber-700/40">
+              <CardHeader className="gap-1">
+                <CardDescription>초안 스푼 · Oil Slice</CardDescription>
+                <CardTitle className="font-serif text-4xl">
+                  {formatNumber(latest?.slice_z ?? null)}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-xs text-muted-foreground">
+                <p>2 × 호르무즈 + 1 × 인플레/정책. 최종 피자가 아닙니다.</p>
+                <HeatBar label="오븐 호르무즈" count={ovenCount} total={heatTotal} />
+                <HeatBar label="점심 연준/CPI" count={lunchCount} total={heatTotal} />
+              </CardContent>
+            </Card>
+            <Card className="border-dashed border-primary/35 bg-transparent">
+              <CardHeader className="gap-1">
+                <CardDescription>찾을 피자</CardDescription>
+                <CardTitle className="font-serif text-2xl">크립토의 뭐 × 뉴스의 무슨</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  아직 비어 있습니다. 없으면 없다고 쓰는 것도 과제입니다.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <section className="overflow-hidden rounded-xl border border-primary/15 bg-card/60 py-3">
+          <p className="px-4 pb-2 text-[11px] tracking-[0.2em] text-muted-foreground uppercase">
+            뉴스 테이프 · Investing.com
+          </p>
+          {loaderData.news.length === 0 ? (
+            <p className="px-4 text-sm text-muted-foreground">헤드라인이 없습니다.</p>
+          ) : (
+            <div className="flex overflow-hidden">
+              <div className="news-tape flex min-w-max gap-8 pr-8">
+                {[...loaderData.news, ...loaderData.news].map((item, index) => (
+                  <span
+                    key={`${item.id ?? item.title}-${index}`}
+                    className="font-mono text-xs whitespace-nowrap"
+                  >
+                    <span className="text-primary">
+                      {TAG_LABELS[parseNewsTag(item.tags[0] ?? "other") ?? "other"]}
+                    </span>{" "}
+                    {item.published_at} · {item.title}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+
+        <section className="grid gap-3 sm:grid-cols-6">
+          {loaderData.rows.slice(-6).reverse().map((row) => (
+            <SessionChip key={row.date} row={row} />
+          ))}
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
+          <Card>
+            <CardHeader>
+              <CardTitle>헤드라인 넣기</CardTitle>
+              <CardDescription>긁지 않습니다. CSV/폼만.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Form method="post" className="space-y-3">
+                <input type="hidden" name="intent" value="create-news" />
+                <div className="space-y-1.5">
+                  <Label htmlFor="published_at">날짜</Label>
+                  <Input id="published_at" type="date" name="published_at" required />
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="title">제목</Label>
+                  <Input
+                    id="title"
+                    name="title"
+                    placeholder="Strait of Hormuz tanker ..."
+                    required
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="url">URL</Label>
+                  <Input id="url" name="url" placeholder="https://www.investing.com/..." />
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="tag">태그</Label>
+                  <select
+                    id="tag"
+                    name="tag"
+                    defaultValue="hormuz"
+                    className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm dark:bg-input/30"
+                  >
+                    <option value="hormuz">오븐 · 호르무즈</option>
+                    <option value="inflation_policy">점심 · 연준/CPI</option>
+                    <option value="other">기타</option>
+                  </select>
+                </div>
+                <Button className="w-full" type="submit">
+                  부엌에 넣기
+                </Button>
+              </Form>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>부엌 장부</CardTitle>
+              <CardDescription>뉴스 CRUD. 스냅샷에는 수정 칸이 없습니다.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3">
+                {loaderData.news.length === 0 ? (
+                  <li className="text-sm text-muted-foreground">아직 헤드라인이 없습니다.</li>
+                ) : (
+                  loaderData.news.map((item) => (
+                    <NewsItem key={item.id ?? `${item.published_at}-${item.title}`} item={item} />
+                  ))
+                )}
+              </ul>
+            </CardContent>
+          </Card>
+        </section>
+      </div>
     </main>
   );
 }
 
-function MetricCard({
+/** 오븐/점심 헤드라인 비중 막대. */
+function HeatBar({
   label,
-  value,
-  hint,
+  count,
+  total,
 }: {
   label: string;
-  value: string;
-  hint: string;
+  count: number;
+  total: number;
 }) {
+  const width = Math.max(6, Math.round((count / total) * 100));
   return (
-    <Card>
-      <CardHeader className="gap-1">
-        <CardDescription className="uppercase tracking-wide">{label}</CardDescription>
-        <CardTitle className="text-2xl">{value}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-xs text-muted-foreground">{hint}</p>
-      </CardContent>
-    </Card>
+    <div>
+      <div className="mb-1 flex justify-between font-mono">
+        <span>{label}</span>
+        <span>{count}</span>
+      </div>
+      <div className="h-1.5 overflow-hidden rounded-full bg-secondary">
+        <div className="h-full bg-primary" style={{ width: `${width}%` }} />
+      </div>
+    </div>
   );
 }
 
-function PriceRow({ row }: { row: DailyFeatureRow }) {
+/** 최근 세션 한 칸. */
+function SessionChip({ row }: { row: DailyFeatureRow }) {
   return (
-    <TableRow>
-      <TableCell className="font-mono text-xs">{row.date}</TableCell>
-      <TableCell>{formatNumber(row.close)}</TableCell>
-      <TableCell>{formatNumber(row.rsi_14)}</TableCell>
-      <TableCell>{formatNumber(row.slice_z)}</TableCell>
-      <TableCell className="uppercase text-muted-foreground">{row.sample}</TableCell>
-    </TableRow>
+    <div className="rounded-lg border border-border/80 bg-card/70 px-3 py-2">
+      <p className="font-mono text-[10px] text-muted-foreground">{row.date}</p>
+      <p className="font-serif text-lg">{formatNumber(row.close)}</p>
+      <p className="text-[10px] text-muted-foreground uppercase">{row.sample}</p>
+    </div>
   );
 }
 
@@ -417,8 +489,8 @@ function NewsItem({ item }: { item: NewsEventRow }) {
               defaultValue={currentTag}
               className="h-8 rounded-md border border-input bg-transparent px-2 text-xs dark:bg-input/30"
             >
-              <option value="hormuz">호르무즈</option>
-              <option value="inflation_policy">인플레/정책</option>
+              <option value="hormuz">오븐 · 호르무즈</option>
+              <option value="inflation_policy">점심 · 연준/CPI</option>
               <option value="other">기타</option>
             </select>
             <Button size="sm" variant="outline" type="submit">

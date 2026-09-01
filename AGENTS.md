@@ -7,6 +7,7 @@ AI 스킬이 이 레포의 기본 입구다. 코드 생성 전에 해당 스킬�
 | WTI 가격, Yahoo, `CL=F` | collecting-yahoo-crude |
 | 인베스팅닷컴 뉴스, 호르무즈, 연준/CPI | tagging-investing-news |
 | 피자인덱스, Oil Slice, 대안 한 스푼 | building-slice-index |
+| 피자 후보(크립토의 뭐 × 뉴스의 무슨) | `research/notebooks/pizza-hunt.md`, `docs/experiments/` |
 | 인샘플/아웃샘플, walk-forward | running-sample-splits |
 
 고정 규칙:
