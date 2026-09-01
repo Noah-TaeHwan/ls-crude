@@ -15,6 +15,7 @@ env/
 # Research outputs (keep curated seeds)
 research/data/raw/
 research/data/processed/
+research/data/pizza/raw/
 *.parquet
 *.h5
 *.hdf5

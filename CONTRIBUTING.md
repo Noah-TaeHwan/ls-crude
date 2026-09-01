@@ -26,6 +26,7 @@ git checkout -b feat/<topic>
 | 경로 | 주로 |
 | --- | --- |
 | `research/src/ls_crude/data`, `features` | 오태환 |
+| `research/notebooks/`, `docs/experiments/`, `research/data/pizza/` | 오태환 (피자 찾기) |
 | `research/src/ls_crude/models`, `backtest` | 손성찬 |
 | `app/` | 오태환 |
 | `.cursor/skills/`, `docs/` | 공동 |

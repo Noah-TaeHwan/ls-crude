@@ -37,7 +37,7 @@ AI 퀀트 4기 팀 프로젝트. 야후파이낸스로 WTI 선물 가격과 인/
 | Oil Slice | `.cursor/skills/building-slice-index` |
 | 인/아웃샘플 | `.cursor/skills/running-sample-splits` |
 
-자세한 설계: [`docs/research-design.md`](docs/research-design.md), [`docs/slice-index.md`](docs/slice-index.md). 맥락: [`docs/context.md`](docs/context.md). 아이디어 메모: [`docs/ideation.md`](docs/ideation.md). 에이전트: [`AGENTS.md`](AGENTS.md)
+자세한 설계: [`docs/research-design.md`](docs/research-design.md), [`docs/slice-index.md`](docs/slice-index.md). 피자 찾기: [`research/notebooks/pizza-hunt.md`](research/notebooks/pizza-hunt.md), [`docs/experiments/`](docs/experiments/README.md). 맥락: [`docs/context.md`](docs/context.md). 아이디어 메모: [`docs/ideation.md`](docs/ideation.md). 에이전트: [`AGENTS.md`](AGENTS.md)
 
 ## 저장소
 
