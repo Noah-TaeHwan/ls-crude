@@ -1,4 +1,17 @@
 {
   "name": "LS CRUDE",
-  "install": "python -m pip install -r research/requirements.txt && python -m pip install -e research && cd app && npm install"
+  "install": "sudo apt-get update && sudo apt-get install -y python3.12-venv && python3 -m venv research/.venv && research/.venv/bin/python -m pip install --upgrade pip && research/.venv/bin/python -m pip install -r research/requirements.txt && research/.venv/bin/python -m pip install -e research && cd app && npm install",
+  "ports": [
+    {
+      "name": "dashboard",
+      "port": 5173
+    }
+  ],
+  "terminals": [
+    {
+      "name": "dashboard",
+      "command": "cd app && npm run dev",
+      "description": "React Router 대시보드 개발 서버 (http://localhost:5173)"
+    }
+  ]
 }
