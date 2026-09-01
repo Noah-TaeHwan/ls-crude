@@ -1,6 +1,6 @@
 # app
 
-React Router 대시보드. 로더는 Supabase `daily_features` / `news_events`를 읽고, 키가 없으면 `public/baseline-snapshot.json`을 읽습니다. 뉴스 입력은 loader/action CRUD입니다.
+React Router 대시보드입니다. 로더는 Supabase `daily_features` / `news_events`를 읽고, 키가 없으면 `public/baseline-snapshot.json`을 읽습니다. 뉴스 입력은 loader/action CRUD입니다.
 
 ```bash
 cd app

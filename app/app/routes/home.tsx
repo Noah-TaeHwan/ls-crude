@@ -19,6 +19,7 @@ import type { ActionResult, DailyFeatureRow, NewsEventRow } from "~/lib/types";
 
 type NewsIntent = "create-news" | "update-news" | "delete-news";
 type NewsTag = "hormuz" | "inflation_policy" | "other";
+type DbClient = NonNullable<ReturnType<typeof getSupabaseServerClient>>;
 
 const TAG_LABELS: Record<NewsTag, string> = {
   hormuz: "오븐 · 호르무즈",
@@ -37,13 +38,33 @@ function parseNewsTag(value: string): NewsTag | null {
   return null;
 }
 
-/**
- * 숫자 표시. 없으면 대시.
- * @param value 표시할 값
- * @param digits 소수 자리
- * @returns 포맷 문자열
- */
-function formatNumber(value: number | null, digits = 2): string {
+function tagLabel(tag: string) {
+  return TAG_LABELS[parseNewsTag(tag) ?? "other"];
+}
+
+function TagSelect({
+  id,
+  name,
+  defaultValue,
+  className,
+}: {
+  id?: string;
+  name: string;
+  defaultValue?: NewsTag;
+  className: string;
+}) {
+  return (
+    <select id={id} name={name} defaultValue={defaultValue} className={className}>
+      {(Object.keys(TAG_LABELS) as NewsTag[]).map((value) => (
+        <option key={value} value={value}>
+          {TAG_LABELS[value]}
+        </option>
+      ))}
+    </select>
+  );
+}
+
+function formatNumber(value: number | null, digits = 2) {
   if (value == null) {
     return "—";
   }
@@ -58,12 +79,7 @@ function ok(message: string) {
   return { ok: true, message } satisfies ActionResult;
 }
 
-/**
- * 종가 스파크라인 path.
- * @param values 종가 배열
- * @returns SVG path `d`
- */
-function sparklinePath(values: number[]): string {
+function sparklinePath(values: number[]) {
   if (values.length < 2) {
     return "";
   }
@@ -141,7 +157,7 @@ export async function action({ request }: Route.ActionArgs) {
 
   const supabase = getSupabaseServerClient();
   if (!supabase) {
-    return fail("Supabase 환경변수가 없어 뉴스 CRUD를 저장할 수 없습니다.");
+    return fail("Supabase 환경변수가 없어서 뉴스를 저장할 수 없습니다.");
   }
 
   const intent: NewsIntent = rawIntent;
@@ -159,10 +175,7 @@ export async function action({ request }: Route.ActionArgs) {
   }
 }
 
-async function createNews(
-  supabase: NonNullable<ReturnType<typeof getSupabaseServerClient>>,
-  formData: FormData,
-) {
+async function createNews(supabase: DbClient, formData: FormData) {
   const title = String(formData.get("title") ?? "").trim();
   const publishedAt = String(formData.get("published_at") ?? "").trim();
   const url = String(formData.get("url") ?? "").trim();
@@ -183,10 +196,7 @@ async function createNews(
   return data(ok("헤드라인을 추가했습니다."), { status: 201 });
 }
 
-async function updateNews(
-  supabase: NonNullable<ReturnType<typeof getSupabaseServerClient>>,
-  formData: FormData,
-) {
+async function updateNews(supabase: DbClient, formData: FormData) {
   const id = String(formData.get("id") ?? "").trim();
   const title = String(formData.get("title") ?? "").trim();
   const tag = parseNewsTag(String(formData.get("tag") ?? ""));
@@ -207,10 +217,7 @@ async function updateNews(
   return ok("헤드라인을 수정했습니다.");
 }
 
-async function deleteNews(
-  supabase: NonNullable<ReturnType<typeof getSupabaseServerClient>>,
-  formData: FormData,
-) {
+async function deleteNews(supabase: DbClient, formData: FormData) {
   const id = String(formData.get("id") ?? "").trim();
   if (!id) {
     return fail("삭제할 항목이 없습니다.");
@@ -251,8 +258,8 @@ export default function Home({
             호가가 아니라, 부엌이 바빠졌는지.
           </h1>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            타겟은 유가. 지금 깔린 한 스푼은 Oil Slice 초안입니다. 찾을 피자는
-            크립토의 뭐 × 뉴스의 무슨. 레시피는 아직 없습니다.
+            타겟은 유가입니다. 한 스푼으로 Oil Slice 초안을 깔아 두었고, 찾을
+            피자는 크립토의 뭐 × 뉴스의 무슨입니다. 레시피는 아직 없습니다.
           </p>
           <p className="font-mono text-[11px] text-muted-foreground">
             {loaderData.source === "supabase" ? "supabase" : "snapshot"} · {loaderData.ticker} ·
@@ -318,7 +325,7 @@ export default function Home({
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  아직 비어 있습니다. 없으면 없다고 쓰는 것도 과제입니다.
+                  아직 비어 있습니다. 후보가 없으면 없다고 적는 것도 과제입니다.
                 </p>
               </CardContent>
             </Card>
@@ -340,7 +347,7 @@ export default function Home({
                     className="font-mono text-xs whitespace-nowrap"
                   >
                     <span className="text-primary">
-                      {TAG_LABELS[parseNewsTag(item.tags[0] ?? "other") ?? "other"]}
+                      {tagLabel(item.tags[0] ?? "other")}
                     </span>{" "}
                     {item.published_at} · {item.title}
                   </span>
@@ -360,7 +367,9 @@ export default function Home({
           <Card>
             <CardHeader>
               <CardTitle>헤드라인 넣기</CardTitle>
-              <CardDescription>긁지 않습니다. CSV/폼만.</CardDescription>
+              <CardDescription>
+                사이트를 긁지 않습니다. CSV나 폼만 받습니다.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Form method="post" className="space-y-3">
@@ -384,16 +393,12 @@ export default function Home({
                 </div>
                 <div className="space-y-1.5">
                   <Label htmlFor="tag">태그</Label>
-                  <select
+                  <TagSelect
                     id="tag"
                     name="tag"
                     defaultValue="hormuz"
                     className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm dark:bg-input/30"
-                  >
-                    <option value="hormuz">오븐 · 호르무즈</option>
-                    <option value="inflation_policy">점심 · 연준/CPI</option>
-                    <option value="other">기타</option>
-                  </select>
+                  />
                 </div>
                 <Button className="w-full" type="submit">
                   부엌에 넣기
@@ -405,7 +410,9 @@ export default function Home({
           <Card>
             <CardHeader>
               <CardTitle>부엌 장부</CardTitle>
-              <CardDescription>뉴스 CRUD. 스냅샷에는 수정 칸이 없습니다.</CardDescription>
+              <CardDescription>
+                뉴스를 추가·수정·삭제합니다. 스냅샷일 때는 수정 칸이 없습니다.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
@@ -425,7 +432,6 @@ export default function Home({
   );
 }
 
-/** 오븐/점심 헤드라인 비중 막대. */
 function HeatBar({
   label,
   count,
@@ -449,7 +455,6 @@ function HeatBar({
   );
 }
 
-/** 최근 세션 한 칸. */
 function SessionChip({ row }: { row: DailyFeatureRow }) {
   return (
     <div className="rounded-lg border border-border/80 bg-card/70 px-3 py-2">
@@ -457,9 +462,6 @@ function SessionChip({ row }: { row: DailyFeatureRow }) {
       <p className="font-serif text-lg">{formatNumber(row.close)}</p>
       <p className="font-mono text-[10px] text-muted-foreground">
         RSI {formatNumber(row.rsi_14)}
-      </p>
-      <p className="font-mono text-[10px] text-muted-foreground">
-        Slice {formatNumber(row.slice_z)}
       </p>
       <p className="text-[10px] text-muted-foreground uppercase">{row.sample}</p>
     </div>
@@ -474,14 +476,11 @@ function NewsItem({ item }: { item: NewsEventRow }) {
         <span>
           {item.published_at} · {item.source}
         </span>
-        {item.tags.map((tag) => {
-          const parsed = parseNewsTag(tag) ?? "other";
-          return (
-            <Badge key={`${item.id ?? item.title}-${tag}`} variant="secondary">
-              {TAG_LABELS[parsed]}
-            </Badge>
-          );
-        })}
+        {item.tags.map((tag) => (
+          <Badge key={`${item.id ?? item.title}-${tag}`} variant="secondary">
+            {tagLabel(tag)}
+          </Badge>
+        ))}
       </div>
       <p className="mt-1 text-sm">{item.title}</p>
       {item.id ? (
@@ -490,15 +489,11 @@ function NewsItem({ item }: { item: NewsEventRow }) {
             <input type="hidden" name="intent" value="update-news" />
             <input type="hidden" name="id" value={item.id} />
             <Input name="title" defaultValue={item.title} className="h-8 text-xs" />
-            <select
+            <TagSelect
               name="tag"
               defaultValue={currentTag}
               className="h-8 rounded-md border border-input bg-transparent px-2 text-xs dark:bg-input/30"
-            >
-              <option value="hormuz">오븐 · 호르무즈</option>
-              <option value="inflation_policy">점심 · 연준/CPI</option>
-              <option value="other">기타</option>
-            </select>
+            />
             <Button size="sm" variant="outline" type="submit">
               수정
             </Button>
