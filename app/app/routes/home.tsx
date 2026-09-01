@@ -455,6 +455,9 @@ function SessionChip({ row }: { row: DailyFeatureRow }) {
     <div className="rounded-lg border border-border/80 bg-card/70 px-3 py-2">
       <p className="font-mono text-[10px] text-muted-foreground">{row.date}</p>
       <p className="font-serif text-lg">{formatNumber(row.close)}</p>
+      <p className="font-mono text-[10px] text-muted-foreground">
+        RSI {formatNumber(row.rsi_14)}
+      </p>
       <p className="text-[10px] text-muted-foreground uppercase">{row.sample}</p>
     </div>
   );
