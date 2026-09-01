@@ -37,9 +37,6 @@ dist/
 !.env.example
 !app/.env.example
 
-# Git worktrees
-.worktrees/
-
 # OS / IDE
 .DS_Store
 Thumbs.db
