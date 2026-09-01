@@ -1,0 +1,14 @@
+---
+description: LS CRUDE project conventions for Yahoo prices, Investing.com news, sample splits, and React Router pages.
+alwaysApply: true
+---
+
+# LS CRUDE
+
+- Prices come from Yahoo Finance `CL=F`. Do not scrape Investing.com for OHLCV.
+- In-sample is 2015-01-01 to 2023-12-31. Out-sample starts 2024-01-01 and is opened once.
+- Investing.com CSV is the news source of record. Yahoo news is a fallback.
+- Oil Slice is the pizza-index spoon: `2 * hormuz + 1 * inflation_policy`.
+- Route modules export `loader`, `action`, and `meta`. Import `Route` from `./+types/...`. Use `loaderData` / `actionData` props, never `useLoaderData` or `useActionData`.
+- Import UI from local shadcn-style modules, not Radix. Import router APIs from `react-router`.
+- Read `.cursor/skills/` before generating pipeline or dashboard code.
