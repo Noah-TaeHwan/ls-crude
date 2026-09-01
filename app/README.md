@@ -1,14 +1,11 @@
 # app
 
-원유 선물 롱숏 전략 분석 웹 대시보드.
+React Router 대시보드. 로더는 Supabase `daily_features` / `news_events`를 읽고, 키가 없으면 `public/baseline-snapshot.json`을 읽습니다. 뉴스 입력은 loader/action CRUD입니다.
 
-계획 스택:
+```bash
+cd app
+npm install
+npm run dev -- --port 5173
+```
 
-- React Router (프레임워크 모드) + TypeScript
-- shadcn/ui + Tailwind
-- Supabase (실제 데이터 CRUD, Storage)
-- Vercel 배포
-
-`research/`에서 나온 피처·포지션·성과 테이블을 읽어 기준모형 vs 확장모형을 비교하는 화면을 붙입니다.
-
-대시보드 스캐폴드는 데이터 파이프라인이 잡힌 뒤 `app/`에 생성합니다.
+로컬에서 5173을 이미 쓰고 있으면 이 명령을 다시 켜지 마세요. 스키마는 `supabase/migrations/`.

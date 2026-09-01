@@ -1,8 +1,8 @@
 # LS CRUDE
 
-**원유 기본 + 오일 슬라이스 한 스푼.**
+**원유 기본 + 오일 슬라이스 한 스품.**
 
-AI 퀀트 4기 팀 프로젝트. 야후파이낸스로 WTI 선물 가격과 인/아웃샘플을 잡고, 인베스팅닷컴 뉴스(RSI·호르무즈·미국 인플레/정책)를 서사로 쓴다. 펜타곤 피자처럼 호가가 아닌 **부엌 열기**를 보는 대안 지표가 Oil Slice다.
+AI �트 4기 팀 프로젝트. 야후파이낸스로 WTI 선물 가격과 인/아웃샘플을 잡고, 인베스팅닷컴 뉴스(RSI·호르무즈·미국 인플레/정책)를 서사로 쓴다. 펜타곤 피자처럼 호가가 아닌 **부엉 열기**를 보는 대안 지표가 Oil Slice다.
 
 작업의 기본 입구는 AI 스킬이다. 대시보드는 그 결과를 보여 주는 면이다.
 
@@ -25,8 +25,8 @@ AI 퀀트 4기 팀 프로젝트. 야후파이낸스로 WTI 선물 가격과 인/
 
 1. 시세 API는 Yahoo. 인샘플 `2015-01-01`~`2023-12-31`, 아웃샘플 `2024-01-01`~
 2. 뉴스 정본은 Investing.com. 사이트를 스크래핑하지 않고 CSV로 넣는다.
-3. 기본 오버레이는 RSI(14). 확장 한 스푼은 Oil Slice (`2*호르무즈 + 1*인플레/정책`).
-4. 아웃샘플은 후보를 고른 뒤 한 번만 연다.
+3. 기본 오버레이는 RSI(14). 확장 한 스품은 Oil Slice (`2*호르무즈 + 1*인플레/정책`).
+4. 아웃샘플은 후보를 고른 뒤 한 번만 열다.
 
 ## 에이전트 입구
 
@@ -37,7 +37,7 @@ AI 퀀트 4기 팀 프로젝트. 야후파이낸스로 WTI 선물 가격과 인/
 | Oil Slice | `.cursor/skills/building-slice-index` |
 | 인/아웃샘플 | `.cursor/skills/running-sample-splits` |
 
-자세한 설계: [`docs/research-design.md`](docs/research-design.md), [`docs/slice-index.md`](docs/slice-index.md). 아이디어 메모: [`docs/ideation.md`](docs/ideation.md). 에이전트: [`AGENTS.md`](AGENTS.md)
+자세한 설계: [`docs/research-design.md`](docs/research-design.md), [`docs/slice-index.md`](docs/slice-index.md). 맥락: [`docs/context.md`](docs/context.md). 아이디어 메모: [`docs/ideation.md`](docs/ideation.md). 에이전트: [`AGENTS.md`](AGENTS.md)
 
 ## 저장소
 
