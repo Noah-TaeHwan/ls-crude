@@ -64,7 +64,7 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "description",
       content:
-        "WTI 선물 CL=F 수업 포트폴리오 프로토타입입니다. 펜타곤 피자 인덱스처럼 유가 옆의 공개 신호를 찾는 화면입니다.",
+        "WTI 선물 CL=F를 보는 수업용 화면입니다. 펜타곤 피자 인덱스처럼 유가 옆의 공개 신호를 찾습니다.",
     },
   ];
 }
@@ -119,7 +119,7 @@ export async function action({ request }: Route.ActionArgs) {
 
   const supabase = getSupabaseServerClient();
   if (!supabase) {
-    return fail("Supabase 환경변수가 없어서 뉴스를 저장할 수 없습니다.");
+    return fail("Supabase 환경 변수가 없어서 뉴스를 저장하지 못했습니다.");
   }
 
   const intent: NewsIntent = rawIntent;
@@ -163,7 +163,7 @@ async function updateNews(supabase: DbClient, formData: FormData) {
   const title = String(formData.get("title") ?? "").trim();
   const tag = parseNewsTag(String(formData.get("tag") ?? ""));
   if (!id || !title || !tag) {
-    return fail("수정할 항목이 올바르지 않습니다.");
+    return fail("고칠 항목이 맞지 않습니다.");
   }
   const { error } = await supabase
     .from("news_events")
@@ -237,7 +237,7 @@ export default function Home({
           <HubCard kicker="RSI 상태" title={formatNumber(latest?.rsi_14 ?? null)}>
             <p className="font-mono text-xs text-heading">{rsiLabel}</p>
             <p className="text-xs text-muted-foreground">
-              RSI 14입니다. 가격 옆의 기존 지표이고, 찾는 후보가 아닙니다.
+              RSI 14입니다. 가격 옆에 두는 기존 지표고, 지금 찾는 후보는 아닙니다.
             </p>
           </HubCard>
           <HubCard
@@ -288,9 +288,9 @@ export default function Home({
 
         <section className="border border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground">
           <p>
-            2주 수업 포트폴리오입니다. WTI 선물 CL=F를 보고, 유가 옆의 공개 신호를
-            찾는 중입니다. 상관은 인과가 아닙니다. 투자 권유가 아닙니다. 후보는
-            아직 확정하지 않았습니다.
+            2주짜리 수업 과제입니다. WTI 선물 CL=F를 보면서 유가 옆의 공개 신호를
+            찾고 있습니다. 상관은 인과가 아니고, 투자 권유도 아닙니다. 후보는
+            아직 안 골랐습니다.
           </p>
         </section>
 
@@ -434,7 +434,7 @@ function PinMap({
         지도 자리
       </p>
       <p className="mt-1 text-xs text-muted-foreground">
-        핀 목록입니다. 실시간 AIS가 아닙니다.
+        핀만 적습니다. 실시간 AIS가 아닙니다.
       </p>
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
         <PinRegion region="해협 권역" label="호르무즈" count={hormuzCount} />

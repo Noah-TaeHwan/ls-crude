@@ -31,7 +31,7 @@ export function DeskHeader({
       ) : null}
       <nav
         className="ml-auto flex items-center gap-2"
-        aria-label="페이지"
+        aria-label="화면"
       >
         <DeskNavLink to="/" end>
           관측 데스크

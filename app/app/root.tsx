@@ -47,7 +47,7 @@ export default function App() {
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "오류";
-  let details = "페이지를 불러오지 못했습니다.";
+  let details = "화면을 불러오지 못했습니다.";
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
