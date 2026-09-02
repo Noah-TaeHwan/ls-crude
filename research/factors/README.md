@@ -92,6 +92,15 @@
 - **선행성**: 1-3일 (실시간 현지 위험 반영)
 - **상태**: 📋 R&D 및 평가 중
 
+#### 🔟 Policy-Cartel Synergy & AI Market Dynamics Index (소비국 정책-카르텔 공존 & AI 시장 지표)
+- **파일**: `012-cartel-policy-ai-dynamics.md`
+- **신호**: ↑ 양의 신호 (미국 SPR 하단 방어 + AI 위성/해석 속도 기반 수급 서프라이즈 → 유가 ↑)
+- **데이터**: EIA 주간 SPR 데이터 + 위성 원유 재고 + AI 해석 지수
+- **가중치**: 1.5
+- **구현 기간**: 2주
+- **선행성**: 1-4주 (매크로 하단 방어 & 알골 반응)
+- **상태**: 📋 R&D 및 평가 중
+
 ---
 
 ### 💡 아이디어만 (1개)
@@ -141,6 +150,7 @@ oil_pizza = (
     1.5 * wholesale_logistics +          # 🟢 경기 (즉시!)
     2.0 * hyperliquid_capital_flow +     # 📋 지정학/PerpDEX (R&D)
     1.5 * iran_crypto_premium +          # 📋 중동 현지 프리미엄 (R&D)
+    1.5 * cartel_policy_ai_dynamics +    # 📋 카르텔-정책 공존/AI 시장 (R&D)
     -1.5 * renewable_displacement +      # 📋 에너지
     -1.0 * financial_demand_ml           # 🔬 재무 (R&D)
 )
@@ -161,10 +171,11 @@ pizza_z = zscore(oil_pizza, 20)  # 20일 이동 평균 기준 표준화
 | 5 | MENA Elite Mobility | ↕ | 비식별 이민/투자 집계 | 월간/분기 | ❓ | ⏸️ HOLD | 0.0 |
 | 6 | Hyperliquid Flow | ↑ | PerpDEX/온체인 | 실시간 | ✅ | 📋 | 2.0 |
 | 7 | Iran Premium | ↑ | 이란 거래소(Nobitex) | 실시간 | ✅ | 📋 | 1.5 |
-| 8 | Renewable | ↓ | 에너지 | 월간 | ⚠️ | 📋 | -1.5 |
-| 9 | Financial ML | ↓ | 재무 | 분기 | ❓ | 🔬 | -1.0 |
-| 10 | Official Petroleum Buffer | ↕ | IEA 공개 석유 재고 | 월간 | ❓ | ⏸️ HOLD | 0.0 |
-| 11 | Energy Workforce Momentum | ↕ | 업종별 고용·허가 | 월간/분기 | ❓ | ⏸️ HOLD | 0.0 |
+| 8 | Cartel & AI Dynamics | ↑ | EIA SPR + 위성 AI | 주간/실시간 | ✅ | 📋 | 1.5 |
+| 9 | Renewable | ↓ | 에너지 | 월간 | ⚠️ | 📋 | -1.5 |
+| 10 | Financial ML | ↓ | 재무 | 분기 | ❓ | 🔬 | -1.0 |
+| 11 | Official Petroleum Buffer | ↕ | IEA 공개 석유 재고 | 월간 | ❓ | ⏸️ HOLD | 0.0 |
+| 12 | Energy Workforce Momentum | ↕ | 업종별 고용·허가 | 월간/분기 | ❓ | ⏸️ HOLD | 0.0 |
 
 ---
 
@@ -183,6 +194,7 @@ pizza_z = zscore(oil_pizza, 20)  # 20일 이동 평균 기준 표준화
 - [ ] **009-Iran-Premium** (Nobitex Ticker 데이터 수집 및 프리미엄 테스트)
 - [x] 010-Official Petroleum Buffer (HOLD: 재고 발표일·개정 이력 확인 필요)
 - [x] 011-Energy Workforce Momentum (HOLD: 공개 시계열·라이선스 확인 필요)
+- [ ] **012-Cartel-AI-Dynamics** (EIA SPR 재매입가 & 위성 AI 파이프라인)
 
 ### Phase 2️⃣ (2-4주) - 신호 검증
 
@@ -220,7 +232,8 @@ research/
 │   ├── 008-hyperliquid-capital-flow.md        # 📋 지정학/PerpDEX
 │   ├── 009-iran-middleeast-premium.md         # 📋 이란/중동 프리미엄
 │   ├── 010-official-petroleum-buffer.md       # ⏸️ 비축 완충여력
-│   └── 011-energy-workforce-momentum.md       # ⏸️ 노동 모멘텀
+│   ├── 011-energy-workforce-momentum.md       # ⏸️ 노동 모멘텀
+│   └── 012-cartel-policy-ai-dynamics.md       # 📋 카르텔-정책 공존/AI 시장
 │
 ├── src/ls_crude/
 │   ├── features/
