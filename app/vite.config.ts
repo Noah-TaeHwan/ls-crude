@@ -24,7 +24,7 @@ function gitText(args: string[]): string {
 function gitStamp() {
   const sha = gitText(["rev-parse", "--short=7", "HEAD"]) || "unknown";
   const branch = gitText(["rev-parse", "--abbrev-ref", "HEAD"]) || "unknown";
-  const porcelain = gitText(["status", "--porcelain"]);
+  const porcelain = gitText(["status", "--porcelain", "--untracked-files=no"]);
   const dirty = porcelain !== "unknown" && porcelain.length > 0;
   return { sha, branch, dirty };
 }
