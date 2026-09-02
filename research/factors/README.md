@@ -18,7 +18,7 @@
 
 | # | 카드 | 분류 | 현재 판정 | Oil Pizza 가중치 |
 | --- | --- | --- | --- | ---: |
-| 001 | [Pentagon Uber Eats](001-pentagon-ubereats.md) | 아이디어 | **SKIP** — 공개·합법 데이터 경로 없음 | 0.0 |
+| 001 | [Pentagon Uber Eats](001-pentagon-ubereats.md) | 철회된 아이디어 | **WITHDRAWN** — 대체 구현이 원 가설을 보존하지 못함 | 0.0 |
 | 002 | [Whale Network](002-whale-index.md) | 방향성 후보 | **HOLD** — 시장·주소 귀속과 역사 데이터 점검 필요 | 0.0 |
 | 003 | [Truth Social](003-truth-social.md) | 공개 텍스트 후보 | **프로토타입** — 수집기 존재, 신호 유효성은 미검증 | 0.0 |
 | 004 | [Renewable Displacement](004-renewable-displacement.md) | 중기 수요 후보 | **HOLD** — 월간 지연·명확한 데이터 계약 필요 | 0.0 |
