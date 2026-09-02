@@ -101,6 +101,20 @@
   animation: watch-breathe 2.8s ease-in-out infinite;
 }
 
+@keyframes sample-progress-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.sample-progress-fill {
+  width: 0%;
+  animation: sample-progress-fill 1.8s ease-out forwards;
+}
+
 details > summary::-webkit-details-marker {
   display: none;
 }

@@ -1,8 +1,8 @@
-import type { ReactNode } from "react";
 import { data } from "react-router";
 
 import type { Route } from "./+types/home";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
+import { HubCard } from "~/components/hub-card";
 import { NewsDesk, parseNewsTag, tagLabel } from "~/components/news-desk";
 import { WatchGauge } from "~/components/watch-gauge";
 import { readSnapshotFile, normalizeFeatureRow, normalizeNewsRow } from "~/lib/snapshot.server";
@@ -384,39 +384,6 @@ function RsiQuoteCell({ rsi, position }: { rsi: number | null; position: string 
         {formatNumber(rsi, 1)}
       </p>
       <p className="mt-2 font-mono text-[11px] text-muted-foreground">{position}</p>
-    </section>
-  );
-}
-
-function HubCard({
-  kicker,
-  title,
-  badge,
-  dashed,
-  children,
-}: {
-  kicker: string;
-  title: string;
-  badge?: string;
-  dashed?: boolean;
-  children: ReactNode;
-}) {
-  return (
-    <section
-      className={`border bg-card/30 px-4 py-3 ${dashed ? "border-dashed border-heading/40" : "border-border"}`}
-    >
-      <div className="flex items-center justify-between gap-2">
-        <p className="font-mono text-[10px] tracking-[0.2em] text-heading uppercase">
-          {kicker}
-        </p>
-        {badge ? (
-          <span className="font-mono text-[10px] tracking-[0.16em] text-heading uppercase">
-            {badge}
-          </span>
-        ) : null}
-      </div>
-      <p className="mt-2 font-mono text-3xl leading-none tabular-nums">{title}</p>
-      <div className="mt-3 space-y-1.5">{children}</div>
     </section>
   );
 }
