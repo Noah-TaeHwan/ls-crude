@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { data } from "react-router";
 
 import type { Route } from "./+types/home";
+import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
 import { NewsDesk, parseNewsTag, tagLabel } from "~/components/news-desk";
 import { WatchGauge } from "~/components/watch-gauge";
 import { readSnapshotFile, normalizeFeatureRow, normalizeNewsRow } from "~/lib/snapshot.server";
@@ -214,17 +215,7 @@ export default function Home({
 
   return (
     <main className="min-h-screen">
-      <header className="sticky top-0 z-20 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-border bg-background/95 px-4 py-1.5 font-mono text-[10px] tracking-[0.12em] text-muted-foreground uppercase">
-        <span className="text-heading">LS CRUDE</span>
-        <span aria-hidden>·</span>
-        <span>prototype</span>
-        <span aria-hidden>·</span>
-        <span>{loaderData.source}</span>
-        <span aria-hidden>·</span>
-        <span>{loaderData.ticker}</span>
-        <span aria-hidden>·</span>
-        <span>in 2015–2023 / out 2024~</span>
-      </header>
+      <DeskHeader source={loaderData.source} ticker={loaderData.ticker} />
 
       <div className="mx-auto max-w-[1180px] space-y-3 px-3 py-3 sm:px-4">
         <WatchGauge sliceZ={latest?.slice_z ?? null} />
@@ -317,12 +308,7 @@ export default function Home({
           source={loaderData.source}
         />
       </div>
-      <footer className="border-t border-border px-4 py-2 font-mono text-[10px] tracking-[0.12em] text-muted-foreground">
-        build {__LS_BUILD_SHA__}
-        {" · "}
-        {__LS_BUILD_BRANCH__}
-        {__LS_BUILD_DIRTY__ ? " · dirty" : ""}
-      </footer>
+      <DeskFooter />
     </main>
   );
 }
