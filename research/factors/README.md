@@ -113,7 +113,7 @@
 
 ---
 
-### ⏸️ 보류 후보 (1개)
+### ⏸️ 보류 후보 (2개)
 
 #### 🔟 Official Petroleum Buffer Disclosure Index
 - **파일**: `010-official-petroleum-buffer.md`
@@ -122,6 +122,14 @@
 - **가중치**: 0.0 (검증 전에는 Oil Pizza에 미포함)
 - **상태**: ⏸️ HOLD
 - **주의**: 중앙은행 준비자산이 아니라 정부·전략비축 자료. 방출 발표는 예측 신호가 아닌 정책 대응 더미.
+
+#### 1️⃣1️⃣ Energy Workforce Momentum Index
+- **파일**: `011-energy-workforce-momentum.md`
+- **신호**: ↕ WTI 방향성 미정; 공급 램프업·공급 제약의 중기 레짐 후보
+- **데이터**: 공개·허가된 업종별 고용, 장비대여 공시, 공식 허가 통계
+- **가중치**: 0.0 (검증 전에는 Oil Pizza에 미포함)
+- **상태**: ⏸️ HOLD
+- **주의**: LinkedIn/구인사이트 스크래핑과 기업 내부 이동 데이터는 사용하지 않음.
 
 ## 🎯 Ultimate Oil Pizza Formula
 
@@ -157,6 +165,7 @@ pizza_z = zscore(oil_pizza, 20)  # 20일 이동 평균 기준 표준화
 | 8 | Renewable | ↓ | 에너지 | 월간 | ⚠️ | 📋 | -1.5 |
 | 9 | Financial ML | ↓ | 재무 | 분기 | ❓ | 🔬 | -1.0 |
 | 10 | Official Petroleum Buffer | ↕ | IEA 공개 석유 재고 | 월간 | ❓ | ⏸️ HOLD | 0.0 |
+| 11 | Energy Workforce Momentum | ↕ | 업종별 고용·허가 | 월간/분기 | ❓ | ⏸️ HOLD | 0.0 |
 
 ---
 
@@ -174,6 +183,7 @@ pizza_z = zscore(oil_pizza, 20)  # 20일 이동 평균 기준 표준화
 - [ ] **008-Hyperliquid-Flow** (R&D 및 파이프라인 설계)
 - [ ] **009-Iran-Premium** (Nobitex Ticker 데이터 수집 및 프리미엄 테스트)
 - [x] 010-Official Petroleum Buffer (HOLD: 재고 발표일·개정 이력 확인 필요)
+- [x] 011-Energy Workforce Momentum (HOLD: 공개 시계열·라이선스 확인 필요)
 
 ### Phase 2️⃣ (2-4주) - 신호 검증
 
@@ -210,7 +220,8 @@ research/
 │   ├── 007-doomsday-bunker-index.md           # 📋 엘리트 이민/벙커
 │   ├── 008-hyperliquid-capital-flow.md        # 📋 지정학/PerpDEX
 │   ├── 009-iran-middleeast-premium.md         # 📋 이란/중동 프리미엄
-│   └── 010-official-petroleum-buffer.md       # ⏸️ 비축 완충여력
+│   ├── 010-official-petroleum-buffer.md       # ⏸️ 비축 완충여력
+│   └── 011-energy-workforce-momentum.md       # ⏸️ 노동 모멘텀
 │
 ├── src/ls_crude/
 │   ├── features/
