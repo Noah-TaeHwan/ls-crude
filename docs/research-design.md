@@ -1,12 +1,12 @@
 # 연구 설계
 
-에이전트와 사람이 같은 규칙을 쓰도록, 데이터 출처와 샘플 분할을 여기에 고정한다.
+에이전트와 사람이 같은 규칙을 쓰도록, 데이터 출처와 샘플 분할을 여기에 고정합니다.
 
 ## 한 줄
 
-원유 기본(야후 가격 + RSI) + 뉴스 서사(인베스팅닷컴) + **오일 슬라이스 한 스푼**.
+원유 기본(야후 가격 + RSI) + 뉴스 서사(인베스팅닷컴) + **Oil Slice 대안 데이터 후보**.
 
-오일 슬라이스는 펜타곤 피자 지수와 같은 역할의 **부엌 초안**이다. 호가가 아니라, 호르무즈·미국 인플레/정책 뉴스가 갑자기 붐비는지(부엌이 바빠졌는지)를 본다. 찾을 피자(크립토의 뭐 × 뉴스의 무슨)는 [`notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md)와 [`docs/experiments/`](experiments/README.md)에 적는다.
+오일 슬라이스는 펜타곤 피자 인덱스와 같은 역할의 **공개 신호 초안**입니다. 호가가 아니라, 호르무즈·미국 인플레/정책 뉴스가 갑자기 붐비는지를 봅니다. 조사할 후보(크립토의 뭐 × 뉴스의 무슨)는 [`notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md)와 [`docs/experiments/`](experiments/README.md)에 적습니다.
 
 ## 역할
 
@@ -27,13 +27,13 @@
 - 인샘플: 2015-01-01 ~ 2023-12-31
 - 아웃샘플: 2024-01-01 ~ 데이터 마지막 날
 - 모델 선택·피처 선택·Walk-forward 튜닝은 **인샘플만**
-- 아웃샘플은 후보를 고른 뒤 **한 번만** 연다
+- 아웃샘플은 후보를 고른 뒤 **한 번만** 엽니다
 
-야후가 무료라서 기본 시세를 여기서 가져온다. 인베스팅닷컴 시세는 사람이 대조할 때만 쓴다.
+야후가 무료라서 기본 시세를 여기서 가져옵니다. 인베스팅닷컴 시세는 사람이 대조할 때만 씁니다.
 
 ## 뉴스 (Investing.com이 정본)
 
-역사적으로도 뉴스 위주다. 프로그램이 인베스팅닷컴을 긁지 않는다. CSV로 넣는다.
+역사적으로도 뉴스 위주입니다. 프로그램이 인베스팅닷컴을 긁지 않습니다. CSV로 넣습니다.
 
 ```text
 published_at,title,url,source
@@ -46,18 +46,18 @@ published_at,title,url,source
 - `inflation_policy` — CPI, 연준, 금리, 달러, 물가
 - `other`
 
-야후 `Search(query).news`는 최근 헤드라인 보조다. 역사 서사는 인베스팅 CSV와 `research/data/event_calendar.csv` 시드.
+야후 `Search(query).news`는 최근 헤드라인 보조입니다. 역사 서사는 인베스팅 CSV와 `research/data/event_calendar.csv` 시드입니다.
 
-## 오일 슬라이스 (피자 한 스푼)
+## 오일 슬라이스 (대안 데이터 후보)
 
 ```text
 slice_score = 2 * hormuz_count + 1 * inflation_count
 slice_z     = 20일 롤링 z-score
 ```
 
-호르무즈에 가중치를 더 주는 이유: 원유 체급에서 해협 리스크가 피자 오븐에 가깝다. 인플레/연준은 수요·달러 방향이다.
+호르무즈에 가중치를 더 주는 이유: 원유 체급에서 해협 리스크가 공급 충격에 가깝습니다. 인플레/연준은 수요·달러 방향입니다.
 
-기준모형은 RSI + 정통 가격만. 확장모형은 여기에 Slice를 얹는다. Slice가 Sharpe/MDD/적중률을 실제로 개선하는지 보는 것이 이 한 스푼의 실험이다.
+기준모형은 RSI + 정통 가격만. 확장모형은 여기에 Slice를 얹습니다. Slice가 Sharpe/MDD/적중률을 실제로 개선하는지 보는 것이 이 후보의 실험입니다.
 
 ## RSI 기본 오버레이
 
@@ -67,7 +67,7 @@ slice_z     = 20일 롤링 z-score
 - RSI ≥ 70 → short
 - 그 외 → flat
 
-이 오버레이를 ML 결과라고 쓰지 않는다.
+이 오버레이를 ML 결과라고 쓰지 않습니다.
 
 ## 실행
 
@@ -81,4 +81,4 @@ pytest
 python -m ls_crude.build
 ```
 
-`python -m ls_crude.build`가 `research/data/processed/`와 `app/public/baseline-snapshot.json`을 갱신한다. 원천 parquet는 Git에 올리지 않는다.
+`python -m ls_crude.build`가 `research/data/processed/`와 `app/public/baseline-snapshot.json`을 갱신합니다. 원천 parquet는 Git에 올리지 않습니다.
