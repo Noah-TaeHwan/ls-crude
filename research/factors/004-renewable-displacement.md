@@ -1,9 +1,8 @@
 # 004 — Renewable Displacement Index (재생에너지 대체)
 
-**상태**: 📋 **평가 중**  
-**평가**: 창의성 8/10 | 구현 가능성 7/10  
-**신호**: ↓ 음의 신호  
-**가중치**: -1.5
+**상태**: ⏸️ **HOLD** — 월간 공개 자료의 발표시점·개정 이력과 독립적 메커니즘 검증이 필요
+**신호**: ↕ 중기 수요·대체 레짐 후보; WTI 방향은 미정
+**Oil Pizza 가중치**: `0.0`
 
 ## 가설
 
@@ -13,11 +12,11 @@
 
 ### A. 재생에너지 뉴스 빈도
 
-Investing.com CSV에서 "renewable", "solar", "wind", "EV", "hydrogen" 키워드
+사용자가 제공한 Investing.com CSV가 있을 때만 "renewable", "solar", "wind", "EV", "hydrogen" 키워드를 탐색한다. 사이트를 직접 스크래핑하지 않는다.
 
 ```python
 renewable_keywords = [
-    'renewable', 'solar', 'photovoltaic', 'pv', 'wind', 
+    'renewable', 'solar', 'photovoltaic', 'pv', 'wind',
     'hydroelectric', 'hydrogen', 'fuel cell', 'ev charging', 'electric vehicle'
 ]
 
@@ -61,12 +60,12 @@ clean_energy_tickers = [
 
 def get_clean_energy_signal():
     prices = yf.download(clean_energy_tickers, start='2015-01-01')
-    
+
     # 상대 강도 (대비 S&P 500)
     sp500 = yf.download('SPY', start='2015-01-01')
     relative_strength = (prices / sp500) / (prices.shift(20) / sp500.shift(20))
     clean_energy_z = zscore(relative_strength.mean(axis=1), window=20)
-    
+
     return clean_energy_z
 ```
 
@@ -87,7 +86,7 @@ oil_pizza_component = -1.5 * renewable_index
 
 | 데이터 | 소스 | 빈도 | 비용 | 시작 |
 |--------|------|------|------|------|
-| 뉴스 | Investing.com | 일간 | ✅ 무료 | 즉시 |
+| 뉴스 | 사용자 제공 Investing.com CSV | 일간 | CSV 이용 조건 확인 필요 | 제공 시 |
 | IEA 발전량 | IEA.org | 월간 | ✅ 무료 | 2주 |
 | 청정에너지 주가 | yfinance | 일간 | ✅ 무료 | 즉시 |
 | RenewableNow | rnw.org | 실시간 | 💰 $300/월 | 나중에 |
@@ -108,8 +107,8 @@ oil_pizza_contribution = -1.5 * 1.01 = -1.51 (음의 신호 → 유가 약세)
 
 - [ ] Investing.com CSV에서 renewable 키워드 추출 가능?
 - [ ] IEA 데이터를 월간 → 일간 interpolation 가능?
-- [ ] 청정에너지 주가와 유가 상관성 r < -0.3?
-- [ ] 뉴스 신호와 유가 Granger p < 0.05?
+- [ ] 발표시점 기준의 월간 자료가 충분한 역사 구간을 갖는가?
+- [ ] 각 구성요소가 사전 지정한 타깃과 독립적 관계를 보이는가?
 - [ ] 3개 신호의 상관성 너무 높지 않은가? (r < 0.7)
 
 ## 구현 로직
@@ -122,7 +121,7 @@ import yfinance as yf
 from scipy import stats
 
 def get_renewable_news_signal(news_df, window=20):
-    """Investing.com 뉴스에서 재생에너지 신호"""
+    """사용자가 제공한 Investing.com CSV에서만 재생에너지 신호를 계산한다."""
     keywords = ['renewable', 'solar', 'wind', 'ev', 'hydrogen']
     daily_count = news_df.groupby('date').apply(
         lambda x: sum(any(k in row.lower() for k in keywords) for row in x)
@@ -148,10 +147,10 @@ def get_renewable_displacement_index(news_df, iea_csv, start_date='2015-01-01'):
     news_z = get_renewable_news_signal(news_df)
     capacity_z = get_renewable_capacity_signal(iea_csv)
     stock_z = get_clean_energy_stock_signal(['ICLN', 'QCLN'], window=20)
-    
+
     # 3개 신호 결합
     renewable_index = 0.4*news_z + 0.3*capacity_z + 0.3*stock_z
-    
+
     return -1.5 * renewable_index  # 음의 신호
 ```
 

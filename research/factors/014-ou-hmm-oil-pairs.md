@@ -1,61 +1,28 @@
-# 014 — OU-HMM Regime-Switching Oil Pairs Trading
+# 014 — OU-HMM Regime-Switching Pairs Strategy Research
 
-**상태**: 📋 **평가 및 R&D 설계 완료**  
-**스타일**: 체제 전환형 통계적 차익거래 (Regime-Switching Statistical Arbitrage)  
-**유니버스**: WTI (CL), Brent (LCO), Dubai Crude, Shanghai Crude (INE SC)  
-**가중치**: 1.5 (레짐별 적응형 마켓 뉴트럴 오버레이)  
-**참조 연구**: Zanatta, T. (2025). *Statistical Arbitrage: Crude Oil Futures Market Pairs Trading*. University of Padua / Fanelli, Fontana, & Rotondi (2023).
+**상태**: 📋 **시장중립 StatArb 연구** — Oil Pizza에 더하는 팩터가 아니다.
+**원본 패키지**: `014-ou_hmm_oil_pairs/` 및 `014-ou_hmm_oil_pairs.zip`
 
----
+## 가설
 
-## 🎯 경제적 & 수학적 가설
+원유 스프레드의 평균회귀 속도와 변동성이 시간에 따라 바뀔 수 있으므로, OU 과정과 HMM 레짐 필터가 고정 임계값보다 더 적절한 위험 관리를 제공할 수 있다. 우월성은 실데이터·비용·워크포워드에서 입증되어야 한다.
 
-1. **에너지 시장의 체제 전환(Regime-Switching) 특성**:
-   - 원유 스프레드는 항상 일정한 속도로 평균 회귀하지 않음. 지정학적 위기나 강한 트렌드장에서는 **스프레드가 장기 이탈(Trending Regime)**하고, 횡보장에서는 **빠른 평균 회귀(Mean-Reverting Regime)**를 보임.
-   - 단일 OU 모델은 체제 변화 시 대규모 드로다운(MDD)을 초래하므로, **은닉 마르코프 모델(HMM)**을 결합하여 현재 시장 레짐($S_t \in \{1, 2, \dots, K\}$)을 실시간 필터링함.
+## 모델 경계
 
-2. **OU-HMM 결합 모델**:
-   각 레짐 $k$에 대해 서로 다른 평균 회귀 속도($\theta_k$), 장기 평균($\mu_k$), 변동성($\sigma_k$)을 부여:
-   $$dX_t = \theta(S_t) \big(\mu(S_t) - X_t\big)dt + \sigma(S_t) dW_t$$
-   - **Regime 1 (빠른 회귀)**: 높은 $\theta$, 낮은 $\sigma$ $\rightarrow$ 적극적 차익거래 포지션 확대
-   - **Regime 2 (중립/전환)**: 중간 $\theta$, 보통 $\sigma$ $\rightarrow$ 표준 밴드 거래
-   - **Regime 3 (발산/쇼크)**: 낮은 $\theta$, 높은 $\sigma$ $\rightarrow$ 포지션 축소 또는 즉시 손절(Risk-Off)
+- 레짐 수, 추정 창, 헤지비율, 진입·청산 규칙은 인샘플에서 정한 뒤 동결한다.
+- 미래 관측값으로 레짐을 사후 추정해 과거 포지션을 바꾸지 않는다.
+- 패키지·논문의 수익률, Sharpe, MDD는 LS CRUDE 실증 결과로 재사용하지 않는다.
 
----
+## 최소 검증
 
-## 💡 4가지 진보된 트레이딩 전략 (Trading Strategies)
+| 점검 | 기준 |
+| --- | --- |
+| 데이터 | WTI·Brent·Dubai·Shanghai 계약별 허가 데이터와 동기화된 거래일 |
+| 시간정렬 | 각 시점까지 관측 가능한 가격·롤 정보만 사용 |
+| 비용 | 수수료·호가스프레드·슬리피지·롤오버·증거금 포함 |
+| 안정성 | 레짐 수·추정 창 변경에 대한 민감도 공개 |
+| 평가 | 인샘플 동결 뒤 한 번의 OOS/워크포워드 |
 
-| 전략 | 메커니즘 | 특징 |
-|---|---|---|
-| **Plain Vanilla** | 레짐별 조건부 임계값 $\pm Z(S_t)$ 기반 진입/청산 | 기본형 |
-| **Realized Increment** | 과거 실현된 스프레드 증분 기반 모멘텀/회귀 결합 | 실현 변동성 제어 |
-| **Prediction Interval** | OU-HMM 미래 1-step 예측 신뢰구간 이탈 시 역추세 진입 | **최저 MDD (0.4%) 달성** |
-| **Probability Interval** | 특정 레짐에 머무를 사후 확률 $P(S_t = k \mid \mathcal{F}_t)$ 기반 필터링 | 휩소(Whipsaw) 방지 |
+## 결론
 
----
-
-## 📈 실증 분석 성과 (Zanatta 2025 실증 결과)
-
-*강세 트렌드 구간 (2023년 10월 ~ 2025년 3월 백테스트 비교)*:
-
-| 전략 | 총 수익률 | 최대 낙폭 (Max DD) | 샤프 지수 (Sharpe) | 특성 |
-|---|---|---|---|---|
-| **Buy & Hold (단방향)** | 16.3% | 19.4% | 1.54 | 높은 방향성 위험 노출 |
-| **Realized Increment** | 2.2% | 1.2% | 1.12 | 극도로 안정적 알파 |
-| **Probability Interval** | 1.4% | 0.8% | 0.90 | 초저위험 방어형 |
-| **Prediction Interval** | 0.9% | **0.4%** | 0.69 | **테일 리스크 완벽 차단** |
-
-> *핵심 인사이트: OU-HMM 페어 트레이딩은 강세장에서는 드로다운을 19.4%에서 0.4%로 낮추는 강력한 위험 분산 도구(Tail-Risk Hedge)로 작용하며, 횡보장에서는 지속적인 비상관 알파를 생성함.*
-
----
-
-## 🚀 파이프라인 구현 계획
-
-- [ ] Johansen 공적분 기반 WTI-Brent-Dubai 스프레드 벡터 생성기
-- [ ] EM 알고리즘 기반 온라인 3-Regime OU-HMM 필터 (`ou_hmm.py`)
-- [ ] Walk-forward 롤링 윈도우 검증 및 슬리피지/수수료 모델링
-
----
-
-**작성일**: 2026-09-02  
-**위치**: `research/factors/014-ou-hmm-oil-pairs.md` (원본 아카이브: `014-ou_hmm_oil_pairs.zip`)
+014는 시장중립 전략 후보로 관리한다. 방향성 팩터와 섞어 성과·MDD 개선을 미리 약속하지 않는다.
