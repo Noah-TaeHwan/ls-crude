@@ -7,11 +7,11 @@ import { Alert, AlertDescription } from "~/components/ui/alert";
 import { Button } from "~/components/ui/button";
 import {
   SAMPLE_EQUITY,
-  SAMPLE_HISTORY_ROW,
   SAMPLE_IS_METRICS,
   SAMPLE_LABEL,
   SAMPLE_OS_METRICS,
   SAMPLE_TRADES,
+  historyRowsForPreview,
   isSamplePreviewOn,
   samplePreviewHref,
   type BacktestHistoryRow,
@@ -24,7 +24,6 @@ import type { ActionResult } from "~/lib/types";
 
 const EMPTY = "—";
 const NO_RULE_MESSAGE = "규칙이 없어 돌릴 수 없습니다.";
-const EMPTY_HISTORY: BacktestHistoryRow[] = [];
 
 function fail(message: string) {
   return data({ ok: false, message } satisfies ActionResult, { status: 400 });
@@ -36,7 +35,7 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "description",
       content:
-        "WTI 선물 CL=F 백테스트 자리입니다. 규칙은 아직 없고 성과 숫자는 비워 둡니다.",
+        "WTI 선물 CL=F 백테스트 칸입니다. 규칙은 아직 없어서 성과 숫자는 비워 둡니다.",
     },
   ];
 }
@@ -47,7 +46,7 @@ export async function loader({ request }: Route.LoaderArgs) {
   return {
     seed,
     samplePreview,
-    history: samplePreview ? [SAMPLE_HISTORY_ROW] : EMPTY_HISTORY,
+    history: historyRowsForPreview(samplePreview),
   };
 }
 
@@ -92,8 +91,8 @@ export default function Backtest({
               {SAMPLE_LABEL}
             </p>
             <p className="mt-1 text-sm">
-              샘플 미리보기입니다. 숫자는 레이아웃용이며 실제 백테스트가
-              아닙니다.
+              샘플 미리보기입니다. 칸이 어떻게 생겼는지만 채운 것이고, 실제
+              백테스트가 아닙니다.
             </p>
           </section>
         ) : null}
@@ -114,9 +113,9 @@ export default function Backtest({
               아웃샘플 {seed.outSampleStart} ~
             </p>
             <p className="mt-3 text-xs text-muted-foreground">
-              {seed.relativePath} 입니다. 컬럼은 date, Open, High, Low, Close,
-              Volume, sample 입니다. 내려받기 버튼은 없습니다. 종가를 손익으로
-              바꾸지 않습니다.
+              {seed.relativePath}입니다. 컬럼은 date, Open, High, Low, Close,
+              Volume, sample입니다. 내려받기 버튼은 없고, 종가를 손익으로
+              바꾸지도 않습니다.
             </p>
           </section>
 
@@ -148,7 +147,7 @@ export default function Backtest({
               ) : null}
               <p className="mt-3 text-xs text-muted-foreground">
                 {samplePreview
-                  ? "이 버튼으로 계산하지 않습니다. 아래 숫자는 샘플입니다."
+                  ? "이 버튼으로는 계산하지 않습니다. 아래 숫자는 샘플입니다."
                   : "버튼을 눌러도 계산하지 않습니다. 규칙이 없습니다."}
               </p>
             </section>
@@ -190,8 +189,8 @@ export default function Backtest({
           </dl>
           <p className="mt-3 text-xs text-muted-foreground">
             {samplePreview
-              ? "인샘플 칸의 레이아웃용 숫자입니다. 검증된 성과가 아닙니다."
-              : "적중률은 다음 날 CL=F 방향입니다. 보합일은 분모에서 뺍니다. 규칙이 없어서 값은 비워 둡니다."}
+              ? "인샘플 칸에 넣는 가짜 숫자입니다. 검증한 성과가 아닙니다."
+              : "적중률은 다음 날 CL=F 방향입니다. 보합일은 분모에서 뺍니다. 규칙이 없어서 값은 비웁니다."}
           </p>
         </section>
 
@@ -203,10 +202,10 @@ export default function Backtest({
 
         <section className="border border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground">
           <p>
-            2주 수업 포트폴리오입니다. 투자 권유가 아닙니다. 후보는 아직
-            확정하지 않았습니다. 규칙이 생기기 전까지 성과 숫자는 비워 둡니다.
+            2주짜리 수업 과제입니다. 투자 권유가 아닙니다. 후보는 아직 안
+            골랐습니다. 규칙이 생기기 전까지 성과 숫자는 비워 둡니다.
             {samplePreview
-              ? " 샘플 숫자는 레이아웃 확인용입니다."
+              ? " 샘플 숫자는 칸 모양을 보는 용도입니다."
               : ""}
           </p>
         </section>
@@ -239,8 +238,8 @@ function SamplePreviewToggle({ on }: { on: boolean }) {
       </Button>
       <p className="text-xs text-muted-foreground">
         {on
-          ? "켜져 있습니다. 숫자는 레이아웃용이며 실제 성과가 아닙니다."
-          : "꺼져 있습니다. 켜면 그래프와 칸이 어떻게 보이는지만 보여 줍니다."}
+          ? "켜져 있습니다. 숫자는 칸 모양을 보는 용도고, 실제 성과가 아닙니다."
+          : "꺼져 있습니다. 켜면 그래프와 칸이 어떻게 생겼는지만 채웁니다."}
       </p>
     </section>
   );
@@ -270,7 +269,7 @@ function OutSampleLockedPane({ sampleBadge = false }: { sampleBadge?: boolean })
       <p className="mt-3 text-xs">
         {sampleBadge
           ? "잠긴 모습의 샘플입니다. 아웃샘플을 연 것이 아닙니다."
-          : "후보를 확정한 뒤에 한 번만 엽니다. 결제가 아닙니다."}
+          : "후보를 고른 뒤에 한 번만 엽니다. 결제가 아닙니다."}
       </p>
     </section>
   );
@@ -280,7 +279,7 @@ function OutSampleFilledPane({ metrics }: { metrics: SampleMetrics }) {
   return (
     <section className="border border-heading/40 bg-card/30 px-4 py-3">
       <p className="font-mono text-[10px] tracking-[0.2em] text-heading uppercase">
-        아웃샘플 · 채워진 모습 · {SAMPLE_LABEL}
+        아웃샘플 · 채워 본 모습 · {SAMPLE_LABEL}
       </p>
       <dl className="mt-3 grid gap-2 sm:grid-cols-3">
         <MetricSlot label="Sharpe" value={metrics.sharpe} isSample />
@@ -288,7 +287,7 @@ function OutSampleFilledPane({ metrics }: { metrics: SampleMetrics }) {
         <MetricSlot label="적중률" value={metrics.hitRate} isSample />
       </dl>
       <p className="mt-3 text-xs text-muted-foreground">
-        레이아웃용입니다. 아웃샘플을 연 것이 아닙니다.
+        칸 모양만 채운 것입니다. 아웃샘플을 연 것이 아닙니다.
       </p>
     </section>
   );
@@ -315,7 +314,7 @@ function EquityPane({ samplePreview }: { samplePreview: boolean }) {
       <p className="mt-2 text-xs text-muted-foreground">
         {samplePreview
           ? "인샘플은 녹색, 아웃샘플은 붉은 선입니다. 종가가 아닙니다."
-          : "빈 자리입니다. 관측 데스크 종가 선을 자산곡선으로 쓰지 않습니다."}
+          : "빈 자리입니다. 관측 데스크의 종가 선을 자산곡선으로 쓰지 않습니다."}
       </p>
     </section>
   );
@@ -471,7 +470,7 @@ function ComparePane({ samplePreview }: { samplePreview: boolean }) {
         </p>
         <p className="mt-2 font-mono text-3xl leading-none">아직 없음</p>
         <p className="mt-3 text-xs text-muted-foreground">
-          기준선과 후보를 나란히 둘 자리입니다. 지금은 비워 둡니다.
+          기준선과 후보를 나란히 둘 자리입니다. 지금은 비웁니다.
         </p>
       </section>
     );
@@ -501,7 +500,7 @@ function ComparePane({ samplePreview }: { samplePreview: boolean }) {
         </div>
       </div>
       <p className="mt-3 text-xs text-muted-foreground">
-        나란히 두는 칸의 모습만 보여 줍니다. 순위가 아닙니다.
+        나란히 두는 칸의 모습만입니다. 순위가 아닙니다.
       </p>
     </section>
   );
@@ -516,27 +515,32 @@ function HistoryLog({
 }) {
   const isEmpty = rows.length === 0;
   return (
-    <section className="overflow-x-auto border border-border bg-card/30">
+    <section
+      id="experiment-history"
+      className="overflow-x-auto border border-border bg-card/30"
+      data-history-empty={isEmpty ? "true" : "false"}
+    >
       <p className="px-4 pt-3 font-mono text-[10px] tracking-[0.2em] text-heading uppercase">
         실험 기록
         {samplePreview ? ` · ${SAMPLE_LABEL}` : ""}
       </p>
       <p className="px-4 pt-2 text-xs text-muted-foreground">
-        순위가 아닙니다. 어떤 후보를 언제 인샘플에서 돌렸는지 적는 칸입니다.
-        성과 숫자는 규칙이 생긴 뒤에 적습니다. 나중에 CSV 템플릿으로 넣을 수
-        있습니다. 컬럼은 date, value만 둡니다.
+        순위가 아닙니다. 어떤 후보를 언제 인샘플에서 돌렸는지, 한 줄 메모와
+        함께 적습니다. 성과 숫자는 규칙이 생긴 뒤에 적습니다. 나중에 CSV로
+        넣을 수 있고, 그때 컬럼은 date, value만 둡니다.
       </p>
       <table className="mt-2 w-full text-left">
         <caption className="sr-only">
           {isEmpty
-            ? "백테스트 실험 기록. 행이 없습니다. 구간은 인샘플입니다."
-            : "샘플 실험 기록입니다. 실제 실행이 아닙니다. 구간은 인샘플입니다."}
+            ? "백테스트 실험 기록. 후보, 언제, 구간, 메모. 행이 없습니다."
+            : "샘플 실험 기록입니다. 실제 실행이 아닙니다. 열은 후보, 언제, 구간, 메모입니다."}
         </caption>
         <thead>
           <tr className="border-y border-border font-mono text-[10px] tracking-[0.16em] text-heading uppercase">
             <th className="px-4 py-2 font-medium">후보</th>
             <th className="px-4 py-2 font-medium">언제</th>
             <th className="px-4 py-2 font-medium">구간</th>
+            <th className="px-4 py-2 font-medium">메모</th>
           </tr>
         </thead>
         <tbody>
@@ -546,10 +550,17 @@ function HistoryLog({
               className="border-b border-border"
             >
               <td className="px-4 py-2 font-mono text-sm">
-                {row.candidate} <SampleTag />
+                {row.candidate} {samplePreview ? <SampleTag /> : null}
               </td>
               <td className="px-4 py-2 font-mono text-sm">{row.ranAt}</td>
               <td className="px-4 py-2 font-mono text-sm">{row.window}</td>
+              <td className="max-w-[18rem] px-4 py-2 text-sm">
+                {row.memo ? (
+                  <>
+                    {row.memo} {samplePreview ? <SampleTag /> : null}
+                  </>
+                ) : null}
+              </td>
             </tr>
           ))}
         </tbody>

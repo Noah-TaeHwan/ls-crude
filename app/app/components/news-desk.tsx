@@ -64,8 +64,8 @@ export function NewsDesk({
       </summary>
       <div className="space-y-4 border-t border-border px-4 py-4">
         <p className="text-xs text-muted-foreground">
-          공개 프로토타입의 아래 칸입니다. 사이트를 긁지 않습니다. CSV나 이 폼만
-          받습니다. {source === "supabase" ? "Supabase에 저장합니다." : "지금은 스냅샷이라 저장 칸이 막혀 있습니다."}
+          접힌 뉴스 장부입니다. Investing.com을 긁지 않습니다. CSV나 이 폼으로만
+          넣습니다. {source === "supabase" ? "Supabase에 저장합니다." : "지금은 스냅샷이라 저장할 수 없습니다."}
         </p>
         {actionData ? (
           <Alert variant={actionData.ok ? "default" : "destructive"}>

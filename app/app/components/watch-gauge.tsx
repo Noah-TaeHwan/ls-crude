@@ -134,7 +134,7 @@ export function WatchGauge({ sliceZ }: { sliceZ: number | null }) {
           관측 중
         </p>
         <p className="max-w-xl text-sm text-foreground/85">
-          펜타곤 피자 인덱스처럼, 유가 옆의 공개 신호를 아직 찾는 중입니다.
+          펜타곤 피자 인덱스처럼 유가 옆의 공개 신호를 아직 찾는 중입니다.
         </p>
         <p className="font-mono text-[11px] text-muted-foreground">
           Oil Slice z {formatSliceZ(sliceZ)} · 초안 읽기값 · 바늘은 움직이지 않습니다
