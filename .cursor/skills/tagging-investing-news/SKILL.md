@@ -22,4 +22,4 @@ Tags:
 
 A headline may have both `hormuz` and `inflation_policy`. Use `other` only when neither matches.
 
-Historical coverage starts from `research/data/event_calendar.csv` plus operator-exported Investing.com rows.
+Historical coverage starts from `research/data/event_calendar.csv` plus operator-exported Investing.com rows. Operator CSVs that are not yet curated belong in `research/gathering/raw/` (gitignored), not in `docs/experiments/`. Do not scrape investing.com.

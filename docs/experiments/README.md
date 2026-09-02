@@ -6,9 +6,11 @@
 
 | 구분 | 위치 |
 | --- | --- |
-| 이 폴더 | 후보 한 장씩. 가설·look-ahead·아웃샘플 미사용 |
-| 작업 메모 | [`research/notebooks/pizza-hunt.md`](../../research/notebooks/pizza-hunt.md) |
-| 원천 파일 | `research/data/pizza/` (raw는 git 안 올림) |
+| 이 폴더 | 승격된 후보 한 장씩. 가설·look-ahead·아웃샘플 미사용 |
+| 수집 규칙 | [`research/INTAKE.md`](../../research/INTAKE.md) — 덤프·노트는 여기로 오지 않음 |
+| 한 장 노트 | [`research/gathering/notes/`](../../research/gathering/notes/README.md) |
+| 작업 표 | [`research/notebooks/pizza-hunt.md`](../../research/notebooks/pizza-hunt.md) |
+| 원천 시드 | `research/data/pizza/` (덤프는 `research/gathering/raw/`) |
 | 부엌 초안 | [`000-oil-slice-kitchen-draft.md`](000-oil-slice-kitchen-draft.md) — 비교군. 최종 피자 아님 |
 
 파일 이름: `NNN-짧은-슬러그.md`. 다음은 `001-`.

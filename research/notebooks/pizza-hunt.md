@@ -5,7 +5,8 @@
 
 타겟은 유가. 방향은 크립토 × 뉴스. 아직 없는 것은 크립토의 **뭐**, 뉴스의 **무슨**. 그게 늦은 밤 펜타곤 옆 가게다.
 
-Oil Slice는 옆에 둔 부엌 초안이다. 기록은 [`docs/experiments/`](../../docs/experiments/README.md).
+Oil Slice는 옆에 둔 부엌 초안이다. 기록은 [`docs/experiments/`](../../docs/experiments/README.md).  
+조사 원문·한 장 노트는 [`../gathering/`](../gathering/README.md). 규칙 정본은 [`../INTAKE.md`](../INTAKE.md).
 
 ## 규칙
 
@@ -14,6 +15,7 @@ Oil Slice는 옆에 둔 부엌 초안이다. 기록은 [`docs/experiments/`](../
 - 메커니즘이 없으면 폐기한다. 통제 전 상관은 알파가 아니다
 - 맵·온체인 히트맵은 메인 신호가 아니다
 - 후보가 살면 `docs/experiments/001-…` 한 장을 만든다
+- 실후보가 없으면 아래 표를 비워 둔다
 
 ## 후보 칸
 
@@ -21,4 +23,4 @@ Oil Slice는 옆에 둔 부엌 초안이다. 기록은 [`docs/experiments/`](../
 | --- | --- | --- | --- | --- |
 | | | | | 비어 있음 |
 
-원천 파일은 `research/data/pizza/`에 둔다. 덤프는 `raw/`에만.
+원천 시드는 `research/data/pizza/`에 둔다. 덤프는 `research/gathering/raw/`에만.

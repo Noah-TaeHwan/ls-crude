@@ -11,4 +11,4 @@
 | 작전 준비 | 공급 충격 / 해협 리스크 |
 | (비교군) 평일 점심 | 연준·CPI 헤드라인 (수요·달러 방향) |
 
-계산은 `ls_crude.features.slice_index.oil_slice`에 있다. Slice는 비교군 초안이다. 실험 기록은 [`docs/experiments/`](experiments/README.md). 피자 찾기는 [`research/notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md).
+계산은 `ls_crude.features.slice_index.oil_slice`에 있다. Slice는 비교군 초안이다. 실험 기록은 [`docs/experiments/`](experiments/README.md). 피자 찾기는 [`research/notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md). 새 조사는 [`research/INTAKE.md`](../research/INTAKE.md).
