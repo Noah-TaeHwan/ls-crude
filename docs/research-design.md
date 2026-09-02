@@ -6,7 +6,7 @@
 
 원유 기본(야후 가격 + RSI) + 뉴스 서사(인베스팅닷컴) + **오일 슬라이스 한 스푼**.
 
-오일 슬라이스는 펜타곤 피자 지수와 같은 역할의 **부엌 초안**이다. 호가가 아니라, 호르무즈·미국 인플레/정책 뉴스가 갑자기 붐비는지(부엌이 바빠졌는지)를 본다. 찾을 피자(크립토의 뭐 × 뉴스의 무슨)는 [`notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md)와 [`docs/experiments/`](experiments/README.md)에 적는다.
+오일 슬라이스는 펜타곤 피자 지수와 같은 역할의 **부엌 초안**이다. 호가가 아니라, 호르무즈·미국 인플레/정책 뉴스가 갑자기 붐비는지(부엌이 바빠졌는지)를 본다. 찾을 피자(크립토의 뭐 × 뉴스의 무슨)는 [`notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md)와 [`docs/experiments/`](experiments/README.md)에 적는다. 조사 덤프·노트·출처 표는 [`research/INTAKE.md`](../research/INTAKE.md), 짧은 안내 [`research-gathering.md`](research-gathering.md).
 
 ## 역할
 

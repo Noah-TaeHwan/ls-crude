@@ -12,3 +12,4 @@ alwaysApply: true
 - Route modules export `loader`, `action`, and `meta`. Import `Route` from `./+types/...`. Use `loaderData` / `actionData` props, never `useLoaderData` or `useActionData`.
 - Import UI from local shadcn-style modules, not Radix. Import router APIs from `react-router`.
 - Read `.cursor/skills/` before generating pipeline or dashboard code.
+- Research dumps go to `research/gathering/raw/` (gitignored). Curated notes go to `research/gathering/notes/`. Source rows go to `research/gathering/sources/REGISTRY.md`. Promote to `docs/experiments/` only after `research/INTAKE.md` checks. Do not invent performance numbers. Leave `pizza-hunt.md` empty when there is no real candidate.

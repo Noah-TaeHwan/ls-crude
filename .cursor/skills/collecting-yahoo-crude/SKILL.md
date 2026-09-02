@@ -18,7 +18,7 @@ Call `yf.download` with `interval="1d"`, `auto_adjust=True`, `multi_level_index=
 
 - Do not scrape Investing.com for prices.
 - Do not use random walk or dummy OHLC as a substitute for Yahoo.
-- Keep raw files under `research/data/processed/` (gitignored).
+- Keep Yahoo build outputs under `research/data/processed/` (gitignored). Web-research dumps go to `research/gathering/raw/` instead.
 - After a successful pull, run `add_sample_split` before any model work.
 
 ## Common mistakes

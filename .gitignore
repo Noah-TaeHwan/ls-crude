@@ -22,6 +22,17 @@ research/data/pizza/raw/
 *.pkl
 *.pickle
 
+# Research gathering dumps (keep README + gitkeep)
+research/gathering/raw/**
+!research/gathering/raw/.gitkeep
+!research/gathering/raw/README.md
+research/gathering/raw/**/*.csv
+research/gathering/raw/**/*.zip
+research/gathering/raw/**/*.parquet
+research/gathering/raw/**/*.xlsx
+research/gathering/raw/**/*.xls
+research/gathering/raw/**/*.jsonl
+
 # Node / React Router
 node_modules/
 .react-router/
