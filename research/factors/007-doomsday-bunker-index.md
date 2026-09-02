@@ -1,70 +1,89 @@
-# 007 — Doomsday Bunker & UHNWI Safe-Haven Flight Index (엘리트 이민 & 벙커 지수)
+# 007 — MENA Elite Mobility & Safe-Haven Framework
 
-**상태**: 📋 **평가 및 R&D 설계 중**  
-**평가**: 창의성 10/10 | 구현 가능성 8.5/10  
-**가중치**: 1.5 (중장기 테일 리스크 및 억만장자 정보 우위 신호)
+**상태**: ⏸️ **HOLD** — 공개 대체데이터가 아니라, 개인정보를 배제한 제휴 집계 데이터가 있어야 성립하는 후보
+**목적**: 중동 고액자산가의 안전 피난처 준비가 WTI `CL=F`의 지정학 위험 레짐과 연결되는지 검증한다.
 
----
+## 가설
 
-## 🎯 가설 (Core Thesis)
+중동 고액자산가가 뉴질랜드·하와이·피지 같은 원거리 피난처를 위해 유료 이민 자문, 투자이민 신청, 합법적 투자금 이전을 늘린다면 지역·지정학적 꼬리위험 인식이 높아졌을 수 있다.
 
-1. **상위 0.001% 엘리트의 정보 우위 (Information Asymmetry)**:
-   - 초고액 자산가(UHNWI, 억만장자) 및 글로벌 엘리트는 최고급 정치/지정학 컨설팅 네트워크를 통해 글로벌 대형 악재(전면전, 핵 리스크, EMP, 글로벌 공급망 붕괴)를 일반 시장보다 **3개월~1년 이상 먼저 감지**.
+이는 “부자들이 미래를 안다”는 주장이 아니다. 측정 가능한 행동 변화가 있다면 그것을 위험 인식의 후보 신호로 검증한다. WTI 가격 방향보다 이후 변동성·상방 꼬리위험을 우선 타깃으로 둔다.
 
-2. **안전 자산 피난처(Safe-Haven Flight) 및 벙커 구축**:
-   - 지정학적 미사일 타깃에서 벗어난 뉴질랜드, 하와이, 피지, 스위스 등으로의 이민/시민권 신청 급증 및 지하 벙커/자급자족 영지 매입 활동.
+## 의도 → 자금 → 정착 퍼널
 
-3. **유가 및 매크로 연동성 (Oil Price Correlation)**:
-   - 단순 지역 분쟁이 아닌 **글로벌 전면전/대형 지정학 충격(Tail Risk)**의 최선행 지표.
-   - **Henley & Partners 투자 이민 지수 급증 → 글로벌 대형 위기 조짐 → 중장기 유가(WTI/Brent) 급등(↑) 및 옵션 프리미엄 상승 선행 신호**.
-
----
-
-## 📊 핵심 데이터 소스
-
-### 1️⃣ Henley & Partners Investment Migration Index (최우선 소스) ✅
-- **데이터**: Henley & Partners Private Wealth Migration Dashboard & Quarterly Reports
-- **지표**:
-  - 뉴질랜드, 미주/하와이, 피지 등 주요 안전 피난처 대상 **투자 이민(Golden Visa / Citizenship by Investment) 신청 건수 변동률**.
-  - UHNWI(자산 $30M+) 계층의 2차 시민권/거주권 문의 수치 (High-net-worth Inflow Index).
-- **장점**: 관료적 행정 지연이 심한 정부 토지 매입 승인(OIO)보다 **엘리트의 실시간 구매 의도 및 행동 심리를 훨씬 빠르고 정확하게 반영**.
-
-### 2️⃣ 럭셔리 벙커 및 건축 트렌드 (보조 소스)
-- **지표**: Rising S Company, Survival Condo 등 억만장자 벙커 시공 문의 트렌드 및 하와이/뉴질랜드 대규모 주거/지하 구조물 건축 허가(Permit) 공개 데이터 스크래핑.
-
----
-
-## 💡 신호 생성 로직 (Signal Logic)
-
-```python
-# 1. Henley & Partners 투자 이민 지수 분기/월간 변동률
-henley_safehaven_index = fetch_henley_migration_index(countries=['NZ', 'US-HI', 'FJ', 'CH'])
-henley_z = zscore(henley_safehaven_index, window=4_quarters)
-
-# 2. 벙커/자급자족 부동산 검색 및 허가 트렌드 지수
-bunker_permit_trend = fetch_bunker_permit_scrapes()
-
-# 3. 최종 Doomsday Flight Score (중장기 3~12개월 선행)
-doomsday_flight_score = (0.7 * henley_z) + (0.3 * bunker_permit_trend)
+```text
+익명화된 첫 상담
+  → 신규 유료 리테이너
+  → 투자이민/거주권 신청
+  → 합법적 투자금·에스크로의 집계 이전
+  → 승인·실제 투자
 ```
 
----
+왼쪽은 빠르지만 사적·노이즈가 크고, 오른쪽은 견고하지만 늦다. 개인별 데이터·고객 비밀·계좌·자산내역은 어느 단계에서도 수집하지 않는다.
 
-## 🔬 선행성 검증 및 한계점
+## 후보 점수 (제휴가 있을 때만)
 
-- **선행 타깃**: WTI / Brent 원유 선물 및 Call Option Implied Volatility (3개월~1년 선행)
-- **한계 및 노이즈 관리**:
-  - 단순 세금 절세(Tax Haven) 목적의 이동과 구별하기 위해 **단기 급증 비율(Spike Ratio)**을 추출하여 지정학적 위기 신호로 정문화.
+```text
+MENA Exit Intent Score =
+    45% 신규 유료 리테이너의 익명 집계 변화
+  + 25% 리테이너 총액의 익명 집계 변화
+  + 20% 투자이민 신청 전환율
+  + 10% 합법적 투자금/에스크로의 익명 집계 변화
+```
 
----
+가중치는 검증 전 초안이다. 두 곳 이상의 독립 제휴사가 같은 정의·시차로 제공하지 않으면 점수를 계산하지 않는다.
 
-## 🚀 구현 계획 (Phase 1)
+## 지역 분리: 같은 숫자로 합산하지 않음
 
-- [ ] Henley & Partners Private Wealth Migration 리포트/대시보드 데이터 수집기 작성 (`research/src/ls_crude/data/henley_collector.py`)
-- [ ] 과거 10년간 대형 지정학적 위기(2014, 2022, 2024~) 전후 이민 지수 변동성 백테스팅
-- [ ] Oil Pizza 팩터 라인업에 `doomsday_bunker_index` 통합
+| 구간 | 해석 | WTI 관계 가설 | 처리 |
+| --- | --- | --- | --- |
+| 이란계 자산가의 외부 이동 의도 | 제재·환율·전쟁 불안 | 단기 위험 프리미엄 후보 | 별도 `Iran Exit Pressure` 서브시그널 |
+| UAE·사우디계의 원거리 피난처 의도 | 가족 분산·지정학 보험 또는 자산배분 | 방향 불명 | 별도 `GCC Safe-Haven Diversification` 서브시그널 |
+| UAE·사우디로의 유입 | 사업·금융허브·에너지 투자 | 탈출 수요가 아님 | `GCC Capital Commitment` 통제/별도 후보 |
 
----
+UAE·사우디 유입을 뉴질랜드·하와이·피지로의 탈출 수요와 더하면 의미가 반대가 될 수 있다.
 
-**작성일**: 2026-09-02  
-**제안**: LS CRUDE 팀 (Doomsday Bunker & UHNWI Safe-Haven Flight Factor)
+## 공개 자료의 역할
+
+| 자료 | 쓸 수 있는 것 | 쓰면 안 되는 것 |
+| --- | --- | --- |
+| 뉴질랜드 AIP 통계 | 국적별 신청·승인의 사후 검증 | MENA 고액자산가의 실시간 의도 추정 |
+| UAE·사우디 국제수지 | 거시적 자본 흐름의 배경·통제 | 개인/부자/이민 자금으로의 해석 |
+| Golden Visa·거주 제도 | 규칙 변경 더미 | 신청 수요의 대리값 |
+| 이란 국경 이동 자료 | 인도적·이동성 맥락 | 영구 이주·고액자산가 자금 유출의 대리값 |
+
+뉴질랜드 AIP의 국적별 공개 표본은 UAE 신청이 매우 작아 단독 신호가 될 수 없다. 공개 자료는 제휴 신호의 검증·통제용으로만 사용한다.
+
+## 데이터 윤리와 금지선
+
+- 단일 로펌의 리드, 개인 국적·이름·자산·연락처·거래내역은 사용하지 않는다.
+- 제휴 데이터는 최소 복수 기관의 비식별 주간 또는 월간 집계여야 한다.
+- 로펌의 광고·신규 사무소·비자 규정 변경은 통제 더미로 기록한다.
+- 고객자금·에스크로 원장·은행 거래·SWIFT 데이터는 받지 않는다. 합법성·재현성이 보장된 집계 지표가 없으면 이 구성요소는 제외한다.
+- 벙커 시공·부동산 루머·검색어만으로 점수를 만들지 않는다.
+
+## 검증 설계
+
+```python
+# 제휴 데이터가 데이터 적격성 검사를 통과했을 때만 실행한다.
+intent = weighted_anonymized_mena_exit_intent(partner_aggregates)
+target = future_20d_or_60d_wti_realized_volatility  # Yahoo CL=F
+
+# 이란·GCC는 별도 계수와 별도 이벤트 창으로 검증한다.
+```
+
+1. 인샘플 `2015-01-01`~`2023-12-31`에 충분한 역사·발표시점이 있어야 한다.
+2. 실제 관측월이 아니라 집계 자료가 제공된 시점 이후만 사용한다.
+3. 최소 두 독립 제공자·국가 구분·정책 더미가 없으면 **FAIL/HOLD**다.
+4. 2024년 이후 아웃샘플은 후보와 가중치를 확정한 뒤 한 번만 연다.
+
+## 현재 결론
+
+**HOLD.** 이 팩터는 데이터를 정당하게 확보할 제휴가 있을 때만 강력할 수 있다. 공개 데이터만으로는 “중동 부자들의 탈출 의도”를 정확하게 측정할 수 없으므로, Oil Pizza 가중치는 `0.0`이다.
+
+## 참고 출처
+
+- [Immigration New Zealand — AIP applications by nationality](https://www.immigration.govt.nz/about-us/news-centre/investor-category/) — 공개 신청·승인 검증 자료.
+- [UAE Government — Golden Visa](https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa) — 제도 변경 통제용.
+- [Central Bank of the UAE — Balance of Payments](https://www.centralbank.ae/media/aqknxvll/balance-of-payments-developments_2023_2024-oct_2025_en.pdf) — 개인 이민자금이 아닌 거시적 흐름.
+- [SAMA — Monthly Bulletin Statistics](https://sama.gov.sa/en-US/Statistics/Pages/MonthlyStatistics.aspx) — 개인 이민자금이 아닌 사우디 거시·대외부문 통계.
