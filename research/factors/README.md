@@ -41,7 +41,7 @@
 
 ---
 
-### 📋 평가 중 (4개)
+### 📋 평가 중 (5개)
 
 #### 2️⃣ Whale Network Index (고래 포지셔닝)
 - **파일**: `002-whale-index.md`
@@ -73,6 +73,15 @@
 - **상태**: 🔬 R&D 계획 완료
 - **모델**: XGBoost + LSTM
 - **검증**: Monte Carlo + Bootstrap + Granger
+
+#### 7️⃣ Doomsday Bunker & UHNWI Safe-Haven Flight Index (엘리트 이민 & 벙커 지수)
+- **파일**: `007-doomsday-bunker-index.md`
+- **신호**: ↑ 양의 신호 (Henley & Partners 이민 지수 급증 → 글로벌 대형 위기 선행 → 유가 ↑)
+- **데이터**: Henley & Partners Private Wealth Migration Index + 건축 허가 데이터
+- **가중치**: 1.5
+- **구현 기간**: 2주
+- **선행성**: 3개월~1년 (중장기 테일 리스크)
+- **상태**: 📋 R&D 및 평가 중
 
 #### 8️⃣ Hyperliquid Capital Flow Index (중동 자금 이탈 & 지정학)
 - **파일**: `008-hyperliquid-capital-flow.md`
@@ -112,6 +121,7 @@ oil_pizza = (
     1.5 * whale_index +                  # 📋 크립토
     1.0 * truth_social_factor +          # ✅ 정치
     1.5 * wholesale_logistics +          # 🟢 경기 (즉시!)
+    1.5 * doomsday_bunker_index +        # 📋 엘리트 이민/테일리스크 (R&D)
     2.0 * hyperliquid_capital_flow +     # 📋 지정학/PerpDEX (R&D)
     1.5 * iran_crypto_premium +          # 📋 중동 현지 프리미엄 (R&D)
     -1.5 * renewable_displacement +      # 📋 에너지
@@ -131,10 +141,11 @@ pizza_z = zscore(oil_pizza, 20)  # 20일 이동 평균 기준 표준화
 | 2 | Whale Index | ↑ | 크립토 | 실시간 | ✅ | 📋 | 1.5 |
 | 3 | Truth Social | ↑ | 정치 | 5분 | ✅ | ✅ | 1.0 |
 | 4 | Wholesale-Logistics | ↑ | 경기 | 월간 | ✅ | 🟢 | 1.5 |
-| 5 | Hyperliquid Flow | ↑ | PerpDEX/온체인 | 실시간 | ✅ | 📋 | 2.0 |
-| 6 | Iran Premium | ↑ | 이란 거래소(Nobitex) | 실시간 | ✅ | 📋 | 1.5 |
-| 7 | Renewable | ↓ | 에너지 | 월간 | ⚠️ | 📋 | -1.5 |
-| 8 | Financial ML | ↓ | 재무 | 분기 | ❓ | 🔬 | -1.0 |
+| 5 | Doomsday Bunker | ↑ | Henley & Partners 이민 지수 | 월간/분기 | ✅ | 📋 | 1.5 |
+| 6 | Hyperliquid Flow | ↑ | PerpDEX/온체인 | 실시간 | ✅ | 📋 | 2.0 |
+| 7 | Iran Premium | ↑ | 이란 거래소(Nobitex) | 실시간 | ✅ | 📋 | 1.5 |
+| 8 | Renewable | ↓ | 에너지 | 월간 | ⚠️ | 📋 | -1.5 |
+| 9 | Financial ML | ↓ | 재무 | 분기 | ❓ | 🔬 | -1.0 |
 
 ---
 
@@ -148,6 +159,7 @@ pizza_z = zscore(oil_pizza, 20)  # 20일 이동 평균 기준 표준화
 - [x] 004-Renewable (평가: 데이터 계획)
 - [x] 005-Financial (평가: R&D 계획)
 - [ ] **006-Wholesale-Logistics** (지금 시작! 🟢)
+- [ ] **007-Doomsday-Bunker** (Henley & Partners 이민 지수 파이프라인)
 - [ ] **008-Hyperliquid-Flow** (R&D 및 파이프라인 설계)
 - [ ] **009-Iran-Premium** (Nobitex Ticker 데이터 수집 및 프리미엄 테스트)
 
@@ -183,6 +195,7 @@ research/
 │   ├── 004-renewable-displacement.md          # 📋 평가
 │   ├── 005-financial-demand.md                # 🔬 R&D
 │   ├── 006-wholesale-logistics.md             # 🟢 즉시
+│   ├── 007-doomsday-bunker-index.md           # 📋 엘리트 이민/벙커
 │   ├── 008-hyperliquid-capital-flow.md        # 📋 지정학/PerpDEX
 │   └── 009-iran-middleeast-premium.md         # 📋 이란/중동 프리미엄
 │
