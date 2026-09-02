@@ -11,4 +11,4 @@
 | 준비·긴장 | 공급 충격 / 해협 리스크 |
 | (비교군) 일상 수요 | 연준·CPI 헤드라인 (수요·달러 방향) |
 
-계산은 `ls_crude.features.slice_index.oil_slice`에 있습니다. Slice는 비교군 초안입니다. 실험 기록은 [`docs/experiments/`](experiments/README.md). 조사는 [`research/notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md).
+계산은 `ls_crude.features.slice_index.oil_slice`에 있습니다. Slice는 비교군 초안입니다. 실험 기록은 [`docs/experiments/`](experiments/README.md). 조사는 [`research/notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md). 새 조사는 [`research/INTAKE.md`](../research/INTAKE.md).

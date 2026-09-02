@@ -23,3 +23,5 @@ Baseline model: Yahoo price + RSI only.
 Extended model: baseline + Slice.
 
 Do not retune Slice weights on out-sample dates.
+
+Oil Slice is the public-signal draft (`docs/experiments/000-…`). New candidates follow `research/INTAKE.md`; do not promote a web dump straight into this formula.

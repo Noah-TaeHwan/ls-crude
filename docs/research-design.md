@@ -6,7 +6,7 @@
 
 원유 기본(야후 가격 + RSI) + 뉴스 서사(인베스팅닷컴) + **Oil Slice 대안 데이터 후보**.
 
-오일 슬라이스는 펜타곤 피자 인덱스와 같은 역할의 **공개 신호 초안**입니다. 호가가 아니라, 호르무즈·미국 인플레/정책 뉴스가 갑자기 붐비는지를 봅니다. 조사할 후보(크립토의 뭐 × 뉴스의 무슨)는 [`notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md)와 [`docs/experiments/`](experiments/README.md)에 적습니다.
+오일 슬라이스는 펜타곤 피자 인덱스와 같은 역할의 **공개 신호 초안**입니다. 호가가 아니라, 호르무즈·미국 인플레/정책 뉴스가 갑자기 붐비는지를 봅니다. 조사할 후보(크립토의 뭐 × 뉴스의 무슨)는 [`notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md)와 [`docs/experiments/`](experiments/README.md)에 적습니다. 조사 덤프·노트·출처 표는 [`research/INTAKE.md`](../research/INTAKE.md), 짧은 안내는 [`research-gathering.md`](research-gathering.md)입니다.
 
 ## 역할
 

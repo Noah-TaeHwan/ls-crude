@@ -36,15 +36,17 @@ AI 퀀트 4기 팀 프로젝트입니다. 야후파이낸스로 WTI 선물 가�
 | 인베스팅 뉴스 | `.cursor/skills/tagging-investing-news` |
 | Oil Slice | `.cursor/skills/building-slice-index` |
 | 인/아웃샘플 | `.cursor/skills/running-sample-splits` |
+| 조사 덤프·노트·출처 | `.cursor/skills/gathering-research-intake`, [`research/INTAKE.md`](research/INTAKE.md) |
 
-자세한 설계: [`docs/research-design.md`](docs/research-design.md), [`docs/slice-index.md`](docs/slice-index.md). 조사: [`research/notebooks/pizza-hunt.md`](research/notebooks/pizza-hunt.md), [`docs/experiments/`](docs/experiments/README.md). 맥락: [`docs/context.md`](docs/context.md). 아이디어 메모: [`docs/ideation.md`](docs/ideation.md). 에이전트: [`AGENTS.md`](AGENTS.md)
+자세한 설계: [`docs/research-design.md`](docs/research-design.md), [`docs/slice-index.md`](docs/slice-index.md). 수집 흐름: [`docs/research-gathering.md`](docs/research-gathering.md), [`research/INTAKE.md`](research/INTAKE.md). 조사: [`research/notebooks/pizza-hunt.md`](research/notebooks/pizza-hunt.md), [`docs/experiments/`](docs/experiments/README.md). 맥락: [`docs/context.md`](docs/context.md). 아이디어 메모: [`docs/ideation.md`](docs/ideation.md). 에이전트: [`AGENTS.md`](AGENTS.md)
 
 ## 저장소
 
 ```text
 .cursor/skills/   에이전트 스킬 (메인 워크플로)
-docs/             설계·실험 기록
+docs/             설계·실험 기록 (승격된 카드는 experiments/)
 research/         Yahoo · RSI · Slice · 백테스트 (Python)
+research/gathering/  조사 덤프·노트·출처 표
 app/              React Router 대시보드
 supabase/         테이블·RLS
 ```
