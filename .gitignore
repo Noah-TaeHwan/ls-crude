@@ -56,3 +56,12 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# Local multi-agent harness (agency-agents / OpenCode / Qoder / Trae)
+# Product source stays `.cursor/rules/ls-crude.mdc` + `.cursor/skills/**` only.
+# See vault decision 2026-09-02-agency-agents-en-ko-machine-install.
+.cursor/rules/*
+!.cursor/rules/ls-crude.mdc
+.trae/
+.qoder/
+.opencode/
