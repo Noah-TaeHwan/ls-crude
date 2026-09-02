@@ -64,12 +64,6 @@ export const SAMPLE_IS_METRICS: SampleMetrics = {
   hitRate: "53%",
 };
 
-export const SAMPLE_OS_METRICS: SampleMetrics = {
-  sharpe: "0.09",
-  maxDrawdown: "22.1%",
-  hitRate: "48%",
-};
-
 export const SAMPLE_TRADES: readonly SampleTradeRow[] = [
   { date: "2016-03-14", side: "롱", nextDay: "상승", hit: "맞음" },
   { date: "2018-11-02", side: "숏", nextDay: "하락", hit: "맞음" },

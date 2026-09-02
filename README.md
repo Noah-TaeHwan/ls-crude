@@ -72,4 +72,4 @@ npm install
 npm run dev -- --port 5173
 ```
 
-로더는 Supabase가 있으면 실제 테이블을 읽고, 없으면 `app/public/baseline-snapshot.json`을 읽습니다. 뉴스는 loader/action으로만 넣고 고칩니다. `/backtest`는 자리만 있고, `?sample=1`은 칸 모양을 보는 가짜 숫자입니다. 샘플은 실험 기록에 남기지 않습니다.
+로더는 Supabase가 있으면 실제 테이블을 읽고, 없으면 `app/public/baseline-snapshot.json`을 읽습니다. 뉴스는 loader/action으로만 넣고 고칩니다. `/backtest`는 시드·테스트 CSV·식, 인샘플, 잠긴 아웃샘플, 결과 칸입니다. `?sample=1`은 칸 모양을 보는 가짜 숫자입니다. 샘플은 실험 기록에 남기지 않습니다.
