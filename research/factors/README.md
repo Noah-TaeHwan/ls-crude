@@ -83,6 +83,15 @@
 - **선행성**: 1-5일 (지정학 뉴스 선행)
 - **상태**: 📋 R&D 및 평가 중
 
+#### 9️⃣ Iran & Middle East Crypto Premium Index (이란/중동 현지 프리미엄)
+- **파일**: `009-iran-middleeast-premium.md`
+- **신호**: ↑ 양의 신호 (Nobitex 이란 테더 프리미엄 급증 → 중동 지정학 위기 반영 → 유가 ↑)
+- **데이터**: Nobitex Ticker API + 암시장/공식 환율 데이터
+- **가중치**: 1.5
+- **구현 기간**: 1-2주
+- **선행성**: 1-3일 (실시간 현지 위험 반영)
+- **상태**: 📋 R&D 및 평가 중
+
 ---
 
 ### 💡 아이디어만 (1개)
@@ -104,6 +113,7 @@ oil_pizza = (
     1.0 * truth_social_factor +          # ✅ 정치
     1.5 * wholesale_logistics +          # 🟢 경기 (즉시!)
     2.0 * hyperliquid_capital_flow +     # 📋 지정학/PerpDEX (R&D)
+    1.5 * iran_crypto_premium +          # 📋 중동 현지 프리미엄 (R&D)
     -1.5 * renewable_displacement +      # 📋 에너지
     -1.0 * financial_demand_ml           # 🔬 재무 (R&D)
 )
@@ -122,8 +132,9 @@ pizza_z = zscore(oil_pizza, 20)  # 20일 이동 평균 기준 표준화
 | 3 | Truth Social | ↑ | 정치 | 5분 | ✅ | ✅ | 1.0 |
 | 4 | Wholesale-Logistics | ↑ | 경기 | 월간 | ✅ | 🟢 | 1.5 |
 | 5 | Hyperliquid Flow | ↑ | PerpDEX/온체인 | 실시간 | ✅ | 📋 | 2.0 |
-| 6 | Renewable | ↓ | 에너지 | 월간 | ⚠️ | 📋 | -1.5 |
-| 7 | Financial ML | ↓ | 재무 | 분기 | ❓ | 🔬 | -1.0 |
+| 6 | Iran Premium | ↑ | 이란 거래소(Nobitex) | 실시간 | ✅ | 📋 | 1.5 |
+| 7 | Renewable | ↓ | 에너지 | 월간 | ⚠️ | 📋 | -1.5 |
+| 8 | Financial ML | ↓ | 재무 | 분기 | ❓ | 🔬 | -1.0 |
 
 ---
 
@@ -138,6 +149,7 @@ pizza_z = zscore(oil_pizza, 20)  # 20일 이동 평균 기준 표준화
 - [x] 005-Financial (평가: R&D 계획)
 - [ ] **006-Wholesale-Logistics** (지금 시작! 🟢)
 - [ ] **008-Hyperliquid-Flow** (R&D 및 파이프라인 설계)
+- [ ] **009-Iran-Premium** (Nobitex Ticker 데이터 수집 및 프리미엄 테스트)
 
 ### Phase 2️⃣ (2-4주) - 신호 검증
 
@@ -171,7 +183,8 @@ research/
 │   ├── 004-renewable-displacement.md          # 📋 평가
 │   ├── 005-financial-demand.md                # 🔬 R&D
 │   ├── 006-wholesale-logistics.md             # 🟢 즉시
-│   └── 008-hyperliquid-capital-flow.md        # 📋 지정학/PerpDEX
+│   ├── 008-hyperliquid-capital-flow.md        # 📋 지정학/PerpDEX
+│   └── 009-iran-middleeast-premium.md         # 📋 이란/중동 프리미엄
 │
 ├── src/ls_crude/
 │   ├── features/
