@@ -28,7 +28,7 @@ export function meta({}: Route.MetaArgs) {
 
 export async function loader({}: Route.LoaderArgs) {
   const seed = await readClfPriceSeedMeta();
-  return { seed };
+  return { seed, history: [] as const };
 }
 
 export async function action({ request }: Route.ActionArgs) {
@@ -44,7 +44,7 @@ export default function Backtest({
   loaderData,
   actionData,
 }: Route.ComponentProps) {
-  const { seed } = loaderData;
+  const { seed, history } = loaderData;
   const dateRange = seed.lastDate
     ? `${seed.firstDate} ~ ${seed.lastDate}`
     : `${seed.firstDate} ~`;
@@ -196,6 +196,8 @@ export default function Backtest({
           </p>
         </section>
 
+        <HistoryLog isEmpty={history.length === 0} />
+
         <section className="border border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground">
           <p>
             2주 수업 포트폴리오입니다. 투자 권유가 아닙니다. 후보는 아직
@@ -219,5 +221,38 @@ function MetricSlot({ label }: { label: string }) {
         {EMPTY}
       </dd>
     </div>
+  );
+}
+
+function HistoryLog({ isEmpty }: { isEmpty: boolean }) {
+  return (
+    <section className="overflow-x-auto border border-border bg-card/30">
+      <p className="px-4 pt-3 font-mono text-[10px] tracking-[0.2em] text-heading uppercase">
+        실험 기록
+      </p>
+      <p className="px-4 pt-2 text-xs text-muted-foreground">
+        순위가 아닙니다. 어떤 후보를 언제 인샘플에서 돌렸는지 적는 칸입니다.
+        성과 숫자는 규칙이 생긴 뒤에 적습니다. 나중에 CSV 템플릿으로 넣을 수
+        있습니다.
+      </p>
+      <table className="mt-2 w-full text-left">
+        <caption className="sr-only">
+          백테스트 실험 기록. 행이 없습니다. 구간은 인샘플입니다.
+        </caption>
+        <thead>
+          <tr className="border-y border-border font-mono text-[10px] tracking-[0.16em] text-heading uppercase">
+            <th className="px-4 py-2 font-medium">후보</th>
+            <th className="px-4 py-2 font-medium">언제</th>
+            <th className="px-4 py-2 font-medium">구간</th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+      {isEmpty ? (
+        <p className="px-4 py-6 text-center text-sm text-muted-foreground">
+          아직 돌린 기록이 없습니다.
+        </p>
+      ) : null}
+    </section>
   );
 }
