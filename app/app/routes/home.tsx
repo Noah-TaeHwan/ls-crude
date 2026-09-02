@@ -317,6 +317,12 @@ export default function Home({
           source={loaderData.source}
         />
       </div>
+      <footer className="border-t border-border px-4 py-2 font-mono text-[10px] tracking-[0.12em] text-muted-foreground">
+        build {__LS_BUILD_SHA__}
+        {" · "}
+        {__LS_BUILD_BRANCH__}
+        {__LS_BUILD_DIRTY__ ? " · dirty" : ""}
+      </footer>
     </main>
   );
 }
