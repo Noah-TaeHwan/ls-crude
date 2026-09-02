@@ -1,6 +1,6 @@
 ---
 name: gathering-research-intake
-description: Use when saving AI or human research dumps, curated notes, source registry rows, pizza-hunt candidates, or promoting an experiment card for LS CRUDE.
+description: Use when saving AI or human research dumps, curated notes, source registry rows, pizza-hunt.md candidates, or promoting an experiment card for LS CRUDE.
 ---
 
 # Gathering Research Intake
@@ -11,7 +11,7 @@ Read `research/INTAKE.md` before writing any research output.
 dump     → research/gathering/raw/          (gitignored)
 note     → research/gathering/notes/        (copy notes/_TEMPLATE.md)
 source   → research/gathering/sources/REGISTRY.md
-pizza    → research/notebooks/pizza-hunt.md (leave table empty if none)
+candidate → research/notebooks/pizza-hunt.md (leave table empty if none)
 promote  → docs/experiments/NNN-….md        (next number after 000)
 seed     → research/data/pizza/             (curated CSV only)
 ```
@@ -31,4 +31,4 @@ Teammate lab drops (`research/data/TTS scrapper`, `iran whale tracker`, and simi
 
 - Pasting a raw dump into `docs/experiments/`
 - Filling `pizza-hunt.md` without both «crypto what» and «news what»
-- Treating Oil Slice as the final pizza (it is experiment `000`, kitchen draft)
+- Treating Oil Slice as the final alternative-data candidate (it is experiment `000`, public-signal draft)

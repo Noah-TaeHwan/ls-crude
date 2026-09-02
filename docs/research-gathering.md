@@ -1,6 +1,6 @@
 # 연구 수집 — 짧은 안내
 
-규칙의 정본은 [`research/INTAKE.md`](../research/INTAKE.md)다. 이 페이지는 그 입구다.
+규칙의 정본은 [`research/INTAKE.md`](../research/INTAKE.md)입니다. 이 페이지는 그 입구입니다.
 
 ## 흐름
 
@@ -16,7 +16,7 @@ pizza-hunt.md     크립토의 뭐 × 뉴스의 무슨 (없으면 표 비움)
 docs/experiments  살아남은 실험 카드 (001-…)
 ```
 
-Oil Slice는 이미 `docs/experiments/000-…`에 있는 **부엌 초안**이다. 수집 파이프라인의 최종 피자가 아니다.
+Oil Slice는 이미 `docs/experiments/000-…`에 있는 **공개 신호 초안**입니다. 수집 파이프라인의 최종 대안 데이터 후보가 아닙니다.
 
 ## 고정
 

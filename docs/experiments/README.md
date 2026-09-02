@@ -1,8 +1,8 @@
 # 실험 기록
 
-피자인덱스처럼 **한 종류의 열기**만 남긴다. 전 세계 피자 매출(온체인 히트맵, 뉴스 전체)은 후보가 아니다.
+펜타곤 피자 인덱스처럼 **한 종류의 공개 신호**만 남깁니다. 온체인 히트맵이나 뉴스 전체 같은 전 세계 집계는 후보가 아닙니다.
 
-타겟은 유가(`CL=F`). 찾을 피자는 크립토의 **뭐** × 뉴스의 **무슨**. 없으면 없다고 쓴다.
+타겟은 유가(`CL=F`)입니다. 조사할 것은 크립토의 **뭐** × 뉴스의 **무슨**입니다. 없으면 없다고 씁니다.
 
 | 구분 | 위치 |
 | --- | --- |
@@ -11,13 +11,13 @@
 | 한 장 노트 | [`research/gathering/notes/`](../../research/gathering/notes/README.md) |
 | 작업 표 | [`research/notebooks/pizza-hunt.md`](../../research/notebooks/pizza-hunt.md) |
 | 원천 시드 | `research/data/pizza/` (덤프는 `research/gathering/raw/`) |
-| 부엌 초안 | [`000-oil-slice-kitchen-draft.md`](000-oil-slice-kitchen-draft.md) — 비교군. 최종 피자 아님 |
+| 공개 신호 초안 | [`000-oil-slice-draft.md`](000-oil-slice-draft.md) — 비교군. 최종 후보 아님 |
 
 파일 이름: `NNN-짧은-슬러그.md`. 다음은 `001-`.
 
 ## 한 장에 적을 것
 
-- 가설 한 줄 (무슨 열기 → 왜 유가)
+- 가설 한 줄 (무슨 공개 신호 → 왜 유가)
 - 크립토의 뭐 / 뉴스의 무슨 (둘 다 없으면 폐기)
 - 출처·라이선스
 - look-ahead 여부
