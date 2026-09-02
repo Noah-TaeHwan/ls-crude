@@ -8,24 +8,28 @@ import { defineConfig } from "vite";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-function gitText(args: string[]): string {
+function gitText(args: string[]): string | null {
   try {
-    return execFileSync("git", args, {
+    const output = execFileSync("git", args, {
       cwd: repoRoot,
       encoding: "utf8",
       timeout: 3000,
       stdio: ["ignore", "pipe", "ignore"],
     }).trim();
+    return output.length > 0 ? output : null;
   } catch {
-    return "unknown";
+    return null;
   }
 }
 
 function gitStamp() {
-  const sha = gitText(["rev-parse", "--short=7", "HEAD"]) || "unknown";
-  const branch = gitText(["rev-parse", "--abbrev-ref", "HEAD"]) || "unknown";
+  const sha = gitText(["rev-parse", "--short=7", "HEAD"]) ?? "unknown";
+  const branch =
+    gitText(["branch", "--show-current"]) ??
+    gitText(["rev-parse", "--abbrev-ref", "HEAD"]) ??
+    "unknown";
   const porcelain = gitText(["status", "--porcelain", "--untracked-files=no"]);
-  const dirty = porcelain !== "unknown" && porcelain.length > 0;
+  const dirty = porcelain != null;
   return { sha, branch, dirty };
 }
 
