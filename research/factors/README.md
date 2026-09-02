@@ -115,15 +115,13 @@
 
 ### ⏸️ 보류 후보 (1개)
 
-#### 🔟 Elite Haven Index (부자들의 탈출구 수요)
-- **파일**: `010-elite-haven-index.md`
-- **신호**: ↕ WTI 방향성 미정; 지정학 위험 레짐·향후 변동성 후보
-- **데이터**: 뉴질랜드 AIP 비자·해외투자 공개 결정·라이선스 확인된 뉴스
+#### 🔟 Official Petroleum Buffer Disclosure Index
+- **파일**: `010-official-petroleum-buffer.md`
+- **신호**: ↕ WTI 방향성 미정; 공급충격 취약성·향후 변동성 후보
+- **데이터**: IEA 회원국 공개 석유 재고·공식 방출 발표
 - **가중치**: 0.0 (검증 전에는 Oil Pizza에 미포함)
 - **상태**: ⏸️ HOLD
-- **주의**: 비자·부동산 규제 변경이 강한 교란요인. 비공개 로펌 리드와 벙커 사례는 사용하지 않음.
-
----
+- **주의**: 중앙은행 준비자산이 아니라 정부·전략비축 자료. 방출 발표는 예측 신호가 아닌 정책 대응 더미.
 
 ## 🎯 Ultimate Oil Pizza Formula
 
@@ -158,7 +156,7 @@ pizza_z = zscore(oil_pizza, 20)  # 20일 이동 평균 기준 표준화
 | 7 | Iran Premium | ↑ | 이란 거래소(Nobitex) | 실시간 | ✅ | 📋 | 1.5 |
 | 8 | Renewable | ↓ | 에너지 | 월간 | ⚠️ | 📋 | -1.5 |
 | 9 | Financial ML | ↓ | 재무 | 분기 | ❓ | 🔬 | -1.0 |
-| 10 | Elite Haven | ↕ | AIP·해외투자·뉴스 | 월간/일간 | ❓ | ⏸️ HOLD | 0.0 |
+| 10 | Official Petroleum Buffer | ↕ | IEA 공개 석유 재고 | 월간 | ❓ | ⏸️ HOLD | 0.0 |
 
 ---
 
@@ -175,7 +173,7 @@ pizza_z = zscore(oil_pizza, 20)  # 20일 이동 평균 기준 표준화
 - [ ] **007-Doomsday-Bunker** (Henley & Partners 이민 지수 파이프라인)
 - [ ] **008-Hyperliquid-Flow** (R&D 및 파이프라인 설계)
 - [ ] **009-Iran-Premium** (Nobitex Ticker 데이터 수집 및 프리미엄 테스트)
-- [x] 010-Elite Haven (HOLD: 공개 시계열·정책 교란 확인 필요)
+- [x] 010-Official Petroleum Buffer (HOLD: 재고 발표일·개정 이력 확인 필요)
 
 ### Phase 2️⃣ (2-4주) - 신호 검증
 
@@ -211,8 +209,8 @@ research/
 │   ├── 006-wholesale-logistics.md             # 🟢 즉시
 │   ├── 007-doomsday-bunker-index.md           # 📋 엘리트 이민/벙커
 │   ├── 008-hyperliquid-capital-flow.md        # 📋 지정학/PerpDEX
-│   └── 009-iran-middleeast-premium.md         # 📋 이란/중동 프리미엄
-│   └── 010-elite-haven-index.md               # ⏸️ 보류
+│   ├── 009-iran-middleeast-premium.md         # 📋 이란/중동 프리미엄
+│   └── 010-official-petroleum-buffer.md       # ⏸️ 비축 완충여력
 │
 ├── src/ls_crude/
 │   ├── features/
