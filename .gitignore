@@ -22,10 +22,12 @@ research/data/pizza/raw/
 *.pkl
 *.pickle
 
-# Research gathering dumps (keep README + gitkeep)
+# Research gathering dumps (keep README + gitkeep + dated-folder URL pointers)
 research/gathering/raw/**
 !research/gathering/raw/.gitkeep
 !research/gathering/raw/README.md
+!research/gathering/raw/**/
+!research/gathering/raw/**/README.md
 research/gathering/raw/**/*.csv
 research/gathering/raw/**/*.zip
 research/gathering/raw/**/*.parquet
