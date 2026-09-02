@@ -1,74 +1,36 @@
-import { Form, data } from "react-router";
+import type { ReactNode } from "react";
+import { data } from "react-router";
 
 import type { Route } from "./+types/home";
-import { Alert, AlertDescription } from "~/components/ui/alert";
-import { Badge } from "~/components/ui/badge";
-import { Button } from "~/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
+import { NewsDesk, parseNewsTag, tagLabel } from "~/components/news-desk";
+import { WatchGauge } from "~/components/watch-gauge";
 import { readSnapshotFile, normalizeFeatureRow, normalizeNewsRow } from "~/lib/snapshot.server";
 import { getSupabaseServerClient } from "~/lib/supabase.server";
-import type { ActionResult, DailyFeatureRow, NewsEventRow } from "~/lib/types";
+import type { ActionResult, DailyFeatureRow } from "~/lib/types";
 
 type NewsIntent = "create-news" | "update-news" | "delete-news";
-type NewsTag = "hormuz" | "inflation_policy" | "other";
 type DbClient = NonNullable<ReturnType<typeof getSupabaseServerClient>>;
 
-const TAG_LABELS: Record<NewsTag, string> = {
-  hormuz: "오븐 · 호르무즈",
-  inflation_policy: "점심 · 연준/CPI",
-  other: "기타",
+const RSI_POSITION_LABEL: Record<NonNullable<DailyFeatureRow["rsi_position"]>, string> = {
+  long: "롱",
+  flat: "중립",
+  short: "숏",
 };
+
+const CLOSE_SPIKE_ABS = 0.04;
 
 function isNewsIntent(value: string): value is NewsIntent {
   return value === "create-news" || value === "update-news" || value === "delete-news";
 }
 
-function parseNewsTag(value: string): NewsTag | null {
-  if (value === "hormuz" || value === "inflation_policy" || value === "other") {
-    return value;
-  }
-  return null;
-}
-
-function tagLabel(tag: string) {
-  return TAG_LABELS[parseNewsTag(tag) ?? "other"];
-}
-
-function TagSelect({
-  id,
-  name,
-  defaultValue,
-  className,
-}: {
-  id?: string;
-  name: string;
-  defaultValue?: NewsTag;
-  className: string;
-}) {
-  return (
-    <select id={id} name={name} defaultValue={defaultValue} className={className}>
-      {(Object.keys(TAG_LABELS) as NewsTag[]).map((value) => (
-        <option key={value} value={value}>
-          {TAG_LABELS[value]}
-        </option>
-      ))}
-    </select>
-  );
-}
-
 function formatNumber(value: number | null, digits = 2) {
-  if (value == null) {
-    return "—";
-  }
+  if (value == null) return "—";
   return value.toFixed(digits);
+}
+
+function formatSigned(value: number, digits = 2) {
+  const abs = value.toFixed(digits);
+  return value > 0 ? `+${abs}` : abs;
 }
 
 function fail(message: string) {
@@ -80,9 +42,7 @@ function ok(message: string) {
 }
 
 function sparklinePath(values: number[]) {
-  if (values.length < 2) {
-    return "";
-  }
+  if (values.length < 2) return "";
   const width = 320;
   const height = 64;
   const min = Math.min(...values);
@@ -99,10 +59,11 @@ function sparklinePath(values: number[]) {
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "LS CRUDE — 부엌이 바빠졌는가" },
+    { title: "LS CRUDE — 관측 데스크" },
     {
       name: "description",
-      content: "유가 타겟. 피자인덱스처럼 부엌 열기를 보는 웹 틀.",
+      content:
+        "WTI 선물 CL=F 수업 포트폴리오 프로토타입입니다. 펜타곤 피자 인덱스처럼 유가 옆의 공개 신호를 찾는 화면입니다.",
     },
   ];
 }
@@ -234,106 +195,81 @@ export default function Home({
   actionData,
 }: Route.ComponentProps) {
   const latest = loaderData.rows.at(-1) ?? null;
+  const previous = loaderData.rows.at(-2) ?? null;
   const closes = loaderData.rows
     .map((row) => row.close)
     .filter((value): value is number => value != null);
-  const ovenCount = loaderData.news.filter((item) => item.tags.includes("hormuz")).length;
-  const lunchCount = loaderData.news.filter((item) =>
+  const hormuzCount = loaderData.news.filter((item) => item.tags.includes("hormuz")).length;
+  const policyCount = loaderData.news.filter((item) =>
     item.tags.includes("inflation_policy"),
   ).length;
-  const heatTotal = ovenCount + lunchCount || 1;
+  const closeDelta =
+    latest?.close != null && previous?.close != null ? latest.close - previous.close : null;
+  const closePct =
+    closeDelta != null && previous?.close ? closeDelta / previous.close : null;
+  const hasCloseSpike = closePct != null && Math.abs(closePct) >= CLOSE_SPIKE_ABS;
+  const rsiLabel = latest?.rsi_position
+    ? RSI_POSITION_LABEL[latest.rsi_position]
+    : "—";
 
   return (
-    <main className="relative min-h-screen overflow-hidden">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_60%_at_15%_0%,rgba(232,168,72,0.16),transparent_55%),radial-gradient(70%_50%_at_90%_10%,rgba(120,80,40,0.18),transparent_50%)]"
-      />
-      <div className="relative mx-auto max-w-6xl space-y-10 px-4 py-10">
-        <header className="space-y-4">
-          <p className="text-xs tracking-[0.28em] text-primary uppercase">
-            LS CRUDE · 늦은 밤 부엌
-          </p>
-          <h1 className="font-serif max-w-3xl text-4xl leading-tight font-medium sm:text-5xl">
-            호가가 아니라, 부엌이 바빠졌는지.
-          </h1>
-          <p className="max-w-2xl text-sm text-muted-foreground">
-            타겟은 유가입니다. 한 스푼으로 Oil Slice 초안을 깔아 두었고, 찾을
-            피자는 크립토의 뭐 × 뉴스의 무슨입니다. 레시피는 아직 없습니다.
-          </p>
-          <p className="font-mono text-[11px] text-muted-foreground">
-            {loaderData.source === "supabase" ? "supabase" : "snapshot"} · {loaderData.ticker} ·
-            in 2015–2023 · out 2024~
-          </p>
-        </header>
+    <main className="min-h-screen">
+      <header className="sticky top-0 z-20 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-border bg-background/95 px-4 py-1.5 font-mono text-[10px] tracking-[0.12em] text-muted-foreground uppercase">
+        <span className="text-heading">LS CRUDE</span>
+        <span aria-hidden>·</span>
+        <span>prototype</span>
+        <span aria-hidden>·</span>
+        <span>{loaderData.source}</span>
+        <span aria-hidden>·</span>
+        <span>{loaderData.ticker}</span>
+        <span aria-hidden>·</span>
+        <span>in 2015–2023 / out 2024~</span>
+      </header>
 
-        {actionData ? (
-          <Alert variant={actionData.ok ? "default" : "destructive"}>
-            <AlertDescription>{actionData.message}</AlertDescription>
-          </Alert>
-        ) : null}
+      <div className="mx-auto max-w-[1180px] space-y-3 px-3 py-3 sm:px-4">
+        <WatchGauge sliceZ={latest?.slice_z ?? null} />
 
-        <section className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
-          <Card className="overflow-hidden border-primary/20 bg-card/80">
-            <CardHeader className="gap-1">
-              <CardDescription>타겟 · Yahoo {loaderData.ticker}</CardDescription>
-              <CardTitle className="font-serif text-6xl font-medium tracking-tight">
-                {formatNumber(latest?.close ?? null)}
-              </CardTitle>
-              <p className="font-mono text-xs text-muted-foreground">
-                {latest?.date ?? "—"} · RSI {formatNumber(latest?.rsi_14 ?? null)} · {latest?.rsi_position ?? "flat"}
-              </p>
-            </CardHeader>
-            <CardContent className="pb-2">
-              {closes.length > 1 ? (
-                <svg
-                  viewBox="0 0 320 64"
-                  className="h-20 w-full text-primary"
-                  aria-label="최근 종가 흐름"
-                >
-                  <path
-                    d={sparklinePath(closes)}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                  />
-                </svg>
-              ) : (
-                <p className="text-sm text-muted-foreground">가격 스냅샷이 없습니다.</p>
-              )}
-            </CardContent>
-          </Card>
-
-          <div className="grid gap-4">
-            <Card className="border-amber-700/40">
-              <CardHeader className="gap-1">
-                <CardDescription>초안 스푼 · Oil Slice</CardDescription>
-                <CardTitle className="font-serif text-4xl">
-                  {formatNumber(latest?.slice_z ?? null)}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 text-xs text-muted-foreground">
-                <p>2 × 호르무즈 + 1 × 인플레/정책. 최종 피자가 아닙니다.</p>
-                <HeatBar label="오븐 호르무즈" count={ovenCount} total={heatTotal} />
-                <HeatBar label="점심 연준/CPI" count={lunchCount} total={heatTotal} />
-              </CardContent>
-            </Card>
-            <Card className="border-dashed border-primary/35 bg-transparent">
-              <CardHeader className="gap-1">
-                <CardDescription>찾을 피자</CardDescription>
-                <CardTitle className="font-serif text-2xl">크립토의 뭐 × 뉴스의 무슨</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  아직 비어 있습니다. 후보가 없으면 없다고 적는 것도 과제입니다.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+        <section className="grid gap-3 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.95fr)_minmax(12rem,0.7fr)]">
+          <QuoteCell
+            ticker={loaderData.ticker}
+            date={latest?.date ?? "—"}
+            close={latest?.close ?? null}
+            delta={closeDelta}
+            pct={closePct}
+            hasSpike={hasCloseSpike}
+          />
+          <SparkCell closes={closes} />
+          <RsiQuoteCell rsi={latest?.rsi_14 ?? null} position={rsiLabel} />
         </section>
 
-        <section className="overflow-hidden rounded-xl border border-primary/15 bg-card/60 py-3">
-          <p className="px-4 pb-2 text-[11px] tracking-[0.2em] text-muted-foreground uppercase">
+        <section className="grid gap-3 md:grid-cols-3">
+          <HubCard kicker="RSI 상태" title={formatNumber(latest?.rsi_14 ?? null)}>
+            <p className="font-mono text-xs text-heading">{rsiLabel}</p>
+            <p className="text-xs text-muted-foreground">
+              RSI 14입니다. 가격 옆의 기존 지표이고, 찾는 후보가 아닙니다.
+            </p>
+          </HubCard>
+          <HubCard
+            kicker="Oil Slice 초안"
+            title={formatNumber(latest?.slice_z ?? null)}
+            badge="초안"
+          >
+            <p className="font-mono text-[11px] text-heading">
+              2 × 호르무즈 + 1 × 인플레/정책
+            </p>
+            <p className="text-xs text-muted-foreground">
+              호르무즈 {hormuzCount} · 인플레/정책 {policyCount}. 가중치는 초안입니다.
+            </p>
+          </HubCard>
+          <HubCard kicker="대안 후보" title="아직 없음" dashed>
+            <p className="text-xs text-muted-foreground">
+              확정한 공개 신호가 없습니다. 빈 칸으로 둡니다.
+            </p>
+          </HubCard>
+        </section>
+
+        <section className="overflow-hidden border border-border bg-card/30 py-2.5">
+          <p className="px-4 pb-2 font-mono text-[10px] tracking-[0.2em] text-heading uppercase">
             뉴스 테이프 · Investing.com
           </p>
           {loaderData.news.length === 0 ? (
@@ -346,7 +282,7 @@ export default function Home({
                     key={`${item.id ?? item.title}-${index}`}
                     className="font-mono text-xs whitespace-nowrap"
                   >
-                    <span className="text-primary">
+                    <span className="text-heading">
                       {tagLabel(item.tags[0] ?? "other")}
                     </span>{" "}
                     {item.published_at} · {item.title}
@@ -357,156 +293,197 @@ export default function Home({
           )}
         </section>
 
-        <section className="grid gap-3 sm:grid-cols-6">
-          {loaderData.rows.slice(-6).reverse().map((row) => (
-            <SessionChip key={row.date} row={row} />
-          ))}
+        <PinMap hormuzCount={hormuzCount} policyCount={policyCount} />
+
+        <section className="border border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+          <p>
+            2주 수업 포트폴리오입니다. WTI 선물 CL=F를 보고, 유가 옆의 공개 신호를
+            찾는 중입니다. 상관은 인과가 아닙니다. 투자 권유가 아닙니다. 후보는
+            아직 확정하지 않았습니다.
+          </p>
         </section>
 
-        <section className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
-          <Card>
-            <CardHeader>
-              <CardTitle>헤드라인 넣기</CardTitle>
-              <CardDescription>
-                사이트를 긁지 않습니다. CSV나 폼만 받습니다.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Form method="post" className="space-y-3">
-                <input type="hidden" name="intent" value="create-news" />
-                <div className="space-y-1.5">
-                  <Label htmlFor="published_at">날짜</Label>
-                  <Input id="published_at" type="date" name="published_at" required />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="title">제목</Label>
-                  <Input
-                    id="title"
-                    name="title"
-                    placeholder="Strait of Hormuz tanker ..."
-                    required
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="url">URL</Label>
-                  <Input id="url" name="url" placeholder="https://www.investing.com/..." />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="tag">태그</Label>
-                  <TagSelect
-                    id="tag"
-                    name="tag"
-                    defaultValue="hormuz"
-                    className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm dark:bg-input/30"
-                  />
-                </div>
-                <Button className="w-full" type="submit">
-                  부엌에 넣기
-                </Button>
-              </Form>
-            </CardContent>
-          </Card>
+        {actionData ? (
+          <div className="border border-border px-4 py-3">
+            <p className={`font-mono text-xs ${actionData.ok ? "text-watching" : "text-spike"}`}>
+              {actionData.message}
+            </p>
+          </div>
+        ) : null}
 
-          <Card>
-            <CardHeader>
-              <CardTitle>부엌 장부</CardTitle>
-              <CardDescription>
-                뉴스를 추가·수정·삭제합니다. 스냅샷일 때는 수정 칸이 없습니다.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                {loaderData.news.length === 0 ? (
-                  <li className="text-sm text-muted-foreground">아직 헤드라인이 없습니다.</li>
-                ) : (
-                  loaderData.news.map((item) => (
-                    <NewsItem key={item.id ?? `${item.published_at}-${item.title}`} item={item} />
-                  ))
-                )}
-              </ul>
-            </CardContent>
-          </Card>
-        </section>
+        <NewsDesk
+          news={loaderData.news}
+          actionData={actionData}
+          source={loaderData.source}
+        />
       </div>
+      <footer className="border-t border-border px-4 py-2 font-mono text-[10px] tracking-[0.12em] text-muted-foreground">
+        build {__LS_BUILD_SHA__}
+        {" · "}
+        {__LS_BUILD_BRANCH__}
+        {__LS_BUILD_DIRTY__ ? " · dirty" : ""}
+      </footer>
     </main>
   );
 }
 
-function HeatBar({
+function QuoteCell({
+  ticker,
+  date,
+  close,
+  delta,
+  pct,
+  hasSpike,
+}: {
+  ticker: string;
+  date: string;
+  close: number | null;
+  delta: number | null;
+  pct: number | null;
+  hasSpike: boolean;
+}) {
+  return (
+    <section className="border border-border bg-card/30 px-4 py-3">
+      <p className="font-mono text-[10px] tracking-[0.2em] text-heading uppercase">
+        Yahoo {ticker} · 최근 종가
+      </p>
+      <p className="mt-1 font-mono text-5xl leading-none font-medium tracking-tight tabular-nums">
+        {formatNumber(close)}
+      </p>
+      <p className="mt-2 font-mono text-[11px] text-muted-foreground">
+        {date}
+        {delta != null && pct != null ? (
+          <span className={hasSpike ? "ml-2 text-spike" : "ml-2"}>
+            {formatSigned(delta)} ({formatSigned(pct * 100, 1)}%)
+          </span>
+        ) : null}
+      </p>
+    </section>
+  );
+}
+
+function SparkCell({ closes }: { closes: number[] }) {
+  return (
+    <section className="border border-border bg-card/30 px-4 py-3">
+      <p className="font-mono text-[10px] tracking-[0.2em] text-heading uppercase">
+        종가 스파크
+      </p>
+      {closes.length > 1 ? (
+        <svg
+          viewBox="0 0 320 64"
+          className="mt-3 h-16 w-full text-watching"
+          aria-label="최근 종가 흐름"
+        >
+          <path
+            d={sparklinePath(closes)}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.4"
+          />
+        </svg>
+      ) : (
+        <p className="mt-3 text-sm text-muted-foreground">가격 스냅샷이 없습니다.</p>
+      )}
+    </section>
+  );
+}
+
+function RsiQuoteCell({ rsi, position }: { rsi: number | null; position: string }) {
+  return (
+    <section className="border border-border bg-card/30 px-4 py-3">
+      <p className="font-mono text-[10px] tracking-[0.2em] text-heading uppercase">
+        RSI 14
+      </p>
+      <p className="mt-1 font-mono text-5xl leading-none font-medium tabular-nums">
+        {formatNumber(rsi, 1)}
+      </p>
+      <p className="mt-2 font-mono text-[11px] text-muted-foreground">{position}</p>
+    </section>
+  );
+}
+
+function HubCard({
+  kicker,
+  title,
+  badge,
+  dashed,
+  children,
+}: {
+  kicker: string;
+  title: string;
+  badge?: string;
+  dashed?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <section
+      className={`border bg-card/30 px-4 py-3 ${dashed ? "border-dashed border-heading/40" : "border-border"}`}
+    >
+      <div className="flex items-center justify-between gap-2">
+        <p className="font-mono text-[10px] tracking-[0.2em] text-heading uppercase">
+          {kicker}
+        </p>
+        {badge ? (
+          <span className="font-mono text-[10px] tracking-[0.16em] text-heading uppercase">
+            {badge}
+          </span>
+        ) : null}
+      </div>
+      <p className="mt-2 font-mono text-3xl leading-none tabular-nums">{title}</p>
+      <div className="mt-3 space-y-1.5">{children}</div>
+    </section>
+  );
+}
+
+function PinMap({
+  hormuzCount,
+  policyCount,
+}: {
+  hormuzCount: number;
+  policyCount: number;
+}) {
+  return (
+    <section className="border border-border bg-card/30 px-4 py-3">
+      <p className="font-mono text-[10px] tracking-[0.2em] text-heading uppercase">
+        지도 자리
+      </p>
+      <p className="mt-1 text-xs text-muted-foreground">
+        핀 목록입니다. 실시간 AIS가 아닙니다.
+      </p>
+      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+        <PinRegion region="해협 권역" label="호르무즈" count={hormuzCount} />
+        <PinRegion region="정책 권역" label="인플레/정책" count={policyCount} />
+      </div>
+    </section>
+  );
+}
+
+function PinRegion({
+  region,
   label,
   count,
-  total,
 }: {
+  region: string;
   label: string;
   count: number;
-  total: number;
 }) {
-  const width = Math.max(6, Math.round((count / total) * 100));
+  const pins = Math.max(count, 0);
   return (
-    <div>
-      <div className="mb-1 flex justify-between font-mono">
-        <span>{label}</span>
-        <span>{count}</span>
-      </div>
-      <div className="h-1.5 overflow-hidden rounded-full bg-secondary">
-        <div className="h-full bg-primary" style={{ width: `${width}%` }} />
-      </div>
-    </div>
-  );
-}
-
-function SessionChip({ row }: { row: DailyFeatureRow }) {
-  return (
-    <div className="rounded-lg border border-border/80 bg-card/70 px-3 py-2">
-      <p className="font-mono text-[10px] text-muted-foreground">{row.date}</p>
-      <p className="font-serif text-lg">{formatNumber(row.close)}</p>
-      <p className="font-mono text-[10px] text-muted-foreground">
-        RSI {formatNumber(row.rsi_14)}
+    <div className="border border-border px-3 py-3">
+      <p className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
+        {region}
       </p>
-      <p className="text-[10px] text-muted-foreground uppercase">{row.sample}</p>
-    </div>
-  );
-}
-
-function NewsItem({ item }: { item: NewsEventRow }) {
-  const currentTag = parseNewsTag(item.tags[0] ?? "other") ?? "other";
-  return (
-    <li className="rounded-lg border p-3">
-      <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-        <span>
-          {item.published_at} · {item.source}
-        </span>
-        {item.tags.map((tag) => (
-          <Badge key={`${item.id ?? item.title}-${tag}`} variant="secondary">
-            {tagLabel(tag)}
-          </Badge>
+      <div className="mt-3 grid h-16 grid-cols-8 gap-1">
+        {Array.from({ length: 16 }, (_, index) => (
+          <span
+            key={`${label}-${index}`}
+            className={`size-2 justify-self-center rounded-full ${index < pins ? "bg-heading" : "bg-foreground/15"}`}
+          />
         ))}
       </div>
-      <p className="mt-1 text-sm">{item.title}</p>
-      {item.id ? (
-        <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-          <Form method="post" className="flex flex-1 gap-2">
-            <input type="hidden" name="intent" value="update-news" />
-            <input type="hidden" name="id" value={item.id} />
-            <Input name="title" defaultValue={item.title} className="h-8 text-xs" />
-            <TagSelect
-              name="tag"
-              defaultValue={currentTag}
-              className="h-8 rounded-md border border-input bg-transparent px-2 text-xs dark:bg-input/30"
-            />
-            <Button size="sm" variant="outline" type="submit">
-              수정
-            </Button>
-          </Form>
-          <Form method="post">
-            <input type="hidden" name="intent" value="delete-news" />
-            <input type="hidden" name="id" value={item.id} />
-            <Button size="sm" variant="destructive" type="submit">
-              삭제
-            </Button>
-          </Form>
-        </div>
-      ) : null}
-    </li>
+      <p className="mt-2 font-mono text-xs">
+        {label} · {count}핀
+      </p>
+    </div>
   );
 }
