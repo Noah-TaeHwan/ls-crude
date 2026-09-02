@@ -1,7 +1,7 @@
 /**
  * `/backtest?sample=1` 레이아웃 픽스처.
  * CL=F 백테스트가 아닙니다. 팩터가 아닙니다. README 성과로 복사하지 마세요.
- * 나중에 CSV 템플릿을 두면 컬럼은 date,value 만입니다. Sharpe/적중률은 넣지 않습니다.
+ * 나중에 CSV 템플릿을 두면 컬럼은 date, value만 둡니다. Sharpe/적중률은 넣지 않습니다.
  */
 
 export const SAMPLE_SEARCH_PARAM = "sample";
@@ -12,6 +12,7 @@ export interface BacktestHistoryRow {
   candidate: string;
   ranAt: string;
   window: "인샘플";
+  memo: string;
 }
 
 export interface SampleEquityPoint {
@@ -47,7 +48,15 @@ export const SAMPLE_HISTORY_ROW: BacktestHistoryRow = {
   candidate: "샘플 후보",
   ranAt: "2026-09-02",
   window: "인샘플",
+  memo: "칸 너비를 보는 샘플입니다.",
 };
+
+/** 미리보기를 끄면 기록 행(메모 포함)을 비웁니다. 샘플 숫자는 여기에 넣지 않습니다. */
+export function historyRowsForPreview(
+  samplePreview: boolean,
+): readonly BacktestHistoryRow[] {
+  return samplePreview ? [SAMPLE_HISTORY_ROW] : [];
+}
 
 export const SAMPLE_IS_METRICS: SampleMetrics = {
   sharpe: "0.41",
