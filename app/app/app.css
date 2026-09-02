@@ -111,8 +111,15 @@
 }
 
 .sample-progress-fill {
-  width: 0%;
-  animation: sample-progress-fill 1.8s ease-out forwards;
+  width: 100%;
+  animation: sample-progress-fill 1.8s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sample-progress-fill {
+    animation: none;
+    width: 100%;
+  }
 }
 
 details > summary::-webkit-details-marker {

@@ -445,6 +445,7 @@ function ProgressRail({ samplePreview }: { samplePreview: boolean }) {
               ? "sample-progress-fill h-full bg-heading"
               : "h-full w-0 bg-heading"
           }
+          style={samplePreview ? { width: "100%" } : undefined}
         />
       </div>
       <p className="mt-2 text-xs text-muted-foreground">
