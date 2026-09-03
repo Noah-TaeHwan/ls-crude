@@ -21,11 +21,11 @@
 | 008 | Hyperliquid API | 보류 | 2023 이후, 역사 부족·MENA 귀속 불가 | 소스 카탈로그 |
 | 009 | USD/IRR 공개 아카이브 | 수집·검증 | IS `-0.003`, OOS `-0.002` | `gathering/raw/2026-09-03-iran-fx-stress-probe/` |
 | 010 | EIA 재고 | 수집·검증 | IS `-0.187`; OOS 유효 n=1 | `gathering/raw/2026-09-03-petroleum-buffer-probe/` |
-| 011 | BLS·StatCan | 부분 후보 | 비자·장비·내부승진 구성요소가 없음 | 소스 카탈로그 |
+| 011 | BLS Oil & Gas Extraction 고용 | 수집·검증 | IS `-0.223`, OOS `-0.047`; 원안 4성분이 아닌 단일 고용 프록시 | `gathering/raw/2026-09-03-public-series-completion-probe/` |
 | 012 | CFTC COT | 보류 | 별도 pairs 전략; 계약 가격·비용 패널 미구축 | 소스 카탈로그 |
 | 013 | OPEC 발표 | 보류 | 사건 라벨은 가능, 선행 텍스트 신호 아님 | 소스 카탈로그 |
 | 014 | USGS 지진 | 부분 후보 | 사건 통제 가능; 파이프라인/제주 운영 신호는 아님 | 소스 카탈로그 |
-| 015 | FHWA·한국 AVC | 부분 후보 | 차종은 가능, 브랜드·연식·충전·유조차 식별 불가 | 소스 카탈로그 |
+| 015 | FHWA 전국 VMT | 수집·검증 | IS `+0.197`, OOS `-0.192`; 전체 VMT이며 원안 차종 미측정 | `gathering/raw/2026-09-03-public-series-completion-probe/` |
 | 016 | NASA POWER | 수집·검증 | IS `-0.066`; 운영 차질 패널 없음 | `gathering/raw/2026-09-03-gulf-ac-panic-probe/` |
 | 017 | IMF PortWatch | 보류 | 2019 이후·집계 해상 활동만, AIS 원시 사용 금지 | `gathering/raw/2026-09-02-portwatch/` |
 | 018 | NASA FIRMS | 보류 | 열 이상은 가능; 가동률·공개시점 패널 미구축 | 소스 카탈로그 |
@@ -65,3 +65,5 @@
 3. 각 패널은 사양 동결 후에만 OOS를 한 번 실행하고, 결과를 [공유 매트릭스](2026-09-03-factor-validation-share.md)에 갱신한다.
 
 현재 양쪽 구간에서 `|r| ≥ 0.10`으로 재현된 팩터는 없다. 이 장부는 그 결론을 뒤집기 위한 데이터 수집 목록이지, 없는 알파를 숫자로 채우는 문서가 아니다.
+
+001–046의 수집 가능성·명시적 미수집 사유·이번 보완 시험은 [전 팩터 무료 데이터 완결 감사](2026-09-03-full-free-data-completeness-audit.md)에 기록한다.

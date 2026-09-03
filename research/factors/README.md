@@ -17,6 +17,8 @@
 
 팩터별 무료 데이터 후보, 실제 원본 보관 위치, 수집 실패 사유와 IS/OOS 실행 상태는 [무료 데이터 수집·검증 장부](../reports/2026-09-03-free-data-acquisition-ledger.md)에 기록한다.
 
+이번 전수 감사의 수집 가능성·미수집 사유·신규 테스트는 [전 팩터 무료 데이터 완결 감사](../reports/2026-09-03-full-free-data-completeness-audit.md)에 고정했다.
+
 저장된 003·004·009·010 신호를 제공 파일의 `in/out` 열로 다시 실행한 결과는 [재실행 노트](../gathering/notes/2026-09-03-saved-signal-is-oos-rerun.md)에 있다. 009는 OOS에서 부호가 반전했고, 나머지는 표본·원시 데이터 한계로 통과하지 못했다. 2026-09-03 재실행에서 022도 OOS `r=-0.348`, n=31로 확인돼 통과하지 못했다.
 
 ## 현재 인벤토리와 검증 기록
@@ -33,11 +35,11 @@
 | 008 | [Hyperliquid Capital Flow](008-hyperliquid-capital-flow/README.md) | 설명적 모니터 | **monitor only** — 귀속 불가·역사 부족·고유성 없음 | 0.0 |
 | 009 | [Iran FX Stress](009-iran-middleeast-premium/README.md) | 현지 스트레스 후보 | 5일 변동성 IS `r=-0.003`, OOS `r=-0.002`; 관계 없음 | 0.0 |
 | 010 | [Official Petroleum Buffer & Public Supply Policy](010-official-petroleum-buffer/README.md) | 변동성 후보 | 5일 변동성 IS `r=-0.187`; 가설 방향을 지지하지 못함 | 0.0 |
-| 011 | [Energy Workforce Momentum](011-energy-workforce-momentum/README.md) | 중기 공급 후보 | 핵심 구성요소의 공개·재현 시계열 부족 | 0.0 |
+| 011 | [Energy Workforce Momentum](011-energy-workforce-momentum/README.md) | 중기 공급 후보 | BLS 고용 프록시: IS `r=-0.223`, OOS `r=-0.047`; 원안 4성분 미복제 | 0.0 |
 | 012 | [Energy Futures Pairs StatArb](012-energy-futures-pairs-statarb/README.md) | 시장중립 전략 | 계약별 허가 데이터·비용·워크포워드가 없어 재현 성과 없음 | — |
 | 013 | [Public Institutional Message Timing](013-public-institutional-message-timing/README.md) | 변동성 후보 | 설교·공개담화는 느린 뉴스 재반영일 가능성이 높음. **0.1% 알파 미확인** | 0.0 |
 | 014 | [Pipeline Noise](014-pipeline-noise-signal/README.md) | 물리 리스크 후보 | 공개 관측소가 파이프라인 상태를 식별한다는 근거 없음 | 0.0 |
-| 015 | [Luxury ICE Road Appetite](015-luxury-ice-road-appetite/README.md) | 밈·소비 관측 | 측정 불가 또는 느린·중복 프록시. **거래 알파 아님** | 0.0 |
+| 015 | [Luxury ICE Road Appetite](015-luxury-ice-road-appetite/README.md) | 밈·소비 관측 | FHWA 전체 VMT: IS `r=+0.197`, OOS `r=-0.192`; 원안 차종 미측정·부호 반전 | 0.0 |
 | 016 | [Desert Operational Stress](016-desert-operational-stress/README.md) | 밈·기상 운영 후보 | 기상은 예보되고 운영 차질은 후행 확인. **독립 알파 미확인** | 0.0 |
 | 017 | [Maritime Supply Activity](017-maritime-supply-activity/README.md) | 해상 물류·변동성 후보 | 물리 경로는 있으나 선박별 AIS 추적은 금지, 집계형 장기 데이터도 미확인 | 0.0 |
 | 018 | [Refinery Thermal & Flare](018-refinery-thermal-flare/README.md) | 정유 운영·변동성 후보 | 공개 열 이상은 실제 관측 가능. 단, 가동률·WTI 알파는 아직 미검증 | 0.0 |
