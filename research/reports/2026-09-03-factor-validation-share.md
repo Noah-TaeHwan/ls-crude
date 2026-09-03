@@ -1,31 +1,32 @@
-# LS CRUDE — Factor validation share sheet
+# LS CRUDE — 팩터 상관관계 공유표
 
-## Scope
+## 공통 기준
 
-- Price file: user-provided `clf-daily-2015-2026.csv`
-- In sample: 2015-01-02~2023-12-29, 2,262 trading days
-- Out sample: 2024-01-02~2026-09-02, 672 trading days
-- Free-source catalog: [`../data/factor-free-source-catalog.csv`](../data/factor-free-source-catalog.csv), 20 factor rows
+- 가격: 사용자가 제공한 `clf-daily-2015-2026.csv`
+- 인샘플: 2015-01-02~2023-12-29 (2,262 거래일)
+- 아웃샘플: 2024-01-02~2026-09-02 (672 거래일)
+- `r`은 Pearson 상관계수다. `0`에 가까울수록 선형 관계가 거의 없다는 뜻이다.
+- `n`은 유효 관측 수이며, n이 매우 작으면 r을 계산하거나 해석하지 않는다.
 
-## Rerunnable inputs and results
+## 상관관계 및 재현성 표
 
-| Factor | Stored signal | IS result | OOS result | Team decision |
+| 팩터 | 신호 → 타깃 | 인샘플 | 아웃샘플 | 팀 공유용 판정 |
 | --- | --- | --- | --- | --- |
-| 003 Trump text | Truth archive; existing strict lexical rule | n=32; mean next-5d return +1.497% | n=168; +0.375% | Effect weakens; no alpha claim |
-| 004 EV displacement | IEA annual displacement | n=8; Pearson r=-0.280 | n=2; correlation undefined | Too few observations |
-| 009 Iran FX | USD/IRR archive; depreciation >=2% | +0.887%p vs FX-day baseline | -0.150%p | Sign reversal; reject as trading factor |
-| 010 Petroleum buffer | EIA commercial + SPR total-buffer z score | r=-0.141; tight-minus-all 20d RV -14.871%p | n=1; undefined | Raw source ends 2023, no valid OOS |
-| 020 Gulf AC Panic | NASA POWER city-grid temperature retrieval script | r=-0.060 | not run | No IS relation; do not tune |
+| 003 Trump Temper | 고정된 엄격 텍스트 이벤트 여부 → 다음 5거래일 WTI 수익률 | 이벤트 지시변수 r=**0.016**; 이벤트 n=32 | r=**0.037**; 이벤트 n=168 | 상관은 양쪽 모두 사실상 0. 평균 반응은 IS +1.497%, OOS +0.375%로 약화 |
+| 004 EV Displacement | IEA 연간 석유대체량 → 다음 완전 연도 WTI 수익률 | r=**-0.280**, n=8 | n=2 → r 계산 불가 | 표본이 너무 작아 검증 불가 |
+| 009 Iran FX Stress | 일간 USD/IRR 변화율 → 다음 5거래일 WTI 수익률 | r=**0.029**, n=4,090; 절하 >=2% 사건 차이 +0.887%p | r=**-0.056**, n=971; 사건 차이 -0.150%p | 상관은 0 근처이며 사건 효과가 **부호 반전** |
+| 010 Petroleum Buffer | EIA 총 완충재고 tightness z-score → 다음 20일 연율화 WTI 변동성 | r=**-0.141**, n=410 | n=1 → r 계산 불가 | IS도 가설 방향과 반대, 유효 OOS 없음 |
+| 020 Gulf AC Panic | 걸프 4개 도시 계절조정 고온 이상 → 다음 5일 절대수익률 | r=**-0.060**, n=2,257 | 원시 기온 시계열 미저장 | IS부터 관계 없음; OOS 튜닝 금지 |
 
-## Data readiness
+## 데이터 준비 상태
 
-| State | Factors | Meaning |
+| 상태 | 팩터 | 의미 |
 | --- | --- | --- |
-| Rerunnable stored raw signal | 003, 004, 009, 010 | Raw input exists locally under `gathering/raw/`; raw dumps are intentionally gitignored. |
-| Partial | 020 | Retrieval script and IS result exist; raw temperature response was not retained. |
-| Source catalog only | 001, 002, 005–008, 011–018 | A reusable free-source route exists, but not a compliant, long, stored signal time series. |
-| Excluded | 019 | No data collection due to privacy and eligibility constraints. |
+| 원시 신호 저장·재실행 가능 | 003, 004, 009, 010 | `gathering/raw/`에 원본·스크립트 보관. 원본 덤프는 GitHub에 재배포하지 않음. |
+| 부분 저장 | 020 | 수집 스크립트·IS 결과만 있으며 원시 기온 응답은 미보관. |
+| 무료 소스만 등록 | 001, 002, 005–008, 011–018 | 무료 접근 경로는 있으나, 가격과 짝지을 적법한 장기 신호 시계열이 아직 없음. |
+| 분석 제외 | 019 | 개인정보·데이터 적격성 문제. |
 
-## Bottom line
+## 결론
 
-No factor has an independently reproduced 0.1% relationship across both samples. The next work is data acquisition and timestamp/vintage validation—not weighting or combining factors.
+현재 검증 가능한 어느 팩터도 인샘플과 아웃샘플에서 안정된 상관 또는 0.1% 관계를 보이지 않았다. 다음 단계는 가중치 결합이 아니라, 부족한 신호 시계열의 역사·공개시점·라이선스를 먼저 확보하는 일이다.
