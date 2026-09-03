@@ -1,7 +1,5 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-
 import type { BaselineSnapshot, DailyFeatureRow, NewsEventRow } from "~/lib/types";
+import baselineSnapshot from "../../public/baseline-snapshot.json";
 
 function asNumber(value: unknown): number | null {
   if (value == null || value === "") {
@@ -56,9 +54,7 @@ export function normalizeNewsRow(row: Record<string, unknown>): NewsEventRow {
 }
 
 export async function readSnapshotFile(): Promise<BaselineSnapshot> {
-  const filePath = path.join(process.cwd(), "public/baseline-snapshot.json");
-  const raw = await readFile(filePath, "utf8");
-  const parsed = JSON.parse(raw) as BaselineSnapshot;
+  const parsed = baselineSnapshot as unknown as BaselineSnapshot;
   return {
     ...parsed,
     rows: (parsed.rows ?? []).map((row) =>
