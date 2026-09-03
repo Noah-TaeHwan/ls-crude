@@ -23,7 +23,7 @@
 | 003 | [Trump Temper & Oil Policy](003-truth-social.md) | 공개 텍스트·변동성 후보 | **HOLD** — 첫 엄격 규칙 탐색은 알파를 입증하지 못함 | 0.0 |
 | 004 | [Transport Electrification Displacement](004-renewable-displacement.md) | 중기 수요 후보 | **004B HOLD** — 물리 경로는 있으나 공개일·빈티지 없는 연간 7–8개 탐색은 알파 근거가 아님 | 0.0 |
 | 005 | [Financial Demand](005-financial-demand.md) | 중기 수요 후보 | **HOLD** — 모델 복잡도보다 공개시점·표본 설계가 먼저 | 0.0 |
-| 006 | [Wholesale Logistics](006-wholesale-logistics.md) | 실물 수요 후보 | **후보** — 공개 월간 자료의 발표시점 검증 필요 | 0.0 |
+| 006 | [Wholesale Logistics](006-wholesale-logistics.md) | 실물 수요 아이디어 | **SKIP** — 논리는 유효하나, 느린 물류 대리값에 EIA 주간 자료 대비 고유 알파 근거가 없음 | 0.0 |
 | 007 | [MENA Elite Mobility](007-doomsday-bunker-index.md) | 지정학 리스크 게이트 | **HOLD** — 복수 기관 비식별 집계 제휴 필요 | 0.0 |
 | 008 | [Hyperliquid Capital Flow](008-hyperliquid-capital-flow.md) | 온체인 리스크 후보 | **HOLD** — 자금의 지역·의도를 공개 데이터로 귀속할 수 없음 | 0.0 |
 | 009 | [Iran Crypto Premium](009-iran-middleeast-premium.md) | 현지 스트레스 후보 | **HOLD** — 합법적 접근·환율 기준·역사성 확인 필요 | 0.0 |
