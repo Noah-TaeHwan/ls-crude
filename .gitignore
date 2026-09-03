@@ -62,6 +62,9 @@ Thumbs.db
 # See vault decision 2026-09-02-agency-agents-en-ko-machine-install.
 .cursor/rules/*
 !.cursor/rules/ls-crude.mdc
+.claude/agents/
+.codex/agents/
+.playwright-mcp/
 .trae/
 .qoder/
 .opencode/
