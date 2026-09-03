@@ -1,143 +1,169 @@
 import {
   GAUGE_VIEW,
   GAUGE_ZONES,
-  WATCHING_DEG,
   arcPath,
   needlePolygon,
   polarPoint,
+  ratioToAngle,
+  volatilityBand,
 } from "~/lib/gauge";
 
-const { width, height, cx, cy, radius } = GAUGE_VIEW;
-const TRACK = radius - 28;
-const TICK_ANGLES = [180, 165, 150, 135, 120, 105, 90, 75, 60, 45, 30, 15, 0];
-
-function formatSliceZ(value: number | null) {
-  if (value == null) return "—";
-  return value.toFixed(2);
+/** 변동성 게이지가 받는 공개 관측값. */
+interface WatchGaugeProps {
+  score: number | null;
+  rv5: number | null;
 }
 
-export function WatchGauge({ sliceZ }: { sliceZ: number | null }) {
-  const quiet = arcPath(cx, cy, TRACK, GAUGE_ZONES.quiet.from, GAUGE_ZONES.quiet.to);
-  const watching = arcPath(
-    cx,
-    cy,
-    TRACK,
-    GAUGE_ZONES.watching.from,
-    GAUGE_ZONES.watching.to,
-  );
-  const open = arcPath(cx, cy, TRACK, GAUGE_ZONES.open.from, GAUGE_ZONES.open.to);
-  const quietLabel = polarPoint(cx, cy, TRACK - 44, 168);
-  const watchLabel = polarPoint(cx, cy, TRACK - 44, WATCHING_DEG);
-  const openLabel = polarPoint(cx, cy, TRACK - 44, 18);
+/** 게이지의 고정 SVG 좌표. */
+const { width, height, cx, cy, radius } = GAUGE_VIEW;
+/** 눈금이 놓이는 반지름. */
+const TRACK = radius - 28;
+/** 게이지에 표시할 백분위 눈금. */
+const TICK_SCORES = [0, 20, 40, 60, 80, 100] as const;
+
+/**
+ * 숫자를 한 자리 백분율로 표시한다.
+ * @param value 표시할 숫자.
+ * @returns 표시 문자열.
+ */
+function formatPercent(value: number | null): string {
+  return value == null || !Number.isFinite(value) ? "—" : `${value.toFixed(1)}%`;
+}
+
+/**
+ * 최근 WTI 실현변동성의 장기 분포 백분위를 그린다.
+ * @param props 백분위 점수와 최근 5일 변동성.
+ * @returns 접근 가능한 SVG 게이지.
+ */
+export function WatchGauge({ score, rv5 }: WatchGaugeProps) {
+  const normalizedScore =
+    score == null || !Number.isFinite(score)
+      ? null
+      : Math.round(Math.max(0, Math.min(100, score)));
+  const band = normalizedScore == null ? "데이터 없음" : volatilityBand(normalizedScore);
+  const needleAngle =
+    normalizedScore == null ? null : ratioToAngle(normalizedScore / 100);
 
   return (
-    <section className="border border-border bg-card/30 px-3 pt-4 pb-5 sm:px-6">
-      <p className="font-mono text-[10px] tracking-[0.22em] text-heading uppercase">
-        공개 신호 게이지
-      </p>
-      <div className="mx-auto max-w-3xl">
-        <svg
-          viewBox={`0 0 ${width} ${height}`}
-          className="mx-auto block h-auto w-full"
-          role="img"
-          aria-label="관측 게이지. 바늘은 WATCHING에 고정되어 있습니다."
-        >
-          <path
-            d={arcPath(cx, cy, TRACK, 180, 0)}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="22"
-            className="text-border"
-            strokeLinecap="butt"
-          />
-          <path
-            d={quiet}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="18"
-            className="text-watching/45"
-          />
-          <path
-            d={watching}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="18"
-            className="text-watching"
-          />
-          <path
-            d={open}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="18"
-            className="text-foreground/12"
-          />
-          {TICK_ANGLES.map((angle) => {
-            const outer = polarPoint(cx, cy, TRACK + 16, angle);
-            const inner = polarPoint(cx, cy, TRACK - 8, angle);
-            return (
+    <section className="px-1 pt-5 pb-3 sm:px-5" aria-labelledby="volatility-title">
+      <h1
+        id="volatility-title"
+        className="text-center text-xl font-semibold tracking-tight text-foreground sm:text-2xl"
+      >
+        WTI 변동성
+      </h1>
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        className="volatility-gauge mx-auto mt-1 block h-auto w-full max-w-[36rem]"
+        role="img"
+        aria-describedby="volatility-explainer"
+        aria-label={
+          normalizedScore == null
+            ? "WTI 변동성 백분위 데이터 없음"
+            : `WTI 5거래일 실현변동성 백분위 ${normalizedScore}, ${band}`
+        }
+      >
+        <path
+          d={arcPath(cx, cy, TRACK, GAUGE_ZONES.stable.from, GAUGE_ZONES.stable.to)}
+          className="text-primary/65"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="22"
+        />
+        <path
+          d={arcPath(cx, cy, TRACK, GAUGE_ZONES.normal.from, GAUGE_ZONES.normal.to)}
+          className="text-primary/78"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="22"
+        />
+        <path
+          d={arcPath(cx, cy, TRACK, GAUGE_ZONES.elevated.from, GAUGE_ZONES.elevated.to)}
+          className="text-primary/90"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="22"
+        />
+        <path
+          d={arcPath(cx, cy, TRACK, GAUGE_ZONES.extreme.from, GAUGE_ZONES.extreme.to)}
+          className="text-primary"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="22"
+        />
+
+        {TICK_SCORES.map((tick) => {
+          const angle = ratioToAngle(tick / 100);
+          const outer = polarPoint(cx, cy, TRACK + 18, angle);
+          const inner = polarPoint(cx, cy, TRACK - 14, angle);
+          const label = polarPoint(cx, cy, TRACK + 42, angle);
+          return (
+            <g key={tick}>
               <line
-                key={angle}
                 x1={inner.x}
                 y1={inner.y}
                 x2={outer.x}
                 y2={outer.y}
+                className="text-foreground/55"
                 stroke="currentColor"
-                strokeWidth={angle % 45 === 0 ? 1.4 : 0.7}
-                className="text-foreground/35"
+                strokeWidth="1"
               />
-            );
-          })}
-          <text
-            x={quietLabel.x}
-            y={quietLabel.y}
-            textAnchor="middle"
-            className="fill-watching/80 font-mono text-[11px] tracking-[0.18em]"
-          >
-            QUIET
-          </text>
-          <text
-            x={watchLabel.x}
-            y={watchLabel.y - 6}
-            textAnchor="middle"
-            className="fill-watching font-mono text-[11px] tracking-[0.18em]"
-          >
-            WATCHING
-          </text>
-          <text
-            x={openLabel.x}
-            y={openLabel.y}
-            textAnchor="middle"
-            className="fill-foreground/35 font-mono text-[11px] tracking-[0.18em]"
-          >
-            —
-          </text>
+              <text
+                x={label.x}
+                y={label.y + 4}
+                textAnchor="middle"
+                className="fill-foreground/80 font-mono text-[13px]"
+              >
+                {tick}
+              </text>
+            </g>
+          );
+        })}
+
+        {needleAngle == null ? null : (
           <polygon
-            points={needlePolygon(cx, cy, TRACK - 6, WATCHING_DEG)}
-            className="fill-watching"
+            points={needlePolygon(cx, cy, TRACK - 2, needleAngle, 12)}
+            className="fill-primary"
           />
-          <circle cx={cx} cy={cy} r="11" className="fill-background stroke-watching" strokeWidth="1.5" />
-          <text
-            x={cx}
-            y={cy - 48}
-            textAnchor="middle"
-            fontSize="28"
-            letterSpacing="0.28em"
-            className="fill-watching font-mono"
-          >
-            WATCHING
-          </text>
-        </svg>
-      </div>
-      <div className="mx-auto flex max-w-2xl flex-col items-center gap-2 text-center">
-        <p className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-watching uppercase">
-          <span className="watch-led inline-block size-1.5 rounded-full bg-watching" />
-          관측 중
+        )}
+        <circle
+          cx={cx}
+          cy={cy}
+          r="10"
+          className="fill-background stroke-primary"
+          strokeWidth="2"
+        />
+        <text
+          x={cx}
+          y={cy - 102}
+          textAnchor="middle"
+          className="fill-primary font-mono text-[24px] font-medium"
+        >
+          {band}
+        </text>
+        <text
+          x={cx}
+          y={cy - 52}
+          textAnchor="middle"
+          className="fill-foreground font-mono text-[50px] font-medium"
+        >
+          {normalizedScore ?? "—"}
+        </text>
+        <text
+          x={cx}
+          y={cy - 24}
+          textAnchor="middle"
+          className="fill-muted-foreground font-mono text-[12px]"
+        >
+          장기 기준 백분위 (0–100)
+        </text>
+      </svg>
+      <div id="volatility-explainer" className="-mt-2 text-center">
+        <p className="text-base font-medium text-foreground">
+          방향이 아니라 움직임의 크기입니다.
         </p>
-        <p className="max-w-xl text-sm text-foreground/85">
-          펜타곤 피자 인덱스처럼 유가 옆의 공개 신호를 아직 찾는 중입니다.
-        </p>
-        <p className="font-mono text-[11px] text-muted-foreground">
-          Oil Slice z {formatSliceZ(sliceZ)} · 초안 읽기값 · 바늘은 움직이지 않습니다
+        <p className="mt-1 font-mono text-xs text-muted-foreground">
+          최근 5거래일의 연환산 실현변동성: {formatPercent(rv5)}
         </p>
       </div>
     </section>
