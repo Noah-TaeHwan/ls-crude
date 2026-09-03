@@ -13,6 +13,8 @@
 
 상세 수집 규칙은 [`research/INTAKE.md`](../INTAKE.md), 출처·지연·라이선스는 [`sources/REGISTRY.md`](../gathering/sources/REGISTRY.md)에 기록한다.
 
+2026-09-03 제공 `CL=F` 파일을 기준으로 한 인샘플·아웃샘플 적격성 감사는 [이 노트](../gathering/notes/2026-09-03-factor-is-oos-audit.md)에 있다. 20개 중 양쪽 구간에서 재현된 0.1% 관계는 없다.
+
 ## 현재 인벤토리와 검증 기록
 
 | # | 카드 | 역할 | 현재 검증 결론 | Oil Pizza |
