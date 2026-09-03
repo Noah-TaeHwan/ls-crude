@@ -1,0 +1,12 @@
+# 2026-09-03 — 한국 관련 새 팩터 6개 등록
+
+| # | 이름 | 판정 |
+| --- | --- | --- |
+| 022 | Korea Gas Pain Index | 공개 집계가격으로 테스트 완료. 국내 전가 대시보드, WTI 알파 아님. |
+| 023 | Jeju Strait Watch | AIS 보안·데이터 경계 및 검증 불가 주장 때문에 trading signal 폐기. |
+| 024 | Chuseok Effect | 달력 자체는 알려진 계절성. 공개 집계 수요 서프라이즈만 HOLD. |
+| 025 | Korean Refinery Margin Watch | 공개 마진 프록시의 물리 경로는 연구 가치가 있어 HOLD. |
+| 026 | Retail FX Surge Index | 개인·은행 고객 FX 흐름 수집은 허용하지 않아 폐기. |
+| 027 | Incheon Transit Surge | 월간 공항 수요 nowcast로 HOLD. 중국 국적·환승 주장과 혼동 금지. |
+
+원안에 포함된 2024–2026 사건별 가격·교통량·수요 수치는 출처가 제시되지 않아 연구 결과로 기록하지 않았다. 원본 데이터가 없는 카드의 상관계수도 만들지 않았다.

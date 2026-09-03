@@ -1,4 +1,4 @@
-# 022 — Korea–US Retail Fuel Transmission Spread (KGPI Research Core)
+# 022 — Korea Gas Pain Index (KGPI) / Korea–US Fuel Transmission Spread
 
 **상태**: ⏸️ **HOLD / dashboard candidate** — 한국·미국 소비자가격 차이는 환율·세금·제품가격·유통마진의 전가를 설명하는 지수다. WTI 변동성 알파는 첫 인샘플에서 확인하지 못했다.  
 **Oil Pizza 가중치**: `0.0`  

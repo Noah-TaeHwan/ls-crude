@@ -1,0 +1,4 @@
+source_id,source_name,url,role,status_and_boundary
+knoc_monthly,KNOC monthly petroleum supply statistics,https://m.knoc.co.kr/sub03/sub03_6_1.jsp,Monthly production imports exports inventory context,Release timing and extractable historic vintages to verify
+knoc_utilization,KNOC refinery utilization,https://www.data.go.kr/data/15045416/fileData.do,Annual refinery utilization context,Annual only in confirmed public file; not a weekly margin signal
+opinet_refiner,Opinet refiner price history,https://www.opinet.co.kr/user/dophist/oilHistorySelect.do,Potential public domestic product-price leg,Price is not a true crack spread; tax and product definitions require controls
