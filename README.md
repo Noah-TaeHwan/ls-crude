@@ -13,7 +13,7 @@ LS CRUDE는 Yahoo Finance의 WTI 연속선물(`CL=F`) 일봉으로 최근 실현
 | 가격 | Yahoo Finance `CL=F` |
 | 연구 뉴스 | Investing.com CSV (정본), Yahoo news (보조) |
 | 시장 관측 | 최근 완료 일봉의 5일·20일 연환산 실현변동성 |
-| 연구 장부 | 후보 46개 · 통과 0개 |
+| 연구 장부 | 후보 48개 · 통과 0개 |
 
 ## 팀
 
@@ -75,6 +75,6 @@ npm install
 npm run dev -- --port 5173
 ```
 
-`/`에서는 `app/public/wti-market-snapshot.json`에 담긴 최근 완료 일봉으로 WTI 변동성을 보여줍니다. `/research`에는 공개 신호 후보 46개와 현재 판정을 공개합니다. 연구용 인샘플 데이터는 `app/public/baseline-snapshot.json`에 따로 둡니다. 웹에서는 백테스트를 실행하지 않으며 `/backtest`는 `/research`로 이동합니다. 로컬 분석 절차는 [`docs/local-backtest.md`](docs/local-backtest.md)에 있습니다.
+`/`에서는 `app/public/wti-market-snapshot.json`에 담긴 최근 완료 일봉으로 WTI 변동성을 보여줍니다. `/research`에는 공개 신호 후보 48개와 현재 판정을 공개합니다. 연구용 인샘플 데이터는 `app/public/baseline-snapshot.json`에 따로 둡니다. 웹에서는 백테스트를 실행하지 않으며 `/backtest`는 `/research`로 이동합니다. 로컬 분석 절차는 [`docs/local-backtest.md`](docs/local-backtest.md)에 있습니다.
 
 `CL=F`는 현물이 아닌 연속선물이라 만기 교체 때 생기는 롤 갭을 포함할 수 있습니다. 이 프로젝트는 투자 권유가 아닙니다.

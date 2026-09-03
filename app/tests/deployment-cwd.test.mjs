@@ -163,7 +163,7 @@ test("serves the public evidence brief routes from the repository root", async (
     const research = await fetch(`${baseUrl}/research`);
     assert.equal(research.status, 200);
     const researchBody = await research.text();
-    assert.match(researchBody, /46개/);
+    assert.match(researchBody, /48개/);
     assert.match(researchBody, /통과 0개/);
 
     const legacyGet = await fetch(`${baseUrl}/backtest`, { redirect: "manual" });

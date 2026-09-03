@@ -5,7 +5,7 @@ import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
 import type { ActionResult } from "~/lib/types";
 
 /** 공개 장부의 전체 후보 수. */
-const CANDIDATE_COUNT = 46;
+const CANDIDATE_COUNT = 48;
 /** 현재 기준을 모두 통과한 후보 수. */
 const PASS_COUNT = 0;
 
@@ -81,14 +81,14 @@ const LEDGER_ROWS: ResearchLedgerRow[] = [
   },
 ];
 
-/** 현재 46개 후보의 판정 분포. */
+/** 현재 48개 후보의 판정 분포. */
 const VERDICT_COUNTS = [
   ["기각", 17],
-  ["보류", 12],
+  ["보류", 13],
   ["미검증", 7],
   ["보관", 6],
   ["분석 제외", 2],
-  ["관측만", 1],
+  ["관측만", 2],
   ["별도 전략", 1],
 ] as const;
 
@@ -107,7 +107,7 @@ export function meta({}: Route.MetaArgs) {
     { title: "LS CRUDE — 연구 장부" },
     {
       name: "description",
-      content: "WTI 변동성의 공개 선행 신호 후보 46개와 통과 0개의 검증 기록입니다.",
+      content: "WTI 변동성의 공개 선행 신호 후보 48개와 통과 0개의 검증 기록입니다.",
     },
   ];
 }
@@ -176,7 +176,7 @@ export default function Research({ loaderData }: Route.ComponentProps) {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <h2 id="ledger-title" className="text-2xl font-semibold text-foreground">대표 검증 기록</h2>
-              <p className="mt-2 text-sm text-muted-foreground">전체 46개 가운데 서로 다른 실패 유형을 보여주는 대표 행입니다.</p>
+              <p className="mt-2 text-sm text-muted-foreground">전체 48개 가운데 서로 다른 실패 유형을 보여주는 대표 행입니다.</p>
             </div>
             <a
               className="text-link"

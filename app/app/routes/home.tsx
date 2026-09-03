@@ -7,7 +7,7 @@ import { readWtiMarketSnapshot } from "~/lib/market-snapshot.server";
 import type { ActionResult } from "~/lib/types";
 
 /** 현재 공개 장부의 후보 수. */
-const CANDIDATE_COUNT = 46;
+const CANDIDATE_COUNT = 48;
 /** 현재 공개 장부의 통과 수. */
 const PASS_COUNT = 0;
 /** 최근 가격 흐름 SVG의 너비. */
