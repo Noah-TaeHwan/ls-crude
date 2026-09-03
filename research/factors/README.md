@@ -21,7 +21,64 @@
 
 저장된 003·004·009·010 신호를 제공 파일의 `in/out` 열로 다시 실행한 결과는 [재실행 노트](../gathering/notes/2026-09-03-saved-signal-is-oos-rerun.md)에 있다. 009는 OOS에서 부호가 반전했고, 나머지는 표본·원시 데이터 한계로 통과하지 못했다. 2026-09-03 재실행에서 022도 OOS `r=-0.348`, n=31로 확인돼 통과하지 못했다.
 
-## 현재 인벤토리와 검증 기록
+## 라이브 상관관계 스코어보드
+
+**마지막 계산**: 2026-09-03 · **공통 타깃**: 신호 공개 뒤 다음 5거래일 WTI 실현변동성. 월간 입력(011, 015, 022, 027, 030, 042–045)은 다음 21거래일, 연간 004는 다음 완전연도를 사용한다.
+
+이 표는 각 카드의 검증 헤더와 [상세 검증 로그](../reports/2026-09-03-factor-validation-share.md)를 요약한 **정식 라이브 매트릭스**다. `—`는 0이 아니라 적법한 공개 장기 신호·공개시점·표본이 아직 갖춰지지 않아 계산하지 못했다는 뜻이다. 새 수집·재계산은 카드, 이 표, 상세 로그를 같은 커밋에서 함께 갱신한다.
+
+| # | 팩터 | IS r | OOS r | 상태 |
+| ---: | --- | ---: | ---: | --- |
+| 001 | MENA Civilian Delivery | — | — | 미검증 — 익명 주문 집계 없음 |
+| 002 | Global Crypto Liquidity Stress | — | — | 미검증 — 적법한 장기 집계 없음 |
+| 003 | Trump Temper | +0.000 | +0.164 | HOLD — IS 부재 |
+| 004 | Transport Electrification | +0.157 | — | HOLD — OOS n=2 |
+| 005 | Financial Demand | — | — | SKIP |
+| 006 | Wholesale Logistics | — | — | SKIP |
+| 007 | MENA Elite Mobility | — | — | 미검증 — 비식별 집계 없음 |
+| 008 | Hyperliquid Capital Flow | — | — | MONITOR ONLY |
+| 009 | Iran FX Stress | -0.003 | -0.002 | REJECTED — 관계 없음 |
+| 010 | Petroleum Buffer | -0.187 | — | HOLD — OOS 부족 |
+| 011 | Energy Workforce Momentum | -0.223 | -0.047 | REJECTED — OOS 소멸 |
+| 012 | Energy Futures Pairs StatArb | — | — | 별도 전략 |
+| 013 | Public Institutional Message Timing | — | — | 미검증 |
+| 014 | Pipeline Noise | — | — | 미검증 |
+| 015 | Luxury ICE Road Appetite | +0.197 | -0.192 | REJECTED — 부호 반전 |
+| 016 | Desert Operational Stress | — | — | 미검증 |
+| 017 | Maritime Supply Activity | — | — | 미검증 |
+| 018 | Refinery Thermal & Flare | — | — | HOLD — 원시 패널 미구축 |
+| 019 | Robotaxi Night Traffic | — | — | REJECTED — 데이터 경계 |
+| 020 | Gulf AC Panic | -0.066 | — | HOLD — OOS 미실행 |
+| 021 | Kimchi Heat Index | — | — | HOLD — WTI 미검증 |
+| 022 | Korea Gas Pain Index | -0.087 | -0.348 | REJECTED — WTI 알파 아님 |
+| 023 | Jeju Strait Watch | — | — | REJECTED — AIS·중복 |
+| 024 | Chuseok Effect | — | — | HOLD |
+| 025 | Korean Refinery Margin Watch | — | — | HOLD |
+| 026 | Retail FX Surge Index | — | — | REJECTED — 개인 FX 데이터 |
+| 027 | Incheon Transit Surge | — | — | HOLD |
+| 028 | Pohang Refinery Idle Watch | — | — | REJECTED — 원안 전제 오류 |
+| 029 | Duty-Free Diesel Dash | — | — | ARCHIVED — 027 하위 |
+| 030 | Instant Noodle Panic Index | — | — | HOLD |
+| 031 | Live Commerce Burn Rate | — | — | ARCHIVED — 027 하위 |
+| 032 | Korea Weather & Transport | — | — | HOLD |
+| 033 | Base-Area Barbershop | — | — | ARCHIVED |
+| 034 | Base-Area Buzz-Cut | — | — | ARCHIVED |
+| 035 | Base-Area Fine-Dining | — | — | ARCHIVED |
+| 036 | Public Military Recruiting | — | — | HOLD |
+| 037 | USFK Public Context | — | — | ARCHIVED |
+| 038 | Cushing Draw Surprise | -0.142 | -0.074 | REJECTED — 가설 반대 |
+| 039 | U.S. Gasoline Demand Surprise | -0.005 | -0.009 | REJECTED — 관계 없음 |
+| 040 | SPR Injection Watch | +0.051 | -0.455 | REJECTED — 부호 반전 |
+| 041 | Refinery Utilization Proxy | -0.206 | -0.011 | REJECTED — OOS 소멸 |
+| 042 | Asia Financial Hub Pulse | — | — | HOLD |
+| 043 | Overtime Latte Index | — | — | HOLD — 소비 패널 없음 |
+| 044 | AI Burn Rate Index | -0.181 | -0.041 | REJECTED — OOS 소멸 |
+| 045 | Iced Americano Heat Index | +0.512 | -0.511 | REJECTED — 부호 반전 |
+| 046 | Urban Mobility Tempo | -0.267 | +0.005 | REJECTED — OOS 소멸 |
+
+**현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
+
+## 현재 인벤토리와 카드별 검증 기록
 
 | # | 카드 | 역할 | 현재 검증 결론 | Oil Pizza |
 | --- | --- | --- | --- | ---: |
