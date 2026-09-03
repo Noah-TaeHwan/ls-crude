@@ -4,6 +4,8 @@
 **별칭**: *When the Bros Wear Ties*  
 **Oil Pizza 가중치**: `0.0`
 
+확장 탐색·CEO 비교·블라인드 라벨 계약은 팩터가 아닌 [Side Quest 001](../../side-quests/001-executive-formality-asset-regimes.md)에서 별도로 관리한다.
+
 ## 질문
 
 평소 캐주얼한 All-In Podcast 진행자들이 공식 복장으로 출연하고 원유·전쟁·인플레이션 같은 거시 주제를 다루는 공개 회차가, 이미 시장에 존재하는 긴장 레짐을 설명하는 문화적 마커인가?
