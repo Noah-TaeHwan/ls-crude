@@ -65,6 +65,8 @@ Thumbs.db
 .claude/agents/
 .codex/agents/
 .playwright-mcp/
+.playwright-cli/
+_workspace/
 .trae/
 .qoder/
 .opencode/

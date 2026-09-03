@@ -1,6 +1,6 @@
 # app
 
-React Router 대시보드입니다. 로더는 Supabase `daily_features` / `news_events`를 읽고, 키가 없으면 `public/baseline-snapshot.json`을 읽습니다. 뉴스는 loader/action으로만 넣고 고칩니다. `/` 는 관측 데스크입니다. 실행 가능한 백테스트 진입점은 아직 없으며, `/backtest`는 로컬 분석 준비·백테스트 인계 안내입니다.
+React Router로 만든 공개 대시보드입니다. `/`에서는 Yahoo Finance `CL=F`의 최근 완료 일봉으로 WTI 실현변동성을 보여주고 `/research`에서는 공개 신호 후보 48개의 검증 기록을 확인할 수 있습니다. 시장 관측값은 `public/wti-market-snapshot.json`, 연구용 인샘플은 `public/baseline-snapshot.json`에 따로 둡니다. 웹에서는 백테스트를 실행하지 않으며 `/backtest`는 `/research`로 이동합니다.
 
 ```bash
 cd app
@@ -8,4 +8,4 @@ npm install
 npm run dev -- --port 5173
 ```
 
-로컬에서 5173을 이미 쓰고 있으면 이 명령을 다시 켜지 마세요. 스키마는 `supabase/migrations/`.
+5173 포트에 개발 서버가 이미 떠 있으면 그 서버를 그대로 쓰거나 다른 포트를 지정합니다. 스키마는 `supabase/migrations/`에 있습니다.

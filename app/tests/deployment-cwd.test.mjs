@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
+import { readFile } from "node:fs/promises";
 import { createServer } from "node:net";
 import { test } from "node:test";
 import path from "node:path";
+
+import { isWtiMarketSnapshot } from "../app/lib/types.ts";
 
 /** 앱 패키지 루트 경로. */
 const appRoot = path.resolve(import.meta.dirname, "..");
@@ -15,6 +18,8 @@ const serveEntrypoint = path.join(
   appRoot,
   "node_modules/@react-router/serve/bin.cjs",
 );
+/** 공개 WTI 관측 스냅샷 경로. */
+const marketSnapshotPath = path.join(appRoot, "public/wti-market-snapshot.json");
 
 /**
  * 테스트 서버에 사용할 빈 로컬 포트를 찾는다.
@@ -99,7 +104,31 @@ async function waitForResponse(url, child, output) {
   throw new Error(`server did not respond within 10 seconds\n${output.join("")}`);
 }
 
-test("serves the home route when started from the repository root", async () => {
+test("rejects malformed WTI market snapshots without throwing", async () => {
+  const valid = JSON.parse(await readFile(marketSnapshotPath, "utf8"));
+  assert.equal(isWtiMarketSnapshot(valid), true);
+
+  const nullBar = structuredClone(valid);
+  nullBar.bars = [null];
+  assert.equal(isWtiMarketSnapshot(nullBar), false);
+
+  const outOfRange = structuredClone(valid);
+  outOfRange.volatility.rv5ReferencePercentile = 150;
+  assert.equal(isWtiMarketSnapshot(outOfRange), false);
+
+  const missingProvenance = structuredClone(valid);
+  delete missingProvenance.provenance;
+  assert.equal(isWtiMarketSnapshot(missingProvenance), false);
+});
+
+test("serves the public evidence brief routes from the repository root", async () => {
+  const marketSnapshot = JSON.parse(await readFile(marketSnapshotPath, "utf8"));
+  const score = Math.round(marketSnapshot.volatility.rv5ReferencePercentile);
+  const band = score < 25 ? "안정" : score < 50 ? "보통" : score < 75 ? "고조" : "급변";
+  assert.ok(score >= 0 && score <= 100);
+  assert.equal(marketSnapshot.bars.at(-1).date, marketSnapshot.asOf);
+  assert.ok(marketSnapshot.freshnessPolicy.maxCheckAgeHours > 0);
+  assert.ok(marketSnapshot.freshnessPolicy.maxBarAgeDays > 0);
   const port = await findFreePort();
   const output = [];
   const child = spawn(process.execPath, [serveEntrypoint, serverEntrypoint], {
@@ -111,14 +140,45 @@ test("serves the home route when started from the repository root", async () => 
   child.stderr.on("data", (chunk) => output.push(String(chunk)));
 
   try {
-    const response = await waitForResponse(`http://127.0.0.1:${port}/`, child, output);
+    const baseUrl = `http://127.0.0.1:${port}`;
+    const response = await waitForResponse(`${baseUrl}/`, child, output);
     assert.equal(response.status, 200, output.join(""));
     const body = await response.text();
-    assert.match(
-      body,
-      /<span>snapshot<\/span>/,
-      "expected the rendered data source to be snapshot",
+    assert.match(body, /data-source="Yahoo Finance"/);
+    assert.ok(
+      body.includes(`WTI 5거래일 실현변동성 백분위 ${score}, ${band}`),
+      "gauge must render the checked-in market snapshot percentile and matching band",
     );
+    const checkedAtKst = new Date(
+      Date.parse(marketSnapshot.checkedAt) + 9 * 60 * 60 * 1_000,
+    );
+    const expectedCheckedAt = `${checkedAtKst.toISOString().slice(0, 16).replace("T", " ")} KST`;
+    assert.ok(
+      body.includes(expectedCheckedAt),
+      "server and browser must share one deterministic KST timestamp",
+    );
+    assert.match(body, /방향이 아니라 움직임의 크기입니다/);
+    assert.doesNotMatch(body, /<form\b/i, "public home must not expose news CRUD forms");
+
+    const research = await fetch(`${baseUrl}/research`);
+    assert.equal(research.status, 200);
+    const researchBody = await research.text();
+    assert.match(researchBody, /48개/);
+    assert.match(researchBody, /통과 0개/);
+
+    const legacyGet = await fetch(`${baseUrl}/backtest`, { redirect: "manual" });
+    assert.equal(legacyGet.status, 308);
+    assert.equal(legacyGet.headers.get("location"), "/research");
+
+    const legacyPost = await fetch(`${baseUrl}/backtest`, {
+      method: "POST",
+      body: new URLSearchParams(),
+      redirect: "manual",
+    });
+    assert.equal(legacyPost.status, 400);
+    const legacyPostBody = await legacyPost.text();
+    assert.match(legacyPostBody, /백테스트를 실행할 수 없습니다/);
+    assert.match(legacyPostBody, /<h1[^>]*>백테스트는 로컬에서 진행합니다\.<\/h1>/);
   } finally {
     await stop(child);
   }

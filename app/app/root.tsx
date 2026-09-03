@@ -10,7 +10,12 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
+/** 문서 머리글에 넣는 글꼴과 파비콘 링크. */
 export const links: Route.LinksFunction = () => [
+  {
+    rel: "icon",
+    href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23000d09'/%3E%3Cpath d='M14 12v40h36' fill='none' stroke='%23eba83b' stroke-width='8'/%3E%3C/svg%3E",
+  },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
