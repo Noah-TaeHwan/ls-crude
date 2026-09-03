@@ -55,7 +55,7 @@
 | 024 | Chuseok Effect | — | — | HOLD |
 | 025 | Korean Refinery Margin Watch | — | — | HOLD |
 | 026 | Retail FX Surge Index | — | — | REJECTED — 개인 FX 데이터 |
-| 027 | Incheon Transit Surge | — | — | HOLD |
+| 027 | Incheon Transit Surge | -0.332 | +0.530 | REJECTED — IS/OOS 부호 반전 |
 | 028 | Pohang Refinery Idle Watch | — | — | REJECTED — 원안 전제 오류 |
 | 029 | Duty-Free Diesel Dash | — | — | ARCHIVED — 027 하위 |
 | 030 | Instant Noodle Panic Index | — | — | HOLD |
@@ -108,7 +108,7 @@
 | 024 | [Chuseok Effect](024-chuseok-effect/README.md) | 국내 이동·수요 계절 맥락 | **HOLD** — 달력 자체는 알려진 계절성. 공개 집계 서프라이즈만 검토 가능 | 0.0 |
 | 025 | [Korean Refinery Margin Watch](025-korean-refinery-margin-watch/README.md) | 한국 정유 전가·마진 프록시 | **HOLD** — 공개 월간 프록시의 물리 경로는 있음; 실제 주간 crack 시계열 미확보 | 0.0 |
 | 026 | [Retail FX Surge Index](026-retail-fx-surge-index/README.md) | 아이디어 보존 | **REJECTED** — 개인·은행 고객 FX 흐름은 수집·검증 불가 | 0.0 |
-| 027 | [Incheon Transit Surge](027-incheon-transit-surge/README.md) | 항공 수요 nowcast 후보 | **HOLD** — 월간 집계는 가능하나 중국 국적·환승 분리와 WTI 연결 미검증 | 0.0 |
+| 027 | [Incheon Transit Surge](027-incheon-transit-surge/README.md) | 항공 수요 nowcast 후보 | 공식 환승여객: IS `r=-0.332`, OOS `r=+0.530`; 부호 반전으로 WTI 알파 미통과 | 0.0 |
 | 028 | [Pohang Refinery Idle Watch](028-pohang-refinery-idle-watch/README.md) | 아이디어 보존 | **REJECTED** — 원안의 S-Oil 포항 정유소 전제가 사실과 다름; 025로만 맥락 보존 | 0.0 |
 | 029 | [Duty-Free Diesel Dash](029-duty-free-diesel-dash/README.md) | 관광·면세 소비 하위 가설 | **ARCHIVED** — 공개 면세 통계로 중국 관광·물류연료 귀속 불가; 027 하위 가설 | 0.0 |
 | 030 | [Instant Noodle Panic Index](030-instant-noodle-panic-index/README.md) | K-소비재 수출 밈 모니터 | **HOLD** — 관세청 공개 무역 surprise는 시험 가능; HS·국가 바스켓·공개시점 미동결 | 0.0 |
