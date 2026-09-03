@@ -38,7 +38,7 @@ AI 퀀트 4기 팀 프로젝트입니다. 야후파이낸스에서 WTI 선물(`C
 | 인/아웃샘플 | `.cursor/skills/running-sample-splits` |
 | 조사 덤프·노트·출처 | `.cursor/skills/gathering-research-intake`, [`research/INTAKE.md`](research/INTAKE.md) |
 
-자세한 설계: [`docs/research-design.md`](docs/research-design.md), [`docs/slice-index.md`](docs/slice-index.md). 수집 흐름: [`docs/research-gathering.md`](docs/research-gathering.md), [`research/INTAKE.md`](research/INTAKE.md). 조사: [`research/notebooks/pizza-hunt.md`](research/notebooks/pizza-hunt.md), [`docs/experiments/`](docs/experiments/README.md). 맥락: [`docs/context.md`](docs/context.md). 아이디어 메모: [`docs/ideation.md`](docs/ideation.md). 에이전트: [`AGENTS.md`](AGENTS.md)
+자세한 설계: [`docs/research-design.md`](docs/research-design.md), [`docs/slice-index.md`](docs/slice-index.md). 수집 흐름: [`docs/research-gathering.md`](docs/research-gathering.md), [`research/INTAKE.md`](research/INTAKE.md). 조사: [`research/notebooks/pizza-hunt.md`](research/notebooks/pizza-hunt.md), [`docs/experiments/`](docs/experiments/README.md). 로컬 분석 준비·백테스트 인계: [`docs/local-backtest.md`](docs/local-backtest.md). 맥락: [`docs/context.md`](docs/context.md). 아이디어 메모: [`docs/ideation.md`](docs/ideation.md). 에이전트: [`AGENTS.md`](AGENTS.md)
 
 ## 저장소
 
@@ -72,4 +72,4 @@ npm install
 npm run dev -- --port 5173
 ```
 
-로더는 Supabase가 있으면 실제 테이블을 읽고, 없으면 `app/public/baseline-snapshot.json`을 읽습니다. 뉴스는 loader/action으로만 넣고 고칩니다. `/backtest`는 시드·테스트 CSV·식, 인샘플, 잠긴 아웃샘플, 결과 칸입니다. `?sample=1`은 칸 모양을 보는 가짜 숫자입니다. 샘플은 실험 기록에 남기지 않습니다.
+로더는 Supabase가 있으면 실제 테이블을 읽고, 없으면 `app/public/baseline-snapshot.json`을 읽습니다. 뉴스는 loader/action으로만 넣고 고칩니다. `/` 는 공개 신호 관측 데스크입니다. 웹과 저장소에는 실행 가능한 백테스트 진입점이 아직 없습니다. 준비·인계 순서: [`docs/local-backtest.md`](docs/local-backtest.md), 화면 안내는 `/backtest`.
