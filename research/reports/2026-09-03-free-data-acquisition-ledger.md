@@ -37,7 +37,7 @@
 | 024 | 공항·도로공사 집계 | 보류 | 공개시점 포함 장기 surprise 패널 미구축 | 카드 024 |
 | 025 | KNOC 월간 통계 | 보류 | true crack spread가 아닌 월간 프록시만 가능 | 카드 025 |
 | 026 | 없음 | 불가 | 개인·은행 고객 FX 흐름 금지 | 카드 026 |
-| 027 | 인천공항 공식 환승여객 집계 | 수집·검증 | IS `-0.332`, OOS `+0.530`; 구간 부호 반전으로 미통과 | `gathering/raw/2026-09-03-incheon-transit-surge-probe/` |
+| 027 | 인천공항 공식 환승여객 집계 | 수집·검증·구성요소 반증 | 기본 IS `-0.332`, OOS `+0.530`; 5개 운영 구성요소도 반전/소멸 | `gathering/raw/2026-09-03-incheon-transit-surge-probe/`, `2026-09-03-rescue-diagnostics-027-042/` |
 | 028 | 없음 | 불가 | 원안의 포항 S-Oil 정유소 전제가 성립하지 않음 | 카드 028 |
 | 029 | 관세청 면세 집계 | 보류 | 외국인 매출이 관광·차량·디젤 소비를 식별하지 않음 | 카드 029 |
 | 030 | 관세청 HS 무역통계 | 후보 | HS·국가 바스켓·공개시점 동결 후 IS 시험 가능 | 카드 030 |
@@ -57,7 +57,7 @@
 | 045 | SEC Starbucks Company Facts | 수집·검증 | IS `+0.512`, OOS `-0.511`; 전체 매출 프록시가 부호 반전 | `gathering/raw/2026-09-03-iced-americano-heat-index/` |
 | 045 | 서울시 상권분석 커피·음료 업종 | 부분 후보 | 무료 발급키로 전체 행 집계 가능하나 2021년 이후만 제공·공개 sample 키는 5행 제한 | [045 카드](../factors/045-iced-americano-heat-index/README.md) |
 | 046 | Chicago CTA 일별 탑승 합계 | 수집·검증 | IS `-0.267`, OOS `+0.005`; 도시 이동 리듬 관계 소멸 | `gathering/raw/2026-09-03-urban-taxi-tempo-probe/` |
-| 042A | MTA Wall Street 역군 월별 탑승량 | 수집·검증(설명적) | IS `+0.044`, OOS `-0.350`; 부호 반전. 4도시 AFHP 패널은 미구축 | `gathering/raw/2026-09-03-wall-street-district-pulse-probe/` |
+| 042A | MTA Wall Street 역군 월별 탑승량 | 수집·검증(설명적)·구성요소 반증 | 기본 IS `+0.044`, OOS `-0.350`; 4개 구성요소도 반전/소멸. 4도시 AFHP 패널은 미구축 | `gathering/raw/2026-09-03-wall-street-district-pulse-probe/`, `2026-09-03-rescue-diagnostics-027-042/` |
 
 ## 다음 실행 순서
 

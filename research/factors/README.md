@@ -55,7 +55,7 @@
 | 024 | Chuseok Effect | — | — | HOLD |
 | 025 | Korean Refinery Margin Watch | — | — | HOLD |
 | 026 | Retail FX Surge Index | — | — | REJECTED — 개인 FX 데이터 |
-| 027 | Incheon Transit Surge | -0.332 | +0.530 | REJECTED — IS/OOS 부호 반전 |
+| 027 | Incheon Transit Surge | -0.332 | +0.530 | REJECTED — 구성요소도 반전/소멸 |
 | 028 | Pohang Refinery Idle Watch | — | — | REJECTED — 원안 전제 오류 |
 | 029 | Duty-Free Diesel Dash | — | — | ARCHIVED — 027 하위 |
 | 030 | Instant Noodle Panic Index | — | — | HOLD |
@@ -70,7 +70,7 @@
 | 039 | U.S. Gasoline Demand Surprise | -0.005 | -0.009 | REJECTED — 관계 없음 |
 | 040 | SPR Injection Watch | +0.051 | -0.455 | REJECTED — 부호 반전 |
 | 041 | Refinery Utilization Proxy | -0.206 | -0.011 | REJECTED — OOS 소멸 |
-| 042 | Asia Financial Hub Pulse | +0.044 | -0.350 | HOLD — 042A 단일도시 부호 반전; 4도시 패널 미구축 |
+| 042 | Asia Financial Hub Pulse | +0.044 | -0.350 | REJECTED for 042A — 구성요소도 미통과; 4도시 패널 미구축 |
 | 043 | Overtime Latte Index | — | — | HOLD — 소비 패널 없음 |
 | 044 | AI Burn Rate Index | -0.181 | -0.041 | REJECTED — OOS 소멸 |
 | 045 | Iced Americano Heat Index | +0.512 | -0.511 | REJECTED — 부호 반전 |
@@ -108,7 +108,7 @@
 | 024 | [Chuseok Effect](024-chuseok-effect/README.md) | 국내 이동·수요 계절 맥락 | **HOLD** — 달력 자체는 알려진 계절성. 공개 집계 서프라이즈만 검토 가능 | 0.0 |
 | 025 | [Korean Refinery Margin Watch](025-korean-refinery-margin-watch/README.md) | 한국 정유 전가·마진 프록시 | **HOLD** — 공개 월간 프록시의 물리 경로는 있음; 실제 주간 crack 시계열 미확보 | 0.0 |
 | 026 | [Retail FX Surge Index](026-retail-fx-surge-index/README.md) | 아이디어 보존 | **REJECTED** — 개인·은행 고객 FX 흐름은 수집·검증 불가 | 0.0 |
-| 027 | [Incheon Transit Surge](027-incheon-transit-surge/README.md) | 항공 수요 nowcast 후보 | 공식 환승여객: IS `r=-0.332`, OOS `r=+0.530`; 부호 반전으로 WTI 알파 미통과 | 0.0 |
+| 027 | [Incheon Transit Surge](027-incheon-transit-surge/README.md) | 항공 수요 nowcast 후보 | 5개 운영 구성요소도 반전/소멸. 최고 IS 절대이상치 `+0.370` → 사후구간 `-0.562` | 0.0 |
 | 028 | [Pohang Refinery Idle Watch](028-pohang-refinery-idle-watch/README.md) | 아이디어 보존 | **REJECTED** — 원안의 S-Oil 포항 정유소 전제가 사실과 다름; 025로만 맥락 보존 | 0.0 |
 | 029 | [Duty-Free Diesel Dash](029-duty-free-diesel-dash/README.md) | 관광·면세 소비 하위 가설 | **ARCHIVED** — 공개 면세 통계로 중국 관광·물류연료 귀속 불가; 027 하위 가설 | 0.0 |
 | 030 | [Instant Noodle Panic Index](030-instant-noodle-panic-index/README.md) | K-소비재 수출 밈 모니터 | **HOLD** — 관세청 공개 무역 surprise는 시험 가능; HS·국가 바스켓·공개시점 미동결 | 0.0 |
@@ -123,7 +123,7 @@
 | 039 | [U.S. Gasoline Demand Surprise](039-us-gasoline-demand-surprise/README.md) | 공개 수요·변동성 후보 | IS `r=-0.005`, OOS `r=-0.009`; 관계 없음 | 0.0 |
 | 040 | [SPR Injection Watch](040-spr-injection-watch/README.md) | 공개 정책·변동성 후보 | IS `r=+0.051`, OOS `r=-0.455`; 부호 반전 | 0.0 |
 | 041 | [Refinery Utilization Proxy](041-refinery-utilization-proxy/README.md) | 정유 운영·변동성 후보 | IS `r=-0.206`, OOS `r=-0.011`; OOS 미통과 | 0.0 |
-| 042 | [Asia Financial Hub Pulse](042-asia-financial-hub-pulse/README.md) | 아시아 금융허브 소비·변동성 후보 | 042A Wall Street 역군: IS `r=+0.044`, OOS `r=-0.350`; 4도시 동질 패널은 여전히 미구축 | 0.0 |
+| 042 | [Asia Financial Hub Pulse](042-asia-financial-hub-pulse/README.md) | 아시아 금융허브 소비·변동성 후보 | 042A 4개 구성요소도 반전/소멸. 4도시 동질 패널은 여전히 미구축 | 0.0 |
 | 043 | [Overtime Latte Index](043-overtime-latte-index/README.md) | 커피/에너지음료 상대 소비·변동성 밈 후보 | 에너지음료 소비의 무료 분리 장기 패널 없음; 소비 대신 무역을 쓰지 않음 | 0.0 |
 | 044 | [AI Burn Rate Index](044-ai-burn-rate-index/README.md) | AI 데이터센터 물리 buildout·변동성 후보 | Data center 건설: IS `r=-0.181`, OOS `r=-0.041`; 구독 레그는 미측정 | 0.0 |
 | 045 | [Iced Americano Heat Index](045-iced-americano-heat-index/README.md) | 카페 소비·도심 레짐 밈 후보 | Starbucks 매출 프록시: IS `r=+0.512`, OOS `r=-0.511`; 부호 반전, 아이스 아메리카노 직접 측정 아님 | 0.0 |

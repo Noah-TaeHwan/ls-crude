@@ -42,7 +42,7 @@
 | 024 | Chuseok Effect | ⬜ `—` | ⬜ `—` | — | — | 달력 자체는 알려진 계절성; 공개 집계 서프라이즈 시계열 미수집 |
 | 025 | Korean Refinery Margin Watch | ⬜ `—` | ⬜ `—` | — | — | 공개 마진 프록시의 정의·공개시점·장기 시계열 미확보 |
 | 026 | Retail FX Surge Index | ⬜ `—` | ⬜ `—` | — | — | 개인·은행 고객 FX 데이터 경계로 분석 제외 |
-| 027 | Incheon Transit Surge | 🟨 `-0.332` | 🟨 `+0.530` | 72 월 | 31 월 | 공식 환승여객 YoY 36개월 z; IS/OOS 부호 반전 |
+| 027 | Incheon Transit Surge | 🟨 `-0.332` | 🟨 `+0.530` | 72 월 | 31 월 | 구성요소·블록 bootstrap도 반전/소멸. 최고 IS 절대이상치 `+0.370`은 사후구간 `-0.562`로 반전 |
 | 028 | Pohang Refinery Idle Watch | ⬜ `—` | ⬜ `—` | — | — | 원안의 S-Oil 포항 정유소 전제가 사실과 달라 분석 제외 |
 | 029 | Duty-Free Diesel Dash | ⬜ `—` | ⬜ `—` | — | — | 면세 매출로 중국 관광·물류연료를 귀속할 수 없어 027 하위 가설로 보존 |
 | 030 | Instant Noodle Panic Index | ⬜ `—` | ⬜ `—` | — | — | HS·국가 바스켓·공개시점 미동결; 공개 월간 무역통계로만 향후 반증 가능 |
@@ -57,7 +57,7 @@
 | 039 | U.S. Gasoline Demand Surprise | 🟨 `-0.005` | 🟨 `-0.009` | 415 주 | 137 주 | 공개 EIA product-supplied 프록시; 양쪽 모두 0 근처 |
 | 040 | SPR Injection Watch | 🟨 `+0.051` | 🟨 `-0.455` | 417 주 | 137 주 | 공개 EIA SPR 변화; IS/OOS 부호 반전 |
 | 041 | Refinery Utilization Proxy | 🟨 `-0.206` | 🟨 `-0.011` | 418 주 | 137 주 | 공개 EIA 전국 가동률; 특정 coker는 아님, OOS 관계 소멸 |
-| 042 | Asia Financial Hub Pulse | 🟨 `+0.044` | 🟨 `-0.350` | 46 월 | 31 월 | 042A 공식 Wall Street 역군 설명적 시험; 부호 반전. 4도시 패널 미구축 |
+| 042 | Asia Financial Hub Pulse | 🟨 `+0.044` | 🟨 `-0.350` | 46 월 | 31 월 | 042A 구성요소 4개도 반전/소멸. 4도시 패널 미구축 |
 | 043 | Overtime Latte Index | ⬜ `—` | ⬜ `—` | — | — | 에너지음료 소비를 단독 분리한 무료 장기 판매 패널이 없음; 무역·검색을 소비로 대체하지 않음 |
 | 044 | AI Burn Rate Index | 🟨 `-0.181` | 🟨 `-0.041` | 83 월 | 29 월 | Census Data center 건설 모멘텀. IS 가설 반대, OOS 관계 소멸; AI 구독 레그 미측정 |
 | 045 | Iced Americano Heat Index | 🟨 `+0.512` | 🟨 `-0.511` | 22 분기 | 12 분기 | Starbucks 최초 SEC 분기매출 YoY 프록시. 아이스 아메리카노 직접 측정 아님; OOS 부호 반전 |
@@ -78,11 +78,13 @@
 | 020 Gulf AC Panic | 걸프 4개 도시 계절조정 고온 이상 → 다음 5일 실현변동성 | r=**-0.066**, n=2,257; 상위 5%−전체 **+0.172%p** | OOS 미실행 | 연속 관계가 반대이며 하위 5%에서 더 높은 변동성. |
 | 022 Korea Gas Pain Index | 12개월 Korea–US 소매 휘발유 스프레드 z-score → 다음 21일 실현변동성 | r=**-0.087**, n=95; z≥+1 월−전체 **+0.233%p**, n=17 | r=**-0.348**, n=31 | OOS도 음수. 환율 전가 대시보드로는 유효하나 변동성 선행성은 미입증. |
 | 027 Incheon Transit Surge | 공식 환승여객 YoY 변화 36개월 z-score → 다음 21거래일 RV | r=**-0.332**, n=72 | r=**+0.530**, n=31 | OOS만 보면 강해 보이지만 IS와 부호가 반전했다. 중국 국적·환승 추정이 아닌 공식 환승여객 집계만 사용했다. |
+| 027 추가 반증 | 환승여객 절대 이상치·항공편·화물·편당 승객 → 다음 21거래일 RV | 최고 IS: 절대 이상치 r=**+0.370**, bootstrap 95% `+0.078..+0.575`; 항공편 r=**-0.439** | 절대 이상치 **-0.562**, 항공편 **-0.057** | 5개 구성요소의 사후 탐색. 최고 IS 사양도 반전, 항공편은 소멸. 새 OOS 검증이 아니다. |
 | 038 Cushing Draw Surprise | Cushing 주간 재고변화 z-score의 음수 → 다음 5일 실현변동성 | r=**-0.142**, n=417 | r=**-0.074**, n=137 | 가설 반대. 컨센서스 surprise가 아닌 공개 재고변화 프록시다. |
 | 039 U.S. Gasoline Demand Surprise | finished gasoline product supplied의 자체 4주 평균 대비 z-score → 다음 5일 실현변동성 | r=**-0.005**, n=415 | r=**-0.009**, n=137 | 양쪽 0 근처. 단순 수요 변동은 변동성 알파가 아니다. |
 | 040 SPR Injection Watch | SPR 주간 순증가 z-score → 다음 5일 실현변동성 | r=**+0.051**, n=417 | r=**-0.455**, n=137 | OOS 절대값은 커도 IS와 부호 반전: 통과 아님. |
 | 041 Refinery Utilization Proxy | 전국 정유 설비 가동률 z-score → 다음 5일 실현변동성 | r=**-0.206**, n=418 | r=**-0.011**, n=137 | 특정 Gulf coker 원안의 프록시일 뿐이며 OOS에서 소멸. |
 | 042A Wall Street District Pulse | 공식 MTA 역군 월별 탑승 YoY 36개월 z-score → 다음 21거래일 RV | r=**+0.044**, n=46 | r=**-0.350**, n=31 | 4도시 AFHP가 아닌 단일도시 설명적 시험. 과거 release vintage가 없어 관측월 말+45일 보수적 지연을 사용했고, 부호 반전으로 기각. |
+| 042A 추가 반증 | 역군 출입·환승·환승비중 구성요소 → 다음 21거래일 RV | -0.123~+0.044, n=46 | +0.029~+0.350, n=31 | 4개 구성요소 중 IS·사후구간 모두 통과한 것은 0개. 단일도시 프로브를 살릴 근거 없음. |
 | 044 AI Burn Rate Index | Census data-center 건설지출 전월변화 z-score → 다음 21일 실현변동성 | r=**-0.181**, n=83 | r=**-0.041**, n=29 | 물리 buildout만 측정. 구독률이 아니며, IS 반대·OOS 관계 소멸. |
 | 045 Iced Americano Heat Index | Starbucks 최초 SEC 분기매출 YoY → 다음 21일 실현변동성 | r=**+0.512**, n=22 | r=**-0.511**, n=12 | 대표 카페 체인 전체 매출 프록시일 뿐. 부호 반전이라 채택 불가. |
 | 046 Urban Mobility Tempo | CTA 일별 총 탑승 동일요일 z-score → 다음 5일 실현변동성 | r=**-0.267**, n=3,287 | r=**+0.005**, n=912 | 택시·버스·플랫폼·도보 마찰 원안의 익명 집계판. OOS 소멸. |
