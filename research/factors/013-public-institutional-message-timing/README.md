@@ -36,4 +36,4 @@
 
 ## 패키지 보존
 
-`016-khutbah_signal.zip`과 `015-mosque_sermon_oil_signal/`은 합성 데모 원본으로 보존한다. 이전 구현 설명은 [`archive/016-khutbah-signal.md`](archive/016-khutbah-signal.md)에 남긴다.
+`legacy/`에 합성 데모 원본을 보존한다. 이전 구현 설명은 [`archive/016-khutbah-signal.md`](../archive/016-khutbah-signal.md)에 남긴다.

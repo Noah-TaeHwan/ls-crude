@@ -1,6 +1,6 @@
 # Archive — 이전 014: OU-HMM Regime-Switching Pairs Strategy Research
 
-> **정리 후 위치**: 현재 [012 Energy Futures Pairs StatArb](../012-energy-futures-pairs-statarb.md)의 모델 변형 기록이다. 이 문서는 이전 번호의 원안을 보존한다.
+> **정리 후 위치**: 현재 [012 Energy Futures Pairs StatArb](../012-energy-futures-pairs-statarb/README.md)의 모델 변형 기록이다. 이 문서는 이전 번호의 원안을 보존한다.
 
 **상태**: 📋 **시장중립 StatArb 연구** — Oil Pizza에 더하는 팩터가 아니다.
 **원본 패키지**: `014-ou_hmm_oil_pairs/` 및 `014-ou_hmm_oil_pairs.zip`

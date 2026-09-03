@@ -15,12 +15,12 @@
 research/
 ├── factors/                          # 팩터 시스템 (핵심)
 │   ├── README.md                     # 팩터 요약 & 로드맵
-│   ├── 001-pentagon-ubereats.md      # 💡 아이디어 (SKIP)
-│   ├── 002-whale-index.md            # 📋 고래 포지셔닝
-│   ├── 003-truth-social.md           # ✅ 트럼프 발언 (구현됨)
-│   ├── 004-renewable-displacement.md # 📋 재생에너지 대체
-│   ├── 005-financial-demand.md       # 🔬 기업 재무 ML (R&D)
-│   └── 006-wholesale-logistics.md    # 🟢 물류 활동 (즉시!)
+│   ├── 001-pentagon-ubereats/        # 💡 아이디어 (SKIP)
+│   ├── 002-whale-index/              # 📋 고래 포지셔닝
+│   ├── 003-truth-social/             # ✅ 트럼프 발언 (구현됨)
+│   ├── 004-renewable-displacement/   # 📋 재생에너지 대체
+│   ├── 005-financial-demand/         # 🔬 기업 재무 ML (R&D)
+│   └── 006-wholesale-logistics/      # 🟢 물류 활동 (즉시!)
 │
 ├── VISUALIZATION.md                  # 💓 Oil Pulse UI/UX 설계
 ├── INDEX.md                          # 이 파일
@@ -140,7 +140,7 @@ else:                     signal = "STRONG SHORT" 🔴
 
 ### 🟢 즉시 추천 (1개) ← 지금 시작!
 
-**→ `factors/006-wholesale-logistics.md` 참고**
+**→ `factors/006-wholesale-logistics/README.md` 참고**
 
 ```
 Cass Freight Index (50%)
@@ -165,7 +165,7 @@ Cass Freight Index (50%)
 
 ### 💡 SKIP (1개)
 
-**→ `factors/001-pentagon-ubereats.md` 참고**
+**→ `factors/001-pentagon-ubereats/README.md` 참고**
 
 데이터 접근 불가능 (UberEats API 없음)
 
@@ -281,7 +281,7 @@ Cass Freight Index (50%)
 | 파일 | 내용 | 다음 |
 |------|------|------|
 | **factors/README.md** | 팩터 시스템 전체 개요 | 개별 팩터 파일 |
-| **factors/006-wholesale-logistics.md** | 🟢 지금 시작할 것 | Phase 1 코딩 |
+| **factors/006-wholesale-logistics/README.md** | 🟢 지금 시작할 것 | Phase 1 코딩 |
 | **VISUALIZATION.md** | Oil Pulse 설계 | UI 프로토타입 |
 
 ### 기존 코드
@@ -373,4 +373,4 @@ Cass Freight Index (50%)
 
 ---
 
-**다음 단계**: `factors/006-wholesale-logistics.md` 읽고 시작! 🟢
+**다음 단계**: `factors/006-wholesale-logistics/README.md` 읽고 시작! 🟢

@@ -37,4 +37,4 @@
 
 - Gasoil Crack 논문·원본 패키지는 `013-factor_oil_pairs_go_crack/`에 보존한다.
 - OU-HMM 논문·코드·합성 데모는 `014-ou_hmm_oil_pairs/`에 보존한다.
-- 이전 번호 설명은 [`archive/014-ou-hmm-oil-pairs.md`](archive/014-ou-hmm-oil-pairs.md)에 남긴다.
+- 이전 번호 설명은 [`archive/014-ou-hmm-oil-pairs.md`](../archive/014-ou-hmm-oil-pairs.md)에 남긴다.

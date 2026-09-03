@@ -22,4 +22,4 @@
 ## 참고
 
 - [IMO AIS security guidance](https://www.imo.org/en/ourwork/safety/pages/ais.aspx)
-- [017 Maritime Supply Activity](../017-maritime-supply-activity.md)
+- [017 Maritime Supply Activity](../017-maritime-supply-activity/README.md)

@@ -21,26 +21,26 @@
 
 | # | 카드 | 역할 | 현재 검증 결론 | Oil Pizza |
 | --- | --- | --- | --- | ---: |
-| 001 | [MENA Civilian Delivery](001-pentagon-ubereats.md) | 수요 후보 | 원 Pentagon 가설은 **WITHDRAWN**. 민간 익명 집계가 없어 0.1% 검증 불가 | 0.0 |
-| 002 | [Global Crypto Liquidity Stress](002-whale-index.md) | 변동성 후보 | 고래·국가 귀속 불가. 적법한 장기 집계 시계열 전에는 검증 불가 | 0.0 |
-| 003 | [Trump Temper & Oil Policy](003-truth-social.md) | 공개 텍스트 후보 | 5일 변동성: IS `r=0.000`, OOS `r=+0.164`; IS 부재·플랫폼 단절로 통과 아님 | 0.0 |
-| 004 | [Transport Electrification](004-renewable-displacement.md) | 중기 수요 후보 | 다음 연도 변동성 IS `r=+0.157`, n=7; OOS n=2라 알파 근거 아님 | 0.0 |
-| 005 | [Financial Demand](005-financial-demand.md) | 기업 재무 아이디어 | **SKIP** — 물리 수요 경로·고유성이 없음 | 0.0 |
-| 006 | [Wholesale Logistics](006-wholesale-logistics.md) | 실물 수요 아이디어 | **SKIP** — EIA 주간 자료보다 느리고 고유 알파 없음 | 0.0 |
-| 007 | [MENA Elite Mobility](007-doomsday-bunker-index.md) | 지정학 리스크 후보 | 비식별 복수기관 집계가 없어 검증 불가 | 0.0 |
-| 008 | [Hyperliquid Capital Flow](008-hyperliquid-capital-flow.md) | 설명적 모니터 | **monitor only** — 귀속 불가·역사 부족·고유성 없음 | 0.0 |
-| 009 | [Iran FX Stress](009-iran-middleeast-premium.md) | 현지 스트레스 후보 | 5일 변동성 IS `r=-0.003`, OOS `r=-0.002`; 관계 없음 | 0.0 |
-| 010 | [Official Petroleum Buffer & Public Supply Policy](010-official-petroleum-buffer.md) | 변동성 후보 | 5일 변동성 IS `r=-0.187`; 가설 방향을 지지하지 못함 | 0.0 |
-| 011 | [Energy Workforce Momentum](011-energy-workforce-momentum.md) | 중기 공급 후보 | 핵심 구성요소의 공개·재현 시계열 부족 | 0.0 |
-| 012 | [Energy Futures Pairs StatArb](012-energy-futures-pairs-statarb.md) | 시장중립 전략 | 계약별 허가 데이터·비용·워크포워드가 없어 재현 성과 없음 | — |
-| 013 | [Public Institutional Message Timing](013-public-institutional-message-timing.md) | 변동성 후보 | 설교·공개담화는 느린 뉴스 재반영일 가능성이 높음. **0.1% 알파 미확인** | 0.0 |
-| 014 | [Pipeline Noise](014-pipeline-noise-signal.md) | 물리 리스크 후보 | 공개 관측소가 파이프라인 상태를 식별한다는 근거 없음 | 0.0 |
-| 015 | [Luxury ICE Road Appetite](015-luxury-ice-road-appetite.md) | 밈·소비 관측 | 측정 불가 또는 느린·중복 프록시. **거래 알파 아님** | 0.0 |
-| 016 | [Desert Operational Stress](016-desert-operational-stress.md) | 밈·기상 운영 후보 | 기상은 예보되고 운영 차질은 후행 확인. **독립 알파 미확인** | 0.0 |
-| 017 | [Maritime Supply Activity](017-maritime-supply-activity.md) | 해상 물류·변동성 후보 | 물리 경로는 있으나 선박별 AIS 추적은 금지, 집계형 장기 데이터도 미확인 | 0.0 |
-| 018 | [Refinery Thermal & Flare](018-refinery-thermal-flare.md) | 정유 운영·변동성 후보 | 공개 열 이상은 실제 관측 가능. 단, 가동률·WTI 알파는 아직 미검증 | 0.0 |
-| 019 | [Robotaxi Night Traffic](019-robotaxi-night-traffic-archive.md) | 아이디어 보존 | **REJECTED** — 개인정보·데이터 적격성·인과 문제 | 0.0 |
-| 020 | [Gulf AC Panic](020-gulf-ac-panic.md) | 밈·전력 운영 후보 | 5일 변동성 IS `r=-0.066`; 전력·정전 일별 공개 시계열도 없음 | 0.0 |
+| 001 | [MENA Civilian Delivery](001-pentagon-ubereats/README.md) | 수요 후보 | 원 Pentagon 가설은 **WITHDRAWN**. 민간 익명 집계가 없어 0.1% 검증 불가 | 0.0 |
+| 002 | [Global Crypto Liquidity Stress](002-whale-index/README.md) | 변동성 후보 | 고래·국가 귀속 불가. 적법한 장기 집계 시계열 전에는 검증 불가 | 0.0 |
+| 003 | [Trump Temper & Oil Policy](003-truth-social/README.md) | 공개 텍스트 후보 | 5일 변동성: IS `r=0.000`, OOS `r=+0.164`; IS 부재·플랫폼 단절로 통과 아님 | 0.0 |
+| 004 | [Transport Electrification](004-renewable-displacement/README.md) | 중기 수요 후보 | 다음 연도 변동성 IS `r=+0.157`, n=7; OOS n=2라 알파 근거 아님 | 0.0 |
+| 005 | [Financial Demand](005-financial-demand/README.md) | 기업 재무 아이디어 | **SKIP** — 물리 수요 경로·고유성이 없음 | 0.0 |
+| 006 | [Wholesale Logistics](006-wholesale-logistics/README.md) | 실물 수요 아이디어 | **SKIP** — EIA 주간 자료보다 느리고 고유 알파 없음 | 0.0 |
+| 007 | [MENA Elite Mobility](007-doomsday-bunker-index/README.md) | 지정학 리스크 후보 | 비식별 복수기관 집계가 없어 검증 불가 | 0.0 |
+| 008 | [Hyperliquid Capital Flow](008-hyperliquid-capital-flow/README.md) | 설명적 모니터 | **monitor only** — 귀속 불가·역사 부족·고유성 없음 | 0.0 |
+| 009 | [Iran FX Stress](009-iran-middleeast-premium/README.md) | 현지 스트레스 후보 | 5일 변동성 IS `r=-0.003`, OOS `r=-0.002`; 관계 없음 | 0.0 |
+| 010 | [Official Petroleum Buffer & Public Supply Policy](010-official-petroleum-buffer/README.md) | 변동성 후보 | 5일 변동성 IS `r=-0.187`; 가설 방향을 지지하지 못함 | 0.0 |
+| 011 | [Energy Workforce Momentum](011-energy-workforce-momentum/README.md) | 중기 공급 후보 | 핵심 구성요소의 공개·재현 시계열 부족 | 0.0 |
+| 012 | [Energy Futures Pairs StatArb](012-energy-futures-pairs-statarb/README.md) | 시장중립 전략 | 계약별 허가 데이터·비용·워크포워드가 없어 재현 성과 없음 | — |
+| 013 | [Public Institutional Message Timing](013-public-institutional-message-timing/README.md) | 변동성 후보 | 설교·공개담화는 느린 뉴스 재반영일 가능성이 높음. **0.1% 알파 미확인** | 0.0 |
+| 014 | [Pipeline Noise](014-pipeline-noise-signal/README.md) | 물리 리스크 후보 | 공개 관측소가 파이프라인 상태를 식별한다는 근거 없음 | 0.0 |
+| 015 | [Luxury ICE Road Appetite](015-luxury-ice-road-appetite/README.md) | 밈·소비 관측 | 측정 불가 또는 느린·중복 프록시. **거래 알파 아님** | 0.0 |
+| 016 | [Desert Operational Stress](016-desert-operational-stress/README.md) | 밈·기상 운영 후보 | 기상은 예보되고 운영 차질은 후행 확인. **독립 알파 미확인** | 0.0 |
+| 017 | [Maritime Supply Activity](017-maritime-supply-activity/README.md) | 해상 물류·변동성 후보 | 물리 경로는 있으나 선박별 AIS 추적은 금지, 집계형 장기 데이터도 미확인 | 0.0 |
+| 018 | [Refinery Thermal & Flare](018-refinery-thermal-flare/README.md) | 정유 운영·변동성 후보 | 공개 열 이상은 실제 관측 가능. 단, 가동률·WTI 알파는 아직 미검증 | 0.0 |
+| 019 | [Robotaxi Night Traffic](019-robotaxi-night-traffic-archive/README.md) | 아이디어 보존 | **REJECTED** — 개인정보·데이터 적격성·인과 문제 | 0.0 |
+| 020 | [Gulf AC Panic](020-gulf-ac-panic/README.md) | 밈·전력 운영 후보 | 5일 변동성 IS `r=-0.066`; 전력·정전 일별 공개 시계열도 없음 | 0.0 |
 | 021 | [Kimchi Heat Index](021-kimchi-heat-index/README.md) | 한국 식탁 물가·기후 밈 모니터 | **IDEA ARCHIVED / HOLD** — 유가 타깃으로 미검증. KAMIS 수집 명세만 등록 | 0.0 |
 | 022 | [Korea Gas Pain Index](022-korea-us-fuel-transmission-spread/README.md) | 한국 소비자 연료 전가·환율 대시보드 | 21일 변동성 IS `r=-0.087`, n=95; OOS `r=-0.348`, n=31. 원유 알파 아님 | 0.0 |
 | 023 | [Jeju Strait Watch](023-jeju-strait-watch/README.md) | 해상 리스크 아이디어 보존 | **REJECTED** — 선박별 AIS·보안 경계 및 017과 중복 | 0.0 |
@@ -88,6 +88,6 @@ Market-neutral strategy (012)
 - [`archive/014-ou-hmm-oil-pairs.md`](archive/014-ou-hmm-oil-pairs.md): 012의 OU-HMM 모델 변형 기록이다.
 - [`archive/016-khutbah-signal.md`](archive/016-khutbah-signal.md): 013의 합성 데모 패키지 설명이다.
 - [`archive/020-sandstorm-visibility-gulf-operations.md`](archive/020-sandstorm-visibility-gulf-operations.md): 016의 모래폭풍 하위 사례 기록이다.
-- [019 Robotaxi Night Traffic](019-robotaxi-night-traffic-archive.md): 데이터 수집·백테스트에는 쓰지 않는 보존 아이디어다.
+- [019 Robotaxi Night Traffic](019-robotaxi-night-traffic-archive/README.md): 데이터 수집·백테스트에는 쓰지 않는 보존 아이디어다.
 
 압축 원본 패키지는 번호와 무관하게 그대로 보존한다. 합성 데이터 데모의 상관·적중률은 실증 결과가 아니다.
