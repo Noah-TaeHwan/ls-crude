@@ -1,6 +1,6 @@
-# 019 — OPEC Camel Index / Desert Operational Stress
+# 016 — Desert Operational Stress (OPEC Camel Index)
 
-**상태**: 🐫 **MEME + HOLD** — Camel Index는 서사·UI 레이어, 실제 연구 후보는 Desert Heat & Operational Stress.
+**상태**: 🐫 **MEME / SKIP as alpha** — Camel Index는 서사·UI 레이어다. 이전 020 Sandstorm Visibility는 이 카드의 모래폭풍 하위 사례로 병합했다.
 **Oil Pizza 가중치**: `0.0`.
 
 ## 밈 원안
@@ -30,6 +30,23 @@ Rystad Energy가 2023년에 Camel Index를 만들었다는 주장, 도하 냉각
 ```
 
 기상 스트레스가 OPEC 정책을 예측하거나 유가를 올린다는 뜻은 아니다. 실제 공급·정책·수요 충격과 함께 나타나는 물리적 운영 부담을 탐색하는 **변동성 레짐 후보**다.
+
+## 병합된 모래폭풍 원안 (이전 020)
+
+> “When the dust flies, the oil trades.”
+
+Sandstorm Sentiment Index는 UI 카피로 보존한다. 다만 `storm area × AIS loss × social panic` 같은 점수는 사용하지 않는다. AIS 결측은 수신망·장비·커버리지·의도적 비송신을 구분하지 못하고, 소셜 반응은 봇·시차·접근권 문제를 가진다.
+
+기록 가능한 최소 단위는 점수가 아니라 다음 세 개의 분리된 플래그다.
+
+```text
+storm_exposure_flag
+official_operational_disruption_flag
+observation_quality_flag
+published_at
+```
+
+폭풍은 예보 가능한 기상 사건이며, 공항·항만·정유 운영 차질은 공개 확인 뒤에야 알 수 있다. 그러므로 모래폭풍은 독립적 공급 차질이나 WTI 매수 신호로 해석하지 않는다.
 
 ## 공개 입력과 역할
 
@@ -72,7 +89,7 @@ Oil Pizza: 0.0%
 
 ## 결론
 
-019는 유머와 기억성을 가진 훌륭한 **스토리 팩터**다. 실증 후보는 낙타가 아니라 Desert Operational Stress이며, 데이터 적격성·발표시점·인샘플 검증 전까지 `HOLD`와 `0.0` 가중치다.
+016은 유머와 기억성을 가진 훌륭한 **스토리 팩터**다. 그러나 극한 기상은 사전 예보되고, 실제 항만·공항·정유 운영 차질은 사후 공개 확인된다. 따라서 **0.1% 이상의 독립적·재현 가능한 WTI 알파는 없으며**, 가중치 `0.0`의 UI·사후 운영 맥락으로만 보존한다.
 
 ## 참고 출처
 

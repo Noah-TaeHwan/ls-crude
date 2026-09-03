@@ -1,4 +1,6 @@
-# 020 — Sandstorm Visibility & Gulf Operations Index (SSI)
+# Archive — 이전 020: Sandstorm Visibility & Gulf Operations Index (SSI)
+
+> **정리 후 위치**: 현재 [016 Desert Operational Stress](../016-desert-operational-stress.md)의 모래폭풍·시정 하위 사례다. 이 문서는 이전 번호의 원안을 보존한다.
 
 **상태**: 🌪️ **MEME + HOLD** — 모래폭풍 그 자체가 아니라, 공개적으로 확인된 가시성·운영 차질의 변동성 레짐 가설.
 **Oil Pizza 가중치**: `0.0`.

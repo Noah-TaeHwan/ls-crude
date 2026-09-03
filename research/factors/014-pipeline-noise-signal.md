@@ -1,7 +1,9 @@
-# 017 — Pipeline Noise & Public Seismic Proxy Signal
+# 014 — Pipeline Noise & Public Seismic Proxy Signal
 
 **상태**: ⏸️ **HOLD** — 물리적 조기경보 가설은 흥미롭지만, 공개 관측소 자료로 파이프라인 이상을 식별할 수 있는지 미확인.
 **원본 패키지**: `017-pipeline_noise_signal.zip`
+
+**번호 변경 기록**: 이전 017. 원안 패키지명은 재현성을 위해 유지한다.
 
 ## 가설
 

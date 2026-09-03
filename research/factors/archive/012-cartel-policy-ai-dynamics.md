@@ -1,4 +1,6 @@
-# 012 — Cartel Policy, Strategic Stocks & Information-Speed Candidates
+# Archive — 이전 012: Cartel Policy, Strategic Stocks & Information-Speed Candidates
+
+> **정리 후 위치**: 012A 전략비축 정책은 현재 [010](../010-official-petroleum-buffer.md)에 병합했다. 012B 공개 OPEC 정책은 사건/통제, 012C AI 처리속도는 연구 인프라로 보존한다. 이 문서는 이전 번호의 원안을 보존한 기록이다.
 
 **상태**: ⏸️ **HOLD / 분해 필요** — 하나의 팩터가 아니라 세 개의 독립 가설 묶음이다.
 **Oil Pizza 가중치**: `0.0`.

@@ -1,6 +1,6 @@
-# 018 — Luxury ICE Road Appetite Index
+# 015 — Luxury ICE Road Appetite Index
 
-**상태**: 💡 **IDEA + HOLD** — 원안은 보존한다. 측정 가능한 하위 후보만 검증하고, 아직 Oil Pizza 가중치는 `0.0`이다.
+**상태**: 💡 **IDEA / SKIP as alpha** — 원안은 보존한다. 측정 가능한 프록시도 고유 거래 알파로는 채택하지 않는다.
 
 ## 원안: 밈이지만 남길 가치가 있는 질문
 
@@ -12,16 +12,16 @@
 
 | 하위 후보 | 원래 질문 | 현재 데이터 판정 | 상태 |
 | --- | --- | --- | --- |
-| 018A Supercar Road Sightings | 슈퍼카가 실제로 얼마나 도로를 달리는가 | 무료·전국·재현 가능한 모델별 교통량 API 미확인 | 💡 IDEA / UNMEASURABLE |
-| 018B Gas-Guzzler Road Sightings | 오래된 대배기량 SUV·픽업이 얼마나 달리는가 | 차종 검지기는 가능해도 연식·연비·모델은 식별 불가 | 💡 IDEA / UNMEASURABLE |
-| 018C Fuel-Tanker Traffic | 유조차가 얼마나 도로를 달리는가 | 일반 대형 트럭과 구분되는 무료 공개 교통량 데이터 미확인 | 💡 IDEA / UNMEASURABLE |
-| 018D Luxury ICE Registration & Consumption | 고가·고배기량 내연기관을 사람들이 얼마나 사는가 | 국가별 월간 등록·판매 집계 가능성을 조사할 가치 있음 | ⏸️ HOLD |
-| 018E Heavy Road Activity | 대형 상용차 흐름이 비정상적으로 늘었는가 | 한국 AVC와 미국 차종 분류 자료로 연구 가능 | ⏸️ HOLD |
-| 018F Elite Visibility Suppression | 고유가·생활비 압박 때 부자들이 과시적 연료소비를 덜 드러내는가 | 직접·재현 가능한 공개 관측값 미확인 | 💡 IDEA / UNMEASURABLE |
+| 015A Supercar Road Sightings | 슈퍼카가 실제로 얼마나 도로를 달리는가 | 무료·전국·재현 가능한 모델별 교통량 API 미확인 | 💡 IDEA / UNMEASURABLE |
+| 015B Gas-Guzzler Road Sightings | 오래된 대배기량 SUV·픽업이 얼마나 달리는가 | 차종 검지기는 가능해도 연식·연비·모델은 식별 불가 | 💡 IDEA / UNMEASURABLE |
+| 015C Fuel-Tanker Traffic | 유조차가 얼마나 도로를 달리는가 | 일반 대형 트럭과 구분되는 무료 공개 교통량 데이터 미확인 | 💡 IDEA / UNMEASURABLE |
+| 015D Luxury ICE Registration & Consumption | 고가·고배기량 내연기관을 사람들이 얼마나 사는가 | 국가별 월간 등록·판매 집계 가능성을 조사할 가치 있음 | ⏸️ HOLD |
+| 015E Heavy Road Activity | 대형 상용차 흐름이 비정상적으로 늘었는가 | 한국 AVC와 미국 차종 분류 자료로 연구 가능 | ⏸️ HOLD |
+| 015F Elite Visibility Suppression | 고유가·생활비 압박 때 부자들이 과시적 연료소비를 덜 드러내는가 | 직접·재현 가능한 공개 관측값 미확인 | 💡 IDEA / UNMEASURABLE |
 
 `UNMEASURABLE`은 아이디어가 나쁘다는 뜻이 아니다. 현 시점에 공개·합법·재현 가능한 관측값이 없다는 뜻이다.
 
-## 018D — Luxury ICE Registration & Consumption
+## 015D — Luxury ICE Registration & Consumption
 
 ### 가설
 
@@ -53,7 +53,7 @@ Luxury ICE Appetite
 
 UI에서 `1.0%`는 **가설 예산 표시**로만 허용한다. 실거래 또는 백테스트 가중치는 데이터 적격성·인샘플 검증 전까지 `0.0`이다.
 
-## 018F — Elite Visibility Suppression
+## 015F — Elite Visibility Suppression
 
 ### 심리 가설
 
@@ -93,7 +93,7 @@ Elite Visibility Suppression
 
 `0.1%`는 창의적 가설을 UI에서 보존하는 예산일 뿐, 가격 방향 알파 또는 포트폴리오 비중이 아니다. 사전 지정한 시계열과 공개 가능 시점이 확보되기 전에는 수치화하지 않는다.
 
-## 018E — Heavy Road Activity
+## 015E — Heavy Road Activity
 
 한국도로공사 AVC는 고속도로 검지기 기준의 시간·차로·차종별 교통량을 제공한다. 미국에서는 FHWA 체계가 차종 분류 교통량을 다루며, 연방 표준 분류는 차체·축수·길이 기준이다. 둘 다 유조차, 슈퍼카, 연식 또는 브랜드를 직접 구분하지 않는다.
 
@@ -117,11 +117,11 @@ Heavy Road Activity = classed heavy-vehicle volume
 2. `CL=F`의 미래 수익률과 미래 실현변동성을 혼합하지 않고 사전 지정한다.
 3. 2015-01-01~2023-12-31 인샘플에서만 후보 선택·변환·임계값을 정한다.
 4. 높은 노이즈와 낮은 표본 문제를 먼저 보고한다. 성과 수치를 지어 내지 않는다.
-5. 하나라도 통과하더라도 018A~C·018F의 창의적 원안과 018D~E의 측정 가능한 프록시를 같은 팩터로 중복 계산하지 않는다.
+5. 하나라도 통과하더라도 015A~C·015F의 창의적 원안과 015D~E의 측정 가능한 프록시를 같은 팩터로 중복 계산하지 않는다.
 
 ## 현재 결론
 
-018은 **기록할 가치가 있는 밈 팩터**다. 다만 지금은 “슈퍼카와 유조차를 세는 지수”가 아니라, 원안을 보존한 채 `Luxury ICE registration`, `heavy-vehicle activity`, 그리고 고유가 사회 압력의 `Elite Visibility Suppression`을 구분해 조사하는 연구 묶음이다.
+015는 **기록할 가치가 있는 밈 팩터**다. 다만 현재 검증 결론은 명확하다: 슈퍼카·대배기량차·유조차 목격량은 공개·재현 가능한 시계열이 없고, 럭셔리 ICE 등록은 느린 소비 프록시이며, 대형차 교통량은 006과 같은 느린 물류·연료수요 프록시다. 따라서 **0.1% 이상의 독립적·재현 가능한 WTI 알파는 없으며**, UI·창의적 관측 원안으로만 보존한다.
 
 ## 참고 출처
 

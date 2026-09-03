@@ -1,4 +1,6 @@
-# 016 — Khutbah Signal Implementation Package
+# Archive — 이전 016: Khutbah Signal Implementation Package
+
+> **정리 후 위치**: 현재 [013 Public Institutional Message Timing](../013-public-institutional-message-timing.md)의 합성 데모 구현 기록이다. 이 문서는 이전 번호의 원안을 보존한다.
 
 **상태**: ⏸️ **HOLD** — 015의 구현 패키지이며 별도 알파 팩터가 아니다.
 **연결 카드**: [015 — Mosque Sermon Oil Signal](015-mosque-sermon-oil-signal.md)
