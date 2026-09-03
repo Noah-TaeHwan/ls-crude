@@ -62,7 +62,7 @@
 | 044 | AI Burn Rate Index | 🟨 `-0.181` | 🟨 `-0.041` | 83 월 | 29 월 | Census Data center 건설 모멘텀. IS 가설 반대, OOS 관계 소멸; AI 구독 레그 미측정 |
 | 045 | Iced Americano Heat Index | 🟨 `+0.512` | 🟨 `-0.511` | 22 분기 | 12 분기 | Starbucks 최초 SEC 분기매출 YoY 프록시. 아이스 아메리카노 직접 측정 아님; OOS 부호 반전 |
 | 046 | Urban Mobility Tempo | 🟨 `-0.267` | 🟨 `+0.005` | 3,287 일 | 912 일 | Chicago CTA 익명 일별 탑승량 동일요일 서프라이즈. IS 반대, OOS 소멸 |
-| 047 | Conscience Compression Index | ⬜ `—` | ⬜ `—` | — | — | Temu 역사 부족·검색 관심도의 재현 가능한 공개 계약 미확보. trade-down 설명 레짐만 보존 |
+| 047 | Premium–Value Outdoor Spread | ⬜ `—` | ⬜ `—` | 3 년 | 0 년 | Canada Goose−Columbia 연간 YoY는 무료 구조화 공통 표본이 IS 3·OOS 0. 상관계수 미보고 |
 | 048 | All-In Tie Day Index | ⬜ `—` | ⬜ `—` | — | — | 공개 에피소드 복장·거시 문맥의 문화적 주석. 2020년대 시작·주간 빈도·사후 논평 한계 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
