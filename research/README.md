@@ -17,7 +17,6 @@ gathering/sources/     출처 표
 notebooks/pizza-hunt.md  대안 데이터 후보 표 (실후보 없으면 비움)
 data/pizza/            사람이 고른 시계열 시드
 data/                  파이프라인 시드 + 팀원 랩 드롭 (이사하지 않음)
-side-quests/           팩터와 분리된 공개문화·행동 탐색
 src/ls_crude/          돌아가는 코드. 이 PR에서 건드리지 않음
 tests/                 테스트. 그대로
 ```
@@ -43,7 +42,6 @@ python -m ls_crude.build
 | 후보 표 | [`notebooks/pizza-hunt.md`](notebooks/pizza-hunt.md) |
 | 실험 한 장 | [`docs/experiments/`](../docs/experiments/README.md) |
 | 후보 시드 | [`data/pizza/`](data/pizza/README.md) |
-| Side Quest | [`side-quests/`](side-quests/README.md) |
 | 시드 뉴스 | [`data/event_calendar.csv`](data/event_calendar.csv) |
 | `data/` 안에 뭐가 있나 | [`data/README.md`](data/README.md) |
 

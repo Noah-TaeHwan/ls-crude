@@ -4,7 +4,7 @@
 **별칭**: *When the Bros Wear Ties*  
 **Oil Pizza 가중치**: `0.0`
 
-확장 탐색·CEO 비교·블라인드 라벨 계약은 팩터가 아닌 [Side Quest 001](../../side-quests/001-executive-formality-asset-regimes.md)에서 별도로 관리한다.
+이 카드는 공개 에피소드 복장·주제를 문화적 주석으로만 남긴다. 별도 탐색 프로젝트나 운영 데이터셋은 연결하지 않는다.
 
 ## 질문
 
