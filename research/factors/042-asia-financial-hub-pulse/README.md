@@ -1,6 +1,6 @@
 # 042 — Asia Financial Hub Pulse (AFHP)
 
-**상태**: ⏸️ **HOLD — 4도시 동질 패널은 미구축, 042A 단일도시 첫 검증도 미통과**  
+**상태**: ⏸️ **HOLD — 4도시 동질 패널은 미구축, 042A 단일도시 첫 검증도 미통과**
 **별칭**: *Overtime Latte Index*  
 **Oil Pizza 가중치**: `0.0`
 
