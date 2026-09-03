@@ -22,7 +22,7 @@
 | 002 | [Global Crypto Liquidity Stress](002-whale-index.md) | 변동성 레짐 후보 | **HOLD** — 고래 귀속은 불가, 적법한 집계·역사 데이터 점검 필요 | 0.0 |
 | 003 | [Trump Temper & Oil Policy](003-truth-social.md) | 공개 텍스트·변동성 후보 | **HOLD** — 첫 엄격 규칙 탐색은 알파를 입증하지 못함 | 0.0 |
 | 004 | [Transport Electrification Displacement](004-renewable-displacement.md) | 중기 수요 후보 | **004B HOLD** — 물리 경로는 있으나 공개일·빈티지 없는 연간 7–8개 탐색은 알파 근거가 아님 | 0.0 |
-| 005 | [Financial Demand](005-financial-demand.md) | 중기 수요 후보 | **HOLD** — 모델 복잡도보다 공개시점·표본 설계가 먼저 | 0.0 |
+| 005 | [Financial Demand](005-financial-demand.md) | 기업 재무 아이디어 | **SKIP** — 공시 지연·방향 충돌·물리 수요 경로 부재; ML로 보완할 문제가 아님 | 0.0 |
 | 006 | [Wholesale Logistics](006-wholesale-logistics.md) | 실물 수요 아이디어 | **SKIP** — 논리는 유효하나, 느린 물류 대리값에 EIA 주간 자료 대비 고유 알파 근거가 없음 | 0.0 |
 | 007 | [MENA Elite Mobility](007-doomsday-bunker-index.md) | 지정학 리스크 게이트 | **HOLD** — 복수 기관 비식별 집계 제휴 필요 | 0.0 |
 | 008 | [Hyperliquid Capital Flow](008-hyperliquid-capital-flow.md) | 설명적 크립토 레버리지 모니터 | **HOLD / monitor only** — 귀속 불가·2015–2023 역사 부족·광범위 OI/펀딩 대비 고유성 미확인 | 0.0 |
@@ -42,7 +42,7 @@
 ## 체계: 세 개의 버킷
 
 ```text
-Directional candidates (004–005, 009, 012, 018D–E)
+Directional candidates (004, 009, 012, 018D–E)
     → 각 후보가 독립적으로 통과한 뒤에만 결합 후보가 됨
 
 Risk / volatility gates (002, 007, 010–011, 015, 017, 019–020)
@@ -61,6 +61,23 @@ risk_gate = combine_only_after_freeze(approved_risk_gates)
 
 # 013·014는 별도 market-neutral book으로 관리한다.
 ```
+
+## 001–010 현재 결정 요약 — 2026-09-03
+
+| # | 현재 상태 | 지금 결론 | 다음에 허용된 일 |
+| --- | --- | --- | --- |
+| 001 | 원안 WITHDRAWN / 001B HOLD | 기지 배달 가설은 종료. 민간 도시권 익명 집계 없이는 001B도 계산 불가 | 복수 도시권의 적법한 익명 주간 집계 확보 |
+| 002 | HOLD | 고래·국가 귀속은 불가 | 전 체인 집계 시계열의 라이선스·역사·공개시점 확인 |
+| 003 | HOLD | 첫 엄격 탐색에서 0.1% 관계를 입증하지 못함 | 두 독립 라벨러의 블라인드 라벨 완성 |
+| 004 | 004B HOLD | EV 대체는 물리 경로가 있으나 연간 7–8쌍만 존재 | 역사 release/vintage로 walk-forward 재구성 |
+| 005 | SKIP | 기업 재무 합성·ML은 원유 수요의 직접 신호가 아님 | 새 물리 데이터·새 카드 없이는 재개 안 함 |
+| 006 | SKIP | 물류 논리는 맞지만 EIA보다 느리고 중복 | EIA를 별도 후보로 평가할 때만 새 카드 |
+| 007 | HOLD | 행동 데이터가 없으면 안전피난처 서사일 뿐 | 두 독립 기관의 비식별 집계 제휴 |
+| 008 | monitor only | Hyperliquid은 귀속 불가·역사 부족·고유성 없음 | 광범위 크립토 레버리지 후보를 별도 설계 |
+| 009 | 009A HOLD / 009B BLOCKED | FX의 탐색 차이는 있으나 선행성 미입증; 암호 레그는 준수상 불가 | FX 빈티지·공개시점·공통충격 통제 |
+| 010 | HOLD | 미국 완충 파일럿은 가설 부호를 지지하지 못함 | IEA 글로벌 빈티지와 고정 통제로 재검증 |
+
+이 표의 모든 Oil Pizza 가중치는 `0.0`이다. 관측 차이·흥미로운 서사·UI 아이디어는 통과 판정이 아니다.
 
 ## 016·017 패키지 처리
 
