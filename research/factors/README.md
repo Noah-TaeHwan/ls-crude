@@ -1,13 +1,13 @@
 # 🛢️ LS CRUDE — Factor Research Map
 
 **대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`
-**현재 상태**: 아래 001–016은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–019은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
 
 - 동일한 관측값·가설·출력을 공유하면 한 팩터다. 같은 신호를 두 번 가중하지 않는다.
-- 012A는 010에, 013·014는 시장중립 페어 전략 하나에, 015·016은 공개 담화 후보 하나에, 019·020은 사막 운영 스트레스 하나에 병합했다.
+- 이전 012A는 010에, 이전 013·014는 시장중립 페어 전략 하나에, 이전 015·016은 공개 담화 후보 하나에, 이전 019·020은 사막 운영 스트레스 하나에 병합했다.
 - 이전 번호의 원안·코드 설명은 [`archive/`](archive/)에 보존한다. 삭제나 성과 은폐가 아니다.
 - `0.1%`는 **독립적·재현 가능한 관계**를 뜻한다. 흥미로운 원시 차이·합성 데모·UI 서사는 통과가 아니다.
 
@@ -33,6 +33,9 @@
 | 014 | [Pipeline Noise](014-pipeline-noise-signal.md) | 물리 리스크 후보 | 공개 관측소가 파이프라인 상태를 식별한다는 근거 없음 | 0.0 |
 | 015 | [Luxury ICE Road Appetite](015-luxury-ice-road-appetite.md) | 밈·소비 관측 | 측정 불가 또는 느린·중복 프록시. **거래 알파 아님** | 0.0 |
 | 016 | [Desert Operational Stress](016-desert-operational-stress.md) | 밈·기상 운영 후보 | 기상은 예보되고 운영 차질은 후행 확인. **독립 알파 미확인** | 0.0 |
+| 017 | [Maritime Supply Activity](017-maritime-supply-activity.md) | 해상 물류·변동성 후보 | 물리 경로는 있으나 선박별 AIS 추적은 금지, 집계형 장기 데이터도 미확인 | 0.0 |
+| 018 | [Refinery Thermal & Flare](018-refinery-thermal-flare.md) | 정유 운영·변동성 후보 | 공개 열 이상은 실제 관측 가능. 단, 가동률·WTI 알파는 아직 미검증 | 0.0 |
+| 019 | [Robotaxi Night Traffic](019-robotaxi-night-traffic-archive.md) | 아이디어 보존 | **REJECTED** — 개인정보·데이터 적격성·인과 문제 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
@@ -42,7 +45,7 @@
 Directional / demand-supply candidates (001, 003–006, 009, 011, 015)
     → 각 후보가 독립적으로 통과한 뒤에만 결합을 논의
 
-Risk / volatility candidates (002, 007–010, 013–014, 016)
+Risk / volatility candidates (002, 007–010, 013–014, 016–018)
     → 가격 방향 가중치가 아니라 위험 노출을 조절하는 후보
 
 Market-neutral strategy (012)
@@ -63,5 +66,6 @@ Market-neutral strategy (012)
 - [`archive/014-ou-hmm-oil-pairs.md`](archive/014-ou-hmm-oil-pairs.md): 012의 OU-HMM 모델 변형 기록이다.
 - [`archive/016-khutbah-signal.md`](archive/016-khutbah-signal.md): 013의 합성 데모 패키지 설명이다.
 - [`archive/020-sandstorm-visibility-gulf-operations.md`](archive/020-sandstorm-visibility-gulf-operations.md): 016의 모래폭풍 하위 사례 기록이다.
+- [019 Robotaxi Night Traffic](019-robotaxi-night-traffic-archive.md): 데이터 수집·백테스트에는 쓰지 않는 보존 아이디어다.
 
 압축 원본 패키지는 번호와 무관하게 그대로 보존한다. 합성 데이터 데모의 상관·적중률은 실증 결과가 아니다.
