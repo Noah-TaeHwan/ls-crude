@@ -1,170 +1,61 @@
-# 004 — Renewable Displacement Index (재생에너지 대체)
+# 004 — Transport Electrification Displacement (운송 전동화 대체)
 
-**상태**: ⏸️ **HOLD** — 월간 공개 자료의 발표시점·개정 이력과 독립적 메커니즘 검증이 필요
-**신호**: ↕ 중기 수요·대체 레짐 후보; WTI 방향은 미정
+**상태**: ⏸️ **HOLD** — 공개 데이터로 물리적 대체량은 확인했지만, 현재 빈티지의 연간 7–8개 관측치만으로는 예측력·가중치를 주장할 수 없음
+**신호**: ↘ 중기 석유 수요 대체 후보
 **Oil Pizza 가중치**: `0.0`
 
-## 가설
+## 먼저 결론
 
-재생에너지(태양광, 풍력, 수소) 신호 ↑ → 석유 수요 ↓ → 유가 ↓
+004를 세 갈래로 나눠 보았다.
 
-## 신호 구성 (3가지)
+| 갈래 | 판정 | 이유 |
+| --- | --- | --- |
+| 004A 전력 전환(풍력·태양광 발전) | 후보 아님 | 전력의 직접 대체 대상은 주로 석탄·가스다. 원유 수요로 가는 경로가 약하다. |
+| **004B 운송 전동화(EV)** | **유일한 HOLD 후보** | 내연기관 연료를 직접 대체한다. 다만 일간 트레이딩 신호가 아니라 연간·중기 수요 레짐 후보다. |
+| 004C 청정에너지 뉴스·ETF | 배경 맥락만 | 관심·투자자 유형을 측정하지 못하고, 가격은 기대·금리·보조금 등 여러 것을 섞는다. |
 
-### A. 재생에너지 뉴스 빈도
+따라서 이 카드의 신호는 IEA의 **전기차에 의한 석유 대체량**에 한정한다. 뉴스 빈도, 청정에너지 ETF, 월간 발전량을 가중 합산하지 않는다.
 
-사용자가 제공한 Investing.com CSV가 있을 때만 "renewable", "solar", "wind", "EV", "hydrogen" 키워드를 탐색한다. 사이트를 직접 스크래핑하지 않는다.
+## 가설과 전달 경로
 
-```python
-renewable_keywords = [
-    'renewable', 'solar', 'photovoltaic', 'pv', 'wind',
-    'hydroelectric', 'hydrogen', 'fuel cell', 'ev charging', 'electric vehicle'
-]
+전기차 보급과 그에 따른 석유 대체량이 예상보다 빠르게 늘면, 중기 석유 수요 성장의 하방 압력이 커질 수 있다.
 
-renewable_news_daily = investing_headlines.apply(
-    lambda row: sum(k in row['text'].lower() for k in renewable_keywords)
-)
-renewable_news_z = zscore(renewable_news_daily, window=20)
+```text
+EV 판매·재고 증가 → 휘발유/경유 사용 일부 대체 → 석유 수요 성장률 둔화 → 중기 수요 레짐 하방 압력
 ```
 
-### B. IEA 발전량 데이터
+이는 공급 충격·OPEC 정책·전쟁을 대체하지 않는다. 같은 기간의 WTI 방향을 설명하는 단독 일간 신호로 사용하지 않는다.
 
-IEA에서 월간 발전량 리포트 다운로드
+## 2026-09-03 초기 탐색 — 통과 아님
 
-```
-IEA URL: https://www.iea.org/data-and-statistics/
-데이터: 월간 재생에너지 발전 (%)
-형식: CSV
+IEA Global EV Data Explorer 공개 API의 World / Historical / Cars / EV 자료와 Yahoo `CL=F`를 사용했다. 후보 선택 규칙에 맞춰 **2015–2023만** 보았고, 2024년 이후은 열지 않았다.
 
-renewable_pct_of_total = [
-    2026-01: 35%,
-    2026-02: 36%,
-    ...
-]
+| 비교 | 관측치 | Pearson r | 해석 |
+| --- | ---: | ---: | --- |
+| 석유 대체량 수준 vs 다음 해 WTI 수익률 | 8 | -0.280 | 부호는 가설과 같지만 표본이 너무 작다. |
+| 석유 대체량 연간 증가분 vs 다음 해 WTI 수익률 | 7 | -0.230 | 통과 근거가 아니다. |
+| EV 판매량 수준 vs 다음 해 WTI 수익률 | 8 | -0.267 | 같은 한계가 있다. |
+| EV 판매 성장률 vs 다음 해 WTI 수익률 | 7 | +0.190 | 방향도 안정적이지 않다. |
 
-# 일간 데이터로 interpolate
-renewable_capacity_z = zscore(interpolate_daily(renewable_pct), window=30)
-```
+IEA의 차(EV) 석유 대체량은 2015년 `0.030`에서 2023년 `0.700` million barrels/day로 커졌다. 그러나 현행 IEA 데이터는 과거 값을 개정할 수 있고, 각 역사값이 당시 정확히 언제 공개됐는지 확인하지 못했다. 이 탐색은 **설명적 점검**일 뿐, 실행 가능한 walk-forward 백테스트가 아니다.
 
-### C. 청정에너지 회사 주가
+## 데이터 계약
 
-에너지 전환 관련 회사들의 상대 강도
+| 항목 | 결정 |
+| --- | --- |
+| 관측값 | IEA World, Historical, Cars, EV의 `Oil displacement, Mbd` 및 `EV sales` |
+| 가격 | Yahoo Finance `CL=F` 일봉. 연말 종가로 연간 수익률 계산 |
+| 빈도 | 현재 확인한 역사값은 연간. 일간 보간 금지 |
+| 사용처 | 중기 수요 레짐의 설명 변수 후보. 일간 방향 베팅·즉시 가중치 금지 |
+| 라이선스 | IEA Explorer/API의 정확한 다운로드·재배포 범위 추가 확인 필요 |
+| look-ahead 방지 | 관측연도가 아니라 해당 값의 **공개일** 이후에만 사용. 빈티지·발표 달력 확보 전에는 백테스트 금지 |
 
-```python
-import yfinance as yf
+## 통과에 필요한 것
 
-clean_energy_tickers = [
-    'ICLN',   # iShares Global Clean Energy ETF
-    'QCLN',   # Invesco NASDAQ Clean Energy
-    'RNRW',   # Invesco Global Clean Energy
-]
+- [ ] IEA 또는 동등 공식 출처의 역사적 release/vintage와 공개일을 확보한다.
+- [ ] 공개일 기준으로 2015–2023 walk-forward 시계열을 다시 만든다.
+- [ ] 사전 지정한 중기 타깃(예: 다음 12개월 WTI 수익률 또는 수요성장 오차)을 하나만 시험한다.
+- [ ] 석유 대체량과 EV 판매 중 하나를 고정하고, 다른 신호·임계값을 탐색해 고르지 않는다.
+- [ ] 그 뒤에만 2024년 이후을 한 번 아웃샘플로 연다.
 
-def get_clean_energy_signal():
-    prices = yf.download(clean_energy_tickers, start='2015-01-01')
-
-    # 상대 강도 (대비 S&P 500)
-    sp500 = yf.download('SPY', start='2015-01-01')
-    relative_strength = (prices / sp500) / (prices.shift(20) / sp500.shift(20))
-    clean_energy_z = zscore(relative_strength.mean(axis=1), window=20)
-
-    return clean_energy_z
-```
-
-## 신호 결합
-
-```python
-renewable_index = (
-    0.4 * renewable_news_z +        # 뉴스 인기도
-    0.3 * renewable_capacity_z +    # 물리적 생산량
-    0.3 * clean_energy_stock_z      # 투자자 심리
-)
-
-# 음의 신호로 결합 (유가와 역방향)
-oil_pizza_component = -1.5 * renewable_index
-```
-
-## 데이터 수집 계획
-
-| 데이터 | 소스 | 빈도 | 비용 | 시작 |
-|--------|------|------|------|------|
-| 뉴스 | 사용자 제공 Investing.com CSV | 일간 | CSV 이용 조건 확인 필요 | 제공 시 |
-| IEA 발전량 | IEA.org | 월간 | ✅ 무료 | 2주 |
-| 청정에너지 주가 | yfinance | 일간 | ✅ 무료 | 즉시 |
-| RenewableNow | rnw.org | 실시간 | 💰 $300/월 | 나중에 |
-
-## 신호 예시
-
-```
-2026년 8월:
-- 태양광 뉴스 문서: 47개 (월평균 35개 대비 +34%) → renewable_news_z = +1.2
-- 재생에너지 비율: 37% (예측 35% 대비 +2%) → renewable_capacity_z = +0.8
-- 청정에너지 주 매수초과 → clean_energy_stock_z = +1.1
-
-renewable_index = 0.4*1.2 + 0.3*0.8 + 0.3*1.1 = +1.01
-oil_pizza_contribution = -1.5 * 1.01 = -1.51 (음의 신호 → 유가 약세)
-```
-
-## 검증 기준 (Pass/Fail)
-
-- [ ] Investing.com CSV에서 renewable 키워드 추출 가능?
-- [ ] IEA 데이터를 월간 → 일간 interpolation 가능?
-- [ ] 발표시점 기준의 월간 자료가 충분한 역사 구간을 갖는가?
-- [ ] 각 구성요소가 사전 지정한 타깃과 독립적 관계를 보이는가?
-- [ ] 3개 신호의 상관성 너무 높지 않은가? (r < 0.7)
-
-## 구현 로직
-
-```python
-# research/src/ls_crude/features/renewable_displacement.py
-
-import pandas as pd
-import yfinance as yf
-from scipy import stats
-
-def get_renewable_news_signal(news_df, window=20):
-    """사용자가 제공한 Investing.com CSV에서만 재생에너지 신호를 계산한다."""
-    keywords = ['renewable', 'solar', 'wind', 'ev', 'hydrogen']
-    daily_count = news_df.groupby('date').apply(
-        lambda x: sum(any(k in row.lower() for k in keywords) for row in x)
-    )
-    return zscore(daily_count, window)
-
-def get_renewable_capacity_signal(iea_csv_path, window=30):
-    """IEA 발전량 데이터"""
-    iea_data = pd.read_csv(iea_csv_path)
-    renewable_pct = iea_data['renewable_percent_of_total']
-    daily_interpolated = renewable_pct.interpolate()
-    return zscore(daily_interpolated, window)
-
-def get_clean_energy_stock_signal(tickers, window=20):
-    """청정에너지 주가 상대 강도"""
-    prices = yf.download(tickers, start='2015-01-01')
-    sp500 = yf.download('SPY', start='2015-01-01')['Adj Close']
-    relative = (prices / sp500) / (prices.shift(20) / sp500.shift(20))
-    return zscore(relative.mean(axis=1), window)
-
-def get_renewable_displacement_index(news_df, iea_csv, start_date='2015-01-01'):
-    """최종 재생에너지 대체 지수"""
-    news_z = get_renewable_news_signal(news_df)
-    capacity_z = get_renewable_capacity_signal(iea_csv)
-    stock_z = get_clean_energy_stock_signal(['ICLN', 'QCLN'], window=20)
-
-    # 3개 신호 결합
-    renewable_index = 0.4*news_z + 0.3*capacity_z + 0.3*stock_z
-
-    return -1.5 * renewable_index  # 음의 신호
-```
-
-## 다음 단계
-
-### 이번주
-- [ ] Investing.com CSV 재분석 (renewable 키워드)
-- [ ] IEA 데이터 수집 시작
-
-### 다음주
-- [ ] 뉴스 신호 생성
-- [ ] yfinance로 청정에너지 주가 다운로드
-- [ ] 유가와의 상관성 검증
-
----
-
-**우선순위**: 🟢 높음 (데이터 접근성 좋음, 즉시 가능)
+그 전까지 004B는 흥미로운 **물리 메커니즘**이지, 검증된 알파가 아니다.
