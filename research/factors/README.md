@@ -13,7 +13,7 @@
 
 상세 수집 규칙은 [`research/INTAKE.md`](../INTAKE.md), 출처·지연·라이선스는 [`sources/REGISTRY.md`](../gathering/sources/REGISTRY.md)에 기록한다.
 
-2026-09-03 제공 `CL=F` 파일을 기준으로 한 인샘플·아웃샘플 적격성 감사는 [이 노트](../gathering/notes/2026-09-03-factor-is-oos-audit.md)에 있다. 21개 중 양쪽 구간에서 재현된 0.1% 관계는 없다.
+2026-09-03 제공 `CL=F` 파일을 기준으로 한 인샘플·아웃샘플 적격성 감사는 [이 노트](../gathering/notes/2026-09-03-factor-is-oos-audit.md)에 있다. 21개 중 양쪽 구간에서 재현된 0.1% 관계는 없다. 2026-09-03부터 이 인벤토리의 공통 가격 타깃은 방향 수익률이 아니라 **신호 공개 뒤 다음 5거래일 WTI 실현변동성**이며, 결과는 [변동성 매트릭스](../reports/2026-09-03-factor-validation-share.md)에 기록한다.
 
 저장된 003·004·009·010 신호를 제공 파일의 `in/out` 열로 다시 실행한 결과는 [재실행 노트](../gathering/notes/2026-09-03-saved-signal-is-oos-rerun.md)에 있다. 009는 OOS에서 부호가 반전했고, 나머지는 표본·원시 데이터 한계로 통과하지 못했다.
 
@@ -23,14 +23,14 @@
 | --- | --- | --- | --- | ---: |
 | 001 | [MENA Civilian Delivery](001-pentagon-ubereats.md) | 수요 후보 | 원 Pentagon 가설은 **WITHDRAWN**. 민간 익명 집계가 없어 0.1% 검증 불가 | 0.0 |
 | 002 | [Global Crypto Liquidity Stress](002-whale-index.md) | 변동성 후보 | 고래·국가 귀속 불가. 적법한 장기 집계 시계열 전에는 검증 불가 | 0.0 |
-| 003 | [Trump Temper & Oil Policy](003-truth-social.md) | 공개 텍스트 후보 | 첫 엄격 인샘플 탐색에서 **0.1% 관계를 찾지 못함** | 0.0 |
-| 004 | [Transport Electrification](004-renewable-displacement.md) | 중기 수요 후보 | 연간 7–8쌍 탐색은 공개일·빈티지 부재로 알파 근거 아님 | 0.0 |
+| 003 | [Trump Temper & Oil Policy](003-truth-social.md) | 공개 텍스트 후보 | 5일 변동성: IS `r=0.000`, OOS `r=+0.164`; IS 부재·플랫폼 단절로 통과 아님 | 0.0 |
+| 004 | [Transport Electrification](004-renewable-displacement.md) | 중기 수요 후보 | 다음 연도 변동성 IS `r=+0.157`, n=7; OOS n=2라 알파 근거 아님 | 0.0 |
 | 005 | [Financial Demand](005-financial-demand.md) | 기업 재무 아이디어 | **SKIP** — 물리 수요 경로·고유성이 없음 | 0.0 |
 | 006 | [Wholesale Logistics](006-wholesale-logistics.md) | 실물 수요 아이디어 | **SKIP** — EIA 주간 자료보다 느리고 고유 알파 없음 | 0.0 |
 | 007 | [MENA Elite Mobility](007-doomsday-bunker-index.md) | 지정학 리스크 후보 | 비식별 복수기관 집계가 없어 검증 불가 | 0.0 |
 | 008 | [Hyperliquid Capital Flow](008-hyperliquid-capital-flow.md) | 설명적 모니터 | **monitor only** — 귀속 불가·역사 부족·고유성 없음 | 0.0 |
-| 009 | [Iran FX Stress](009-iran-middleeast-premium.md) | 현지 스트레스 후보 | 원시 차이는 있었지만 빈티지·공통충격 미해결. **0.1% 알파 미입증** | 0.0 |
-| 010 | [Official Petroleum Buffer & Public Supply Policy](010-official-petroleum-buffer.md) | 변동성 후보 | 미국 재고·SPR 파일럿은 가설 방향을 지지하지 못함 | 0.0 |
+| 009 | [Iran FX Stress](009-iran-middleeast-premium.md) | 현지 스트레스 후보 | 5일 변동성 IS `r=-0.003`, OOS `r=-0.002`; 관계 없음 | 0.0 |
+| 010 | [Official Petroleum Buffer & Public Supply Policy](010-official-petroleum-buffer.md) | 변동성 후보 | 5일 변동성 IS `r=-0.187`; 가설 방향을 지지하지 못함 | 0.0 |
 | 011 | [Energy Workforce Momentum](011-energy-workforce-momentum.md) | 중기 공급 후보 | 핵심 구성요소의 공개·재현 시계열 부족 | 0.0 |
 | 012 | [Energy Futures Pairs StatArb](012-energy-futures-pairs-statarb.md) | 시장중립 전략 | 계약별 허가 데이터·비용·워크포워드가 없어 재현 성과 없음 | — |
 | 013 | [Public Institutional Message Timing](013-public-institutional-message-timing.md) | 변동성 후보 | 설교·공개담화는 느린 뉴스 재반영일 가능성이 높음. **0.1% 알파 미확인** | 0.0 |
@@ -40,7 +40,7 @@
 | 017 | [Maritime Supply Activity](017-maritime-supply-activity.md) | 해상 물류·변동성 후보 | 물리 경로는 있으나 선박별 AIS 추적은 금지, 집계형 장기 데이터도 미확인 | 0.0 |
 | 018 | [Refinery Thermal & Flare](018-refinery-thermal-flare.md) | 정유 운영·변동성 후보 | 공개 열 이상은 실제 관측 가능. 단, 가동률·WTI 알파는 아직 미검증 | 0.0 |
 | 019 | [Robotaxi Night Traffic](019-robotaxi-night-traffic-archive.md) | 아이디어 보존 | **REJECTED** — 개인정보·데이터 적격성·인과 문제 | 0.0 |
-| 020 | [Gulf AC Panic](020-gulf-ac-panic.md) | 밈·전력 운영 후보 | 무료 기온 프록시 탐색은 **0.1% 관계를 지지하지 못함**. 전력·정전 일별 공개 시계열도 없음 | 0.0 |
+| 020 | [Gulf AC Panic](020-gulf-ac-panic.md) | 밈·전력 운영 후보 | 5일 변동성 IS `r=-0.066`; 전력·정전 일별 공개 시계열도 없음 | 0.0 |
 | 021 | [Kimchi Heat Index](021-kimchi-heat-index/README.md) | 한국 식탁 물가·기후 밈 모니터 | **IDEA ARCHIVED / HOLD** — 유가 타깃으로 미검증. KAMIS 수집 명세만 등록 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
