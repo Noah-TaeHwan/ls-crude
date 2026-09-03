@@ -25,7 +25,7 @@
 | 005 | [Financial Demand](005-financial-demand.md) | 중기 수요 후보 | **HOLD** — 모델 복잡도보다 공개시점·표본 설계가 먼저 | 0.0 |
 | 006 | [Wholesale Logistics](006-wholesale-logistics.md) | 실물 수요 아이디어 | **SKIP** — 논리는 유효하나, 느린 물류 대리값에 EIA 주간 자료 대비 고유 알파 근거가 없음 | 0.0 |
 | 007 | [MENA Elite Mobility](007-doomsday-bunker-index.md) | 지정학 리스크 게이트 | **HOLD** — 복수 기관 비식별 집계 제휴 필요 | 0.0 |
-| 008 | [Hyperliquid Capital Flow](008-hyperliquid-capital-flow.md) | 온체인 리스크 후보 | **HOLD** — 자금의 지역·의도를 공개 데이터로 귀속할 수 없음 | 0.0 |
+| 008 | [Hyperliquid Capital Flow](008-hyperliquid-capital-flow.md) | 설명적 크립토 레버리지 모니터 | **HOLD / monitor only** — 귀속 불가·2015–2023 역사 부족·광범위 OI/펀딩 대비 고유성 미확인 | 0.0 |
 | 009 | [Iran Crypto Premium](009-iran-middleeast-premium.md) | 현지 스트레스 후보 | **HOLD** — 합법적 접근·환율 기준·역사성 확인 필요 | 0.0 |
 | 010 | [Official Petroleum Buffer](010-official-petroleum-buffer.md) | 변동성 레짐 | **HOLD** — 발표시점·개정 이력 필요 | 0.0 |
 | 011 | [Energy Workforce Momentum](011-energy-workforce-momentum.md) | 중기 공급 후보 | **HOLD** — 공개·재현 가능한 구성요소가 부족 | 0.0 |
@@ -42,7 +42,7 @@
 ## 체계: 세 개의 버킷
 
 ```text
-Directional candidates (004–006, 008–009, 012, 018D–E)
+Directional candidates (004–005, 009, 012, 018D–E)
     → 각 후보가 독립적으로 통과한 뒤에만 결합 후보가 됨
 
 Risk / volatility gates (002, 007, 010–011, 015, 017, 019–020)
