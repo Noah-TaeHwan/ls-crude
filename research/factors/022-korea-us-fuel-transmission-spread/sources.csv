@@ -1,0 +1,4 @@
+source_id,source_name,url,role,frequency,hard_boundary
+opinet_b027,Opinet national regular gasoline average price,https://www.opinet.co.kr/user/dopospdrg/dopOsPdrgSelect.do,Korean national B027 retail gasoline price,monthly aggregate in this probe,Use official aggregate CSV only; no individual-station collection or website scraping beyond the provided official download flow
+fred_gasregw,EIA US Regular All Formulations Gas Price via FRED,https://fred.stlouisfed.org/series/GASREGW,US national regular gasoline comparison leg,weekly,Current historical series may be revised; preserve release timing before live use
+fred_dexkous,Federal Reserve H.10 KRW per USD via FRED,https://fred.stlouisfed.org/series/DEXKOUS,USD conversion leg,daily,New York noon rate; not Korean intraday FX; current history may be revised
