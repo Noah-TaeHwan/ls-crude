@@ -19,7 +19,7 @@
 | # | 카드 | 분류 | 현재 판정 | Oil Pizza 가중치 |
 | --- | --- | --- | --- | ---: |
 | 001 | [Pentagon Uber Eats / MENA Civilian Delivery](001-pentagon-ubereats.md) | 철회 원안 + 민간 수요 보류 가설 | **원안 WITHDRAWN / 001B HOLD** — 기지 추적 없이 익명 도시권 집계만 검토 | 0.0 |
-| 002 | [Whale Network](002-whale-index.md) | 방향성 후보 | **HOLD** — 시장·주소 귀속과 역사 데이터 점검 필요 | 0.0 |
+| 002 | [Global Crypto Liquidity Stress](002-whale-index.md) | 변동성 레짐 후보 | **HOLD** — 고래 귀속은 불가, 적법한 집계·역사 데이터 점검 필요 | 0.0 |
 | 003 | [Truth Social](003-truth-social.md) | 공개 텍스트 후보 | **프로토타입** — 수집기 존재, 신호 유효성은 미검증 | 0.0 |
 | 004 | [Renewable Displacement](004-renewable-displacement.md) | 중기 수요 후보 | **HOLD** — 월간 지연·명확한 데이터 계약 필요 | 0.0 |
 | 005 | [Financial Demand](005-financial-demand.md) | 중기 수요 후보 | **HOLD** — 모델 복잡도보다 공개시점·표본 설계가 먼저 | 0.0 |
@@ -42,10 +42,10 @@
 ## 체계: 세 개의 버킷
 
 ```text
-Directional candidates (002–006, 008–009, 012, 018D–E)
+Directional candidates (004–006, 008–009, 012, 018D–E)
     → 각 후보가 독립적으로 통과한 뒤에만 결합 후보가 됨
 
-Risk / volatility gates (007, 010–011, 015, 017, 019–020)
+Risk / volatility gates (002, 007, 010–011, 015, 017, 019–020)
     → 방향 베팅의 크기를 조절하는 후보. 가격 방향 가중치가 아님
 
 Market-neutral strategies (013–014)

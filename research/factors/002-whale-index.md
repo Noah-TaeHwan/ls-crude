@@ -1,121 +1,67 @@
-# 002 — Whale Network Index (고래 포지셔닝)
+# 002 — Global Crypto Liquidity Stress (formerly Whale Network)
 
-**상태**: 📋 **평가 중**  
-**평가**: 창의성 9/10 | 구현 가능성 6/10  
-**가중치**: 1.5
+**상태**: 📋 **HOLD** — “고래가 유가 방향을 맞힌다”는 원안은 측정·귀속 문제가 있어 철회. 실제 보류 후보는 집계 수준의 글로벌 크립토 유동성 스트레스다.
+**Oil Pizza 가중치**: `0.0` (검증 뒤에도 실험 예산 상한은 `0.1%` 이하).
 
-## 가설
+## 원안과 문제
 
-암호화폐 고래(대규모 보유자)의 거래 활동 → 미래 유가 방향성 선행 신호
+원안은 대형 ETH 보유자의 거래·거래소 유입을 잡아 5~10일 뒤 유가 방향을 예측한다는 것이었다. CoinEx 공개 체결 API가 제공하는 것은 체결 시각, taker 매수/매도, 가격, 수량뿐이다. 지갑 주소·보유량·국가·고래 신원은 제공하지 않는다.
 
-## 데이터 소스
+따라서 다음 계산은 CoinEx 공개 데이터로 만들 수 없다.
 
-### Option A: CoinEx (권장) ✅
-```
-API: https://api.coinex.com/v1/
-심볼: ETHUSDT (이더리움)
-신호: 고래 주소(>1,000 ETH) 거래량 & 방향
-
-- 장점: 공개 API, 실시간
-- 단점: 하나의 거래소만 데이터
+```text
+eth_whale_addresses(>1,000 ETH)
+exchange_inflow - exchange_outflow  # 고래의 매도 의도라고 해석
 ```
 
-### Option B: Glassnode / CryptoQuant
-```
-API: Glassnode (유료), CryptoQuant (유료 + 무료 제한)
-신호: 온체인 활동 (whale tx, exchange flow)
+온체인 대형 이체도 거래소 간 이동, 마켓메이킹, 담보·콜드월렛 이동을 포함할 수 있다. 이란 또는 특정 국가·개인·기관의 “고래”로 귀속하는 것은 공개 데이터만으로 검증할 수 없고, 제재 회피·개인 식별을 추론할 위험이 있어 사용하지 않는다.
 
-- 장점: 신뢰성 높음, 전체 체인 데이터
-- 단점: 구독료 필요 ($200-1000/월)
-```
+## 실제 연구 후보: Global Crypto Liquidity Stress
 
-### Option C: Nobitex (이란 거래소)
-```
-심볼: ETHUSDT, XRPUSDT
-신호: 이란 고래 포지셔닝
-
-- 장점: 이란 데이터 (지정학 신호)
-- 단점: OFAC 제한, 데이터 접근 어려움
+```text
+적법하게 라이선스된 전 체인·집계 수준의 대형 전송량,
+거래소 순유입, 스테이블코인 유동성 변화
+  → 글로벌 위험선호/유동성 스트레스의 보조 레짐인가?
+  → WTI(CL=F) 미래 실현변동성에 추가 설명력이 있는가?
 ```
 
-## 신호 생성 로직
+이는 원유의 물리 수요·공급 신호도, 이란 리스크의 대리변수도 아니다. 다른 위험자산과 함께 움직이는 글로벌 유동성 레짐일 수 있다는 좁은 가설이다. 유가 상승·하락 방향을 미리 정하지 않는다.
 
-```python
-whale_count = (
-    eth_whale_addresses(>1000 ETH) 
-    * eth_whale_txvolume / total_volume
-)
-whale_direction = (
-    exchange_inflow - exchange_outflow  # (+) 팔려는 고래
-)
-whale_score = whale_direction * whale_count
-whale_z = zscore(whale_score, 7d)
+## 입력 적격성
+
+| 입력 | 현재 판정 | 이유 |
+| --- | --- | --- |
+| CoinEx 공개 체결 | 관찰용 시장 미시구조 | 주소·보유량·국가 귀속·역사적 전체 체인 flow가 없음. “whale” 신호로 사용 불가 |
+| CoinEx 계정/사용자 체결 | 제외 | 개인 계정 인증 데이터이며 공공·재현 시계열이 아님 |
+| Glassnode·CryptoQuant 등 집계 온체인 지표 | 조건부 후보 | 라이선스, 전체 역사 범위, 발표/갱신 시점, 재배포 권한을 먼저 확인해야 함 |
+| Nobitex 또는 특정 국가 거래소 흐름 | 제외 | 지역·개인·제재 관련 귀속을 검증할 수 없으며 연구 범위 밖 |
+
+수집하는 경우에도 주소·개인·기관 단위 원천 데이터가 아닌, 제공자가 적법하게 산출한 **전 체인 집계 시계열**만 검토한다.
+
+## 검증 설계
+
+1. 인샘플 `2015-01-01`~`2023-12-31`에서 하나의 집계 지표, 주기, 공개시점, 결측 처리, 타깃을 사전 고정한다.
+2. 타깃은 Yahoo Finance `CL=F`의 미래 실현변동성이다. 단순 방향성 수익률은 별도 가설이다.
+3. BTC/ETH 수익률, 광범위 위험선호·달러·변동성 통제 뒤에도 추가 설명력이 있는지를 확인한다.
+4. 여러 lag·임계값·자산을 훑어 가장 좋은 p-value를 고르는 방식은 사용하지 않는다. Granger 검정 하나나 `r > 0.3`은 통과 기준이 아니다.
+5. 정의를 동결한 뒤에만 2024년 이후를 한 번 아웃샘플로 연다. 성과 수치·선행성·가중치는 결과 전 주장하지 않는다.
+
+## UI 표기
+
+```text
+🐋 Whale Network
+Whale attribution: NOT AVAILABLE
+Global crypto liquidity stress: DATA ELIGIBILITY CHECK
+Oil Pizza: 0.0%
 ```
 
-## 선행성 검증
+“whale”이라는 이름은 기억성을 위한 UI 별칭으로만 보존한다. 점수나 화면은 특정 지갑·국가·거래소 고객의 행동을 보여 주지 않는다.
 
-**가설**: Whale 거래 → 5-10일 후 유가 변화
+## 결론
 
-```python
-from statsmodels.tsa.stattools import grangercausalitytests
+002의 원안은 CoinEx 데이터 범위를 초과하므로 사용하지 않는다. 집계된 글로벌 유동성 레짐이 데이터 적격성·시간정렬·인샘플 검증을 통과할 때에만, 최대 `0.1%`의 **실험 예산**을 논의한다. 현재는 `HOLD / 0.0%`다.
 
-# Granger Causality Test
-granger_result = grangercausalitytests(
-    data[['whale_z', 'oil_price_future']],
-    maxlag=10
-)
-# p-value < 0.05 → 선행성 있음
-```
+## 참고 출처
 
-## 상관성 기준 (Pass/Fail)
-
-- [x] CoinEx API 접근 가능
-- [ ] Whale 신호 생성 (ETH, BTC)
-- [ ] 유가와의 상관성 r > 0.3?
-- [ ] Granger p-value < 0.05?
-- [ ] 5-10일 lag에서 의미있는 신호?
-
-## 구현 단계
-
-### Phase 1: CoinEx 데이터 수집 (1주)
-```python
-# research/src/ls_crude/data/whale_index.py
-import requests
-
-COINEX_URL = "https://api.coinex.com/v1/order"
-def get_whale_trades(pair='ETHUSDT', limit=100):
-    # CoinEx 고래 거래 조회
-    pass
-```
-
-### Phase 2: Whale 신호 생성 (3일)
-```python
-# research/src/ls_crude/features/whale_signal.py
-def generate_whale_signal(trades_df):
-    # 고래 포지셔닝 점수 계산
-    pass
-```
-
-### Phase 3: Granger 테스트 (3일)
-```python
-# research/src/ls_crude/backtest/whale_validator.py
-def test_whale_causality(whale_signal, oil_price):
-    # 선행성 검증
-    pass
-```
-
-## 최종 가중치
-
-만약 r > 0.3 & p < 0.05:  **가중치 1.5** ✅
-만약 r > 0.2 & p < 0.1:   **가중치 0.8** (약함)
-만약 r < 0.2:             **가중치 0** (사용 X)
-
-## 참고
-
-- Glassnode: https://glassnode.com/
-- CryptoQuant: https://www.cryptoquant.com/
-- Nansen: https://www.nansen.ai/
-
----
-
-**상태**: CoinEx로 시작, Glassnode는 나중에
+- [CoinEx — Get Market Transactions](https://docs.coinex.com/api/v2/spot/market/http/list-market-deals)
+- [CoinEx — Get User Order Transaction](https://docs.coinex.com/api/v2/spot/deal/http/list-user-order-deals)
