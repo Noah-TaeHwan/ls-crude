@@ -1,5 +1,7 @@
 # 017 — Maritime Supply Activity / Bunkering Context
 
+> 2026-09-03 Human Pulse 원안의 `Lighthouse Keeper Supply Run`, `Port Crane Light Usage`는 [30개 보존 장부](../../gathering/notes/2026-09-03-human-pulse-30-idea-intake.md)에 병합했다. 개별 선박·항만·노동자를 관찰하지 않고, 공개 권역 집계만 재개 후보로 둔다.
+
 **상태**: ⏸️ **HOLD** — 물리 물류 가설은 명확하지만, 공개·집계 데이터와 원유시장에 대한 증분 정보는 미검증이다.
 **Oil Pizza 가중치**: `0.0`
 **변동성 기준 (2026-09-03)**: 미래 5거래일 WTI 실현변동성. 적법한 집계형 공급선 장기 시계열이 없어 미검증.

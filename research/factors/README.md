@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Factor Research Map
 
 **대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`
-**현재 상태**: 아래 001–031은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–044는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -13,7 +13,9 @@
 
 상세 수집 규칙은 [`research/INTAKE.md`](../INTAKE.md), 출처·지연·라이선스는 [`sources/REGISTRY.md`](../gathering/sources/REGISTRY.md)에 기록한다.
 
-2026-09-03 제공 `CL=F` 파일을 기준으로 한 인샘플·아웃샘플 적격성 감사는 [이 노트](../gathering/notes/2026-09-03-factor-is-oos-audit.md)에 있다. 31개 중 양쪽 구간에서 재현된 0.1% 관계는 없다. 2026-09-03부터 이 인벤토리의 공통 가격 타깃은 방향 수익률이 아니라 **신호 공개 뒤 다음 5거래일 WTI 실현변동성**이며, 결과는 [변동성 매트릭스](../reports/2026-09-03-factor-validation-share.md)에 기록한다. 월간 022·027·030은 빈도에 맞춰 다음 21거래일을 쓴다.
+2026-09-03 제공 `CL=F` 파일을 기준으로 한 인샘플·아웃샘플 적격성 감사는 [이 노트](../gathering/notes/2026-09-03-factor-is-oos-audit.md)에 있다. 44개 중 양쪽 구간에서 재현된 0.1% 관계는 없다. 2026-09-03부터 이 인벤토리의 공통 가격 타깃은 방향 수익률이 아니라 **신호 공개 뒤 다음 5거래일 WTI 실현변동성**이며, 결과는 [변동성 매트릭스](../reports/2026-09-03-factor-validation-share.md)에 기록한다. 월간 022·027·030·042·043·044는 빈도에 맞춰 다음 21거래일을 쓴다.
+
+팩터별 무료 데이터 후보, 실제 원본 보관 위치, 수집 실패 사유와 IS/OOS 실행 상태는 [무료 데이터 수집·검증 장부](../reports/2026-09-03-free-data-acquisition-ledger.md)에 기록한다.
 
 저장된 003·004·009·010 신호를 제공 파일의 `in/out` 열로 다시 실행한 결과는 [재실행 노트](../gathering/notes/2026-09-03-saved-signal-is-oos-rerun.md)에 있다. 009는 OOS에서 부호가 반전했고, 나머지는 표본·원시 데이터 한계로 통과하지 못했다. 2026-09-03 재실행에서 022도 OOS `r=-0.348`, n=31로 확인돼 통과하지 못했다.
 
@@ -52,8 +54,23 @@
 | 029 | [Duty-Free Diesel Dash](029-duty-free-diesel-dash/README.md) | 관광·면세 소비 하위 가설 | **ARCHIVED** — 공개 면세 통계로 중국 관광·물류연료 귀속 불가; 027 하위 가설 | 0.0 |
 | 030 | [Instant Noodle Panic Index](030-instant-noodle-panic-index/README.md) | K-소비재 수출 밈 모니터 | **HOLD** — 관세청 공개 무역 surprise는 시험 가능; HS·국가 바스켓·공개시점 미동결 | 0.0 |
 | 031 | [Live Commerce Burn Rate](031-live-commerce-burn-rate/README.md) | Clicks → Combustion 하위 가설 | **ARCHIVED** — 스트림·주문·물류 데이터 부적격; 027의 월간 집계 맥락만 사용 | 0.0 |
+| 032 | [Korea Weather & Transport Disruption](032-korea-weather-transport-disruption/README.md) | 황사·제주 기상·수소 운영 맥락 | **HOLD** — 국내 운영 대시보드. WTI 변동성 선행성 미검증 | 0.0 |
+| 033 | [Base-Area Barbershop Activity](033-base-area-barbershop-activity/README.md) | 피자 인덱스형 지역 서비스 아이디어 | **ARCHIVED** — 적격한 익명 도시권 장기 집계 없음 | 0.0 |
+| 034 | [Base-Area Buzz-Cut Mix](034-base-area-buzzcut-mix/README.md) | 밈 아이디어 보존 | **ARCHIVED** — 개인 외모·스타일 데이터는 수집하지 않음 | 0.0 |
+| 035 | [Base-Area Fine-Dining Activity](035-base-area-fine-dining-activity/README.md) | 피자 인덱스형 지역 서비스 아이디어 | **ARCHIVED** — 적격한 익명 도시권 장기 집계 없음 | 0.0 |
+| 036 | [Public Military Recruiting Context](036-public-military-recruiting-context/README.md) | 공개 기관·노동시장 맥락 | **HOLD** — 저빈도·혼합 경로, 장기 공개시점 패널 미확보 | 0.0 |
+| 037 | [USFK Public Context](037-usfk-public-context/README.md) | 공식 발표 사건 태그 | **ARCHIVED** — 013의 지역 맥락 변형; 조기 알파 아님 | 0.0 |
+| 038 | [Cushing Draw Surprise](038-cushing-draw-surprise/README.md) | 공개 재고·변동성 후보 | IS `r=-0.142`, OOS `r=-0.074`; 가설 반대 | 0.0 |
+| 039 | [U.S. Gasoline Demand Surprise](039-us-gasoline-demand-surprise/README.md) | 공개 수요·변동성 후보 | IS `r=-0.005`, OOS `r=-0.009`; 관계 없음 | 0.0 |
+| 040 | [SPR Injection Watch](040-spr-injection-watch/README.md) | 공개 정책·변동성 후보 | IS `r=+0.051`, OOS `r=-0.455`; 부호 반전 | 0.0 |
+| 041 | [Refinery Utilization Proxy](041-refinery-utilization-proxy/README.md) | 정유 운영·변동성 후보 | IS `r=-0.206`, OOS `r=-0.011`; OOS 미통과 | 0.0 |
+| 042 | [Asia Financial Hub Pulse](042-asia-financial-hub-pulse/README.md) | 아시아 금융허브 소비·변동성 후보 | 공식 월간 집계 경로 확인. 동질 패널·공개시점 미구축으로 HOLD | 0.0 |
+| 043 | [Overtime Latte Index](043-overtime-latte-index/README.md) | 커피/에너지음료 상대 소비·변동성 밈 후보 | 에너지음료 소비의 무료 분리 장기 패널 없음; 소비 대신 무역을 쓰지 않음 | 0.0 |
+| 044 | [AI Burn Rate Index](044-ai-burn-rate-index/README.md) | AI 데이터센터 물리 buildout·변동성 후보 | Data center 건설: IS `r=-0.181`, OOS `r=-0.041`; 구독 레그는 미측정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
+
+새로 제안한 실물 원유 22개 아이디어의 원안별 번호·병합·안전상 분석 제외·무료 데이터 수집 상태는 [실물 22개 장부](../gathering/notes/2026-09-03-physical-oil-22-idea-intake.md)에 보존한다. 22개 중 실제 공개 원시 데이터로 즉시 검증 가능한 3·6·7·22는 038–041로 카드화했다.
 
 ## 세 개의 장부
 
@@ -73,6 +90,10 @@ Korea demand / refining context (024, 025, 027, 029–031)
 Market-neutral strategy (012)
     → Oil Pizza와 별도 장부·별도 비용·별도 검증
 ```
+
+2026-09-03 한국 미시 이동·관광 아이디어 10개는 [병합 기록](../gathering/notes/2026-09-03-korea-micro-mobility-factor-intake.md)에 원안별로 남겼다.
+
+사용자가 제공한 Human Pulse 30개 원안은 [이 병합·보존 장부](../gathering/notes/2026-09-03-human-pulse-30-idea-intake.md)에 모두 남겼다. 매장·개인·현장 관찰형 서사는 042·043의 밈 맥락으로 보존하되, 실제 분석에는 익명 공식 집계만 사용한다.
 
 ## 최소 검증 순서
 
