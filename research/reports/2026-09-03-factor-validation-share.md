@@ -48,6 +48,11 @@
 | 030 | Instant Noodle Panic Index | ⬜ `—` | ⬜ `—` | — | — | HS·국가 바스켓·공개시점 미동결; 공개 월간 무역통계로만 향후 반증 가능 |
 | 031 | Live Commerce Burn Rate | ⬜ `—` | ⬜ `—` | — | — | 스트림·주문·물류 데이터 부적격; 027 하위 가설로 보존 |
 | 032 | Korea Weather & Transport Disruption | ⬜ `—` | ⬜ `—` | — | — | 황사·제주 기상 공개 경로는 있으나 운영차질 장기 시계열·WTI 경로 미검증 |
+| 033 | Base-Area Barbershop Activity | ⬜ `—` | ⬜ `—` | — | — | 익명·집계 도시권 장기 서비스 수요 시계열 미확보 |
+| 034 | Base-Area Buzz-Cut Mix | ⬜ `—` | ⬜ `—` | — | — | 개인 외모·스타일 데이터 경계로 분석 제외 |
+| 035 | Base-Area Fine-Dining Activity | ⬜ `—` | ⬜ `—` | — | — | 익명·집계 도시권 장기 서비스 수요 시계열 미확보 |
+| 036 | Public Military Recruiting Context | ⬜ `—` | ⬜ `—` | — | — | 공식 모집 통계의 장기 공개시점 패널 미확보; 저빈도 혼합 경로 |
+| 037 | USFK Public Context | ⬜ `—` | ⬜ `—` | — | — | 공식 발표는 사건 태그이며 사전 라벨 장기 패널 미확보 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 
