@@ -58,6 +58,8 @@
 | 045 | 서울시 상권분석 커피·음료 업종 | 부분 후보 | 무료 발급키로 전체 행 집계 가능하나 2021년 이후만 제공·공개 sample 키는 5행 제한 | [045 카드](../factors/045-iced-americano-heat-index/README.md) |
 | 046 | Chicago CTA 일별 탑승 합계 | 수집·검증 | IS `-0.267`, OOS `+0.005`; 도시 이동 리듬 관계 소멸 | `gathering/raw/2026-09-03-urban-taxi-tempo-probe/` |
 | 042A | MTA Wall Street 역군 월별 탑승량 | 수집·검증(설명적)·구성요소 반증 | 기본 IS `+0.044`, OOS `-0.350`; 4개 구성요소도 반전/소멸. 4도시 AFHP 패널은 미구축 | `gathering/raw/2026-09-03-wall-street-district-pulse-probe/`, `2026-09-03-rescue-diagnostics-027-042/` |
+| 047 | Google Trends trade-down 관심도 바스켓 | 보류 | Temu 역사 부족. 공개 UI에는 안정적 연구 API·빈티지 계약이 없어 관심도를 판매로 바꾸지 않음 | [047 카드](../factors/047-conscience-compression-index/README.md) |
+| 048 | YouTube 공개 에피소드 메타데이터 | MEME / monitor only | 2020년대 시작·주간 사후 논평·썸네일 변경 가능성. 공개 문화 주석만 허용 | [048 카드](../factors/048-all-in-tie-day-index/README.md) |
 
 ## 다음 실행 순서
 
@@ -67,4 +69,4 @@
 
 현재 양쪽 구간에서 `|r| ≥ 0.10`으로 재현된 팩터는 없다. 이 장부는 그 결론을 뒤집기 위한 데이터 수집 목록이지, 없는 알파를 숫자로 채우는 문서가 아니다.
 
-001–046의 수집 가능성·명시적 미수집 사유·이번 보완 시험은 [전 팩터 무료 데이터 완결 감사](2026-09-03-full-free-data-completeness-audit.md)에 기록한다.
+001–048의 수집 가능성·명시적 미수집 사유·이번 보완 시험은 [전 팩터 무료 데이터 완결 감사](2026-09-03-full-free-data-completeness-audit.md)에 기록한다.
