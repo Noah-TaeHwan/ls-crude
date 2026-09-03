@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Factor Research Map
 
 **대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`
-**현재 상태**: 001–019는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 001–020은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 하고, 동결 후에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 먼저 읽을 것
@@ -37,6 +37,7 @@
 | 017 | [Pipeline Noise](017-pipeline-noise-signal.md) | 물리 리스크 게이트 | **HOLD** — 공개 관측소가 파이프라인 이상을 식별하는지 불명 | 0.0 |
 | 018 | [Luxury ICE Road Appetite](018-luxury-ice-road-appetite.md) | 밈 아이디어 + 소비·물류 후보 | **IDEA + HOLD** — 원안 보존, 측정 가능한 프록시 조사 중 | 0.0 |
 | 019 | [OPEC Camel Index](019-opec-camel-index.md) | 밈 서사 + 사막 운영 스트레스 | **MEME + HOLD** — 낙타는 UI, 기상·운영 변수만 조사 | 0.0 |
+| 020 | [Sandstorm Visibility & Gulf Operations](020-sandstorm-visibility-gulf-operations.md) | 밈 서사 + 가시성·운영 리스크 | **MEME + HOLD** — 공개 폭풍·공개 운영 차질만 조사 | 0.0 |
 
 ## 체계: 세 개의 버킷
 
@@ -44,7 +45,7 @@
 Directional candidates (002–006, 008–009, 012, 018D–E)
     → 각 후보가 독립적으로 통과한 뒤에만 결합 후보가 됨
 
-Risk / volatility gates (007, 010–011, 015, 017, 019)
+Risk / volatility gates (007, 010–011, 015, 017, 019–020)
     → 방향 베팅의 크기를 조절하는 후보. 가격 방향 가중치가 아님
 
 Market-neutral strategies (013–014)
@@ -87,5 +88,6 @@ research/factors/
 ├── 016-khutbah_signal.zip + 016-khutbah-signal.md
 ├── 017-pipeline_noise_signal.zip + 017-pipeline-noise-signal.md
 ├── 018-luxury-ice-road-appetite.md
-└── 019-opec-camel-index.md
+├── 019-opec-camel-index.md
+└── 020-sandstorm-visibility-gulf-operations.md
 ```

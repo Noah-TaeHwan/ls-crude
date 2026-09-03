@@ -27,5 +27,6 @@
 | BTS Freight Analysis Framework (FAF5) | 018E 미국 화물 흐름의 연간 배경·통제 | https://www.bts.gov/faf/faf5 | 미국 정부 공개 다운로드. 세부 이용조건 확인 필요 | 연간 추정·개정 가능 | 있음. 발표 이후만 사용 | 2015–2023 일부 연간 추정 가능; 실시간 자료 아님 | 화물 흐름 맥락만. 유조차·실시간 트럭 카운트로 해석 금지 | [노트](../notes/2026-09-03-luxury-ice-road-appetite-hold.md) |
 | NASA POWER Daily API | 019 사막 수도권·인프라 권역의 기상 스트레스 후보 | https://power.larc.nasa.gov/docs/services/api/temporal/daily/ | NASA 공개 API. 이용조건·호출 제한 확인 필요 | 일별, 1981~NRT. NRT는 후속 품질 자료로 대체 가능 | 있음. UTC/LST와 제공·대체 시점 이후만 사용 | 2015–2023 가능 여부·변수별 개정 확인 전 | NASA 격자형 기상만. 동물·현장 운영 상태·정책 의도로 해석 금지 | [노트](../notes/2026-09-03-opec-camel-index-hold.md) |
 | OPEC official press releases | 019 생산·회의·정책 사건의 시점 통제 | https://www.opec.org/pr-detail/604-16-june-2026.html | OPEC 공식 웹페이지. 재사용 조건 확인 필요 | 비정기 발표 | 있음. 공식 게시시점 이후만 사용 | 2015–2023 발표 이력 수집 전 | 예측 신호가 아닌 사건·정책 통제 더미 | [노트](../notes/2026-09-03-opec-camel-index-hold.md) |
+| Kuwait Government Online dust-storm notice | 020의 공개 모래폭풍·가시성 사건 예시 | https://e.gov.kw/sites/kgoenglish/Pages/ApplicationPages/NewsDetail.aspx?nid=34663288 | Kuwait Government Online. 재사용 조건 모름 | 2025-04-14 14:23 공지. 역사적 아카이브·갱신 정책 모름 | 있음. 사건 시각이 아닌 게시 시점 이후만 사용 | 2015–2023 시계열로서 가용성 미확인 | 공식 공지만. 정유 가동·AIS·유가 인과로 확장 해석 금지 | [노트](../notes/2026-09-03-sandstorm-visibility-gulf-operations-hold.md) |
 
 조사 노트에 적힌 출처만 추가합니다. 보류도 한 줄로 남깁니다. 없는 출처를 미리 만들지 않습니다.
