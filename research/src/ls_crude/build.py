@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from ls_crude.config import IN_SAMPLE_START, WTI_TICKER
+from ls_crude.config import IN_SAMPLE_END, IN_SAMPLE_START, WTI_TICKER
 from ls_crude.data.fred import fetch_macro_panel
 from ls_crude.data.news import classify_headline, load_news_csv
 from ls_crude.data.yahoo import download_ohlcv, fetch_yahoo_news, yahoo_news_to_frame
@@ -54,9 +54,12 @@ def build_baseline() -> pd.DataFrame:
 
 
 def _write_snapshot(panel: pd.DataFrame, news: pd.DataFrame) -> None:
-    tail = panel.tail(180).reset_index()
+    cutoff = pd.Timestamp(IN_SAMPLE_END)
+    public_panel = panel.loc[(panel.index <= cutoff) & panel["sample"].eq("in")]
+    tail = public_panel.tail(180).reset_index()
     tail["date"] = pd.to_datetime(tail["date"]).dt.strftime("%Y-%m-%d")
-    news_tail = news.tail(40).copy()
+    public_news = news.loc[pd.to_datetime(news["published_at"]) <= cutoff]
+    news_tail = public_news.tail(40).copy()
     news_tail["published_at"] = pd.to_datetime(news_tail["published_at"]).dt.strftime(
         "%Y-%m-%d"
     )

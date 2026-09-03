@@ -23,4 +23,13 @@ Oil Slice는 옆에 둔 공개 신호 초안입니다. 기록은 [`docs/experime
 | --- | --- | --- | --- | --- |
 | | | | | 비어 있음 |
 
+## 표에 안 넣는 축
+
+후보 행이 아닙니다. 크립토의 뭐 × 뉴스의 무슨가 아직 없습니다.
+
+| 축 | 노트 | 이유 |
+| --- | --- | --- |
+| IMF PortWatch 호르무즈 | [`../gathering/notes/2026-09-02-hormuz-portwatch.md`](../gathering/notes/2026-09-02-hormuz-portwatch.md) | 통과 척수. 크립토·뉴스 아님. 공개 시작 2019 |
+| 위키 호르무즈 조회수 | [`../gathering/notes/2026-09-03-hormuz-wiki-pageviews.md`](../gathering/notes/2026-09-03-hormuz-wiki-pageviews.md) | 관심 대리. 크립토 아님. `NOT_PROVEN as-of-safe`; 보수적 가용성 계약·빈티지 영수증 전 후보 점수 산정 금지. 인샘플 급증 124일, N 고정 |
+
 원천 시드는 `research/data/pizza/`에 둡니다. 덤프는 `research/gathering/raw/`에만.
