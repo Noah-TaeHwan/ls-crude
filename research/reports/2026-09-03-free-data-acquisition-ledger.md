@@ -49,6 +49,14 @@
 | 036 | 공식 모집 집계 | 보류 | 저빈도·노동시장/예산 혼합, 공개시점 장기 패널 미확보 | 카드 036 |
 | 037 | 공식 발표 | 보류 | 사건 태그만 가능, 기지 주변 감시·운영 추론은 제외 | 카드 037 |
 
+## 후속 등록
+
+| # | 무료 후보 데이터 | 현재 상태 | IS/OOS 변동성 결과 또는 다음 막힘 | 원본·기록 위치 |
+| ---: | --- | --- | --- | --- |
+| 044 | U.S. Census Data Center construction | 수집·검증 | IS `-0.181`, OOS `-0.041`; AI 구독은 미측정 | `gathering/raw/2026-09-03-ai-burn-rate-probe/` |
+| 045 | SEC Starbucks Company Facts | 수집·검증 | IS `+0.512`, OOS `-0.511`; 전체 매출 프록시가 부호 반전 | `gathering/raw/2026-09-03-iced-americano-heat-index/` |
+| 045 | 서울시 상권분석 커피·음료 업종 | 부분 후보 | 무료 발급키로 전체 행 집계 가능하나 2021년 이후만 제공·공개 sample 키는 5행 제한 | [045 카드](../factors/045-iced-americano-heat-index/README.md) |
+
 ## 다음 실행 순서
 
 1. 030의 HS·국가 바스켓과 공표일을 IS 안에서 고정한다.
