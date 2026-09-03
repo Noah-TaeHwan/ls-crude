@@ -6,6 +6,7 @@
     "build": "react-router build",
     "dev": "react-router dev --port 5173",
     "start": "react-router-serve ./build/server/index.js",
+    "test:deployment-cwd": "npm run build && node --test tests/deployment-cwd.test.mjs",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
