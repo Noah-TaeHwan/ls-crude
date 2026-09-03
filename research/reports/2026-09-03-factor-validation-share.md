@@ -61,6 +61,7 @@
 | 043 | Overtime Latte Index | ⬜ `—` | ⬜ `—` | — | — | 에너지음료 소비를 단독 분리한 무료 장기 판매 패널이 없음; 무역·검색을 소비로 대체하지 않음 |
 | 044 | AI Burn Rate Index | 🟨 `-0.181` | 🟨 `-0.041` | 83 월 | 29 월 | Census Data center 건설 모멘텀. IS 가설 반대, OOS 관계 소멸; AI 구독 레그 미측정 |
 | 045 | Iced Americano Heat Index | 🟨 `+0.512` | 🟨 `-0.511` | 22 분기 | 12 분기 | Starbucks 최초 SEC 분기매출 YoY 프록시. 아이스 아메리카노 직접 측정 아님; OOS 부호 반전 |
+| 046 | Urban Mobility Tempo | 🟨 `-0.267` | 🟨 `+0.005` | 3,287 일 | 912 일 | Chicago CTA 익명 일별 탑승량 동일요일 서프라이즈. IS 반대, OOS 소멸 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 
@@ -80,6 +81,7 @@
 | 041 Refinery Utilization Proxy | 전국 정유 설비 가동률 z-score → 다음 5일 실현변동성 | r=**-0.206**, n=418 | r=**-0.011**, n=137 | 특정 Gulf coker 원안의 프록시일 뿐이며 OOS에서 소멸. |
 | 044 AI Burn Rate Index | Census data-center 건설지출 전월변화 z-score → 다음 21일 실현변동성 | r=**-0.181**, n=83 | r=**-0.041**, n=29 | 물리 buildout만 측정. 구독률이 아니며, IS 반대·OOS 관계 소멸. |
 | 045 Iced Americano Heat Index | Starbucks 최초 SEC 분기매출 YoY → 다음 21일 실현변동성 | r=**+0.512**, n=22 | r=**-0.511**, n=12 | 대표 카페 체인 전체 매출 프록시일 뿐. 부호 반전이라 채택 불가. |
+| 046 Urban Mobility Tempo | CTA 일별 총 탑승 동일요일 z-score → 다음 5일 실현변동성 | r=**-0.267**, n=3,287 | r=**+0.005**, n=912 | 택시·버스·플랫폼·도보 마찰 원안의 익명 집계판. OOS 소멸. |
 
 ## 데이터 준비 상태
 
