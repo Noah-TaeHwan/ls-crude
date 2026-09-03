@@ -57,7 +57,7 @@
 | 039 | U.S. Gasoline Demand Surprise | 🟨 `-0.005` | 🟨 `-0.009` | 415 주 | 137 주 | 공개 EIA product-supplied 프록시; 양쪽 모두 0 근처 |
 | 040 | SPR Injection Watch | 🟨 `+0.051` | 🟨 `-0.455` | 417 주 | 137 주 | 공개 EIA SPR 변화; IS/OOS 부호 반전 |
 | 041 | Refinery Utilization Proxy | 🟨 `-0.206` | 🟨 `-0.011` | 418 주 | 137 주 | 공개 EIA 전국 가동률; 특정 coker는 아님, OOS 관계 소멸 |
-| 042 | Asia Financial Hub Pulse | ⬜ `—` | ⬜ `—` | — | — | 4개 도시 공식 월간 집계의 동질 패널·실제 발표일 빈티지 미구축 |
+| 042 | Asia Financial Hub Pulse | 🟨 `+0.044` | 🟨 `-0.350` | 46 월 | 31 월 | 042A 공식 Wall Street 역군 설명적 시험; 부호 반전. 4도시 패널 미구축 |
 | 043 | Overtime Latte Index | ⬜ `—` | ⬜ `—` | — | — | 에너지음료 소비를 단독 분리한 무료 장기 판매 패널이 없음; 무역·검색을 소비로 대체하지 않음 |
 | 044 | AI Burn Rate Index | 🟨 `-0.181` | 🟨 `-0.041` | 83 월 | 29 월 | Census Data center 건설 모멘텀. IS 가설 반대, OOS 관계 소멸; AI 구독 레그 미측정 |
 | 045 | Iced Americano Heat Index | 🟨 `+0.512` | 🟨 `-0.511` | 22 분기 | 12 분기 | Starbucks 최초 SEC 분기매출 YoY 프록시. 아이스 아메리카노 직접 측정 아님; OOS 부호 반전 |
@@ -82,6 +82,7 @@
 | 039 U.S. Gasoline Demand Surprise | finished gasoline product supplied의 자체 4주 평균 대비 z-score → 다음 5일 실현변동성 | r=**-0.005**, n=415 | r=**-0.009**, n=137 | 양쪽 0 근처. 단순 수요 변동은 변동성 알파가 아니다. |
 | 040 SPR Injection Watch | SPR 주간 순증가 z-score → 다음 5일 실현변동성 | r=**+0.051**, n=417 | r=**-0.455**, n=137 | OOS 절대값은 커도 IS와 부호 반전: 통과 아님. |
 | 041 Refinery Utilization Proxy | 전국 정유 설비 가동률 z-score → 다음 5일 실현변동성 | r=**-0.206**, n=418 | r=**-0.011**, n=137 | 특정 Gulf coker 원안의 프록시일 뿐이며 OOS에서 소멸. |
+| 042A Wall Street District Pulse | 공식 MTA 역군 월별 탑승 YoY 36개월 z-score → 다음 21거래일 RV | r=**+0.044**, n=46 | r=**-0.350**, n=31 | 4도시 AFHP가 아닌 단일도시 설명적 시험. 과거 release vintage가 없어 관측월 말+45일 보수적 지연을 사용했고, 부호 반전으로 기각. |
 | 044 AI Burn Rate Index | Census data-center 건설지출 전월변화 z-score → 다음 21일 실현변동성 | r=**-0.181**, n=83 | r=**-0.041**, n=29 | 물리 buildout만 측정. 구독률이 아니며, IS 반대·OOS 관계 소멸. |
 | 045 Iced Americano Heat Index | Starbucks 최초 SEC 분기매출 YoY → 다음 21일 실현변동성 | r=**+0.512**, n=22 | r=**-0.511**, n=12 | 대표 카페 체인 전체 매출 프록시일 뿐. 부호 반전이라 채택 불가. |
 | 046 Urban Mobility Tempo | CTA 일별 총 탑승 동일요일 z-score → 다음 5일 실현변동성 | r=**-0.267**, n=3,287 | r=**+0.005**, n=912 | 택시·버스·플랫폼·도보 마찰 원안의 익명 집계판. OOS 소멸. |

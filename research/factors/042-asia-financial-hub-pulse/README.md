@@ -1,6 +1,6 @@
 # 042 — Asia Financial Hub Pulse (AFHP)
 
-**상태**: ⏸️ **HOLD — 공개 월간 집계는 확인, 동질 장기 패널은 아직 미구축**  
+**상태**: ⏸️ **HOLD — 4도시 동질 패널은 미구축, 042A 단일도시 첫 검증도 미통과**  
 **별칭**: *Overtime Latte Index*  
 **Oil Pizza 가중치**: `0.0`
 
@@ -63,6 +63,10 @@ Lower Manhattan 역군의 평일 출입량
 ```
 
 이는 월스트리트 종사자·주문·건물·식당을 추적하지 않으며, 금융활동 또는 석유 수요를 직접 추론하지 않는다. 2015–2022 turnstile 계열로 사양만 고정하고, 2020 이후 다른 MTA hourly-ridership 방법론을 억지로 연결해 OOS라고 부르지 않는다. 상세 비교와 데이터 계약은 [단일 금융지구 탐색 노트](../../gathering/notes/2026-09-03-district-pulse-location-scan.md)에 있다.
+
+### 2026-09-03 월별 역군 첫 검증
+
+MTA의 동일 정의 월별 역별 탑승량(2017-02 이후)에서 Broad St, WTC/Cortlandt, Fulton St, Rector St, Wall St 역군을 사전 고정했다. 월간 YoY 변화의 36개월 z-score를 보수적으로 관측월 말 +45일 뒤에 공개된 것으로 처리해 다음 21거래일 WTI 실현변동성과 비교했다. 결과는 IS `r=+0.044` (n=46), OOS `r=-0.350` (n=31)이다. 과거 실제 공표시각 빈티지는 없으므로 설명적 시험이며, 부호 반전으로 Oil Pizza 후보가 아니다. 원본·패널·스크립트는 gitignored `gathering/raw/2026-09-03-wall-street-district-pulse-probe/`에 보관한다.
 
 ## 왜 가격 방향 팩터가 아닌가
 

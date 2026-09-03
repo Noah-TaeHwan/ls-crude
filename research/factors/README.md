@@ -70,7 +70,7 @@
 | 039 | U.S. Gasoline Demand Surprise | -0.005 | -0.009 | REJECTED — 관계 없음 |
 | 040 | SPR Injection Watch | +0.051 | -0.455 | REJECTED — 부호 반전 |
 | 041 | Refinery Utilization Proxy | -0.206 | -0.011 | REJECTED — OOS 소멸 |
-| 042 | Asia Financial Hub Pulse | — | — | HOLD |
+| 042 | Asia Financial Hub Pulse | +0.044 | -0.350 | HOLD — 042A 단일도시 부호 반전; 4도시 패널 미구축 |
 | 043 | Overtime Latte Index | — | — | HOLD — 소비 패널 없음 |
 | 044 | AI Burn Rate Index | -0.181 | -0.041 | REJECTED — OOS 소멸 |
 | 045 | Iced Americano Heat Index | +0.512 | -0.511 | REJECTED — 부호 반전 |
@@ -123,7 +123,7 @@
 | 039 | [U.S. Gasoline Demand Surprise](039-us-gasoline-demand-surprise/README.md) | 공개 수요·변동성 후보 | IS `r=-0.005`, OOS `r=-0.009`; 관계 없음 | 0.0 |
 | 040 | [SPR Injection Watch](040-spr-injection-watch/README.md) | 공개 정책·변동성 후보 | IS `r=+0.051`, OOS `r=-0.455`; 부호 반전 | 0.0 |
 | 041 | [Refinery Utilization Proxy](041-refinery-utilization-proxy/README.md) | 정유 운영·변동성 후보 | IS `r=-0.206`, OOS `r=-0.011`; OOS 미통과 | 0.0 |
-| 042 | [Asia Financial Hub Pulse](042-asia-financial-hub-pulse/README.md) | 아시아 금융허브 소비·변동성 후보 | 공식 월간 집계 경로 확인. 동질 패널·공개시점 미구축으로 HOLD | 0.0 |
+| 042 | [Asia Financial Hub Pulse](042-asia-financial-hub-pulse/README.md) | 아시아 금융허브 소비·변동성 후보 | 042A Wall Street 역군: IS `r=+0.044`, OOS `r=-0.350`; 4도시 동질 패널은 여전히 미구축 | 0.0 |
 | 043 | [Overtime Latte Index](043-overtime-latte-index/README.md) | 커피/에너지음료 상대 소비·변동성 밈 후보 | 에너지음료 소비의 무료 분리 장기 패널 없음; 소비 대신 무역을 쓰지 않음 | 0.0 |
 | 044 | [AI Burn Rate Index](044-ai-burn-rate-index/README.md) | AI 데이터센터 물리 buildout·변동성 후보 | Data center 건설: IS `r=-0.181`, OOS `r=-0.041`; 구독 레그는 미측정 | 0.0 |
 | 045 | [Iced Americano Heat Index](045-iced-americano-heat-index/README.md) | 카페 소비·도심 레짐 밈 후보 | Starbucks 매출 프록시: IS `r=+0.512`, OOS `r=-0.511`; 부호 반전, 아이스 아메리카노 직접 측정 아님 | 0.0 |

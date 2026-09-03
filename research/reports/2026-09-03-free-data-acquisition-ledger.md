@@ -57,6 +57,7 @@
 | 045 | SEC Starbucks Company Facts | 수집·검증 | IS `+0.512`, OOS `-0.511`; 전체 매출 프록시가 부호 반전 | `gathering/raw/2026-09-03-iced-americano-heat-index/` |
 | 045 | 서울시 상권분석 커피·음료 업종 | 부분 후보 | 무료 발급키로 전체 행 집계 가능하나 2021년 이후만 제공·공개 sample 키는 5행 제한 | [045 카드](../factors/045-iced-americano-heat-index/README.md) |
 | 046 | Chicago CTA 일별 탑승 합계 | 수집·검증 | IS `-0.267`, OOS `+0.005`; 도시 이동 리듬 관계 소멸 | `gathering/raw/2026-09-03-urban-taxi-tempo-probe/` |
+| 042A | MTA Wall Street 역군 월별 탑승량 | 수집·검증(설명적) | IS `+0.044`, OOS `-0.350`; 부호 반전. 4도시 AFHP 패널은 미구축 | `gathering/raw/2026-09-03-wall-street-district-pulse-probe/` |
 
 ## 다음 실행 순서
 
