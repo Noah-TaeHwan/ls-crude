@@ -1,0 +1,1 @@
+SamadiPour/rial-exchange-rates-archive의 공개 `data` 브랜치에서 IRR/USD 역사 자료를 2026-09-03에 받아 009의 인샘플 탐색에만 사용한다. 해당 저장소는 MIT를 표기하지만 Bonbast 원천값의 빈티지·사후 수정 여부는 확인하지 못했다. Investing.com과 제재 대상 거래소는 접근·스크래핑하지 않았다. 분석은 2015-01-01~2023-12-31로 제한하며 원자료·계산 스크립트는 gitignored다.

@@ -26,7 +26,7 @@
 | 006 | [Wholesale Logistics](006-wholesale-logistics.md) | 실물 수요 아이디어 | **SKIP** — 논리는 유효하나, 느린 물류 대리값에 EIA 주간 자료 대비 고유 알파 근거가 없음 | 0.0 |
 | 007 | [MENA Elite Mobility](007-doomsday-bunker-index.md) | 지정학 리스크 게이트 | **HOLD** — 복수 기관 비식별 집계 제휴 필요 | 0.0 |
 | 008 | [Hyperliquid Capital Flow](008-hyperliquid-capital-flow.md) | 설명적 크립토 레버리지 모니터 | **HOLD / monitor only** — 귀속 불가·2015–2023 역사 부족·광범위 OI/펀딩 대비 고유성 미확인 | 0.0 |
-| 009 | [Iran Crypto Premium](009-iran-middleeast-premium.md) | 현지 스트레스 후보 | **HOLD** — 합법적 접근·환율 기준·역사성 확인 필요 | 0.0 |
+| 009 | [Iran FX Stress & Crypto Premium](009-iran-middleeast-premium.md) | 현지 스트레스 후보 | **009A HOLD / 009B BLOCKED** — FX 탐색 차이는 있으나 빈티지·공통충격 미해결, 암호 레그는 제재 준수상 불가 | 0.0 |
 | 010 | [Official Petroleum Buffer](010-official-petroleum-buffer.md) | 변동성 레짐 | **HOLD** — 발표시점·개정 이력 필요 | 0.0 |
 | 011 | [Energy Workforce Momentum](011-energy-workforce-momentum.md) | 중기 공급 후보 | **HOLD** — 공개·재현 가능한 구성요소가 부족 | 0.0 |
 | 012 | [Cartel Policy & AI Dynamics](012-cartel-policy-ai-dynamics.md) | 정책 후보 묶음 | **HOLD / 분해 필요** — SPR·OPEC 정책·AI는 독립 가설 | 0.0 |
