@@ -7,6 +7,7 @@
 | `event_calendar.csv` | Oil Slice 시드 헤드라인 | 올림 |
 | `clf-daily-2015-2026.csv` | Yahoo `CL=F`(WTI 선물) 일봉입니다. 2026-09-02 무렵에 받아 둔 시드고, 라이브 피드가 아닙니다. 현물도 아닙니다. `sample`이 인샘플(날짜 ≤ 2023-12-31)과 아웃샘플을 가릅니다. | 올림 |
 | `pizza/` | 대안 데이터 후보 시계열·뉴스 시드 (사람이 고른 것) | 시드만 |
+| `factor-free-source-catalog.csv` | 001–020의 반복 사용용 무료 소스·접근 조건·지연·금지 경계 | 올림 (메타데이터만) |
 | `pizza/raw/` | 후보 원본 덤프 | 안 올림 |
 | `raw/`, `processed/` | Yahoo 빌드 산출 | 안 올림 |
 | 팀원 드롭 | 코드·노트북이 있는 랩 폴더 | 폴더 이름 그대로. **gathering으로 이사하지 않음** |
@@ -23,3 +24,7 @@
 | `iran whale tracker/` | 이란 고래 추적 랩. 동일 |
 
 zip·parquet·큰 CSV는 커밋하지 않습니다. 규칙은 [`../INTAKE.md`](../INTAKE.md).
+
+## 무료 소스 카탈로그
+
+[`factor-free-source-catalog.csv`](factor-free-source-catalog.csv)는 원본 데이터가 아니라 **반복 수집을 위한 지도**입니다. 각 행에 URL·접근 방식·빈도·역사 범위·무엇을 실제로 측정하는지·절대 넘지 말아야 할 경계를 적습니다. 원본 응답과 큰 다운로드는 `../gathering/raw/` 또는 `pizza/raw/`에만 두며 GitHub에 올리지 않습니다.
