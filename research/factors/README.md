@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Factor Research Map
 
 **대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`
-**현재 상태**: 아래 001–043는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–044는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -13,7 +13,7 @@
 
 상세 수집 규칙은 [`research/INTAKE.md`](../INTAKE.md), 출처·지연·라이선스는 [`sources/REGISTRY.md`](../gathering/sources/REGISTRY.md)에 기록한다.
 
-2026-09-03 제공 `CL=F` 파일을 기준으로 한 인샘플·아웃샘플 적격성 감사는 [이 노트](../gathering/notes/2026-09-03-factor-is-oos-audit.md)에 있다. 43개 중 양쪽 구간에서 재현된 0.1% 관계는 없다. 2026-09-03부터 이 인벤토리의 공통 가격 타깃은 방향 수익률이 아니라 **신호 공개 뒤 다음 5거래일 WTI 실현변동성**이며, 결과는 [변동성 매트릭스](../reports/2026-09-03-factor-validation-share.md)에 기록한다. 월간 022·027·030·042·043은 빈도에 맞춰 다음 21거래일을 쓴다.
+2026-09-03 제공 `CL=F` 파일을 기준으로 한 인샘플·아웃샘플 적격성 감사는 [이 노트](../gathering/notes/2026-09-03-factor-is-oos-audit.md)에 있다. 44개 중 양쪽 구간에서 재현된 0.1% 관계는 없다. 2026-09-03부터 이 인벤토리의 공통 가격 타깃은 방향 수익률이 아니라 **신호 공개 뒤 다음 5거래일 WTI 실현변동성**이며, 결과는 [변동성 매트릭스](../reports/2026-09-03-factor-validation-share.md)에 기록한다. 월간 022·027·030·042·043·044는 빈도에 맞춰 다음 21거래일을 쓴다.
 
 팩터별 무료 데이터 후보, 실제 원본 보관 위치, 수집 실패 사유와 IS/OOS 실행 상태는 [무료 데이터 수집·검증 장부](../reports/2026-09-03-free-data-acquisition-ledger.md)에 기록한다.
 
@@ -66,6 +66,7 @@
 | 041 | [Refinery Utilization Proxy](041-refinery-utilization-proxy/README.md) | 정유 운영·변동성 후보 | IS `r=-0.206`, OOS `r=-0.011`; OOS 미통과 | 0.0 |
 | 042 | [Asia Financial Hub Pulse](042-asia-financial-hub-pulse/README.md) | 아시아 금융허브 소비·변동성 후보 | 공식 월간 집계 경로 확인. 동질 패널·공개시점 미구축으로 HOLD | 0.0 |
 | 043 | [Overtime Latte Index](043-overtime-latte-index/README.md) | 커피/에너지음료 상대 소비·변동성 밈 후보 | 에너지음료 소비의 무료 분리 장기 패널 없음; 소비 대신 무역을 쓰지 않음 | 0.0 |
+| 044 | [AI Burn Rate Index](044-ai-burn-rate-index/README.md) | AI 데이터센터 물리 buildout·변동성 후보 | Data center 건설: IS `r=-0.181`, OOS `r=-0.041`; 구독 레그는 미측정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 

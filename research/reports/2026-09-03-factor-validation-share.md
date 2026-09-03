@@ -59,6 +59,7 @@
 | 041 | Refinery Utilization Proxy | 🟨 `-0.206` | 🟨 `-0.011` | 418 주 | 137 주 | 공개 EIA 전국 가동률; 특정 coker는 아님, OOS 관계 소멸 |
 | 042 | Asia Financial Hub Pulse | ⬜ `—` | ⬜ `—` | — | — | 4개 도시 공식 월간 집계의 동질 패널·실제 발표일 빈티지 미구축 |
 | 043 | Overtime Latte Index | ⬜ `—` | ⬜ `—` | — | — | 에너지음료 소비를 단독 분리한 무료 장기 판매 패널이 없음; 무역·검색을 소비로 대체하지 않음 |
+| 044 | AI Burn Rate Index | 🟨 `-0.181` | 🟨 `-0.041` | 83 월 | 29 월 | Census Data center 건설 모멘텀. IS 가설 반대, OOS 관계 소멸; AI 구독 레그 미측정 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 
@@ -76,6 +77,7 @@
 | 039 U.S. Gasoline Demand Surprise | finished gasoline product supplied의 자체 4주 평균 대비 z-score → 다음 5일 실현변동성 | r=**-0.005**, n=415 | r=**-0.009**, n=137 | 양쪽 0 근처. 단순 수요 변동은 변동성 알파가 아니다. |
 | 040 SPR Injection Watch | SPR 주간 순증가 z-score → 다음 5일 실현변동성 | r=**+0.051**, n=417 | r=**-0.455**, n=137 | OOS 절대값은 커도 IS와 부호 반전: 통과 아님. |
 | 041 Refinery Utilization Proxy | 전국 정유 설비 가동률 z-score → 다음 5일 실현변동성 | r=**-0.206**, n=418 | r=**-0.011**, n=137 | 특정 Gulf coker 원안의 프록시일 뿐이며 OOS에서 소멸. |
+| 044 AI Burn Rate Index | Census data-center 건설지출 전월변화 z-score → 다음 21일 실현변동성 | r=**-0.181**, n=83 | r=**-0.041**, n=29 | 물리 buildout만 측정. 구독률이 아니며, IS 반대·OOS 관계 소멸. |
 
 ## 데이터 준비 상태
 
