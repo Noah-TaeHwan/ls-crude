@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Factor Research Map
 
 **대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`
-**현재 상태**: 아래 001–031은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–032는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -52,6 +52,7 @@
 | 029 | [Duty-Free Diesel Dash](029-duty-free-diesel-dash/README.md) | 관광·면세 소비 하위 가설 | **ARCHIVED** — 공개 면세 통계로 중국 관광·물류연료 귀속 불가; 027 하위 가설 | 0.0 |
 | 030 | [Instant Noodle Panic Index](030-instant-noodle-panic-index/README.md) | K-소비재 수출 밈 모니터 | **HOLD** — 관세청 공개 무역 surprise는 시험 가능; HS·국가 바스켓·공개시점 미동결 | 0.0 |
 | 031 | [Live Commerce Burn Rate](031-live-commerce-burn-rate/README.md) | Clicks → Combustion 하위 가설 | **ARCHIVED** — 스트림·주문·물류 데이터 부적격; 027의 월간 집계 맥락만 사용 | 0.0 |
+| 032 | [Korea Weather & Transport Disruption](032-korea-weather-transport-disruption/README.md) | 황사·제주 기상·수소 운영 맥락 | **HOLD** — 국내 운영 대시보드. WTI 변동성 선행성 미검증 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
@@ -73,6 +74,8 @@ Korea demand / refining context (024, 025, 027, 029–031)
 Market-neutral strategy (012)
     → Oil Pizza와 별도 장부·별도 비용·별도 검증
 ```
+
+2026-09-03 한국 미시 이동·관광 아이디어 10개는 [병합 기록](../gathering/notes/2026-09-03-korea-micro-mobility-factor-intake.md)에 원안별로 남겼다.
 
 ## 최소 검증 순서
 
