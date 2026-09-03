@@ -92,6 +92,8 @@ Market-neutral strategy (012)
 
 2026-09-03 한국 미시 이동·관광 아이디어 10개는 [병합 기록](../gathering/notes/2026-09-03-korea-micro-mobility-factor-intake.md)에 원안별로 남겼다.
 
+사용자가 제공한 Human Pulse 30개 원안은 [이 병합·보존 장부](../gathering/notes/2026-09-03-human-pulse-30-idea-intake.md)에 모두 남겼다. 매장·개인·현장 관찰형 서사는 042·043의 밈 맥락으로 보존하되, 실제 분석에는 익명 공식 집계만 사용한다.
+
 ## 최소 검증 순서
 
 1. 출처의 라이선스, 지연, 개정 이력, 역사 범위를 등록한다.

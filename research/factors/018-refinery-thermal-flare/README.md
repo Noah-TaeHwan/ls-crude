@@ -1,5 +1,7 @@
 # 018 — Refinery Thermal & Flare Operations Context
 
+> 2026-09-03 Human Pulse 원안의 `Construction Site Generator Noise`, `Port Crane Light Usage`, `Factory Floor Light Sensor Readings`는 [30개 보존 장부](../../gathering/notes/2026-09-03-human-pulse-30-idea-intake.md)에 병합했다. 단일 현장/시설 센서 대신 공개 산업·항만 권역 원격탐사 집계만 검토한다.
+
 **상태**: ⏸️ **HOLD — 가장 강한 신규 물리 관측 후보**
 **역할**: 정유소 열·플레어 이상을 통한 지역 운영 변화·정제품 리스크·WTI 변동성의 보조 맥락. 방향성 WTI 매수 규칙이 아니다.
 **Oil Pizza 가중치**: `0.0`
