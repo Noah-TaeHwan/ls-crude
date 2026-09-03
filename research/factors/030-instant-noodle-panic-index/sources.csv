@@ -1,0 +1,3 @@
+factor_id,source_name,url,access,frequency,signal,restriction
+030,Korea Customs Service Trade Statistics,https://tradedata.go.kr/cts/index_eng.do,public aggregate trade statistics,monthly,HS-country instant-noodle export surprise,HS mapping release timing and revision history must be frozen before testing
+030,Korea Customs release schedule,https://www.customs.go.kr/kcs/na/ntt/selectNttInfo.do?bbsId=2280&mi=10600&nttSn=10141577&nttSnUrl=862449616390be79d16b6d008088964d,official publication guidance,monthly provisional/final,as-of timing,do not use observation month before announced

@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Factor Research Map
 
 **대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`
-**현재 상태**: 아래 001–027은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–031은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -13,9 +13,9 @@
 
 상세 수집 규칙은 [`research/INTAKE.md`](../INTAKE.md), 출처·지연·라이선스는 [`sources/REGISTRY.md`](../gathering/sources/REGISTRY.md)에 기록한다.
 
-2026-09-03 제공 `CL=F` 파일을 기준으로 한 인샘플·아웃샘플 적격성 감사는 [이 노트](../gathering/notes/2026-09-03-factor-is-oos-audit.md)에 있다. 27개 중 양쪽 구간에서 재현된 0.1% 관계는 없다. 2026-09-03부터 이 인벤토리의 공통 가격 타깃은 방향 수익률이 아니라 **신호 공개 뒤 다음 5거래일 WTI 실현변동성**이며, 결과는 [변동성 매트릭스](../reports/2026-09-03-factor-validation-share.md)에 기록한다. 월간 022·027은 빈도에 맞춰 다음 21거래일을 쓴다.
+2026-09-03 제공 `CL=F` 파일을 기준으로 한 인샘플·아웃샘플 적격성 감사는 [이 노트](../gathering/notes/2026-09-03-factor-is-oos-audit.md)에 있다. 31개 중 양쪽 구간에서 재현된 0.1% 관계는 없다. 2026-09-03부터 이 인벤토리의 공통 가격 타깃은 방향 수익률이 아니라 **신호 공개 뒤 다음 5거래일 WTI 실현변동성**이며, 결과는 [변동성 매트릭스](../reports/2026-09-03-factor-validation-share.md)에 기록한다. 월간 022·027·030은 빈도에 맞춰 다음 21거래일을 쓴다.
 
-저장된 003·004·009·010 신호를 제공 파일의 `in/out` 열로 다시 실행한 결과는 [재실행 노트](../gathering/notes/2026-09-03-saved-signal-is-oos-rerun.md)에 있다. 009는 OOS에서 부호가 반전했고, 나머지는 표본·원시 데이터 한계로 통과하지 못했다.
+저장된 003·004·009·010 신호를 제공 파일의 `in/out` 열로 다시 실행한 결과는 [재실행 노트](../gathering/notes/2026-09-03-saved-signal-is-oos-rerun.md)에 있다. 009는 OOS에서 부호가 반전했고, 나머지는 표본·원시 데이터 한계로 통과하지 못했다. 2026-09-03 재실행에서 022도 OOS `r=-0.348`, n=31로 확인돼 통과하지 못했다.
 
 ## 현재 인벤토리와 검증 기록
 
@@ -42,12 +42,16 @@
 | 019 | [Robotaxi Night Traffic](019-robotaxi-night-traffic-archive.md) | 아이디어 보존 | **REJECTED** — 개인정보·데이터 적격성·인과 문제 | 0.0 |
 | 020 | [Gulf AC Panic](020-gulf-ac-panic.md) | 밈·전력 운영 후보 | 5일 변동성 IS `r=-0.066`; 전력·정전 일별 공개 시계열도 없음 | 0.0 |
 | 021 | [Kimchi Heat Index](021-kimchi-heat-index/README.md) | 한국 식탁 물가·기후 밈 모니터 | **IDEA ARCHIVED / HOLD** — 유가 타깃으로 미검증. KAMIS 수집 명세만 등록 | 0.0 |
-| 022 | [Korea Gas Pain Index](022-korea-us-fuel-transmission-spread/README.md) | 한국 소비자 연료 전가·환율 대시보드 | 21일 변동성 IS `r=-0.087`, n=95. 원유 알파가 아닌 dashboard candidate | 0.0 |
+| 022 | [Korea Gas Pain Index](022-korea-us-fuel-transmission-spread/README.md) | 한국 소비자 연료 전가·환율 대시보드 | 21일 변동성 IS `r=-0.087`, n=95; OOS `r=-0.348`, n=31. 원유 알파 아님 | 0.0 |
 | 023 | [Jeju Strait Watch](023-jeju-strait-watch/README.md) | 해상 리스크 아이디어 보존 | **REJECTED** — 선박별 AIS·보안 경계 및 017과 중복 | 0.0 |
 | 024 | [Chuseok Effect](024-chuseok-effect/README.md) | 국내 이동·수요 계절 맥락 | **HOLD** — 달력 자체는 알려진 계절성. 공개 집계 서프라이즈만 검토 가능 | 0.0 |
 | 025 | [Korean Refinery Margin Watch](025-korean-refinery-margin-watch/README.md) | 한국 정유 전가·마진 프록시 | **HOLD** — 공개 월간 프록시의 물리 경로는 있음; 실제 주간 crack 시계열 미확보 | 0.0 |
 | 026 | [Retail FX Surge Index](026-retail-fx-surge-index/README.md) | 아이디어 보존 | **REJECTED** — 개인·은행 고객 FX 흐름은 수집·검증 불가 | 0.0 |
 | 027 | [Incheon Transit Surge](027-incheon-transit-surge/README.md) | 항공 수요 nowcast 후보 | **HOLD** — 월간 집계는 가능하나 중국 국적·환승 분리와 WTI 연결 미검증 | 0.0 |
+| 028 | [Pohang Refinery Idle Watch](028-pohang-refinery-idle-watch/README.md) | 아이디어 보존 | **REJECTED** — 원안의 S-Oil 포항 정유소 전제가 사실과 다름; 025로만 맥락 보존 | 0.0 |
+| 029 | [Duty-Free Diesel Dash](029-duty-free-diesel-dash/README.md) | 관광·면세 소비 하위 가설 | **ARCHIVED** — 공개 면세 통계로 중국 관광·물류연료 귀속 불가; 027 하위 가설 | 0.0 |
+| 030 | [Instant Noodle Panic Index](030-instant-noodle-panic-index/README.md) | K-소비재 수출 밈 모니터 | **HOLD** — 관세청 공개 무역 surprise는 시험 가능; HS·국가 바스켓·공개시점 미동결 | 0.0 |
+| 031 | [Live Commerce Burn Rate](031-live-commerce-burn-rate/README.md) | Clicks → Combustion 하위 가설 | **ARCHIVED** — 스트림·주문·물류 데이터 부적격; 027의 월간 집계 맥락만 사용 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
@@ -63,7 +67,7 @@ Risk / volatility candidates (002, 007–010, 013–014, 016–018, 020)
 Household / CPI meme monitors (021, 022)
     → 한국 식품·연료 체감가격과 전가 설명용. WTI 방향·변동성 가중치에 넣지 않음
 
-Korea demand / refining context (024, 025, 027)
+Korea demand / refining context (024, 025, 027, 029–031)
     → 공개 집계의 실제 공개시점·역사를 확보한 뒤 변동성 반증용 테스트만 허용
 
 Market-neutral strategy (012)
