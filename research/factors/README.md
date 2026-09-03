@@ -20,7 +20,7 @@
 | --- | --- | --- | --- | ---: |
 | 001 | [Pentagon Uber Eats / MENA Civilian Delivery](001-pentagon-ubereats.md) | 철회 원안 + 민간 수요 보류 가설 | **원안 WITHDRAWN / 001B HOLD** — 기지 추적 없이 익명 도시권 집계만 검토 | 0.0 |
 | 002 | [Global Crypto Liquidity Stress](002-whale-index.md) | 변동성 레짐 후보 | **HOLD** — 고래 귀속은 불가, 적법한 집계·역사 데이터 점검 필요 | 0.0 |
-| 003 | [Truth Social](003-truth-social.md) | 공개 텍스트 후보 | **프로토타입** — 수집기 존재, 신호 유효성은 미검증 | 0.0 |
+| 003 | [Trump Temper & Oil Policy](003-truth-social.md) | 공개 텍스트·변동성 후보 | **HOLD** — 첫 엄격 규칙 탐색은 알파를 입증하지 못함 | 0.0 |
 | 004 | [Renewable Displacement](004-renewable-displacement.md) | 중기 수요 후보 | **HOLD** — 월간 지연·명확한 데이터 계약 필요 | 0.0 |
 | 005 | [Financial Demand](005-financial-demand.md) | 중기 수요 후보 | **HOLD** — 모델 복잡도보다 공개시점·표본 설계가 먼저 | 0.0 |
 | 006 | [Wholesale Logistics](006-wholesale-logistics.md) | 실물 수요 후보 | **후보** — 공개 월간 자료의 발표시점 검증 필요 | 0.0 |
