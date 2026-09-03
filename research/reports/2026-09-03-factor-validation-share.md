@@ -57,6 +57,7 @@
 | 039 | U.S. Gasoline Demand Surprise | 🟨 `-0.005` | 🟨 `-0.009` | 415 주 | 137 주 | 공개 EIA product-supplied 프록시; 양쪽 모두 0 근처 |
 | 040 | SPR Injection Watch | 🟨 `+0.051` | 🟨 `-0.455` | 417 주 | 137 주 | 공개 EIA SPR 변화; IS/OOS 부호 반전 |
 | 041 | Refinery Utilization Proxy | 🟨 `-0.206` | 🟨 `-0.011` | 418 주 | 137 주 | 공개 EIA 전국 가동률; 특정 coker는 아님, OOS 관계 소멸 |
+| 042 | Asia Financial Hub Pulse | ⬜ `—` | ⬜ `—` | — | — | 4개 도시 공식 월간 집계의 동질 패널·실제 발표일 빈티지 미구축 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 
