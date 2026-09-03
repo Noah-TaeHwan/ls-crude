@@ -11,6 +11,7 @@ AI 퀀트 4기 팀 프로젝트입니다. 야후파이낸스에서 WTI 선물(`C
 | 기간 | 2026-09-01 ~ 2026-09-15 |
 | 발표 | koreaIT 노원 B 강의실 |
 | 레포 | 비공개 (오태환 × 손성찬) |
+| 공개 데모 | [ls-crude.vercel.app](https://ls-crude.vercel.app) · Supabase 환경변수 없는 읽기 전용 스냅샷 |
 | 가격 | Yahoo Finance `CL=F` |
 | 뉴스 | Investing.com CSV (정본), Yahoo news (보조) |
 
