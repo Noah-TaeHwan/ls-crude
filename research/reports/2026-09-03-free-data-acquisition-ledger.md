@@ -64,6 +64,7 @@
 | 039·041·044 | Yahoo `RB=F`·`HO=F`·`NG=F` | 수집·타깃 재정렬 | 039→RBOB `+0.039/+0.058`; 041→RBOB `-0.190/-0.157` 재현 후보, 난방유 OOS 약화; 044→Henry Hub `+0.007/+0.051` | [에너지 체인 검정표](2026-09-04-energy-chain-target-matrix.md) |
 | 049 | Guardian Content API (최초 보도·24h 후속보도) | 수집·기각 | 사전 고정 30일 고요→최초 기사→24시간 후속보도. IS seed 6일은 가속도 값이 변하지 않아 `r` 미계산·사건 RV5 0.60배; OOS seed 8일 `r=+0.199`은 선택 근거 불가 | `gathering/raw/2026-09-04-guardian-acceleration-probe/` |
 | 051 | NASA FIRMS Archive + Guardian Content API | 접근성 감사·HOLD | FIRMS 역사 자료에는 탐지시각은 있으나 당시 NRT/RT 공개시각의 빈티지가 없다. Guardian 최초 게시시각과 결합하면 look-ahead를 막을 수 없어 IS/OOS 미실행 | [051 카드](../factors/051-public-confirmation-lag-index/README.md) |
+| 052 | Google Trends 공개 UI | 수집 대기·HOLD | V3 명세는 7일 지연·IS 전용 PCA를 갖추었으나, 2014년 이후 다섯 키워드 통합 CSV와 역사 빈티지가 없다. 합성·PyTrends 재수집으로 숫자를 만들지 않음 | [052 카드](../factors/052-search-desperation-index/README.md) |
 | 046 | Chicago CTA 일별 탑승 합계 | 수집·검증 | IS `-0.267`, OOS `+0.005`; 도시 이동 리듬 관계 소멸 | `gathering/raw/2026-09-03-urban-taxi-tempo-probe/` |
 | 042A | MTA Wall Street 역군 월별 탑승량 | 수집·검증(설명적)·구성요소 반증 | 기본 IS `+0.044`, OOS `-0.350`; 4개 구성요소도 반전/소멸. 4도시 AFHP 패널은 미구축 | `gathering/raw/2026-09-03-wall-street-district-pulse-probe/`, `2026-09-03-rescue-diagnostics-027-042/` |
 | 047 | Google Trends trade-down 관심도 바스켓 | 보류 | Temu 역사 부족. 공개 UI에는 안정적 연구 API·빈티지 계약이 없어 관심도를 판매로 바꾸지 않음 | [047 카드](../factors/047-conscience-compression-index/README.md) |
