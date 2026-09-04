@@ -117,7 +117,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 045 Iced Americano Heat Index | Starbucks 최초 SEC 분기매출 YoY → 다음 21일 실현변동성 | r=**+0.512**, n=22 | r=**-0.511**, n=12 | 대표 카페 체인 전체 매출 프록시일 뿐. 부호 반전이라 채택 불가. |
 | 046 Urban Mobility Tempo | CTA 일별 총 탑승 동일요일 z-score → 다음 5일 실현변동성 | r=**-0.267**, n=3,287 | r=**+0.005**, n=912 | 택시·버스·플랫폼·도보 마찰 원안의 익명 집계판. OOS 소멸. |
 | 054 UAP Attention Shock | `Unidentified_flying_object` 페이지뷰 z90 → 62개 자산의 다음 5일 RV | 최고 BTC·GME r=**+0.081**, 각 n=3,037 | **미개봉** | WTI 표와 다른 비-WTI 광역 스캔. 최고값 사후 선택·0.10 미만으로 밈 기록만 허용. |
-| 057 HIMI Public Proxy | FRED Machinery IP·EIA 정유가동률의 직전값 z-score 동일가중 → 다음 21거래일 RV | r=**-0.177**, n=107 | r=**+0.465**, n=31 | 부호 반전으로 기각. Machinery IP 단독 OOS `+0.712`은 31개월·IS 반전이라 사후 채택 금지; 원래 글로벌 4성분 HIMI도 아님. |
+| 057 HIMI Public Proxy | FRED Machinery IP·EIA 정유가동률의 직전값 z-score 동일가중 → 다음 21거래일 RV | r=**-0.177**, n=107 | r=**+0.465**, n=31 | v7 수정 규칙으로 실제 원천 재실행해도 동일. 부호 반전으로 기각. Machinery IP 단독 OOS `+0.712`은 31개월·IS 반전이라 사후 채택 금지; 원래 글로벌 4성분 HIMI도 아님. |
 | 058 Headline Boredom Index | Guardian 원유 제목 반복비율×최근 5신호일 기사량 → 다음 5거래일 RV | r=**+0.111**, n=1,342 | r=**+0.466**, n=453 | 기사량 통제 뒤 `+0.091/+0.061`. 반복성 자체가 아니라 보도량·긴장 레짐에 얽힌 결과라 독립 팩터로 기각. |
 
 ## 데이터 준비 상태
