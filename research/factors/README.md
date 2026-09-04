@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–054는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–055는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -85,6 +85,7 @@
 | 052 | Search Desperation Index | — | — | HOLD — Google Trends 장기 통합 원본 CSV·역사 빈티지 미확보; 숫자 미생성 |
 | 053 | Voice-of-Customer Fuel Frustration | — | — | HOLD — 원문 통화 NLP는 부적격; k≥10 비식별 주간 집계 미확보 |
 | 054 | UAP Attention Shock | — | — | MEME DISCOVERY — 62개 자산 IS 스캔 최대 `r=+0.081`; OOS 미개봉·알파 아님 |
+| 055 | Filing Delta Drift | — | — | HOLD — walk-forward SEC MD&A 공시 변화·개별 에너지 주식 변동성 후보; 수집·IS/OOS 미실행 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -146,6 +147,7 @@
 | 052 | [Search Desperation Index](052-search-desperation-index/README.md) | 소비자 에너지·생활비 검색 스트레스 | **HOLD** — 통합 장기 Google Trends CSV가 없어 수치 미생성. IS 전용 PCA·7일 지연·비중첩/HAC 검정 명세만 고정 | 0.0 |
 | 053 | [Voice-of-Customer Fuel Frustration](053-voice-of-customer-fuel-frustration/README.md) | 에너지 비용 불만의 익명 집계 모니터 | **HOLD** — 통화 원문·콜 ID는 금지. k≥10 비식별 주간 집계와 제공시각 없이는 수치 미생성 | 0.0 |
 | 054 | [UAP Attention Shock](054-uap-attention-shock/README.md) | UAP 공개 관심도 기반 광역 자산 밈 탐색 | **MEME DISCOVERY** — 62개 IS 스캔의 최대는 BTC·GME `r=+0.081`; OOS 미개봉, 선택편향상 알파 아님 | 0.0 |
+| 055 | [Filing Delta Drift](055-filing-delta-drift/README.md) | SEC MD&A 변화·에너지 기업 변동성 후보 | **HOLD** — 전체 코퍼스 TF-IDF는 look-ahead. walk-forward·동종공시·실제 접수시각 정렬을 구현한 뒤에만 IS/OOS 검정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
