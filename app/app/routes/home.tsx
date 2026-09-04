@@ -219,19 +219,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <main id="main-content" tabIndex={-1} className="min-h-screen">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
         <section className="grid border-b border-border lg:grid-cols-2">
-          <div>
-            <WatchGauge
-              score={sampleDefconScore(snapshot?.volatility.rv5ReferencePercentile)}
-              title={SAMPLE_DEFCON_TITLE}
-              bandLabel={SAMPLE_DEFCON_BAND}
-              scoreCaption={SAMPLE_DEFCON_CAPTION}
-              explainer={SAMPLE_DEFCON_EXPLAINER}
-              detail={SAMPLE_DEFCON_DETAIL}
-              isExample
-            />
-          </div>
-
-          <section className="border-t border-border px-1 py-7 lg:border-t-0 lg:border-l lg:px-8" aria-labelledby="quote-title">
+          <section className="px-1 py-7 lg:px-8" aria-labelledby="quote-title">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <h2 id="quote-title" className="text-base font-medium text-foreground">
@@ -269,6 +257,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                 >
                   <path
                     d={sparklinePath(closes)}
+                    pathLength={1}
+                    className="price-sparkline-draw"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -292,28 +282,49 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <MarketFact label="마지막 확인" value={snapshot ? formatKst(snapshot.checkedAt) : "—"} />
             </dl>
 
-            <div className="mt-5 space-y-1 font-mono text-[11px] leading-relaxed text-muted-foreground">
-              <p>
-                출처: {source} · {snapshot?.ticker ?? "CL=F"} · {snapshot?.interval ?? "1d"} · 자동조정 종가 · 20일 변동성 {formatNumber(snapshot?.volatility.rv20AnnualizedPct ?? null, 1)}%
-              </p>
-              <p>
-                기준 분포: {snapshot?.volatility.referenceStart ?? "—"}–{snapshot?.volatility.referenceEnd ?? "—"}
-                {snapshot ? ` · ${snapshot.volatility.referenceWindowCount.toLocaleString("ko-KR")}개 창` : ""}
-              </p>
-              <p>
-                산식: {snapshot?.volatility.formula ?? "—"} · 연환산 {snapshot?.volatility.annualization ?? 252}일
-              </p>
-              <p>CL=F는 연속선물이라 만기 교체 때 생기는 롤 갭을 포함할 수 있습니다.</p>
-              {snapshot ? (
+            <details className="mt-5 border border-border bg-card/20">
+              <summary className="cursor-pointer px-4 py-3 font-mono text-[11px] tracking-[0.2em] text-primary uppercase select-none">
+                관측 출처·산식·검증
+              </summary>
+              <div className="space-y-1 border-t border-border px-4 py-4 font-mono text-[11px] leading-relaxed text-muted-foreground">
                 <p>
-                  검증: 전체 완료봉 {snapshot.provenance.rowCount.toLocaleString("ko-KR")}행 · SHA-256 {snapshot.provenance.contentSha256.slice(0, 12)}…
+                  출처: {source} · {snapshot?.ticker ?? "CL=F"} · {snapshot?.interval ?? "1d"} · 자동조정 종가 · 20일 변동성 {formatNumber(snapshot?.volatility.rv20AnnualizedPct ?? null, 1)}%
                 </p>
-              ) : null}
-              {market.freshnessReasons.map((reason) => (
-                <p key={reason} className="text-primary">{reason}</p>
-              ))}
-            </div>
+                <p>
+                  기준 분포: {snapshot?.volatility.referenceStart ?? "—"}–{snapshot?.volatility.referenceEnd ?? "—"}
+                  {snapshot ? ` · ${snapshot.volatility.referenceWindowCount.toLocaleString("ko-KR")}개 창` : ""}
+                </p>
+                <p>
+                  산식: {snapshot?.volatility.formula ?? "—"} · 연환산 {snapshot?.volatility.annualization ?? 252}일
+                </p>
+                <p>CL=F는 연속선물이라 만기 교체 때 생기는 롤 갭을 포함할 수 있습니다.</p>
+                {snapshot ? (
+                  <p>
+                    검증: 전체 완료봉 {snapshot.provenance.rowCount.toLocaleString("ko-KR")}행 · SHA-256 {snapshot.provenance.contentSha256.slice(0, 12)}…
+                  </p>
+                ) : null}
+              </div>
+            </details>
+            {market.freshnessReasons.length > 0 ? (
+              <div className="mt-2 space-y-1 font-mono text-[11px] leading-relaxed">
+                {market.freshnessReasons.map((reason) => (
+                  <p key={reason} className="text-primary">{reason}</p>
+                ))}
+              </div>
+            ) : null}
           </section>
+
+          <div className="border-t border-border lg:border-t-0 lg:border-l">
+            <WatchGauge
+              score={sampleDefconScore(snapshot?.volatility.rv5ReferencePercentile)}
+              title={SAMPLE_DEFCON_TITLE}
+              bandLabel={SAMPLE_DEFCON_BAND}
+              scoreCaption={SAMPLE_DEFCON_CAPTION}
+              explainer={SAMPLE_DEFCON_EXPLAINER}
+              detail={SAMPLE_DEFCON_DETAIL}
+              isExample
+            />
+          </div>
         </section>
 
         <section className="border-b border-border py-8 sm:py-10" aria-labelledby="signal-question">
@@ -334,18 +345,21 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <p className="mt-2 font-mono text-sm text-primary">
                 {CANDIDATE_COUNT}개 후보 · 통과 {PASS_COUNT}개
               </p>
+              <p className="mt-1 text-sm text-muted-foreground">찾은 신호보다 버린 가설을 먼저 공개합니다.</p>
             </div>
             <Link className="text-link" to="/research">전체 연구 장부 보기</Link>
           </div>
 
+          <p className="mt-4 font-mono text-xs text-muted-foreground">IS 인샘플 2015–2023 · OOS 동결 후 1회 구간 · r 관계계수</p>
+
           <div className="mt-6 overflow-x-auto">
-            <table className="evidence-table">
+            <table className="evidence-table evidence-table-stacked">
               <thead>
                 <tr>
                   <th scope="col">가설</th>
                   <th scope="col">확보 데이터</th>
-                  <th scope="col" className="hidden sm:table-cell">IS</th>
-                  <th scope="col" className="hidden sm:table-cell">OOS</th>
+                  <th scope="col">IS</th>
+                  <th scope="col">OOS</th>
                   <th scope="col" className="whitespace-nowrap">판정</th>
                 </tr>
               </thead>
@@ -353,10 +367,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                 {RESEARCH_PREVIEW.map((row) => (
                   <tr key={row.hypothesis}>
                     <th scope="row">{row.hypothesis}</th>
-                    <td>{row.data}</td>
-                    <td className="hidden font-mono sm:table-cell">{row.inSample}</td>
-                    <td className="hidden font-mono sm:table-cell">{row.outSample}</td>
-                    <td className="whitespace-nowrap"><Verdict value={row.verdict} /></td>
+                    <td data-label="확보 데이터">{row.data}</td>
+                    <td data-label="IS" className="font-mono">{row.inSample}</td>
+                    <td data-label="OOS" className="font-mono">{row.outSample}</td>
+                    <td data-label="판정" className="whitespace-nowrap"><Verdict value={row.verdict} /></td>
                   </tr>
                 ))}
               </tbody>

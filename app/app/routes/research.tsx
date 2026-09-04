@@ -297,7 +297,7 @@ export default function Research({ loaderData }: Route.ComponentProps) {
                     <td data-label="IS" className="font-mono">{row.inSample}</td>
                     <td data-label="OOS" className="font-mono">{row.outSample}</td>
                     <td data-label="판정">
-                      <span className={row.verdict === "보류" ? "text-primary" : "text-foreground"}>{row.verdict}</span>
+                      <span className={row.verdict === "보류" ? "text-primary" : "text-muted-foreground"}>{row.verdict}</span>
                       <span className="mt-1 block text-xs text-muted-foreground">{row.reason}</span>
                     </td>
                   </tr>
@@ -319,8 +319,8 @@ export default function Research({ loaderData }: Route.ComponentProps) {
             ))}
           </ol>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
-            2024–2026은 이미 여러 연구에서 확인했으므로 더 이상 손대지 않은 최종 검증 구간이 아닙니다.
-            다음 후보는 규칙을 먼저 동결한 뒤 새로 쌓이는 미래 구간으로 검증합니다.
+            2024–2026 구간은 이미 확인에 썼으므로 앞으로의 검증에는 새로 쌓이는 미래 구간만 씁니다.
+            다음 후보도 규칙을 먼저 동결한 뒤에 평가합니다.
           </p>
           <section id="sources" className="mt-8 rounded-md border border-border bg-muted/20 px-5 py-5" aria-labelledby="sources-title">
             <h3 id="sources-title" className="text-base font-semibold text-foreground">출처: 한 줄에 적고 링크로 증명</h3>

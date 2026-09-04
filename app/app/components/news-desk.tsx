@@ -59,7 +59,7 @@ export function NewsDesk({
 }) {
   return (
     <details className="border border-border bg-card/20">
-      <summary className="cursor-pointer px-4 py-3 font-mono text-[11px] tracking-[0.2em] text-heading uppercase select-none">
+      <summary className="cursor-pointer px-4 py-3 font-mono text-[11px] tracking-[0.2em] text-primary uppercase select-none">
         데스크 · 뉴스 장부
       </summary>
       <div className="space-y-4 border-t border-border px-4 py-4">
@@ -102,7 +102,7 @@ export function NewsDesk({
                   id="tag"
                   name="tag"
                   defaultValue="hormuz"
-                  className="h-9 w-full rounded-none border border-input bg-transparent px-3 font-mono text-sm dark:bg-input/30"
+                  className="h-9 w-full rounded-none border border-input bg-transparent px-3 font-mono text-sm"
                 />
               </div>
               <Button className="w-full rounded-none" type="submit">
@@ -158,7 +158,7 @@ function NewsItem({ item }: { item: NewsEventRow }) {
             <TagSelect
               name="tag"
               defaultValue={currentTag}
-              className="h-8 rounded-none border border-input bg-transparent px-2 font-mono text-xs dark:bg-input/30"
+              className="h-8 rounded-none border border-input bg-transparent px-2 font-mono text-xs"
             />
             <Button size="sm" variant="outline" type="submit" className="rounded-none">
               수정

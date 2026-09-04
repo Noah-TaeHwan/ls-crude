@@ -25,6 +25,12 @@ const { width, height, cx, cy, radius } = GAUGE_VIEW;
 const TRACK = radius - 28;
 /** 게이지에 표시할 백분위 눈금. */
 const TICK_SCORES = [0, 20, 40, 60, 80, 100] as const;
+/** 존 경계 눈금. GAUGE_ZONES에서 파생하며 색상값은 바꾸지 않는다. */
+const ZONE_BOUNDARIES = [
+  GAUGE_ZONES.stable.to,
+  GAUGE_ZONES.normal.to,
+  GAUGE_ZONES.elevated.to,
+] as const;
 
 /**
  * 반원 속도계를 그린다. 기하학은 gauge.ts, 제목·구간·예시는 호출측 props다.
@@ -75,6 +81,7 @@ export function WatchGauge({
       >
         <path
           d={arcPath(cx, cy, TRACK, GAUGE_ZONES.stable.from, GAUGE_ZONES.stable.to)}
+          data-zone="stable"
           className="text-primary/65"
           fill="none"
           stroke="currentColor"
@@ -82,6 +89,7 @@ export function WatchGauge({
         />
         <path
           d={arcPath(cx, cy, TRACK, GAUGE_ZONES.normal.from, GAUGE_ZONES.normal.to)}
+          data-zone="normal"
           className="text-primary/78"
           fill="none"
           stroke="currentColor"
@@ -89,6 +97,7 @@ export function WatchGauge({
         />
         <path
           d={arcPath(cx, cy, TRACK, GAUGE_ZONES.elevated.from, GAUGE_ZONES.elevated.to)}
+          data-zone="elevated"
           className="text-primary/90"
           fill="none"
           stroke="currentColor"
@@ -96,6 +105,7 @@ export function WatchGauge({
         />
         <path
           d={arcPath(cx, cy, TRACK, GAUGE_ZONES.extreme.from, GAUGE_ZONES.extreme.to)}
+          data-zone="extreme"
           className="text-primary"
           fill="none"
           stroke="currentColor"
@@ -127,6 +137,23 @@ export function WatchGauge({
                 {tick}
               </text>
             </g>
+          );
+        })}
+
+        {ZONE_BOUNDARIES.map((boundary) => {
+          const outer = polarPoint(cx, cy, TRACK + 11, boundary);
+          const inner = polarPoint(cx, cy, TRACK - 11, boundary);
+          return (
+            <line
+              key={boundary}
+              x1={inner.x}
+              y1={inner.y}
+              x2={outer.x}
+              y2={outer.y}
+              className="text-foreground/55"
+              stroke="currentColor"
+              strokeWidth="2"
+            />
           );
         })}
 

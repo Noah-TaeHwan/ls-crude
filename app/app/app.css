@@ -54,7 +54,8 @@
   --input: oklch(1 0 0 / 14%);
   --ring: oklch(0.77 0.14 72);
   --watching: oklch(0.76 0.12 153);
-  --heading: oklch(0.77 0.14 72);
+  --heading: var(--primary);
+  /* spike 예약: 강조색으로 쓰지 않음 */
   --spike: oklch(0.66 0.2 25);
 }
 
@@ -127,6 +128,21 @@
 
   .evidence-table tbody td {
     @apply text-muted-foreground;
+  }
+
+  .price-sparkline-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    animation: price-sparkline-draw 900ms ease-out 1;
+  }
+}
+
+@keyframes price-sparkline-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
