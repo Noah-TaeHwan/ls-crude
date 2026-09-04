@@ -110,6 +110,21 @@ target = future_20d_or_60d_wti_realized_volatility  # Yahoo CL=F
 
 2026-09-04 공개 수집 접근성 확인에서는 개별 로펌의 역사적 익명 문의·유료계약 집계를 찾지 못했다. 로펌 웹사이트·검색관심도·게시글·리뷰를 고객수요 프록시로 쓰지 않으며, 007B는 데이터 미수집 상태다.
 
+### 007C — Public Desk Buzz: 공개 게시물 수 스크린
+
+사용자 제안의 검색량·리뷰·게시글 수 중, 공개적으로 장기 날짜를 확인할 수 있었던 것은 한 로펌(QCL)의 `News & Views` **게시물 수**뿐이었다. 이는 고객 문의·계약·검색 관심도·리뷰가 아니며, 안전이민 수요로 해석하지 않는다.
+
+- 사전 고정 범위: 2022-01~2026-08의 월간 공개 게시물, 전체 게시물 수와 제목의 `immigration|migrant|visa|residen|aip|investor|golden|citizenship` 포함 수 두 계열.
+- 타깃: 월말 다음 날부터의 미래 21거래일 WTI와 RBOB 실현변동성. IS=2022~2023, OOS=2024+.
+- 게시물 수의 12개월 z-score는 초기 기준창 및 무게시물 창 때문에 IS 유효 표본이 전체 `n=13`, 투자·이민 제목은 `n=9`뿐이다.
+
+| 계열 | IS WTI | IS RBOB | OOS WTI | OOS RBOB | 판정 |
+| --- | --- | --- | --- | --- | --- |
+| 전체 공개 게시물 | `r=-0.272, p=0.369, n=13` | `r=-0.295, p=0.327, n=13` | `r=-0.086, p=0.646, n=31` | `r=-0.045, p=0.811, n=31` | 기각 |
+| 투자·이민 제목 게시물 | `r=-0.226, p=0.559, n=9` | `r=-0.351, p=0.354, n=9` | `r=-0.315, p=0.084, n=31` | `r=-0.269, p=0.143, n=31` | 방향은 약하게 같아도 비유의·탐색적 |
+
+OOS의 가장 작은 p값도 `0.084`로 단측·사후 선택·다중 검정을 적용하기 전의 양측값에서 이미 `0.05`를 넘는다. 정책 해설·SEO·마케팅·게시물 편집이 직접 교란요인이므로, 이 사양을 더 잘게 잘라 통과시키지 않는다. **007C는 0.0 가중치의 공개 커뮤니케이션 모니터로만 기록하고, 007B 고객 집계의 대체물이 아니다.** 재현을 위한 원시 HTML·월간 패널·스크립트는 `gathering/raw/2026-09-04-public-desk-buzz-probe/`의 gitignored 경로에만 둔다.
+
 ## 현재 결론
 
 ### 무료 공개 집계 스크린 — 2026-09-04
@@ -132,4 +147,5 @@ target = future_20d_or_60d_wti_realized_volatility  # Yahoo CL=F
 - [Central Bank of the UAE — Balance of Payments](https://www.centralbank.ae/media/aqknxvll/balance-of-payments-developments_2023_2024-oct_2025_en.pdf) — 개인 이민자금이 아닌 거시적 흐름.
 - [SAMA — Monthly Bulletin Statistics](https://sama.gov.sa/en-US/Statistics/Pages/MonthlyStatistics.aspx) — 개인 이민자금이 아닌 사우디 거시·대외부문 통계.
 - [Immigration NZ Migration Data Explorer — Iran residence decisions rendering](https://figure.nz/chart/ovwiSn6Xvi84ykFW) — 2016–2025 전체 거주비자 승인 집계, 현재 빈티지의 설명적 스크린.
+- [Queen City Law — News & Views](https://www.queencitylaw.co.nz/news-views) — 007C의 공개 게시일·제목 메타데이터. 고객지표가 아님.
 - [조사 노트](../../gathering/notes/2026-09-04-factor-007-free-data-screen.md)

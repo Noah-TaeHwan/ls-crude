@@ -37,7 +37,7 @@
 | 004 | Transport Electrification | +0.157 | — | HOLD — OOS n=2 |
 | 005 | Financial Demand | — | — | SKIP |
 | 006 | Wholesale Logistics | — | — | SKIP |
-| 007 | MENA Elite Mobility | — | — | 미검증 — 비식별 집계 없음 |
+| 007 | MENA Elite Mobility | — | 🟨 `-0.315` (007C, p=.084) | 공개 게시물 스크린은 비유의·고객수요 아님; 비식별 집계 없음 |
 | 008 | Hyperliquid Capital Flow | — | — | MONITOR ONLY |
 | 009 | Iran FX Stress | -0.003 | -0.002 | REJECTED — 관계 없음 |
 | 010 | Petroleum Buffer | -0.187 | — | HOLD — OOS 부족 |
@@ -95,7 +95,7 @@
 | 004 | [Transport Electrification](004-renewable-displacement/README.md) | 중기 수요 후보 | 다음 연도 변동성 IS `r=+0.157`, n=7; OOS n=2라 알파 근거 아님 | 0.0 |
 | 005 | [Financial Demand](005-financial-demand/README.md) | 기업 재무 아이디어 | **SKIP** — 물리 수요 경로·고유성이 없음 | 0.0 |
 | 006 | [Wholesale Logistics](006-wholesale-logistics/README.md) | 실물 수요 아이디어 | **SKIP** — EIA 주간 자료보다 느리고 고유 알파 없음 | 0.0 |
-| 007 | [MENA Elite Mobility](007-doomsday-bunker-index/README.md) | 지정학 리스크 후보 | 비식별 복수기관 집계가 없어 검증 불가 | 0.0 |
+| 007 | [MENA Elite Mobility](007-doomsday-bunker-index/README.md) | 지정학 리스크 후보 | 007C 공개 게시물은 최선 OOS `r=-0.315, p=.084`이나 고객수요가 아니고 비유의; 비식별 복수기관 집계 없음 | 0.0 |
 | 008 | [Hyperliquid Capital Flow](008-hyperliquid-capital-flow/README.md) | 설명적 모니터 | **monitor only** — 귀속 불가·역사 부족·고유성 없음 | 0.0 |
 | 009 | [Iran FX Stress](009-iran-middleeast-premium/README.md) | 현지 스트레스 후보 | 5일 변동성 IS `r=-0.003`, OOS `r=-0.002`; 관계 없음 | 0.0 |
 | 010 | [Official Petroleum Buffer & Public Supply Policy](010-official-petroleum-buffer/README.md) | 변동성 후보 | 5일 변동성 IS `r=-0.187`; 가설 방향을 지지하지 못함 | 0.0 |

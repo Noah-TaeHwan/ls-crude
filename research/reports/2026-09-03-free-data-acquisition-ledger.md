@@ -19,6 +19,7 @@
 | 006 | EIA WPSR | 보류 | 더 빠른 대체재지만 기존 물류 가설을 검증하는 고유 신호가 아님 | 소스 카탈로그 |
 | 007 | UNHCR | 보류 | 강제이주는 부유층·이민법률 수요 프록시가 아님 | 소스 카탈로그 |
 | 007 | Immigration NZ R1 residence decisions (Iran, 전체 유형) | 수집·설명적 기각 | 2016–2023 동년 WTI RV와 `r=-0.389`, n=8. 현재 2026 빈티지·전체 거주비자라 예측 시계열/고액자산가 이탈 프록시가 아님; OOS n=2 | `gathering/raw/2026-09-04-iran-nz-residence-probe/` |
+| 007C | Queen City Law 공개 News & Views 게시물 | 수집·기각 | 전체/투자·이민 제목 월간 게시물→21일 WTI·RBOB RV. 최선 OOS는 WTI `r=-0.315, p=0.084, n=31`; IS 투자·이민 제목 n=9. 고객수요가 아닌 마케팅·정책 해설이라 알파 아님 | `gathering/raw/2026-09-04-public-desk-buzz-probe/` |
 | 008 | Hyperliquid API | 보류 | 2023 이후, 역사 부족·MENA 귀속 불가 | 소스 카탈로그 |
 | 009 | USD/IRR 공개 아카이브 | 수집·검증 | IS `-0.003`, OOS `-0.002` | `gathering/raw/2026-09-03-iran-fx-stress-probe/` |
 | 010 | EIA 재고 | 수집·검증 | IS `-0.187`; OOS 유효 n=1 | `gathering/raw/2026-09-03-petroleum-buffer-probe/` |
