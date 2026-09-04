@@ -65,16 +65,24 @@ Thumbs.db
 graphify-out/
 research/graphify-out/
 
-# Local multi-agent harness (agency-agents / OpenCode / Qoder / Trae)
+# Local multi-agent harness (agency-agents / OpenCode / Qoder / Trae / ECC cursor adapter)
 # Product source stays `.cursor/rules/ls-crude.mdc` + `.cursor/skills/**` only.
 # See vault decision 2026-09-02-agency-agents-en-ko-machine-install.
 .cursor/rules/*
 !.cursor/rules/ls-crude.mdc
+.cursor/agents/
+.cursor/hooks.json
+.cursor/hooks/
+.cursor/commands/
+.cursor/mcp.json
+.cursor/ecc-agent-data.json
+.cursor/ecc-install-state.json
 .claude/agents/
 .codex/agents/
 .playwright-mcp/
 .playwright-cli/
 _workspace/
+.superpowers/
 .trae/
 .qoder/
 .opencode/

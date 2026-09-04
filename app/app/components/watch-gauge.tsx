@@ -5,13 +5,18 @@ import {
   needlePolygon,
   polarPoint,
   ratioToAngle,
-  volatilityBand,
 } from "~/lib/gauge";
 
-/** 변동성 게이지가 받는 공개 관측값. */
+/** 반원 게이지가 받는 표시값. */
 interface WatchGaugeProps {
   score: number | null;
-  rv5: number | null;
+  title: string;
+  bandLabel: string;
+  scoreCaption: string;
+  explainer: string;
+  detail?: string;
+  isExample?: boolean;
+  ariaLabel?: string;
 }
 
 /** 게이지의 고정 SVG 좌표. */
@@ -22,46 +27,51 @@ const TRACK = radius - 28;
 const TICK_SCORES = [0, 20, 40, 60, 80, 100] as const;
 
 /**
- * 숫자를 한 자리 백분율로 표시한다.
- * @param value 표시할 숫자.
- * @returns 표시 문자열.
- */
-function formatPercent(value: number | null): string {
-  return value == null || !Number.isFinite(value) ? "—" : `${value.toFixed(1)}%`;
-}
-
-/**
- * 최근 WTI 실현변동성의 장기 분포 백분위를 그린다.
- * @param props 백분위 점수와 최근 5일 변동성.
+ * 반원 속도계를 그린다. 기하학은 gauge.ts, 제목·구간·예시는 호출측 props다.
+ * @param props 바늘 점수와 표시 문구.
  * @returns 접근 가능한 SVG 게이지.
  */
-export function WatchGauge({ score, rv5 }: WatchGaugeProps) {
+export function WatchGauge({
+  score,
+  title,
+  bandLabel,
+  scoreCaption,
+  explainer,
+  detail,
+  isExample = false,
+  ariaLabel,
+}: WatchGaugeProps) {
   const normalizedScore =
     score == null || !Number.isFinite(score)
       ? null
       : Math.round(Math.max(0, Math.min(100, score)));
-  const band = normalizedScore == null ? "데이터 없음" : volatilityBand(normalizedScore);
   const needleAngle =
     normalizedScore == null ? null : ratioToAngle(normalizedScore / 100);
+  const resolvedAriaLabel =
+    ariaLabel ??
+    (normalizedScore == null
+      ? `${title} 데이터 없음`
+      : `${isExample ? "예시 " : ""}${title} ${normalizedScore}, ${bandLabel}`);
 
   return (
-    <section className="px-1 pt-5 pb-3 sm:px-5" aria-labelledby="volatility-title">
+    <section className="relative px-1 pt-5 pb-3 sm:px-5" aria-labelledby="gauge-title">
+      {isExample ? (
+        <span className="absolute right-3 top-4 z-10 bg-primary px-2 py-0.5 font-mono text-xs font-semibold tracking-widest text-primary-foreground sm:right-5">
+          예시
+        </span>
+      ) : null}
       <h1
-        id="volatility-title"
+        id="gauge-title"
         className="text-center text-xl font-semibold tracking-tight text-foreground sm:text-2xl"
       >
-        WTI 변동성
+        {title}
       </h1>
       <svg
         viewBox={`0 0 ${width} ${height}`}
         className="volatility-gauge mx-auto mt-1 block h-auto w-full max-w-[36rem]"
         role="img"
-        aria-describedby="volatility-explainer"
-        aria-label={
-          normalizedScore == null
-            ? "WTI 변동성 백분위 데이터 없음"
-            : `WTI 5거래일 실현변동성 백분위 ${normalizedScore}, ${band}`
-        }
+        aria-describedby="gauge-explainer"
+        aria-label={resolvedAriaLabel}
       >
         <path
           d={arcPath(cx, cy, TRACK, GAUGE_ZONES.stable.from, GAUGE_ZONES.stable.to)}
@@ -139,7 +149,7 @@ export function WatchGauge({ score, rv5 }: WatchGaugeProps) {
           textAnchor="middle"
           className="fill-primary font-mono text-[24px] font-medium"
         >
-          {band}
+          {normalizedScore == null ? "데이터 없음" : bandLabel}
         </text>
         <text
           x={cx}
@@ -155,16 +165,14 @@ export function WatchGauge({ score, rv5 }: WatchGaugeProps) {
           textAnchor="middle"
           className="fill-muted-foreground font-mono text-[12px]"
         >
-          장기 기준 백분위 (0–100)
+          {scoreCaption}
         </text>
       </svg>
-      <div id="volatility-explainer" className="-mt-2 text-center">
-        <p className="text-base font-medium text-foreground">
-          방향이 아니라 움직임의 크기입니다.
-        </p>
-        <p className="mt-1 font-mono text-xs text-muted-foreground">
-          최근 5거래일의 연환산 실현변동성: {formatPercent(rv5)}
-        </p>
+      <div id="gauge-explainer" className="-mt-2 text-center">
+        <p className="text-base font-medium text-foreground">{explainer}</p>
+        {detail ? (
+          <p className="mt-1 font-mono text-xs text-muted-foreground">{detail}</p>
+        ) : null}
       </div>
     </section>
   );

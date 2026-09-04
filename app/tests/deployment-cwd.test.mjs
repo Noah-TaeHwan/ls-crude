@@ -123,9 +123,8 @@ test("rejects malformed WTI market snapshots without throwing", async () => {
 
 test("serves the public evidence brief routes from the repository root", async () => {
   const marketSnapshot = JSON.parse(await readFile(marketSnapshotPath, "utf8"));
-  const score = Math.round(marketSnapshot.volatility.rv5ReferencePercentile);
-  const band = score < 25 ? "안정" : score < 50 ? "보통" : score < 75 ? "고조" : "급변";
-  assert.ok(score >= 0 && score <= 100);
+  const livePercentile = Math.round(marketSnapshot.volatility.rv5ReferencePercentile);
+  assert.ok(livePercentile >= 0 && livePercentile <= 100);
   assert.equal(marketSnapshot.bars.at(-1).date, marketSnapshot.asOf);
   assert.ok(marketSnapshot.freshnessPolicy.maxCheckAgeHours > 0);
   assert.ok(marketSnapshot.freshnessPolicy.maxBarAgeDays > 0);
@@ -145,10 +144,14 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.equal(response.status, 200, output.join(""));
     const body = await response.text();
     assert.match(body, /data-source="Yahoo Finance"/);
+    assert.match(body, /원유 DEFCON/);
+    assert.match(body, />예시</);
+    assert.match(body, /DEFCON 3/);
     assert.ok(
-      body.includes(`WTI 5거래일 실현변동성 백분위 ${score}, ${band}`),
-      "gauge must render the checked-in market snapshot percentile and matching band",
+      body.includes("예시 원유 DEFCON 58, DEFCON 3"),
+      "home gauge must be the sample DEFCON needle, not live realized volatility",
     );
+    assert.doesNotMatch(body, /WTI 5거래일 실현변동성 백분위/);
     const checkedAtKst = new Date(
       Date.parse(marketSnapshot.checkedAt) + 9 * 60 * 60 * 1_000,
     );
@@ -157,7 +160,8 @@ test("serves the public evidence brief routes from the repository root", async (
       body.includes(expectedCheckedAt),
       "server and browser must share one deterministic KST timestamp",
     );
-    assert.match(body, /방향이 아니라 움직임의 크기입니다/);
+    assert.match(body, /실전 신호가 아닙니다/);
+    assert.match(body, /5일 실현변동성/);
     assert.doesNotMatch(body, /<form\b/i, "public home must not expose news CRUD forms");
 
     const research = await fetch(`${baseUrl}/research`);
