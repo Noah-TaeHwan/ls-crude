@@ -80,7 +80,18 @@ target = future_20d_or_60d_wti_realized_volatility  # Yahoo CL=F
 
 ## 현재 결론
 
-**HOLD.** 이 팩터는 데이터를 정당하게 확보할 제휴가 있을 때만 강력할 수 있다. 공개 데이터만으로는 “중동 부자들의 탈출 의도”를 정확하게 측정할 수 없으므로, Oil Pizza 가중치는 `0.0`이다.
+### 무료 공개 집계 스크린 — 2026-09-04
+
+뉴질랜드 이민청 Migration Data Explorer의 이란 국적자 **전체** 거주비자 승인 연간 집계(2016–2025)를 확보했다. 이 집계는 개인·법률상담·자금·부동산 정보를 포함하지 않으며, Figure.NZ가 이민청 원자료를 렌더링한 공개 표를 사용했다.
+
+| 비교 | 표본 | 결과 | 해석 |
+| --- | ---: | ---: | --- |
+| 이란 국적 전체 거주비자 승인 수 ↔ 같은 해 `CL=F` 실현변동성 | IS 2016–2023, n=8 | `r=-0.389` | 작은 연간 표본의 **설명적** 음의 상관. 원 가설의 위험·변동성 관계를 지지하지 않음 |
+| 2024–2025 | n=2 | `r` 계산 안 함 | OOS 표본 부족 |
+
+이 값은 예측 검정이 아니다. 데이터셋은 2026년 1월에 현재 빈티지로 공개되어 과거 각 연도에 언제 이 수치가 공개됐는지 복원할 수 없고, 동년 WTI 변동성과 비교했기 때문이다. 게다가 전체 거주비자 승인은 고액자산가·투자이민·탈출 의도의 대리변수가 아니다. 이 상관을 거래 규칙, 가중치 또는 ‘이란 부자 이동’의 증거로 사용하지 않는다.
+
+**HOLD 유지.** 이 팩터는 데이터를 정당하게 확보할 제휴가 있을 때만 강력할 수 있다. 무료 집계는 원 가설을 측정하지 못했고, Oil Pizza 가중치는 `0.0`이다.
 
 ## 참고 출처
 
@@ -88,3 +99,5 @@ target = future_20d_or_60d_wti_realized_volatility  # Yahoo CL=F
 - [UAE Government — Golden Visa](https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa) — 제도 변경 통제용.
 - [Central Bank of the UAE — Balance of Payments](https://www.centralbank.ae/media/aqknxvll/balance-of-payments-developments_2023_2024-oct_2025_en.pdf) — 개인 이민자금이 아닌 거시적 흐름.
 - [SAMA — Monthly Bulletin Statistics](https://sama.gov.sa/en-US/Statistics/Pages/MonthlyStatistics.aspx) — 개인 이민자금이 아닌 사우디 거시·대외부문 통계.
+- [Immigration NZ Migration Data Explorer — Iran residence decisions rendering](https://figure.nz/chart/ovwiSn6Xvi84ykFW) — 2016–2025 전체 거주비자 승인 집계, 현재 빈티지의 설명적 스크린.
+- [조사 노트](../../gathering/notes/2026-09-04-factor-007-free-data-screen.md)
