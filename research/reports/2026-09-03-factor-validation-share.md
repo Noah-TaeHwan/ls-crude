@@ -65,6 +65,7 @@
 | 047 | Premium–Value Outdoor Spread | ⬜ `—` | ⬜ `—` | 3 년 | 0 년 | Canada Goose−Columbia 연간 YoY는 무료 구조화 공통 표본이 IS 3·OOS 0. 상관계수 미보고 |
 | 048 | All-In Tie Day Index | ⬜ `—` | ⬜ `—` | — | — | 공개 에피소드 복장·거시 문맥의 문화적 주석. 2020년대 시작·주간 빈도·사후 논평 한계 |
 | 049 | Geopolitical News Attention Shock | 🟨 `-0.009` | 🟨 `+0.054` | crisis 10 일 | crisis 22 일 | Guardian 제목 `crisis`; 방향·변동성 미지지. tension 0/0, blockade 0/16, escalat 1/3 사건일 — 단일 단어 채택 불가 |
+| 051 | Public Confirmation Lag Index | ⬜ `—` | ⬜ `—` | — | — | FIRMS 역사 아카이브는 탐지시각만 제공하고 당시 NRT/RT 공개시각 빈티지를 보존하지 않음. Guardian 게시시각과 안전하게 결합 불가 — IS/OOS 미실행 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 
