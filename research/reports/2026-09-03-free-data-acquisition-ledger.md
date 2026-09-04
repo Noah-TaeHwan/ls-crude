@@ -66,6 +66,7 @@
 | 051 | NASA FIRMS Archive + Guardian Content API | 접근성 감사·HOLD | FIRMS 역사 자료에는 탐지시각은 있으나 당시 NRT/RT 공개시각의 빈티지가 없다. Guardian 최초 게시시각과 결합하면 look-ahead를 막을 수 없어 IS/OOS 미실행 | [051 카드](../factors/051-public-confirmation-lag-index/README.md) |
 | 052 | Google Trends 공개 UI | 수집 대기·HOLD | V3 명세는 7일 지연·IS 전용 PCA를 갖추었으나, 2014년 이후 다섯 키워드 통합 CSV와 역사 빈티지가 없다. 합성·PyTrends 재수집으로 숫자를 만들지 않음 | [052 카드](../factors/052-search-desperation-index/README.md) |
 | 053 | 자발적 비식별 고객 문의 주간 집계 | 수집 대기·HOLD | 원문 통화·녹취·콜 ID·스니펫은 부적격. k≥10 전체/연료비 관련/불만 분류의 주간 합계, 제공시각, 요금·광고·정전 통제 없이는 검정하지 않음 | [053 카드](../factors/053-voice-of-customer-fuel-frustration/README.md) |
+| 054 | Wikimedia UAP 일별 페이지뷰 + Yahoo 62개 자산 바스켓 | 수집·Meme Discovery | IS(2015-07~2023-12)에서 최고 5일 RV 상관은 BTC·GME `+0.081`. 다중 탐색으로 선택된 발견값이며 OOS는 미개봉 — 알파·유의성 주장 안 함 | [054 카드](../factors/054-uap-attention-shock/README.md); [기록](../gathering/notes/2026-09-04-uap-meme-discovery.md) |
 | 046 | Chicago CTA 일별 탑승 합계 | 수집·검증 | IS `-0.267`, OOS `+0.005`; 도시 이동 리듬 관계 소멸 | `gathering/raw/2026-09-03-urban-taxi-tempo-probe/` |
 | 042A | MTA Wall Street 역군 월별 탑승량 | 수집·검증(설명적)·구성요소 반증 | 기본 IS `+0.044`, OOS `-0.350`; 4개 구성요소도 반전/소멸. 4도시 AFHP 패널은 미구축 | `gathering/raw/2026-09-03-wall-street-district-pulse-probe/`, `2026-09-03-rescue-diagnostics-027-042/` |
 | 047 | Google Trends trade-down 관심도 바스켓 | 보류 | Temu 역사 부족. 공개 UI에는 안정적 연구 API·빈티지 계약이 없어 관심도를 판매로 바꾸지 않음 | [047 카드](../factors/047-conscience-compression-index/README.md) |
