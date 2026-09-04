@@ -76,6 +76,27 @@ Filing Delta Drift 원문 산출물이 아닌 별도 `CECF_Composite_Score`를 �
 2. 미래 h일 단순수익률은 ticker별로 `return.rolling(h).sum().shift(-h)` 또는 동등한 명시적 forward-window 방식으로 계산한다. `shift(-1).rolling(h)`은 쓰지 않는다.
 3. 복리·큰 일간 수익률에 안전하도록 실험에서는 `log1p(return)`의 미래 합으로도 같은 결론인지 교차 확인한다.
 
+### 확장판 CECF stress-test 감사 (2026-09-04)
+
+확장판은 정렬·명시적 forward sum·비용·메모리·CV·out-of-core 도우미를 추가했다. 하지만 내장 `run_full_stress_test()`를 실제 실행한 결과, 성과 계산 전에 실패했다.
+
+| 점검 | 실행 결과 | 판정 |
+| --- | --- | --- |
+| stress-test | `KeyError: 'target_weight'` | 실패 |
+| 직접 원인 | fixture는 Tech 2·Fin 2·Energy 1종목인데 `quantile_bins=5` | 각 sector가 분위 배정 전에 전부 탈락하여 빈 `sig_panel`에서 pivot을 시도 |
+| forward sum 단위 점검 | 구현상 `t+1...t+h` 합으로 개선 | 미래창 문제는 이전판보다 개선됐으나 실제 IC는 fixture 실패로 미검증 |
+| 성과·Sharpe·IC | 없음 | stress test가 포지션 생성 전에 멈췄고, 난수 데이터 성과를 연구 결과로 쓰지 않음 |
+
+추가로 아래 문제는 아직 남는다.
+
+1. **월간 T+1 지연**: `target_w.shift(1)`이 월말 신호 행에서 먼저 일어나므로 T+1이 한 거래일이 아니라 한 달이 된다. target을 모든 거래일로 확장·forward-fill한 뒤 일별 `shift(1)`해야 한다.
+2. **누출 검사 오류**: `validate_execution_lag`는 신호일이 daily 결과의 날짜 열에 존재하기만 해도 누출로 표기한다. daily 결과는 0 weight 신호일도 포함할 수 있으므로, 실제 non-zero execution weight가 신호일에 있었는지 검사해야 한다.
+3. **시각 불명확성**: `allow_exact_matches=True`가 기본이면 발표 시각 없는 점수는 같은 날 수익률과 섞일 수 있다. timestamp가 없으면 기본값은 `False`여야 한다.
+4. **CV·최적화 오염**: 현 CV는 여러 파라미터를 각 test fold에서 평가해 최고값을 고른다. train에서 선택하고 다음 fold 하나에서만 평가하는 walk-forward 선택 절차가 아니다.
+5. **out-of-core 상태 단절**: 월별 chunk는 이전 월의 실행 weight·마지막 신호 상태를 이어받지 않아 전체 패널 실행과 같지 않다. 등가성 시험 전에는 사용하지 않는다.
+
+수정된 fixture는 sector마다 최소 5개, 권장은 10개 이상 종목을 갖고, signal일·그 다음 거래일의 target/execution weight가 별도 assert로 검증돼야 한다.
+
 이 카드는 공시 텍스트와 기업 주가의 관계를 보는 연구다. 경영진의 비공개 의도, 내부정보, 원유 가격 방향을 추론하지 않으며 투자 판단에 쓰지 않는다.
 
 ## 자료·보관

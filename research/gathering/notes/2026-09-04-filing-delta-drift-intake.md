@@ -56,6 +56,14 @@
 
 따라서 수정판도 실제 CECF 검정에는 사용하지 않았다. 난수 데모의 수익률·Sharpe·IC는 보고하지 않는다.
 
+### 확장판 stress-test 실행 기록
+
+정렬·forward sum·비용·CV·out-of-core 보조기능을 추가한 확장판의 내장 stress-test를 실행했으나, `KeyError: 'target_weight'`로 실패했다. fixture가 Tech 2·Fin 2·Energy 1종목뿐인데 `quantile_bins=5`여서 모든 sector가 분위 계산에서 제외되고, 빈 패널에 pivot을 시도했기 때문이다.
+
+이번 판의 명시적 `_forward_sum`은 h일 후방이 아니라 `t+1...t+h`를 합하도록 고쳐졌다. 그러나 월말-only `target_w.shift(1)`의 한 달 지연, 결과 날짜 존재만으로 same-day leakage를 선언하는 검사, timestamp 없는 `allow_exact_matches=True`, test-fold에서 파라미터를 고르는 CV, chunk 간 보유상태가 단절된 out-of-core 처리는 아직 부적격이다.
+
+실제 CECF 수치·백테스트는 만들지 않았다.
+
 ## 다음 한 가지
 
 실제 CECF 신호 패널·반환·시점 섹터 매핑을 확보하거나, 우선 SEC 제출목록에서 고정 에너지 바스켓의 10-Q·10-K accession, filing time, MD&A 구간 추출 가능성을 감사한 뒤 walk-forward 파이프라인을 만든다.
