@@ -6,8 +6,8 @@ import { WatchGauge } from "~/components/watch-gauge";
 import { readWtiMarketSnapshot } from "~/lib/market-snapshot.server";
 import type { ActionResult } from "~/lib/types";
 
-/** 현재 공개 장부의 후보 수. `research/factors/` 001–051과 같다. */
-const CANDIDATE_COUNT = 51;
+/** 현재 공개 장부의 후보 수. `research/factors/` 001–052와 같다. */
+const CANDIDATE_COUNT = 52;
 /** 현재 공개 장부의 통과 수. */
 const PASS_COUNT = 0;
 /** 최근 가격 흐름 SVG의 너비. */
