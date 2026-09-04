@@ -60,6 +60,11 @@ Thumbs.db
 .vscode/
 *.swp
 
+# Local agent / graph dumps (never commit)
+.agents/
+graphify-out/
+research/graphify-out/
+
 # Local multi-agent harness (agency-agents / OpenCode / Qoder / Trae)
 # Product source stays `.cursor/rules/ls-crude.mdc` + `.cursor/skills/**` only.
 # See vault decision 2026-09-02-agency-agents-en-ko-machine-install.
