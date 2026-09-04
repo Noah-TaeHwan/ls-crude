@@ -69,6 +69,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 049 | Geopolitical News Attention Shock | 🟨 `-0.009`; 가속도 `—` | 🟨 `+0.054`; 가속도 `+0.199` | crisis 10 일; 가속도 seed 6일 | crisis 22 일; 가속도 seed 8일 | Guardian 제목 `crisis`는 미지지. 사전 고정 30일 고요→24h 후속보도 가속도는 IS에서 값이 변하지 않아 `r` 계산 불가; OOS 8일 결과 채택 불가 |
 | 051 | Public Confirmation Lag Index | ⬜ `—` | ⬜ `—` | — | — | FIRMS 역사 아카이브는 탐지시각만 제공하고 당시 NRT/RT 공개시각 빈티지를 보존하지 않음. Guardian 게시시각과 안전하게 결합 불가 — IS/OOS 미실행 |
 | 054 | UAP Attention Shock | ⬜ 별도표 | ⬜ 미개봉 | 3,037 일/자산 | — | WTI 공통 타깃이 아닌 62개 자산 Meme Discovery 스캔. 아래 별도표의 최고 IS `r=+0.081`은 다중 탐색 선택값이며 알파 아님 |
+| 057 | HIMI Public Proxy | 🟨 `-0.177` | 🟨 `+0.465` | 107 월 | 31 월 | FRED Machinery IP + EIA refinery utilization 동일가중 공개 프록시. 부호 반전이며 원안 RMCI·DTDI·FEVI·HIC는 미측정 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 
@@ -115,6 +116,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 045 Iced Americano Heat Index | Starbucks 최초 SEC 분기매출 YoY → 다음 21일 실현변동성 | r=**+0.512**, n=22 | r=**-0.511**, n=12 | 대표 카페 체인 전체 매출 프록시일 뿐. 부호 반전이라 채택 불가. |
 | 046 Urban Mobility Tempo | CTA 일별 총 탑승 동일요일 z-score → 다음 5일 실현변동성 | r=**-0.267**, n=3,287 | r=**+0.005**, n=912 | 택시·버스·플랫폼·도보 마찰 원안의 익명 집계판. OOS 소멸. |
 | 054 UAP Attention Shock | `Unidentified_flying_object` 페이지뷰 z90 → 62개 자산의 다음 5일 RV | 최고 BTC·GME r=**+0.081**, 각 n=3,037 | **미개봉** | WTI 표와 다른 비-WTI 광역 스캔. 최고값 사후 선택·0.10 미만으로 밈 기록만 허용. |
+| 057 HIMI Public Proxy | FRED Machinery IP·EIA 정유가동률의 직전값 z-score 동일가중 → 다음 21거래일 RV | r=**-0.177**, n=107 | r=**+0.465**, n=31 | 부호 반전으로 기각. Machinery IP 단독 OOS `+0.712`은 31개월·IS 반전이라 사후 채택 금지; 원래 글로벌 4성분 HIMI도 아님. |
 
 ## 데이터 준비 상태
 
@@ -125,6 +127,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 무료 소스만 등록 | 001–002, 005–008, 012–014, 016–018, 021, 024–025, 030, 032, 036–037, 042–043 | 무료 접근 경로는 있으나, 가격과 짝지을 적법한 장기 신호 시계열이 아직 없음. 021은 WTI 검증이 아니라 한국 식품가격 모니터용으로만 보류한다. |
 | 원시 신호 저장·IS/OOS 재실행 가능 | 022 | Opinet·FRED의 공식 집계 원본과 계산 패널은 gitignored 경로에 보관. 현재 빈티지 한계는 남지만, 고정 산식으로 OOS를 한 번 실행했다. |
 | 원시 신호 저장·Meme Discovery만 실행 | 054 | Wikimedia UAP 페이지뷰·Yahoo 62개 자산 패널·순위·코드는 gitignored `gathering/raw/2026-09-04-uap-meme-discovery/`에 보관. OOS는 의도적으로 미개봉. |
+| 원시 신호 저장·IS/OOS 재실행 가능 | 057 | FRED Machinery IP·EIA 정유 가동률 원시 응답과 보수적 공개시점 패널은 gitignored `gathering/raw/2026-09-04-himi-public-proxy/`에 보관. 원안 4성분 데이터는 미확보. |
 | 분석 제외·하위 보존 | 019, 023, 026, 028–029, 031 | 개인정보·AIS 보안·데이터 적격성·원안 전제 오류 또는 기존 팩터와의 중복. |
 
 ## 결론
