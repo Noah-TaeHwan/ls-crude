@@ -58,6 +58,7 @@
 | 045 | 서울시 상권분석 커피·음료 업종 | 부분 후보 | 무료 발급키로 전체 행 집계 가능하나 2021년 이후만 제공·공개 sample 키는 5행 제한 | [045 카드](../factors/045-iced-americano-heat-index/README.md) |
 | 047 | SEC Company Facts: Canada Goose·Columbia | 수집·표본 미달 | 연간 공통 YoY는 IS 3·OOS 0. Canada Goose의 구조화 분기 6-K 매출이 일관되지 않아 `r` 미보고 | `gathering/raw/2026-09-03-premium-value-outdoor-spread/` |
 | 049 | GDELT 2.1 GKG / Event-Mentions | 접근성 보류 | DOC API의 2015 TimelineVolRaw 질의가 `Invalid query start date`; Event 일별 ZIP은 접근되나 키워드/제목 코퍼스가 아님. IS/OOS 미실행 | [049 카드](../factors/049-geopolitical-news-attention-shock/README.md) |
+| 049 | Guardian Content API (headline only) | 수집·기각 | 단일 매체·사전 고정 4개 검색식. crisis IS/OOS RV 상관 `-0.009/+0.054`; 나머지 IS 사건일 0·0·1. Guardian 개발자 키·약관 범위에서만 재실행 | `gathering/raw/2026-09-04-guardian-keyword-probe/` |
 | 046 | Chicago CTA 일별 탑승 합계 | 수집·검증 | IS `-0.267`, OOS `+0.005`; 도시 이동 리듬 관계 소멸 | `gathering/raw/2026-09-03-urban-taxi-tempo-probe/` |
 | 042A | MTA Wall Street 역군 월별 탑승량 | 수집·검증(설명적)·구성요소 반증 | 기본 IS `+0.044`, OOS `-0.350`; 4개 구성요소도 반전/소멸. 4도시 AFHP 패널은 미구축 | `gathering/raw/2026-09-03-wall-street-district-pulse-probe/`, `2026-09-03-rescue-diagnostics-027-042/` |
 | 047 | Google Trends trade-down 관심도 바스켓 | 보류 | Temu 역사 부족. 공개 UI에는 안정적 연구 API·빈티지 계약이 없어 관심도를 판매로 바꾸지 않음 | [047 카드](../factors/047-conscience-compression-index/README.md) |
