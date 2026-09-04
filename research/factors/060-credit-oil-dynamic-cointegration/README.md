@@ -1,6 +1,6 @@
 # 060 — CODC: Credit–Oil Dynamic Cointegration & Elasticity
 
-**상태**: ⏸️ **HOLD — 공식 FRED 원시자료 직접 수집이 현재 환경 전송 오류로 막혔고, 제공 엔진도 공적분·공개시점·표본 독립성 검사를 충족하지 않아 미실행**  
+**상태**: ⏸️ **HOLD — 공식 FRED 원시자료 직접 수집이 현재 환경 전송 오류로 막혔고, 제공 엔진도 공적분·공개시점·표본 독립성 검사를 충족하지 않아 미실행**
 **밈**: *“When credit stops believing the barrel, volatility hears the disagreement.”*  
 **가중치**: `0.0`
 
