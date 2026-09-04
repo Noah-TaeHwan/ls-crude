@@ -73,6 +73,8 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 058 | Headline Boredom Index | 🟨 `+0.111` | 🟨 `+0.466` | 1,342 일 | 453 일 | Guardian 제목 반복×최근 보도량. 기사량 통제 부분상관은 `+0.091/+0.061`로 독립 효과 소멸 |
 | 059 | HIMI-IIVF | ⬜ `—` | ⬜ `—` | — | — | ISM 주문−납기 + inverse inventory/sales 월간 후보. ISM 실제 발표일·Census 약 6주 공개지연을 반영한 이벤트 패널 수집 전 |
 | 060 | CODC Credit–Oil Dynamic Cointegration | ⬜ `—` | ⬜ `—` | — | — | HY OAS–WTI 괴리 후보. 2026-09-04 FRED 공식 CSV 수집 2회가 연결 재설정으로 실패; 수준 OLS 공적분·point-in-time 거래일·비중첩 RV 검정 전 |
+| 061 | Refinery–Credit Stress Gate | ⬜ `—` | ⬜ `—` | — | — | 041 저가동률 AND 060 절대 괴리 상위 20%의 MPC(주)·RBOB(보조) 5일 RV 게이트. 060 입력 미확보 |
+| 062 | Industrial Credit–Inventory Stress Regime | ⬜ `—` | ⬜ `—` | — | — | 059·060 절대값 동시 상위 20%의 월간 RBOB(주)·XLE(보조) 21일 RV 게이트. 두 입력의 실제 공개시점 패널 미확보 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 

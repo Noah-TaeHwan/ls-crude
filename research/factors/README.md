@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–060는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–062는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -91,6 +91,8 @@
 | 058 | Headline Boredom Index | +0.111 | +0.466 | HOLD — 기사량 통제 뒤 IS/OOS `+0.091/+0.061`; 반복성 독립 효과 소멸 |
 | 059 | HIMI-IIVF | — | — | HOLD — ISM 주문·납기와 재고/판매 속도 후보; 실제 공개일·장기 패널·IS/OOS 미실행 |
 | 060 | CODC Credit–Oil Dynamic Cointegration | — | — | HOLD — FRED HY OAS 공식 CSV 수집이 연결 재설정으로 실패; 공적분·공개시점·비중첩 검정 전 IS/OOS 미실행 |
+| 061 | Refinery–Credit Stress Gate | — | — | HOLD — 041 저가동률 AND 060 극단 괴리의 MPC/RBOB 변동성 게이트; 060 원시 패널 미확보 |
+| 062 | Industrial Credit–Inventory Stress Regime | — | — | HOLD — 059 산업재고 극단 AND 060 극단 괴리의 월간 RBOB/XLE 변동성 게이트; 두 입력 미실측 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -158,6 +160,8 @@
 | 058 | [Headline Boredom Index](058-headline-boredom-index/README.md) | 원유 헤드라인 반복성·뉴스 레짐 진단 | HBI 원시 IS/OOS `+0.111/+0.466`이나 기사량 조건부 `+0.091/+0.061`; 049와 분리된 알파 아님 | 0.0 |
 | 059 | [HIMI-IIVF](059-himi-iivf/README.md) | ISM 주문 압력·재고 속도 산업 수요 후보 | **HOLD** — `inv_lag=15`은 Census 약 6주 지연과 충돌. 실제 발표일·이벤트 단위 패널 후 검정 | 0.0 |
 | 060 | [CODC](060-credit-oil-dynamic-cointegration/README.md) | HY 신용스프레드–WTI rolling 괴리·탄력성 후보 | **HOLD** — 제공 코드는 공적분 검정 없이 수준 OLS·WTI forward-fill을 사용. FRED 공식 CSV 수집도 현재 연결 재설정으로 실패; point-in-time 거래일 패널·비중첩 RV 후 검정 | 0.0 |
+| 061 | [Refinery–Credit Stress Gate](061-refinery-credit-stress-gate/README.md) | 041 저가동률 × 060 신용–원유 괴리의 정유 위험 게이트 | **HOLD** — 평균 결합이 아닌 동시 극단 이진 게이트. 041 단독 MPC 결과를 조합 성과로 쓰지 않으며, 060 패널 뒤 검정 | 0.0 |
+| 062 | [Industrial Credit–Inventory Stress Regime](062-industrial-credit-inventory-regime/README.md) | 059 산업 재고속도 × 060 신용–원유 괴리의 월간 위험 게이트 | **HOLD** — 059·060 실제 공개시점 패널을 확보한 뒤 월간 비중첩 RBOB/XLE 검정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
