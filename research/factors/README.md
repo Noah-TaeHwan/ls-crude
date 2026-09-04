@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Factor Research Map
 
 **대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`
-**현재 상태**: 아래 001–048은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–049는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -79,6 +79,7 @@
 | 046 | Urban Mobility Tempo | -0.267 | +0.005 | REJECTED — OOS 소멸 |
 | 047 | Premium–Value Outdoor Spread | — | — | HOLD — Canada Goose–Columbia 무료 구조화 공통 공시가 IS 3·OOS 0뿐 |
 | 048 | All-In Tie Day Index | — | — | MEME / MONITOR ONLY — 공개 미디어 주석 |
+| 049 | Geopolitical News Attention Shock | — | — | HOLD — GDELT 전체 역사 코퍼스·as-of 감사 전 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -134,6 +135,7 @@
 | 046 | [Urban Mobility Tempo](046-urban-mobility-tempo/README.md) | 도시 이동 리듬 밈 후보 | CTA 탑승량 서프라이즈: IS `r=-0.267`, OOS `r=+0.005`; OOS 소멸 | 0.0 |
 | 047 | [Premium–Value Outdoor Spread](047-conscience-compression-index/README.md) | Canada Goose 대 Columbia 아웃도어 소비 레짐 밈 | **HOLD** — 무료 구조화 공시 공통 YoY가 IS 3·OOS 0. WTI 미검증 | 0.0 |
 | 048 | [All-In Tie Day Index](048-all-in-tie-day-index/README.md) | 공개 미디어 공식성 밈 주석 | **MEME / MONITOR ONLY** — 공개 에피소드 복장·주제는 선행 알파가 아님 | 0.0 |
+| 049 | [Geopolitical News Attention Shock](049-geopolitical-news-attention-shock/README.md) | 지정학 뉴스의 관심도·확산 폭 | **HOLD** — Oil Slice V1 후보. 15개 시드가 아닌 전체 코퍼스·as-of 감사 필요 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
