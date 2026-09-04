@@ -1,6 +1,6 @@
 # 060 — CODC: Credit–Oil Dynamic Cointegration & Elasticity
 
-**상태**: ⏸️ **HOLD — 공개 입력 후보는 충분하나, 제공 엔진은 공적분·공개시점·표본 독립성 검사를 충족하지 않아 미실행**  
+**상태**: ⏸️ **HOLD — 공식 FRED 원시자료 직접 수집이 현재 환경 전송 오류로 막혔고, 제공 엔진도 공적분·공개시점·표본 독립성 검사를 충족하지 않아 미실행**  
 **밈**: *“When credit stops believing the barrel, volatility hears the disagreement.”*  
 **가중치**: `0.0`
 
@@ -45,6 +45,6 @@ HY option-adjusted spread ↔ WTI
 
 ## 현재 결론
 
-가설 자체는 기존 심리 밈보다 경제적으로 훨씬 직접적이며 무료 장기 데이터도 있다. 그러나 HY–WTI 동시충격과 수준 회귀의 가짜 관계를 제거하지 않으면 `CODC`라는 이름으로 알파를 주장할 수 없다. 실제 원시 자료 수집과 위 사전 등록 검정을 마치기 전까지 HOLD다.
+가설 자체는 기존 심리 밈보다 경제적으로 훨씬 직접적이며 무료 장기 데이터도 있다. 그러나 HY–WTI 동시충격과 수준 회귀의 가짜 관계를 제거하지 않으면 `CODC`라는 이름으로 알파를 주장할 수 없다. 2026-09-04 공식 FRED CSV를 두 방식으로 수집 시도했으나 모두 전송 연결 재설정으로 실패했다. 합성 데이터로 대체하지 않는다. 실제 원시 자료 수집과 위 사전 등록 검정을 마치기 전까지 HOLD다.
 
-수집·엔진 감사: [060 등록 노트](../../gathering/notes/2026-09-04-codc-intake.md).
+수집·엔진 감사: [060 등록 노트](../../gathering/notes/2026-09-04-codc-intake.md). [수집 시도 로그](../../gathering/notes/2026-09-04-codc-collection-attempt.md).

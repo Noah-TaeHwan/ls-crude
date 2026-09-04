@@ -90,7 +90,7 @@
 | 057 | US HIMI Public Proxy | -0.177 | +0.465 | HOLD — 공개 2성분 합성은 IS/OOS 부호 반전; 원래 HIMI 네 성분은 미측정 |
 | 058 | Headline Boredom Index | +0.111 | +0.466 | HOLD — 기사량 통제 뒤 IS/OOS `+0.091/+0.061`; 반복성 독립 효과 소멸 |
 | 059 | HIMI-IIVF | — | — | HOLD — ISM 주문·납기와 재고/판매 속도 후보; 실제 공개일·장기 패널·IS/OOS 미실행 |
-| 060 | CODC Credit–Oil Dynamic Cointegration | — | — | HOLD — HY OAS–WTI 괴리 후보; 공적분·공개시점·비중첩 검정 전 IS/OOS 미실행 |
+| 060 | CODC Credit–Oil Dynamic Cointegration | — | — | HOLD — FRED HY OAS 공식 CSV 수집이 연결 재설정으로 실패; 공적분·공개시점·비중첩 검정 전 IS/OOS 미실행 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -157,7 +157,7 @@
 | 057 | [US HIMI Public Proxy](057-global-heavy-industrial-maritime-infrastructure/README.md) | 미국 공개 중공업·정유 운영 프록시 반증 | IS `r=-0.177`, OOS `r=+0.465` (각 107/31개월)로 부호 반전. Machinery IP OOS `+0.712`은 사후 채택 금지 | 0.0 |
 | 058 | [Headline Boredom Index](058-headline-boredom-index/README.md) | 원유 헤드라인 반복성·뉴스 레짐 진단 | HBI 원시 IS/OOS `+0.111/+0.466`이나 기사량 조건부 `+0.091/+0.061`; 049와 분리된 알파 아님 | 0.0 |
 | 059 | [HIMI-IIVF](059-himi-iivf/README.md) | ISM 주문 압력·재고 속도 산업 수요 후보 | **HOLD** — `inv_lag=15`은 Census 약 6주 지연과 충돌. 실제 발표일·이벤트 단위 패널 후 검정 | 0.0 |
-| 060 | [CODC](060-credit-oil-dynamic-cointegration/README.md) | HY 신용스프레드–WTI rolling 괴리·탄력성 후보 | **HOLD** — 제공 코드는 공적분 검정 없이 수준 OLS·WTI forward-fill을 사용. point-in-time 거래일 패널·비중첩 RV 후 검정 | 0.0 |
+| 060 | [CODC](060-credit-oil-dynamic-cointegration/README.md) | HY 신용스프레드–WTI rolling 괴리·탄력성 후보 | **HOLD** — 제공 코드는 공적분 검정 없이 수준 OLS·WTI forward-fill을 사용. FRED 공식 CSV 수집도 현재 연결 재설정으로 실패; point-in-time 거래일 패널·비중첩 RV 후 검정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
