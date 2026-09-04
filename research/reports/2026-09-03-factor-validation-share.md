@@ -70,6 +70,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 051 | Public Confirmation Lag Index | ⬜ `—` | ⬜ `—` | — | — | FIRMS 역사 아카이브는 탐지시각만 제공하고 당시 NRT/RT 공개시각 빈티지를 보존하지 않음. Guardian 게시시각과 안전하게 결합 불가 — IS/OOS 미실행 |
 | 054 | UAP Attention Shock | ⬜ 별도표 | ⬜ 미개봉 | 3,037 일/자산 | — | WTI 공통 타깃이 아닌 62개 자산 Meme Discovery 스캔. 아래 별도표의 최고 IS `r=+0.081`은 다중 탐색 선택값이며 알파 아님 |
 | 057 | HIMI Public Proxy | 🟨 `-0.177` | 🟨 `+0.465` | 107 월 | 31 월 | FRED Machinery IP + EIA refinery utilization 동일가중 공개 프록시. 부호 반전이며 원안 RMCI·DTDI·FEVI·HIC는 미측정 |
+| 058 | Headline Boredom Index | 🟨 `+0.111` | 🟨 `+0.466` | 1,342 일 | 453 일 | Guardian 제목 반복×최근 보도량. 기사량 통제 부분상관은 `+0.091/+0.061`로 독립 효과 소멸 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 
@@ -117,6 +118,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 046 Urban Mobility Tempo | CTA 일별 총 탑승 동일요일 z-score → 다음 5일 실현변동성 | r=**-0.267**, n=3,287 | r=**+0.005**, n=912 | 택시·버스·플랫폼·도보 마찰 원안의 익명 집계판. OOS 소멸. |
 | 054 UAP Attention Shock | `Unidentified_flying_object` 페이지뷰 z90 → 62개 자산의 다음 5일 RV | 최고 BTC·GME r=**+0.081**, 각 n=3,037 | **미개봉** | WTI 표와 다른 비-WTI 광역 스캔. 최고값 사후 선택·0.10 미만으로 밈 기록만 허용. |
 | 057 HIMI Public Proxy | FRED Machinery IP·EIA 정유가동률의 직전값 z-score 동일가중 → 다음 21거래일 RV | r=**-0.177**, n=107 | r=**+0.465**, n=31 | 부호 반전으로 기각. Machinery IP 단독 OOS `+0.712`은 31개월·IS 반전이라 사후 채택 금지; 원래 글로벌 4성분 HIMI도 아님. |
+| 058 Headline Boredom Index | Guardian 원유 제목 반복비율×최근 5신호일 기사량 → 다음 5거래일 RV | r=**+0.111**, n=1,342 | r=**+0.466**, n=453 | 기사량 통제 뒤 `+0.091/+0.061`. 반복성 자체가 아니라 보도량·긴장 레짐에 얽힌 결과라 독립 팩터로 기각. |
 
 ## 데이터 준비 상태
 
@@ -128,6 +130,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 원시 신호 저장·IS/OOS 재실행 가능 | 022 | Opinet·FRED의 공식 집계 원본과 계산 패널은 gitignored 경로에 보관. 현재 빈티지 한계는 남지만, 고정 산식으로 OOS를 한 번 실행했다. |
 | 원시 신호 저장·Meme Discovery만 실행 | 054 | Wikimedia UAP 페이지뷰·Yahoo 62개 자산 패널·순위·코드는 gitignored `gathering/raw/2026-09-04-uap-meme-discovery/`에 보관. OOS는 의도적으로 미개봉. |
 | 원시 신호 저장·IS/OOS 재실행 가능 | 057 | FRED Machinery IP·EIA 정유 가동률 원시 응답과 보수적 공개시점 패널은 gitignored `gathering/raw/2026-09-04-himi-public-proxy/`에 보관. 원안 4성분 데이터는 미확보. |
+| 원시 신호 저장·IS/OOS 재실행 가능 | 058 | Guardian 제목 메타데이터 3,559개·계산 패널·재현 스크립트는 gitignored `gathering/raw/2026-09-04-headline-boredom-probe/`에 보관. 현재 아카이브의 역사 빈티지는 미복원. |
 | 분석 제외·하위 보존 | 019, 023, 026, 028–029, 031 | 개인정보·AIS 보안·데이터 적격성·원안 전제 오류 또는 기존 팩터와의 중복. |
 
 ## 결론
