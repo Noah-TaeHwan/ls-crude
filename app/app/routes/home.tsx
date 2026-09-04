@@ -3,6 +3,14 @@ import { data, Link } from "react-router";
 import type { Route } from "./+types/home";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
 import { WatchGauge } from "~/components/watch-gauge";
+import {
+  SAMPLE_DEFCON_BAND,
+  SAMPLE_DEFCON_CAPTION,
+  SAMPLE_DEFCON_DETAIL,
+  SAMPLE_DEFCON_EXPLAINER,
+  SAMPLE_DEFCON_TITLE,
+  sampleDefconScore,
+} from "~/lib/defcon-sample";
 import { readWtiMarketSnapshot } from "~/lib/market-snapshot.server";
 import type { ActionResult } from "~/lib/types";
 
@@ -213,15 +221,14 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <section className="grid border-b border-border lg:grid-cols-2">
           <div>
             <WatchGauge
-              score={snapshot?.volatility.rv5ReferencePercentile ?? null}
-              rv5={snapshot?.volatility.rv5AnnualizedPct ?? null}
+              score={sampleDefconScore(snapshot?.volatility.rv5ReferencePercentile)}
+              title={SAMPLE_DEFCON_TITLE}
+              bandLabel={SAMPLE_DEFCON_BAND}
+              scoreCaption={SAMPLE_DEFCON_CAPTION}
+              explainer={SAMPLE_DEFCON_EXPLAINER}
+              detail={SAMPLE_DEFCON_DETAIL}
+              isExample
             />
-            <dl className="mx-1 mb-5 grid grid-cols-2 border-y border-border text-sm sm:mx-5 sm:grid-cols-4">
-              <MarketFact label="5일 실현변동성" value={`${formatNumber(snapshot?.volatility.rv5AnnualizedPct ?? null, 1)}%`} />
-              <MarketFact label="장기 기준 백분위" value={formatNumber(snapshot?.volatility.rv5ReferencePercentile ?? null, 0)} />
-              <MarketFact label="기준일" value={snapshot?.asOf ?? "—"} />
-              <MarketFact label="마지막 확인" value={snapshot ? formatKst(snapshot.checkedAt) : "—"} />
-            </dl>
           </div>
 
           <section className="border-t border-border px-1 py-7 lg:border-t-0 lg:border-l lg:px-8" aria-labelledby="quote-title">
@@ -277,6 +284,13 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                   : "표시할 종가 범위가 없습니다."}
               </p>
             </div>
+
+            <dl className="mt-6 grid grid-cols-2 border-y border-border text-sm sm:grid-cols-4">
+              <MarketFact label="5일 실현변동성" value={`${formatNumber(snapshot?.volatility.rv5AnnualizedPct ?? null, 1)}%`} />
+              <MarketFact label="장기 기준 백분위" value={formatNumber(snapshot?.volatility.rv5ReferencePercentile ?? null, 0)} />
+              <MarketFact label="기준일" value={snapshot?.asOf ?? "—"} />
+              <MarketFact label="마지막 확인" value={snapshot ? formatKst(snapshot.checkedAt) : "—"} />
+            </dl>
 
             <div className="mt-5 space-y-1 font-mono text-[11px] leading-relaxed text-muted-foreground">
               <p>
