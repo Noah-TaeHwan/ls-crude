@@ -8,8 +8,8 @@
     "library": "yfinance",
     "autoAdjust": true
   },
-  "checkedAt": "2026-09-04T05:30:09Z",
-  "generatedAt": "2026-09-04T05:30:09Z",
+  "checkedAt": "2026-09-04T11:37:10Z",
+  "generatedAt": "2026-09-04T11:37:10Z",
   "asOf": "2026-09-03",
   "freshnessPolicy": {
     "maxCheckAgeHours": 36,
