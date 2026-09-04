@@ -40,5 +40,5 @@
 - 수집 스크립트: `research/gathering/raw/2026-09-04-uap-meme-discovery/uap_meme_discovery.py` (gitignored)
 - 원시 API 응답·자산 패널·전체 순위: 같은 gitignored `raw/` 경로
 - 결과 요약과 방법: [수집 노트](../../gathering/notes/2026-09-04-uap-meme-discovery.md)
+- 팀 공유용 상관표: [054 별도 Meme Discovery 매트릭스](../../reports/2026-09-03-factor-validation-share.md#054-별도-meme-discovery-상관-매트릭스--uap-관심도--자산-변동성)
 - 원천 API: [Wikimedia Pageviews API](https://wikimedia.org/api/rest_v1/), [접근 정책](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/documentation/access-policy.html)
-
