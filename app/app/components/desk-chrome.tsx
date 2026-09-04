@@ -44,6 +44,9 @@ export function DeskHeader({ source, ticker, freshness }: DeskHeaderProps) {
               WTI 관측
             </DeskNavLink>
             <DeskNavLink to="/research">연구 장부</DeskNavLink>
+            <a className="desk-nav-link" href="/research#history">
+              추적
+            </a>
             <a className="desk-nav-link" href="/research#method">
               방법
             </a>

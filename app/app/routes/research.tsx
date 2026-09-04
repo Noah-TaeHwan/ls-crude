@@ -160,6 +160,90 @@ export default function Research({ loaderData }: Route.ComponentProps) {
           <Link className="text-link mt-5 inline-block" to="/">현재 WTI 관측으로 돌아가기</Link>
         </header>
 
+        <section id="history" className="border-b border-border py-8" aria-labelledby="history-title">
+          <h2 id="history-title" className="text-2xl font-semibold text-foreground">추적: Dump→Note→Sources→후보표→실험</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-muted-foreground">
+            각 가설이 어떤 파일을 거쳐 버려졌는지 링크로 따라갈 수 있습니다. 원천 덤프(<code>gathering/raw/</code>)는 깃에 올리지 않아 직접 링크하지 않고, 한 장 노트가 간접 참조만 남깁니다.
+          </p>
+          <ol className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            <li className="rounded-md border border-border px-4 py-4">
+              <p className="font-mono text-xs text-primary">1 · 한 줄 가설</p>
+              <p className="mt-2 text-sm font-semibold text-foreground">가설 문장</p>
+              <p className="mt-1 text-xs leading-6 text-muted-foreground">
+                무언가 한 종류가 WTI 변동성을 먼저 말하는지 문장으로 씁니다.
+              </p>
+              <a
+                className="text-link mt-2 inline-block text-xs"
+                href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/gathering/notes/_TEMPLATE.md#10"
+                rel="noreferrer"
+                target="_blank"
+              >
+                _TEMPLATE.md:10
+              </a>
+            </li>
+            <li className="rounded-md border border-border px-4 py-4">
+              <p className="font-mono text-xs text-primary">2 · 크립토×뉴스</p>
+              <p className="mt-2 text-sm font-semibold text-foreground">둘 다 있어야 후보</p>
+              <p className="mt-1 text-xs leading-6 text-muted-foreground">
+                <code>크립토의 뭐</code>와 <code>뉴스의 무슨</code>이 한 줄로 말해질 때만 <code>pizza-hunt.md</code>에 행을 만듭니다.
+              </p>
+              <a
+                className="text-link mt-2 inline-block text-xs"
+                href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/notebooks/pizza-hunt.md"
+                rel="noreferrer"
+                target="_blank"
+              >
+                pizza-hunt.md:22 비어 있음 = 증거
+              </a>
+            </li>
+            <li className="rounded-md border border-border px-4 py-4">
+              <p className="font-mono text-xs text-primary">3 · 한 장 노트</p>
+              <p className="mt-2 text-sm font-semibold text-foreground">사람이 읽는 한 장</p>
+              <p className="mt-1 text-xs leading-6 text-muted-foreground">
+                원문 붙여넣기가 아니라 링크+가설+리스크+다음 한 가지.
+              </p>
+              <a
+                className="text-link mt-2 inline-block text-xs"
+                href="https://github.com/Noah-TaeHwan/ls-crude/tree/main/research/gathering/notes"
+                rel="noreferrer"
+                target="_blank"
+              >
+                gathering/notes
+              </a>
+            </li>
+            <li className="rounded-md border border-border px-4 py-4">
+              <p className="font-mono text-xs text-primary">4 · 출처 표</p>
+              <p className="mt-2 text-sm font-semibold text-foreground">REGISTRY.md 한 줄</p>
+              <p className="mt-1 text-xs leading-6 text-muted-foreground">
+                라이선스·지연·look-ahead를 한 줄에 적고 필요하면 상세 장을 연결합니다.
+              </p>
+              <a
+                className="text-link mt-2 inline-block text-xs"
+                href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/gathering/sources/REGISTRY.md"
+                rel="noreferrer"
+                target="_blank"
+              >
+                REGISTRY.md
+              </a>
+            </li>
+            <li className="rounded-md border border-border px-4 py-4">
+              <p className="font-mono text-xs text-primary">5 · 실험 한 장</p>
+              <p className="mt-2 text-sm font-semibold text-foreground">승격만</p>
+              <p className="mt-1 text-xs leading-6 text-muted-foreground">
+                체크를 통과하면 <code>docs/experiments/NNN-슬러그.md</code> 한 장. 비교군은 <code>000-oil-slice-draft</code>.
+              </p>
+              <a
+                className="text-link mt-2 inline-block text-xs"
+                href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/experiments/000-oil-slice-draft.md"
+                rel="noreferrer"
+                target="_blank"
+              >
+                000-oil-slice-draft
+              </a>
+            </li>
+          </ol>
+        </section>
+
         <section className="border-b border-border py-8" aria-labelledby="distribution-title">
           <h2 id="distribution-title" className="text-2xl font-semibold text-foreground">현재 판정 분포</h2>
           <dl className="mt-6 flex flex-wrap border-y border-border">
@@ -234,10 +318,62 @@ export default function Research({ loaderData }: Route.ComponentProps) {
               </li>
             ))}
           </ol>
-          <p className="mt-4 text-sm leading-7 text-muted-foreground">
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">
             2024–2026은 이미 여러 연구에서 확인했으므로 더 이상 손대지 않은 최종 검증 구간이 아닙니다.
             다음 후보는 규칙을 먼저 동결한 뒤 새로 쌓이는 미래 구간으로 검증합니다.
           </p>
+          <section id="sources" className="mt-8 rounded-md border border-border bg-muted/20 px-5 py-5" aria-labelledby="sources-title">
+            <h3 id="sources-title" className="text-base font-semibold text-foreground">출처: 한 줄에 적고 링크로 증명</h3>
+            <p className="mt-2 text-xs leading-6 text-muted-foreground">
+              Investing.com은 사이트를 긁지 않고 CSV로만 받습니다. Yahoo <code>CL=F</code>만 프로그램으로 받습니다. 각 출처의 라이선스·지연·look-ahead는 아래 등록부에 한 줄로 적혀 있습니다.
+            </p>
+            <ul className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
+              <li>
+                <a
+                  className="text-link"
+                  href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/gathering/sources/REGISTRY.md"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  REGISTRY.md — 30+ 출처 표
+                </a>
+                <span className="ml-2 text-muted-foreground">라이선스·지연·look-ahead</span>
+              </li>
+              <li>
+                <a
+                  className="text-link"
+                  href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/research-design.md#36"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  research-design.md — 뉴스 정본
+                </a>
+                <span className="ml-2 text-muted-foreground">Investing CSV만</span>
+              </li>
+              <li>
+                <a
+                  className="text-link"
+                  href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/gathering/sources/_TEMPLATE.md"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  _TEMPLATE.md — 상세 장
+                </a>
+                <span className="ml-2 text-muted-foreground">필요한 출처만</span>
+              </li>
+              <li>
+                <a
+                  className="text-link"
+                  href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/src/ls_crude/config.py#L5"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  config.py:5 — CL=F 고정
+                </a>
+                <span className="ml-2 text-muted-foreground">Yahoo 전용</span>
+              </li>
+            </ul>
+          </section>
         </section>
 
         <section id="team" className="py-8 sm:py-10" aria-labelledby="team-title">
