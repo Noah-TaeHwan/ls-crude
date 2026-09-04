@@ -1,5 +1,7 @@
 # LS CRUDE — 팩터 × 미래 WTI 변동성 상관관계 공유표
 
+WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [에너지 체인 타깃 재정렬 검정표](2026-09-04-energy-chain-target-matrix.md)에 별도 기록한다.
+
 ## 공통 기준
 
 - 가격: 사용자가 제공한 `clf-daily-2015-2026.csv`의 Yahoo `CL=F` 일봉

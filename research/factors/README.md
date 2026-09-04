@@ -1,6 +1,6 @@
-# 🛢️ LS CRUDE — Factor Research Map
+# 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
-**대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`
+**주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
 **현재 상태**: 아래 001–051은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 

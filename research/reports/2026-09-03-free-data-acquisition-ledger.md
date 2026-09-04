@@ -60,6 +60,7 @@
 | 047 | SEC Company Facts: Canada Goose·Columbia | 수집·표본 미달 | 연간 공통 YoY는 IS 3·OOS 0. Canada Goose의 구조화 분기 6-K 매출이 일관되지 않아 `r` 미보고 | `gathering/raw/2026-09-03-premium-value-outdoor-spread/` |
 | 049 | GDELT 2.1 GKG / Event-Mentions | 접근성 보류 | DOC API의 2015 TimelineVolRaw 질의가 `Invalid query start date`; Event 일별 ZIP은 접근되나 키워드/제목 코퍼스가 아님. IS/OOS 미실행 | [049 카드](../factors/049-geopolitical-news-attention-shock/README.md) |
 | 049 | Guardian Content API (headline only) | 수집·기각 | 단일 매체·사전 고정 4개 검색식. crisis IS/OOS RV 상관 `-0.009/+0.054`; 나머지 IS 사건일 0·0·1. Guardian 개발자 키·약관 범위에서만 재실행 | `gathering/raw/2026-09-04-guardian-keyword-probe/` |
+| 039·041·044 | Yahoo `RB=F`·`HO=F`·`NG=F` | 수집·타깃 재정렬 | 039→RBOB `+0.039/+0.058`; 041→RBOB `-0.190/-0.157` 재현 후보, 난방유 OOS 약화; 044→Henry Hub `+0.007/+0.051` | [에너지 체인 검정표](2026-09-04-energy-chain-target-matrix.md) |
 | 049 | Guardian Content API (최초 보도·24h 후속보도) | 수집·기각 | 사전 고정 30일 고요→최초 기사→24시간 후속보도. IS seed 6일은 가속도 값이 변하지 않아 `r` 미계산·사건 RV5 0.60배; OOS seed 8일 `r=+0.199`은 선택 근거 불가 | `gathering/raw/2026-09-04-guardian-acceleration-probe/` |
 | 051 | NASA FIRMS Archive + Guardian Content API | 접근성 감사·HOLD | FIRMS 역사 자료에는 탐지시각은 있으나 당시 NRT/RT 공개시각의 빈티지가 없다. Guardian 최초 게시시각과 결합하면 look-ahead를 막을 수 없어 IS/OOS 미실행 | [051 카드](../factors/051-public-confirmation-lag-index/README.md) |
 | 046 | Chicago CTA 일별 탑승 합계 | 수집·검증 | IS `-0.267`, OOS `+0.005`; 도시 이동 리듬 관계 소멸 | `gathering/raw/2026-09-03-urban-taxi-tempo-probe/` |
