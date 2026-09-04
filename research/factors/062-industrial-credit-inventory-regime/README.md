@@ -37,6 +37,6 @@ industrial inventory-velocity stress (059)
 
 ## 현재 한계
 
-059는 Census의 약 6주 지연을 반영한 실제 패널이 없고, 060은 HY OAS 공식 CSV 수집이 막혀 있다. 따라서 이 카드는 설계 등록일 뿐 상관·적중률·가중치 결과가 없다.
+059는 Census의 약 6주 지연을 반영한 실제 패널이 없고, 060은 HY OAS 공식 CSV 수집이 막혀 있다. 2026-09-04 5분 quick test에서도 060의 공식 FRED 직접 CSV는 연결 재설정, DBnomics 미러는 `404`였으므로 두 입력을 만들 수 없었다. 따라서 이 카드는 설계 등록일 뿐 상관·적중률·가중치 결과가 없다.
 
-참조: [059 HIMI-IIVF](../059-himi-iivf/README.md), [060 CODC](../060-credit-oil-dynamic-cointegration/README.md), [등록 노트](../../gathering/notes/2026-09-04-icisr-intake.md).
+참조: [059 HIMI-IIVF](../059-himi-iivf/README.md), [060 CODC](../060-credit-oil-dynamic-cointegration/README.md), [등록 노트](../../gathering/notes/2026-09-04-icisr-intake.md), [quick test](../../gathering/notes/2026-09-04-composite-gates-quick-test.md).

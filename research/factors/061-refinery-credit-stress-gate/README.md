@@ -38,6 +38,6 @@ low refinery utilization (041)
 
 ## 현재 근거와 한계
 
-041→MPC는 단독으로 양 구간 음의 상관을 보였지만, 가격수익률 신호는 아니며 2015–2019에서는 약했다. 060은 FRED HY OAS 원시자료를 현재 환경에서 아직 수집하지 못했다. 그러므로 이 카드의 조합 성과는 **아직 0건**이며, 041의 결과를 061의 결과처럼 쓰지 않는다.
+041→MPC는 단독으로 양 구간 음의 상관을 보였지만, 가격수익률 신호는 아니며 2015–2019에서는 약했다. 060은 FRED HY OAS 원시자료를 현재 환경에서 아직 수집하지 못했다. 2026-09-04 5분 quick test에서도 공식 FRED 직접 CSV 2회 연결 재설정 뒤 DBnomics 미러가 `404`여서 게이트를 계산하지 못했다. 그러므로 이 카드의 조합 성과는 **아직 0건**이며, 041의 결과를 061의 결과처럼 쓰지 않는다.
 
-참조: [041 교차 타깃 검정](../../reports/2026-09-04-refinery-utilization-equity-cross-target.md), [060 CODC](../060-credit-oil-dynamic-cointegration/README.md), [등록 노트](../../gathering/notes/2026-09-04-rcsg-intake.md).
+참조: [041 교차 타깃 검정](../../reports/2026-09-04-refinery-utilization-equity-cross-target.md), [060 CODC](../060-credit-oil-dynamic-cointegration/README.md), [등록 노트](../../gathering/notes/2026-09-04-rcsg-intake.md), [quick test](../../gathering/notes/2026-09-04-composite-gates-quick-test.md).
