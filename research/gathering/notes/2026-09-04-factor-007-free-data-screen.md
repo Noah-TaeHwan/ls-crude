@@ -36,3 +36,16 @@ Figure.NZ 표는 이민청 Migration Data Explorer의 R1 Residence Visa Decision
 
 - https://figure.nz/chart/ovwiSn6Xvi84ykFW
 - https://www.immigration.govt.nz/about-us/research-and-statistics/
+
+## 체크
+
+| 항목 | 값 (모르면 «모름») |
+| --- | --- |
+| 가격 출처 | Yahoo `CL=F` / 해당 없음 |
+| 뉴스 출처 | 해당 없음 (Investing.com 스크래핑 아님) |
+| 라이선스 | «모름» |
+| 발표 지연 | «모름» |
+| look-ahead | «모름» — 공개일 미확보 시 같은 봉으로 쓰지 않음 |
+| 본 기간 | 인샘플 `2015-01-01`~`2023-12-31`에서 사양 고정. 이후는 확인/반증 |
+| 아웃샘플을 봤나 | 예 — 2024–2025 n=2는 상관 미계산 |
+| 성과 숫자 | 본문 r는 반증·감사 기록. 새 샤프/MDD를 짓지 않음 |

@@ -65,3 +65,16 @@
 - https://www.immigration.govt.nz/about-us/news-centre/investor-category/
 - https://www.iaa.govt.nz/about-us/annual-statistics/
 - https://www.queencitylaw.co.nz/news-views
+
+## 체크
+
+| 항목 | 값 (모르면 «모름») |
+| --- | --- |
+| 가격 출처 | 해당 없음 — 데이터 미수집 |
+| 뉴스 출처 | 해당 없음 (Investing.com 스크래핑 아님) |
+| 라이선스 | «모름» |
+| 발표 지연 | «모름» |
+| look-ahead | «모름» — 공개일 미확보 시 같은 봉으로 쓰지 않음 |
+| 본 기간 | 시계열 미생성. 인샘플 선택 구간만 해당 |
+| 아웃샘플을 봤나 | 아니오 |
+| 성과 숫자 | 없음 (지어 내지 않음) |

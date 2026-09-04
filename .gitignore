@@ -35,6 +35,9 @@ research/gathering/raw/**/*.xlsx
 research/gathering/raw/**/*.xls
 research/gathering/raw/**/*.jsonl
 
+# Factor lab zip archives (INTAKE.md: zip not in git; keep unpacked source)
+research/factors/**/legacy/*.zip
+
 # Node / React Router
 node_modules/
 .react-router/

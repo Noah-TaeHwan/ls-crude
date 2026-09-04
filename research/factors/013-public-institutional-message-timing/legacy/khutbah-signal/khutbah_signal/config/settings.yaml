@@ -1,0 +1,22 @@
+# KhutbahSignal configuration
+
+scoring:
+  tense_weight: 1.0
+  hostile_weight: 2.5
+  warcry_weight: 4.0
+  calm_penalty: 0.3
+  score_cap: 12.0          # raw score is divided by this
+
+signal:
+  score_threshold: 0.50
+  change_threshold: 0.15
+  sustained_threshold: 0.60
+  min_sermons_per_week: 1
+
+evaluation:
+  forward_vol_days: 10
+  min_obs_for_corr: 30
+
+paths:
+  sample_sermons: "data/samples/sermons.csv"
+  output_dir: "output"
