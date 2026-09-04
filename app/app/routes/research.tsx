@@ -4,8 +4,8 @@ import type { Route } from "./+types/research";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
 import type { ActionResult } from "~/lib/types";
 
-/** 공개 장부의 전체 후보 수. `research/factors/` 001–051과 같다. */
-const CANDIDATE_COUNT = 51;
+/** 공개 장부의 전체 후보 수. `research/factors/` 001–052와 같다. */
+const CANDIDATE_COUNT = 52;
 /** 현재 기준을 모두 통과한 후보 수. */
 const PASS_COUNT = 0;
 
@@ -82,12 +82,12 @@ const LEDGER_ROWS: ResearchLedgerRow[] = [
 ];
 
 /**
- * 현재 51개 후보의 판정 분포.
- * 001–048 기존 버킷에 049·051 HOLD와 050 MONITOR만 더한다.
+ * 현재 52개 후보의 판정 분포.
+ * 001–048 기존 버킷에 049·051·052 HOLD와 050 MONITOR만 더한다.
  */
 const VERDICT_COUNTS = [
   ["기각", 17],
-  ["보류", 15],
+  ["보류", 16],
   ["미검증", 7],
   ["보관", 6],
   ["분석 제외", 2],
