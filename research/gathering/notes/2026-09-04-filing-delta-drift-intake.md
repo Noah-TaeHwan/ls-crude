@@ -35,7 +35,18 @@
 | 아웃샘플을 봤나 | 아니오 |
 | 성과 숫자 | 없음 |
 
+## 제공된 CECF T+1 엔진 실행 기록
+
+제공된 코드는 Filing Delta Drift의 MD&A 추출기가 아니라, 이미 생성된 `CECF_Composite_Score` 패널을 받는 장기/단기 포트폴리오 엔진이다. 실제 score/returns/sectors 파일은 레포에 없으므로 내장 난수 데모만 실행했다.
+
+| 실행 | 결과 | 기록 |
+| --- | --- | --- |
+| 2026-09-04 synthetic verification demo | 실패 | `ValueError: left keys must be sorted` at `pd.merge_asof` |
+
+원인은 `merge_asof`의 `on='date'`를 쓰면서 데이터가 ticker 우선으로 정렬된 것이다. `by='ticker'`가 있어도 `date`가 전역적으로 정렬돼야 하므로, 반환/신호 모두 `sort_values(['date', 'ticker'])`로 정렬해야 한다.
+
+또한 “월간 리밸런싱”이라는 설명과 달리 엔진은 매일 목표 weight를 재계산하고 비용은 월초에만 부과한다. 이는 공짜 중간 리밸런싱을 만드는 구조다. 실제 실행 전에 월초 target 생성 → T+1 실행 → 다음 월초까지 forward-fill → 모든 체결 weight 변화에 비용 부과로 바꿔야 한다.
+
 ## 다음 한 가지
 
-SEC 제출목록에서 고정 에너지 바스켓의 10-Q·10-K accession, filing time, MD&A 구간 추출 가능성을 감사한 뒤 walk-forward 파이프라인을 만든다.
-
+실제 CECF 신호 패널·반환·시점 섹터 매핑을 확보하거나, 우선 SEC 제출목록에서 고정 에너지 바스켓의 10-Q·10-K accession, filing time, MD&A 구간 추출 가능성을 감사한 뒤 walk-forward 파이프라인을 만든다.

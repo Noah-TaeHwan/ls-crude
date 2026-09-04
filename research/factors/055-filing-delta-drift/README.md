@@ -43,6 +43,23 @@
 
 제공된 v1.2 코드는 cosine/Jaccard 이중 측정, ticker별 `shift(1)` 표준화, 위치 매핑이라는 좋은 출발점이다. 그러나 전체 문서로 TF-IDF를 fit하는 부분은 미래 정보 누출이므로, 이 카드의 walk-forward 조건을 만족하도록 고치기 전에는 어떤 수치도 보고하지 않는다.
 
+### CECF T+1 백테스트 엔진 실행 감사 (2026-09-04)
+
+Filing Delta Drift 원문 산출물이 아닌 별도 `CECF_Composite_Score`를 받는 sector/market-neutral 엔진도 제공되어, **합성 데모만** 실행했다. 실제 CECF 패널·실제 수익률·섹터 매핑은 아직 제공되지 않았다.
+
+| 항목 | 결과 |
+| --- | --- |
+| 데모 실행 | **실패** — `ValueError: left keys must be sorted` |
+| 직접 원인 | `merge_asof(..., on='date', by='ticker')`에 앞서 `['ticker', 'date']`로 정렬. Pandas는 `on` 키가 전역 단조 정렬되어야 하므로 `['date', 'ticker']` 정렬이 필요 |
+| 성과 수치 | 없음 — 합성 데모가 실패했고, 합성 데이터 성과는 연구 결과가 아님 |
+
+실행이 되더라도 아래를 고치기 전에는 실거래 백테스트로 인정하지 않는다.
+
+1. **월간 리밸런싱 오류**: 현 코드는 매일 target weight를 다시 계산하지만 거래비용만 월초에 뺀다. 월간 리밸런싱이면 월초 신호로만 target을 만들고, 그 포지션을 다음 리밸런싱까지 forward-fill하며, **모든 실제 weight 변화**에 비용을 부과해야 한다.
+2. **T+1 시각 정의**: 날짜만 아니라 점수의 공개 timestamp·장 마감 전후를 기록해야 한다. 당일 장후 신호는 다음 거래일, 장중 신호는 사전 고정한 실행 규칙을 적용한다.
+3. **중립성 감사**: 종목별 비동기 신호·결측 때문에 shift 뒤 일별 총 익스포저가 0에서 벗어날 수 있다. 실행 weight 기준의 sector별 long/short 합, 전체 net, gross, turnover를 매일 검증해야 한다.
+4. **유니버스 요건**: 8개 에너지 주식만으로는 의미 있는 다섯 분위 sector-neutral 포트폴리오를 만들 수 없다. CECF 전략을 검정하려면 사전 고정한 다섹터 유니버스와 당시 시점 섹터 분류가 필요하다. 055의 에너지 바스켓은 우선 개별 종목 변동성 검정용이다.
+
 이 카드는 공시 텍스트와 기업 주가의 관계를 보는 연구다. 경영진의 비공개 의도, 내부정보, 원유 가격 방향을 추론하지 않으며 투자 판단에 쓰지 않는다.
 
 ## 자료·보관
@@ -50,4 +67,3 @@
 - SEC EDGAR 공개 API 및 회사별 제출 목록만 사용한다. SEC 자동 접근 정책·User-Agent·속도 제한을 준수한다.
 - Yahoo 일봉은 가격 타깃용이며 원본 파일은 gitignored `research/gathering/raw/`에만 보관한다.
 - 상세 연구 메모: [2026-09-04 filing delta drift note](../../gathering/notes/2026-09-04-filing-delta-drift-intake.md)
-
