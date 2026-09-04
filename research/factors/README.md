@@ -52,7 +52,7 @@
 | 019 | Robotaxi Night Traffic | — | — | REJECTED — 데이터 경계 |
 | 020 | Gulf AC Panic | -0.066 | — | HOLD — OOS 미실행 |
 | 021 | Kimchi Heat Index | — | — | HOLD — WTI 미검증 |
-| 022 | Korea Gas Pain Index | -0.087 | -0.348 | REJECTED — WTI 알파 아님 |
+| 022 | Korea Gas Pain Index / CFSP | -0.087 | -0.348 | REJECTED — WTI 알파 아님; 소비자 전가 대시보드만 유효 |
 | 023 | Jeju Strait Watch | — | — | REJECTED — AIS·중복 |
 | 024 | Chuseok Effect | — | — | HOLD |
 | 025 | Korean Refinery Margin Watch | — | — | HOLD |
@@ -117,7 +117,7 @@
 | 019 | [Robotaxi Night Traffic](019-robotaxi-night-traffic-archive/README.md) | 아이디어 보존 | **REJECTED** — 개인정보·데이터 적격성·인과 문제 | 0.0 |
 | 020 | [Gulf AC Panic](020-gulf-ac-panic/README.md) | 밈·전력 운영 후보 | 5일 변동성 IS `r=-0.066`; 전력·정전 일별 공개 시계열도 없음 | 0.0 |
 | 021 | [Kimchi Heat Index](021-kimchi-heat-index/README.md) | 한국 식탁 물가·기후 밈 모니터 | **IDEA ARCHIVED / HOLD** — 유가 타깃으로 미검증. KAMIS 수집 명세만 등록 | 0.0 |
-| 022 | [Korea Gas Pain Index](022-korea-us-fuel-transmission-spread/README.md) | 한국 소비자 연료 전가·환율 대시보드 | 21일 변동성 IS `r=-0.087`, n=95; OOS `r=-0.348`, n=31. 원유 알파 아님 | 0.0 |
+| 022 | [Korea Gas Pain Index / CFSP](022-korea-us-fuel-transmission-spread/README.md) | 한국·미국 소비자 연료 전가 대시보드 | 21일 변동성 IS `r=-0.087`, n=95; OOS `r=-0.348`, n=31. CFSP는 미국 50L 노동시간·심리 UI이며 원유 알파 아님 | 0.0 |
 | 023 | [Jeju Strait Watch](023-jeju-strait-watch/README.md) | 해상 리스크 아이디어 보존 | **REJECTED** — 선박별 AIS·보안 경계 및 017과 중복 | 0.0 |
 | 024 | [Chuseok Effect](024-chuseok-effect/README.md) | 국내 이동·수요 계절 맥락 | **HOLD** — 달력 자체는 알려진 계절성. 공개 집계 서프라이즈만 검토 가능 | 0.0 |
 | 025 | [Korean Refinery Margin Watch](025-korean-refinery-margin-watch/README.md) | 한국 정유 전가·마진 프록시 | **HOLD** — 공개 월간 프록시의 물리 경로는 있음; 실제 주간 crack 시계열 미확보 | 0.0 |

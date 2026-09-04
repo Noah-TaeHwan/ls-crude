@@ -50,6 +50,18 @@ KGPI 노동시간 = (전국 또는 서울 일반휘발유 원/L × 탱크 L) ÷ 
 
 전국 가격이면 전국 임금, 서울 가격이면 서울 임금을 써야 한다. 임금은 일별 실시간 신호가 아니므로 KGPI는 ‘매일 갱신되는 체감가격 지수’이지 일별 노동시장 지표가 아니다.
 
+## 022B — Consumer Fuel Stress Proxy (CFSP)
+
+CFSP는 KGPI의 **미국 대시보드 레이어**다. 핵심 화면은 미국 전국 regular gasoline의 50L 비용, 이를 평균 시간당 임금으로 나눈 노동시간, Michigan 소비자심리를 나란히 표시한다. 이는 개인의 팁·POS·소셜 행동을 추적하지 않는다.
+
+```text
+hours_to_fill_50L = (50L × USD/L retail gasoline) ÷ USD/hour wage
+```
+
+소비자심리는 별도 스트레스 맥락으로 표시한다. 노동시간과 심리의 임의 가중 합을 유가 예측 점수로 해석하지 않는다. API 실패 시 임의 가격·심리·임금을 반환하지 말고 해당 소스를 `unavailable`로 표시해야 한다. CFSP는 **dashboard candidate / Oil Pizza 0.0**이며, 022의 WTI 변동성 검정 결과를 바꾸지 않는다.
+
+상세 구현 감사: [CFSP 등록 노트](../../gathering/notes/2026-09-04-cfsp-dashboard-intake.md).
+
 ## 다음 단계 — 거래가 아닌 분해
 
 1. 한국 유류세 실제 적용일과 한시 감면을 사건 더미로 넣는다.

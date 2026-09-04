@@ -34,7 +34,7 @@
 | 019 | 없음 | 불가 | 특정 건물·승하차 데이터는 개인정보 경계 밖 | 카드 019 |
 | 020 | NASA POWER | 수집·검증 | IS `-0.066`; OOS 사양 미동결 | `gathering/raw/2026-09-03-gulf-ac-panic-probe/` |
 | 021 | KAMIS | 보류 | API 키·연속 역사·빈티지 확인 전 | 카드 021 |
-| 022 | Opinet·FRED | 수집·검증 | IS `-0.087`, OOS `-0.348` | `gathering/raw/2026-09-03-korea-us-fuel-spread-probe/` |
+| 022 / 022B | Opinet·FRED / EIA·BLS·FRED CFSP 공개 대시보드 입력 | 수집·검증 / 구현 명세 등록 | 022 WTI RV: IS `-0.087`, OOS `-0.348`. 022B CFSP는 50L 비용·시간당 임금·심리의 미국 체감 대시보드이며 WTI 알파 미검정; EIA v2 경로·실제 BLS 임금·오류 정직성이 구현 전제 | `gathering/raw/2026-09-03-korea-us-fuel-spread-probe/`; [CFSP 노트](../gathering/notes/2026-09-04-cfsp-dashboard-intake.md) |
 | 023 | 없음 | 불가 | 개별·실시간 AIS는 보안 경계 밖 | 카드 023 |
 | 024 | 공항·도로공사 집계 | 보류 | 공개시점 포함 장기 surprise 패널 미구축 | 카드 024 |
 | 025 | KNOC 월간 통계 | 보류 | true crack spread가 아닌 월간 프록시만 가능 | 카드 025 |
