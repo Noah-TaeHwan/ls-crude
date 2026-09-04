@@ -27,3 +27,16 @@
 - https://firms.modaps.eosdis.nasa.gov/active_fire/
 - https://firms.modaps.eosdis.nasa.gov/download/
 - https://open-platform.theguardian.com/documentation/search
+
+## 체크
+
+| 항목 | 값 (모르면 «모름») |
+| --- | --- |
+| 가격 출처 | 타깃만 Yahoo `CL=F` 5거래일 실현변동성으로 정의. 수치는 미계산 |
+| 뉴스 출처 | Guardian Content API (스크래핑 아님) |
+| 라이선스 | NASA FIRMS · Guardian API. 이용약관 세부는 «모름» |
+| 발표 지연 | NRT가 2–5개월 후 과학품질로 교체될 수 있음. 당시 `t_available` 부재 |
+| look-ahead | 있음 — 탐지시각을 고정 지연으로 대체하면 look-ahead. 계산하지 않음 |
+| 본 기간 | IS/OOS 수치 미계산 |
+| 아웃샘플을 봤나 | 아니오 |
+| 성과 숫자 | 없음 (지어 내지 않음) |

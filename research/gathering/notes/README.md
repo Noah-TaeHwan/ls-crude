@@ -9,3 +9,5 @@ AI나 사람이 조사한 것을 **링크 가능한 한 장**으로 둡니다. �
 5. 승격되면 [`../../../docs/experiments/`](../../../docs/experiments/README.md)에 `NNN` 카드.
 
 성과 숫자를 지어 내지 않습니다. 인샘플 밖에서 고르지 않습니다.
+
+각 노트의 체크표는 [`_TEMPLATE.md`](_TEMPLATE.md)의 «발표 지연»·«look-ahead» 칸을 따른다.

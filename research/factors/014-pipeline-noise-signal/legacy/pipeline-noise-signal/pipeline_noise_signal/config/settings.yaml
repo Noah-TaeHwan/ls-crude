@@ -1,0 +1,18 @@
+# Pipeline Noise Signal – configuration
+
+detection:
+  baseline_window_days: 21        # rolling baseline length
+  spike_threshold_pct: 0.30       # 30% above baseline
+  confirm_window_hours: 48        # persistence required
+  multi_corridor_min: 2           # for cascade / high-risk flag
+
+signal:
+  single_corridor_weight: 1.0
+  multi_corridor_weight: 2.0
+
+evaluation:
+  forward_vol_days: 10
+  min_obs: 40
+
+paths:
+  output_dir: "output"
