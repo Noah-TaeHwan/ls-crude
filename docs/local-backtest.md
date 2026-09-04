@@ -25,3 +25,10 @@ Windows면 `source` 대신 `.venv\Scripts\activate`.
 신호는 공개된 뒤에만 사용할 수 있습니다. 같은 날 종가를 신호에 넣지 않습니다.
 
 후보 표는 [`research/notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md)에 있습니다. 실제 후보가 없으면 표를 비웁니다.
+
+## 손성찬 인계 (2026-09-04)
+
+대안 데이터 Oil Pizza 가중치는 전부 `0.0`이다. 공개 장부는 후보 51 · 통과 0.
+기준모형은 `research/src/ls_crude/models`와 `backtest`에서 정통 입력(Yahoo `CL=F` 가격, RSI, 실현변동성)만 사용한다.
+웹에 Sharpe·MDD·적중률을 넣지 않는다. 인샘플에서 규칙을 잠그고 아웃샘플은 한 번만 연다.
+이슈 #2(규칙+RF 기준모형), #4(walk-forward)가 이 작업이다.
