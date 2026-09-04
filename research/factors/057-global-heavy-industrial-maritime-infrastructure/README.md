@@ -1,4 +1,4 @@
-# 057 — Global Heavy Industrial & Maritime Infrastructure Factor (HIMI)
+# 057 — US HIMI Public Proxy
 
 **상태**: ⏸️ **HOLD — 공개 프록시를 실제 검정했지만, 합성 결과가 재현되지 않음**  
 **밈**: *“When the heavy world moves, oil volatility listens — but the public proxy is not the heavy world.”*  
@@ -6,7 +6,7 @@
 
 ## 무엇을 검정했나
 
-원안 HIMI는 정유 보수(RMCI)·장비 telematics(DTDI)·조선 병목(FEVI)·EPC/건설(HIC)를 묶은 글로벌 운영 스트레스 가설이다. 이 네 입력의 무료·장기·공개시점 안전 패널은 아직 없다. 따라서 057은 원안을 **대체하거나 성공으로 포장하지 않는**, 두 개의 공개 미국 프록시 반증 시험이다.
+원안 HIMI는 정유 보수(RMCI)·장비 telematics(DTDI)·조선 병목(FEVI)·EPC/건설(HIC)를 묶은 글로벌 운영 스트레스 가설이다. 이 네 입력의 무료·장기·공개시점 안전 패널은 아직 없다. 따라서 057의 정확한 이름은 **US HIMI Public Proxy**이며, 원안을 **대체하거나 성공으로 포장하지 않는** 두 개의 공개 미국 프록시 반증 시험이다.
 
 | 공개 프록시 | 원안에서 겨냥한 부분 | 시점 처리 |
 | --- | --- | --- |
@@ -46,6 +46,10 @@
 ### Global Heavy Industries Index v11 업데이트
 
 v11은 월말 FRED 기준·2024 OOS·`Close` 호환을 고쳤다. 그러나 EIA·FRED 저빈도 입력을 매 거래일 반복하는 설계가 남아 있어, 일별 관측치와 겹치는 21일 RV의 상관을 독립 표본 결과로 읽을 수 없다. 또한 현 입력은 미국뿐이다. 따라서 이름은 연구 맥락에서 HIMI/US public proxy로 유지하며, 기존 이벤트 기반 결과를 대체하지 않는다. [v11 감사](../../gathering/notes/2026-09-04-global-heavy-industries-v11-audit.md)
+
+### US HIMI Public Proxy v13 업데이트
+
+v13은 FRED 월간 z-score를 원자료 빈도에서 먼저 계산해 월간 축의 의사복제를 줄였다. 그러나 EIA 주간값은 여전히 일별로 forward-fill한 뒤 일별 z-score를 만들므로 전체 이벤트 표본 문제는 남아 있다. 정식 결과·HOLD 상태는 바꾸지 않는다. [v13 감사](../../gathering/notes/2026-09-04-us-himi-public-proxy-v13-audit.md)
 
 ## 다음 단계
 

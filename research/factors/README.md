@@ -87,7 +87,7 @@
 | 054 | UAP Attention Shock | — | — | MEME DISCOVERY — 62개 자산 IS 스캔 최대 `r=+0.081`; OOS 미개봉·알파 아님 |
 | 055 | Filing Delta Drift | — | — | HOLD — walk-forward SEC MD&A 공시 변화·개별 에너지 주식 변동성 후보; 수집·IS/OOS 미실행 |
 | 056 | Heavy Industrial & Maritime Infrastructure | — | — | HOLD — 정유 보수·중장비·조선·건설 복합 가설; 적격 무료 입력·공개시점 미확보 |
-| 057 | HIMI Public Proxy | -0.177 | +0.465 | HOLD — 공개 2성분 합성은 IS/OOS 부호 반전; 원래 HIMI 네 성분은 미측정 |
+| 057 | US HIMI Public Proxy | -0.177 | +0.465 | HOLD — 공개 2성분 합성은 IS/OOS 부호 반전; 원래 HIMI 네 성분은 미측정 |
 | 058 | Headline Boredom Index | +0.111 | +0.466 | HOLD — 기사량 통제 뒤 IS/OOS `+0.091/+0.061`; 반복성 독립 효과 소멸 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
@@ -152,7 +152,7 @@
 | 054 | [UAP Attention Shock](054-uap-attention-shock/README.md) | UAP 공개 관심도 기반 광역 자산 밈 탐색 | **MEME DISCOVERY** — 62개 IS 스캔의 최대는 BTC·GME `r=+0.081`; OOS 미개봉, 선택편향상 알파 아님 | 0.0 |
 | 055 | [Filing Delta Drift](055-filing-delta-drift/README.md) | SEC MD&A 변화·에너지 기업 변동성 후보 | **HOLD** — 전체 코퍼스 TF-IDF는 look-ahead. walk-forward·동종공시·실제 접수시각 정렬을 구현한 뒤에만 IS/OOS 검정 | 0.0 |
 | 056 | [Heavy Industrial & Maritime Infrastructure](056-heavy-industrial-maritime-infrastructure/README.md) | 정유 보수·중장비·조선·건설 운영 스트레스 후보 | **HOLD** — 난수 데모는 실증 아님. RMCI·DTDI·FEVI·HIC의 적격 무료 장기 입력과 크랙/기간스프레드 정의를 먼저 고정 | 0.0 |
-| 057 | [HIMI Public Proxy](057-global-heavy-industrial-maritime-infrastructure/README.md) | 무료 중공업·정유 운영 프록시 반증 | IS `r=-0.177`, OOS `r=+0.465` (각 107/31개월)로 부호 반전. Machinery IP OOS `+0.712`은 사후 채택 금지 | 0.0 |
+| 057 | [US HIMI Public Proxy](057-global-heavy-industrial-maritime-infrastructure/README.md) | 미국 공개 중공업·정유 운영 프록시 반증 | IS `r=-0.177`, OOS `r=+0.465` (각 107/31개월)로 부호 반전. Machinery IP OOS `+0.712`은 사후 채택 금지 | 0.0 |
 | 058 | [Headline Boredom Index](058-headline-boredom-index/README.md) | 원유 헤드라인 반복성·뉴스 레짐 진단 | HBI 원시 IS/OOS `+0.111/+0.466`이나 기사량 조건부 `+0.091/+0.061`; 049와 분리된 알파 아님 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
