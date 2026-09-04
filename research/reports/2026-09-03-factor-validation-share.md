@@ -71,6 +71,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 054 | UAP Attention Shock | ⬜ 별도표 | ⬜ 미개봉 | 3,037 일/자산 | — | WTI 공통 타깃이 아닌 62개 자산 Meme Discovery 스캔. 아래 별도표의 최고 IS `r=+0.081`은 다중 탐색 선택값이며 알파 아님 |
 | 057 | US HIMI Public Proxy | 🟨 `-0.177` | 🟨 `+0.465` | 107 월 | 31 월 | 미국 FRED Machinery IP + EIA refinery utilization 동일가중 공개 프록시. 부호 반전이며 원안 RMCI·DTDI·FEVI·HIC는 미측정 |
 | 058 | Headline Boredom Index | 🟨 `+0.111` | 🟨 `+0.466` | 1,342 일 | 453 일 | Guardian 제목 반복×최근 보도량. 기사량 통제 부분상관은 `+0.091/+0.061`로 독립 효과 소멸 |
+| 059 | HIMI-IIVF | ⬜ `—` | ⬜ `—` | — | — | ISM 주문−납기 + inverse inventory/sales 월간 후보. ISM 실제 발표일·Census 약 6주 공개지연을 반영한 이벤트 패널 수집 전 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 
