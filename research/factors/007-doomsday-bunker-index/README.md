@@ -108,6 +108,8 @@ target = future_20d_or_60d_wti_realized_volatility  # Yahoo CL=F
 
 007B의 입력 명세·분석 경계는 [One Firm Canary 노트](../../gathering/notes/2026-09-04-one-firm-canary-protocol.md)에 별도 기록한다.
 
+2026-09-04 공개 수집 접근성 확인에서는 개별 로펌의 역사적 익명 문의·유료계약 집계를 찾지 못했다. 로펌 웹사이트·검색관심도·게시글·리뷰를 고객수요 프록시로 쓰지 않으며, 007B는 데이터 미수집 상태다.
+
 ## 현재 결론
 
 ### 무료 공개 집계 스크린 — 2026-09-04
