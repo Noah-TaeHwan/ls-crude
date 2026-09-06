@@ -88,3 +88,10 @@
 - [ ] CI (research·app·Vercel) 녹색
 - [ ] ego-browser 로컬+배포 스크린샷 검증
 - [ ] ⑤ Critical 0
+
+## 롤백 runbook (장애 시)
+
+1. Vercel → Deployments에서 직전 Production 빌드 선택 → Promote to Production
+2. `git revert <사고 머지 SHA>` → `fix/revert-xxx` 브랜치 → PR → CI 녹색 후 머지
+3. 스냅샷-only 사고면 해당 `chore: WTI 시장 관측값` 커밋만 revert (정적 JSON이라 안전)
+4. 복구 후 ego-browser로 배포본 스냅샷·게이지·장부 3점 확인
