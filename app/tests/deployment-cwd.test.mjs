@@ -6,6 +6,7 @@ import { test } from "node:test";
 import path from "node:path";
 
 import { isWtiMarketSnapshot } from "../app/lib/types.ts";
+import { volatilityBand } from "../app/lib/gauge.ts";
 
 /** 앱 패키지 루트 경로. */
 const appRoot = path.resolve(import.meta.dirname, "..");
@@ -144,12 +145,13 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.equal(response.status, 200, output.join(""));
     const body = await response.text();
     assert.match(body, /data-source="Yahoo Finance"/);
-    assert.match(body, /원유 DEFCON/);
-    assert.match(body, />예시</);
-    assert.match(body, /DEFCON 3/);
+    assert.match(body, /WTI 변동성 위치/);
+    assert.doesNotMatch(body, /원유 DEFCON/);
+    assert.doesNotMatch(body, /DEFCON 3/);
+    assert.doesNotMatch(body, />예시</);
     assert.ok(
-      body.includes("예시 원유 DEFCON 58, DEFCON 3"),
-      "home gauge must be the sample DEFCON needle, not live realized volatility",
+      body.includes(`WTI 변동성 위치 ${livePercentile}, ${volatilityBand(marketSnapshot.volatility.rv5ReferencePercentile)}`),
+      "home gauge must be the live realized-volatility needle, not the sample DEFCON",
     );
     assert.doesNotMatch(body, /WTI 5거래일 실현변동성 백분위/);
     const checkedAtKst = new Date(
@@ -160,7 +162,7 @@ test("serves the public evidence brief routes from the repository root", async (
       body.includes(expectedCheckedAt),
       "server and browser must share one deterministic KST timestamp",
     );
-    assert.match(body, /실전 신호가 아닙니다/);
+    assert.match(body, /방향 신호가 아닙니다/);
     assert.match(body, /5일 실현변동성/);
     assert.doesNotMatch(body, /<form\b/i, "public home must not expose news CRUD forms");
 

@@ -27,6 +27,11 @@ AI 스킬이 이 레포의 기본 입구입니다. 코드 생성 전에 해당 �
 - 페이지는 `loader`, `action`, `meta`를 내보내고 `useLoaderData` / `useActionData`를 쓰지 않습니다
 - 조사 원문을 `docs/experiments/`에 바로 쓰지 않습니다. 성과 숫자를 지어 내지 않습니다
 
+## 브라우저
+
+- 브라우저 자동화는 **ego browser 스킬로만** 수행합니다. Chrome 직접 제어·별도 Playwright 실행 금지.
+- 스크린샷·DOM 스냅샷·클릭·입력은 ego heredoc(`ego-browser nodejs`)으로. 검증 증거는 ego 스냅샷 텍스트 + 필요시 `/tmp` 캡처.
+
 ## 서브에이전트 위임
 
 - 기본은 메인 에이전트가 직접 수행합니다. 자동 위임은 다수 파일·긴 로그·다수 출처 조사, 서로 독립적인 조사·검증, 구현 후 독립 검증에만 사용합니다.
