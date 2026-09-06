@@ -1,16 +1,10 @@
+import { useState } from "react";
 import { data, Link } from "react-router";
 
 import type { Route } from "./+types/home";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
 import { WatchGauge } from "~/components/watch-gauge";
-import {
-  SAMPLE_DEFCON_BAND,
-  SAMPLE_DEFCON_CAPTION,
-  SAMPLE_DEFCON_DETAIL,
-  SAMPLE_DEFCON_EXPLAINER,
-  SAMPLE_DEFCON_TITLE,
-  sampleDefconScore,
-} from "~/lib/defcon-sample";
+import { volatilityBand } from "~/lib/gauge";
 import { readWtiMarketSnapshot } from "~/lib/market-snapshot.server";
 import type { ActionResult } from "~/lib/types";
 
@@ -22,6 +16,10 @@ const PASS_COUNT = 0;
 const SPARK_WIDTH = 520;
 /** 최근 가격 흐름 SVG의 높이. */
 const SPARK_HEIGHT = 116;
+/** 차트 표시 범위로 고를 수 있는 완료 일봉 수. 스냅샷 60봉을 넘지 않는다. */
+const RANGE_OPTIONS = [20, 40, 60] as const;
+/** 주지표 슬롯에 올릴 실현변동성 기간. */
+type MetricChoice = "rv5" | "rv20";
 
 /** 홈에 먼저 보여줄 대표 연구 판정. */
 interface ResearchPreviewRow {
@@ -191,6 +189,22 @@ export function action({}: Route.ActionArgs) {
 }
 
 /**
+ * 범위 전환 버튼의 공통 외형을 돌려준다.
+ * @param active 현재 선택된 범위인지 여부.
+ * @returns 다크 토큰만 쓰는 버튼 클래스.
+ */
+function rangeButtonClass(active: boolean): string {
+  return [
+    "min-h-[44px] min-w-[44px] border px-3 font-mono text-xs",
+    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+    "disabled:cursor-not-allowed disabled:opacity-40",
+    active
+      ? "border-primary bg-primary/15 text-primary"
+      : "border-border text-muted-foreground",
+  ].join(" ");
+}
+
+/**
  * 최신 WTI 관측과 공개 신호 연구 과정을 보여준다.
  * @param props React Router loader 데이터.
  * @returns Evidence Brief 홈 화면.
@@ -199,14 +213,33 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const { market } = loaderData;
   const snapshot = market.snapshot;
   const bars = snapshot?.bars ?? [];
+  const [rangeBars, setRangeBars] = useState<number>(60);
+  const [metric, setMetric] = useState<MetricChoice>("rv5");
+  const [showPercentile, setShowPercentile] = useState(true);
   const latest = bars.at(-1) ?? null;
   const previous = bars.at(-2) ?? null;
   const closeDelta = latest && previous ? latest.close - previous.close : null;
   const closePct = closeDelta != null && previous ? closeDelta / previous.close : null;
-  const closes = bars.map((bar) => bar.close);
-  const minimumClose = closes.length > 0 ? Math.min(...closes) : null;
-  const maximumClose = closes.length > 0 ? Math.max(...closes) : null;
+  const visibleBars = bars.slice(-rangeBars);
+  const visibleCloses = visibleBars.map((bar) => bar.close);
+  const minimumClose = visibleCloses.length > 0 ? Math.min(...visibleCloses) : null;
+  const maximumClose = visibleCloses.length > 0 ? Math.max(...visibleCloses) : null;
+  const rangeFirst = visibleBars.at(0)?.date.slice(5) ?? "—";
+  const rangeLast = visibleBars.at(-1)?.date.slice(5) ?? "—";
   const source = snapshot?.source.provider ?? "Yahoo Finance";
+  const percentile = snapshot?.volatility.rv5ReferencePercentile ?? null;
+  const band = percentile == null ? "—" : volatilityBand(percentile);
+  const gaugeTitle = "WTI 변동성 위치";
+  const gaugeScore = percentile == null ? null : Math.round(percentile);
+  const mainRv = metric === "rv5"
+    ? (snapshot?.volatility.rv5AnnualizedPct ?? null)
+    : (snapshot?.volatility.rv20AnnualizedPct ?? null);
+  const closeSpan = minimumClose != null && maximumClose != null
+    ? maximumClose - minimumClose || 1
+    : 1;
+  const lastDotY = latest != null && minimumClose != null
+    ? SPARK_HEIGHT - ((latest.close - minimumClose) / closeSpan) * SPARK_HEIGHT
+    : null;
 
   return (
     <>
@@ -231,7 +264,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                 </p>
                 {closeDelta != null && closePct != null ? (
                   <p className="mt-3 font-mono text-base text-watching tabular-nums">
-                    {formatSigned(closeDelta)} ({formatSigned(closePct * 100)}%)
+                    전일 대비(전체 기준) {formatSigned(closeDelta)} ({formatSigned(closePct * 100)}%)
                   </p>
                 ) : null}
               </div>
@@ -246,17 +279,38 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             </div>
 
             <div className="mt-8">
-              <p className="font-mono text-xs text-muted-foreground">최근 완료 일봉 60개</p>
-              {closes.length > 1 ? (
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className="font-mono text-xs text-muted-foreground">
+                  최근 완료 일봉 {visibleBars.length}개 · {rangeFirst}→{rangeLast}
+                </p>
+                <div role="group" aria-label="차트 표시 범위" className="flex gap-1">
+                  {RANGE_OPTIONS.map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      aria-pressed={rangeBars === option}
+                      disabled={option > bars.length}
+                      onClick={() => setRangeBars(option)}
+                      className={rangeButtonClass(rangeBars === option)}
+                    >
+                      {option}봉
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {visibleBars.length === 0 ? (
+                <p className="mt-4 text-sm text-muted-foreground">스냅샷 60봉 범위를 넘을 수 없습니다.</p>
+              ) : null}
+              {visibleCloses.length > 1 ? (
                 <svg
                   viewBox={`0 0 ${SPARK_WIDTH} ${SPARK_HEIGHT}`}
                   className="price-sparkline mt-3 h-32 w-full text-watching"
                   role="img"
-                  aria-label={`최근 ${closes.length}개 WTI 종가 흐름`}
+                  aria-label={`최근 ${visibleCloses.length}개 WTI 종가 흐름`}
                   aria-describedby="price-trend-summary"
                 >
                   <path
-                    d={sparklinePath(closes)}
+                    d={sparklinePath(visibleCloses)}
                     pathLength={1}
                     className="price-sparkline-draw"
                     fill="none"
@@ -264,43 +318,80 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                     strokeWidth="2"
                     vectorEffect="non-scaling-stroke"
                   />
+                  {lastDotY == null ? null : (
+                    <circle cx={SPARK_WIDTH} cy={lastDotY} r="4" fill="currentColor" />
+                  )}
                 </svg>
               ) : (
                 <p className="mt-4 text-sm text-muted-foreground">가격 데이터가 없습니다.</p>
               )}
               <p id="price-trend-summary" className="mt-3 text-xs text-muted-foreground">
                 {latest && minimumClose != null && maximumClose != null
-                  ? `표시 구간 종가 최저 ${formatNumber(minimumClose)}달러, 최고 ${formatNumber(maximumClose)}달러, 마지막 ${formatNumber(latest.close)}달러입니다.`
+                  ? `최근 ${visibleCloses.length}개 종가 최저 ${formatNumber(minimumClose)}달러, 최고 ${formatNumber(maximumClose)}달러, 마지막 ${formatNumber(latest.close)}달러입니다.`
                   : "표시할 종가 범위가 없습니다."}
               </p>
             </div>
 
-            <dl className="mt-6 grid grid-cols-2 border-y border-border text-sm sm:grid-cols-4">
-              <MarketFact label="5일 실현변동성" value={`${formatNumber(snapshot?.volatility.rv5AnnualizedPct ?? null, 1)}%`} />
-              <MarketFact label="장기 기준 백분위" value={formatNumber(snapshot?.volatility.rv5ReferencePercentile ?? null, 0)} />
+            <div className="mt-6 flex flex-wrap items-center gap-2">
+              <div role="group" aria-label="주지표 선택" className="flex gap-1">
+                <button
+                  type="button"
+                  aria-pressed={metric === "rv5"}
+                  onClick={() => setMetric("rv5")}
+                  className={rangeButtonClass(metric === "rv5")}
+                >
+                  RV 5일
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={metric === "rv20"}
+                  onClick={() => setMetric("rv20")}
+                  className={rangeButtonClass(metric === "rv20")}
+                >
+                  RV 20일
+                </button>
+              </div>
+              <button
+                type="button"
+                aria-pressed={showPercentile}
+                onClick={() => setShowPercentile((current) => !current)}
+                className={rangeButtonClass(showPercentile)}
+              >
+                백분위 {showPercentile ? "숨기기" : "보이기"}
+              </button>
+            </div>
+
+            <dl aria-live="polite" className="mt-3 grid grid-cols-2 border-y border-border text-sm sm:grid-cols-4">
+              <MarketFact label={metric === "rv5" ? "5일 실현변동성" : "20일 실현변동성"} value={`${formatNumber(mainRv, 1)}%`} />
+              <MarketFact label="장기 기준 백분위" value={showPercentile ? formatNumber(snapshot?.volatility.rv5ReferencePercentile ?? null, 0) : "숨김"} />
               <MarketFact label="기준일" value={snapshot?.asOf ?? "—"} />
               <MarketFact label="마지막 확인" value={snapshot ? formatKst(snapshot.checkedAt) : "—"} />
             </dl>
 
             <details className="mt-5 border border-border bg-card/20">
-              <summary className="cursor-pointer px-4 py-3 font-mono text-[11px] tracking-[0.2em] text-primary uppercase select-none">
+              <summary className="flex min-h-[44px] cursor-pointer items-center px-4 py-3 font-mono text-[11px] tracking-[0.2em] text-primary uppercase select-none">
                 관측 출처·산식·검증
               </summary>
               <div className="space-y-1 border-t border-border px-4 py-4 font-mono text-[11px] leading-relaxed text-muted-foreground">
                 <p>
-                  출처: {source} · {snapshot?.ticker ?? "CL=F"} · {snapshot?.interval ?? "1d"} · 자동조정 종가 · 20일 변동성 {formatNumber(snapshot?.volatility.rv20AnnualizedPct ?? null, 1)}%
+                  출처: {source} · {snapshot?.ticker ?? "CL=F"} · {snapshot?.interval ?? "1d"} · 자동조정 종가 · {snapshot?.source.library ?? "—"}
                 </p>
+                <p>
+                  산식: {snapshot?.volatility.method ?? "—"} · {snapshot?.volatility.formula ?? "—"} · 연환산 {snapshot?.volatility.annualization ?? 252}일
+                </p>
+                <p>CL=F는 연속선물이라 만기 교체 때 생기는 롤 갭을 포함할 수 있습니다.</p>
                 <p>
                   기준 분포: {snapshot?.volatility.referenceStart ?? "—"}–{snapshot?.volatility.referenceEnd ?? "—"}
                   {snapshot ? ` · ${snapshot.volatility.referenceWindowCount.toLocaleString("ko-KR")}개 창` : ""}
                 </p>
-                <p>
-                  산식: {snapshot?.volatility.formula ?? "—"} · 연환산 {snapshot?.volatility.annualization ?? 252}일
-                </p>
-                <p>CL=F는 연속선물이라 만기 교체 때 생기는 롤 갭을 포함할 수 있습니다.</p>
                 {snapshot ? (
                   <p>
-                    검증: 전체 완료봉 {snapshot.provenance.rowCount.toLocaleString("ko-KR")}행 · SHA-256 {snapshot.provenance.contentSha256.slice(0, 12)}…
+                    검증: 전체 완료봉 {snapshot.provenance.rowCount.toLocaleString("ko-KR")}행 · SHA-256 {snapshot.provenance.contentSha256.slice(0, 12)}… · 범위 {snapshot.provenance.firstDate}–{snapshot.provenance.lastDate}
+                  </p>
+                ) : null}
+                {snapshot ? (
+                  <p>
+                    신선도: 확인 주기 {snapshot.freshnessPolicy.maxCheckAgeHours}시간 · 일봉 한계 {snapshot.freshnessPolicy.maxBarAgeDays}일
                   </p>
                 ) : null}
               </div>
@@ -316,13 +407,13 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
           <div className="border-t border-border lg:border-t-0 lg:border-l">
             <WatchGauge
-              score={sampleDefconScore(snapshot?.volatility.rv5ReferencePercentile)}
-              title={SAMPLE_DEFCON_TITLE}
-              bandLabel={SAMPLE_DEFCON_BAND}
-              scoreCaption={SAMPLE_DEFCON_CAPTION}
-              explainer={SAMPLE_DEFCON_EXPLAINER}
-              detail={SAMPLE_DEFCON_DETAIL}
-              isExample
+              score={gaugeScore}
+              title={gaugeTitle}
+              bandLabel={band}
+              scoreCaption="5일 실현변동성 기준 백분위"
+              explainer="장기 기준 분포 대비 현재 위치입니다. 방향 신호가 아닙니다."
+              detail={snapshot ? `${snapshot.volatility.referenceStart}–${snapshot.volatility.referenceEnd} · ${snapshot.volatility.referenceWindowCount.toLocaleString("ko-KR")}개 창 · rv5 ${formatNumber(snapshot.volatility.rv5AnnualizedPct, 1)}% / rv20 ${formatNumber(snapshot.volatility.rv20AnnualizedPct, 1)}%` : undefined}
+              ariaLabel={gaugeScore == null ? undefined : `${gaugeTitle} ${gaugeScore}, ${band}`}
             />
           </div>
         </section>
@@ -350,7 +441,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             <Link className="text-link" to="/research">전체 연구 장부 보기</Link>
           </div>
 
-          <p className="mt-4 font-mono text-xs text-muted-foreground">IS 인샘플 2015–2023 · OOS 동결 후 1회 구간 · r 관계계수</p>
+          <p className="mt-4 font-mono text-xs text-muted-foreground">대표 4행 · IS 인샘플 2015–2023 · OOS 동결 후 1회 구간 · r 관계계수</p>
 
           <div className="mt-6 overflow-x-auto">
             <table className="evidence-table evidence-table-stacked">

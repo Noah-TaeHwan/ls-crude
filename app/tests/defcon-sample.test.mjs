@@ -27,18 +27,23 @@ test("sample DEFCON score ignores the live market percentile", () => {
   assert.equal(sampleDefconScore(), 58);
 });
 
-test("home wires the sample score and keeps PASS_COUNT at zero", async () => {
+test("home wires the live volatility gauge and keeps PASS_COUNT at zero", async () => {
   const home = await readFile(homePath, "utf8");
   const gauge = await readFile(gaugePath, "utf8");
 
   assert.equal([...home.matchAll(/<WatchGauge\b/g)].length, 1);
   assert.match(home, /const PASS_COUNT = 0;/);
-  assert.match(home, /sampleDefconScore\(/);
+  assert.match(home, /volatilityBand\(/);
+  assert.doesNotMatch(home, /sampleDefconScore\(/);
+  assert.doesNotMatch(home, /원유 DEFCON/);
 
+  assert.match(home, /const gaugeTitle = "WTI 변동성 위치";/);
   const gaugeCall = home.match(/<WatchGauge[\s\S]*?\/>/);
   assert.ok(gaugeCall, "home must render one WatchGauge");
-  assert.match(gaugeCall[0], /score=\{sampleDefconScore\(/);
-  assert.doesNotMatch(gaugeCall[0], /score=\{snapshot\?\.volatility\.rv5ReferencePercentile/);
+  assert.match(gaugeCall[0], /title=\{gaugeTitle\}/);
+  assert.match(gaugeCall[0], /방향 신호가 아닙니다/);
+  assert.doesNotMatch(gaugeCall[0], /score=\{sampleDefconScore\(/);
+  assert.doesNotMatch(gaugeCall[0], /isExample/);
   assert.doesNotMatch(gaugeCall[0], /\brv5=/);
 
   assert.match(gauge, /isExample/);

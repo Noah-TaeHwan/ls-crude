@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { data, Link } from "react-router";
 
 import type { Route } from "./+types/research";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
+import { Badge } from "~/components/ui/badge";
 import type { ActionResult } from "~/lib/types";
 
 /** 공개 장부의 전체 후보 수. `research/factors/` 001–052와 같다. */
@@ -104,6 +106,60 @@ const METHOD_STEPS = [
   ["한 번의 아웃샘플", "동결 뒤 남은 구간을 한 번 열고 판정을 그대로 남깁니다."],
 ] as const;
 
+/** 판정 정렬·필터의 동결 순서. PLAN Q3 확정. */
+const VERDICT_ORDER: ResearchVerdict[] = ["별도 전략", "보류", "기각", "철회"];
+
+/** 장부 테이블에서 정렬할 수 있는 열. 목표·데이터·판정 이유는 서술형이라 제외. */
+type LedgerSortKey = "hypothesis" | "inSample" | "outSample" | "verdict";
+
+/** 장부 테이블의 정렬 방향. */
+type SortDirection = "asc" | "desc";
+
+/**
+ * IS·OOS 표기에서 관계계수를 읽는다.
+ * @param value "r=-0.003" 또는 "—".
+ * @returns 수치. "—"는 null로 돌려 항상 끝으로 보낸다.
+ */
+function parseCorrelation(value: string): number | null {
+  if (value === "—") return null;
+  const parsed = Number.parseFloat(value.replace(/^r=/, ""));
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+/**
+ * 정렬 버튼을 품은 장부 테이블 머리글.
+ * @param props 열 라벨, 정렬 키와 현재 정렬 상태, 정렬 요청 콜백.
+ * @returns aria-sort가 달린 th.
+ */
+function SortableHeader({
+  label,
+  sortKeyValue,
+  activeKey,
+  direction,
+  onSort,
+}: {
+  label: string;
+  sortKeyValue: LedgerSortKey;
+  activeKey: LedgerSortKey | null;
+  direction: SortDirection;
+  onSort: (key: LedgerSortKey) => void;
+}) {
+  const active = activeKey === sortKeyValue;
+  return (
+    <th scope="col" aria-sort={active ? (direction === "asc" ? "ascending" : "descending") : "none"}>
+      <button
+        type="button"
+        onClick={() => onSort(sortKeyValue)}
+        aria-label={`${label} 정렬${active ? (direction === "asc" ? " (오름차순)" : " (내림차순)") : ""}`}
+        className="inline-flex min-h-[44px] items-center gap-1 px-2 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+      >
+        {label}
+        <span aria-hidden="true">{active ? (direction === "asc" ? "▲" : "▼") : "△"}</span>
+      </button>
+    </th>
+  );
+}
+
 /** 연구 장부 검색 결과 설명. */
 export function meta({}: Route.MetaArgs) {
   return [
@@ -140,6 +196,59 @@ export function action({}: Route.ActionArgs) {
  * @returns 연구 장부 화면.
  */
 export default function Research({ loaderData }: Route.ComponentProps) {
+  const [sortKey, setSortKey] = useState<LedgerSortKey | null>(null);
+  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
+  const [activeVerdicts, setActiveVerdicts] = useState<ResearchVerdict[]>([...VERDICT_ORDER]);
+  const [query, setQuery] = useState("");
+
+  const normalizedQuery = query.trim().toLowerCase();
+  const filteredRows = LEDGER_ROWS.filter(
+    (row) =>
+      activeVerdicts.includes(row.verdict) &&
+      (normalizedQuery === "" ||
+        `${row.hypothesis} ${row.data}`.toLowerCase().includes(normalizedQuery)),
+  );
+  const visibleRows = [...filteredRows].sort((a, b) => {
+    if (sortKey == null) return 0;
+    const direction = sortDirection === "asc" ? 1 : -1;
+    if (sortKey === "hypothesis") {
+      return a.hypothesis.localeCompare(b.hypothesis, "ko") * direction;
+    }
+    if (sortKey === "verdict") {
+      return (VERDICT_ORDER.indexOf(a.verdict) - VERDICT_ORDER.indexOf(b.verdict)) * direction;
+    }
+    const aValue = parseCorrelation(sortKey === "inSample" ? a.inSample : a.outSample);
+    const bValue = parseCorrelation(sortKey === "inSample" ? b.inSample : b.outSample);
+    if (aValue == null && bValue == null) return 0;
+    if (aValue == null) return 1;
+    if (bValue == null) return -1;
+    return (aValue - bValue) * direction;
+  });
+
+  /**
+   * 정렬 열을 바꾼다. 같은 열이면 방향만 뒤집는다.
+   * @param key 정렬할 열.
+   */
+  function handleSort(key: LedgerSortKey): void {
+    if (sortKey === key) {
+      setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setSortDirection("asc");
+    }
+  }
+
+  /**
+   * 판정 필터 체크박스를 켜고 끈다.
+   * @param verdict 바꿀 판정.
+   */
+  function toggleVerdict(verdict: ResearchVerdict): void {
+    setActiveVerdicts((current) =>
+      current.includes(verdict)
+        ? current.filter((item) => item !== verdict)
+        : [...current, verdict],
+    );
+  }
   return (
     <>
       <DeskHeader source="Yahoo Finance" ticker="CL=F" />
@@ -255,7 +364,7 @@ export default function Research({ loaderData }: Route.ComponentProps) {
             ))}
           </dl>
           <p className="mt-4 text-sm text-muted-foreground">
-            현재 인샘플과 아웃샘플에서 함께 재현된 관계는 없습니다. 미검증과 보류는 성과로 세지 않습니다.
+            분포는 전체 52개, 표는 대표 6행입니다. 현재 인샘플과 아웃샘플에서 함께 재현된 관계는 없습니다. 미검증과 보류는 성과로 세지 않습니다.
           </p>
         </section>
 
@@ -276,20 +385,55 @@ export default function Research({ loaderData }: Route.ComponentProps) {
             </a>
           </div>
 
-          <div className="mt-6 overflow-x-auto">
+          <div className="mt-6 grid gap-4 rounded-md border border-border px-4 py-4 sm:grid-cols-2">
+            <fieldset>
+              <legend className="font-mono text-xs text-muted-foreground">판정 필터</legend>
+              <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+                {VERDICT_ORDER.map((verdict) => (
+                  <label key={verdict} className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 text-sm text-foreground">
+                    <input
+                      type="checkbox"
+                      checked={activeVerdicts.includes(verdict)}
+                      onChange={() => toggleVerdict(verdict)}
+                      className="size-4 accent-primary"
+                    />
+                    {verdict}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+            <div>
+              <label htmlFor="ledger-search" className="font-mono text-xs text-muted-foreground">
+                가설·데이터 검색
+              </label>
+              <input
+                id="ledger-search"
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="예: Iran, EIA"
+                className="mt-2 block min-h-[44px] w-full rounded-md border border-border bg-background px-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              />
+            </div>
+          </div>
+          <p aria-live="polite" className="mt-3 font-mono text-xs text-muted-foreground">
+            {LEDGER_ROWS.length}행 중 {visibleRows.length}행 표시
+          </p>
+
+          <div className="mt-4 overflow-x-auto">
             <table className="evidence-table evidence-table-stacked sm:min-w-[1040px]">
               <thead>
                 <tr>
-                  <th scope="col">가설</th>
+                  <SortableHeader label="가설" sortKeyValue="hypothesis" activeKey={sortKey} direction={sortDirection} onSort={handleSort} />
                   <th scope="col">목표</th>
                   <th scope="col">데이터</th>
-                  <th scope="col">IS</th>
-                  <th scope="col">OOS</th>
-                  <th scope="col">판정과 이유</th>
+                  <SortableHeader label="IS" sortKeyValue="inSample" activeKey={sortKey} direction={sortDirection} onSort={handleSort} />
+                  <SortableHeader label="OOS" sortKeyValue="outSample" activeKey={sortKey} direction={sortDirection} onSort={handleSort} />
+                  <SortableHeader label="판정" sortKeyValue="verdict" activeKey={sortKey} direction={sortDirection} onSort={handleSort} />
                 </tr>
               </thead>
               <tbody>
-                {LEDGER_ROWS.map((row) => (
+                {visibleRows.length > 0 ? visibleRows.map((row) => (
                   <tr key={row.hypothesis}>
                     <th scope="row">{row.hypothesis}</th>
                     <td data-label="목표">{row.target}</td>
@@ -298,10 +442,19 @@ export default function Research({ loaderData }: Route.ComponentProps) {
                     <td data-label="OOS" className="font-mono">{row.outSample}</td>
                     <td data-label="판정">
                       <span className={row.verdict === "보류" ? "text-primary" : "text-muted-foreground"}>{row.verdict}</span>
+                      {row.verdict === "보류" ? (
+                        <Badge variant="outline" className="ml-2">연구 후보·예시</Badge>
+                      ) : null}
                       <span className="mt-1 block text-xs text-muted-foreground">{row.reason}</span>
                     </td>
                   </tr>
-                ))}
+                )) : (
+                  <tr>
+                    <td colSpan={6} className="px-3 py-6 text-center text-sm text-muted-foreground">
+                      조건에 맞는 행이 없습니다.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
