@@ -95,3 +95,8 @@
 2. `git revert <사고 머지 SHA>` → `fix/revert-xxx` 브랜치 → PR → CI 녹색 후 머지
 3. 스냅샷-only 사고면 해당 `chore: WTI 시장 관측값` 커밋만 revert (정적 JSON이라 안전)
 4. 복구 후 ego-browser로 배포본 스냅샷·게이지·장부 3점 확인
+
+## SLO (2026-09-06 선언, 월 1회 Actions 이력으로 측정)
+
+- 관측 신선도: 평일 `fresh` 비율 ≥95% (분모=평일 cron 실행, 분자=fresh 판정)
+- main 빌드 성공률 100% (실패 시 즉시 revert, 예외 없음)

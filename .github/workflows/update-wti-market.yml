@@ -130,3 +130,22 @@ jobs:
           pr_url="$(gh pr create --base main --head "$branch" --title "chore: WTI 시장 관측값 갱신" --body "Yahoo Finance CL=F의 최근 완료 일봉으로 생성한 데이터 파일만 갱신합니다.")"
           gh pr merge "$pr_url" --squash --delete-branch --match-head-commit "$(git rev-parse HEAD)"
           trap - EXIT
+
+  notify:
+    needs: [validate, publish]
+    if: failure()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    steps:
+      - name: Open failure issue (one per day)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          title="wti-market automation failed $(date -u +%F)"
+          open=$(gh issue list --state open --search "\"$title\" in:title" --json title --jq length)
+          if [ "$open" = "0" ]; then
+            gh issue create --title "$title" --body "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}. 화면에는 '업데이트 지연' 뱃지가 뜰 수 있음."
+          fi
