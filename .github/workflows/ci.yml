@@ -36,3 +36,7 @@ jobs:
         run: |
           npm install
           npm run typecheck
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: node --test tests/defcon-sample.test.mjs tests/deployment-cwd.test.mjs
