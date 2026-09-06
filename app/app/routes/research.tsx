@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { data, Link } from "react-router";
 
 import type { Route } from "./+types/research";
@@ -23,6 +23,8 @@ interface ResearchLedgerRow {
   outSample: string;
   verdict: ResearchVerdict;
   reason: string;
+  /** GitHub 원문 링크. 없으면 상세에 링크를 표시하지 않는다. */
+  sourceHref?: string;
 }
 
 /** 검증 근거가 문서화된 대표 연구 기록. */
@@ -127,6 +129,78 @@ function parseCorrelation(value: string): number | null {
 }
 
 /**
+ * 행 상세 영역의 DOM id를 만든다.
+ * @param hypothesis 가설 문장. 행 키로 유일하다.
+ * @returns aria-controls용 id.
+ */
+function detailIdFor(hypothesis: string): string {
+  const slug = hypothesis
+    .toLowerCase()
+    .replace(/[^a-z0-9가-힣]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return `ledger-detail-${slug}`;
+}
+
+/**
+ * 장부 한 행의 전문을 같은 화면에 펼친다.
+ * @param props 펼칠 행.
+ * @returns 가설·목표·데이터·IS·OOS·판정·이유 정의 목록. 설계에 없는 수치는 표시하지 않는다.
+ */
+function LedgerDetail({ row }: { row: ResearchLedgerRow }) {
+  return (
+    <div id={detailIdFor(row.hypothesis)}>
+      <dl className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
+        <div>
+          <dt className="font-mono text-xs text-muted-foreground">가설</dt>
+          <dd className="mt-1 text-sm leading-6 text-foreground">{row.hypothesis}</dd>
+        </div>
+        <div>
+          <dt className="font-mono text-xs text-muted-foreground">목표</dt>
+          <dd className="mt-1 text-sm leading-6 text-foreground">{row.target}</dd>
+        </div>
+        <div>
+          <dt className="font-mono text-xs text-muted-foreground">데이터</dt>
+          <dd className="mt-1 text-sm leading-6 text-foreground">{row.data}</dd>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <dt className="font-mono text-xs text-muted-foreground">IS</dt>
+            <dd className="mt-1 font-mono text-sm text-foreground tabular-nums">{row.inSample}</dd>
+          </div>
+          <div>
+            <dt className="font-mono text-xs text-muted-foreground">OOS</dt>
+            <dd className="mt-1 font-mono text-sm text-foreground tabular-nums">{row.outSample}</dd>
+          </div>
+        </div>
+        <div>
+          <dt className="font-mono text-xs text-muted-foreground">판정</dt>
+          <dd className="mt-1 text-sm leading-6 text-foreground">
+            <span className={row.verdict === "보류" ? "text-primary" : "text-muted-foreground"}>
+              {row.verdict}
+            </span>
+            {row.verdict === "보류" ? (
+              <Badge variant="outline" className="ml-2">
+                연구 후보·예시
+              </Badge>
+            ) : null}
+          </dd>
+        </div>
+        <div>
+          <dt className="font-mono text-xs text-muted-foreground">판정 이유</dt>
+          <dd className="mt-1 text-sm leading-6 text-foreground">{row.reason}</dd>
+        </div>
+      </dl>
+      {row.sourceHref ? (
+        <a className="text-link mt-3 inline-block" href={row.sourceHref} rel="noreferrer" target="_blank">
+          원문
+          <span className="sr-only"> (새 탭)</span>
+        </a>
+      ) : null}
+    </div>
+  );
+}
+
+/**
  * 정렬 버튼을 품은 장부 테이블 머리글.
  * @param props 열 라벨, 정렬 키와 현재 정렬 상태, 정렬 요청 콜백.
  * @returns aria-sort가 달린 th.
@@ -200,6 +274,7 @@ export default function Research({ loaderData }: Route.ComponentProps) {
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
   const [activeVerdicts, setActiveVerdicts] = useState<ResearchVerdict[]>([...VERDICT_ORDER]);
   const [query, setQuery] = useState("");
+  const [expandedHypothesis, setExpandedHypothesis] = useState<string | null>(null);
 
   const normalizedQuery = query.trim().toLowerCase();
   const filteredRows = LEDGER_ROWS.filter(
@@ -248,6 +323,14 @@ export default function Research({ loaderData }: Route.ComponentProps) {
         ? current.filter((item) => item !== verdict)
         : [...current, verdict],
     );
+  }
+
+  /**
+   * 장부 행 상세를 펼치고 접는다. 같은 행이면 닫는다.
+   * @param hypothesis 펼칠 행의 가설.
+   */
+  function toggleDetail(hypothesis: string): void {
+    setExpandedHypothesis((current) => (current === hypothesis ? null : hypothesis));
   }
   return (
     <>
@@ -430,27 +513,53 @@ export default function Research({ loaderData }: Route.ComponentProps) {
                   <SortableHeader label="IS" sortKeyValue="inSample" activeKey={sortKey} direction={sortDirection} onSort={handleSort} />
                   <SortableHeader label="OOS" sortKeyValue="outSample" activeKey={sortKey} direction={sortDirection} onSort={handleSort} />
                   <SortableHeader label="판정" sortKeyValue="verdict" activeKey={sortKey} direction={sortDirection} onSort={handleSort} />
+                  <th scope="col">상세</th>
                 </tr>
               </thead>
               <tbody>
-                {visibleRows.length > 0 ? visibleRows.map((row) => (
-                  <tr key={row.hypothesis}>
-                    <th scope="row">{row.hypothesis}</th>
-                    <td data-label="목표">{row.target}</td>
-                    <td data-label="데이터">{row.data}</td>
-                    <td data-label="IS" className="font-mono">{row.inSample}</td>
-                    <td data-label="OOS" className="font-mono">{row.outSample}</td>
-                    <td data-label="판정">
-                      <span className={row.verdict === "보류" ? "text-primary" : "text-muted-foreground"}>{row.verdict}</span>
-                      {row.verdict === "보류" ? (
-                        <Badge variant="outline" className="ml-2">연구 후보·예시</Badge>
+                {visibleRows.length > 0 ? visibleRows.map((row) => {
+                  const detailId = detailIdFor(row.hypothesis);
+                  const expanded = expandedHypothesis === row.hypothesis;
+                  return (
+                    <Fragment key={row.hypothesis}>
+                      <tr>
+                        <th scope="row">{row.hypothesis}</th>
+                        <td data-label="목표">{row.target}</td>
+                        <td data-label="데이터">{row.data}</td>
+                        <td data-label="IS" className="font-mono">{row.inSample}</td>
+                        <td data-label="OOS" className="font-mono">{row.outSample}</td>
+                        <td data-label="판정">
+                          <span className={row.verdict === "보류" ? "text-primary" : "text-muted-foreground"}>{row.verdict}</span>
+                          {row.verdict === "보류" ? (
+                            <Badge variant="outline" className="ml-2">연구 후보·예시</Badge>
+                          ) : null}
+                          <span className="mt-1 block text-xs text-muted-foreground">{row.reason}</span>
+                        </td>
+                        <td data-label="상세">
+                          <button
+                            type="button"
+                            aria-expanded={expanded}
+                            aria-controls={detailId}
+                            aria-label={`${row.hypothesis} 상세 ${expanded ? "닫기" : "보기"}`}
+                            onClick={() => toggleDetail(row.hypothesis)}
+                            className="inline-flex min-h-[44px] items-center gap-1 px-2 font-mono text-xs text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                          >
+                            {expanded ? "닫기" : "상세"}
+                          </button>
+                        </td>
+                      </tr>
+                      {expanded ? (
+                        <tr>
+                          <td colSpan={7} data-label="상세">
+                            <LedgerDetail row={row} />
+                          </td>
+                        </tr>
                       ) : null}
-                      <span className="mt-1 block text-xs text-muted-foreground">{row.reason}</span>
-                    </td>
-                  </tr>
-                )) : (
+                    </Fragment>
+                  );
+                }) : (
                   <tr>
-                    <td colSpan={6} className="px-3 py-6 text-center text-sm text-muted-foreground">
+                    <td colSpan={7} className="px-3 py-6 text-center text-sm text-muted-foreground">
                       조건에 맞는 행이 없습니다.
                     </td>
                   </tr>

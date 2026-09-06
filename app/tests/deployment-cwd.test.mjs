@@ -171,6 +171,8 @@ test("serves the public evidence brief routes from the repository root", async (
     const researchBody = await research.text();
     assert.match(researchBody, /52개/);
     assert.match(researchBody, /통과 0개/);
+    assert.match(researchBody, /상세 보기/, "ledger rows must expose detail buttons");
+    assert.doesNotMatch(researchBody, /aria-expanded="true"/, "details must start collapsed");
 
     const legacyGet = await fetch(`${baseUrl}/backtest`, { redirect: "manual" });
     assert.equal(legacyGet.status, 308);
