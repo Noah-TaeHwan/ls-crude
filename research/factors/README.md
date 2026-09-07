@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–081은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–082는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -200,6 +200,7 @@
 | 079 | [Korea Naphtha Export Thermometer](079-korea-naphtha-export-thermometer/README.md) | 나프타·석유화학 무역 수량/단가 괴리 | **HOLD** — 관세청 월간 통계 후보; HS 범위·빈티지·공개일 미고정 | 0.0 |
 | 080 | [Korea Fuel-Switch Dispatch Alert](080-korea-fuel-switch-dispatch-alert/README.md) | 전력 연료믹스의 유류 발전 전환 | **HOLD** — KPX 연료별 발전량 후보의 연속 역사·정의·공개일 미감사 | 0.0 |
 | 081 | [Korea LPG Substitution Pulse](081-korea-lpg-substitution-pulse/README.md) | LPG–휘발유/경유 상대가격과 차량 연료 대체 | **HOLD** — 가격은 공개 후보이나 실제 연료전환·소비 장기 패널 미확보 | 0.0 |
+| 082 | [Korea Kitchen Oil Stress / Palm–WTI Cointegration](082-korea-kitchen-oil-stress/README.md) | 팜·대두·카놀라유·환율과 한국 식용유 가격의 원가 전가 | **HOLD** — 팜유–WTI 공적분은 검정 후보일 뿐, 선행성·시점·OOS 미검정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 

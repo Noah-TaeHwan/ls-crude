@@ -92,6 +92,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 079 | Korea Naphtha Export Thermometer | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. 관세청 월간 HS 무역 후보; HS 바스켓·공표일·개정 이력 미고정 |
 | 080 | Korea Fuel-Switch Dispatch Alert | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. KPX 연료별 발전량 공개 후보는 있으나 연속 역사·연료분류·공표일 미감사 |
 | 081 | Korea LPG Substitution Pulse | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. 상대가격 후보만 있고 실제 차량 연료대체·소비 장기 패널 미확보 |
+| 082 | Korea Kitchen Oil Stress / Palm–WTI Cointegration | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. 팜유–WTI Engle–Granger·잔차 평균회귀 후보; 한국 소매 식용유·USD/KRW·원료 역사/공개일 패널 및 IS/OOS 미검정 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 
