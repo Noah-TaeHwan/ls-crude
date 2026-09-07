@@ -15,7 +15,7 @@
 | Human blockers | 손성찬: USDA 키(`08`), Baker Hughes Excel(`05`), IMF 재배포; 오태환: tanker/event 창, 야간광 폴리곤 |
 | Evidence pack | [joint hunt status](../reports/2026-09-07-joint-hunt-status.md) · [academic memo](../gathering/notes/2026-09-07-academic-pizza-index-oil-memo.md) · [PortWatch/HY JSON](../reports/2026-09-07-joint-hunt-portwatch-hyoas.json) |
 
-이 절은 대시보드 표 파서 입력 형식을 바꾸지 않는다. 001–085 스코어보드가 웹 정본이다.
+신규 ALT 원장과 아래 기존 팩터 장부는 별도다. 팩터 추가 시 아래 스코어보드와 카드 표에 같은 ID를 함께 등록하고 앱의 장부 검사를 통과시킨다.
 
 ## 정리 원칙 — 2026-09-03
 
@@ -230,6 +230,7 @@
 | 087 | [Chicken Wing Cold-Chain Index](087-chicken-wing-cold-chain-index/README.md) | USDA 주간 도계·냉동재고 복합 → 난방유 변동성 | REJECTED — USDA 주간 도계·냉동 가금 재고 복합 → HO RV5는 IS -0.063, OOS -0.179. 둘 다 유의하지 않음 | 0.0 |
 | 088 | [Borderline Diesel Index](088-borderline-diesel-index/README.md) | BTS 국경 트럭 YoY → 난방유 수익률·변동성 | HOLD — BTS 국경 트럭 YoY → HO RV21은 총량 IS/OOS +0.066/-0.275; 캐나다 OOS -0.384은 IS +0.087과 불일치 | 0.0 |
 | 089 | [Friday Escape Velocity](089-friday-escape-velocity/README.md) | BTS 월간 항공수요 → 난방유·RBOB 변동성 | HOLD — BTS 월간 항공 복합 → HO RV21은 IS/OOS +0.061/-0.567 부호 반전; Friday 자체는 무료 월간 집계에서 미측정 | 0.0 |
+| 090 | [Great Lakes Ice Constraint Index](090-great-lakes-ice-constraint-index/README.md) | NOAA 결빙 제약 → 난방유 변동성 | HOLD — NOAA 결빙 90일 z → HO RV5는 IS/OOS -0.103/-0.228으로 약한 동일방향이나 비유의; 실제 쇄빙·지연 미측정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
