@@ -100,7 +100,7 @@
 | 067 | Oilman Haircut Index | — | — | ARCHIVED — 개인 스타일·이발 수요는 수집하지 않음 |
 | 068 | Energy Corridor Midnight Lights | — | — | HOLD — 2012–2020 공개 야간광은 확인했으나 사무실 야근 식별·2024+ OOS 불가 |
 | 069 | Ulsan Late Delivery Index | — | — | REJECTED — 공개 장기 심야 배달·산단 권역 집계 없음 |
-| 070 | Highway Ramyeon Index | — | — | HOLD — 월간 라면 상위상품은 있으나 판매액·화물차·장기 패널 없음 |
+| 070 | Highway Ramyeon Index | — | — | HOLD — `라면 절대 판매수량 하락 AND 대형 화물차 휴게소 유입 하락`은 무료 장기 패널 부재로 미검정 |
 | 071 | Jeju Full-Tank Return Index | — | — | REJECTED — 렌터카 보유대수는 실제 대여·연료 행동이 아님 |
 | 072 | Yeosu Turnaround Lunchbox Index | — | — | REJECTED — 도시락·숙박·정비 인력 장기 집계 없음 |
 | 073 | Incheon Dawn Restock Index | — | — | HOLD — 월간 화물은 공개되나 면세 리스톡·새벽 활동 미측정 |
@@ -180,7 +180,7 @@
 | 067 | [Oilman Haircut Index](067-oilman-haircut-index/README.md) | 현장 도시 바버샵 밈 | **ARCHIVED** — 개인 외모·고객 수요는 수집하지 않음 | 0.0 |
 | 068 | [Energy Corridor Midnight Lights](068-energy-corridor-midnight-lights/README.md) | 에너지 도시 야간광·운영 스트레스 밈 | **HOLD** — 공개 2012–2020 위성 광도는 있으나 특정 사무실·야근은 미측정, OOS 불충족 | 0.0 |
 | 069 | [울산 야식 배달 지수](069-ulsan-late-delivery-index/README.md) | 울산 산단 심야 배달·운영 압력 밈 | **REJECTED** — 공개 상권정보는 심야·산단권역 수요를 측정하지 않음 | 0.0 |
-| 070 | [고속도로 화물기사 라면 지수](070-highway-ramyeon-index/README.md) | 휴게소 라면·대형차 물류 밈 | **HOLD** — 실제 면류 월간 상위상품은 확인했으나 화물차·판매수량·장기 공개시점 없음 | 0.0 |
+| 070 | [고속도로 화물기사 라면 지수](070-highway-ramyeon-index/README.md) | 라면 절대 판매수량 하락 × 화물차 휴게소 유입 하락 → 국내 경유 수요 압력 완화 후보 | **HOLD** — Top 5 순위는 수량이 아니며, 연속 월별 휴게소 화물차 유입도 공개되지 않아 미검정 | 0.0 |
 | 071 | [제주 렌터카 만땅 반납 지수](071-jeju-full-tank-return-index/README.md) | 제주 이동·휘발유 체감 밈 | **REJECTED** — 공개 렌터카 목록은 대여·주유·반납을 측정하지 않음 | 0.0 |
 | 072 | [여수 보수철 도시락 지수](072-yeosu-turnaround-lunchbox-index/README.md) | 여수 설비보수·도시락/숙박 밈 | **REJECTED** — 구조 통계는 도시락·숙박·정비 인력을 측정하지 않음 | 0.0 |
 | 073 | [인천 새벽 면세 리스톡 지수](073-incheon-dawn-restock-index/README.md) | 인천 화물·항공유 수요 밈 | **HOLD** — 항공화물은 실제 공개되지만 리스톡·새벽 행동과 다름 | 0.0 |
