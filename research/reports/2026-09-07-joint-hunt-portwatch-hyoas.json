@@ -1,0 +1,123 @@
+{
+  "run_utc": "20260907T064559Z",
+  "assumptions": {
+    "portwatch_lag_calendar_days": 9,
+    "portwatch_index": "20d rolling z-score of n_total (Hormuz chokepoint6)",
+    "portwatch_coverage": "2019-01-01 .. 2026-08-30 n=2799",
+    "hy_lag_calendar_days": 1,
+    "hy_index_primary": "1d change in BAMLH0A0HYM2",
+    "codc_index": "IS-fit residual OAS - (a + b*log CL Close); a,b fit 2015-2023 only",
+    "codc_beta_is": 1.8376000091951634,
+    "codc_alpha_is": -4.104910127483214,
+    "target_primary": "next 5 trading-day WTI RV (% ann. RMS)",
+    "split": "IS 2015-01-01..2023-12-31; OOS 2024-01-01+ exploratory (repo already SEEN elsewhere \u2014 not E4)",
+    "nulls": "PortWatch starts ~2019 \u2014 no backfill to 2015. Missing days not imputed as 0."
+  },
+  "portwatch_z_vs_rv5": {
+    "IS": {
+      "n": 1245,
+      "r": 0.08753989823627943
+    },
+    "OOS": {
+      "n": 670,
+      "r": -0.007510761936414349
+    }
+  },
+  "portwatch_z_vs_ret1": {
+    "IS": {
+      "n": 1245,
+      "r": -0.015851719095262947
+    },
+    "OOS": {
+      "n": 674,
+      "r": 0.02620081707077172
+    }
+  },
+  "portwatch_placebo_shift180_vs_rv5": {
+    "IS": {
+      "n": 1121,
+      "r": -0.04251953491520405
+    },
+    "OOS": {
+      "n": 670,
+      "r": -0.01582119031450586
+    }
+  },
+  "hy_doas_vs_rv5": {
+    "IS": {
+      "n": 63,
+      "r": 0.10673735418866673
+    },
+    "OOS": {
+      "n": 543,
+      "r": -0.008939025384476794
+    }
+  },
+  "codc_resid_vs_rv5": {
+    "IS": {
+      "n": 64,
+      "r": 0.390044106164309
+    },
+    "OOS": {
+      "n": 527,
+      "r": -0.2970524730231495
+    }
+  },
+  "portwatch_lag_curve_is_rv5": [
+    {
+      "lag_k": -5,
+      "n": 1240,
+      "r": 0.006013357183353393
+    },
+    {
+      "lag_k": -4,
+      "n": 1241,
+      "r": 0.03051444724424704
+    },
+    {
+      "lag_k": -3,
+      "n": 1242,
+      "r": 0.0519330391083115
+    },
+    {
+      "lag_k": -2,
+      "n": 1243,
+      "r": 0.0747812610802218
+    },
+    {
+      "lag_k": -1,
+      "n": 1244,
+      "r": 0.07454602105124788
+    },
+    {
+      "lag_k": 0,
+      "n": 1245,
+      "r": 0.08753989823627943
+    },
+    {
+      "lag_k": 1,
+      "n": 1244,
+      "r": 0.07966134405459573
+    },
+    {
+      "lag_k": 2,
+      "n": 1243,
+      "r": 0.04832105724379161
+    },
+    {
+      "lag_k": 3,
+      "n": 1242,
+      "r": 0.0434974758923001
+    },
+    {
+      "lag_k": 4,
+      "n": 1241,
+      "r": 0.023916698727638318
+    },
+    {
+      "lag_k": 5,
+      "n": 1240,
+      "r": -0.0028393999093027644
+    }
+  ]
+}

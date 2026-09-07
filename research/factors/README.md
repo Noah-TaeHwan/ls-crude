@@ -4,6 +4,19 @@
 **현재 상태**: 아래 001–085는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
+## Current research status (2026-09-07)
+
+**Still hunting.** 신규 OS 원장 `research/candidates/ledger.csv`에 ALT-20260907-01…10 등록(KEEP 2 / KILL 3 / PARK 5). 팩터 보드 통과 수는 여전히 **0**.
+
+| 축 | 상태 |
+| --- | --- |
+| Top live threads | `ALT-02` Household Panic Wiki (WATCH, weight 0); `ALT-01` Oil Slice 공개 초안; `ALT-03` PortWatch Hormuz **데이터 경로 확보**이나 WTI RV5 IS≈+0.09 / OOS≈0 → PARK |
+| Died this run | 시설 배달 AOI·원시 AIS(`06`/`07`); HY OAS–WTI 잔차 OOS 부호 반전(`04` KILL) |
+| Human blockers | 손성찬: USDA 키(`08`), Baker Hughes Excel(`05`), IMF 재배포; 오태환: tanker/event 창, 야간광 폴리곤 |
+| Evidence pack | [joint hunt status](../reports/2026-09-07-joint-hunt-status.md) · [academic memo](../gathering/notes/2026-09-07-academic-pizza-index-oil-memo.md) · [PortWatch/HY JSON](../reports/2026-09-07-joint-hunt-portwatch-hyoas.json) |
+
+이 절은 대시보드 표 파서 입력 형식을 바꾸지 않는다. 001–085 스코어보드가 웹 정본이다.
+
 ## 정리 원칙 — 2026-09-03
 
 - 동일한 관측값·가설·출력을 공유하면 한 팩터다. 같은 신호를 두 번 가중하지 않는다.
