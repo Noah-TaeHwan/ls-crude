@@ -142,6 +142,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 041 Refinery Utilization Proxy | 전국 정유 설비 가동률 z-score → 다음 5일 실현변동성 | r=**-0.206**, n=418 | r=**-0.011**, n=137 | 특정 Gulf coker 원안의 프록시일 뿐이며 OOS에서 소멸. |
 | 074 Refinery Multi-Block Composite | 041 운영 + EIA 휘발유 순수출 + CFTC RBOB 포지션 + RBOB–WTI 크랙 → 다음 5일 MPC RV | r=**-0.006**, n=416 | r=**+0.197**, n=139; HAC p=`.2190` | 동가중 4블록 결합의 IS가 0. OOS 상관만으로는 채택 불가이며 상위 20% 사건 검정도 p=`.2294`. |
 | 075 Academic Liquidity Calendar | 여름·연말 달력 더미 → 다음 5일 RV | WTI 여름/연말 HAC q=`.1775/.1775`, n=2,262 | WTI 여름/연말 q=`.8147/.1647`, n=668 | 학사 일정이 아니라 일반 계절성의 반증. RBOB 연말 OOS q=`.0462`는 IS q=`.1775`로 재현 실패. |
+| 076 Hidden Hydrocarbon Exposure Screen | 11개 소비기업 섹터중립 잔차·RV20 → 다음 5일 WTI/RBOB/MPC RV | HHE RV20→RBOB HAC p/q=`.0212/.1272`, n=2,173 | `p/q=.6578/.7894`, n=627 | WTI는 양 구간 미통과. 단순 RV 상관은 변동성 군집이며 타깃 RV 통제 뒤·OOS에서 소멸. |
 | 042A Wall Street District Pulse | 공식 MTA 역군 월별 탑승 YoY 36개월 z-score → 다음 21거래일 RV | r=**+0.044**, n=46 | r=**-0.350**, n=31 | 4도시 AFHP가 아닌 단일도시 설명적 시험. 과거 release vintage가 없어 관측월 말+45일 보수적 지연을 사용했고, 부호 반전으로 기각. |
 | 042A 추가 반증 | 역군 출입·환승·환승비중 구성요소 → 다음 21거래일 RV | -0.123~+0.044, n=46 | +0.029~+0.350, n=31 | 4개 구성요소 중 IS·사후구간 모두 통과한 것은 0개. 단일도시 프로브를 살릴 근거 없음. |
 | 044 AI Burn Rate Index | Census data-center 건설지출 전월변화 z-score → 다음 21일 실현변동성 | r=**-0.181**, n=83 | r=**-0.041**, n=29 | 물리 buildout만 측정. 구독률이 아니며, IS 반대·OOS 관계 소멸. |
