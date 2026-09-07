@@ -1,6 +1,6 @@
 # 지수 정의와 실행 영수증
 
-2026-09-07 피자급 헌트가 `ALT-20260907-18`…`25` 중 데이터가 있는 후보의 명세·IS 표·그림을 이 폴더에 남겼다. 활동 proxy 01(곡물 바지선)과 번호를 섞지 않는다. 원본 CSV/JSON은 여기 두지 않는다. 기존 Oil Slice·팩터 결과를 신규 지수로 복사하지 않는다. 요약: [HUNT-20260907-is-stats.csv](HUNT-20260907-is-stats.csv).
+활동 proxy 실제 지수·검정은 [ALT-20260907-01 곡물 바지선](ALT-20260907-01/README.md)에 있습니다. [03 TSA](ALT-20260907-03/README.md)는 차단 영수증입니다. 피자급 헌트는 `ALT-20260907-18`…`25` 중 데이터가 있는 후보의 명세·IS 표·그림을 남겼고 요약은 [HUNT-20260907-is-stats.csv](HUNT-20260907-is-stats.csv)입니다. [활동 proxy 8개](../gathering/notes/2026-09-07-activity-proxy-hunt.md)와 [원장](../candidates/ledger.csv)이 판정 정본입니다. 원본 CSV/JSON은 여기 두지 않습니다.
 
 후보의 적격 자료가 확보되면 _TEMPLATE.md를 <candidate_id>/README.md로 복사합니다. 산식·공개시각·시간 분할을 고정한 뒤 실행하고, 재실행은 별도 run 기록으로 남깁니다.
 
