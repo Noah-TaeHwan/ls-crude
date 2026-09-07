@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–073은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–075는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -104,6 +104,8 @@
 | 071 | Jeju Full-Tank Return Index | — | — | REJECTED — 렌터카 보유대수는 실제 대여·연료 행동이 아님 |
 | 072 | Yeosu Turnaround Lunchbox Index | — | — | REJECTED — 도시락·숙박·정비 인력 장기 집계 없음 |
 | 073 | Incheon Dawn Restock Index | — | — | HOLD — 월간 화물은 공개되나 면세 리스톡·새벽 활동 미측정 |
+| 074 | Refinery Multi-Block Composite | 별도표 | 별도표 | REJECTED — MPC 변동성 복합 검정은 IS 관계·OOS 통제/사건 검정 미통과; WTI 통과 아님 |
+| 075 | Academic Liquidity Calendar | 별도표 | 별도표 | REJECTED AS ALPHA / MONITOR ONLY — WTI 계절성 IS/OOS BH 기준 미통과; 자산·달력창별 검정은 카드 참조 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
