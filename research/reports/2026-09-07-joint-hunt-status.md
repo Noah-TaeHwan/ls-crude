@@ -1,3 +1,7 @@
+**Verdict: PARTIAL**
+
+> ID note: main `#54/#55/#56`이 ALT-01…29를 선점. PortWatch z/RV는 ALT-04, 나머지 joint-hunt는 ALT-30…38.
+
 # 2026-09-07 Joint hunt — WTI pizza-index-class alt-data
 
 ## Review verdict

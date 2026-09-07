@@ -1,4 +1,4 @@
-# ALT-20260907-20 실행기는 ALT-03과 공유
+# ALT-20260907-30 실행기는 ALT-03과 공유
 
 ```bash
 research/.venv/bin/python research/notebooks/ALT-20260907-04/run_portwatch_hyoas_hunt.py

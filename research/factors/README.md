@@ -6,7 +6,7 @@
 
 ## Current research status (2026-09-07)
 
-**Still hunting.** activity-proxy 탐색(ALT-01…08)에 joint-hunt(PortWatch=ALT-04 실증, 추가 ALT-18…26)를 합쳤다. 팩터 보드 통과 수는 여전히 **0**.
+**Still hunting.** activity-proxy 탐색(ALT-01…08)에 joint-hunt(PortWatch=ALT-04 실증, 추가 ALT-30…38)를 합쳤다. 팩터 보드 통과 수는 여전히 **0**.
 
 | 축 | 상태 |
 | --- | --- |

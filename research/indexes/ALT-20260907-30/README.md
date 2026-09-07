@@ -1,10 +1,10 @@
-# ALT-20260907-20 — HY OAS / CODC residual receipt
+# ALT-20260907-30 — HY OAS / CODC residual receipt
 
 ## 사전 정의
 
 | 항목 | 값 |
 | --- | --- |
-| 후보 ID / 카드 | ALT-20260907-20 / `research/candidates/ALT-20260907-20.md` |
+| 후보 ID / 카드 | ALT-20260907-30 / `research/candidates/ALT-20260907-30.md` |
 | 버전 / 작성 | v0 2026-09-07 |
 | 가설 | HY credit stress residual vs WTI co-moves with future WTI RV |
 | 산식 A | Δ daily `BAMLH0A0HYM2` |
@@ -16,8 +16,8 @@
 
 | 역할 | 경로 |
 | --- | --- |
-| raw | `research/gathering/raw/ALT-20260907-20/20260907T064559Z/BAMLH0A0HYM2.csv` |
-| processed | `research/data/processed/ALT-20260907-20/20260907T064559Z/` |
+| raw | `research/gathering/raw/ALT-20260907-30/20260907T064559Z/BAMLH0A0HYM2.csv` |
+| processed | `research/data/processed/ALT-20260907-30/20260907T064559Z/` |
 | plots | shared with ALT-03: `../ALT-20260907-04/20260907T064559Z/series_20260907T064559Z.png`, `../ALT-20260907-04/20260907T064559Z/scatter_is_20260907T064559Z.png` |
 | results | `research/reports/2026-09-07-joint-hunt-portwatch-hyoas.json` |
 | script | `research/notebooks/ALT-20260907-04/run_portwatch_hyoas_hunt.py` |
