@@ -48,6 +48,8 @@ research/.venv/bin/python research/notebooks/ALT-20260907-01/hunt.py analyze --c
 
 다음 사람 판단: 16·17 키 주체와 09 파일명 수동 확인. 다음 문서 확인: 14 월간 경로와 15 이력 조건. 동료 교차 검토는 09-12 예정이며 그 전까지 E3는 탐색적 기록이다.
 
+독립 2차 검증(동일 원시, 별도 스크립트 `run_is_frozen.py`, `--check` 재현 확인)은 [지수 폴더의 results.md·plot_*.png](research/indexes/ALT-20260907-11/run-20260907-01/results.md)에 병존하며, 수치 대조·11번 판정 조정·가정/시나리오는 [Finance 대조 노트](research/gathering/notes/2026-09-07-finance-reconciliation.md)에 있다. 피자급 신호의 문헌 근거는 [두 번째 메모](research/gathering/notes/2026-09-07-pizza-class-oil-memo.md)에도 정리했다. 3분 데모: 질문(활동→맥락→WTI) → 원장 17행(실행 5·차단 11·KILL 1) → 한 사례(11 디젤: 두 독립 실행이 같은 부호·규모, lag 소멸로 PARK) → 다음 조건(키 2건·파일명 1건·문서 2건, 담당·09-12).
+
 ## 범위와 비목표
 
 찾는 것은 물류·운영·소비 등 해석 가능한 활동 대리변수와 그 자료에 접근할 수 있는지에 대한 근거입니다. 자료가 적격하면 지수 형태로 구성해 WTI의 수익률 또는 변동성과 상관·시차·사건·placebo를 검정합니다. 관계가 없거나 자료를 얻지 못해도 그 기록은 발표 재료입니다.

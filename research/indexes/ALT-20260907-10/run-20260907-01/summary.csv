@@ -1,0 +1,35 @@
+metric,value
+candidate_id,ALT-20260907-10
+run_id,run-20260907-01
+run_utc,2026-09-07T07:01:05Z
+command,research/notebooks/ALT-20260907-10/run_is_frozen.py
+workdir,/Users/noah/orca/workspaces/ls-crude/petrel
+git_rev,2fc1c43
+git_dirty,True
+is_start,2015-01-01
+is_end,2023-12-31
+target,RV5
+cot_wti_rows,469
+signal_rows_is,443
+n_pairs_before,443
+n_pairs_after,440
+n_excluded_invalid_window,2
+n_excluded_end_beyond_is,1
+wti_pre2015_rows_ignored,0
+wti_post2023_rows_ignored,672
+main_lag_weeks,0
+main_n,440
+main_pearson_r,-0.12543956155406438
+main_spearman_rho,-0.23008820011748746
+placebo_shift_weeks,26
+placebo_n,414
+placebo_pearson_r,-0.1542566671257925
+split1_n,220
+split1_r,-0.3927801107885425
+split1_sign,neg
+split2_n,220
+split2_r,0.014160756991268378
+split2_sign,pos
+frozen_rule_outcome,PARK
+inference,추론 미검증
+variant_note,FutOnly rows; same-row Open_Interest_All denominator
