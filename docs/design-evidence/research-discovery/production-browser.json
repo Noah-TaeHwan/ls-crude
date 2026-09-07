@@ -1,0 +1,9 @@
+{
+  "surface": "local production build",
+  "homeHydrationErrors": 0,
+  "researchRuntimeErrors": 0,
+  "exact018": 1,
+  "loading": "연구 화면을 불러오는 중입니다.",
+  "notFoundRecovery": "PASS",
+  "timestamp": "deterministic KST"
+}

@@ -1,0 +1,197 @@
+root
+  anchor [ref=17896, loc=href:/#main-content, url=http://127.0.0.1:5173/#main-content]
+    text "본문으로 건너뛰기"
+  container
+    container
+      anchor "LS CRUDE 연구 데스크" [ref=17899, loc=css:a[aria-label="LS CRUDE 연구 데스크"], url=http://127.0.0.1:5173/]
+        text "LS"
+        container
+          text "LS CRUDE"
+          text "ALTERNATIVE DATA RESEARCH"
+      container "주요 화면"
+        anchor [ref=17904, loc=unstable, url=http://127.0.0.1:5173/]
+          text "연구 데스크"
+        anchor [ref=17905, loc=unstable, url=http://127.0.0.1:5173/research]
+          text "후보 장부"
+        anchor [ref=17906, loc=unstable, url=http://127.0.0.1:5173/research#method]
+          text "검증 방법"
+        anchor [ref=17907, loc=href:/research#team, url=http://127.0.0.1:5173/research#team]
+          text "팀"
+      paragraph
+        container
+          text "CL=F"
+          text "· 일봉 관측"
+        container
+          text "·"
+          text "데이터 없음"
+          container
+    status
+  container [ref=17915, loc=unstable]
+    container "원유 시장을 읽을 새로운 흔적을 찾습니다."
+      paragraph
+        text "EAST CAMP AI QUANT 4기"
+        text "/"
+        text "오태환 × 손성찬"
+      heading
+        text "원유 시장을 읽을"
+        text "새로운"
+        text "흔적"
+        text "을 찾습니다."
+      paragraph
+        text "피자 주문처럼 작지만 설명 가능한 현실의 흔적에서 출발합니다. 공개 데이터를 찾고, 확보한 자료를 WTI 변동성과 비교하며, 보류와 기각의 이유까지 �..."
+      anchor [ref=17924, loc=unstable, url=http://127.0.0.1:5173/research]
+        text "후보와 판정 살펴보기"
+        svg_root
+      anchor [ref=17928, loc=href:/#market, url=http://127.0.0.1:5173/#market]
+        text "WTI 관측 보기"
+        svg_root
+      container "연구 현황"
+        paragraph
+          svg_root
+          text "탐색 중"
+        unordered_list
+          list_item
+            text "연구 인벤토리"
+          list_item
+            text "—"
+            text "개"
+          list_item
+            text "기준 통과"
+          list_item
+            text "—"
+            text "개"
+        paragraph
+          text "연구 장부 확인이 필요합니다."
+        paragraph
+          text "연구 장부를 표시하지 못했습니다. 원문에서 현재 기록을 확인할 수 있습니다."
+        anchor [ref=17948, loc=unstable, url=http://127.0.0.1:5173/research#method]
+          text "어떤 기준으로 판단하나요?"
+          svg_root
+    container "이 흔적은 WTI와 어떻게 연결될까?"
+      container
+        container
+          paragraph
+            text "01 / THE SIGNAL HUNT"
+          heading
+            text "이 흔적은 WTI와 어떻게 연결될까?"
+        paragraph
+          text "Pentagon Pizza Index에서 가져온 것은"
+          text "작은 현실의 변화를 시장과 연결하는 질문입니다."
+      container
+        group "연결 가설 사례 선택"
+          button [ref=17961, loc=unstable]
+            container
+              text "001"
+              text "/"
+              text "출발점"
+            text "피자 주문 원안"
+            container
+              text "원안 철회"
+              svg_root
+          button [ref=17968, loc=unstable]
+            container
+              text "009"
+              text "/"
+              text "반증 사례"
+            text "이란 환율 스트레스"
+            container
+              text "기각"
+              svg_root
+          button [ref=17975, loc=unstable]
+            container
+              text "018"
+              text "/"
+              text "열린 질문"
+            text "정유 권역 열 이상"
+            container
+              text "보류"
+              svg_root
+        container
+          container
+            heading
+              text "위성의 열 변화가 정유 운영 변화와 함께 나타날까?"
+            text "보류"
+          ordered_list "검정할 연결 가설"
+            list_item
+              text "01 · 관측하려는 흔적"
+              text "VIIRS의 공개 열 이상"
+            list_item
+              text "02 · 시장 연결 가설"
+              text "정유 운영 변화 → 정제품·원유 변동성의 맥락이라는 가설"
+            list_item
+              text "03 · 연구 타깃"
+              container
+                text "공개 이후 다음 5거래일"
+                text "WTI 실현변동성"
+          paragraph
+            text "연결 경로는 검정할 가설입니다. 시간차와 상관관계만으로 인과나 예측력을 확인할 수는 없습니다."
+          text "장기 패널·공개 시각 미확보"
+          paragraph
+            text "공개 열 이상은 관측 가능하지만, 정유 권역 단위의 장기 패널과 당시 공개 시점은 미확보입니다. 열 변화가 가동률을 뜻하지는 않습니다."
+          heading
+            text "다음 확인 조건"
+          paragraph
+            text "공개 시각이 남은 역사 패널을 확보하고, 실제 운영 자료와 대조한 뒤 WTI와 비교해야 합니다."
+          anchor [ref=18004, loc=href:/research?candidate=018#ledger, url=http://127.0.0.1:5173/research?candidate=018#ledger]
+            text "이 후보 기록 보기"
+            svg_root
+    container "가설의 배경이 되는 원유 시장"
+      paragraph
+        text "02 / WTI CONTEXT"
+      heading
+        text "가설의 배경이 되는 원유 시장"
+      text "관측 데이터 없음"
+      paragraph
+        text "아래는 이미 끝난 구간의 가격과 실현변동성입니다. 연구 타깃인 ‘신호 공개 이후의 변동성’과 구분합니다."
+      heading
+        text "WTI 관측을 표시하지 못했습니다."
+      paragraph
+        text "현재 가격 대신 연구 기록을 먼저 살펴볼 수 있습니다."
+      anchor [ref=18019, loc=unstable, url=http://127.0.0.1:5173/research]
+        text "연구 기록 보기"
+        svg_root
+      status
+        text "시장 스냅샷 형식이 올바르지 않습니다."
+      container [ref=18029, loc=unstable]
+        text "관측 출처·산식·데이터 확인"
+      container
+        paragraph
+          text "Yahoo Finance · CL=F · 일봉 · 자동조정 종가. 연속선물의 만기 교체에 따른 롤 갭이 포함될 수 있습니다."
+    container "다음 단계는, 빈칸을 확인하는 일."
+      paragraph
+        text "03 / WHAT REMAINS OPEN"
+      heading
+        text "다음 단계는, 빈칸을 확인하는 일."
+      anchor [ref=18037, loc=unstable, url=http://127.0.0.1:5173/research#method]
+        text "전체 검증 절차"
+        svg_root
+      ordered_list
+        list_item
+          text "01 / 자료"
+          heading
+            text "실제로 무엇을 측정하나"
+          paragraph
+            text "주문량, 열 이상, 환율. 이름이 비슷한 대체값이 원래 가설을 측정하는지 확인합니다."
+        list_item
+          text "02 / 시각"
+          heading
+            text "그때 알 수 있었나"
+          paragraph
+            text "발생 시각과 공개 시각을 구분합니다. 나중에 수정된 자료가 과거 판단에 섞이지 않도록 합니다."
+        list_item
+          text "03 / 반증"
+          heading
+            text "다른 구간에서도 남나"
+          paragraph
+            text "규칙을 동결하고 새 미래 자료에서 확인합니다. 이미 본 구간은 새로운 검증으로 세지 않습니다."
+  container
+    paragraph
+      text "오태환 · 손성찬"
+      text "East Camp AI Quant 4기"
+    paragraph
+      text "관측과 가설을 기록합니다. 상관은 인과가 아니며 투자 권유가 아닙니다."
+    paragraph
+      text "build"
+      text "303b3d3"
+      text "·"
+      text "main"

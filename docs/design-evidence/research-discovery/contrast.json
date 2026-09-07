@@ -1,0 +1,8 @@
+{
+  "source": "Browser computed colors, WCAG relative luminance formula",
+  "ratios": {
+    "body": 16.11,
+    "mutedOnCard": 7.98,
+    "primaryButton": 9.17
+  }
+}
