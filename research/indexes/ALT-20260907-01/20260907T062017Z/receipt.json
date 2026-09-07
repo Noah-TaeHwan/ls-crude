@@ -1,0 +1,80 @@
+{
+  "candidate_id": "ALT-20260907-01",
+  "run": "20260907T062017Z",
+  "analyzed_at_utc": "2026-09-07T06:40:16.380461+00:00",
+  "command": "research/notebooks/ALT-20260907-01/hunt.py analyze --candidate 01 --raw research/gathering/raw/ALT-20260907-01/20260907T062017Z",
+  "cwd": "/Users/noah/orca/ls-crude",
+  "git_head": "3a1f4374bdcfc4294c36176085c9a249b54b6746",
+  "git_dirty": true,
+  "code_sha256": "4711d4a258d9b83d0035f4788617b86da91a6010c0e91d2e56af69d526369cb4",
+  "plan_path": "research/indexes/ALT-20260907-01/plan-v1.json",
+  "plan_sha256": "a203159fb66f9a68df8eca5d574230f65fbd88da51f281ba06eb38bec0aee7b7",
+  "raw_manifest": "research/gathering/raw/ALT-20260907-01/20260907T062017Z/manifest.json",
+  "raw_manifest_sha256": "92c97da2722c72e97489846dfccb6cc41d8d143933dab17501a97f82467d9a10",
+  "inputs": [
+    {
+      "url": "https://agtransport.usda.gov/api/views/n4pw-9ygw.json",
+      "attempted_at_utc": "2026-09-07T06:20:17.524131+00:00",
+      "method": "stdlib urllib GET, default headers, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-01/20260907T062017Z/metadata.json",
+      "sha256": "2b775345f6dd0b20cc221c3000b0a4699c714c7753674fceaee88ab26e605453",
+      "bytes": 17679
+    },
+    {
+      "url": "https://agtransport.usda.gov/resource/n4pw-9ygw.json?%24where=date+%3E%3D+%272015-01-01T00%3A00%3A00%27+AND+date+%3C+%272024-01-01T00%3A00%3A00%27+AND+lock+in+%28%27MS+Locks+27%27%2C%27Miss+Locks+27%27%29&%24order=date%2Ccommodity&%24limit=10000",
+      "attempted_at_utc": "2026-09-07T06:20:18.611011+00:00",
+      "method": "stdlib urllib GET, default headers, no credentials",
+      "status": 200,
+      "content_type": "application/json;charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-01/20260907T062017Z/activity.json",
+      "sha256": "3084f6df9a3083f086a2f9a9bc13bf77138ab5e0069409d3b4ac46926a74e101",
+      "bytes": 246926
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/CL=F/history/",
+      "path": "research/gathering/raw/ALT-20260907-01/20260907T062017Z/wti.csv",
+      "sha256": "ca318154ae3fa11e96771d4c5c1d47c7edfb9ea59872f631b37352af22bd8750",
+      "rows": 2262,
+      "start": "2015-01-02",
+      "end": "2023-12-29",
+      "format": "immutable yfinance-returned normalized CSV; HTTP wire bytes unavailable",
+      "options": {
+        "ticker": "CL=F",
+        "start": "2015-01-01",
+        "end_exclusive": "2024-01-01",
+        "interval": "1d",
+        "auto_adjust": true,
+        "multi_level_index": false
+      },
+      "collected_at_utc": "2026-09-07T06:20:22.220653+00:00"
+    }
+  ],
+  "versions": {
+    "python": "3.13.15",
+    "pandas": "3.0.5",
+    "numpy": "2.5.2",
+    "matplotlib": "3.11.1",
+    "yfinance": "1.7.0"
+  },
+  "outputs": {
+    "research/indexes/ALT-20260907-01/20260907T062017Z/coverage.csv": "28d158e74dd224be5f1e920338b71fca47554f0c09af665af83693619b6507dc",
+    "research/indexes/ALT-20260907-01/20260907T062017Z/outlier-signals.csv": "7b0d87c92508445c1eb5b15ef4abd5ba0922aa3ad6bdab09d05c4197dde08802",
+    "research/indexes/ALT-20260907-01/20260907T062017Z/tests.csv": "f4b68b58ecb08315cbc0e1752d5042c366761fa34a32031afb8aadf7b6c1cd3a",
+    "research/indexes/ALT-20260907-01/20260907T062017Z/excluded-price-windows.csv": "c00d8b90fc891d678711b638271bc27e6eae07feaed1e7ff2ed03d56bb738a07",
+    "research/indexes/ALT-20260907-01/20260907T062017Z/activity.svg": "27afd04e62606205b2a093629837a44f2508557e4138e9e9479f2933166d0c54",
+    "research/indexes/ALT-20260907-01/20260907T062017Z/relationship.svg": "28aec2d5efbd72880bdbe3fd6e092c8a86d68431c82f92827aaf802d909f23bd",
+    "research/indexes/ALT-20260907-01/20260907T062017Z/coverage.json": "e5c1de01a8b31d2c3c715e13fade76297a1011c6be508ca759ebc46a3f501d6b",
+    "research/data/processed/ALT-20260907-01/20260907T062017Z/monthly.csv": "28178bd57de2fc3a157dd238c75bc208c6303a403545f73cf6077ed18462d490"
+  },
+  "status": "exploratory observed-month relationship only",
+  "asof_safe": "NOT_PROVEN",
+  "oos_evaluation": "NOT_RUN; no2024+ loaded",
+  "review": "PASS for scoped numerical plane: independent-finance-review.json; academic-review.json and finance-goal-review.json cover cited claims/cards. Human peer review NOT_RUN.",
+  "shared_code_hashes": {
+    "research/src/ls_crude/data/yahoo.py": "cdc7a3926c663600a586e141c35dad2e66ef1286da26e3b6c52a63494ab1b56c",
+    "research/src/ls_crude/data/splits.py": "cff45fa2052144cdcce53dba1b9e949f44042ecc0e19c0fe93884ff8e6d32e66"
+  },
+  "review_followup_at_utc": "2026-09-07T06:43:15.149109+00:00"
+}
