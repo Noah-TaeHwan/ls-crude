@@ -140,6 +140,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 039 U.S. Gasoline Demand Surprise | finished gasoline product supplied의 자체 4주 평균 대비 z-score → 다음 5일 실현변동성 | r=**-0.005**, n=415 | r=**-0.009**, n=137 | 양쪽 0 근처. 단순 수요 변동은 변동성 알파가 아니다. |
 | 040 SPR Injection Watch | SPR 주간 순증가 z-score → 다음 5일 실현변동성 | r=**+0.051**, n=417 | r=**-0.455**, n=137 | OOS 절대값은 커도 IS와 부호 반전: 통과 아님. |
 | 041 Refinery Utilization Proxy | 전국 정유 설비 가동률 z-score → 다음 5일 실현변동성 | r=**-0.206**, n=418 | r=**-0.011**, n=137 | 특정 Gulf coker 원안의 프록시일 뿐이며 OOS에서 소멸. |
+| 074 Refinery Multi-Block Composite | 041 운영 + EIA 휘발유 순수출 + CFTC RBOB 포지션 + RBOB–WTI 크랙 → 다음 5일 MPC RV | r=**-0.006**, n=416 | r=**+0.197**, n=139; HAC p=`.2190` | 동가중 4블록 결합의 IS가 0. OOS 상관만으로는 채택 불가이며 상위 20% 사건 검정도 p=`.2294`. |
 | 042A Wall Street District Pulse | 공식 MTA 역군 월별 탑승 YoY 36개월 z-score → 다음 21거래일 RV | r=**+0.044**, n=46 | r=**-0.350**, n=31 | 4도시 AFHP가 아닌 단일도시 설명적 시험. 과거 release vintage가 없어 관측월 말+45일 보수적 지연을 사용했고, 부호 반전으로 기각. |
 | 042A 추가 반증 | 역군 출입·환승·환승비중 구성요소 → 다음 21거래일 RV | -0.123~+0.044, n=46 | +0.029~+0.350, n=31 | 4개 구성요소 중 IS·사후구간 모두 통과한 것은 0개. 단일도시 프로브를 살릴 근거 없음. |
 | 044 AI Burn Rate Index | Census data-center 건설지출 전월변화 z-score → 다음 21일 실현변동성 | r=**-0.181**, n=83 | r=**-0.041**, n=29 | 물리 buildout만 측정. 구독률이 아니며, IS 반대·OOS 관계 소멸. |
