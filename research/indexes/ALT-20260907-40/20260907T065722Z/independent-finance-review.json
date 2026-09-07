@@ -1,0 +1,19 @@
+{
+  "checked_at_utc": "2026-09-07T07:07:54.604722+00:00",
+  "method": "stdlib csv 월별 재계산 (pandas 미사용)",
+  "train 2015-2020": {
+    "n_lib": 53,
+    "r_lib": 0.3679223321647124,
+    "n_std": 53,
+    "r_std": 0.3679223321647122,
+    "match": true
+  },
+  "validation 2021-2023": {
+    "n_lib": 35,
+    "r_lib": -0.12553707339262324,
+    "n_std": 35,
+    "r_std": -0.1255370733926232,
+    "match": true
+  },
+  "verdict": "PASS"
+}

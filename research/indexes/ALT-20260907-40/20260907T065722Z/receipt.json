@@ -1,0 +1,323 @@
+{
+  "candidate_id": "ALT-20260907-19",
+  "run": "20260907T065722Z",
+  "analyzed_at_utc": "2026-09-07T07:07:55.488153+00:00",
+  "command": "research/notebooks/ALT-20260907-19/hunt.py analyze --raw research/gathering/raw/ALT-20260907-19/20260907T065722Z",
+  "cwd": "/Users/noah/orca/ls-crude",
+  "git_head": "f35473582e5e9f31a0c394bbcd5953bcaf8b2e7b",
+  "git_dirty": true,
+  "code_sha256": "f8b8d49947279c9a464a7bcbe4593a1a3782ad733954ef94b338979e072de04e",
+  "plan_path": "research/indexes/ALT-20260907-19/plan-v1.json",
+  "plan_sha256": "1363d8956ef46e9c0b16bd5a48276db0e6cd5c704c9b0d1f92c9ef0e0aad5280",
+  "raw_manifest": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/manifest.json",
+  "raw_manifest_sha256": "e768d0b5d1a3609fbe441e7012f2dd1378ecea7675af3728d7809ec4b6b21bff",
+  "inputs": [
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/OPEC/daily/20150701/20151231",
+      "attempted_at_utc": "2026-09-07T06:57:22.983338+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_OPEC_2015.json",
+      "sha256": "700fd98b19550b9380c4c94c8cb92fa353e89b368b4c78a6d06929cb4002017b",
+      "bytes": 25955
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/OPEC/daily/20160101/20161231",
+      "attempted_at_utc": "2026-09-07T06:57:24.389894+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_OPEC_2016.json",
+      "sha256": "e368aa7502ded1dabab7d8f45eb7ed864a223796fb5f847fa8d82872da89da9e",
+      "bytes": 51620
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/OPEC/daily/20170101/20171231",
+      "attempted_at_utc": "2026-09-07T06:57:25.908639+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_OPEC_2017.json",
+      "sha256": "fb274712e087e83fa5a64fb5a75fef7ff7b04dea41d14faaa77208de9583bd7b",
+      "bytes": 51476
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/OPEC/daily/20180101/20181231",
+      "attempted_at_utc": "2026-09-07T06:57:27.338524+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_OPEC_2018.json",
+      "sha256": "c1eb1dcc981ff7297a1a2d4cd80e916ee8303e36a4a1334c151b1bf19a09c1cc",
+      "bytes": 51481
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/OPEC/daily/20190101/20191231",
+      "attempted_at_utc": "2026-09-07T06:57:28.902439+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_OPEC_2019.json",
+      "sha256": "424b2f989e5f6cfcd8ea6e135d13c067169ea73d48b43fe104ec152a37676b74",
+      "bytes": 51476
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/OPEC/daily/20200101/20201231",
+      "attempted_at_utc": "2026-09-07T06:57:30.377306+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_OPEC_2020.json",
+      "sha256": "f819c6eb32c48afbb6ab4158a70cfc95bf00f8171157993c4ce55bb05dbd7981",
+      "bytes": 51624
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/OPEC/daily/20210101/20211231",
+      "attempted_at_utc": "2026-09-07T06:57:31.834476+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_OPEC_2021.json",
+      "sha256": "97f9e8090961103209ca952f5d8ff64b08f17fa5ed99204973e26e52460e4759",
+      "bytes": 51476
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/OPEC/daily/20220101/20221231",
+      "attempted_at_utc": "2026-09-07T06:57:33.431668+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_OPEC_2022.json",
+      "sha256": "6daafd8ff0a325ba6806902ab9dd68617300354e6e09fe0c820033780c30b5ac",
+      "bytes": 51490
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/OPEC/daily/20230101/20231231",
+      "attempted_at_utc": "2026-09-07T06:57:34.899001+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_OPEC_2023.json",
+      "sha256": "0b6246cd02bf0c9434ed063413f6148d5dde8be08c8122772832b9f91f9a791e",
+      "bytes": 51478
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Petroleum/daily/20150701/20151231",
+      "attempted_at_utc": "2026-09-07T06:57:36.369088+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Petroleum_2015.json",
+      "sha256": "2f51781af98789518d460a83cc0bb2a1e532bfea78cc9267660a4e8b2baf38c2",
+      "bytes": 26875
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Petroleum/daily/20160101/20161231",
+      "attempted_at_utc": "2026-09-07T06:57:37.536348+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Petroleum_2016.json",
+      "sha256": "69bfd5475d55573119be553e7bd25ce56e29a5d44b19b8a4150e09860d40dfcf",
+      "bytes": 53447
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Petroleum/daily/20170101/20171231",
+      "attempted_at_utc": "2026-09-07T06:57:38.997901+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Petroleum_2017.json",
+      "sha256": "9d117748eea2e55d11779b621fe8cd583eb062d3b714b8a843264ae9a5ec45c0",
+      "bytes": 53302
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Petroleum/daily/20180101/20181231",
+      "attempted_at_utc": "2026-09-07T06:57:40.438589+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Petroleum_2018.json",
+      "sha256": "f6032716880558c80b821fd13afe5f24f7257d6ec3371c533411a02db86befdc",
+      "bytes": 53301
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Petroleum/daily/20190101/20191231",
+      "attempted_at_utc": "2026-09-07T06:57:42.012221+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Petroleum_2019.json",
+      "sha256": "732d1e7a6dae9da23d151218cff76f7b6c5cf0a5a9cc1d1d0dce7c6a11430634",
+      "bytes": 53301
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Petroleum/daily/20200101/20201231",
+      "attempted_at_utc": "2026-09-07T06:57:43.591147+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Petroleum_2020.json",
+      "sha256": "e6d2a9d29886c9e2fa71491f597b0072b6bfa13677d19a10383f25fdf12473df",
+      "bytes": 53448
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Petroleum/daily/20210101/20211231",
+      "attempted_at_utc": "2026-09-07T06:57:44.877729+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Petroleum_2021.json",
+      "sha256": "7a48496c844c498ec3a7a1d57edd833ef16026e2c40501d0316edae9bcf48120",
+      "bytes": 53301
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Petroleum/daily/20220101/20221231",
+      "attempted_at_utc": "2026-09-07T06:57:46.202977+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Petroleum_2022.json",
+      "sha256": "3a585656d3b8e27833521cbaea2613af4bee7eef55f672e114314c474283079c",
+      "bytes": 53301
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Petroleum/daily/20230101/20231231",
+      "attempted_at_utc": "2026-09-07T06:57:47.776202+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Petroleum_2023.json",
+      "sha256": "85b10b36ef7b1c6fc92d19b7aa4a6d2009e64f622a1b615ed93eda829a142e58",
+      "bytes": 53301
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Shale_gas/daily/20150701/20151231",
+      "attempted_at_utc": "2026-09-07T06:57:49.355178+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Shale_gas_2015.json",
+      "sha256": "64dd5e8a3dcef58ff0a6ff4891b7c6dda820f6617cc1802b638adb313e21aa22",
+      "bytes": 26699
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Shale_gas/daily/20160101/20161231",
+      "attempted_at_utc": "2026-09-07T06:57:50.686909+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Shale_gas_2016.json",
+      "sha256": "d74972d0e1125cf33cb2245df8cc4953515cc4b4d40688f64789ff3eb18a4f6c",
+      "bytes": 53094
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Shale_gas/daily/20170101/20171231",
+      "attempted_at_utc": "2026-09-07T06:57:52.147367+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Shale_gas_2017.json",
+      "sha256": "19f88f5b4b393afdbf3f15b2b2c6a23063f2d1a0e629c1cd881211f104b7f15c",
+      "bytes": 52937
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Shale_gas/daily/20180101/20181231",
+      "attempted_at_utc": "2026-09-07T06:57:53.406786+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Shale_gas_2018.json",
+      "sha256": "04db81342b3061786a2937cfad68b2f1ac4e7f7089c3c3e2a16de1fd9fad1c3f",
+      "bytes": 52939
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Shale_gas/daily/20190101/20191231",
+      "attempted_at_utc": "2026-09-07T06:57:54.949998+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Shale_gas_2019.json",
+      "sha256": "c7c8a899d7b18c4508c1fc5e2ccf80430fc0ce3d6c3a9209777f3c511bb16b0a",
+      "bytes": 52938
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Shale_gas/daily/20200101/20201231",
+      "attempted_at_utc": "2026-09-07T06:57:56.441801+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Shale_gas_2020.json",
+      "sha256": "a528ab02909e251a5ec5e6b5ed6d4ff4dee164bd6ac8216e3e50741aca534a1c",
+      "bytes": 53081
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Shale_gas/daily/20210101/20211231",
+      "attempted_at_utc": "2026-09-07T06:57:57.945141+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Shale_gas_2021.json",
+      "sha256": "40be9de8c1b0a8c5534e2c11b9ba4265dc22f685b275d97e578d32651af6e0c7",
+      "bytes": 52927
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Shale_gas/daily/20220101/20221231",
+      "attempted_at_utc": "2026-09-07T06:57:59.452514+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Shale_gas_2022.json",
+      "sha256": "392dc7a9aa3a81d8fc19baab2d28e7cbf4b5c2133f14b741824f01eee7d8287a",
+      "bytes": 52933
+    },
+    {
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Shale_gas/daily/20230101/20231231",
+      "attempted_at_utc": "2026-09-07T06:58:00.885062+00:00",
+      "method": "stdlib urllib GET + contact User-Agent, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/views_Shale_gas_2023.json",
+      "sha256": "46b79029aa08377e1758400cbfbe02215f5e1e30a577329db9e76808198bdd4d",
+      "bytes": 52935
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/CL=F/history/",
+      "path": "research/gathering/raw/ALT-20260907-19/20260907T065722Z/wti.csv",
+      "sha256": "ca318154ae3fa11e96771d4c5c1d47c7edfb9ea59872f631b37352af22bd8750",
+      "rows": 2262,
+      "start": "2015-01-02",
+      "end": "2023-12-29",
+      "format": "immutable yfinance-returned normalized CSV; HTTP wire bytes unavailable",
+      "options": {
+        "ticker": "CL=F",
+        "start": "2015-01-01",
+        "end_exclusive": "2024-01-01",
+        "interval": "1d",
+        "auto_adjust": true,
+        "multi_level_index": false
+      },
+      "collected_at_utc": "2026-09-07T06:58:04.447870+00:00"
+    }
+  ],
+  "coverage": {
+    "days": 3106,
+    "first_day": "2015-07-01",
+    "last_day": "2023-12-31",
+    "signal_months": 90,
+    "signal_start": "2016-07-01",
+    "signal_end": "2023-12-01"
+  },
+  "outputs": {
+    "research/data/processed/ALT-20260907-19/20260907T065722Z/monthly.csv": "24b02740ac3a46c42c5e4cba7432a8b313c96a2d2f5945ca707a433c7dd94000",
+    "research/indexes/ALT-20260907-19/20260907T065722Z/tests.csv": "bb00c6c0e587a5fce68037b834ec6147e4c5f5a70333078d2b11192632b91ea1",
+    "research/indexes/ALT-20260907-19/20260907T065722Z/independent-finance-review.json": "7d479c4e44e048f0de8529bae2f432d8d528e79b7cc13aedba81760d1eed183a",
+    "research/indexes/ALT-20260907-19/20260907T065722Z/activity.svg": "bf826e36b21cc55d99f677d8281cd4f9ae4bcc199be0b39f4ff7c5a37498161b",
+    "research/indexes/ALT-20260907-19/20260907T065722Z/relationship.svg": "5e6be9772f999b8433e14e79d6a1848ee1c5b1b92b0579559f5df33360b6b13e"
+  },
+  "status": "exploratory observed-month relationship only",
+  "asof_safe": "NOT_PROVEN",
+  "oos_evaluation": "NOT_RUN; no 2024+ loaded",
+  "review": "Finance independent recomputation PASS"
+}
