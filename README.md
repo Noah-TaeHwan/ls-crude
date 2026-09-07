@@ -4,7 +4,29 @@
 
 East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜타곤 피자 인덱스는 **활동 → 민감한 맥락 → 시장과의 가능한 관계**를 생각하는 참고 패턴입니다. 피자 주문을 복제하거나 특정 데이터·양의 상관을 찾아내는 것이 완료 조건은 아닙니다.
 
-이번 패스는 **연구 운영 체계 setup**입니다. 신규 [후보 원장](research/candidates/ledger.csv)은 헤더만 있으며 실제 후보·예시 행은 0개입니다. 이는 새 원장의 초기 상태입니다. [기존 팩터 이력](research/factors/README.md), [조사 노트](research/gathering/notes/README.md), 기존 결과는 그대로 보존합니다. 이번 작업으로 새 자료·지수·검정 성과를 만들었다고 주장하지 않습니다.
+## Current research status
+
+**아직 헌트 중.** 우승 피자 지수는 없다. 2026-09-07 피자급 헌트 12행은 `ALT-20260907-18`…`29`다. 활동 proxy 01–08과 번호를 겹치지 않게 옮겼다. 기존 001–085 팩터 이력은 그대로다.
+
+| 판정 | ID | 한 줄 |
+| --- | --- | --- |
+| KEEP | [18 PortWatch 호르무즈 유조선](research/candidates/ALT-20260907-18.md) | 집계 AIS 주간 척수 구성됨. IS f1은 약함. 알파 아님 |
+| KEEP | [21 싱가포르 벙커](research/candidates/ALT-20260907-21.md) | Open Data 월간 톤. 공표일 미복원 |
+| PARK | 19 리그 · 20 CFTC · 22 OpenSky · 24 화물TSI · 26 탱커입항 · 29 ERCOT | 공식/차단. 피자 본선 아님 |
+| KILL | 23 커싱 위키 · 25 제트유 공급 · 27 구글 모빌리티 · 28 선박별 AIS | 이상치/공식중복/종료/금지 |
+
+차단: OpenSky 역사 403(연구기관 신청=손성찬/Noah), 탱커 데이터셋 ID 미확보(손성찬), ERCOT 페이지 403(손성찬).  
+숫자·그림: [IS 표](research/indexes/HUNT-20260907-is-stats.csv), [강건성](research/indexes/HUNT-20260907-robustness.csv), [학술 메모](research/gathering/notes/2026-09-07-pizza-index-class-oil-memo.md).  
+원장 검사 `PASS`는 메타데이터 구조일 뿐 알파 증거가 아니다. 18은 활동 proxy [04](research/candidates/ALT-20260907-04.md)의 수집 후속이다.
+
+### 3분 데모 스크립트
+
+1. **40초** README 목적: 피자=활동→맥락→시장. 완료 조건은 양의 상관이 아니라 헌트 기록. 원장 18–29를 연다.  
+2. **70초** KEEP 두 개: 18은 호르무즈 `n_tanker` 주간 평균, 화요일 공개, IS r≈0.09·placebo Bering≈0, 알파 아님. 21은 싱가포르 벙커 Open Data, 공표일 미복원. 그림은 이중축·단위가 다름을 말한다.  
+3. **50초** 죽은 길: 23 커싱 위키 Pearson은 2020-04-21 급등, 윈저 후 0. 25 제트유는 039 가족. 28 선박별 AIS 금지. 27 모빌리티 종료.  
+4. **20초** 내일: 18 사건창, 21 공표일, 차단 3건은 사람 결정.
+
+이번 패스의 운영 체계는 그대로다. [기존 팩터 이력](research/factors/README.md)과 [조사 노트](research/gathering/notes/README.md)는 보존한다.
 
 | 항목 | 기준 |
 | --- | --- |
@@ -75,7 +97,7 @@ python -m pytest tests/test_splits.py tests/test_wiki_pageviews_asof.py
 
 편집기에서 README와 로컬 Markdown/CSV를 열면 네트워크 없이 진행할 수 있습니다.
 
-1. 목적과 발표 완료 기준을 읽고 신규 원장의 현재 행 수를 확인합니다. 0행이면 “새 OS에 아직 등록하지 않았다”라고 설명합니다.
+1. 목적과 **Current research status**를 읽고 원장 18–29의 KEEP/KILL/PARK를 보여줍니다. 우승 지수가 없다고 먼저 말합니다.
 2. **기존 기록 재사용 사례**로 [064 심야 식당 지수 기각](research/factors/064-oilman-steakhouse-index/README.md)과 연결된 감사 노트를 엽니다. 기록에 적힌 실제 측정값과 원 가설의 차이, 상관을 계산하지 않은 이유를 설명합니다.
 3. [070 휴게소 라면 지수 보류](research/factors/070-highway-ramyeon-index/README.md)와 [자료 적합성 감사](research/gathering/notes/2026-09-07-korea-pizza-five-factor-audit.md)를 엽니다. 순위와 판매수량의 차이, 필요한 자료, 재개 조건을 보여줍니다. 이 사례의 국내 경유 맥락을 WTI 검정 통과로 바꾸지 않습니다.
 4. 새 카드의 지수·WTI 검정 계획 또는 미실행 이유, KEEP/KILL/PARK와 다음 행동을 보여줍니다. 새 카드도 없으면 템플릿을 **미작성 양식**으로 표시하고 실제 성과로 세지 않습니다.
