@@ -34,3 +34,5 @@
 3. 2015–2023 장기 IS가 물리적으로 불가능하다는 점을 인정하고, 이 자료만으로는 거래 가중치를 만들지 않는다.
 
 원안·수집 실패·원시 실행 산출은 [조사 노트](../../gathering/notes/2026-09-03-iced-americano-heat-index.md)에 남겼다.
+
+가격 전가(커피 외식 CPI)와 한국 원화·금리·식품주 상대수익률의 별도 가설은 [083 Iced Americano Pass-Through](../083-iced-americano-pass-through/README.md)에 분리했다. 083도 2026-09-07 현재 시점 안전한 월별 CPI 원시 패널이 없어 자산 검정값은 없다.
