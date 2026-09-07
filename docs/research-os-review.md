@@ -114,3 +114,7 @@ tests/test_wiki_pageviews_asof.py .......
 | 기록 규약 PYCHECK의 예시 입력 검사 | 정상 2개 허용, 잘못된 입력 7개 거부; 신규 원장은 계속 0행 |
 
 최종 변경 범위에는 위 연구 문서의 6행 복구가 포함된다. 앱·Python 구현·테스트·개별 팩터 카드·가격 자료·DB는 변경하지 않았다. GitHub CI·PR 머지·원격 main 동기화는 각각 실제 서버 상태로 확인하며, 이 로컬 검증만으로 원격 완료를 주장하지 않는다.
+
+## Closeout 중 후속 082 재발 — 2026-09-07
+
+동시 연구 커밋 `31041b9`가 082 카드를 추가하고 검정표를 빠뜨려 카드 82/검정표 81행이 됐다. [실패 CI](https://github.com/Noah-TaeHwan/ls-crude/actions/runs/34086147288)를 확인하고 [PR #52](https://github.com/Noah-TaeHwan/ls-crude/pull/52)에서 기존 HOLD/untested를 한 행 연결했다. 앱 재빌드·테스트 4개와 [main CI](https://github.com/Noah-TaeHwan/ls-crude/actions/runs/34086976201)가 통과했다. 새 수치나 파서 완화는 없다. 최종 감사는 최초 성공 SHA에 머물지 않고 live remote의 후속 변경도 대조해야 한다.
