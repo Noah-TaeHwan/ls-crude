@@ -66,7 +66,9 @@ target = future_5d_wti_realized_volatility  # Yahoo CL=F
 
 기존 `United_States_Fifth_Fleet`·`Anti-Americanism` 2문서 결과는 유지하되, 이를 050W의 성과로 쓰지 않는다. 새 고정 바스켓은 `United_States_Central_Command`, `United_States_Fifth_Fleet`, `Strait_of_Hormuz`, `Bab-el-Mandeb`, `Houthi_movement`, `Sanctions_against_Iran`이다.
 
-각 90일 z-score의 평균과 동시 급등 문서 수를 사용한다. D+1 뒤 WTI/OVX 다음 5거래일 변동성을 시험하며, 기존 GDELT·Reddit·Telegram을 섞지 않는다. 이는 ‘대미 감정’이 아니라 **에너지 안보 정보탐색** 지수다. 현재 미검정이다.
+각 90일 z-score의 평균과 동시 급등 문서 수를 사용한다. D+1 뒤 WTI/OVX 다음 5거래일 변동성을 시험하며, 기존 GDELT·Reddit·Telegram을 섞지 않는다. 이는 ‘대미 감정’이 아니라 **에너지 안보 정보탐색** 지수다.
+
+실제 WTI RV5 결과는 주 신호 IS/OOS `+0.023/+0.350` (n=2,096/667), breadth `+0.019/+0.326`이었다. IS에서 관계가 없어 **MEME/MONITOR ONLY** 유지다. 049W와 핵심 초크포인트 문서를 공유하므로 함께 가중하지 않는다.
 
 ---
 

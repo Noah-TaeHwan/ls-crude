@@ -131,7 +131,9 @@ Guardian Content API의 `headline` 필드만 사용했다. 검색식·제목 필
 
 Guardian/GDELT의 기사량을 대체하는 것이 아니라, 공개 정보탐색 레그로 별도 검정한다. 고정 문서는 `Strait_of_Hormuz`, `Bab-el-Mandeb`, `Suez_Canal`, `Red_Sea`, `Houthi_movement`, `Sanctions_against_Iran`이다.
 
-`wiki_chokepoint = mean(z90(pageviews))`와 `breadth = count(z90 ≥ 1)`를 따로 기록한다. D+1 이후 다음 5거래일 WTI·Brent 실현변동성을 주 타깃으로 하고, 가격 방향은 보조 분석이다. 이는 049 원 GDELT 가설과 중복 가중하지 않으며, 아직 **미검정**이다.
+`wiki_chokepoint = mean(z90(pageviews))`와 `breadth = count(z90 ≥ 1)`를 따로 기록한다. D+1 이후 다음 5거래일 WTI·Brent 실현변동성을 주 타깃으로 하고, 가격 방향은 보조 분석이다.
+
+실제 WTI RV5 결과는 주 신호 IS/OOS `+0.023/+0.422` (n=2,096/667), breadth `+0.058/+0.414`였다. OOS만 강하고 IS는 0 근처라 **기각**한다. 이는 049 원 GDELT 가설과 중복 가중하지 않는다.
 
 ## 참고
 
@@ -139,3 +141,4 @@ Guardian/GDELT의 기사량을 대체하는 것이 아니라, 공개 정보탐�
 - [GDELT data and API documentation](https://gdeltproject.org/data.html)
 - [조사 노트](../../gathering/notes/2026-09-04-geopolitical-news-attention-shock.md)
 - [Wikipedia source upgrade](../../gathering/notes/2026-09-07-wikipedia-source-upgrade.md)
+- [Wikipedia 검정](../../gathering/notes/2026-09-07-wikipedia-factor-validation.md)
