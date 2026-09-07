@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–068은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–073은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -99,6 +99,11 @@
 | 066 | Crew-Change Rush Index | — | — | REJECTED — BTS 항공 승객은 offshore crew change가 아님 |
 | 067 | Oilman Haircut Index | — | — | ARCHIVED — 개인 스타일·이발 수요는 수집하지 않음 |
 | 068 | Energy Corridor Midnight Lights | — | — | HOLD — 2012–2020 공개 야간광은 확인했으나 사무실 야근 식별·2024+ OOS 불가 |
+| 069 | Ulsan Late Delivery Index | — | — | REJECTED — 공개 장기 심야 배달·산단 권역 집계 없음 |
+| 070 | Highway Ramyeon Index | — | — | HOLD — 월간 라면 상위상품은 있으나 판매액·화물차·장기 패널 없음 |
+| 071 | Jeju Full-Tank Return Index | — | — | REJECTED — 렌터카 보유대수는 실제 대여·연료 행동이 아님 |
+| 072 | Yeosu Turnaround Lunchbox Index | — | — | REJECTED — 도시락·숙박·정비 인력 장기 집계 없음 |
+| 073 | Incheon Dawn Restock Index | — | — | HOLD — 월간 화물은 공개되나 면세 리스톡·새벽 활동 미측정 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -174,6 +179,11 @@
 | 066 | [Crew-Change Rush Index](066-crew-change-rush-index/README.md) | 해상 운영 교대·항공/호텔 밈 | **REJECTED** — 공개 T-100 승객은 교대근무자가 아니므로 프록시 금지 | 0.0 |
 | 067 | [Oilman Haircut Index](067-oilman-haircut-index/README.md) | 현장 도시 바버샵 밈 | **ARCHIVED** — 개인 외모·고객 수요는 수집하지 않음 | 0.0 |
 | 068 | [Energy Corridor Midnight Lights](068-energy-corridor-midnight-lights/README.md) | 에너지 도시 야간광·운영 스트레스 밈 | **HOLD** — 공개 2012–2020 위성 광도는 있으나 특정 사무실·야근은 미측정, OOS 불충족 | 0.0 |
+| 069 | [울산 야식 배달 지수](069-ulsan-late-delivery-index/README.md) | 울산 산단 심야 배달·운영 압력 밈 | **REJECTED** — 공개 상권정보는 심야·산단권역 수요를 측정하지 않음 | 0.0 |
+| 070 | [고속도로 화물기사 라면 지수](070-highway-ramyeon-index/README.md) | 휴게소 라면·대형차 물류 밈 | **HOLD** — 실제 면류 월간 상위상품은 확인했으나 화물차·판매수량·장기 공개시점 없음 | 0.0 |
+| 071 | [제주 렌터카 만땅 반납 지수](071-jeju-full-tank-return-index/README.md) | 제주 이동·휘발유 체감 밈 | **REJECTED** — 공개 렌터카 목록은 대여·주유·반납을 측정하지 않음 | 0.0 |
+| 072 | [여수 보수철 도시락 지수](072-yeosu-turnaround-lunchbox-index/README.md) | 여수 설비보수·도시락/숙박 밈 | **REJECTED** — 구조 통계는 도시락·숙박·정비 인력을 측정하지 않음 | 0.0 |
+| 073 | [인천 새벽 면세 리스톡 지수](073-incheon-dawn-restock-index/README.md) | 인천 화물·항공유 수요 밈 | **HOLD** — 항공화물은 실제 공개되지만 리스톡·새벽 행동과 다름 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 

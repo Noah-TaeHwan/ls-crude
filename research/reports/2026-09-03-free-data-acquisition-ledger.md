@@ -87,6 +87,11 @@
 | 066 | BTS T-100 월간 공항 시장 | 수집·기각 | 1990년부터지만 승객은 비행·객실 승무원을 제외. offshore 교대·헬기·호텔을 대체하지 않음 | [066 카드](../factors/066-crew-change-rush-index/README.md) |
 | 067 | 현재 사업장 정보·검색 UI | 수집·분석 제외 | 이발 예약/고객·개인 스타일 장기 패널 없음. 사진·개인 외모 데이터 수집 금지 | [067 카드](../factors/067-oilman-haircut-index/README.md) |
 | 068 | World Bank Light Every Night·NASA Black Marble | 소스 수집·HOLD | VIIRS-DNB 2012–2020 공개 COG/STAC, NASA 2012+ 일별/월별 원시 확인. 현 환경의 소형 표본 다운로드는 TLS 인증 실패; 500m 광도는 사무실 야근 미식별, 2024+ OOS도 불충족 | [068 카드](../factors/068-energy-corridor-midnight-lights/README.md); [감사](../gathering/notes/2026-09-07-pizza-style-five-factor-audit.md) |
+| 069 | 소상공인365 상권분석 | 수집·기각 | 행정동 업종 매출·배달 건수 화면은 있으나 울산 산단·심야·운영 압력 장기 패널 없음 | [069 카드](../factors/069-ulsan-late-delivery-index/README.md); [감사](../gathering/notes/2026-09-07-korea-pizza-five-factor-audit.md) |
+| 070 | 한국도로공사 휴게소 월별 판매 상위상품·주차면 | 수집·HOLD | 면류가 실제 분류로 존재. 단, 상위 5 순위는 판매액/수량·화물차·시간대·장기 패널이 아님 | [070 카드](../factors/070-highway-ramyeon-index/README.md) |
+| 071 | 렌터카 표준데이터 | 수집·기각 | 업체·보유차량·요금·영업시간만 제공. 실제 대여·주유·만땅 반납 미측정 | [071 카드](../factors/071-jeju-full-tank-return-index/README.md) |
+| 072 | 산업단지공단 국가산단 산업동향 | 수집·기각 | 분기 업체·업종 고용은 도시락·숙박·정비 인력의 생활 흔적이 아님 | [072 카드](../factors/072-yeosu-turnaround-lunchbox-index/README.md) |
+| 073 | 인천공항 항공사별 노선별 월간 운송실적 | 수집·HOLD | 운항·여객·직화물·환적화물은 제공. 면세 리스톡·새벽 활동·항공유는 별도 미측정; 장기 파일·공개일 후 재검토 | [073 카드](../factors/073-incheon-dawn-restock-index/README.md) |
 
 ## 다음 실행 순서
 
