@@ -12,10 +12,6 @@ import {
 
 /** 앱 패키지 루트 경로. */
 const appRoot = path.resolve(import.meta.dirname, "..");
-/** 홈 라우트 소스. */
-const homePath = path.join(appRoot, "app/routes/home.tsx");
-/** 게이지 컴포넌트 소스. */
-const gaugePath = path.join(appRoot, "app/components/watch-gauge.tsx");
 
 test("sample DEFCON score ignores the live market percentile", () => {
   assert.equal(SAMPLE_DEFCON_SCORE, 58);
@@ -27,27 +23,21 @@ test("sample DEFCON score ignores the live market percentile", () => {
   assert.equal(sampleDefconScore(), 58);
 });
 
-test("home wires the live volatility gauge and keeps PASS_COUNT at zero", async () => {
-  const home = await readFile(homePath, "utf8");
-  const gauge = await readFile(gaugePath, "utf8");
-
-  assert.equal([...home.matchAll(/<WatchGauge\b/g)].length, 1);
-  assert.match(home, /const PASS_COUNT = 0;/);
-  assert.match(home, /volatilityBand\(/);
-  assert.doesNotMatch(home, /sampleDefconScore\(/);
-  assert.doesNotMatch(home, /원유 DEFCON/);
-
-  assert.match(home, /const gaugeTitle = "WTI 변동성 위치";/);
-  const gaugeCall = home.match(/<WatchGauge[\s\S]*?\/>/);
-  assert.ok(gaugeCall, "home must render one WatchGauge");
-  assert.match(gaugeCall[0], /title=\{gaugeTitle\}/);
-  assert.match(gaugeCall[0], /방향 신호가 아닙니다/);
-  assert.doesNotMatch(gaugeCall[0], /score=\{sampleDefconScore\(/);
-  assert.doesNotMatch(gaugeCall[0], /isExample/);
-  assert.doesNotMatch(gaugeCall[0], /\brv5=/);
-
-  assert.match(gauge, /isExample/);
-  assert.match(gauge, /예시/);
-  assert.doesNotMatch(gauge, /WTI 변동성/);
-  assert.doesNotMatch(gauge, /volatilityBand\(/);
+test("research inventory joins every score to its source and rejects partial tables", async () => {
+  const { parseResearchLedger } = await import("../app/lib/research-ledger.ts");
+  const markdown = await readFile(path.join(appRoot, "../research/factors/README.md"), "utf8");
+  const ledger = parseResearchLedger(markdown);
+  assert.ok(ledger.records.length >= 62);
+  assert.equal(ledger.passCount, 0);
+  assert.equal(ledger.records.find((row) => row.id === "001").group, "미검증");
+  assert.equal(ledger.records.find((row) => row.id === "009").group, "기각");
+  assert.equal(ledger.records.find((row) => row.id === "018").group, "보류");
+  assert.equal(ledger.records.find((row) => row.id === "062").inSample, "—");
+  assert.equal(new Set(ledger.records.map((row) => row.id)).size, ledger.records.length);
+  for (const row of ledger.records) {
+    assert.match(row.sourceHref, /^https:\/\/github.com\/Noah-TaeHwan\/ls-crude\/blob\/main\/research\/factors\/\d{3}-[a-z0-9-]+\/README\.md$/);
+  }
+  assert.throws(() => parseResearchLedger(""));
+  assert.throws(() => parseResearchLedger(markdown.replace(/\| 018 \| \[.*\n/, "")));
+  assert.throws(() => parseResearchLedger(markdown.replace("018-refinery-thermal-flare/README.md", "https://untrusted.invalid")));
 });

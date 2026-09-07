@@ -1,6 +1,7 @@
 import {
   isRouteErrorResponse,
   Links,
+  Link,
   Meta,
   Outlet,
   Scripts,
@@ -69,7 +70,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   return (
     <main className="mx-auto max-w-3xl p-6">
       <h1 className="text-xl font-semibold">{message}</h1>
-      <p className="mt-2 text-zinc-400">{details}</p>
+      <p className="mt-2 text-muted-foreground">{details}</p>
+      <Link className="action-link mt-6" to="/">연구 데스크로 돌아가기</Link>
       {stack ? (
         <pre className="mt-4 overflow-x-auto rounded-lg bg-zinc-900 p-4 text-xs">
           <code>{stack}</code>

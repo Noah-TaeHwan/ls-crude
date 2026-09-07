@@ -6,7 +6,7 @@ import { test } from "node:test";
 import path from "node:path";
 
 import { isWtiMarketSnapshot } from "../app/lib/types.ts";
-import { volatilityBand } from "../app/lib/gauge.ts";
+import { parseResearchLedger } from "../app/lib/research-ledger.ts";
 
 /** 앱 패키지 루트 경로. */
 const appRoot = path.resolve(import.meta.dirname, "..");
@@ -145,34 +145,31 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.equal(response.status, 200, output.join(""));
     const body = await response.text();
     assert.match(body, /data-source="Yahoo Finance"/);
-    assert.match(body, /WTI 변동성 위치/);
-    assert.doesNotMatch(body, /원유 DEFCON/);
-    assert.doesNotMatch(body, /DEFCON 3/);
-    assert.doesNotMatch(body, />예시</);
-    assert.ok(
-      body.includes(`WTI 변동성 위치 ${livePercentile}, ${volatilityBand(marketSnapshot.volatility.rv5ReferencePercentile)}`),
-      "home gauge must be the live realized-volatility needle, not the sample DEFCON",
-    );
-    assert.doesNotMatch(body, /WTI 5거래일 실현변동성 백분위/);
-    const checkedAtKst = new Date(
-      Date.parse(marketSnapshot.checkedAt) + 9 * 60 * 60 * 1_000,
-    );
-    const expectedCheckedAt = `${checkedAtKst.toISOString().slice(0, 16).replace("T", " ")} KST`;
-    assert.ok(
-      body.includes(expectedCheckedAt),
-      "server and browser must share one deterministic KST timestamp",
-    );
-    assert.match(body, /방향 신호가 아닙니다/);
-    assert.match(body, /5일 실현변동성/);
+    const text = body.split("<script")[0].replace(/<[^>]*>/g, "");
+    assert.match(text, /아직 채택할 신호가 없습니다/);
+    assert.match(text, /공개 이후 다음 5거래일/);
+    assert.match(text, /5일 실현변동성 백분위/);
+    assert.match(text, /후보 비교선은 아직 없습니다/);
+    assert.ok(text.includes(String(livePercentile)), "RV5 percentile must come from the actual snapshot");
+    assert.ok(text.includes(marketSnapshot.bars.at(-1).close.toFixed(2)));
+    assert.doesNotMatch(body, /원유 DEFCON|DEFCON 3/);
+    const expectedCheckedAt = new Date(Date.parse(marketSnapshot.checkedAt) + 9 * 60 * 60 * 1_000)
+      .toISOString().slice(0, 16).replace("T", " ");
+    assert.ok(text.includes(expectedCheckedAt), "SSR timestamp is explicitly KST");
     assert.doesNotMatch(body, /<form\b/i, "public home must not expose news CRUD forms");
 
     const research = await fetch(`${baseUrl}/research`);
     assert.equal(research.status, 200);
     const researchBody = await research.text();
-    assert.match(researchBody, /52개/);
-    assert.match(researchBody, /통과 0개/);
-    assert.match(researchBody, /상세 보기/, "ledger rows must expose detail buttons");
-    assert.doesNotMatch(researchBody, /aria-expanded="true"/, "details must start collapsed");
+    const researchText = researchBody.split("<script")[0].replace(/<[^>]*>/g, "");
+    const inventory = parseResearchLedger(await readFile(path.join(repositoryRoot, "research/factors/README.md"), "utf8"));
+    assert.ok(researchText.includes(`전체 ${inventory.records.length}개`));
+    assert.match(researchText, /기준 통과0개/);
+    assert.match(researchText, /검정 요약과 근거/);
+    assert.match(researchBody, /001-pentagon-ubereats\/README.md/);
+    assert.doesNotMatch(researchBody, /<details[^>]* open/, "details start collapsed");
+    const linked = await fetch(`${baseUrl}/research?candidate=018`);
+    assert.match(await linked.text(), /018-refinery-thermal-flare\/README.md/);
 
     const legacyGet = await fetch(`${baseUrl}/backtest`, { redirect: "manual" });
     assert.equal(legacyGet.status, 308);

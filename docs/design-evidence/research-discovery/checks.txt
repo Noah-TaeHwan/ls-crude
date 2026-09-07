@@ -1,0 +1,75 @@
+Final validation: 2026-09-07
+Working directory: /Users/noah/orca/ls-crude/app
+Commands: npm run typecheck; npm run build; node --test tests/defcon-sample.test.mjs tests/deployment-cwd.test.mjs
+Typecheck: PASS (react-router typegen && tsc, exit 0)
+
+> build
+> react-router build
+
+Using Vite Environment API
+vite v8.2.2 building client environment for production...
+transforming...
+✓ 1892 modules transformed.
+rendering chunks...
+computing gzip size...
+build/client/.vite/manifest.json                   2.37 kB │ gzip:  0.47 kB
+build/client/assets/root-DHdJtnyy.css             52.05 kB │ gzip: 10.10 kB
+build/client/assets/backtest-BDgISLpm.js           1.06 kB │ gzip:  0.69 kB
+build/client/assets/root-B2E6aXfF.js               1.64 kB │ gzip:  0.95 kB
+build/client/assets/research-ledger-Bjka3oYC.js    3.93 kB │ gzip:  2.18 kB
+build/client/assets/lib-DuoA-H7s.js               10.17 kB │ gzip:  4.04 kB
+build/client/assets/home-BeP4GJin.js              15.47 kB │ gzip:  5.39 kB
+build/client/assets/research-bCti5jKb.js          15.63 kB │ gzip:  5.15 kB
+build/client/assets/desk-chrome-DDhHk9fq.js       29.85 kB │ gzip:  9.88 kB
+build/client/assets/jsx-runtime-DAFwhNG7.js      118.48 kB │ gzip: 38.94 kB
+build/client/assets/entry.client-DQBJ69Ax.js     185.82 kB │ gzip: 58.60 kB
+
+✓ built in 1.04s
+vite v8.2.2 building ssr environment for production...
+transforming...
+✓ 17 modules transformed.
+rendering chunks...
+
+✓ 1 asset cleaned from React Router server build.
+build/server/assets/server-build-DHdJtnyy.css
+
+computing gzip size...
+build/server/.vite/manifest.json                 0.22 kB │ gzip:  0.15 kB
+build/server/assets/server-build-DHdJtnyy.css   52.05 kB │ gzip: 10.10 kB
+build/server/index.js                          114.69 kB │ gzip: 32.41 kB
+
+✓ built in 116ms
+TAP version 13
+# Subtest: sample DEFCON score ignores the live market percentile
+ok 1 - sample DEFCON score ignores the live market percentile
+  ---
+  duration_ms: 0.5775
+  type: 'test'
+  ...
+# Subtest: research inventory joins every score to its source and rejects partial tables
+ok 2 - research inventory joins every score to its source and rejects partial tables
+  ---
+  duration_ms: 8.554208
+  type: 'test'
+  ...
+# Subtest: rejects malformed WTI market snapshots without throwing
+ok 3 - rejects malformed WTI market snapshots without throwing
+  ---
+  duration_ms: 3.602916
+  type: 'test'
+  ...
+# Subtest: serves the public evidence brief routes from the repository root
+ok 4 - serves the public evidence brief routes from the repository root
+  ---
+  duration_ms: 457.632292
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 543.362584

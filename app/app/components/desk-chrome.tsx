@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigation } from "react-router";
 
 import { cn } from "~/lib/cn";
 
@@ -15,6 +15,8 @@ interface DeskHeaderProps {
  * @returns 제품 머리글.
  */
 export function DeskHeader({ source, ticker, freshness }: DeskHeaderProps) {
+  const navigation = useNavigation();
+  const pending = navigation.state !== "idle";
   const freshnessLabel = freshness
     ? freshness === "fresh"
       ? "정상"
@@ -30,34 +32,29 @@ export function DeskHeader({ source, ticker, freshness }: DeskHeaderProps) {
       </a>
       <header
         data-source={source}
-        className="sticky top-0 z-20 border-b border-border bg-background/95 backdrop-blur"
+        className="desk-header"
       >
-        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-8 gap-y-3 px-5 py-4 sm:px-8">
-          <Link
-            to="/"
-            className="text-xl font-semibold tracking-[0.08em] text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:text-2xl"
-          >
-            LS CRUDE
+        <div className="desk-shell desk-header-inner">
+          <Link to="/" className="desk-brand" aria-label="LS CRUDE 연구 데스크">
+            <span className="desk-brand-mark" aria-hidden="true">LS</span>
+            <span>LS CRUDE<span className="desk-brand-caption">ALTERNATIVE DATA RESEARCH</span></span>
           </Link>
-          <nav aria-label="주요 화면" className="order-3 flex w-full gap-6 sm:order-none sm:w-auto">
+          <nav aria-label="주요 화면" className="desk-nav">
             <DeskNavLink to="/" end>
-              WTI 관측
+              연구 데스크
             </DeskNavLink>
-            <DeskNavLink to="/research">연구 장부</DeskNavLink>
-            <a className="desk-nav-link" href="/research#history">
-              추적
-            </a>
+            <DeskNavLink to="/research">후보 장부</DeskNavLink>
             <a className="desk-nav-link" href="/research#method">
-              방법
+              검증 방법
             </a>
             <a className="desk-nav-link" href="/research#team">
               팀
             </a>
           </nav>
-          <p className="ml-auto flex items-center gap-2 font-mono text-xs text-muted-foreground">
-            {source} · {ticker} · 일봉
+          <p className="desk-source" title={`${source} · ${ticker} · 최근 완료 일봉`}>
+            <span>{ticker} · 일봉 관측</span>
             {freshness ? (
-              <>
+              <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <span aria-hidden="true">·</span>
                 <span>{freshnessLabel}</span>
                 <span
@@ -67,22 +64,31 @@ export function DeskHeader({ source, ticker, freshness }: DeskHeaderProps) {
                   )}
                   aria-hidden="true"
                 />
-              </>
+              </span>
             ) : null}
           </p>
         </div>
+        <p role="status" aria-live="polite" className={pending ? "desk-loading" : "sr-only"}>
+          {pending ? "연구 화면을 불러오는 중입니다." : ""}
+        </p>
       </header>
     </>
   );
 }
 
-/** 빌드 정보와 투자 비권유 문구를 보여주는 하단 영역. */
+/**
+ * 공동 연구자와 관측의 한계, 빌드 정보를 표시한다.
+ * @returns 모든 공개 화면의 하단 영역.
+ */
 export function DeskFooter() {
   return (
-    <footer className="border-t border-border px-5 py-5 sm:px-8">
-      <div className="mx-auto flex max-w-[1380px] flex-col justify-between gap-2 font-mono text-[11px] text-muted-foreground sm:flex-row">
-        <p>상관은 인과가 아니며 투자 권유가 아닙니다.</p>
-        <p>
+    <footer className="desk-footer">
+      <div className="desk-shell desk-footer-inner">
+        <div>
+          <p className="desk-footer-credit">오태환 · 손성찬 <span>East Camp AI Quant 4기</span></p>
+          <p>관측과 가설을 기록합니다. 상관은 인과가 아니며 투자 권유가 아닙니다.</p>
+        </div>
+        <p className="desk-build">
           build {__LS_BUILD_SHA__} · {__LS_BUILD_BRANCH__}
           {__LS_BUILD_DIRTY__ ? " · dirty" : ""}
         </p>
