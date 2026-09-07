@@ -62,6 +62,12 @@ anti_us_spike = daily_anti_us_intensity > (2.0 * baseline_median)
 target = future_5d_wti_realized_volatility  # Yahoo CL=F
 ```
 
+## 050W — Energy Security Attention (Wikipedia-only 재검정 설계)
+
+기존 `United_States_Fifth_Fleet`·`Anti-Americanism` 2문서 결과는 유지하되, 이를 050W의 성과로 쓰지 않는다. 새 고정 바스켓은 `United_States_Central_Command`, `United_States_Fifth_Fleet`, `Strait_of_Hormuz`, `Bab-el-Mandeb`, `Houthi_movement`, `Sanctions_against_Iran`이다.
+
+각 90일 z-score의 평균과 동시 급등 문서 수를 사용한다. D+1 뒤 WTI/OVX 다음 5거래일 변동성을 시험하며, 기존 GDELT·Reddit·Telegram을 섞지 않는다. 이는 ‘대미 감정’이 아니라 **에너지 안보 정보탐색** 지수다. 현재 미검정이다.
+
 ---
 
 ## ⚠️ 데이터 윤리 및 안전 경계 (Safety & Compliance)

@@ -66,7 +66,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 046 | Urban Mobility Tempo | 🟨 `-0.267` | 🟨 `+0.005` | 3,287 일 | 912 일 | Chicago CTA 익명 일별 탑승량 동일요일 서프라이즈. IS 반대, OOS 소멸 |
 | 047 | Premium–Value Outdoor Spread | ⬜ `—` | ⬜ `—` | 3 년 | 0 년 | Canada Goose−Columbia 연간 YoY는 무료 구조화 공통 표본이 IS 3·OOS 0. 상관계수 미보고 |
 | 048 | All-In Tie Day Index | ⬜ `—` | ⬜ `—` | — | — | 공개 에피소드 복장·거시 문맥의 문화적 주석. 2020년대 시작·주간 빈도·사후 논평 한계 |
-| 049 | Geopolitical News Attention Shock | 🟨 `-0.009`; 가속도 `—` | 🟨 `+0.054`; 가속도 `+0.199` | crisis 10 일; 가속도 seed 6일 | crisis 22 일; 가속도 seed 8일 | Guardian 제목 `crisis`는 미지지. 사전 고정 30일 고요→24h 후속보도 가속도는 IS에서 값이 변하지 않아 `r` 계산 불가; OOS 8일 결과 채택 불가 |
+| 049 | Geopolitical News Attention Shock | 🟨 `-0.009`; 가속도 `—` | 🟨 `+0.054`; 가속도 `+0.199` | crisis 10 일; 가속도 seed 6일 | crisis 22 일; 가속도 seed 8일 | Guardian 제목 `crisis`는 미지지. 049W Wiki 초크포인트 바스켓은 별도 고정 설계·미검정 |
 | 051 | Public Confirmation Lag Index | ⬜ `—` | ⬜ `—` | — | — | FIRMS 역사 아카이브는 탐지시각만 제공하고 당시 NRT/RT 공개시각 빈티지를 보존하지 않음. Guardian 게시시각과 안전하게 결합 불가 — IS/OOS 미실행 |
 | 054 | UAP Attention Shock | ⬜ 별도표 | ⬜ 미개봉 | 3,037 일/자산 | — | WTI 공통 타깃이 아닌 62개 자산 Meme Discovery 스캔. 아래 별도표의 최고 IS `r=+0.081`은 다중 탐색 선택값이며 알파 아님 |
 | 057 | US HIMI Public Proxy | 🟨 `-0.177` | 🟨 `+0.465` | 107 월 | 31 월 | 미국 FRED Machinery IP + EIA refinery utilization 동일가중 공개 프록시. 부호 반전이며 원안 RMCI·DTDI·FEVI·HIC는 미측정 |

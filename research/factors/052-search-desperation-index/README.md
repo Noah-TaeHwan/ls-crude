@@ -37,3 +37,9 @@ CSV는 `Date`와 다섯 검색열을 포함하고, 최소 2014-01-01부터 있�
 - Google Trends 공개 UI: 장기 연구 API·재배포·역사 빈티지 안정성은 미확인.
 - Yahoo Finance `CL=F`, `RB=F`: 원본 OHLCV는 gitignored.
 - 원본 CSV가 제공될 때까지 052는 수집 명세만 가진 HOLD 카드다.
+
+## 052W — Household Panic Wiki (Google Trends 대체 후보)
+
+Google Trends 원본을 억지로 재추출하지 않는 별도 공개 대체재다. 고정 문서는 `Recession`, `Unemployment`, `Bankruptcy`, `Inflation`, `Gasoline`, `Fuel_tax`, `Food_insecurity`이며, 각 문서 90일 z-score의 동일가중 평균을 사용한다.
+
+Wikipedia는 실제 검색·구매·절약 행동이 아니므로 원 052와 동일시하지 않는다. D+1 정렬 뒤 월 1회 관측으로 WTI/RBOB 다음 20거래일 변동성을 주 타깃으로 시험한다. 임계값은 IS에서만 고정하며 현재 **미검정**이다.

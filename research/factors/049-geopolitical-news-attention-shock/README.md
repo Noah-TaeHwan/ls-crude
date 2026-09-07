@@ -127,8 +127,15 @@ Guardian Content API의 `headline` 필드만 사용했다. 검색식·제목 필
 
 따라서 이번 시도에서는 IS 상관계수·적중률·OOS를 **계산하지 않았다.** 전체 GKG의 재현 가능한 역사 추출, 라이선스·재배포 조건, GDELT 추가 시각의 as-of 안전성을 확보하기 전에는 049를 새 알파나 Oil Slice 개선 성과로 주장하지 않는다.
 
+## 049W — Wikipedia Chokepoint Attention (추가 설계)
+
+Guardian/GDELT의 기사량을 대체하는 것이 아니라, 공개 정보탐색 레그로 별도 검정한다. 고정 문서는 `Strait_of_Hormuz`, `Bab-el-Mandeb`, `Suez_Canal`, `Red_Sea`, `Houthi_movement`, `Sanctions_against_Iran`이다.
+
+`wiki_chokepoint = mean(z90(pageviews))`와 `breadth = count(z90 ≥ 1)`를 따로 기록한다. D+1 이후 다음 5거래일 WTI·Brent 실현변동성을 주 타깃으로 하고, 가격 방향은 보조 분석이다. 이는 049 원 GDELT 가설과 중복 가중하지 않으며, 아직 **미검정**이다.
+
 ## 참고
 
 - [GDELT Global Knowledge Graph v2.1 codebook](https://data.gdeltproject.org/documentation/GDELT-Global_Knowledge_Graph_Codebook-V2.1.pdf)
 - [GDELT data and API documentation](https://gdeltproject.org/data.html)
 - [조사 노트](../../gathering/notes/2026-09-04-geopolitical-news-attention-shock.md)
+- [Wikipedia source upgrade](../../gathering/notes/2026-09-07-wikipedia-source-upgrade.md)

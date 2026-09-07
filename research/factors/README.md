@@ -79,10 +79,10 @@
 | 046 | Urban Mobility Tempo | -0.267 | +0.005 | REJECTED — OOS 소멸 |
 | 047 | Premium–Value Outdoor Spread | — | — | HOLD — Canada Goose–Columbia 무료 구조화 공통 공시가 IS 3·OOS 0뿐 |
 | 048 | All-In Tie Day Index | — | — | MEME / MONITOR ONLY — 공개 미디어 주석 |
-| 049 | Geopolitical News Attention Shock | — | — | HOLD — GDELT 전체 역사 코퍼스·as-of 감사 전 |
-| 050 | Anti-USA Geopolitical Tension Index | +0.018 | +0.113 | MEME / MONITOR ONLY — 2024년 이후 스파이크 시 5일 변동성 1.87배 폭증 |
+| 049 | Geopolitical News Attention Shock | — | — | HOLD — GDELT 감사 전; 049W Wikipedia Chokepoint Attention 설계 등록·미검정 |
+| 050 | Anti-USA Geopolitical Tension Index | +0.018 | +0.113 | MEME / MONITOR ONLY — 기존 2문서 결과. 050W Energy Security Wikipedia 바스켓은 별도 미검정 |
 | 051 | Public Confirmation Lag Index | — | — | HOLD — FIRMS 역사 아카이브에 당시 공개시각 빈티지가 없어 as-of 검정 불가 |
-| 052 | Search Desperation Index | — | — | HOLD — Google Trends 장기 통합 원본 CSV·역사 빈티지 미확보; 숫자 미생성 |
+| 052 | Search Desperation Index | — | — | HOLD — Google Trends 장기 원본 미확보; 052W Household Panic Wiki 설계 등록·미검정 |
 | 053 | Voice-of-Customer Fuel Frustration | — | — | HOLD — 원문 통화 NLP는 부적격; k≥10 비식별 주간 집계 미확보 |
 | 054 | UAP Attention Shock | — | — | MEME DISCOVERY — 62개 자산 IS 스캔 최대 `r=+0.081`; OOS 미개봉·알파 아님 |
 | 055 | Filing Delta Drift | — | — | HOLD — walk-forward SEC MD&A 공시 변화·개별 에너지 주식 변동성 후보; 수집·IS/OOS 미실행 |
@@ -149,10 +149,10 @@
 | 046 | [Urban Mobility Tempo](046-urban-mobility-tempo/README.md) | 도시 이동 리듬 밈 후보 | CTA 탑승량 서프라이즈: IS `r=-0.267`, OOS `r=+0.005`; OOS 소멸 | 0.0 |
 | 047 | [Premium–Value Outdoor Spread](047-conscience-compression-index/README.md) | Canada Goose 대 Columbia 아웃도어 소비 레짐 밈 | **HOLD** — 무료 구조화 공시 공통 YoY가 IS 3·OOS 0. WTI 미검증 | 0.0 |
 | 048 | [All-In Tie Day Index](048-all-in-tie-day-index/README.md) | 공개 미디어 공식성 밈 주석 | **MEME / MONITOR ONLY** — 공개 에피소드 복장·주제는 선행 알파가 아님 | 0.0 |
-| 049 | [Geopolitical News Attention Shock](049-geopolitical-news-attention-shock/README.md) | 지정학 뉴스의 관심도·확산 폭 | **HOLD** — Oil Slice V1 후보. 15개 시드가 아닌 전체 코퍼스·as-of 감사 필요 | 0.0 |
-| 050 | [Anti-USA Geopolitical Tension Index](050-anti-usa-tension-index/README.md) | 대미 긴장도·변동성 밈 모니터 | **MEME / MONITOR ONLY** — IS r=+0.018, OOS r=+0.113; 2024년 이후 스파이크 시 5일 변동성 1.87배 폭증 | 0.0 |
+| 049 | [Geopolitical News Attention Shock](049-geopolitical-news-attention-shock/README.md) | 지정학 뉴스·초크포인트 관심도 | **HOLD** — GDELT V1은 코퍼스·as-of 감사 필요. 049W 고정 Wiki 초크포인트 바스켓은 별도 미검정 | 0.0 |
+| 050 | [Anti-USA Geopolitical Tension Index](050-anti-usa-tension-index/README.md) | 대미 긴장·에너지 안보 관심도 모니터 | **MEME / MONITOR ONLY** — 기존 2문서 IS/OOS `+0.018/+0.113`. 050W 고정 Wiki 안보 바스켓은 분리 미검정 | 0.0 |
 | 051 | [Public Confirmation Lag Index](051-public-confirmation-lag-index/README.md) | 위성 이상 공개시각 → 공개 확인시각의 차이 | **HOLD** — 018·049 교차 검증층. 역사 NRT/RT 공개시각 빈티지 없이는 look-ahead 없는 검정 불가 | 0.0 |
-| 052 | [Search Desperation Index](052-search-desperation-index/README.md) | 소비자 에너지·생활비 검색 스트레스 | **HOLD** — 통합 장기 Google Trends CSV가 없어 수치 미생성. IS 전용 PCA·7일 지연·비중첩/HAC 검정 명세만 고정 | 0.0 |
+| 052 | [Search Desperation Index](052-search-desperation-index/README.md) | 소비자 생활비 검색·정보탐색 스트레스 | **HOLD** — Google Trends 원본 없음. 052W 고정 Wiki 생활불안 바스켓을 월간 변동성용 대체재로 등록, 미검정 | 0.0 |
 | 053 | [Voice-of-Customer Fuel Frustration](053-voice-of-customer-fuel-frustration/README.md) | 에너지 비용 불만의 익명 집계 모니터 | **HOLD** — 통화 원문·콜 ID는 금지. k≥10 비식별 주간 집계와 제공시각 없이는 수치 미생성 | 0.0 |
 | 054 | [UAP Attention Shock](054-uap-attention-shock/README.md) | UAP 공개 관심도 기반 광역 자산 밈 탐색 | **MEME DISCOVERY** — 62개 IS 스캔의 최대는 BTC·GME `r=+0.081`; OOS 미개봉, 선택편향상 알파 아님 | 0.0 |
 | 055 | [Filing Delta Drift](055-filing-delta-drift/README.md) | SEC MD&A 변화·에너지 기업 변동성 후보 | **HOLD** — 전체 코퍼스 TF-IDF는 look-ahead. walk-forward·동종공시·실제 접수시각 정렬을 구현한 뒤에만 IS/OOS 검정 | 0.0 |
