@@ -1,7 +1,8 @@
-# ALT-20260907-04 FRED HY OAS raw
+# ALT-20260907-04 PortWatch Hormuz raw
 
 UTC retrieve: `20260907T064559Z`
 
-series BAMLH0A0HYM2 rows=787 | 2023-09-05..2026-09-03
+rows=2799 | 2019-01-01..2026-08-30
 
-sha256 `1e41cd74c25dd21b105685af48bfb5f4735134450b4b4a28518744c850002a59`.
+File `hormuz_chokepoint6_daily.csv` sha256 `3b722743cedb88a8cdf33e2b19bce161d3cdae619c8816bac8317889b8b8f011`.
+CSV is gitignored; do not commit the dump.

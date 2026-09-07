@@ -1,0 +1,16 @@
+[
+  {
+    "id": "portla_2023",
+    "url": "https://portoflosangeles.org/business/statistics/container-statistics/historical-teu-statistics-2023",
+    "time_utc": "2026-09-07T06:15:14.647161+00:00",
+    "curl_exit": 0,
+    "http_and_effective": "403\thttps://portoflosangeles.org/business/statistics/container-statistics/historical-teu-statistics-2023",
+    "stderr": "",
+    "bytes": 5492,
+    "sha256": "5134d3a5f7a54f0925fda51096d8b9166f53feb8409942fead94bf89d6f80724",
+    "candidate_id": "ALT-20260907-02",
+    "body_path": "research/gathering/raw/ALT-20260907-02/20260907T061514Z/portla_2023.body",
+    "evidence_type": "source metadata / access response; NOT an analyzed activity series",
+    "method": "GET"
+  }
+]

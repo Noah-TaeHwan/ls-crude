@@ -1,0 +1,52 @@
+{
+  "reviewed_at_utc": "2026-09-07T06:43:15.149109+00:00",
+  "reviewer": "root AI; directly inspected commands/artifacts, independent divisions completed",
+  "judgment": "GOAL_MET for this run; no winning index claimed",
+  "checks": {
+    "candidate_rows": 8,
+    "decision_counts": {
+      "KEEP": 0,
+      "PARK": 7,
+      "KILL": 1
+    },
+    "actual_activity_series": 1,
+    "monthly_rows_independently_reconciled": 108,
+    "correlation_rows_independently_reconciled": 18,
+    "known_tons_mass_balance": "217649472 = 208499047 + 5510402 + 3640023",
+    "protocol_regression_tests": "9 passed",
+    "script_self_check": "PASS (synthetic test only)",
+    "py_compile": "PASS",
+    "local_links_checkpoint": 268,
+    "input_output_access_hashes_checkpoint": 23,
+    "score_sums": 8,
+    "full_canvas_plot_visual_review": "2 plots inspected after actual analyze replay; units, legend, split marker, all lags present",
+    "git_diff_check": "PASS after LF correction",
+    "local_links_final": 271,
+    "reviewed_file_hashes": "Academic18 and Finance8 MATCH",
+    "analysis_replay_output_hashes": "MATCH independent Finance snapshot",
+    "raw_and_derived_ignored": "PASS"
+  },
+  "limitations": [
+    "as-of-safe NOT_PROVEN",
+    "no p-values or confidence interval inference",
+    "no2024+ evaluation",
+    "same-vintage human team reproduction NOT_PROVEN",
+    "app/build/deployment not changed or claimed",
+    "NASA/GPR panels not yet constructed despite source path availability"
+  ],
+  "files": {
+    "README.md": "e214f54f8ff8eda77a4b173886eeec273e86a722cddc1122e733744c35c27ad6",
+    "docs/project-plan.md": "813888e3ce54e06d354ceccab3d9b523e33762555fedd51c1db4812700344d5b",
+    "research/candidates/ledger.csv": "e47b1d975a538dd98f06603dc0c564264c4c291dc59bf8d515b633c8eacf414d",
+    "research/gathering/notes/2026-09-07-activity-proxy-hunt.md": "cdde07dade2c211ba995a4e5e3e71293e4bae03e87987132c2d960b09f7ea215",
+    "research/gathering/notes/2026-09-07-activity-proxy-literature.md": "8b2c513388e9c2ce1204177407eebe76e45cbd6f54310fe9c663da5f09b5671e",
+    "research/candidates/ALT-20260907-08.md": "8641438aac3832a532fea1322479b1b439f7a46fba6f5f0a5325d215d401e155",
+    "research/candidates/ALT-20260907-06.md": "b9b6cf42f839d00b52330dc720bcf94748b9ec7f2911f1d57323a38c357cfe55",
+    "research/candidates/ALT-20260907-02.md": "1ffa330660047a20529946023a1082396a46833957cb4d954a951eb6ba9027dc",
+    "research/candidates/ALT-20260907-03.md": "2756920bd250d90737b52a339ea2d4ac89ef41602ecb284b927e15b17246eb99",
+    "research/candidates/ALT-20260907-07.md": "0bc29ba214e58da6b218e7eda6658a0006dfe0e849dcf4262d82e688d943caaf",
+    "research/candidates/ALT-20260907-04.md": "9a94d534a9e4e170e7e9a3f0a5671d366519f8ab3f42fe16e54015118b3b1695",
+    "research/candidates/ALT-20260907-05.md": "1809ece17fe64a8b7bb9d9dedaa7d35963cee336ae83ca5492c27d3a8bfc7428",
+    "research/candidates/ALT-20260907-01.md": "c4fc1bbdf7ba177fc8e317bfc269e3e380bff67829be58c6ee1cbcef7cf56f83"
+  }
+}

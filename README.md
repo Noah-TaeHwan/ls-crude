@@ -4,7 +4,7 @@
 
 East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜타곤 피자 인덱스는 **활동 → 민감한 맥락 → 시장과의 가능한 관계**를 생각하는 참고 패턴입니다. 피자 주문을 복제하거나 특정 데이터·양의 상관을 찾아내는 것이 완료 조건은 아닙니다.
 
-이번 패스는 **연구 운영 체계 setup**입니다. 신규 [후보 원장](research/candidates/ledger.csv)은 헤더만 있으며 실제 후보·예시 행은 0개입니다. 이는 새 원장의 초기 상태입니다. [기존 팩터 이력](research/factors/README.md), [조사 노트](research/gathering/notes/README.md), 기존 결과는 그대로 보존합니다. 이번 작업으로 새 자료·지수·검정 성과를 만들었다고 주장하지 않습니다.
+현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-07 공동 탐색에서 [신규 원장](research/candidates/ledger.csv)에 8개 가설/자료 조합을 기록했습니다. 곡물 바지선 1개는 실제 지수·WTI 기술 검정을 재현했고, 6개는 접근·허가·시점/구성 조건으로 PARK, Google 피자 인기시간대 방식 1개는 KILL입니다. 전체 판정은 **KEEP 0 / PARK 7 / KILL 1**이며, 새로 검증된 예측 지수는 없습니다. [기존 팩터 이력](research/factors/README.md)의 재검토·인접 후보는 카드에 연결했고 기존 통과 수에 합산하지 않습니다.
 
 | 항목 | 기준 |
 | --- | --- |
@@ -14,6 +14,25 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 | 연구 뉴스 | Investing.com CSV 정본. 사이트 스크래핑 금지 |
 | 역할·일정 | [PM 계획](docs/project-plan.md): Noah 데이터·기록·데모, 성찬 검정·반증, 상호 검토 **제안** |
 | 기존 웹 | [LS CRUDE](https://ls-crude.vercel.app) · 시장 관측/기존 연구 장부. 이번 패스에서 배포 상태를 검증하지 않음 |
+
+## Current research status — 2026-09-07
+
+| 지금 보여줄 것 | 근거 / 다음 행동 |
+| --- | --- |
+| **01 Locks 27 곡물 바지선 — PARK** | [실제 지수·그림·18개 검정](research/indexes/ALT-20260907-01/README.md). 다음 달 WTI 수익률과 학습 `r=0.169, n=52`, 내부 검증 `r=-0.066, n=35` (repo empirical only). 공개 빈티지 미복원, 안정된 방향 관계 미확인. 손성찬: 과거 발행본 대조. |
+| **04 PortWatch / 07 GPR — PARK** | [04](research/candidates/ALT-20260907-04.md)는 2019–2023 기간 메타데이터, [07](research/candidates/ALT-20260907-07.md)은 공개 파일·빈티지 경로 확인. 실제 과거 공개값 패널과 검정은 미실행. 오태환: 권리/빈티지 조인 확인. |
+| **02 LA항 / 03 TSA — PARK** | 역사 URL 직접 취득은 각각 403. 공식 페이지 열람·현재 페이지 접근과 구분한다. [02](research/candidates/ALT-20260907-02.md) 손성찬 / [03](research/candidates/ALT-20260907-03.md) 오태환: 허용 수동 취득 확인. |
+| **05 Nightfire / 06 Black Marble — PARK** | [05](research/candidates/ALT-20260907-05.md)는 현 라이선스 승인 미확인. [06](research/candidates/ALT-20260907-06.md)은 파일 HEAD 접근 성공, AOI·QA·빈티지 조인 미구축. 인증 차단으로 오기하지 않음. |
+| **08 피자 인기시간대 — KILL** | [방문 상대값과 주문량의 측정 불일치, 검토한 API의 역사 경로 부재](research/candidates/ALT-20260907-08.md). 피자 주문·기관 활동을 추정하는 현재 방식 종료. |
+
+[문헌 메모와 주석 후보표](research/gathering/notes/2026-09-07-activity-proxy-literature.md) · [8개 점수·접근 기록·3분 데모·목표 검토](research/gathering/notes/2026-09-07-activity-proxy-hunt.md). 점수는 조사 우선순위에 대한 판단이며 성과 수치가 아닙니다. 담당/09-08 행동은 제안이며 사람의 수락·재현 검토는 미실행입니다.
+
+실제 입력을 가진 팀원은 아래로 재현합니다. 원본이 없으면 [수집·환경 안내](research/notebooks/ALT-20260907-01/README.md)를 먼저 따릅니다.
+
+```bash
+research/.venv/bin/python research/notebooks/ALT-20260907-01/hunt.py check
+research/.venv/bin/python research/notebooks/ALT-20260907-01/hunt.py analyze --candidate 01 --raw research/gathering/raw/ALT-20260907-01/20260907T062017Z
+```
 
 ## 범위와 비목표
 
@@ -73,13 +92,7 @@ python -m pytest tests/test_splits.py tests/test_wiki_pageviews_asof.py
 
 ## 지수를 못 찾았을 때도 데모하는 방법
 
-편집기에서 README와 로컬 Markdown/CSV를 열면 네트워크 없이 진행할 수 있습니다.
-
-1. 목적과 발표 완료 기준을 읽고 신규 원장의 현재 행 수를 확인합니다. 0행이면 “새 OS에 아직 등록하지 않았다”라고 설명합니다.
-2. **기존 기록 재사용 사례**로 [064 심야 식당 지수 기각](research/factors/064-oilman-steakhouse-index/README.md)과 연결된 감사 노트를 엽니다. 기록에 적힌 실제 측정값과 원 가설의 차이, 상관을 계산하지 않은 이유를 설명합니다.
-3. [070 휴게소 라면 지수 보류](research/factors/070-highway-ramyeon-index/README.md)와 [자료 적합성 감사](research/gathering/notes/2026-09-07-korea-pizza-five-factor-audit.md)를 엽니다. 순위와 판매수량의 차이, 필요한 자료, 재개 조건을 보여줍니다. 이 사례의 국내 경유 맥락을 WTI 검정 통과로 바꾸지 않습니다.
-4. 새 카드의 지수·WTI 검정 계획 또는 미실행 이유, KEEP/KILL/PARK와 다음 행동을 보여줍니다. 새 카드도 없으면 템플릿을 **미작성 양식**으로 표시하고 실제 성과로 세지 않습니다.
-5. [PM 계획](docs/project-plan.md)의 남은 의존성과 다음 결정을 보여줍니다. 위 사례는 기존 문서의 판정이며 이번 패스에서 외부 제공자의 접근 상태를 다시 감사한 것은 아닙니다.
+README → [탐색 노트의 3분 데모](research/gathering/notes/2026-09-07-activity-proxy-hunt.md#3분-데모) → 01의 실제 그림/검정 → 08의 기각 → 03·05의 차단 → 다음 행동 순서로 설명합니다. 원본 없는 환경에서도 Git의 작은 표·SVG·문헌·차단 영수증으로 오늘의 결과와 재현 한계를 보여줄 수 있습니다. [064 식당](research/factors/064-oilman-steakhouse-index/README.md)·[070 라면](research/factors/070-highway-ramyeon-index/README.md)은 기존 실패 이력으로 연결하며 이번 새 검정으로 세지 않습니다.
 
 09-15에 “done enough”는 **목적 → 실제 탐색 사례 → 접근/측정 실패 또는 재현 가능한 검정 → 판정 → 한계와 다음 조건**이 이어지고, 두 팀원 중 다른 사람이 근거 경로를 따라 설명할 수 있는 상태입니다. 양의 관계·새 지수·매매 성과는 필수가 아닙니다. 09-13 근거 동결, 09-14 오프라인 자료·리허설은 [일별 계획](docs/project-plan.md)에 있습니다.
 
@@ -97,4 +110,4 @@ npm run dev -- --port 5173
 
 에이전트는 [AGENTS.md](AGENTS.md)와 관련 collecting-yahoo-crude / tagging-investing-news / gathering-research-intake / building-slice-index / running-sample-splits 스킬을 읽습니다. 이번 활동 proxy 운영 범위와 절차는 위 세 규약 및 INTAKE를 따릅니다. 이전 crypto×news 전용 조건과 모든 후보의 전략 백테스트 요구는 이번 신규 활동 proxy의 등록 조건이 아닙니다.
 
-[이번 setup의 검토·검증 근거](docs/research-os-review.md)
+[연구 OS setup의 과거 검토·검증 근거](docs/research-os-review.md)

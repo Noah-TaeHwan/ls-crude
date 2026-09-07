@@ -9,7 +9,7 @@
 | Academic cited memo | `research/gathering/notes/2026-09-07-academic-pizza-index-oil-memo.md` |
 | ≥8 ledger rows | **10** in `research/candidates/ledger.csv` |
 | Data-path candidates with assumptions + stats | ALT-03 PortWatch; ALT-04 HY OAS (KILL) |
-| Plots | `research/indexes/ALT-20260907-03|04/*20260907T064559Z*.png` |
+| Plots | `research/indexes/ALT-20260907-04/20260907T064559Z/*20260907T064559Z*.png` |
 | Demo script | below |
 | Winning index | **None** — honest |
 
@@ -41,7 +41,7 @@ See JSON: `research/reports/2026-09-07-joint-hunt-portwatch-hyoas.json`.
 
 1. **Hook (20s):** “We’re hunting Pentagon-Pizza-*shaped* traces for WTI — weird activity you can lawfully see, not a fake pizza CSV.”
 2. **Map (60s):** Show `candidates/ledger.csv` — 10 rows today: 2 KEEP, 3 KILL, 5 PARK. Point at dead pizza clones (06) and AIS (07) so we don’t rediscover them.
-3. **Evidence (70s):** Open PortWatch plot under `indexes/ALT-20260907-03/`. “We *can* pull Hormuz daily transits. Linked to next-5d WTI RV: in-sample correlation about 0.09, out-of-sample about zero. So the series is real; the WTI claim is not ready.”
+3. **Evidence (70s):** Open PortWatch plot under `indexes/ALT-20260907-04/20260907T064559Z/`. “We *can* pull Hormuz daily transits. Linked to next-5d WTI RV: in-sample correlation about 0.09, out-of-sample about zero. So the series is real; the WTI claim is not ready.”
 4. **Contrast (20s):** HY OAS residual looked good in-sample and **flipped** out-of-sample — killed on purpose.
 5. **Tomorrow (20s):** Human blockers — USDA key (08), Baker Hughes Excel ToS (05), IMF redistribution (03). Still hunting; pass count on the big factor board remains 0.
 

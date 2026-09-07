@@ -1,7 +1,7 @@
 """2026-09-07 joint hunt: PortWatch Hormuz + FRED HY OAS vs WTI RV.
 
 실행:
-  research/.venv/bin/python research/notebooks/ALT-20260907-03/run_portwatch_hyoas_hunt.py
+  research/.venv/bin/python research/notebooks/ALT-20260907-04/run_portwatch_hyoas_hunt.py
 
 출력: gathering/raw, data/processed, indexes, reports JSON.
 가설 채택·알파 주장이 아니라 탐색 영수증이다.
@@ -204,7 +204,7 @@ def lag_curve(panel: pd.DataFrame, column: str, target: str, lags=range(-5, 6)) 
 def main() -> None:
     """수집·지수·WTI 관계 검정을 실행하고 영수증을 남긴다."""
     portwatch = fetch_portwatch_hormuz()
-    portwatch_raw = ROOT / f"research/gathering/raw/ALT-20260907-03/{RUN_TS}"
+    portwatch_raw = ROOT / f"research/gathering/raw/ALT-20260907-04/{RUN_TS}"
     portwatch_raw.mkdir(parents=True, exist_ok=True)
     portwatch_path = portwatch_raw / "hormuz_chokepoint6_daily.csv"
     portwatch.to_csv(portwatch_path, index=False)
@@ -232,7 +232,7 @@ def main() -> None:
         encoding="utf-8",
     )
     (portwatch_raw / "README.md").write_text(
-        f"# ALT-20260907-03 PortWatch Hormuz raw\n\nUTC retrieve: `{RUN_TS}`\n\n"
+        f"# ALT-20260907-04 PortWatch Hormuz raw\n\nUTC retrieve: `{RUN_TS}`\n\n"
         f"rows={len(portwatch)} | {portwatch['date'].min().date()}.."
         f"{portwatch['date'].max().date()}\n\n"
         f"File `{portwatch_path.name}` sha256 `{sha256(portwatch_path)}`.\n"
@@ -240,7 +240,7 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    hy_raw = ROOT / f"research/gathering/raw/ALT-20260907-04/{RUN_TS}"
+    hy_raw = ROOT / f"research/gathering/raw/ALT-20260907-13/{RUN_TS}"
     hy_oas = fetch_fred("BAMLH0A0HYM2", hy_raw)
     (hy_raw / "manifest.json").write_text(
         json.dumps(
@@ -258,7 +258,7 @@ def main() -> None:
         encoding="utf-8",
     )
     (hy_raw / "README.md").write_text(
-        f"# ALT-20260907-04 FRED HY OAS raw\n\nUTC retrieve: `{RUN_TS}`\n\n"
+        f"# ALT-20260907-13 FRED HY OAS raw\n\nUTC retrieve: `{RUN_TS}`\n\n"
         f"series BAMLH0A0HYM2 rows={int(hy_oas.notna().sum())} | "
         f"{hy_oas.index.min().date()}..{hy_oas.index.max().date()}\n\n"
         f"sha256 `{sha256(hy_raw / 'BAMLH0A0HYM2.csv')}`.\n",
@@ -293,12 +293,12 @@ def main() -> None:
     residual = (merged["oas"] - (alpha + beta * merged["log_cl"])).rename("codc_resid")
     codc_panel = align_signal_to_wti(residual, prices, lag_days=1)
 
-    portwatch_proc = ROOT / f"research/data/processed/ALT-20260907-03/{RUN_TS}"
+    portwatch_proc = ROOT / f"research/data/processed/ALT-20260907-04/{RUN_TS}"
     portwatch_proc.mkdir(parents=True, exist_ok=True)
     portwatch_panel.to_csv(portwatch_proc / "index_wti_panel.csv")
     transit_z.to_csv(portwatch_proc / "pw_z20.csv", header=True)
 
-    hy_proc = ROOT / f"research/data/processed/ALT-20260907-04/{RUN_TS}"
+    hy_proc = ROOT / f"research/data/processed/ALT-20260907-13/{RUN_TS}"
     hy_proc.mkdir(parents=True, exist_ok=True)
     hy_panel.to_csv(hy_proc / "hy_doas_panel.csv")
     codc_panel.to_csv(hy_proc / "codc_resid_panel.csv")
@@ -345,7 +345,7 @@ def main() -> None:
         label="Hormuz z20 (+9d avail)",
     )
     axes[0].set_ylabel("z")
-    axes[0].set_title("ALT-20260907-03 PortWatch Hormuz n_total z20")
+    axes[0].set_title("ALT-20260907-04 PortWatch Hormuz n_total z20")
     axes[0].legend(loc="upper left", fontsize=8)
     twin = axes[0].twinx()
     twin.plot(subset.index, subset["Close"], color="#b85c38", lw=0.7, alpha=0.65)
@@ -358,10 +358,10 @@ def main() -> None:
         lw=0.55,
         label="Δ HY OAS (+1d)",
     )
-    axes[1].set_title("ALT-20260907-04 ICE BofA HY OAS daily change")
+    axes[1].set_title("ALT-20260907-13 ICE BofA HY OAS daily change")
     axes[1].legend(loc="upper left", fontsize=8)
     figure.tight_layout()
-    for candidate_id in ["ALT-20260907-03", "ALT-20260907-04"]:
+    for candidate_id in ["ALT-20260907-04", "ALT-20260907-13"]:
         directory = ROOT / "research" / "indexes" / candidate_id
         directory.mkdir(parents=True, exist_ok=True)
         figure.savefig(directory / f"series_{RUN_TS}.png", dpi=120)
@@ -381,7 +381,7 @@ def main() -> None:
         axis.set_ylabel("WTI RV5")
         axis.set_title(title)
     figure.tight_layout()
-    for candidate_id in ["ALT-20260907-03", "ALT-20260907-04"]:
+    for candidate_id in ["ALT-20260907-04", "ALT-20260907-13"]:
         figure.savefig(
             ROOT / "research" / "indexes" / candidate_id / f"scatter_is_{RUN_TS}.png",
             dpi=120,

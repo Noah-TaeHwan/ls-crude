@@ -6,7 +6,7 @@
 
 ## Current research status (2026-09-07)
 
-**Still hunting.** 신규 OS 원장 `research/candidates/ledger.csv`에 ALT-20260907-01…10 등록(KEEP 2 / KILL 3 / PARK 5). 팩터 보드 통과 수는 여전히 **0**.
+**Still hunting.** activity-proxy 탐색(ALT-01…08)에 joint-hunt(PortWatch=ALT-04 실증, 추가 ALT-09…17)를 합쳤다. 팩터 보드 통과 수는 여전히 **0**.
 
 | 축 | 상태 |
 | --- | --- |
@@ -128,7 +128,7 @@
 | 082 | Korea Kitchen Oil Stress / Palm–WTI Cointegration | — | — | HOLD — 한국 식용유 장기 소매가격·공개일·개정 이력 미확보; 팜유–WTI 공적분·선행성·OOS 미검정 |
 | 083 | Iced Americano Pass-Through | — | — | HOLD — 커피(외식) CPI의 월별 최초 공표일 패널이 없어 세 자산 사양 미검정 |
 | 084 | Trailhead Tailgate Index | 별도표 | 별도표 | REJECTED — RBOB 21일 수익률 IS/OOS `-0.127/+0.186` 부호 반전; RV OOS 값도 채택 불가 |
-| 085 | Watermelon Reefer Squeeze Index | — | — | HOLD — USDA 냉장트럭 가용성·수박 적재량은 무료 후보이나 API 키·역사 공개시점·계절 통제·IS/OOS 미실행 |
+| 085 | Watermelon Reefer Squeeze Index | 별도표 | 별도표 | HOLD — 공개 분기 물량 프록시 HO 수익률 +0.073/+0.465이나 OOS n=7; 주간 shortage 본신호 미검정 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -220,7 +220,7 @@
 | 082 | [Korea Kitchen Oil Stress / Palm–WTI Cointegration](082-korea-kitchen-oil-stress/README.md) | 팜·대두·카놀라유·환율과 한국 식용유 가격의 원가 전가 | **HOLD** — 팜유–WTI 공적분은 검정 후보일 뿐, 선행성·시점·OOS 미검정 | 0.0 |
 | 083 | [Iced Americano Pass-Through](083-iced-americano-pass-through/README.md) | 커피(외식) CPI → 원화·국채·식품/급식 상대수익률 | **HOLD** — 공식 월별 CPI 원표·최초 공표일 패널 미확보; 세 자산 사양 모두 미검정 | 0.0 |
 | 084 | [Trailhead Tailgate Index](084-trailhead-tailgate-index/README.md) | 드라이브형 국립공원 방문 서프라이즈 → RBOB | **REJECTED** — RBOB 수익률 IS/OOS `-0.127/+0.186` 부호 반전; RV OOS `-0.282`는 n=23·IS 0 근처 | 0.0 |
-| 085 | [Watermelon Reefer Squeeze Index](085-watermelon-reefer-squeeze-index/README.md) | 수박 출하철 냉장 트럭 부족 → diesel/HO 물류 압력 | **HOLD** — USDA 주간 availability·분기 적재량을 수집해 공개시점·계절 통제 후 검정 | 0.0 |
+| 085 | [Watermelon Reefer Squeeze Index](085-watermelon-reefer-squeeze-index/README.md) | 수박 출하철 냉장 트럭 부족 → diesel/HO 물류 압력 | **HOLD** — 공개 분기 적재량 프록시는 HO 수익률 `+0.073/+0.465`이나 OOS n=7; 주간 shortage 본신호 미검정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
