@@ -112,6 +112,7 @@
 | 079 | Korea Naphtha Export Thermometer | — | — | HOLD — HS 바스켓·역사·공개일·개정 빈티지 미고정; 월간 무역 후보 |
 | 080 | Korea Fuel-Switch Dispatch Alert | — | — | HOLD — 연료별 발전량의 연속 역사·개정·공표시점 미감사; 연료전환 후보 |
 | 081 | Korea LPG Substitution Pulse | — | — | HOLD — 실제 차량·연료 판매·운행거리 장기 패널과 공개일 미확보; 상대가격 후보 |
+| 082 | Korea Kitchen Oil Stress / Palm–WTI Cointegration | — | — | HOLD — 한국 식용유 장기 소매가격·공개일·개정 이력 미확보; 팜유–WTI 공적분·선행성·OOS 미검정 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
