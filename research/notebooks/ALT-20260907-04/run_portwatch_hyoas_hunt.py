@@ -240,7 +240,7 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    hy_raw = ROOT / f"research/gathering/raw/ALT-20260907-13/{RUN_TS}"
+    hy_raw = ROOT / f"research/gathering/raw/ALT-20260907-20/{RUN_TS}"
     hy_oas = fetch_fred("BAMLH0A0HYM2", hy_raw)
     (hy_raw / "manifest.json").write_text(
         json.dumps(
@@ -258,7 +258,7 @@ def main() -> None:
         encoding="utf-8",
     )
     (hy_raw / "README.md").write_text(
-        f"# ALT-20260907-13 FRED HY OAS raw\n\nUTC retrieve: `{RUN_TS}`\n\n"
+        f"# ALT-20260907-20 FRED HY OAS raw\n\nUTC retrieve: `{RUN_TS}`\n\n"
         f"series BAMLH0A0HYM2 rows={int(hy_oas.notna().sum())} | "
         f"{hy_oas.index.min().date()}..{hy_oas.index.max().date()}\n\n"
         f"sha256 `{sha256(hy_raw / 'BAMLH0A0HYM2.csv')}`.\n",
@@ -298,7 +298,7 @@ def main() -> None:
     portwatch_panel.to_csv(portwatch_proc / "index_wti_panel.csv")
     transit_z.to_csv(portwatch_proc / "pw_z20.csv", header=True)
 
-    hy_proc = ROOT / f"research/data/processed/ALT-20260907-13/{RUN_TS}"
+    hy_proc = ROOT / f"research/data/processed/ALT-20260907-20/{RUN_TS}"
     hy_proc.mkdir(parents=True, exist_ok=True)
     hy_panel.to_csv(hy_proc / "hy_doas_panel.csv")
     codc_panel.to_csv(hy_proc / "codc_resid_panel.csv")
@@ -358,10 +358,10 @@ def main() -> None:
         lw=0.55,
         label="Δ HY OAS (+1d)",
     )
-    axes[1].set_title("ALT-20260907-13 ICE BofA HY OAS daily change")
+    axes[1].set_title("ALT-20260907-20 ICE BofA HY OAS daily change")
     axes[1].legend(loc="upper left", fontsize=8)
     figure.tight_layout()
-    for candidate_id in ["ALT-20260907-04", "ALT-20260907-13"]:
+    for candidate_id in ["ALT-20260907-04", "ALT-20260907-20"]:
         directory = ROOT / "research" / "indexes" / candidate_id
         directory.mkdir(parents=True, exist_ok=True)
         figure.savefig(directory / f"series_{RUN_TS}.png", dpi=120)
@@ -381,7 +381,7 @@ def main() -> None:
         axis.set_ylabel("WTI RV5")
         axis.set_title(title)
     figure.tight_layout()
-    for candidate_id in ["ALT-20260907-04", "ALT-20260907-13"]:
+    for candidate_id in ["ALT-20260907-04", "ALT-20260907-20"]:
         figure.savefig(
             ROOT / "research" / "indexes" / candidate_id / f"scatter_is_{RUN_TS}.png",
             dpi=120,
