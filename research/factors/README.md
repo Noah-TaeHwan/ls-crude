@@ -106,6 +106,12 @@
 | 073 | Incheon Dawn Restock Index | — | — | HOLD — 월간 화물은 공개되나 면세 리스톡·새벽 활동 미측정 |
 | 074 | Refinery Multi-Block Composite | 별도표 | 별도표 | REJECTED — MPC 변동성 복합 검정은 IS 관계·OOS 통제/사건 검정 미통과; WTI 통과 아님 |
 | 075 | Academic Liquidity Calendar | 별도표 | 별도표 | REJECTED AS ALPHA / MONITOR ONLY — WTI 계절성 IS/OOS BH 기준 미통과; 자산·달력창별 검정은 카드 참조 |
+| 076 | Hidden Hydrocarbon Exposure Screen | 별도표 | 별도표 | REJECTED AS OIL ALPHA — WTI 미래 변동성 검정 미통과; 타깃·신호별 검정은 카드 참조 |
+| 077 | Korea Pump Pass-Through & Station Freeze | — | — | HOLD — 지역가격 역사·개별 주유소 스냅샷·공표시점 미감사; 국내 전가 모니터 후보 |
+| 078 | Korea Freight & Port Fuel Pulse | — | — | HOLD — 차종 정의·역사 연속성·첫 공개일 미수집; 교통·항만 집계 후보 |
+| 079 | Korea Naphtha Export Thermometer | — | — | HOLD — HS 바스켓·역사·공개일·개정 빈티지 미고정; 월간 무역 후보 |
+| 080 | Korea Fuel-Switch Dispatch Alert | — | — | HOLD — 연료별 발전량의 연속 역사·개정·공표시점 미감사; 연료전환 후보 |
+| 081 | Korea LPG Substitution Pulse | — | — | HOLD — 실제 차량·연료 판매·운행거리 장기 패널과 공개일 미확보; 상대가격 후보 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 

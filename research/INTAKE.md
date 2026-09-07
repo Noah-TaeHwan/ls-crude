@@ -1,105 +1,51 @@
 # 연구 수집 규칙
 
-이 파일이 **정본**입니다. AI와 사람이 같은 칸에 넣습니다. 짧은 안내만 필요하면 [`docs/research-gathering.md`](../docs/research-gathering.md)를 봅니다.
+이 파일은 **저장 위치와 승격 절차의 정본**입니다. 신규 활동 proxy의 [방법론](../docs/research-methodology.md)·[검정](../docs/testing-protocol.md)·[기록 규약](../docs/recording-standard.md)을 함께 따릅니다. 예전 crypto×news 전용 조건은 신규 후보의 입장 조건이 아닙니다. 펜타곤 피자는 발상 패턴, Oil Slice는 기존 공개 신호 초안입니다.
 
-타겟은 Yahoo `CL=F` (WTI **선물**, 현물 아님). Oil Slice는 공개 신호 초안일 뿐, 최종 대안 데이터 후보가 아닙니다.
+## 흐름
 
-## 한 줄
+**후보/가설 등록 → 출처·접근 확인 → 허용된 원문 수집 → 노트·지수·검정 → KEEP/KILL/PARK.**
 
-**덤프 → 노트 → (선택) 후보 표 → 실험 한 장.**
+아직 자료가 없어도 실제 아이디어·차단·실패를 기록합니다. 아이디어도 없으면 신규 원장을 비워 둡니다. 조사 덤프를 실험 카드에 바로 올리지 않습니다.
 
-섞지 않습니다. 덤프를 실험 카드에 바로 올리지 않습니다.
-
-## 어디에 넣나
-
-| 이것 | 여기 | 깃에 |
+| 이것 | 위치 | Git / 정본 |
 | --- | --- | --- |
-| PDF·CSV·zip·스크래핑하면 안 되는 메모·검색 결과 원문 | [`gathering/raw/`](gathering/raw/README.md) | 올리지 않음 |
-| 한 장으로 정리한 조사 노트 | [`gathering/notes/`](gathering/notes/README.md) | 마크다운만 |
-| 출처 한 줄 (URL, 라이선스, 지연, look-ahead) | [`gathering/sources/REGISTRY.md`](gathering/sources/REGISTRY.md) | 표만 |
-| 대안 데이터 후보 한 줄 | [`notebooks/pizza-hunt.md`](notebooks/pizza-hunt.md) | 표만. 실후보 없으면 비움 |
-| 살아남은 실험 카드 | [`docs/experiments/NNN-….md`](../docs/experiments/README.md) | `001-`부터 |
-| 후보 시계열 시드 (사람이 고른 CSV) | [`data/pizza/`](data/pizza/README.md) | 시드만. 덤프는 안 됨 |
-| 팀원이 통째로 넣은 랩(코드·노트북) | [`data/`](data/README.md) 아래 원래 폴더 | 옮기지 않음 |
-| Yahoo 빌드 산출 | `data/processed/` | 올리지 않음 |
+| 신규 후보 요약·상세·판정 | [candidates/ledger.csv](candidates/ledger.csv), [양식](candidates/_TEMPLATE.md) 복사 | 작은 CSV·Markdown, 상태가 바뀌어도 경로 유지 |
+| 기존 팩터와 실험 이력 | [factors/README.md](factors/README.md) | 보존. 새 원장에 자동 복제하지 않음 |
+| 허용된 PDF·CSV·응답 등 원본 | [gathering/raw/](gathering/raw/README.md)의 후보 ID/수집시각 폴더 | 덤프 gitignored; 출처/manifest README만 Git |
+| 가설·접근 시도·실패·검토 노트 | [gathering/notes/](gathering/notes/README.md) | 날짜-슬러그.md, 원문 대신 링크·요약 |
+| 출처와 저장/분석/재배포 권한 | [gathering/sources/REGISTRY.md](gathering/sources/REGISTRY.md) | 기존 출처 중복 금지 |
+| 지수 정의·실행 영수증 | [indexes/](indexes/README.md)의 후보 ID/run | 작은 명세·표·허용된 그림만; 원본/대형 출력 금지 |
+| 재현 코드·노트북 | research/notebooks/<candidate_id>/ | 실제 실행 순서·환경·입력·출력 경로 명시 |
+| 정제·지수 출력 | research/data/processed/<candidate_id>/<run>/ | gitignored, 원본과 분리하여 재생성 |
+| 검토 뒤 승격된 실험 | [docs/experiments/](../docs/experiments/README.md) | 다음 비어 있는 번호. 이번 setup에서는 승격 없음 |
+| 기존 작은 시드·팀원 랩 | [data/](data/README.md), [data/pizza/](data/pizza/README.md) | 원래 위치 유지, 무단 이동/삭제 없음 |
+| 옛 crypto×news 조사 표 | [notebooks/pizza-hunt.md](notebooks/pizza-hunt.md) | 역사 문서, 신규 원장은 candidates/ |
 
-## 넣지 않는 것
+기존 날짜-슬러그 raw 폴더와 기존 팩터별 랩은 이동하지 않습니다. 신규 raw의 예시 경로 규칙은 research/gathering/raw/ALT-YYYYMMDD-NN/YYYYMMDDTHHMMSSZ/입니다. 폴더 이름이 UTC라면 manifest에도 그 기준을 적습니다.
 
-- 인베스팅닷컴 **스크래핑**. 뉴스는 사람이 받은 CSV만.
-- 아웃샘플(`2024-01-01` 이후)로 후보를 고르거나 가중치를 만지는 일.
-- 없는 성과 숫자(샤프, MDD, 적중률)를 지어 내기.
-- 비밀키, `.env`, 대용량 parquet/zip/원본 CSV를 깃에 올리기.
-- `research/src/`, `app/`, `research/tests/` 안의 돌아가는 코드를 이 수집 작업으로 지우기.
-- 팀원 드롭(`TTS scrapper`, `iran whale tracker` 같은)을 `gathering/`으로 이사하기.
+## 수집 전후
 
-## 단계
+1. 후보 카드에 activity·sensitive context·WTI 가설과 다음 접근 확인 행동을 적습니다.
+2. 제공자 URL, 공식 API/파일/수동 접근법, 허가·약관 근거 URL/확인일, 관측/공개 주기·역사 범위·빈티지를 출처 표와 카드에 기록합니다. 공개 페이지가 있다는 것만으로 저장·재배포를 허용하지 않습니다.
+3. 확인된 범위 안에서만 수집합니다. 키 필요·허가 불명·역사 부재는 BLOCKED/PARK; 오류는 FAILED/PARK입니다. 시간·명령·실패 이유·재시도 횟수·다음 행동을 보존합니다. 차단을 우회하지 않습니다.
+4. 받은 원본은 새 수집시각 폴더에 저장합니다. README에 URL·수집시각(시간대)·파일명·SHA-256·행 수/기간·명령 또는 수동 절차·권한·재취득 방법을 기록합니다. 원본은 덮어쓰지 않습니다. hash는 파일이 있을 때만 계산합니다.
+5. 정제/집계는 processed의 별도 run에 쓰고 [지수 영수증](indexes/_TEMPLATE.md)에 원본→코드→출력 경로와 hash를 남깁니다. 원본이 바뀌면 새 빈티지로 다룹니다.
+6. 원장·카드·노트에서 미실행/실패/검토 범위를 명시합니다. 동료가 입력에 접근하지 못하면 팀 재현은 미검증입니다.
 
-### 1. 덤프 (`gathering/raw/`)
+raw README도 공개 자료입니다. 비밀키·서명 URL·개인 데이터·재배포 금지 원문을 붙이지 않습니다. 원본은 Git에 올리지 않고 필요한 허용된 인계 방법만 기록합니다.
 
-받은 파일·복사한 원문을 날짜 폴더에 둡니다. 예: `gathering/raw/2026-09-02-hormuz-csv/`.
+## 고정 경계
 
-여기에 적습니다(README 한 줄이면 됨):
+- 가격은 Yahoo Finance CL=F. Investing.com 뉴스는 CSV 정본이며 사이트 스크래핑 금지.
+- 시점은 관측일이 아니라 이용 가능 시각 기준. 지연·주말·시간대·개정·결측을 기록.
+- 선택/튜닝은 2015-01-01~2023-12-31 안에서만. 2024+는 동결 뒤 미열람 조건이 성립할 때 한 번. 기존 열람을 새 ID로 지우지 않음.
+- 라이선스/ToS 위반 수집, 자격증명 취득, 개인·예약자·결제 데이터 수집 금지.
+- 합성 데이터나 미재현 상관·샤프·MDD·적중률을 실증으로 쓰지 않음.
+- 수집 작업으로 app/·src/·tests/·팀원 랩을 변경하지 않음.
 
-- 어디서 왔는지
-- 받은 날짜
-- 인베스팅을 긁지 않았다는 확인
+## 검토와 승격
 
-큰 파일은 깃에 올리지 않습니다. `.gitignore`가 `gathering/raw/` 안 덤프를 막습니다.
+노트·출처·raw/차단 근거·시점·구성·사전 검정 계획을 다른 팀원이 확인한 뒤, 실험을 진행할 준비가 된 후보만 docs/experiments의 다음 번호로 승격할 수 있습니다. 승격은 양의 결과나 알파 인증이 아닙니다. 기존 번호는 재사용하지 않습니다.
 
-### 2. 노트 (`gathering/notes/`)
-
-[`notes/_TEMPLATE.md`](gathering/notes/_TEMPLATE.md)를 복사합니다. 파일 이름: `YYYY-MM-DD-짧은-슬러그.md`.
-
-노트는 **사람이 읽을 한 장**입니다. 원문 붙여넣기가 아닙니다. 링크만 남기고, 가설·리스크·다음에 할 일을 적습니다.
-
-### 3. 출처 표 (`gathering/sources/REGISTRY.md`)
-
-새 데이터 출처면 표에 한 줄 추가합니다. 칸이 길면 [`sources/_TEMPLATE.md`](gathering/sources/_TEMPLATE.md)로 상세 장을 만들고, 표의 «상세» 칸에 링크합니다.
-
-이미 있는 출처(Yahoo `CL=F`, Investing.com CSV, FRED)를 중복으로 넣지 않습니다.
-
-### 4. (선택) 후보 표
-
-크립토의 **뭐** × 뉴스의 **무슨**이 한 줄로 말해질 때만 [`notebooks/pizza-hunt.md`](notebooks/pizza-hunt.md)에 행을 넣습니다.
-
-둘 중 하나라도 없으면 행을 만들지 않습니다. Oil Slice는 이미 실험 `000`에 있으므로 후보 표에 다시 넣지 않습니다.
-
-실후보가 없으면 표를 **비워 둡니다**.
-
-### 5. 승격 — 실험 한 장
-
-노트와 후보 행이 아래 체크를 통과하면 `docs/experiments/001-짧은-슬러그.md`를 만듭니다. 번호는 폴더 README가 정한 다음 번호입니다.
-
-이 단계 전에는 `docs/experiments/`에 쓰지 않습니다. `000`은 공개 신호 초안(비교군)입니다.
-
-### 6. (선택) 시계열 시드
-
-사람이 고른 작은 CSV만 `data/pizza/`에 둡니다. 원본 덤프는 계속 `gathering/raw/`에 둡니다.
-
-## 매번 체크 (노트·실험 카드 공통)
-
-답을 모르면 «모름»이라고 씁니다. 추측으로 채우지 않습니다.
-
-| 체크 | 통과 기준 |
-| --- | --- |
-| 타겟 | WTI 선물 `CL=F`. 현물·`BZ=F`를 몰래 바꾸지 않음 |
-| 가격 | Yahoo Finance만 프로그램으로 받음 |
-| 뉴스 | Investing.com은 CSV. 사이트 스크래핑 없음 |
-| 라이선스 | 재배포·저장 가능 여부를 출처 표에 적음 |
-| look-ahead | 발표 지연·주말·타임존을 적음. 같은 봉으로 몰래 쓰지 않음 |
-| 인샘플 | 고르기·튜닝은 `2015-01-01`~`2023-12-31`만 |
-| 아웃샘플 | `2024-01-01`~ 은 후보를 **언 뒤** 한 번만 |
-| 숫자 | 백테스트 숫자를 지어 내지 않음 |
-| 메커니즘 | «유가 공개 신호와 왜 붙는지»가 없으면 폐기 |
-
-## 승격 / 보류 / 폐기
-
-- **승격**: 체크 통과 + 후보 한 줄이 있음 + 실험 `NNN` 작성.
-- **보류**: 출처·지연이 덜 밝혀짐. 노트만 남기고 실험 카드는 안 만듦.
-- **폐기**: 메커니즘 없음, 맵/히트맵이 메인 신호, 인베스팅 스크래핑이 필요, 아웃샘플을 봐야만 살아 보임.
-
-폐기도 노트에 한 줄로 남깁니다. 조용히 지우지 않습니다.
-
-## 에이전트에게
-
-코드를 건드리기 전에 이 파일과 해당 스킬을 읽습니다. 조사 결과는 `gathering/notes/`에 씁니다. `docs/experiments/`는 승격만. 성과 숫자를 만들지 말고, 인베스팅닷컴을 긁지 말고, 아웃샘플로 고르지 않습니다.
+KILL은 같은 카드에 종료 근거와 이력을 남깁니다. PARK는 재개 조건·담당·날짜를 남깁니다. KEEP은 다음 연구 단계의 기준과 제한을 남깁니다. 결정과 수집/검정 상태를 혼동하지 않으며, 실패 원본·노트는 삭제하지 않습니다.

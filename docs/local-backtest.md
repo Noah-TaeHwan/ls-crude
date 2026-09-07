@@ -24,7 +24,7 @@ Windows면 `source` 대신 `.venv\Scripts\activate`.
 
 신호는 공개된 뒤에만 사용할 수 있습니다. 같은 날 종가를 신호에 넣지 않습니다.
 
-후보 표는 [`research/notebooks/pizza-hunt.md`](../research/notebooks/pizza-hunt.md)에 있습니다. 실제 후보가 없으면 표를 비웁니다.
+신규 후보는 [원장](../research/candidates/ledger.csv)과 [기록 규약](recording-standard.md)을 따릅니다. 아래 인계는 당시 기록이며 현재 성과/후보 수를 뜻하지 않습니다.
 
 ## 손성찬 인계 (2026-09-04)
 

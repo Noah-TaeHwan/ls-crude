@@ -1,27 +1,13 @@
 # 연구 수집 — 짧은 안내
 
-규칙의 정본은 [`research/INTAKE.md`](../research/INTAKE.md)입니다. 이 페이지는 그 입구입니다.
+**새 후보/가설 → 출처·접근 확인 → 허용된 원본 → 노트·구성·검정 → KEEP/KILL/PARK.**
 
-## 흐름
+[후보 원장](../research/candidates/ledger.csv)과 [카드 양식](../research/candidates/_TEMPLATE.md)이 신규 연구 입구입니다. 원장은 현재 0행이며 기존 팩터 기록을 초기화하지 않습니다. [기록 규약](recording-standard.md)의 필수 칸과 상태를 사용합니다.
 
-```text
-gathering/raw     받은 그대로 (깃 안 올림)
-      ↓
-gathering/notes   한 장 정리
-      ↓
-sources 표        라이선스·지연·look-ahead
-      ↓
-pizza-hunt.md     크립토의 뭐 × 뉴스의 무슨 (없으면 표 비움)
-      ↓
-docs/experiments  살아남은 실험 카드 (001-…)
-```
+- 저장 위치와 승격: [INTAKE](../research/INTAKE.md)
+- 어떻게 조사하는가: [방법론](research-methodology.md)
+- 무엇을 증거로 보는가: [검정 규약](testing-protocol.md)
+- 조사 덤프/요약/출처: [gathering](../research/gathering/README.md)
+- 기존 결과: [factors](../research/factors/README.md)
 
-Oil Slice는 이미 `docs/experiments/000-…`에 있는 **공개 신호 초안**입니다. 수집 파이프라인의 최종 대안 데이터 후보가 아닙니다.
-
-## 고정
-
-- 가격: Yahoo `CL=F` (선물)
-- 뉴스: Investing.com CSV. 스크래핑 금지
-- 고르기: 인샘플 `2015-01-01`~`2023-12-31`만
-- 아웃샘플 `2024-01-01`~ 는 후보를 언 뒤 한 번만
-- 성과 숫자를 지어 내지 않음
+가격은 Yahoo CL=F, 연구 뉴스는 Investing.com CSV이며 사이트 스크래핑은 금지합니다. 선택은 인샘플 2015–2023, 2024+는 미열람 조건을 확인한 뒤 동결 후 한 번만 평가합니다. Oil Slice는 기존 공개 신호 초안이며 이번 신규 활동 proxy의 필수 결합 요소가 아닙니다.
