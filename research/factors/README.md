@@ -129,10 +129,10 @@
 | 083 | Iced Americano Pass-Through | — | — | HOLD — 커피(외식) CPI의 월별 최초 공표일 패널이 없어 세 자산 사양 미검정 |
 | 084 | Trailhead Tailgate Index | 별도표 | 별도표 | REJECTED — RBOB 21일 수익률 IS/OOS `-0.127/+0.186` 부호 반전; RV OOS 값도 채택 불가 |
 | 085 | Watermelon Reefer Squeeze Index | 별도표 | 별도표 | HOLD — 공개 분기 물량 프록시 HO 수익률 +0.073/+0.465이나 OOS n=7; 주간 shortage 본신호 미검정 |
-| 086 | [Harvest Combine Diesel Pulse](086-harvest-combine-diesel-pulse/README.md) | 별도표 | 별도표 | HOLD — USDA 옥수수·대두 수확 진도 surprise → HO RV5는 IS +0.301이나 OOS +0.181, n=13·p=.553으로 재현 실패 |
-| 087 | [Chicken Wing Cold-Chain Index](087-chicken-wing-cold-chain-index/README.md) | 별도표 | 별도표 | REJECTED — USDA 주간 도계·냉동 가금 재고 복합 → HO RV5는 IS -0.063, OOS -0.179. 둘 다 유의하지 않음 |
-| 088 | [Borderline Diesel Index](088-borderline-diesel-index/README.md) | 별도표 | 별도표 | HOLD — BTS 국경 트럭 YoY → HO RV21은 총량 IS/OOS +0.066/-0.275; 캐나다 OOS -0.384은 IS +0.087과 불일치 |
-| 089 | [Friday Escape Velocity](089-friday-escape-velocity/README.md) | 별도표 | 별도표 | HOLD — BTS 월간 항공 복합 → HO RV21은 IS/OOS +0.061/-0.567 부호 반전; Friday 자체는 무료 월간 집계에서 미측정 |
+| 086 | Harvest Combine Diesel Pulse | 별도표 | 별도표 | HOLD — USDA 옥수수·대두 수확 진도 surprise → HO RV5는 IS +0.301이나 OOS +0.181, n=13·p=.553으로 재현 실패 |
+| 087 | Chicken Wing Cold-Chain Index | 별도표 | 별도표 | REJECTED — USDA 주간 도계·냉동 가금 재고 복합 → HO RV5는 IS -0.063, OOS -0.179. 둘 다 유의하지 않음 |
+| 088 | Borderline Diesel Index | 별도표 | 별도표 | HOLD — BTS 국경 트럭 YoY → HO RV21은 총량 IS/OOS +0.066/-0.275; 캐나다 OOS -0.384은 IS +0.087과 불일치 |
+| 089 | Friday Escape Velocity | 별도표 | 별도표 | HOLD — BTS 월간 항공 복합 → HO RV21은 IS/OOS +0.061/-0.567 부호 반전; Friday 자체는 무료 월간 집계에서 미측정 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -225,6 +225,10 @@
 | 083 | [Iced Americano Pass-Through](083-iced-americano-pass-through/README.md) | 커피(외식) CPI → 원화·국채·식품/급식 상대수익률 | **HOLD** — 공식 월별 CPI 원표·최초 공표일 패널 미확보; 세 자산 사양 모두 미검정 | 0.0 |
 | 084 | [Trailhead Tailgate Index](084-trailhead-tailgate-index/README.md) | 드라이브형 국립공원 방문 서프라이즈 → RBOB | **REJECTED** — RBOB 수익률 IS/OOS `-0.127/+0.186` 부호 반전; RV OOS `-0.282`는 n=23·IS 0 근처 | 0.0 |
 | 085 | [Watermelon Reefer Squeeze Index](085-watermelon-reefer-squeeze-index/README.md) | 수박 출하철 냉장 트럭 부족 → diesel/HO 물류 압력 | **HOLD** — 공개 분기 적재량 프록시는 HO 수익률 `+0.073/+0.465`이나 OOS n=7; 주간 shortage 본신호 미검정 | 0.0 |
+| 086 | [Harvest Combine Diesel Pulse](086-harvest-combine-diesel-pulse/README.md) | USDA 수확 진도 surprise → 난방유 변동성 | HOLD — USDA 옥수수·대두 수확 진도 surprise → HO RV5는 IS +0.301이나 OOS +0.181, n=13·p=.553으로 재현 실패 | 0.0 |
+| 087 | [Chicken Wing Cold-Chain Index](087-chicken-wing-cold-chain-index/README.md) | USDA 주간 도계·냉동재고 복합 → 난방유 변동성 | REJECTED — USDA 주간 도계·냉동 가금 재고 복합 → HO RV5는 IS -0.063, OOS -0.179. 둘 다 유의하지 않음 | 0.0 |
+| 088 | [Borderline Diesel Index](088-borderline-diesel-index/README.md) | BTS 국경 트럭 YoY → 난방유 수익률·변동성 | HOLD — BTS 국경 트럭 YoY → HO RV21은 총량 IS/OOS +0.066/-0.275; 캐나다 OOS -0.384은 IS +0.087과 불일치 | 0.0 |
+| 089 | [Friday Escape Velocity](089-friday-escape-velocity/README.md) | BTS 월간 항공수요 → 난방유·RBOB 변동성 | HOLD — BTS 월간 항공 복합 → HO RV21은 IS/OOS +0.061/-0.567 부호 반전; Friday 자체는 무료 월간 집계에서 미측정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
