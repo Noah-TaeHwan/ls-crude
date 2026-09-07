@@ -34,6 +34,20 @@ research/.venv/bin/python research/notebooks/ALT-20260907-01/hunt.py check
 research/.venv/bin/python research/notebooks/ALT-20260907-01/hunt.py analyze --candidate 01 --raw research/gathering/raw/ALT-20260907-01/20260907T062017Z
 ```
 
+## Current research status (2026-09-07 공동 탐색 — still hunting)
+
+우승 지수 없음. 9후보를 [신규 원장](research/candidates/ledger.csv)에 등록했고 4건은 IS(2015~2023 · 2024+ 미열람)로 1회씩 실행했다. 전부 PARK이며 KEEP은 없다. 상세는 [피자급 신호 메모](research/gathering/notes/2026-09-07-pizza-class-alt-data-memo.md).
+
+| 후보 | 결과 | 판정 |
+| --- | --- | --- |
+| 10 WTI COT 머니매니저 | n=441 · r=-0.10 · placebo -0.15 · 후반기 소멸 | PARK |
+| 11 미국 디젤 수요 | n=468 · r=-0.18 · 예측 lag 소멸 · 역방향 선행 | PARK |
+| 12 BTS 화물 TSI | n=106 · r=+0.02 · 파이프라인 혼입 한계 | PARK |
+| 13 호르무즈 유조선 통과 | n=231 부분구간 · r=-0.03 · 코로나 창 의존 | PARK |
+| 09 가스 재고 · 14 NOAA 도일 · 15 ADS-B · 16 FIRMS · 17 헤드라인 | 파일명 404 · 월간 404 · 이력 미확인 · MAP_KEY · Guardian 키 | PARK |
+
+다음 사람 판단: 16·17 키 주체와 09 파일명 수동 확인. 다음 문서 확인: 14 월간 경로와 15 이력 조건. 동료 교차 검토는 09-12 예정이며 그 전까지 E3는 탐색적 기록이다.
+
 ## 범위와 비목표
 
 찾는 것은 물류·운영·소비 등 해석 가능한 활동 대리변수와 그 자료에 접근할 수 있는지에 대한 근거입니다. 자료가 적격하면 지수 형태로 구성해 WTI의 수익률 또는 변동성과 상관·시차·사건·placebo를 검정합니다. 관계가 없거나 자료를 얻지 못해도 그 기록은 발표 재료입니다.
