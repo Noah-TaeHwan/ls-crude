@@ -98,6 +98,8 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 085 | Watermelon Reefer Squeeze Index | ⬜ 별도표 | ⬜ 별도표 | HO 80 분기 | HO 7 분기 | WTI 공통 타깃이 아닌 공개 XLS 수박 분기 물량 YoY z-score → HO 21일 검정. 수익률 +0.073/+0.465, RV -0.103/-0.214이나 OOS n=7; 주간 shortage 본신호 미검정 |
 | 086 | Harvest Combine Diesel Pulse | ⬜ 별도표 | ⬜ 별도표 | HO 85 주 | HO 13 주 | WTI 공통 타깃이 아닌 USDA 옥수수·대두 수확완료율의 평년 대비 surprise → 다음 5일 HO 검정. RV +0.301/+0.181; OOS p=.553·n=13으로 재현 실패. 수익률 -0.072/+0.373도 불안정 |
 | 087 | Chicken Wing Cold-Chain Index | ⬜ 별도표 | ⬜ 별도표 | HO 185 주 | HO 87 주 | WTI 공통 타깃이 아닌 USDA 도계 변화 + 냉동 기타 가금 재고감소의 52주 z 복합 → 다음 5일 HO 검정. RV -0.063/-0.179, 수익률 +0.094/+0.106. 모두 비유의; IS는 2019–2023 축소 구간 |
+| 088 | Borderline Diesel Index | ⬜ 별도표 | ⬜ 별도표 | HO 108 월 | HO 27 월 | BTS 캐나다·멕시코 미국 입국 truck crossings YoY → 다음 21일 HO 검정. 총량 RV +0.066/-0.275; 월말+6개월 지연. OOS 캐나다 -0.384은 IS +0.087과 불일치 |
+| 089 | Friday Escape Velocity | ⬜ 별도표 | ⬜ 별도표 | HO 105 월 | HO 27 월 | BTS T-100 월간 여객·화물·출발편 동가중 → 다음 21일 HO 검정. RV +0.061/-0.567 부호 반전. 무료 월간 자료는 Friday·주말 수요를 측정하지 않음 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 

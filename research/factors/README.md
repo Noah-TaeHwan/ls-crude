@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–087은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–089는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## Current research status (2026-09-07)
@@ -38,7 +38,7 @@
 
 ## 라이브 상관관계 스코어보드
 
-**마지막 WTI 계산**: 2026-09-03 · **직접 에너지 타깃 최신 추가**: 087은 2026-09-07. 공통 WTI 타깃은 신호 공개 뒤 다음 5거래일 실현변동성이다. 월간 입력(011, 015, 022, 027, 030, 042–045)은 다음 21거래일, 연간 004는 다음 완전연도를 사용한다.
+**마지막 WTI 계산**: 2026-09-03 · **직접 에너지 타깃 최신 추가**: 089는 2026-09-07. 공통 WTI 타깃은 신호 공개 뒤 다음 5거래일 실현변동성이다. 월간 입력(011, 015, 022, 027, 030, 042–045, 088–089)은 다음 21거래일, 연간 004는 다음 완전연도를 사용한다.
 
 이 표는 각 카드의 검증 헤더와 [상세 검증 로그](../reports/2026-09-03-factor-validation-share.md)를 요약한 **정식 라이브 매트릭스**다. `—`는 0이 아니라 적법한 공개 장기 신호·공개시점·표본이 아직 갖춰지지 않아 계산하지 못했다는 뜻이다. 새 수집·재계산은 카드, 이 표, 상세 로그를 같은 커밋에서 함께 갱신한다.
 
@@ -131,6 +131,8 @@
 | 085 | Watermelon Reefer Squeeze Index | 별도표 | 별도표 | HOLD — 공개 분기 물량 프록시 HO 수익률 +0.073/+0.465이나 OOS n=7; 주간 shortage 본신호 미검정 |
 | 086 | [Harvest Combine Diesel Pulse](086-harvest-combine-diesel-pulse/README.md) | 별도표 | 별도표 | HOLD — USDA 옥수수·대두 수확 진도 surprise → HO RV5는 IS +0.301이나 OOS +0.181, n=13·p=.553으로 재현 실패 |
 | 087 | [Chicken Wing Cold-Chain Index](087-chicken-wing-cold-chain-index/README.md) | 별도표 | 별도표 | REJECTED — USDA 주간 도계·냉동 가금 재고 복합 → HO RV5는 IS -0.063, OOS -0.179. 둘 다 유의하지 않음 |
+| 088 | [Borderline Diesel Index](088-borderline-diesel-index/README.md) | 별도표 | 별도표 | HOLD — BTS 국경 트럭 YoY → HO RV21은 총량 IS/OOS +0.066/-0.275; 캐나다 OOS -0.384은 IS +0.087과 불일치 |
+| 089 | [Friday Escape Velocity](089-friday-escape-velocity/README.md) | 별도표 | 별도표 | HOLD — BTS 월간 항공 복합 → HO RV21은 IS/OOS +0.061/-0.567 부호 반전; Friday 자체는 무료 월간 집계에서 미측정 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
