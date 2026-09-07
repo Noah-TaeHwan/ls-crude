@@ -4,7 +4,7 @@
 
 East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜타곤 피자 인덱스는 **활동 → 민감한 맥락 → 시장과의 가능한 관계**를 생각하는 참고 패턴입니다. 피자 주문을 복제하거나 특정 데이터·양의 상관을 찾아내는 것이 완료 조건은 아닙니다.
 
-현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-07 공동 탐색에서 [신규 원장](research/candidates/ledger.csv)에 8개 가설/자료 조합을 기록했습니다. 곡물 바지선 1개는 실제 지수·WTI 기술 검정을 재현했고, 6개는 접근·허가·시점/구성 조건으로 PARK, Google 피자 인기시간대 방식 1개는 KILL입니다. 전체 판정은 **KEEP 0 / PARK 7 / KILL 1**이며, 새로 검증된 예측 지수는 없습니다. [기존 팩터 이력](research/factors/README.md)의 재검토·인접 후보는 카드에 연결했고 기존 통과 수에 합산하지 않습니다.
+현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-07 [신규 원장](research/candidates/ledger.csv)은 활동 proxy 01–08, 피자급 09–17, 피자급 후속 18–29를 합친 29행입니다. 곡물 바지선은 실제 지수·기술 검정을 재현했고, KEEP은 호르무즈 유조선 척수(18)와 싱가포르 벙커(21)뿐입니다. 새로 검증된 예측 지수는 없습니다. [기존 팩터 이력](research/factors/README.md)의 재검토·인접 후보는 카드에 연결했고 기존 통과 수에 합산하지 않습니다.
 
 | 항목 | 기준 |
 | --- | --- |
@@ -34,9 +34,9 @@ research/.venv/bin/python research/notebooks/ALT-20260907-01/hunt.py check
 research/.venv/bin/python research/notebooks/ALT-20260907-01/hunt.py analyze --candidate 01 --raw research/gathering/raw/ALT-20260907-01/20260907T062017Z
 ```
 
-## Current research status (2026-09-07 공동 탐색 — still hunting)
+### 피자급 09–17
 
-우승 지수 없음. 9후보를 [신규 원장](research/candidates/ledger.csv)에 등록했고 4건은 IS(2015~2023 · 2024+ 미열람)로 1회씩 실행했다. 전부 PARK이며 KEEP은 없다. 상세는 [피자급 신호 메모](research/gathering/notes/2026-09-07-pizza-class-alt-data-memo.md).
+우승 지수 없음. 9후보 중 4건은 IS(2015~2023 · 2024+ 미열람)로 1회씩 실행했고 전부 PARK다. 상세는 [피자급 신호 메모](research/gathering/notes/2026-09-07-pizza-class-alt-data-memo.md).
 
 | 후보 | 결과 | 판정 |
 | --- | --- | --- |
@@ -46,7 +46,26 @@ research/.venv/bin/python research/notebooks/ALT-20260907-01/hunt.py analyze --c
 | 13 호르무즈 유조선 통과 | n=231 부분구간 · r=-0.03 · 코로나 창 의존 | PARK |
 | 09 가스 재고 · 14 NOAA 도일 · 15 ADS-B · 16 FIRMS · 17 헤드라인 | 파일명 404 · 월간 404 · 이력 미확인 · MAP_KEY · Guardian 키 | PARK |
 
-다음 사람 판단: 16·17 키 주체와 09 파일명 수동 확인. 다음 문서 확인: 14 월간 경로와 15 이력 조건. 동료 교차 검토는 09-12 예정이며 그 전까지 E3는 탐색적 기록이다.
+다음 사람 판단: 16·17 키 주체와 09 파일명 수동 확인. 13은 18의 다른 산식(서프라이즈)이며 전체 IS 주장을 하지 않는다.
+
+### 피자급 공개 시계열 18–29
+
+우승 피자 지수는 없다. 작업 중 ID 01–12는 활동 proxy 01–08·09–17과 겹치지 않게 18–29로 옮겼다. 18은 [04 호르무즈 탱커 PARK/BLOCKED](research/candidates/ALT-20260907-04.md)의 수집·검정 후속이다.
+
+| 판정 | ID | 한 줄 |
+| --- | --- | --- |
+| KEEP | [18 PortWatch 호르무즈 유조선](research/candidates/ALT-20260907-18.md) | 집계 AIS 주간 척수 구성됨. IS f1은 약함. 알파 아님 |
+| KEEP | [21 싱가포르 벙커](research/candidates/ALT-20260907-21.md) | Open Data 월간 톤. 공표일 미복원 |
+| PARK | 19 리그 · 20 CFTC · 22 OpenSky · 24 화물TSI · 26 탱커입항 · 29 ERCOT | 공식/차단. 피자 본선 아님 |
+| KILL | 23 커싱 위키 · 25 제트유 공급 · 27 구글 모빌리티 · 28 선박별 AIS | 이상치/공식중복/종료/금지 |
+
+차단: OpenSky 역사 403(연구기관 신청=손성찬/Noah), 탱커 데이터셋 ID 미확보(손성찬), ERCOT 페이지 403(손성찬).  
+숫자·그림: [IS 표](research/indexes/HUNT-20260907-is-stats.csv), [강건성](research/indexes/HUNT-20260907-robustness.csv), [학술 메모](research/gathering/notes/2026-09-07-pizza-index-class-oil-memo.md).  
+원장 검사 `PASS`는 메타데이터 구조일 뿐 알파 증거가 아니다.
+
+```bash
+research/.venv/bin/python research/notebooks/hunt-20260907/build_and_test.py
+```
 
 ## 범위와 비목표
 
@@ -106,7 +125,7 @@ python -m pytest tests/test_splits.py tests/test_wiki_pageviews_asof.py
 
 ## 지수를 못 찾았을 때도 데모하는 방법
 
-README → [탐색 노트의 3분 데모](research/gathering/notes/2026-09-07-activity-proxy-hunt.md#3분-데모) → 01의 실제 그림/검정 → 08의 기각 → 03·05의 차단 → 다음 행동 순서로 설명합니다. 원본 없는 환경에서도 Git의 작은 표·SVG·문헌·차단 영수증으로 오늘의 결과와 재현 한계를 보여줄 수 있습니다. [064 식당](research/factors/064-oilman-steakhouse-index/README.md)·[070 라면](research/factors/070-highway-ramyeon-index/README.md)은 기존 실패 이력으로 연결하며 이번 새 검정으로 세지 않습니다.
+README → [활동 proxy 3분 데모](research/gathering/notes/2026-09-07-activity-proxy-hunt.md#3분-데모) → 01의 실제 그림/검정 → 08의 기각 → 03·05의 차단 → 피자급 18·21 KEEP과 23 기각 → 다음 행동 순서로 설명합니다. 원본 없는 환경에서도 Git의 작은 표·SVG·문헌·차단 영수증으로 오늘의 결과와 재현 한계를 보여줄 수 있습니다. [064 식당](research/factors/064-oilman-steakhouse-index/README.md)·[070 라면](research/factors/070-highway-ramyeon-index/README.md)은 기존 실패 이력으로 연결하며 이번 새 검정으로 세지 않습니다.
 
 09-15에 “done enough”는 **목적 → 실제 탐색 사례 → 접근/측정 실패 또는 재현 가능한 검정 → 판정 → 한계와 다음 조건**이 이어지고, 두 팀원 중 다른 사람이 근거 경로를 따라 설명할 수 있는 상태입니다. 양의 관계·새 지수·매매 성과는 필수가 아닙니다. 09-13 근거 동결, 09-14 오프라인 자료·리허설은 [일별 계획](docs/project-plan.md)에 있습니다.
 

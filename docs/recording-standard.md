@@ -4,7 +4,7 @@
 
 ## 원장과 카드
 
-[ledger.csv](../research/candidates/ledger.csv)는 UTF-8 CSV 요약이고 [후보 카드 양식](../research/candidates/_TEMPLATE.md)을 복사한 파일이 상세 정본입니다. **현재 신규 원장은 0행**입니다. 예시도 넣지 않았습니다. 기존 연구는 [factors](../research/factors/README.md)와 노트에 남으며 전체 연구를 0건으로 초기화하지 않습니다.
+[ledger.csv](../research/candidates/ledger.csv)는 UTF-8 CSV 요약이고 [후보 카드 양식](../research/candidates/_TEMPLATE.md)을 복사한 파일이 상세 정본입니다. **2026-09-07 이후 신규 원장은 활동 proxy 01–08, 피자급 09–17, 피자급 후속 18–29를 합친 29행**입니다. 기존 연구는 [factors](../research/factors/README.md)와 노트에 남으며 전체 연구를 0건으로 초기화하지 않습니다.
 
 1. 기존 가설을 먼저 확인합니다. 신규 ID는 ALT-YYYYMMDD-NN(등록일 KST, 일별 01부터 빈 번호)입니다. 기존 팩터 번호와 혼용하지 않습니다. 같은 후보는 계속 같은 ID를 쓰고, 재개 시 legacy_ref와 과거 노출/판정을 명시합니다.
 2. 후보 양식을 research/candidates/<candidate_id>.md로 복사하고 모든 칸을 채웁니다. 모르는 사실은 미확인, 실행 전 결과는 미실행으로 씁니다.
