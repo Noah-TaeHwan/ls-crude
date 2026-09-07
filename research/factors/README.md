@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–063는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–068은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -94,6 +94,11 @@
 | 061 | Refinery–Credit Stress Gate | — | — | HOLD — 041 저가동률 AND 060 극단 괴리의 MPC/RBOB 변동성 게이트; 060 원시 패널 미확보 |
 | 062 | Industrial Credit–Inventory Stress Regime | — | — | HOLD — 059 산업재고 극단 AND 060 극단 괴리의 월간 RBOB/XLE 변동성 게이트; 두 입력 미실측 |
 | 063 | Conspiracy Attention Index | 별도표 | 별도표 | MEME / MONITOR ONLY — Bitcoin OOS 변동성 발견값은 IS 미재현·OOS 사건 5개; 금 관계 소멸 |
+| 064 | Oilman Steakhouse Index | — | — | REJECTED — 공개 장기 예약·도착 집계가 없어 원 가설 미측정 |
+| 065 | War-Room Coffee Index | — | — | REJECTED — 심야·트레이딩 지구 커피 수요 공개 패널 없음 |
+| 066 | Crew-Change Rush Index | — | — | REJECTED — BTS 항공 승객은 offshore crew change가 아님 |
+| 067 | Oilman Haircut Index | — | — | ARCHIVED — 개인 스타일·이발 수요는 수집하지 않음 |
+| 068 | Energy Corridor Midnight Lights | — | — | HOLD — 2012–2020 공개 야간광은 확인했으나 사무실 야근 식별·2024+ OOS 불가 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -164,6 +169,11 @@
 | 061 | [Refinery–Credit Stress Gate](061-refinery-credit-stress-gate/README.md) | 041 저가동률 × 060 신용–원유 괴리의 정유 위험 게이트 | **HOLD** — 평균 결합이 아닌 동시 극단 이진 게이트. 041 단독 MPC 결과를 조합 성과로 쓰지 않으며, 060 패널 뒤 검정 | 0.0 |
 | 062 | [Industrial Credit–Inventory Stress Regime](062-industrial-credit-inventory-regime/README.md) | 059 산업 재고속도 × 060 신용–원유 괴리의 월간 위험 게이트 | **HOLD** — 059·060 실제 공개시점 패널을 확보한 뒤 월간 비중첩 RBOB/XLE 검정 | 0.0 |
 | 063 | [Conspiracy Attention Index](063-conspiracy-attention-index/README.md) | 음모론 관심도 × Bitcoin·금 ‘weirdness’ 모니터 | **MEME / MONITOR ONLY** — BTC RV OOS `+0.193`은 IS `+0.016`과 불일치·사건 5개. 금은 IS/OOS `+0.161/-0.026` 반전 | 0.0 |
+| 064 | [Oilman Steakhouse Index](064-oilman-steakhouse-index/README.md) | 에너지 도시 심야 식당 수요 밈 | **REJECTED** — 현재 지도/리뷰는 과거 예약·도착 집계가 아니며 가격 검정 불가 | 0.0 |
+| 065 | [War-Room Coffee Index](065-war-room-coffee-index/README.md) | 에너지 트레이딩 지구 심야 커피 밈 | **REJECTED** — 시간대별 익명 소비 장기 패널 없음 | 0.0 |
+| 066 | [Crew-Change Rush Index](066-crew-change-rush-index/README.md) | 해상 운영 교대·항공/호텔 밈 | **REJECTED** — 공개 T-100 승객은 교대근무자가 아니므로 프록시 금지 | 0.0 |
+| 067 | [Oilman Haircut Index](067-oilman-haircut-index/README.md) | 현장 도시 바버샵 밈 | **ARCHIVED** — 개인 외모·고객 수요는 수집하지 않음 | 0.0 |
+| 068 | [Energy Corridor Midnight Lights](068-energy-corridor-midnight-lights/README.md) | 에너지 도시 야간광·운영 스트레스 밈 | **HOLD** — 공개 2012–2020 위성 광도는 있으나 특정 사무실·야근은 미측정, OOS 불충족 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 

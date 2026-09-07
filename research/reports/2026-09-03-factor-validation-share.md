@@ -77,6 +77,11 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 061 | Refinery–Credit Stress Gate | ⬜ `—` | ⬜ `—` | — | — | 5분 quick test 미실행: 060 HY OAS 공식 FRED CSV 연결 재설정 2회, DBnomics 미러 `404`. 041 저가동률 AND 060 괴리 게이트 계산 불가 |
 | 062 | Industrial Credit–Inventory Stress Regime | ⬜ `—` | ⬜ `—` | — | — | 5분 quick test 미실행: 059 실제 공개시점 패널 및 060 HY OAS가 모두 부재. 월간 동시 극단 게이트 계산 불가 |
 | 063 | Conspiracy Attention Index | ⬜ 별도표 | ⬜ 별도표 | BTC 3,046 / GLD 2,098 일 | BTC 974 / GLD 667 일 | WTI 공통 타깃이 아닌 6개 Wikimedia 음모론 문서 관심도 × BTC·GLD 별도 검정. BTC OOS RV 발견값은 IS 미재현, GLD는 OOS 소멸 |
+| 064 | Oilman Steakhouse Index | ⬜ `—` | ⬜ `—` | — | — | 공개 장기 예약·도착 집계가 없어 원 가설을 측정하지 못함 |
+| 065 | War-Room Coffee Index | ⬜ `—` | ⬜ `—` | — | — | 심야·트레이딩 지구 커피 수요의 공개 장기 패널 없음 |
+| 066 | Crew-Change Rush Index | ⬜ `—` | ⬜ `—` | — | — | BTS T-100은 승객·화물·우편이며 offshore crew change를 식별하지 않음 |
+| 067 | Oilman Haircut Index | ⬜ `—` | ⬜ `—` | — | — | 개인 스타일·이발 수요를 수집하지 않아 검정 제외 |
+| 068 | Energy Corridor Midnight Lights | ⬜ `—` | ⬜ `—` | — | — | 2012–2020 공개 야간광은 확인했으나 사무실 야근 미식별·2024+ OOS 불충족 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 

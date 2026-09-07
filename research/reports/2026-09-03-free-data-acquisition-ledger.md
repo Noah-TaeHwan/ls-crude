@@ -82,6 +82,11 @@
 | 042A | MTA Wall Street 역군 월별 탑승량 | 수집·검증(설명적)·구성요소 반증 | 기본 IS `+0.044`, OOS `-0.350`; 4개 구성요소도 반전/소멸. 4도시 AFHP 패널은 미구축 | `gathering/raw/2026-09-03-wall-street-district-pulse-probe/`, `2026-09-03-rescue-diagnostics-027-042/` |
 | 047 | Google Trends trade-down 관심도 바스켓 | 보류 | Temu 역사 부족. 공개 UI에는 안정적 연구 API·빈티지 계약이 없어 관심도를 판매로 바꾸지 않음 | [047 카드](../factors/047-conscience-compression-index/README.md) |
 | 048 | YouTube 공개 에피소드 메타데이터 | MEME / monitor only | 2020년대 시작·주간 사후 논평·썸네일 변경 가능성. 공개 문화 주석만 허용 | [048 카드](../factors/048-all-in-tie-day-index/README.md) |
+| 064 | Yelp 현재 사업장/제한 리뷰·OSM 지도 이력 | 수집·기각 | 과거 예약·도착·심야 좌석은 없음. 지도 편집을 식당 수요로 대체하지 않음 | [064 카드](../factors/064-oilman-steakhouse-index/README.md); [감사](../gathering/notes/2026-09-07-pizza-style-five-factor-audit.md) |
+| 065 | 현재 카페 지도·기업공시 | 수집·기각 | 심야·에너지 트레이딩 지구 소비 패널 없음. 045 Starbucks 매출 프록시는 다른 측정값이고 부호 반전 | [065 카드](../factors/065-war-room-coffee-index/README.md) |
+| 066 | BTS T-100 월간 공항 시장 | 수집·기각 | 1990년부터지만 승객은 비행·객실 승무원을 제외. offshore 교대·헬기·호텔을 대체하지 않음 | [066 카드](../factors/066-crew-change-rush-index/README.md) |
+| 067 | 현재 사업장 정보·검색 UI | 수집·분석 제외 | 이발 예약/고객·개인 스타일 장기 패널 없음. 사진·개인 외모 데이터 수집 금지 | [067 카드](../factors/067-oilman-haircut-index/README.md) |
+| 068 | World Bank Light Every Night·NASA Black Marble | 소스 수집·HOLD | VIIRS-DNB 2012–2020 공개 COG/STAC, NASA 2012+ 일별/월별 원시 확인. 현 환경의 소형 표본 다운로드는 TLS 인증 실패; 500m 광도는 사무실 야근 미식별, 2024+ OOS도 불충족 | [068 카드](../factors/068-energy-corridor-midnight-lights/README.md); [감사](../gathering/notes/2026-09-07-pizza-style-five-factor-audit.md) |
 
 ## 다음 실행 순서
 
