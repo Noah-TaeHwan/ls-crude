@@ -1,5 +1,7 @@
 # 📋 LS CRUDE Research — 전체 색인
 
+> **역사 설계 전용**: 아래 예상 성과·가중치·구현 상태·후보 수는 현재 연구 결론이 아닙니다. 신규 운영 입구는 [README](README.md)와 [기록 규약](../docs/recording-standard.md), 기존 판정은 [factors](factors/README.md)입니다.
+
 > **상태 주의 — 2026-09-03**: 이 문서는 초기 설계 색인이다. 팩터 번호·판정·가중치의 정본은 [`factors/README.md`](factors/README.md)이며, 현재 001–019으로 정리되어 있다. 아래의 “즉시”, “구현됨”, 이전 번호 표기는 역사적 로드맵일 뿐 현재 검증 결론이 아니다.
 
 **프로젝트**: LS CRUDE — 부엌이 바빠졌는가 (Is the kitchen busy?)  

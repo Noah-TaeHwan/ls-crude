@@ -4,6 +4,6 @@
 
 - 조사 원문·큰 파일 → [`../../gathering/raw/`](../../gathering/raw/README.md) (gitignore)
 - 한 장 노트 → [`../../gathering/notes/`](../../gathering/notes/README.md)
-- 후보 표 → [`../../notebooks/pizza-hunt.md`](../../notebooks/pizza-hunt.md)
+- 후보 표 → [신규 원장](../../candidates/ledger.csv)
 
 가격은 Yahoo `CL=F`만. 뉴스는 Investing.com CSV. 스크래핑 금지.

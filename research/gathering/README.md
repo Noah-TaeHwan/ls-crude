@@ -16,7 +16,7 @@ sources/  출처 표 (라이선스·지연·look-ahead)
 
 그다음 단계는 여기가 아닙니다.
 
-- 후보 표 → [`../notebooks/pizza-hunt.md`](../notebooks/pizza-hunt.md)
+- 후보 원장 → [ledger.csv](../candidates/ledger.csv), [상세 카드](../candidates/_TEMPLATE.md)
 - 실험 한 장 → [`../../docs/experiments/`](../../docs/experiments/README.md)
 - 시계열 시드 → [`../data/pizza/`](../data/pizza/README.md)
 
@@ -24,11 +24,11 @@ sources/  출처 표 (라이선스·지연·look-ahead)
 
 ## 사람이 할 일
 
-1. 파일을 받으면 `raw/`에 날짜 폴더로 둡니다.
+1. 파일을 받으면 `raw/<candidate_id>/<retrieval-timestamp>/`에 원본과 영수증을 둡니다. 기존 날짜 폴더는 보존합니다.
 2. `_TEMPLATE.md`를 복사해 `notes/`에 한 장을 씁니다.
 3. 새 출처면 `sources/REGISTRY.md`에 한 줄.
-4. 후보가 보이면 `pizza-hunt.md`에 한 줄. 없으면 표를 비웁니다.
-5. 살아남으면 실험 `001-` 카드를 만듭니다.
+4. 실제 아이디어가 있으면 신규 원장·카드에 기록합니다. 자료 미확보·차단도 기록하고, 아이디어가 없으면 원장을 비웁니다.
+5. 동료 검토 뒤 승격할 때만 실험의 다음 빈 번호를 사용합니다.
 
 ## 하지 말 것
 
