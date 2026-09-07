@@ -1,6 +1,6 @@
 # ALT-20260907-04 — 산식 제안과 접근 영수증
 
-[후보 카드](../../candidates/ALT-20260907-04.md) · [공동 탐색](../../gathering/notes/2026-09-07-activity-proxy-hunt.md). **E1 / PARK / 검정 NOT_RUN**. 자료·가용시점 조건이 충족되기 전에는 숫자를 만들지 않는다.
+[후보 카드](../../candidates/ALT-20260907-04.md) · [공동 탐색](../../gathering/notes/2026-09-07-activity-proxy-hunt.md). 접근 영수증은 E1 단계에서 남겼고, 아래 **Empirical joint-hunt run**에서 수집·검정을 실행했다(판정 PARK).
 
 ## 구성 명세
 
@@ -35,3 +35,53 @@
 추가 반증 계획: non-tanker 통과 집계와 비민감 비교 해협을 고정하여 공통 AIS 관측 단절을 점검. AIS 결측을 통과 0으로 바꾸지 않음. 모두 NOT_RUN.
 
 2019 시작에 전년동월 warmup을 적용하면 학습 구간 신호가 최대 12개월이어서 24쌍 기준을 충족하지 못한다. 키/망 차단이 아니라 권리·빈티지·짧은 학습 표본 조건이 남는다.
+
+## Empirical joint-hunt run (20260907T064559Z)
+
+# ALT-20260907-04 — PortWatch Hormuz index receipt
+
+## 사전 정의
+
+| 항목 | 값 |
+| --- | --- |
+| 후보 ID / 카드 | ALT-20260907-04 / `research/candidates/ALT-20260907-04.md` |
+| 버전 / 작성 | v0 2026-09-07 / 오태환(에이전트 보조) |
+| 가설 | Hormuz `n_total` 활동 이상 → WTI 단기 RV |
+| 산식 | 20일 rolling z-score of daily `n_total` |
+| 단위·빈도·지역 | vessels z; daily; Strait of Hormuz |
+| 결측 | 미관측일을 0으로 채우지 않음; z 워밍업 min_periods=10 |
+| available_at | observation_date + 9 calendar days → next CL session (보수; FAQ 미확정) |
+| 타깃 | next 5 trading-day WTI RV; ret1 보조; lag curve k=-5..5; placebo = +180d calendar shift |
+| 판정 기준 | IS·OOS 동부호·실무 크기 + placebo 약함 → KEEP 검토; 아니면 PARK/KILL |
+
+## 실행 manifest — 20260907T064559Z
+
+| 역할 | 경로 | SHA-256 | 기간/행 |
+| --- | --- | --- | --- |
+| raw | `research/gathering/raw/ALT-20260907-04/20260907T064559Z/hormuz_chokepoint6_daily.csv` | manifest.json | 2019-01-01..2026-08-30 / 2799 |
+| processed | `research/data/processed/ALT-20260907-04/20260907T064559Z/` | (gitignore) | panel + pw_z20 |
+| plots | `20260907T064559Z/series_20260907T064559Z.png`, `20260907T064559Z/scatter_is_20260907T064559Z.png` | — | — |
+| results JSON | `research/reports/2026-09-07-joint-hunt-portwatch-hyoas.json` | — | — |
+| script | `research/notebooks/ALT-20260907-04/run_portwatch_hyoas_hunt.py` | — | — |
+
+### 재현 명령
+
+```bash
+cd research && .venv/bin/python notebooks/ALT-20260907-04/run_portwatch_hyoas_hunt.py
+```
+
+### 결과 요약 (repo empirical only)
+
+| test | IS | OOS |
+| --- | ---: | ---: |
+| z20 vs RV5 | r=+0.088 n=1245 | r=-0.008 n=670 |
+| z20 vs ret1 | r=-0.016 n=1245 | r=+0.026 n=674 |
+| placebo +180d vs RV5 | r=-0.043 n=1121 | r=-0.016 n=670 |
+
+**Decision:** PARK — observable series yes; stable WTI RV link no.
+
+### Robustness / scenarios
+
+1. **Lag contract:** If true publish lag ≪ 9d, IS corr might rise but as-of safety worsens — do not retune lag on OOS.
+2. **Coverage null:** No 2015–2018 PortWatch → cannot claim full IS window; n starts 2019.
+
