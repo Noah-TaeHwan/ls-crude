@@ -185,6 +185,7 @@
 | 072 | [여수 보수철 도시락 지수](072-yeosu-turnaround-lunchbox-index/README.md) | 여수 설비보수·도시락/숙박 밈 | **REJECTED** — 구조 통계는 도시락·숙박·정비 인력을 측정하지 않음 | 0.0 |
 | 073 | [인천 새벽 면세 리스톡 지수](073-incheon-dawn-restock-index/README.md) | 인천 화물·항공유 수요 밈 | **HOLD** — 항공화물은 실제 공개되지만 리스톡·새벽 행동과 다름 | 0.0 |
 | 074 | [Refinery Multi-Block Composite](074-refinery-multiblock-composite/README.md) | 041 정유 운영 × 휘발유 무역 × RBOB 포지션 × 크랙 | **REJECTED** — 4블록 동가중은 MPC RV5 IS `r=-0.006`, OOS `+0.197`이나 통제·사건 검정 미통과 | 0.0 |
+| 075 | [Academic Liquidity Calendar](075-academic-liquidity-calendar/README.md) | 여름·연말 학사/금융 휴식기 달력 맥락 | **REJECTED AS ALPHA** — WTI 계절성은 IS/OOS BH 기준 미통과; RBOB 연말 OOS만 사후 발견값 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
