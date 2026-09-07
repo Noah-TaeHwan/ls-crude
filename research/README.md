@@ -1,6 +1,6 @@
 # LS CRUDE research
 
-WTI와 연결될 수 있는 실물 활동 대리변수를 찾고, 출처·접근·실패·검정을 기록합니다. 신규 [원장](candidates/ledger.csv)은 2026-09-07 기준 활동 proxy 01–08, 피자급 09–17, 피자급 후속 18–29를 합친 **29행**(이 헌트 KEEP 2). 우승 지수는 없다. [기존 팩터 이력](factors/README.md)은 별도로 보존한다.
+WTI와 연결될 수 있는 실물 활동 대리변수를 찾고, 출처·접근·실패·검정을 기록합니다. 신규 [원장](candidates/ledger.csv)은 2026-09-07 병렬 탐색 통합 기준 **48행(KEEP 4 / PARK 34 / KILL 10)**입니다. 보관본 39–46의 번호·원본 대응은 [통합 기록](reports/2026-09-07-research-convergence.md)에 있습니다. 우승 지수는 없다. [기존 팩터 이력](factors/README.md)은 별도로 보존한다.
 
 - 시작·실행·미발견 데모: [루트 README](../README.md)
 - 가설부터 KEEP/KILL/PARK: [방법론](../docs/research-methodology.md)
