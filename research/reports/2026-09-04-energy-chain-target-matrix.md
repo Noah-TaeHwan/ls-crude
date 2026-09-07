@@ -22,6 +22,7 @@
 | 044 | Census 데이터센터 건설지출 MoM 36개월 z-score | Henry Hub `NG=F`, 21일 RV | +0.007 (84) | +0.051 (29) | 관계 없음. buildout은 단기 가스 변동성 신호가 아님 |
 | 084 | NPS 14개 드라이브형 공원 방문 YoY 36개월 z-score | RBOB `RB=F`, 21일 수익률 | -0.127 (108) | +0.186 (23) | **기각** — 수익률 부호 반전; road-trip 서사는 거래 알파로 재현되지 않음 |
 | 084 | 같은 신호 | RBOB `RB=F`, 21일 RV | -0.037 (108) | -0.282 (23) | **기각** — IS 0 근처·OOS 월간 표본 23. 사후 변동성 규칙 채택 금지 |
+| 085 | USDA watermelon 냉장트럭 shortage 비중 52주 z-score | 난방유 `HO=F`, 5일 RV | — | — | **HOLD** — 무료 키·장기 raw release timestamp·계절 통제 패널을 확보한 뒤 한 번만 검정 |
 
 ## 결론
 

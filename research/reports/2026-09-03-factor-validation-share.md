@@ -95,6 +95,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 082 | Korea Kitchen Oil Stress / Palm–WTI Cointegration | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. 팜유–WTI Engle–Granger·잔차 평균회귀 후보; 한국 소매 식용유·USD/KRW·원료 역사/공개일 패널 및 IS/OOS 미검정 |
 | 083 | Iced Americano Pass-Through | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 적격성 검정. 커피(외식) CPI→USD/KRW·한국 3년물·식품/급식 상대수익률 3사양은 공식 월별 원표·최초 공표일 패널 부재로 미검정 |
 | 084 | Trailhead Tailgate Index | ⬜ 별도표 | ⬜ 별도표 | RBOB 108 월 | RBOB 23 월 | WTI 공통 타깃이 아닌 NPS 14개 드라이브형 공원 방문 YoY z-score × 다음 21거래일 RBOB 검정. 수익률 `-0.127/+0.186` 부호 반전, RV `-0.037/-0.282`은 IS 부재·작은 OOS로 기각 |
+| 085 | Watermelon Reefer Squeeze Index | ⬜ `—` | ⬜ `—` | — | — | WTI 공통 타깃이 아닌 USDA watermelon 주간 냉장트럭 shortage 비중 → HO=F/RBOB RV 후보. 무료 API 키·장기 release timestamp·계절 통제 패널을 확보한 뒤 별도 에너지 체인 검정 |
 
 **범례**: 🟩 `|r| ≥ 0.10`이며 IS·OOS 모두 같은 방향으로 재현 / 🟨 계산됐지만 `|r| < 0.10` 또는 재현 실패 / ⬜ 계산 불가. 현재 🟩은 **0개**다.
 
