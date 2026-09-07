@@ -1,6 +1,6 @@
 # 지수 정의와 실행 영수증
 
-현재 실제 지수·검정은 [ALT-20260907-01 곡물 바지선](ALT-20260907-01/README.md)에 있습니다. [03 TSA](ALT-20260907-03/README.md)는 차단 영수증, 나머지 후보는 산식 제안과 접근/시점 조건을 기록합니다. [이번 8개 탐색 현황](../gathering/notes/2026-09-07-activity-proxy-hunt.md)과 [원장](../candidates/ledger.csv)이 판정 정본입니다. 원본이 없는 후보의 산식은 구축 완료나 실측 지수가 아닙니다.
+활동 proxy 실제 지수·검정은 [ALT-20260907-01 곡물 바지선](ALT-20260907-01/README.md)에 있습니다. [03 TSA](ALT-20260907-03/README.md)는 차단 영수증입니다. 피자급 헌트는 `ALT-20260907-18`…`25` 중 데이터가 있는 후보의 명세·IS 표·그림을 남겼고 요약은 [HUNT-20260907-is-stats.csv](HUNT-20260907-is-stats.csv)입니다. [활동 proxy 8개](../gathering/notes/2026-09-07-activity-proxy-hunt.md)와 [원장](../candidates/ledger.csv)이 판정 정본입니다. 원본 CSV/JSON은 여기 두지 않습니다.
 
 후보의 적격 자료가 확보되면 _TEMPLATE.md를 <candidate_id>/README.md로 복사합니다. 산식·공개시각·시간 분할을 고정한 뒤 실행하고, 재실행은 별도 run 기록으로 남깁니다.
 
