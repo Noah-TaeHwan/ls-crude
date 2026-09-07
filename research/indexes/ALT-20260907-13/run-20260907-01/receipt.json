@@ -1,0 +1,14 @@
+{
+ "candidate": "ALT-20260907-13",
+ "run": "run-20260907-01",
+ "wti_rows": 2261,
+ "wti_span": [
+  "2015-01-02",
+  "2023-12-29"
+ ],
+ "wti_nonpositive_excluded": 1,
+ "pairs_n": 231,
+ "primary_r": -0.030226196953678532,
+ "env": "altvenv pandas+matplotlib",
+ "code": "research/notebooks/ALT-20260907-13/run_is.py"
+}
