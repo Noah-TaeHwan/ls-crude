@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–082는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–085는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## 정리 원칙 — 2026-09-03
@@ -25,7 +25,7 @@
 
 ## 라이브 상관관계 스코어보드
 
-**마지막 계산**: 2026-09-03 · **공통 타깃**: 신호 공개 뒤 다음 5거래일 WTI 실현변동성. 월간 입력(011, 015, 022, 027, 030, 042–045)은 다음 21거래일, 연간 004는 다음 완전연도를 사용한다.
+**마지막 WTI 계산**: 2026-09-03 · **직접 에너지 타깃 최신 추가**: 084는 2026-09-07. 공통 WTI 타깃은 신호 공개 뒤 다음 5거래일 실현변동성이다. 월간 입력(011, 015, 022, 027, 030, 042–045)은 다음 21거래일, 연간 004는 다음 완전연도를 사용한다.
 
 이 표는 각 카드의 검증 헤더와 [상세 검증 로그](../reports/2026-09-03-factor-validation-share.md)를 요약한 **정식 라이브 매트릭스**다. `—`는 0이 아니라 적법한 공개 장기 신호·공개시점·표본이 아직 갖춰지지 않아 계산하지 못했다는 뜻이다. 새 수집·재계산은 카드, 이 표, 상세 로그를 같은 커밋에서 함께 갱신한다.
 
@@ -113,6 +113,9 @@
 | 080 | Korea Fuel-Switch Dispatch Alert | — | — | HOLD — 연료별 발전량의 연속 역사·개정·공표시점 미감사; 연료전환 후보 |
 | 081 | Korea LPG Substitution Pulse | — | — | HOLD — 실제 차량·연료 판매·운행거리 장기 패널과 공개일 미확보; 상대가격 후보 |
 | 082 | Korea Kitchen Oil Stress / Palm–WTI Cointegration | — | — | HOLD — 한국 식용유 장기 소매가격·공개일·개정 이력 미확보; 팜유–WTI 공적분·선행성·OOS 미검정 |
+| 083 | Iced Americano Pass-Through | — | — | HOLD — 커피(외식) CPI의 월별 최초 공표일 패널이 없어 세 자산 사양 미검정 |
+| 084 | Trailhead Tailgate Index | 별도표 | 별도표 | REJECTED — RBOB 21일 수익률 IS/OOS `-0.127/+0.186` 부호 반전; RV OOS 값도 채택 불가 |
+| 085 | Watermelon Reefer Squeeze Index | 별도표 | 별도표 | HOLD — 공개 분기 물량 프록시 HO 수익률 +0.073/+0.465이나 OOS n=7; 주간 shortage 본신호 미검정 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -202,6 +205,9 @@
 | 080 | [Korea Fuel-Switch Dispatch Alert](080-korea-fuel-switch-dispatch-alert/README.md) | 전력 연료믹스의 유류 발전 전환 | **HOLD** — KPX 연료별 발전량 후보의 연속 역사·정의·공개일 미감사 | 0.0 |
 | 081 | [Korea LPG Substitution Pulse](081-korea-lpg-substitution-pulse/README.md) | LPG–휘발유/경유 상대가격과 차량 연료 대체 | **HOLD** — 가격은 공개 후보이나 실제 연료전환·소비 장기 패널 미확보 | 0.0 |
 | 082 | [Korea Kitchen Oil Stress / Palm–WTI Cointegration](082-korea-kitchen-oil-stress/README.md) | 팜·대두·카놀라유·환율과 한국 식용유 가격의 원가 전가 | **HOLD** — 팜유–WTI 공적분은 검정 후보일 뿐, 선행성·시점·OOS 미검정 | 0.0 |
+| 083 | [Iced Americano Pass-Through](083-iced-americano-pass-through/README.md) | 커피(외식) CPI → 원화·국채·식품/급식 상대수익률 | **HOLD** — 공식 월별 CPI 원표·최초 공표일 패널 미확보; 세 자산 사양 모두 미검정 | 0.0 |
+| 084 | [Trailhead Tailgate Index](084-trailhead-tailgate-index/README.md) | 드라이브형 국립공원 방문 서프라이즈 → RBOB | **REJECTED** — RBOB 수익률 IS/OOS `-0.127/+0.186` 부호 반전; RV OOS `-0.282`는 n=23·IS 0 근처 | 0.0 |
+| 085 | [Watermelon Reefer Squeeze Index](085-watermelon-reefer-squeeze-index/README.md) | 수박 출하철 냉장 트럭 부족 → diesel/HO 물류 압력 | **HOLD** — 공개 분기 적재량 프록시는 HO 수익률 `+0.073/+0.465`이나 OOS n=7; 주간 shortage 본신호 미검정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
