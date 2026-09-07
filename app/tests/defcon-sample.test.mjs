@@ -40,4 +40,9 @@ test("research inventory joins every score to its source and rejects partial tab
   assert.throws(() => parseResearchLedger(""));
   assert.throws(() => parseResearchLedger(markdown.replace(/\| 018 \| \[.*\n/, "")));
   assert.throws(() => parseResearchLedger(markdown.replace("018-refinery-thermal-flare/README.md", "https://untrusted.invalid")));
+  const linkedScore = markdown.replace(/^(\| 018 \| )([^|]+)( \|)/m,
+    "$1[$2](018-refinery-thermal-flare/README.md)$3");
+  assert.deepEqual(parseResearchLedger(linkedScore), ledger);
+  assert.deepEqual(parseResearchLedger(markdown.replace(/\n/g, "\r\n")), ledger);
+  assert.throws(() => parseResearchLedger(`${markdown}\n## 라이브 상관관계 스코어보드\n`));
 });

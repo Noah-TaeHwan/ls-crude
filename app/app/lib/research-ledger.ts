@@ -45,10 +45,20 @@ function statusGroup(status: string): string {
  * @returns 원문으로 연결되는 기록과 정본에 명시된 통과 수.
  */
 export function parseResearchLedger(markdown: string): { records: ResearchRecord[]; passCount: number } {
-  const cells = markdown.split("\n").filter((line) => /^\| \d{3} \|/.test(line))
-    .map((line) => line.split("|").slice(1, -1).map((cell) => cell.trim()));
-  const scores = cells.filter((row) => !row[1].startsWith("["));
-  const cards = cells.filter((row) => row[1].startsWith("["));
+  /**
+   * 링크 표기와 무관하게 이름이 유일한 섹션의 표 행을 읽는다.
+   * @param heading 정본 섹션 제목.
+   * @returns 섹션이 없거나 중복되면 빈 배열, 아니면 셀 행.
+   */
+  const rowsIn = (heading: string): string[][] => {
+    const sections = markdown.replace(/\r\n/g, "\n").split(`\n## ${heading}\n`);
+    if (sections.length !== 2) return [];
+    return sections[1].split("\n## ")[0].split("\n")
+      .filter((line) => /^\| \d{3} \|/.test(line))
+      .map((line) => line.split("|").slice(1, -1).map((cell) => cell.trim()));
+  };
+  const scores = rowsIn("라이브 상관관계 스코어보드");
+  const cards = rowsIn("현재 인벤토리와 카드별 검증 기록");
   const passMatch = markdown.match(/\*\*현재 통과 수\*\*:\s*(\d+)개/);
   if (!scores.length || scores.length !== cards.length || !passMatch ||
       new Set(scores.map((row) => row[0])).size !== scores.length ||
