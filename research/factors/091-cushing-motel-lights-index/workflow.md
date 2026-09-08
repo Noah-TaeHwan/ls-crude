@@ -254,10 +254,10 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 | --- | --- | --- | --- |
 | 091-Q — 날씨 | NOAA KCUH 관측소 최신 24개 보고 | 기온·바람 등 **날씨** | **PARK** — 날씨는 활동량이 아니라 현장/도로/공항의 외생 조건. 독립 활동 기준값이 생길 때 사전고정 통제변수로만 사용 |
 | 091-R — KUSH After Dark | 공개 카테고리 31개 글, Cushing 언급 4개 | 지역 문화/행사 **보도**의 희소한 흔적 | **PARK** — 비쿠싱 행사가 섞이고 구조화된 개최일이 없어 실제 행사수·참석자수를 만들 수 없음 |
-| 091-S — Quick-Service Pulse | 6개 점포의 visible Maps feature snapshot | Popular-times 기능 존재, 배달/drive-through 표시 | **PARK** — 방문 상대패턴의 UI 표시일 뿐 주문·매출·현장 인원·장기 역사값이 아님. 전향 수동 로그 후보만 허용 |
+| 091-S — Quick-Service Pulse | 6개 점포의 visible Maps feature snapshot | Popular-times 기능 존재, 배달/drive-through 표시 | **FORWARD_ONLY / E1** — 방문 상대패턴의 UI 표시로서 현재 ‘도시 footfall’에 가장 가까운 공개 live 후보. [고정 바스켓·90일 측정타당성 관문](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md) 전에는 주문·매출·현장 인원·장기 역사값으로 부르지 않음 |
 | 091-T — fine dining/배달 매출 | 공개 장기 집계 없음 | 없음 | **PARK** — 매출·주문·보너스·고객수·라이더수는 민간 자료. 리뷰·Maps 링크·영업시간을 매출로 대체하지 않음 |
 
-Google Maps의 `Popular times`는 집계 방문 기반의 상대 프로필이라는 점은 유용하지만, 이 실행에서 숫자·역사 시계열로 추출하지 않았다. 만약 나중에 전향 관측을 시작하면 같은 요일/시간, 매장 고정, `live 표시 여부·상대 busy label·영업 여부·delivery 표시`만 기록하고 고객/기기/개인 정보를 기록하지 않는다. 60개월 같은 기준을 기다리는 게 아니라, 먼저 독립적인 지역 운영 집계와 함께 해당 UI 관측이 실제 활동을 설명하는지 측정타당성부터 판정한다.
+Google Maps의 `Popular times`는 집계 방문 기반의 상대 프로필이라는 점은 유용하지만, 이 실행에서 숫자·역사 시계열로 추출하지 않았다. 091-S는 이제 고정 바스켓 6개 점포와 Central Time `07:30 / 12:30 / 18:30`의 [전향 수동 관측 프로토콜](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md)로만 진행할 수 있다. `live 표시 여부·상대 busy label·영업 여부·delivery 표시`만 기록하고 고객/기기/개인 정보를 기록하지 않는다. 90일·80% 이상 완결 뒤에도 먼저 독립적인 지역 운영 집계와 함께 해당 UI 관측이 실제 활동을 설명하는지 측정타당성부터 판정한다.
 
 ## 검정 해석 규칙
 
