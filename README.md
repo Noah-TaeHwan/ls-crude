@@ -4,7 +4,7 @@
 
 East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜타곤 피자 인덱스는 **활동 → 민감한 맥락 → 시장과의 가능한 관계**를 생각하는 참고 패턴입니다. 피자 주문을 복제하거나 특정 데이터·양의 상관을 찾아내는 것이 완료 조건은 아닙니다.
 
-현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-08 로컬 [원장](research/candidates/ledger.csv)은 **62행(KEEP 4 / PARK 47 / KILL 11)**입니다(repo empirical only). 이번 공동 헌트는 기존 8개 ID를 재검토했으며 새 발견 8개로 합산하지 않습니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
+현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-08 로컬 [원장](research/candidates/ledger.csv)은 **63행(KEEP 4 / PARK 48 / KILL 11)**입니다(repo empirical only). 이번 공동 헌트는 기존 8개 ID를 재검토했으며 새 발견 8개로 합산하지 않습니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
 
 | 항목 | 기준 |
 | --- | --- |
