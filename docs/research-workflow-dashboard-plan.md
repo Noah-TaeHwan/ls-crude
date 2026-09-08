@@ -80,3 +80,5 @@ PR #65 병합·main CI 성공 뒤 수동 갱신 run `34180585677`의 validate/pu
 분봉 검증: 메인 ego 브라우저에서 실제 Yahoo 응답과 SVG 1,032개 좌표·4개 단절 구간·최신 시세 표식이 일치함을 확인했다. 시각 탐색 Home/End, 새로 확인 후 기존 시각 선택·문서 유지, 320/390/1440px 가로 넘침 없음·브라우저 오류 없음. UI Designer 지적으로 공급자 지연 경고를 그래프 위에 배치하고 모바일 최저·최고값을 HTML 본문에도 표시했다. Reality Checker 독립 코드·대상 테스트 검토 차단 이슈 없음. 타입체크·빌드·앱 8개·연구 36개 테스트 통과. 분봉 공급 지연 자체는 해결됐다고 주장하지 않는다.
 
 근거: [좌표 대조](design-evidence/wti-intraday/coordinates.json), [브라우저 검사](design-evidence/wti-intraday/browser.json), [데스크톱](design-evidence/wti-intraday/desktop.png), [모바일](design-evidence/wti-intraday/mobile.png). 위 결과는 로컬 검증이며 운영 배포는 PR·배포 SHA·운영 화면을 별도 확인한다.
+
+최신 main 통합 중 ALT-20260908-04/05의 필수 메타데이터 누락과 상태 필드 내 설명문 때문에 접수 장부 검사 실패를 발견했다. 원장 12개 필드를 카드에 복원하고 원래 상세 값은 detail_ 필드로 보존했다. 04의 확보 범위는 카탈로그 메타데이터만이며 영상 픽셀은 없음을 명시했다. 판정·원장·원본·연구 결과는 수정하지 않았다. 원장 구조 53행·카드 일치 검사와 앱 테스트를 다시 통과했다.
