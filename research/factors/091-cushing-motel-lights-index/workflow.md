@@ -26,6 +26,7 @@
 | 091-J | 허브 근접 활동 7종을 실제로 관측할 수 있는가 | 주차·호텔·점심·심야·경로·모바일·이벤트 | **PARK / E1** — 접근성·기존 표본을 분리 감사, 조합 미실행 |
 | 091-K | 통신 신호로 움직임을 재구성할 수 있는가 | CDR/base-station/device aggregation | **BLOCKED / E1** — carrier/licensed data, raw 또는 fine-grid 수집 금지 |
 | 091-L | 대체에너지 정책이 쿠싱 현장활동을 바꾸는가 | EV oil displacement·정책 노출 | **PARK / E1** — 연간 adoption 결과는 확인, 정책 빈티지·현장 정답 없음 |
+| 091-M | 시청 공개 채용이 늘었는가 | City Open Positions 목록 | **PARK / E1** — 실제 3건 공고 표본, 게시/마감/역사 없음 |
 | 무효 실험 | Cushing Busy ML/DL | WTI·거래량 기반 합성 타깃 | **무효** — 실제 쿠싱 관측 아님 |
 
 ## 091-A — 숙박세 × 고정 도로구간 트럭
@@ -196,6 +197,14 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 쿠싱 현장활동의 실제 정답(트럭·숙박·정비·throughput)과, 당시 이용가능했던 정책 노출의 장기 빈티지 패널이 모두 없으므로 상관·event study·DiD·ML을 실행하지 않았다. 정책 수·보도량·ETF를 사후로 세어 월간 CFAM 입력으로 만들면 정책 효과와 관심/가격/금리 충격을 혼동한다. 상세 경계는 [`ALT-20260908-12`](../../candidates/ALT-20260908-12.md)에 남긴다.
 
 재개 조건은 **(a)** 사전고정한 dated policy exposure/vintage panel, **(b)** 60개월 이상 독립 Cushing operational ground truth다. 두 조건이 생기면 그때만 사전고정 시차의 구조/이벤트 검정을 하며, 그 전에는 CFAM 점수에 넣지 않는다.
+
+## 091-M — 쿠싱 시청 공개 구인공고
+
+공식 City of Cushing Open Positions 페이지를 2026-09-08에 실제 수집했다. 당시 Water/Sewer Maintenance Skilled Laborer, Streets Skilled Laborer, Police Officer의 **3건**이 표시됐다. [원본 영수증](../../candidates/ALT-20260908-13.md)은 HTML 해시와 목록을 보존한다.
+
+이는 시정부의 현재 공석 목록이다. 민간 에너지·물류 채용, 지원자 수, 실제 채용, 작업량, 터미널 활동 또는 ‘쿠싱 전체가 바쁨’을 측정하지 않는다. 특히 두 maintenance 직군이 있다는 사실만으로 원유 허브 활동을 추정하면 안 된다. 이 화면에는 게시일·마감일·공석 수·과거 아카이브도 없다.
+
+따라서 현재는 **PARK / E1**이며 검정·시각화·점수화하지 않는다. 재개하려면 허용된 범위에서 같은 페이지를 고정 주기로 전향 보존해 월간 60개 이상 공개 스냅샷을 만들고, 독립적인 고정 도로 트럭 또는 실제 운영 기준값과 먼저 측정타당성을 확인해야 한다.
 
 ## 검정 해석 규칙
 
