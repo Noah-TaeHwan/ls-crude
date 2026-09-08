@@ -37,7 +37,7 @@
 | **091-O** 공항 활동 | **부분가능** | Jet-A/AvGas·ramp 월간 보고서 표본 | 연속·장기 월별 보고 시계열 |
 | **091-U** 산업 채용 | **가능 (전향)** | 공개 공고의 제목·설명·게시일 | 사전 규칙을 통과한 90일 누적 패널 |
 | **091-W** 공기·배출 | **부분가능** | AirCasting/IQAir 접근성, DEQ 연간 시설 배출 | 쿠싱의 연속·검증 가능한 공기질 측정소 패널 |
-| **091-V** 건설·허가 | **부분가능** | 시설허가·개별 심사 표본 | City/County 장기 허가 원장 |
+| **091-V** 건설·허가 | **가능 (전향 이벤트)** | DEQ Cushing 산업시설의 permit type·status | City/County 장기 허가 원장과 월간 공사량 |
 | **091-X** 위치 스프레드 | **부분가능** | EIA Cushing 레그 | Houston/Midland와 동일정의·무료 장기 쌍 |
 | **091-Y** 펌프가격 | **가능 (전향)** | Maverik 현재 Regular/Diesel 표시가, 5개 아카이브 점 | 다점포·주간·시간표시 장기 패널 |
 | **091-Z** 지역 뉴스 큐 | **가능 (전향)** | KUSH RSS/API, Cushing 산업어 Google News RSS | 고정 시각 90일 이력과 실제 사건 포착률 검정 |
@@ -71,8 +71,12 @@
 | 091-Z | 쿠싱의 산업·물류 관련 공개 뉴스가 생겼는가 | KUSH RSS/API + Cushing 산업어 Google News RSS | **FORWARD_ONLY / E1** — [무료 피드 수집·헤드라인 감사·시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) 완료; 90일 고정 시각 수집 전에는 이벤트 큐일 뿐 activity 점수 아님 |
 | 091-X | 시장이 Cushing 대 Houston/Midland 흐름 압력을 어떻게 가격화하는가 | 일간 위치 스프레드 | **PARK / E1** — [Cushing EIA 실측 표본·두 외부 레그 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091XZ/README.md) 완료; 무료·동일정의 장기 쌍 패널 미확보, Brent 대체 금지 |
 | 091-W | 쿠싱 공기가 지금 어떤가 + 연간 시설 배출 구조는 어떤가 | AirCasting · DEQ · IQAir · 연간 배출량 | **PARK / E1** — 실시간 [원자료 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091WZ/README.md)는 완료했고 쿠싱 연속 공개 측정소·재현 가능한 원시 패널 없음. 반면 [DEQ 2024 연간 VOC/HAP 시설 발자국](../../indexes/091-cushing-operations-nowcasting/20260908T091WENVZ/README.md)은 실제 공식 표본·시각화 완료; 둘 다 CFAM과 분리 |
-| 091-V | 산업·상업·인프라 공사가 늘었는가 | City/County building permits 및 State DEQ 시설허가 | **PARK / E1** — City/County 장기 원장 미확보; DEQ 실제 시설심사 1건은 이벤트 경로일 뿐 월간 건설량 아님 |
+| 091-V | 산업·상업·인프라 공사가 늘었는가 | City/County building permits 및 State DEQ 시설허가 | **FORWARD_ONLY / E1** — City/County 장기 원장은 여전히 없지만, DEQ의 Cushing 시설허가 상태를 인간 검토형 이벤트 로그로 반복 수집 가능; 월간 공사량·busy score는 아님 |
 | 무효 실험 | Cushing Busy ML/DL | WTI·거래량 기반 합성 타깃 | **무효** — 실제 쿠싱 관측 아님 |
+
+### 2026-09-08 PARK 재점검 결과
+
+[재점검 원문·해시·전체 판정표](../../indexes/091-cushing-operations-nowcasting/20260908T091PARKZ/README.md)를 추가했다. **091-A/F**는 City 2025 비교표로 36개월 기반까지 확인됐지만 60개월 관문 전이라 PARK 유지다. **091-V**만 월간 공사량이 아닌, 공개 DEQ 산업허가의 **FORWARD_ONLY 이벤트 로그**로 좁혀 상향했다. 나머지 PARK 트랙은 반복·정의·장기성 또는 직접성 관문을 통과하지 못해 상태를 유지한다.
 
 ## 091-A — 숙박세 × 고정 도로구간 트럭
 

@@ -25,11 +25,13 @@ project materials—is **NOT_RUN**, not proven by this three-point rise.
 | Intended construction/maintenance volume | **no** — a DEQ review is not a building permit, construction start, labour count, or material volume |
 | series / visual association / combination | **NOT_RUN** |
 
-The State DEQ entry is retained as proof of a future industrial-permit *event*
-route, not as a count. A forward-only event log may begin only if the source
-can expose a stable date, facility, permit type and status without filling
-missing months with zeros. A building/construction panel remains **PARK / E1**
-until City or County publishes a dated aggregate ledger.
+The 2026-09-08 recheck confirmed that the State DEQ public-review route now
+exposes stable facility, permit type and status fields for multiple named
+Cushing industrial facilities. Therefore **091-V is FORWARD_ONLY / E1 as a
+human-reviewed industrial-permit event log**, with the first public routes in
+the [PARK recheck receipt](../20260908T091PARKZ/README.md). It remains **PARK**
+as a building/construction *volume* panel until City or County publishes a
+dated aggregate ledger. Missing months are never filled with zeros.
 
 ## Sources
 

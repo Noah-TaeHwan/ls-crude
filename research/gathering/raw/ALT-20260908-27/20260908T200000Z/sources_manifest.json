@@ -1,0 +1,51 @@
+[
+  {
+    "file": "city_agenda_2025_tax_comparison.pdf",
+    "url": "https://www.cityofcushing.com/sites/g/files/vyhlif4306/f/agendas/cma.agenda.11.17.25.pdf",
+    "http_status": 200,
+    "bytes": 7464143,
+    "sha256": "c89a678fe681a4eeb594dfbf98fcb2ee863e1cb8d8cb5839f548710439a473fb"
+  },
+  {
+    "file": "city_agendas_2024.html",
+    "url": "https://www.cityofcushing.com/node/14/agenda/2024",
+    "http_status": 200,
+    "bytes": 86950,
+    "sha256": "4322f239e51fe296efdd331fa73c6f2b833a091468d5726f8902c37529b6a9fb"
+  },
+  {
+    "file": "city_agendas_2025.html",
+    "url": "https://www.cityofcushing.com/node/14/agenda/2025",
+    "http_status": 200,
+    "bytes": 91749,
+    "sha256": "5e112410e8230aea5c8160a8fc21b8f3afcbb90aad68c86c5965d63f45774cd8"
+  },
+  {
+    "file": "deq_public_review.html",
+    "url": "https://applications.deq.ok.gov/PermitsPublicReview/viewpermits.aspx",
+    "http_status": 200,
+    "bytes": 834719,
+    "sha256": "d38ea12128ff36b5ed9018c5221d85984db65f4fc6c799537ded1290c5041cc5"
+  },
+  {
+    "file": "deq_cushing_south_terminal_permit.pdf",
+    "url": "https://applications.deq.ok.gov/permitspublic/storedpermits/9030.pdf",
+    "http_status": 200,
+    "bytes": 562499,
+    "sha256": "6cae8c7aeff540bd46766479a0c05c0e6296e19983922c1dfb8f432cdd7f127b"
+  },
+  {
+    "file": "odot_payne_aadt_2023.pdf",
+    "url": "https://oklahoma.gov/content/dam/ok/en/odot/maps/aadt/county-maps/60_Payne.pdf",
+    "http_status": 200,
+    "bytes": 1009220,
+    "sha256": "c006a4666065fcd819c2335c92b5863f21f2e482b8985ea7322e45d2c6b61c5d"
+  },
+  {
+    "file": "faa_weathercams_cuh_shell.html",
+    "url": "https://weathercams.faa.gov/map/-97.63163,35.35188,-94.15721,36.54363/airport/CUH/details/pdfs",
+    "http_status": 200,
+    "bytes": 8359,
+    "sha256": "57bdbce7f2dfb5ef44d8cc152d3b2e4018129455e43b4b65c0175bc7604bac6f"
+  }
+]
