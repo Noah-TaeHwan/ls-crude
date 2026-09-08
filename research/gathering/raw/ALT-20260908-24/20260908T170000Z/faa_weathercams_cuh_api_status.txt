@@ -1,0 +1,8 @@
+{
+  "success": false,
+  "payload": null,
+  "error": {
+    "code": 401,
+    "message": "Unauthorized"
+  }
+}

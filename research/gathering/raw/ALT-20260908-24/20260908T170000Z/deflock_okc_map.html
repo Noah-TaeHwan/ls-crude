@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Map - DeFlockOKC</title>
+  <meta name="description" content="Interactive map of Flock ALPR surveillance cameras in the Oklahoma City metro area, powered by DeFlock.org's crowdsourced data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .map-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+      background: var(--gray-100);
+      margin-top: 2rem;
+    }
+    .map-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 70vh;
+      min-height: 500px;
+      border: none;
+    }
+    .map-fallback {
+      display: none;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--gray-100);
+      border-radius: var(--radius-lg);
+      border: 2px dashed var(--gray-300);
+      margin-top: 2rem;
+    }
+    .map-fallback h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .map-fallback p {
+      color: var(--gray-600);
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+    }
+    .map-note {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: var(--copper-glow);
+      border-left: 3px solid var(--copper);
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      color: var(--gray-600);
+    }
+    .map-note a {
+      font-weight: 600;
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8VQRHJJG38"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8VQRHJJG38');
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand">DeFlock<span>OKC</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="the-case.html">The Case</a></li>
+        <li><a href="not-a-security-camera.html">Common Questions</a></li>
+        <li><a href="townhall.html">The Record</a></li>
+        <li class="nav-dropdown active">
+          <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Evidence</button>
+          <ul class="nav-dropdown-menu" role="menu">
+            <li><a href="map.html" class="active" role="menuitem">Camera Map</a></li>
+            <li><a href="records.html" role="menuitem">Records</a></li>
+            <li><a href="documents.html" role="menuitem">Documents</a></li>
+          </ul>
+        </li>
+        <li><a href="news.html">News</a></li>
+        <li class="nav-search-li"><button type="button" class="nav-search-btn" id="navSearchBtn" aria-label="Search the site" title="Search"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="9" r="6"></circle><line x1="13.5" y1="13.5" x2="18" y2="18"></line></svg><span class="nav-search-label">Search</span></button></li>
+      </ul>
+      <div class="nav-cta" id="navCta">
+        <a href="take-action.html" class="btn btn-primary">Get Involved</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <!-- Vote Alert: ACLU petition + Renewal vote in July 2026 -->
+  <a href="august-18.html" class="vote-alert">
+    <div class="vote-alert-inner">
+      <span class="vote-alert-pulse">DEFLOCK OKC</span>
+      <span class="vote-alert-text"><strong>August 18: the council renewed Flock, 5 to 3.</strong> See exactly what happened, in the chief's own words.</span>
+      <span class="vote-alert-cta">What happened &rarr;</span>
+    </div>
+  </a>
+
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <span class="section-label">See For Yourself</span>
+      <h1>Camera Map</h1>
+      <p>Crowdsourced locations of Flock ALPR cameras in and around Oklahoma City. Data from the national DeFlock.org project.</p>
+    </div>
+  </header>
+
+  <!-- Map Content -->
+  <section class="page-content">
+    <div class="container">
+
+      <p>
+        The map below shows known Flock camera locations in the OKC metro area. This data is crowdsourced by volunteers across the country through <a href="https://deflock.org" target="_blank" rel="noopener">DeFlock.org</a>. Zoom, pan, and click on markers to see details.
+      </p>
+
+      <div class="map-wrapper" id="mapWrapper">
+        <iframe
+          id="mapFrame"
+          src="https://maps.deflock.org/?lat=35.529496&amp;lng=-97.517738&amp;zoom=11"
+          title="DeFlock camera map centered on Oklahoma City"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </div>
+
+      <div class="map-fallback" id="mapFallback">
+        <h2>View the Map on DeFlock.org</h2>
+        <p>The interactive camera map is hosted by DeFlock.org. Click below to open it directly, pre-centered on the Oklahoma City metro area.</p>
+        <a href="https://maps.deflock.org/?lat=35.529496&amp;lng=-97.517738&amp;zoom=11" target="_blank" rel="noopener" class="btn btn-primary">Open Camera Map</a>
+      </div>
+
+      <div class="map-note">
+        <strong>Know a camera location that's missing?</strong> You can contribute to the crowdsourced map at <a href="https://deflock.org" target="_blank" rel="noopener">DeFlock.org</a>, or send details to <a href="mailto:DeFlockOKC@proton.me">DeFlockOKC@proton.me</a> and we'll submit it.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">DeFlock<span>OKC</span></div>
+          <p class="footer-tagline">
+            Built entirely from public records, published research, and government sources. Share freely.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="the-case.html">The Case</a>
+          <a href="take-action.html">Take Action</a>
+          <a href="map.html">Camera Map</a>
+          <a href="records.html">Records</a>
+          <a href="documents.html">Documents</a>
+          <a href="news.html">News</a>
+        </div>
+      </div>
+      <div style="text-align: center; padding: 2rem 0 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 2rem;">
+        <p style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 0.75rem;">Stay in the loop</p>
+        <form action="https://buttondown.com/api/emails/embed-subscribe/deflockokc" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/deflockokc', 'popupwindow')" style="display: flex; gap: 0.5rem; max-width: 400px; margin: 0 auto;">
+          <input type="email" name="email" placeholder="Your email" required style="flex: 1; padding: 0.6rem 1rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); border-radius: var(--radius); font-size: 0.85rem; color: #fff; font-family: var(--font-body);" onfocus="this.style.borderColor='#c45e2c'" onblur="this.style.borderColor=''">
+          <button type="submit" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">Subscribe</button>
+        </form>
+        <p style="color: rgba(255,255,255,0.25); font-size: 0.7rem; margin-top: 0.5rem;">Updates only. No spam. Unsubscribe anytime.</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DeFlockOKC. Public advocacy document. Not legal advice.</p>
+        <p><a href="mailto:DeFlockOKC@proton.me">DeFlockOKC@proton.me</a> &middot; Part of the national <a href="https://deflock.org" target="_blank" rel="noopener">DeFlock</a> movement.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;"><a href="sources.html#corrections" style="color: var(--copper);">Corrections and clarifications</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Detect if iframe is blocked (X-Frame-Options / CSP) and show fallback
+    (function() {
+      var frame = document.getElementById('mapFrame');
+      var wrapper = document.getElementById('mapWrapper');
+      var fallback = document.getElementById('mapFallback');
+
+      // Give the iframe a few seconds to load, then check
+      setTimeout(function() {
+        try {
+          // If we can't access contentWindow or it errored, show fallback
+          if (!frame.contentWindow || !frame.contentWindow.document) {
+            wrapper.style.display = 'none';
+            fallback.style.display = 'block';
+          }
+        } catch (e) {
+          // Cross-origin access denied is actually expected and fine
+          // The iframe loaded but we can't inspect it - that's OK
+        }
+      }, 3000);
+
+      // Also handle onerror
+      frame.onerror = function() {
+        wrapper.style.display = 'none';
+        fallback.style.display = 'block';
+      };
+    })();
+  </script>
+</body>
+</html>

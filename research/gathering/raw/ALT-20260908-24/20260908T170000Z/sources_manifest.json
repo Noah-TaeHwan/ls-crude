@@ -1,0 +1,65 @@
+[
+  {
+    "file": "oilpriceapi_cushing_storage.html",
+    "url": "https://www.oilpriceapi.com/data/cushing-storage",
+    "http_status": 200,
+    "bytes": 102520,
+    "sha256": "6ad05e4d06d22b7926fc89033deb364a99f18b1a3e746d27438853b554c4a8af"
+  },
+  {
+    "file": "macromicro_cushing_collection.html",
+    "url": "https://en.macromicro.me/collections/19/mm-oil-price/1051/cushing-crude-oil-inventory",
+    "http_status": 403,
+    "bytes": 5715,
+    "sha256": "e303b77ab1846010724d501b44e406fe893412a2be2cc6cee4d0189dd3d89940"
+  },
+  {
+    "file": "faa_weathercams_cuh_shell.html",
+    "url": "https://weathercams.faa.gov/map/-97.63163,35.35188,-94.15721,36.54363/airport/CUH/details/pdfs",
+    "http_status": 200,
+    "bytes": 8359,
+    "sha256": "317d882fbe420f720bc01e09e6e2858a7c4a77c8614a7157e276a4bc39db4aad"
+  },
+  {
+    "file": "faa_weathercams_cuh_api_status.txt",
+    "url": "https://weathercams.faa.gov/api/summary?airport=CUH",
+    "http_status": 401,
+    "bytes": 106,
+    "sha256": "ff2cb9f01f3fa94f1beac9b9c32e1ccd4519d2a4801aba8aa5e152b7ed308b9b"
+  },
+  {
+    "file": "odot_payne_aadt_2023.pdf",
+    "url": "https://oklahoma.gov/content/dam/ok/en/odot/maps/aadt/county-maps/60_Payne.pdf",
+    "http_status": 200,
+    "bytes": 1009220,
+    "sha256": "c006a4666065fcd819c2335c92b5863f21f2e482b8985ea7322e45d2c6b61c5d"
+  },
+  {
+    "file": "odot_traffic_engineering.html",
+    "url": "https://oklahoma.gov/odot/programs-and-projects/projects/traffic-engineering.html",
+    "http_status": 200,
+    "bytes": 117915,
+    "sha256": "35ce870ca4d9cea14e3321b63136fcc715d7e9125de9faf1effa2896fb4fa8f9"
+  },
+  {
+    "file": "deflock_okc_map.html",
+    "url": "https://deflockokc.com/map.html",
+    "http_status": 200,
+    "bytes": 10001,
+    "sha256": "1fcb2c93ff2b26f7355bddc5a87edf8b4bcf0eca8aa714341c0adb48ee2b6e80"
+  },
+  {
+    "file": "osm_node_13654690602.json",
+    "url": "https://api.openstreetmap.org/api/0.6/node/13654690602.json",
+    "http_status": 200,
+    "bytes": 657,
+    "sha256": "e3b35eba1f8c9918b32c64065a0db851d5d16797ecf26453e66e527b29962785"
+  },
+  {
+    "file": "osm_node_13651150001.json",
+    "url": "https://api.openstreetmap.org/api/0.6/node/13651150001.json",
+    "http_status": 200,
+    "bytes": 686,
+    "sha256": "c4d7ca3356d7bec35547e22e17884f9db0863afd4778f571dadc3e0014757d60"
+  }
+]
