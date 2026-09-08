@@ -108,7 +108,7 @@ NOAA GLERL의 전체 오대호 결빙 이례치다. 순재고 변화 `r=-.102`, 
 
 ### 실제 표본과 측정 경계
 
-Copernicus Data Space의 공개 STAC 카탈로그에서 쿠싱 인근 bounding box의 Sentinel-2 L2A 메타데이터 5건을 실제 조회했다. 2023-09-26에는 cloud cover 0.0%인 두 tile이 확인되어, **영상 존재·날짜·구름 필드**는 관측 가능하다. 영수증은 [`ALT-20260908-04`](../../indexes/ALT-20260908-04/README.md)에 남긴다.
+Copernicus Data Space의 공개 STAC 카탈로그에서 쿠싱 인근 bounding box의 Sentinel-2 L2A 메타데이터 5건을 실제 조회했다. 2023-09-26에는 cloud cover 0.0%인 두 tile이 확인되어, **영상 존재·날짜·구름 필드**는 관측 가능하다. 영수증은 [`ALT-20260908-04`](../../gathering/raw/ALT-20260908-04/20260908T000000Z/README.md)에 남긴다.
 
 그러나 카탈로그 검색과 영상 픽셀 다운로드는 다르다. Copernicus의 제품 다운로드·처리 API는 계정 OAuth 토큰을 요구한다. 따라서 현재는 10m 무료 영상의 실제 탱크 그림자를 한 장도 판독·저장하지 않았고, fill level·배럴·EIA 관계도 계산하지 않았다.
 
