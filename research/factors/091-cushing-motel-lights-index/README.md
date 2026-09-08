@@ -33,7 +33,7 @@
 | [091-N](workflow.md#091-n--쿠싱-시청-공개자료-지도) | 시청 공개자료·부서·회의문서 경로 | PARK / E1 — 실제 4개 공식 페이지를 수집해 원문 영수증화; 의제 첨부문서가 유일한 유망 경로이며 새 장기 지표는 아직 없음 |
 | [091-O](workflow.md#091-o--쿠싱-공항-활동-월간보고) | 공항 연료판매·ramp stay·응급비행 지원 | PARK / E1 — 실제 월간보고 4건의 직접 운영 수치를 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091OZ/README.md) 완료; 60개월·개별 기간 미확보 |
 | [091-P](workflow.md#091-p--지역-커뮤니티-발자국--운영-주의도) | 학교 등록학생·KUSH 지역 운영 보도 주의도 | PARK / E1 — 실제 공개 집계 두 개를 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091PZ/README.md) 완료; 전자는 연간 구조, 후자는 보도 주의도라 ‘현재 바쁨’의 정답을 측정하지 않음 |
-| [091-Q/R/S](workflow.md#091-qrs--날씨행사빠른-외식-관측) | NOAA 날씨 · KUSH 행사 · Google Maps Quick Service | PARK / E1 — [실제 표본·개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/README.md) 완료. 날씨는 외생 문맥, 행사·지도는 현재 구조로 지역 활동량을 측정하지 못함 |
+| [091-Q/R/S](workflow.md#091-qrs--날씨행사빠른-외식-관측) | NOAA 날씨 · KUSH 행사 · Google Maps Quick Service | **S만 FORWARD_ONLY / E1** — [실제 표본·개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/README.md) 완료. 고정 6점포의 [live footfall protocol](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md)로 90일 전향 검증을 시작할 수 있음 |
 
 개별 시각화·실제 입력 경계·재개 조건은 [091 workflow](workflow.md)에 모아 둔다.
 
@@ -47,7 +47,7 @@
 
 - **후보 입력**: City of Cushing의 월별 Hotel/Motel Tax 비교표.
 - **제도 지연**: 사업자는 선행 월의 숙박 총수입·세액을 다음 달 20일까지 신고한다. 월간·후행 입력이므로 일간 또는 주간 공급 충격을 선행한다고 가정하지 않는다.
-- **제외**: Google 인기시간, 리뷰 수, 개별 모텔 주차장, 편의점 에너지드링크 판매는 장기·비식별·공개 집계가 없어 수치 입력으로 쓰지 않는다.
+- **제외**: Google 리뷰 수, 개별 모텔 주차장, 편의점 에너지드링크 판매는 장기·비식별·공개 집계가 없어 수치 입력으로 쓰지 않는다. 단, 고정 6개 점포의 **Google Maps live busy label**은 [091-S 전향 수동 관측](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md)으로만 보존한다.
 
 ## 탐색 파일럿 — 2026-09-08
 

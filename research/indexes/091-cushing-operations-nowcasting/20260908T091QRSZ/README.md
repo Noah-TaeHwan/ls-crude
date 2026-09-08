@@ -26,7 +26,7 @@ One visible Google Maps snapshot was inspected for Wendy’s, Taco Bell, Sonic D
 
 This **does not** retrieve a numerical historical Google Maps traffic series. Popular times is an aggregate relative visit profile; its live display and layout may be absent or change. Delivery availability is a business/platform feature and not an order count. No automated Maps collection, transaction data collection, revenue inference, or historical backtest is performed.
 
-**Decision: PARK / E1, eligible only for a forward manual observation log.** A future fixed-time, same-day-of-week record may use `live busyness shown/not shown`, `relative busy category if displayed`, `open/closed`, and `delivery shown/not shown`. It must exclude individual/customer records and must first validate against a real aggregate local activity ground truth.
+**Decision: FORWARD_ONLY / E1.** This is CFAM’s strongest currently accessible live *city-footfall* candidate. The frozen venue basket, fixed-time fields, privacy boundary, and pre-registered 90-day measurement-validity gate are in the [091-S live-monitor protocol](091s-live-monitor-protocol.md). It must first validate against a real aggregate local activity ground truth.
 
 ## 091-T — Fine dining and delivery sales hypothesis
 
