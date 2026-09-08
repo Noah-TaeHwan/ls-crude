@@ -76,3 +76,24 @@ test("intake joins all CSV rows to cards and fails closed on damaged or inconsis
   const card = Object.entries(fields).filter(([key]) => key !== "record_path").map(([key, value]) => `| ${key} | ${value} |`).join("\n");
   assert.equal(parseResearchIntake(`${Object.keys(fields).join(",")}\n${row}\n`, { [fields.record_path]: card })[0].fields.name, fields.name);
 });
+
+test("latest WTI quote validates identity/time and preserves last good quote on failure", async () => {
+  const { parseWtiQuote, readWtiQuote } = await import("../app/lib/wti-quote.server.ts");
+  const now = new Date("2026-09-08T03:00:00Z");
+  const meta = { symbol: "CL=F", currency: "USD", instrumentType: "FUTURE", regularMarketPrice: 92.5, regularMarketTime: Date.parse("2026-09-08T02:50:00Z") / 1000 };
+  const body = (m) => ({ chart: { result: [{ meta: m }], error: null } });
+  assert.equal(parseWtiQuote(body({ ...meta, regularMarketPrice: -37 }), now).price, -37);
+  for (const value of [null, {}, body({ ...meta, symbol: "BZ=F" }), body({ ...meta, currency: "EUR" }), body({ ...meta, regularMarketPrice: NaN }), body({ ...meta, regularMarketTime: now.getTime() / 1000 + 120 })]) assert.throws(() => parseWtiQuote(value, now));
+  const fail = async () => { throw new Error("network down"); };
+  assert.deepEqual((await readWtiQuote(fail, now)).quote, null);
+  let requests = 0;
+  const fetcher = async () => { requests++; return new Response(JSON.stringify(body(meta))); };
+  const good = await readWtiQuote(fetcher, now);
+  assert.equal(good.quote.price, 92.5);
+  assert.equal(good.quote.observedAt, "2026-09-08T02:50:00.000Z");
+  await readWtiQuote(fetcher, new Date(now.getTime() + 30000));
+  assert.equal(requests, 1);
+  const failed = await readWtiQuote(fail, new Date(now.getTime() + 61000));
+  assert.deepEqual(failed.quote, good.quote);
+  assert.match(failed.error, /실패/);
+});
