@@ -133,3 +133,9 @@ Agency-Agents Data Engineer가파서/서버/검사구현및UI읽기교차검토,
 개발 중 Vite 그림 import가 SSR 자산정리 뒤 클라이언트에서404가 되는 것을 확인해 public 정적파일로 고쳤다. React Router serve의 정적파일 경로는 app cwd를 사용하므로, 기존 repository cwd의 SSR자료탐색 테스트와 정상 app start cwd의 HTTP이미지 테스트를 별도로 실행한다. 원본 SHA는 quality.json으로 대조한다.
 
 독립 코드검토: Agency Reality Checker — 차단급 모순 없음. 그림기간 설명을 figcaption에 추가했다. Parent Ego 로컬: 데스크톱1440/모바일390, 페이지 가로넘침 없음, 이미지1560px 실제 로드, Enter로 표 열림·27행 확인, 수집기간/정본판정 일치. [로컬 증거](design-evidence/research-sample/local-qa.json). 배포 후 검증은 PR 및 별도 운영 영수증을 따른다.
+
+### 배포 상태 — 구현 검증과 분리
+
+PR #80의 첫 코드HEAD `5ff8739246e6378c7e287dc7dcd11ca2d195a579`에서 GitHub 연구·앱 CI는 통과했지만 Vercel 상태가 `Deployment rate limited — retry in 24 hours.`로 실패했다. 배포 URL은 생성되지 않았다. 공개 화면도 새 `#research-sample`이 없는 상태임을 Ego로 확인했다. **구현/로컬 QA 완료, 공개 배포 BLOCKED**이며 배포/E2E 완료로 기록하지 않는다. [차단 영수증](design-evidence/research-sample/deployment-blocker.json).
+
+한도 해제 뒤 현재 main의 정상 배포를 실행하고, 배포SHA·그림HTTP/SHA·두화면·모바일/키보드 경로를 다시 확인해야 한다. 우회 배포·임의 유료플랜 변경은 하지 않았다. Noah의 다음 배포 작업에서 이 기록을 갱신한다.

@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-09-08T07:20:19.174189+00:00",
+  "pull_request": "https://github.com/Noah-TaeHwan/ls-crude/pull/80",
+  "attempt_sha": "5ff8739246e6378c7e287dc7dcd11ca2d195a579",
+  "ci_run": 34198605487,
+  "app_ci": "SUCCESS",
+  "research_ci": "SUCCESS",
+  "hosting_status": "failure",
+  "hosting_message": "Deployment rate limited \u2014 retry in 24 hours.",
+  "hosting_url": "https://vercel.com/noah-tae-hwan-s-projects?upgradeToPro=build-rate-limit",
+  "production_sample_present": false,
+  "next_step": "After the provider limit resets, deploy current main normally and verify production SHA, image bytes and user path. No quota bypass or paid-plan change."
+}
