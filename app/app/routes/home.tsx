@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ResearchIntake } from "~/components/research-intake";
+import { readResearchIntake } from "~/lib/research-intake.server";
 import { data, Link } from "react-router";
 import { ArrowRight, ArrowUpRight, Search, ArrowDown } from "lucide-react";
 
@@ -32,7 +34,7 @@ export function meta({}: Route.MetaArgs) {
 
 /** @returns 실제 시장 관측과 현재 연구 정본. */
 export function loader({}: Route.LoaderArgs) {
-  return { market: readWtiMarketSnapshot(), ledger: readResearchLedger() };
+  return { market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
 }
 
 /** @returns 공개 화면의 읽기 전용 응답. */
@@ -45,7 +47,7 @@ export function action({}: Route.ActionArgs) {
  * @param props 라우트 데이터.
  * @returns 공개 연구 데스크.
  */
-export default function Home({ loaderData: { market, ledger } }: Route.ComponentProps) {
+export default function Home({ loaderData: { market, ledger, intake } }: Route.ComponentProps) {
   const [storyIndex, setStoryIndex] = useState(2);
   const story = RESEARCH_STORIES[storyIndex];
   const record = ledger.records.find((item) => item.id === story.id);
@@ -66,7 +68,7 @@ export default function Home({ loaderData: { market, ledger } }: Route.Component
           <aside className="research-status" aria-label="연구 현황">
             <p className="status-stamp"><Search size={14} aria-hidden="true" /> 탐색 중</p>
             <dl>
-              <div><dt>연구 인벤토리</dt><dd>{ledger.error ? "—" : ledger.records.length}<small>개</small></dd></div>
+              <div><dt>기존 연구 인벤토리</dt><dd>{ledger.error ? "—" : ledger.records.length}<small>개</small></dd></div>
               <div><dt>기준 통과</dt><dd>{ledger.passCount ?? "—"}<small>개</small></dd></div>
             </dl>
             <p className="mt-5 text-base font-medium">{ledger.error ? "연구 장부 확인이 필요합니다." : "아직 채택할 신호가 없습니다."}</p>
@@ -74,6 +76,8 @@ export default function Home({ loaderData: { market, ledger } }: Route.Component
             <Link className="source-link mt-4" to="/research#method">어떤 기준으로 판단하나요? <ArrowUpRight size={14} aria-hidden="true" /></Link>
           </aside>
         </section>
+
+        <ResearchIntake {...intake} preview />
 
         <section className="py-10 sm:py-12" aria-labelledby="bridge-title">
           <div className="section-heading">
@@ -157,7 +161,7 @@ function MarketContext({ market, candidateScope }: { market: WtiMarketView; cand
       {snapshot ? (
         <div className="market-layout mt-6">
           <div className="market-chart">
-            <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-sm text-muted-foreground">WTI · CL=F 최근 종가</p><p className="mt-2 font-mono text-4xl text-watching tabular-nums">{number(latest?.close)}<span className="ml-2 text-sm text-muted-foreground">USD</span></p><p className="mt-2 text-xs text-muted-foreground">{snapshot.asOf}{delta == null ? "" : ` · 전일 대비 ${delta > 0 ? "+" : ""}${number(delta)} USD`}</p></div><div className="flex gap-1" role="group" aria-label="차트 표시 범위">{RANGE_OPTIONS.map((value) => <button className="filter-button" type="button" key={value} disabled={value > allBars.length} aria-pressed={range === value} onClick={() => { setRange(value); setSelected(null); }}>{value}봉</button>)}</div></div>
+            <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-sm text-muted-foreground">WTI · CL=F 최근 완료 거래일 종가</p><p className="mt-2 font-mono text-4xl text-watching tabular-nums">{number(latest?.close)}<span className="ml-2 text-sm text-muted-foreground">USD</span></p><p className="mt-2 text-xs text-muted-foreground">{snapshot.asOf}{delta == null ? "" : ` · 이전 거래일 대비 ${delta > 0 ? "+" : ""}${number(delta)} USD`}</p></div><div className="flex gap-1" role="group" aria-label="차트 표시 범위">{RANGE_OPTIONS.map((value) => <button className="filter-button" type="button" key={value} disabled={value > allBars.length} aria-pressed={range === value} onClick={() => { setRange(value); setSelected(null); }}>{value}봉</button>)}</div></div>
             {bars.length > 1 ? <>
               <svg viewBox={`0 0 ${CHART.width} ${CHART.height}`} role="img" aria-label={`최근 ${bars.length}개 WTI 종가 흐름`} aria-describedby="price-trend-summary" className="price-sparkline mt-6 w-full text-watching">
                 {[CHART.pad, CHART.height / 2, CHART.height - CHART.pad].map((line) => <line key={line} x1={CHART.pad} x2={CHART.width - CHART.pad} y1={line} y2={line} stroke="currentColor" opacity="0.15" />)}
@@ -179,6 +183,7 @@ function MarketContext({ market, candidateScope }: { market: WtiMarketView; cand
         </div>
       ) : <div className="empty-state mt-6"><h3>WTI 관측을 표시하지 못했습니다.</h3><p>현재 가격 대신 연구 기록을 먼저 살펴볼 수 있습니다.</p><Link className="action-link mt-4" to="/research">연구 기록 보기 <ArrowRight size={16} aria-hidden="true" /></Link></div>}
       {market.freshnessReasons.length > 0 && <p role="status" className="mt-4 text-sm leading-7 text-primary">{market.freshnessReasons.join(" ")}{snapshot ? ` 마지막 완료 일봉은 ${snapshot.asOf}입니다.` : ""}</p>}
+      <p className="mt-4 text-xs leading-6 text-muted-foreground">확인 시각 {checkedAtKst} KST · 매일 15:30 KST 자동 확인 예정. 수집·검증·배포 후 반영되며 지연될 수 있습니다. 실시간 체결가나 거래소 공식 정산가가 아닌 Yahoo 일봉 종가입니다. 휴장일에는 최근 완료 거래일 값을 유지합니다.</p>
       <details className="mt-6 border-t border-border py-2"><summary className="min-h-11 cursor-pointer py-3 text-sm">관측 출처·산식·데이터 확인</summary><div className="space-y-2 pb-4 text-sm leading-7 text-muted-foreground"><p>Yahoo Finance · CL=F · 일봉 · 자동조정 종가. 연속선물의 만기 교체에 따른 롤 갭이 포함될 수 있습니다.</p>{snapshot && <><p>산식: {snapshot.volatility.formula} · 연환산 {snapshot.volatility.annualization}일. 기준 분포 {snapshot.volatility.referenceStart}–{snapshot.volatility.referenceEnd}.</p><p>마지막 확인: {checkedAtKst} KST · 완료봉 {snapshot.provenance.rowCount.toLocaleString("ko-KR")}개</p><p className="break-all font-mono text-xs">SHA-256 {snapshot.provenance.contentSha256}</p></>}</div></details>
     </section>
   );

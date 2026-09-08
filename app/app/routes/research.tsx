@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ResearchIntake } from "~/components/research-intake";
+import { readResearchIntake } from "~/lib/research-intake.server";
 import { data, Link } from "react-router";
 import { ArrowRight, ArrowUpRight, Search } from "lucide-react";
 
@@ -32,7 +34,7 @@ export function meta({}: Route.MetaArgs) {
  * @returns 연구 기록과 최초 검색어.
  */
 export function loader({ request }: Route.LoaderArgs) {
-  return { ...readResearchLedger(), initialQuery: new URL(request.url).searchParams.get("candidate") ?? "" };
+  return { ...readResearchLedger(), intake: readResearchIntake(), initialQuery: new URL(request.url).searchParams.get("candidate") ?? "" };
 }
 
 /** @returns 공개 연구 화면의 읽기 전용 응답. */
@@ -69,8 +71,10 @@ export default function Research({ loaderData }: Route.ComponentProps) {
       <main id="main-content" tabIndex={-1} className="desk-shell">
         <header className="research-hero">
           <div><p className="eyebrow">RESEARCH LEDGER / 공개 연구 기록</p><h1 className="hero-title">가설에서 판정까지,<br />연구 기록을 따라갑니다.</h1><p className="hero-copy">무엇을 측정하려 했는지, 어떤 자료를 확보했는지, 어디에서 멈췄는지를 확인하세요. {error ? "현재 판정을 불러오지 못했습니다." : "아직 채택할 신호는 없습니다."}</p><Link className="secondary-link mt-5" to="/">연결 가설과 WTI 관측 보기 <ArrowRight size={16} aria-hidden="true" /></Link></div>
-          <aside className="research-status" aria-label="전체 연구 인벤토리"><p className="status-stamp">탐색 중 · 검증 결과 공개</p><dl><div><dt>등록된 연구 기록</dt><dd>{error ? "—" : records.length}<small>개</small></dd></div><div><dt>기준 통과</dt><dd>{passCount ?? "—"}<small>개</small></dd></div></dl><p className="mt-5 text-sm leading-7 text-muted-foreground">미검증·보관·별도 전략을 포함한 인벤토리입니다. 등록 건수는 검정 완료 건수가 아닙니다.</p><a className="source-link mt-4" href={LEDGER_URL} target="_blank" rel="noreferrer">현재 정본 장부 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></aside>
+          <aside className="research-status" aria-label="전체 연구 인벤토리"><p className="status-stamp">탐색 중 · 검증 결과 공개</p><dl><div><dt>기존 연구 인벤토리</dt><dd>{error ? "—" : records.length}<small>개</small></dd></div><div><dt>기준 통과</dt><dd>{passCount ?? "—"}<small>개</small></dd></div></dl><p className="mt-5 text-sm leading-7 text-muted-foreground">미검증·보관·별도 전략을 포함한 인벤토리입니다. 등록 건수는 검정 완료 건수가 아닙니다.</p><a className="source-link mt-4" href={LEDGER_URL} target="_blank" rel="noreferrer">현재 정본 장부 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></aside>
         </header>
+
+        <ResearchIntake {...loaderData.intake} />
 
         <section id="ledger" className="py-10 sm:py-12" aria-labelledby="ledger-title">
           <div className="section-heading"><div><p className="section-kicker">01 / EXPLORE THE EVIDENCE</p><h2 id="ledger-title">후보를 열면, 멈춘 이유가 보입니다.</h2></div><a className="source-link" href="#method">판정 기준 확인 <ArrowRight size={14} aria-hidden="true" /></a></div>

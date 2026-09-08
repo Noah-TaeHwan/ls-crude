@@ -162,3 +162,23 @@ def test_atomic_writer_keeps_last_good_snapshot_when_json_is_invalid(tmp_path) -
         "status": "last-good"
     }
     assert list(tmp_path.glob("*.tmp")) == []
+
+
+def test_weekend_check_keeps_friday_and_never_fills_missing_sessions() -> None:
+    """주말·휴일에도 마지막 실제 일봉을 쓰고 없는 거래일은 만들지 않는다."""
+    prices = _prices()
+    prices.loc[pd.Timestamp('2026-09-04')] = prices.iloc[-1]
+    # NY 금요일 23:30: 금요일 일봉은 아직 제외하는 보수적 날짜 규약.
+    before_midnight = market_snapshot.build_market_snapshot(
+        prices, datetime(2026, 9, 5, 3, 30, tzinfo=UTC)
+    )
+    saturday = market_snapshot.build_market_snapshot(
+        prices, datetime(2026, 9, 5, 6, 30, tzinfo=UTC)
+    )
+    holiday_gap = market_snapshot.build_market_snapshot(
+        prices, datetime(2026, 9, 8, 6, 30, tzinfo=UTC)
+    )
+    assert before_midnight['asOf'] == '2026-09-03'
+    assert saturday['asOf'] == holiday_gap['asOf'] == '2026-09-04'
+    assert saturday['bars'] == holiday_gap['bars']
+    assert saturday['checkedAt'] != holiday_gap['checkedAt']
