@@ -238,7 +238,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 090 | [Great Lakes Ice Constraint Index](090-great-lakes-ice-constraint-index/README.md) | NOAA 결빙 제약 → 난방유 변동성 | HOLD — NOAA 결빙 90일 z → HO RV5는 IS/OOS -0.103/-0.228으로 약한 동일방향이나 비유의; 실제 쇄빙·지연 미측정 | 0.0 |
 | 091 | [Cushing Field Activity Monitor (CFAM)](091-cushing-motel-lights-index/README.md) | 쿠싱 숙박세·도시권 야간광 → 지역 운영 맥락 | HOLD — 호텔세 14개월 WTI 파일럿과 96개월 CFAM 야간광→이후 28일 EIA 쿠싱 재고 검정 모두 관계 없음. 도시 활동 연구로만 보존 | 0.0 |
 | 092 | [Cushing Last-Mile Logistics Feasibility (CALMF)](092-cushing-last-mile-logistics-feasibility/README.md) | Cushing/Payne County last-mile 관측 가능성 | PARK — driver posting·Flex block·facility milestone은 완료 배송량이 아니며, 허용된 연속 공개 패널이 없어 WTI/에너지 검정 미실행 | 0.0 |
-| 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | 이란 식품·환율 압력 × 쿠싱 tightness 조건부 변동성 가설 | HOLD — 이란 계란 월별 원문·공표일, 독립 FX 계열, 검증된 M1/M2 패널이 아직 없어 미검정. 단독 가격 예측이 아니라 조건부 WTI 위험 레짐만 평가 | 0.0 |
+| 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | 이란 식품·환율 압력 × 쿠싱 tightness 조건부 변동성 가설 | HOLD — 실제 food-CPI 대체 검정은 WTI RV21 IS `r=-0.022`, 결합 9개월도 예상 반대. 계란 원문·공표일·FX가 없어 계란 가설 자체는 미검정 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 

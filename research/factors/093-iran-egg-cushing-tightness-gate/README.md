@@ -1,6 +1,6 @@
 # 093 — Iran Egg Stress × Cushing Tightness Gate
 
-**상태: HOLD — 밈성 있는 조건부 지정학·변동성 가설. 아직 백테스트 없음, 거래 가중치 0.0.**
+**상태: HOLD — 계란 원자료는 미확보. 실제 공개 food-CPI 대체 검정은 미통과, 거래 가중치 0.0.**
 
 > “이란의 달걀이 비싸고 쿠싱이 타이트하면, 시장은 평소보다 더 예민한가?”
 
@@ -32,6 +32,19 @@ AND Cushing is physically/financially tight
 | 쿠싱 재고 | [EIA 주간 Cushing commercial crude stocks](https://www.eia.gov/dnav/pet/pet_stoc_wstk_a_epc0_sax_mbbl_w.htm) | **가능** | 주간 발표 시각 뒤에만 사용한다. 전국 재고나 WTI 가격으로 대체하지 않는다. |
 | prompt tightness | [091-X2 WMCSI](../091-cushing-motel-lights-index/subtracks/wmcsi/README.md) | **PARK** | 검증된 M1/M2 일별 롤링 결제 패널이 아직 없다. `CL=F` 단독으로 만들지 않는다. |
 | 타깃 | Yahoo Finance `CL=F` 다음 5·20 거래일 수익률/실현변동성 | **후속** | 2015–2023에서 사전규칙을 고정하고, 2024+는 한 번만 OOS로 사용한다. |
+
+### 2026-09-08 실제 food-CPI 대체 검정
+
+[실제 원문 영수증·정렬 패널·시각화·결과](../../indexes/ALT-20260908-93/20260908T144631Z/README.md)를
+남겼다. Iran Economic Data가 연결한 SCI `food_beverage_cpi` 141개월과 EIA
+Cushing 1,169주를 수집해 WTI 인샘플 97개월을 정렬했다. `food_beverage_cpi`는
+**계란 가격이 아니다**.
+
+- Food CPI YoY와 이후 21거래일 WTI RV의 Pearson `r=-0.0219`.
+- Food shock와 Cushing 저재고가 동시인 9개월의 평균 RV는 `0.3177`, 나머지
+  88개월의 `0.3912`보다 낮았다.
+- 따라서 현재 가능한 넓은 food-CPI 프록시는 가설을 지지하지 않는다. 계란
+  원시계열·공표일·FX를 확보하기 전에는 OOS나 추가 튜닝을 하지 않는다.
 
 ## 왜 단순 상관은 금지인가
 
