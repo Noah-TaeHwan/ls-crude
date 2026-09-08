@@ -23,6 +23,14 @@ answer is **not yet**.
 
 The representative AirCasting response and acquisition ledger are in [raw](raw/README.md).
 
+## Annual companion: environmental footprint
+
+The absence of a current Cushing AQI feed does not prevent a separate,
+accurately-labelled annual environmental view. The official DEQ 2024
+facility-level extract was checked and visualised as [Cushing Annual
+Environmental Footprint](../20260908T091WENVZ/README.md). It must remain
+separate from this live-widget contract and from CFAM.
+
 ## Dashboard contract — frozen
 
 If a qualifying source appears, 091-W displays a standalone **Air Quality

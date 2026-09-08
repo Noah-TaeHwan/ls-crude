@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
+<title id="title">2024 Cushing terminal-like facility VOC footprint</title><desc id="desc">Horizontal bar chart of the ten largest 2024 reported VOC totals among operating Cushing facilities whose names contain terminal, tank farm or crude. Plains Cushing Terminal is 354.724 tons and Enbridge Cushing Terminal 244.413 tons. The total for 17 filtered records is 1206.389 tons.</desc>
+<style>text{font-family:Arial,'Noto Sans KR',sans-serif;fill:#14213d}.t{font-size:25px;font-weight:700}.s{font-size:14px;fill:#53657b}.l{font-size:14px}.v{font-size:13px;font-weight:700}.g{stroke:#dfe6ef;stroke-width:1}.bar{fill:#3d82c4}.note{font-size:12px;fill:#53657b}</style><rect width="980" height="560" fill="#fbfcff"/>
+<text x="40" y="42" class="t">Cushing annual environmental footprint · 2024 reported VOC</text><text x="40" y="66" class="s">17 operating Cushing-city facilities with terminal / tank farm / crude in the facility name · annual reported tons, not real-time air quality</text>
+<line x1="360" y1="96" x2="360" y2="465" class="g"/><line x1="500" y1="96" x2="500" y2="465" class="g"/><line x1="640" y1="96" x2="640" y2="465" class="g"/><line x1="780" y1="96" x2="780" y2="465" class="g"/><line x1="920" y1="96" x2="920" y2="465" class="g"/>
+<text x="355" y="88" class="note">0</text><text x="487" y="88" class="note">100</text><text x="627" y="88" class="note">200</text><text x="767" y="88" class="note">300</text><text x="902" y="88" class="note">400 tons</text>
+<text x="40" y="122" class="l">Plains · Cushing Terminal</text><rect x="360" y="106" width="497" height="20" rx="3" class="bar"/><text x="866" y="122" class="v">354.724</text>
+<text x="40" y="157" class="l">Enbridge · Cushing Terminal</text><rect x="360" y="141" width="342" height="20" rx="3" class="bar"/><text x="711" y="157" class="v">244.413</text>
+<text x="40" y="192" class="l">Magellan · Shinn Pence Tank Farm</text><rect x="360" y="176" width="192" height="20" rx="3" class="bar"/><text x="561" y="192" class="v">137.082</text>
+<text x="40" y="227" class="l">ET · Cushing North Tank Farm</text><rect x="360" y="211" width="116" height="20" rx="3" class="bar"/><text x="485" y="227" class="v">83.002</text>
+<text x="40" y="262" class="l">Deeprock · Development Terminal</text><rect x="360" y="246" width="114" height="20" rx="3" class="bar"/><text x="483" y="262" class="v">81.384</text>
+<text x="40" y="297" class="l">NGL · Cushing South Terminal</text><rect x="360" y="281" width="114" height="20" rx="3" class="bar"/><text x="483" y="297" class="v">81.157</text>
+<text x="40" y="332" class="l">Enbridge · Grandstaff Terminal</text><rect x="360" y="316" width="104" height="20" rx="3" class="bar"/><text x="473" y="332" class="v">74.217</text>
+<text x="40" y="367" class="l">Magellan · Cushing Central Terminal</text><rect x="360" y="351" width="85" height="20" rx="3" class="bar"/><text x="454" y="367" class="v">60.641</text>
+<text x="40" y="402" class="l">Keyera · Wildhorse Terminal</text><rect x="360" y="386" width="40" height="20" rx="3" class="bar"/><text x="409" y="402" class="v">28.575</text>
+<text x="40" y="437" class="l">Enterprise · Cushing East Terminal</text><rect x="360" y="421" width="32" height="20" rx="3" class="bar"/><text x="401" y="437" class="v">22.607</text>
+<rect x="40" y="482" width="900" height="48" rx="8" fill="#e9f1fb"/><text x="60" y="505" class="v">Filtered 17-facility total: 1,206.389 VOC tons · 19.715 HAP tons</text><text x="60" y="522" class="note">This ranks reported annual facility emissions. It does not measure current exposure, real-time air conditions, terminal throughput, or CFAM activity.</text>
+</svg>
