@@ -1,3 +1,4 @@
+import { ResearchSample } from "~/components/research-sample";
 import { useEffect, useState } from "react";
 import { TankerObservation } from "~/components/tanker-observation";
 import { readTankerArrivals } from "~/lib/tanker-arrivals.server";
@@ -69,9 +70,9 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
           <div>
             <p className="eyebrow">EAST CAMP AI QUANT 4기 <span aria-hidden="true">/</span> 오태환 × 손성찬</p>
             <h1 id="research-title" className="hero-title">원유 시장을 읽을<br />새로운 <em className="not-italic text-primary">흔적</em>을 찾습니다.</h1>
-            <p className="hero-copy">피자 주문처럼 작지만 설명 가능한 현실의 흔적에서 출발합니다. 공개 데이터를 찾고, 확보한 자료를 WTI 변동성과 비교하며, 보류와 기각의 이유까지 기록합니다.</p>
+            <p className="hero-copy">피자 주문처럼 작지만 설명 가능한 현실의 흔적에서 출발합니다. 공개 데이터를 찾아 개별 관측으로 보여주고, 적격한 자료를 WTI와 비교합니다. 보류와 기각의 이유도 함께 기록합니다.</p>
             <div className="mt-7 flex flex-wrap items-center gap-4">
-              <Link className="action-link" to="/research">후보와 판정 살펴보기 <ArrowRight size={17} aria-hidden="true" /></Link>
+              <Link className="action-link" to="/research#research-sample">실제 수집 사례 보기 <ArrowRight size={17} aria-hidden="true" /></Link>
               <a className="secondary-link" href="#market">WTI 관측 보기 <ArrowDown size={15} aria-hidden="true" /></a>
             </div>
           </div>
@@ -92,6 +93,7 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
           <div className="section-heading"><div><p className="section-kicker">02 / FIELD NOTES</p><h2 id="observations-title">원유 시장 주변의 관측</h2></div><p>무엇을 측정하는지, 얼마나 자주 갱신되는지부터 살펴봅니다.</p></div>
           <div className="grid gap-6 lg:grid-cols-2"><VisibilityObservation view={visibility} checkedAt={checkedAt} compact /><TankerObservation view={tankers} checkedAt={checkedAt} /></div>
         </section>
+        <ResearchSample record={intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36")} />
         <ResearchIntake {...intake} preview />
 
         <section className="py-10 sm:py-12" aria-labelledby="bridge-title">

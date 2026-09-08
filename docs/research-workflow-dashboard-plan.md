@@ -117,3 +117,25 @@ Agency-Agents Data Engineer가3개 데이터파일 구현·검증, root가페이
 Agency-Agents Data Engineer가파서/서버/검사구현및UI읽기교차검토,root가UI통합과직접실행을맡았다. typecheck/build+16node tests PASS,67카드대조PASS. Ego1440/1024/390/320에서가로넘침없음,데스크톱2열과모바일1열확인. 실제2026-07표1,568+468+231=2,267,키보드표펼침과조회버튼확인. 로컬QA시계+49시간에서확인안내로전환·복원했고월/조회시각은그대로유지됐다.
 
 [로컬 QA영수증](design-evidence/tanker-card/local-qa.json)과스크린샷을남긴다. 라이선스/원천링크는각카드에포함한다. 스크린리더실사용·상관/성과검정·장기수집스케줄러는미실행이다.
+
+
+## 2026-09-08 — 과거 연구 샘플을 화면에 연결
+
+현재 관측 두 카드 아래/접수 위에 `#research-sample`을 추가하고 `/research#research-sample`에서도 동일 컴포넌트를 사용한다. 원장의 최근 등록 순서를 바꾸지 않고, 기존 후보의 수집 진전을 한 사례로 직접 읽게 한다. [방향 점검](research-direction-2026-09-08.md#11-실제-수집과-웹-표시-후-방향-점검--2026-09-08-후속).
+
+수박 ALT36의 고정 quality.json·yearly-coverage.csv를 import하고 검토한 PNG를 표시한다. 숫자를 새로 튜닝하거나 가격과 겹쳐 그리지 않는다. 현재 판정·담당·다음 행동은 현재 IntakeRecord를 참조하고, 원장 오류로 해당 후보를 못 읽으면 패널을 표시하지 않는다. 고정 샘플과 현재 연구 판정은 분리한다.
+
+- 그림 앞: 과거자료/자동갱신아님, PARK, 해당 샘플의 WTI검정미실행, 수박 관측기간·수집UTC.
+- 핵심 설명: 409날짜 중332날짜가 단일출하지; 값4이상 비중은 전국 부족률이 아니다. 소수38개·정수만남길때6날짜소실.
+- 위 점 그래프2022이후/아래 전체기간, 미관측기간 보간 없음. 모바일 그림은 가로스크롤·원본보기, 연도별27행은 native details와 접근가능한 표.
+- 배포 사본 `app/public/research/watermelon-20260908.png`는 연구 원본 `research/indexes/ALT-20260907-36/20260908T065043Z/observation.png`와 동일 바이트다. 데이터 변경 시 새 빈티지 검토 뒤 경로를 바꾼다. 운영 HTTP 상태/MIME/SHA 검사로 사본 드리프트를 막는다.
+
+개발 중 Vite 그림 import가 SSR 자산정리 뒤 클라이언트에서404가 되는 것을 확인해 public 정적파일로 고쳤다. React Router serve의 정적파일 경로는 app cwd를 사용하므로, 기존 repository cwd의 SSR자료탐색 테스트와 정상 app start cwd의 HTTP이미지 테스트를 별도로 실행한다. 원본 SHA는 quality.json으로 대조한다.
+
+독립 코드검토: Agency Reality Checker — 차단급 모순 없음. 그림기간 설명을 figcaption에 추가했다. Parent Ego 로컬: 데스크톱1440/모바일390, 페이지 가로넘침 없음, 이미지1560px 실제 로드, Enter로 표 열림·27행 확인, 수집기간/정본판정 일치. [로컬 증거](design-evidence/research-sample/local-qa.json). 배포 후 검증은 PR 및 별도 운영 영수증을 따른다.
+
+### 배포 상태 — 구현 검증과 분리
+
+PR #80의 첫 코드HEAD `5ff8739246e6378c7e287dc7dcd11ca2d195a579`에서 GitHub 연구·앱 CI는 통과했지만 Vercel 상태가 `Deployment rate limited — retry in 24 hours.`로 실패했다. 배포 URL은 생성되지 않았다. 공개 화면도 새 `#research-sample`이 없는 상태임을 Ego로 확인했다. **구현/로컬 QA 완료, 공개 배포 BLOCKED**이며 배포/E2E 완료로 기록하지 않는다. [차단 영수증](design-evidence/research-sample/deployment-blocker.json).
+
+한도 해제 뒤 현재 main의 정상 배포를 실행하고, 배포SHA·그림HTTP/SHA·두화면·모바일/키보드 경로를 다시 확인해야 한다. 우회 배포·임의 유료플랜 변경은 하지 않았다. Noah의 다음 배포 작업에서 이 기록을 갱신한다.

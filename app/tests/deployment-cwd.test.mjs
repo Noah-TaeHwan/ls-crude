@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { createServer } from "node:net";
 import { test } from "node:test";
@@ -176,6 +177,13 @@ test("serves the public evidence brief routes from the repository root", async (
 
     assert.match(body, /id="visibility-observation"/);
     assert.match(body, /id="tanker-observation"/);
+    assert.ok(body.indexOf('id="tanker-observation"') < body.indexOf('id="research-sample"'));
+    assert.ok(body.indexOf('id="research-sample"') < body.indexOf('id="intake"'));
+    assert.match(body, /href="\/research#research-sample"/);
+    const sample = body.slice(body.indexOf('id="research-sample"'), body.indexOf('id="intake"'));
+    for (const label of ["과거 연구 샘플", "자동 갱신 아님", "WTI 관계 검정 미실행", "2025-10-14", "332", "소수값", "원단위 표"]) assert.ok(sample.includes(label));
+    const imagePath = sample.match(/id="watermelon-research-plot" src="([^"]+)"/)?.[1];
+    assert.equal(imagePath, "/research/watermelon-20260908.png", "SSR uses a public URL, not a raw filesystem path");
     assert.match(body, /href="\/observations\/tankers"/);
     const tankers = await fetch(`${baseUrl}/observations/tankers`);
     assert.equal(tankers.status, 200);
@@ -193,6 +201,9 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.equal(research.status, 200);
     const researchBody = await research.text();
     const researchText = researchBody.split("<script")[0].replace(/<[^>]*>/g, "");
+    assert.match(researchBody, /id="research-sample"/);
+    assert.ok(researchBody.includes(imagePath), "home and research share the same evidence image");
+    assert.match(researchText, /개별 관측/);
     const inventory = parseResearchLedger(await readFile(path.join(repositoryRoot, "research/factors/README.md"), "utf8"));
     assert.ok(researchText.includes(`전체 ${inventory.records.length}개`));
     assert.match(researchText, /기준 통과0개/);
@@ -215,6 +226,28 @@ test("serves the public evidence brief routes from the repository root", async (
     const legacyPostBody = await legacyPost.text();
     assert.match(legacyPostBody, /백테스트를 실행할 수 없습니다/);
     assert.match(legacyPostBody, /<h1[^>]*>백테스트는 로컬에서 진행합니다\.<\/h1>/);
+  } finally {
+    await stop(child);
+  }
+});
+
+test("serves research image bytes from the production start directory", async () => {
+  // react-router-serve의 정적 파일 루트는 app cwd 기준이다. 위 테스트는 SSR 자료 탐색의 다른 cwd를 검사한다.
+  const port = await findFreePort();
+  const output = [];
+  const child = spawn(process.execPath, [serveEntrypoint, serverEntrypoint], {
+    cwd: appRoot,
+    env: { NODE_ENV: "production", HOST: "127.0.0.1", PORT: String(port) },
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  child.stdout.on("data", (chunk) => output.push(String(chunk)));
+  child.stderr.on("data", (chunk) => output.push(String(chunk)));
+  try {
+    const response = await waitForResponse(`http://127.0.0.1:${port}/research/watermelon-20260908.png`, child, output);
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("content-type"), /image\/png/);
+    const quality = JSON.parse(await readFile(path.join(repositoryRoot, "research/indexes/ALT-20260907-36/20260908T065043Z/quality.json"), "utf8"));
+    assert.equal(createHash("sha256").update(Buffer.from(await response.arrayBuffer())).digest("hex"), quality.output_sha256["research/indexes/ALT-20260907-36/20260908T065043Z/observation.png"]);
   } finally {
     await stop(child);
   }
