@@ -44,7 +44,7 @@ export function DeskHeader({ source, ticker, freshness, contextLabel }: DeskHead
             <DeskNavLink to="/" end>
               연구 데스크
             </DeskNavLink>
-            <DeskNavLink to="/observations/visibility">관측</DeskNavLink>
+            <Link className="desk-nav-link" to="/#observations">관측</Link>
             <DeskNavLink to="/research">후보 장부</DeskNavLink>
             <a className="desk-nav-link" href="/research#method">
               검증 방법

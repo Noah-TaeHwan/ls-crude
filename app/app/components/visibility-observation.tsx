@@ -28,8 +28,8 @@ function label(row: Observation) {
  * @param props 검증된 관측, 서버 확인시각, 상세 화면 여부.
  * @returns 관측 카드 또는 상세 관측 영역.
  */
-export function VisibilityObservation({ view, checkedAt, detail = false }: { view: VisibilityView; checkedAt: string; detail?: boolean }) {
-  const Heading = detail ? "h1" : "h2";
+export function VisibilityObservation({ view, checkedAt, detail = false, compact = false }: { view: VisibilityView; checkedAt: string; detail?: boolean; compact?: boolean }) {
+  const Heading = detail ? "h1" : compact ? "h3" : "h2";
   const revalidator = useRevalidator();
   const [clock, setClock] = useState(Date.parse(checkedAt));
   useEffect(() => {
@@ -47,9 +47,9 @@ export function VisibilityObservation({ view, checkedAt, detail = false }: { vie
   const start = first ? Date.parse(first.observedAt) : 0;
   const end = latest ? Date.parse(latest.observedAt) : 0;
   const max = Math.max(12, ...known.map(row => row.value! + 2));
-  return <section id="observations" className="py-10 sm:py-12" aria-labelledby="visibility-title">
-    <div className="section-heading"><div><p className="section-kicker">02 / AROUND THE OIL MARKET</p><Heading id="visibility-title" className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">항로 앞이 잘 보일까?</Heading></div><span className="status-stamp"><Eye size={14} aria-hidden="true" /> {status}</span></div>
-    <div className="rounded-2xl border border-border bg-card p-5 sm:p-8">
+  return <section id={compact ? "visibility-observation" : "observations"} className={compact ? "min-w-0 py-6 flex flex-col" : "py-10 sm:py-12"} aria-labelledby="visibility-title">
+    <div className="section-heading"><div><p className="section-kicker">{compact ? "기상 · 공항 시정" : "02 / AROUND THE OIL MARKET"}</p><Heading id="visibility-title" className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">항로 앞이 잘 보일까?</Heading></div><span className="status-stamp"><Eye size={14} aria-hidden="true" /> {status}</span></div>
+    <div className="flex-1 rounded-2xl border border-border bg-card p-5 sm:p-8">
       <div className="flex flex-wrap items-start justify-between gap-5">
         <div><p className="text-sm text-muted-foreground">갤버스턴 · KGLS 공항 시정</p><p className="mt-2 text-4xl font-semibold tracking-tight">{latest ? label(latest) : "—"}</p><p className="mt-2 text-xs leading-6 text-muted-foreground">SM = 육상 마일 · ≥ 표시는 하한이며 정확한 거리가 아닙니다.</p></div>
         <button type="button" className="secondary-link min-h-11" disabled={revalidator.state !== "idle"} onClick={() => void revalidator.revalidate()}><RefreshCw size={15} aria-hidden="true" /> {revalidator.state !== "idle" ? "확인 중…" : "갱신 확인"}</button>

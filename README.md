@@ -17,7 +17,7 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 
 ## Current research status — 2026-09-08
 
-웹 관측1개 연결: [갤버스턴 시정 상세](https://ls-crude.vercel.app/observations/visibility). 홈 WTI 일봉 아래에서 실제 AWC 관측을 확인하고 원표·출처·연구 기록으로 이동한다. 열린 화면5분 확인/서버10분 캐시이며 연구 원본의 장기 자동수집은 아니다.
+웹 관측2개: [갤버스턴 시정](https://ls-crude.vercel.app/observations/visibility)과 [싱가포르 월별 탱커 입항](https://ls-crude.vercel.app/observations/tankers). 홈의 단일 WTI 일봉 아래에 두 카드를 표시한다. 열린 화면5분 확인, 시정10분/월간6시간 캐시이며 각 자료의 관측시각·기준 월을 구분한다. 연구 원본의 장기 자동수집은 아니다.
 
 **수집 가능성 후속:** [기존26 싱가포르 탱커 월간 입항](research/indexes/ALT-20260907-26/20260908T055411Z/README.md)은 dataset ID 차단을 해소하고12개월 원단위표본·그림·공식총계대사를 확보했습니다. 관측 후보 KEEP이며 WTI관계는NOT_RUN입니다. [기존16의USCG후속](research/indexes/ALT-20260908-16/20260908T055451Z/README.md)은 운영문서2개까지확보했지만 실제안개폐쇄/재개시각은미확인입니다. [이번결과·다음행동](research/gathering/notes/2026-09-08-collectible-source-followup.md). 다음은26의월간관측카드표시범위·공표/개정안내를정리하고,16은확정사건시각이있는공식경로가확보될때만기상과대조합니다.
 
