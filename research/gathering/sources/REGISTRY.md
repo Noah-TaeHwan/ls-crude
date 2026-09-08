@@ -140,3 +140,10 @@
 | EIA Hourly Electric Grid Monitor | 46 전력수요·연료전환 활동 | https://www.eia.gov/electricity/gridmonitor/ | 정부 공개이나 API 키 조건·저장·재배포 미확인 | 시간별 갱신·확정 시점 미확인 | 미수집(API 키 미발급) | 모니터 페이지 200; API 미호출 | 키 발급 전 수집 보류; 크롤 우회 없음 | [46](../../candidates/ALT-20260907-46.md) |
 
 조사 노트에 적힌 출처만 추가합니다. 보류도 한 줄로 남깁니다. 없는 출처를 미리 만들지 않습니다.
+
+## 2026-09-08 쿠싱 최신 활동 접수
+
+| 출처 | 후보·측정값 | 공식 URL | 이용 조건 | 시점·역사 | 확인 범위 / 제한 | 기록 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ODOT Cushing Road Restrictions | ALT-20260908-02 도로 폭·통행 제한 공지 | https://www.oklahoma.gov/content/dam/ok/en/odot/about-us/laws-rules/size-and-weight-permits/size-weight-restrictions/restriction-list.pdf | 공개 열람; 반복 수집·보존·재배포 조건 미확인. https://oklahoma.gov/about/copyright-and-protection-acts.html 확인 | HTTP 수정일 2026-09-04; Cushing 행 06.25.25; 최초 공개·빈티지 미확인 | 2026-09-08 UTC GET200·511928 bytes 메모리 파싱, 46쪽 Cushing 규제 확인; 원본 파일 미보존. 교통량 아님 | [접수 노트](../notes/2026-09-08-cushing-live-intake-run01.md) |
+| South Bow Keystone Public Notices | ALT-20260908-03 연결 파이프라인 운영공지 접근 | https://www.southbow.com/keystone-pipeline-system/ | https://www.southbow.com/legal-terms-of-use/ 개인 비상업 사본·서면 허가 조건; 팀 이용 미확인 | 공개 주기·정비 이력·최초 게시 빈티지 미확인 | 2026-09-08 UTC 공개 안내 열람. 기존 고객 로그인·shipper 조건; 원본 미수집. 고객 포털 내용 미검증 | [접수 노트](../notes/2026-09-08-cushing-live-intake-run01.md) |
