@@ -4,12 +4,12 @@
 
 ## 원장과 카드
 
-[ledger.csv](../research/candidates/ledger.csv)는 UTF-8 CSV 요약이고 [후보 카드 양식](../research/candidates/_TEMPLATE.md)을 복사한 파일이 상세 정본입니다. **2026-09-07 통합 원장은 01–48의 48행**입니다. [보관본 복구 기록](../research/reports/2026-09-07-research-convergence.md)을 참고하며, 신규 ID는 최신 원장의 마지막 번호 뒤에 배정합니다. 기존 연구는 [factors](../research/factors/README.md)와 노트에 남으며 전체 연구를 0건으로 초기화하지 않습니다.
+[ledger.csv](../research/candidates/ledger.csv)는 UTF-8 CSV 요약이고 [후보 카드 양식](../research/candidates/_TEMPLATE.md)을 복사한 파일이 상세 정본입니다. **2026-09-07 통합 원장은 01–48의 48행**입니다. [보관본 복구 기록](../research/reports/2026-09-07-research-convergence.md)을 참고하며, 신규 ID는 등록일 KST의 미사용 일별 번호로 coordinator가 배정합니다(아래 규칙). 기존 연구는 [factors](../research/factors/README.md)와 노트에 남으며 전체 연구를 0건으로 초기화하지 않습니다.
 
 1. 기존 가설을 먼저 확인합니다. 신규 ID는 ALT-YYYYMMDD-NN(등록일 KST, 일별 01부터 빈 번호)입니다. 기존 팩터 번호와 혼용하지 않습니다. 같은 후보는 계속 같은 ID를 쓰고, 재개 시 legacy_ref와 과거 노출/판정을 명시합니다.
-2. 후보 양식을 research/candidates/<candidate_id>.md로 복사하고 모든 칸을 채웁니다. 모르는 사실은 미확인, 실행 전 결과는 미실행으로 씁니다.
-3. CSV에 아래 13칸을 한 행으로 기록합니다. 쉼표가 포함된 값은 CSV 규칙대로 큰따옴표로 감쌉니다. record_path는 저장소 루트 상대 경로입니다.
-4. 한 후보에는 작성 담당자 한 명을 둡니다. 카드와 CSV를 함께 수정하고 이력을 남깁니다. 동료가 근거·표본·판정을 검토합니다. 충돌한 판정은 담당자가 근거와 함께 조정합니다.
+2. 후보 양식을 research/candidates/<candidate_id>.md로 복사합니다. 초기에는 아래 요약12필드와 실제 관측·출처·접근 결과·재개 조건을 작성합니다. 구성·검정 상세는 해당 단계 진입 때 채우며 모르는 사실은 미확인, 미실행 결과는 NOT_RUN으로 둡니다.
+3. 카드를 정본으로 수정한 뒤 아래 생성기로 CSV13열을 생성합니다. CSV를 별도로 수동 편집하지 않습니다. record_path는 파일명에서 생성합니다.
+4. 한 후보에는 작성 담당자 한 명을 둡니다. 카드를 수정하고 CSV를 생성하여 같은 변경에 포함합니다. 이력을 남깁니다. 동료가 근거·표본·판정을 검토합니다. 충돌한 판정은 담당자가 근거와 함께 조정합니다.
 
 | CSV 칸 | 의미 |
 | --- | --- |
@@ -24,7 +24,21 @@
 
 public은 허가를 뜻하지 않고 scrape는 허용된 수집이라는 뜻이 아닙니다. needs_key는 키가 필요한 경로이며 키 자체를 카드·CSV에 넣지 않습니다. 확인 전 availability=unavailable와 access_method에 “미확인”을 적습니다. 영구 부재로 단정하지 않습니다.
 
-## 모든 후보 카드에 필요한 내용
+## 생성·대조 명령
+
+저장소 루트에서 실행합니다. 기본은 읽기 전용 검사입니다. 모든 카드의 필수 값·상태·ID·중복 키가 유효해야 원장이 교체되며, 한 카드라도 잘못되면 기존 CSV는 유지됩니다. 앱의 엄격한 검사는 그대로 둡니다.
+
+```bash
+python3 research/scripts/sync_candidate_ledger.py --check
+# 카드 변경 후 원장 불일치라면, 카드 내용을 검토하고 명시적으로 생성
+python3 research/scripts/sync_candidate_ledger.py --write
+python3 research/scripts/sync_candidate_ledger.py --check
+python3 research/scripts/sync_candidate_ledger.py --self-test
+```
+
+초기 후보도 요약12필드는 필요합니다. 상세 템플릿의 미실행 칸을 채우기 위해 산식·표본·성과를 지어내지 않습니다. `--write`는 후보 ID순서로 정렬하며 기존 ID·판정은 카드에서 그대로 가져옵니다. `_TEMPLATE.md` 외 직접 하위 Markdown은 모두 카드로 검증합니다. 임의 README나 실험노트를 이 폴더에 넣지 않습니다.
+
+## 단계 진입에 따라 확장할 카드 상세
 
 | 묶음 | 필수 기록 |
 | --- | --- |

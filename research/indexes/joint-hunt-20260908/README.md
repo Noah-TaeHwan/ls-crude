@@ -39,3 +39,9 @@ Yahoo CL=F IS 입력은 2,262행(2015-01-02..2023-12-29). 주말 실제 마지�
 ## 독립 수치 검토
 
 [Finance 리뷰](20260908T044354588864Z/independent-finance-review.json): 운영 코드 import 없이 표준 라이브러리로 470주/14검정/2,566 pair와 입력·출력 hash를 대조해 PASS. 실행기 내 assert와 별도 검증이며 사람 동료심사·as-of 검증은 아니다. [검증 실행기](../../notebooks/joint-hunt-20260908/finance-audit.py). 최초 run receipt의 pending은 이후 이 리뷰가 해소했다.
+
+## 리뷰 후 주검정 시각적 검증 보완
+
+기존 고정 pair만 사용한 [학습/내부검증 산점도](review-20260908/primary-scatter.png), [해시 영수증](review-20260908/scatter-receipt.json). 재현: `research/.venv/bin/python research/notebooks/joint-hunt-20260908/plot_primary.py` (저장소 루트). 추가 검정·회귀선 적합·OOS 열람 없음.
+
+![고정 IS 주검정 산점도](review-20260908/primary-scatter.png)

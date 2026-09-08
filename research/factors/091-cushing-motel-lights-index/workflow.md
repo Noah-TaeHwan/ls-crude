@@ -108,7 +108,7 @@ NOAA GLERL의 전체 오대호 결빙 이례치다. 순재고 변화 `r=-.102`, 
 
 ### 실제 표본과 측정 경계
 
-Copernicus Data Space의 공개 STAC 카탈로그에서 쿠싱 인근 bounding box의 Sentinel-2 L2A 메타데이터 5건을 실제 조회했다. 2023-09-26에는 cloud cover 0.0%인 두 tile이 확인되어, **영상 존재·날짜·구름 필드**는 관측 가능하다. 영수증은 [`ALT-20260908-04`](../../indexes/ALT-20260908-04/README.md)에 남긴다.
+Copernicus Data Space의 공개 STAC 카탈로그에서 쿠싱 인근 bounding box의 Sentinel-2 L2A 메타데이터 5건을 실제 조회했다. 2023-09-26에는 cloud cover 0.0%인 두 tile이 확인되어, **영상 존재·날짜·구름 필드**는 관측 가능하다. 영수증은 [`ALT-20260908-04`](../../gathering/raw/ALT-20260908-04/20260908T000000Z/README.md)에 남긴다.
 
 그러나 카탈로그 검색과 영상 픽셀 다운로드는 다르다. Copernicus의 제품 다운로드·처리 API는 계정 OAuth 토큰을 요구한다. 따라서 현재는 10m 무료 영상의 실제 탱크 그림자를 한 장도 판독·저장하지 않았고, fill level·배럴·EIA 관계도 계산하지 않았다.
 
@@ -140,7 +140,7 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 
 2025-11-17 의제 PDF에는 `DATE RECEIVED`, `MONTH REPORTED`, `SALES TAX MONTH` 필드가 있는 FY 2023/24~2025/26 sales tax 비교표가 있다. 현재 확인한 범위에서는 sales tax는 적어도 27개 월별 행, use tax는 3개 월별 공식 표본이다. [091-F 수집 기록](../../candidates/ALT-20260908-06.md)에 실제 숫자·한계를 남긴다.
 
-다음 단계는 의제 아카이브에서 sales와 use를 각각 60개월 이상 추출하고, 각 행의 세금월·수령일·문서 게시일을 분리하는 것이다. 그 전에는 차트·조합·EIA/가격 검정을 하지 않는다.
+다음 단계는 의제 아카이브에서 sales와 use를 각각 60개월 이상 추출하고, 각 행의 세금월·수령일·문서 게시일을 분리하는 것이다. 확보된 표본의 개별 관측 그림은 날짜·단위·결측과 함께 먼저 표시할 수 있다. 60개월은 이 후보의 장기 검정 준비 목표이며 공통 시각화 요건이 아니다. 조합·EIA/가격 검정은 해당 명세의 별도 조건을 충족하기 전 보류한다.
 
 ## 091-G — 911/경찰 Calls for Service 집계
 
@@ -154,7 +154,7 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 
 ### 다음 단일 관문
 
-동일 정의의 60개월 이상 월별 911·police-CFS 집계를 공식 PDF/연차보고서에서 확보한다. 정의·CAD 시스템·관할 변경을 확인하고, 익명 합계만으로 개별 시각화를 만든다. 그 뒤에도 먼저 Cushing 운영 기준값과의 측정 타당성부터 평가하며, EIA·가격 검정으로 바로 건너뛰지 않는다.
+동일 정의의 60개월 이상 월별 911·police-CFS 집계를 공식 PDF/연차보고서에서 확보한다. 짧은 표본의 익명 합계는 이미 관측 그림으로 표시할 수 있으며, 장기 비교에는 정의·CAD 시스템·관할 변경 확인이 필요하다. 그 뒤에도 먼저 Cushing 운영 기준값과의 측정 타당성부터 평가하며, EIA·가격 검정으로 바로 건너뛰지 않는다.
 
 ## 091-H — 쿠싱 여행의도 검색 관측
 
@@ -223,11 +223,11 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 
 091-N의 의제문서 경로에서 실제로 발견한 가장 강한 후보는 **Cushing Regional Airport Monthly Report**다. 2023-05-15, 06-20, 07-17, 09-18의 City Manager Report 네 건에는 transient overnight ramp stays/hangar rentals, Survival Flight 지원 건수, Jet-A/AvGas 판매 갤런, based aircraft가 숫자로 기록돼 있다. 예를 들어 Jet-A는 `3,600 / 4,800 / 4,400 / 5,300` 갤런, AvGas는 `3,200 / 4,700 / 4,500 / 3,600` 갤런이다. 원문과 해시·모든 표본값은 [`ALT-20260908-15` 영수증](../../gathering/raw/ALT-20260908-15/20260908T150000Z/README.md)에 보존했다.
 
-이는 실제 개인 이동정보가 아닌 **공항의 집계 운영 활동**이며, 따라서 ‘시청 페이지 조회수’보다 훨씬 나은 관측이다. 하지만 공항 한 곳의 항공유·항공기 활동일 뿐, 쿠싱 원유 터미널·파이프라인·전체 도로물류 또는 도시 전체 활동의 정답이 아니다. 보고서마다 메트릭의 정확한 대상 기간도 아직 분리 표기돼 있지 않아 보고일을 이용가능 시점으로만 보존한다.
+이는 실제 개인 이동정보가 아닌 **공항의 집계 운영 활동**이며, 따라서 ‘시청 페이지 조회수’보다 훨씬 나은 관측이다. 하지만 공항 한 곳의 항공유·항공기 활동일 뿐, 쿠싱 원유 터미널·파이프라인·전체 도로물류 또는 도시 전체 활동의 정답이 아니다. 보고서마다 메트릭의 정확한 대상 기간도 아직 분리 표기돼 있지 않아 보고일을 임시 시각표지로만 보존한다. 문서에 인쇄된 보고일은 실제 웹 공개시각의 증거가 아니며 available_at은 미확인이다.
 
-현재 표본은 불연속 4건이므로 WTI/EIA 상관·CFAM 점수는 **실행하지 않았다**. 그러나 워크플로우의 개별 관측 단계는 [091-O 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091OZ/README.md)로 완료했다. 보고일을 이용가능 시점으로 보존한 Jet-A, AvGas, ramp stay/rental, Survival Flight 수치를 분리해서 그렸다. 네 불규칙 관측에 상관·회귀·Monte Carlo·ML을 적용하는 것은 검정이 아니라 곡선 맞추기이므로 하지 않는다.
+현재 표본은 불연속 4건이므로 WTI/EIA 상관·CFAM 점수는 **실행하지 않았다**. 그러나 워크플로우의 개별 관측 단계는 [091-O 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091OZ/README.md)로 완료했다. 보고일을 임시 시각표지로 보존한 Jet-A, AvGas, ramp stay/rental, Survival Flight 수치를 분리해서 그렸다. 네 불규칙 관측에 상관·회귀·Monte Carlo·ML을 적용하는 것은 검정이 아니라 곡선 맞추기이므로 하지 않는다.
 
-재개 조건은 동일 정의의 60개월 이상 보고서와 metric-period/보고일 복원이다. 그 뒤에도 Jet-A, AvGas, ramp stays, emergency-flight support를 따로 시각화·검정하고 독립 local ground truth와 먼저 측정타당성을 확인한다.
+관측 그림은 현재4보고서로 완료되어 있다. 장기 관계 검정의 재개 조건은 동일 정의의 보고서·metric-period/실제 공개일 복원이며 60개월은 이 후보의 기존 준비 목표다. Jet-A, AvGas, ramp stays, emergency-flight support를 분리하고 독립 local ground truth와 측정타당성을 확인한 뒤 관계 검정 여부를 결정한다.
 
 ## 검정 해석 규칙
 
