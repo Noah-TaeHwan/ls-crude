@@ -39,6 +39,11 @@ useful for the dashboard, but not a second independent signal: do not double
 count it with EIA data. Long-run tests use the official [EIA Cushing ending
 stocks series](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?f=W&n=PET&s=W_EPC0_SAX_YCUOK_MBBL).
 
+[MacroMicro’s Cushing collection](https://en.macromicro.me/collections/19/mm-oil-price/1051/cushing-crude-oil-inventory)
+is the better visual companion: it groups level, weekly change and a five-year
+average comparison. Its displayed source is also EIA, so it belongs beside the
+official series as a charting lens—not as another CFAM component.
+
 ## What has already failed
 
 | Test | Result | Decision |
