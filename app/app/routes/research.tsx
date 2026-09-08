@@ -1,4 +1,5 @@
 import { ResearchSample } from "~/components/research-sample";
+export { sampleShouldRevalidate as shouldRevalidate } from "~/lib/research-charts";
 import { useState } from "react";
 import { ResearchIntake } from "~/components/research-intake";
 import { readResearchIntake } from "~/lib/research-intake.server";
@@ -76,7 +77,7 @@ export default function Research({ loaderData }: Route.ComponentProps) {
           <aside className="research-status" aria-label="전체 연구 인벤토리"><p className="status-stamp">탐색 중 · 검증 결과 공개</p><dl><div><dt>기존 연구 인벤토리</dt><dd>{error ? "—" : records.length}<small>개</small></dd></div><div><dt>기준 통과</dt><dd>{passCount ?? "—"}<small>개</small></dd></div></dl><p className="mt-5 text-sm leading-7 text-muted-foreground">미검증·보관·별도 전략을 포함한 인벤토리입니다. 등록 건수는 검정 완료 건수가 아닙니다.</p><a className="source-link mt-4" href={LEDGER_URL} target="_blank" rel="noreferrer">현재 정본 장부 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></aside>
         </header>
 
-        <ResearchSample record={loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36")} />
+        <ResearchSample records={{ watermelon: loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20") }} />
         <ResearchIntake {...loaderData.intake} />
 
         <section id="ledger" className="py-10 sm:py-12" aria-labelledby="ledger-title">

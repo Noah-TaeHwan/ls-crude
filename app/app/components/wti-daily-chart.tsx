@@ -1,5 +1,6 @@
 import { useState, type PointerEvent } from "react";
 import { useRevalidator } from "react-router";
+import { wtiPriceFraction, wtiPriceTicks } from "~/lib/wti-chart-axis";
 import { DAILY_RANGES, filterDailyBars, type DailyRange, type WtiDailyView } from "~/lib/wti-daily";
 
 /** 기간 선택 표시명. */
@@ -28,11 +29,11 @@ export function WtiDailyChart({ view }: { view: WtiDailyView }) {
   const selected = bars[index];
   const low = bars.length ? Math.min(...bars.map(bar => bar.low)) : 0;
   const high = bars.length ? Math.max(...bars.map(bar => bar.high)) : 0;
-  const margin = Math.max((high - low) * .06, .05);
+  const ticks = wtiPriceTicks(low, high);
   const spacing = (WIDTH - PAD * 2) / Math.max(bars.length, 1);
   const candleWidth = Math.min(12, spacing * .65);
   const x = (i: number) => PAD + spacing * (i + .5);
-  const y = (value: number) => HEIGHT - PAD - (value - low + margin) / (high - low + margin * 2) * (HEIGHT - PAD * 2);
+  const y = (value: number) => HEIGHT - PAD - wtiPriceFraction(value, low, high) * (HEIGHT - PAD * 2);
 
   /** @param event SVG 포인터 위치. @returns 해당 거래일을 선택한다. */
   function selectAt(event: PointerEvent<SVGSVGElement>): void {
@@ -50,8 +51,10 @@ export function WtiDailyChart({ view }: { view: WtiDailyView }) {
     {view.error && <p role="status" className="mt-3 text-sm text-primary">{view.error}</p>}
     {data?.note && <p role="status" className="mt-3 text-sm text-primary">{data.note}</p>}
     {latest && selected ? <>
-      <svg id="wti-daily-chart" viewBox={`0 0 ${WIDTH} ${HEIGHT}`} preserveAspectRatio="none" className="mt-4 h-64 w-full text-watching sm:h-80" role="img" aria-label={`WTI ${LABELS[range]} 일봉 ${bars.length}개, 마지막 ${latest.date} ${latest.close.toFixed(2)} 달러`} aria-describedby="daily-summary" onPointerDown={selectAt} onPointerMove={event => { if (event.pointerType === "mouse") selectAt(event); }}>
-        {[low, (high + low) / 2, high].map((value,i) => <line key={i} x1={PAD} x2={WIDTH-PAD} y1={y(value)} y2={y(value)} stroke="currentColor" opacity=".15"/>)}
+      <div className="mt-4 grid min-w-0 grid-cols-[minmax(0,1fr)_4rem] gap-x-2">
+      <div aria-hidden="true"/><p className="pb-1 text-right font-mono text-xs text-muted-foreground">USD</p>
+      <svg id="wti-daily-chart" viewBox={`0 0 ${WIDTH} ${HEIGHT}`} preserveAspectRatio="none" className="h-64 w-full min-w-0 text-watching sm:h-80" role="img" aria-label={`WTI ${LABELS[range]} 일봉 ${bars.length}개, 마지막 ${latest.date} ${latest.close.toFixed(2)} 달러`} aria-describedby="daily-summary" onPointerDown={selectAt} onPointerMove={event => { if (event.pointerType === "mouse") selectAt(event); }}>
+        {ticks.map(({ value, label }) => <line key={label} data-price-grid={label} x1={PAD} x2={WIDTH-PAD} y1={y(value)} y2={y(value)} stroke="currentColor" opacity=".15"/>)}
         {bars.map((bar,i) => <g key={bar.date} data-day={bar.date} data-close={bar.close} className={bar.close >= bar.open ? "text-watching" : "text-primary"}>
           <line x1={x(i)} x2={x(i)} y1={y(bar.high)} y2={y(bar.low)} stroke="currentColor" strokeWidth={Math.min(1, spacing * .5)}/>
           <rect x={x(i)-candleWidth/2} y={Math.min(y(bar.open), y(bar.close))} width={candleWidth} height={Math.max(.7, Math.abs(y(bar.close)-y(bar.open)))} fill="currentColor" opacity={data?.partialLast && bar.date === latest.date ? .6 : 1}/>
@@ -59,7 +62,11 @@ export function WtiDailyChart({ view }: { view: WtiDailyView }) {
         <line x1={x(index)} x2={x(index)} y1={PAD} y2={HEIGHT-PAD} stroke="currentColor" strokeDasharray="3 5" opacity=".6"/>
         <circle cx={x(index)} cy={y(selected.close)} r="3" fill="currentColor"/>
       </svg>
-      <div className="flex justify-between gap-3 text-xs font-mono text-muted-foreground"><span>{bars[0].date}</span><span>{bars.at(-1)!.date}</span></div>
+      <div id="wti-price-axis" aria-label="가격 눈금 · USD" className="relative h-64 font-mono text-xs text-muted-foreground sm:h-80">
+        {ticks.map(({ value, label }) => <span key={label} data-price-tick={label} className="absolute right-0 -translate-y-1/2 whitespace-nowrap" style={{ top: `${y(value) / HEIGHT * 100}%` }}>{label}</span>)}
+      </div>
+      <div id="wti-date-axis" className="flex min-w-0 flex-wrap justify-between gap-x-3 text-xs font-mono text-muted-foreground"><span>{bars[0].date}</span><span>{bars.at(-1)!.date}</span></div>
+      </div>
       <label htmlFor="daily-date" className="mt-5 block text-sm">거래일 탐색 · <output htmlFor="daily-date">{selected.date} · 종가 {selected.close.toFixed(2)} USD</output></label>
       <input id="daily-date" type="range" min={0} max={bars.length-1} value={index} disabled={bars.length<2} onChange={event=>setSelectedDate(bars[Number(event.target.value)].date)} aria-valuetext={`${selected.date}, 시가 ${selected.open.toFixed(2)}, 고가 ${selected.high.toFixed(2)}, 저가 ${selected.low.toFixed(2)}, 종가 ${selected.close.toFixed(2)} 달러`} className="min-h-11 w-full accent-watching"/>
       <dl className="mt-2 grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">{[["시가",selected.open],["고가",selected.high],["저가",selected.low],["종가",selected.close]].map(([label,value])=><div key={label}><dt className="text-muted-foreground">{label}</dt><dd className="font-mono">{Number(value).toFixed(2)}</dd></div>)}</dl>
