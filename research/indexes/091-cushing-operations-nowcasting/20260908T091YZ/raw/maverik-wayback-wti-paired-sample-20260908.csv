@@ -1,0 +1,6 @@
+snapshot_date,source_type,regular_credit_usd_per_gallon,diesel_credit_usd_per_gallon,wti_match_date,wti_usd_per_bbl,matching_rule,source_url
+2025-08-09,Wayback archive,2.859,3.499,2025-08-08,64.94,most_recent_EIA_observation_on_or_before_snapshot,https://web.archive.org/web/20250809210707id_/https://locations.maverik.com/ok/cushing/2001-e-main-st
+2025-11-25,Wayback archive,2.649,3.659,2025-11-25,58.25,most_recent_EIA_observation_on_or_before_snapshot,https://web.archive.org/web/20251125071124id_/https://locations.maverik.com/ok/cushing/2001-e-main-st
+2025-12-14,Wayback archive,2.599,3.599,2025-12-12,57.61,most_recent_EIA_observation_on_or_before_snapshot,https://web.archive.org/web/20251214101132id_/https://locations.maverik.com/ok/cushing/2001-e-main-st
+2026-04-15,Wayback archive,3.499,4.999,2026-04-15,93.04,most_recent_EIA_observation_on_or_before_snapshot,https://web.archive.org/web/20260415062758id_/https://locations.maverik.com/ok/cushing/2001-e-main-st
+2026-09-08,live first-party page,3.799,5.499,2026-09-01,91.48,most_recent_EIA_observation_on_or_before_snapshot,https://locations.maverik.com/ok/cushing/2001-e-main-st

@@ -11,9 +11,12 @@ widget to a leading indicator.
 
 ## Direct answer
 
-**No—not on the evidence and data currently available.** A single Cushing retail
-station price should not be used as a leading indicator for WTI, crude oil,
-gasoline futures, diesel futures, or energy equities.
+**No—not as a leading indicator.** A later archive recovery supplied five
+irregular same-date Cushing retail observations. They have high contemporaneous
+correlations with matched WTI, but cannot establish prediction or direction of
+causality. A single Cushing retail station should not be used as a leading
+indicator for WTI, crude oil, gasoline futures, diesel futures, or energy
+equities.
 
 The causal ordering is normally the reverse: crude and wholesale product markets
 move first; retail prices then pass through those changes with a lag. The U.S.
@@ -37,16 +40,26 @@ storage, pipeline, and pricing hub. [EPA Hudson Refinery profile](https://cumuli
 | Does Cushing have operating refinery proximity that reverses the ordering? | EPA documents Hudson as an abandoned former refinery, closed in 1982. | No verified operating Cushing refinery mechanism was found. | The proposed refinery-neighborhood explanation fails. |
 | Can a pump price still be useful? | EIA notes disruptions to refinery operations or product pipelines can move retail prices even with stable crude. | It may reflect local product stress. | Useful descriptive monitor; possible *product* incident candidate only after validation. |
 
-## The current local observation
+## Actual archive sample and current local observation
 
 The official Maverik page displayed Regular credit at **$3.799/gal** and Diesel
 credit at **$5.499/gal** when observed on 2026-09-08. The source did not expose
 a historical local series or a visible observation timestamp. The raw receipt is
 in [cushing-maverik-pump-price-snapshot-20260908.csv](raw/cushing-maverik-pump-price-snapshot-20260908.csv).
 
-This is `n = 1`; it cannot produce a correlation, lead-lag coefficient, or
-trading conclusion. The free EIA daily Cushing WTI series solves only the crude
-leg, not the local-retail history. [EIA Cushing WTI](https://www.eia.gov/dnav/pet/hist/leafhandler.ashx?f=a&n=pet&s=rwtc)
+Wayback captures dated 2025-08-09, 2025-11-25, 2025-12-14 and 2026-04-15
+recovered historical Regular and Diesel displays from the same official page.
+Together with the live observation, `n=5` same-date/previous-business-day pairs
+produce exploratory Pearson correlations of `+0.973` (Regular) and `+0.952`
+(Diesel) with WTI. The paired sample and chart are in the [091-Y
+README](README.md).
+
+This is still not predictive evidence: captures are irregular, selected by
+archive availability, one WTI match is seven calendar days earlier because no
+later EIA value was returned during collection, and no future-return target was
+tested. The free EIA daily Cushing WTI series solves the crude leg, but it does
+not transform archive captures into a designed local-retail panel. [EIA Cushing
+WTI](https://www.eia.gov/dnav/pet/hist/leafhandler.ashx?f=a&n=pet&s=rwtc)
 
 ## Why “high Cushing gasoline/diesel” is not WTI alpha
 

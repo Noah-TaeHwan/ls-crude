@@ -10,9 +10,18 @@ Regular** and **$5.499/gal Diesel**.
 
 ## Correlation verdict
 
-**Not testable yet.** There is one public local station snapshot, not a dated
-historical panel. A correlation or lag estimate between this local price and
-WTI would be fabricated with `n = 1`.
+**Leading relationship: not established.** Four public Wayback snapshots plus
+the live display recovered five irregular local observations. Same-date
+exploratory correlations with matched EIA WTI are high—Regular `r=+0.973,
+p=.005`; Diesel `r=+0.952, p=.013`; `n=5`—but this is not a lead-lag test and
+is far too small, irregular and archive-selected to validate an indicator.
+
+![Irregular archival Maverik price observations paired with WTI](figures/091y-wayback-wti-exploratory-scatter.svg)
+
+The exact paired observations and matching rule are retained in
+[raw](raw/maverik-wayback-wti-paired-sample-20260908.csv). The 2026-09-08 live
+display had to match 2026-09-01 WTI because no later EIA daily observation was
+returned at collection time; this is another reason it cannot support a lead claim.
 
 EIA's Cushing WTI `RWTC` series is long and daily, but that only solves one side
 of the pair. Oklahoma or U.S. retail averages may be useful external context,
