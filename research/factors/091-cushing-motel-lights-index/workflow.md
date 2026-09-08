@@ -46,7 +46,7 @@
 | **091-RAIL** 철도 탱크차 | **부분가능** | Stroud rail-to-pipeline 문맥·철도 인프라 원문 | 쿠싱/Stroud의 날짜별 탱크차·편성·처리량 장기 패널 |
 | **091-WASTE** 산업 폐기물 | **부분가능** | DEQ 월간 산업폐기물 보고 양식·보고 의무 | 쿠싱 시설별 월간 반입량·보고일 장기 원문 |
 | **091-YD** 디젤–휘발유 차 | **가능 (전향)** | 고정 Cushing 점포의 현재 diesel·regular 표시가격 | 고정 다점포·주간·시간표시 장기 패널 및 독립 활동 정답 |
-| **091-Z** 지역 뉴스 큐 | **가능 (전향)** | KUSH RSS/API, Cushing 산업어 Google News RSS | 고정 시각 90일 이력과 실제 사건 포착률 검정 |
+| **091-Z** 지역 뉴스 큐 | **가능 (전향)** | KUSH RSS/API, Cushing 산업어 Google News RSS, Oklahoma Energy Today | 고정 시각 90일 이력과 실제 사건 포착률 검정 |
 
 **바로 수집을 계속할 수 있는 트랙:** `091-B`, `091-C`, `091-U`, `091-Y`,
 `091-Z`. 이 중 현장성 있는 전향 관측판은 `091-U/Y/Z`다. 나머지는 표본을
@@ -79,7 +79,7 @@
 | 091-RAIL | 철도 수송이 쿠싱 현장 흐름을 보이는가 | Stroud rail-to-pipeline 연결 문맥 | **PARK / E1** — [철도·폐기물·제품가격 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091RWDTZ/README.md) 완료. 공개 Cushing/Stroud 탱크차·편성·처리량 시계열은 미확보; Sentinel-2로 탱크차를 세지 않음 |
 | 091-WASTE | 산업 폐기물 반입이 현장 작업을 보이는가 | DEQ 월간 보고 양식·의무 | **PARK / E1** — 양식은 공개지만 Cushing 시설별 월간 톤수 이력은 미확보. 식당 결제·주문 데이터를 대체하지 않음 |
 | 091-YD | 현지 디젤과 휘발유 가격의 차가 벌어지는가 | 고정 점포 Diesel − Regular 표시가격 | **FORWARD_ONLY / E1** — 지역 제품가격 스트레스 보드. [장기 공개 프록시 검정](../../indexes/091-cushing-operations-nowcasting/20260908T091YDEEPZ/README.md)은 WTI→소매 재가격화만 확인했고, 소매→미래 WTI 관계는 미통과. 디젤 판매량·트럭 대기·터미널 처리량이 아니며, 90일 고정 시각 기록 전에는 현지 검정하지 않음 |
-| 091-Z | 쿠싱의 산업·물류 관련 공개 뉴스가 생겼는가 | KUSH RSS/API + Cushing 산업어 Google News RSS | **FORWARD_ONLY / E1** — [무료 피드 수집·헤드라인 감사·시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) 완료; 90일 고정 시각 수집 전에는 이벤트 큐일 뿐 activity 점수 아님 |
+| 091-Z | 쿠싱의 산업·물류 관련 공개 뉴스가 생겼는가 | KUSH RSS/API + Cushing 산업어 Google News RSS + Oklahoma Energy Today | **FORWARD_ONLY / E1** — [무료 피드 수집·헤드라인 감사·시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) 완료; [Oklahoma Energy Today는 발견용 보조 출처](subtracks/okenergytoday/README.md)로 추가. 90일 고정 시각 수집 전에는 이벤트 큐일 뿐 activity 점수 아님 |
 | 091-X | 시장이 Cushing 대 Houston/Midland 흐름 압력을 어떻게 가격화하는가 | 일간 위치 스프레드 | **PARK / E1** — [Cushing EIA 실측 표본·두 외부 레그 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091XZ/README.md) 완료; 무료·동일정의 장기 쌍 패널 미확보, Brent 대체 금지 |
 | 091-X2 | M1–M2가 prompt delivery·저장 압력을 어떻게 가격화하는가 | NYMEX WTI M1 − M2 | **PARK / E1** — [WMCSI](subtracks/wmcsi/README.md) 계산기는 완료. `CL=F` 단독이나 임의 contract pair를 역사적 M1/M2 롤 체인으로 대체하지 않으며, 검증된 결제값 패널 미확보 |
 | 091-W | 쿠싱 공기가 지금 어떤가 + 연간 시설 배출 구조는 어떤가 | AirCasting · DEQ · IQAir · 연간 배출량 | **PARK / E1** — 실시간 [원자료 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091WZ/README.md)는 완료했고 쿠싱 연속 공개 측정소·재현 가능한 원시 패널 없음. 반면 [DEQ 2024 연간 VOC/HAP 시설 발자국](../../indexes/091-cushing-operations-nowcasting/20260908T091WENVZ/README.md)은 실제 공식 표본·시각화 완료; 둘 다 CFAM과 분리 |
