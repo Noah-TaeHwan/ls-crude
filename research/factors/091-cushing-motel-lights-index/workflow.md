@@ -77,7 +77,7 @@
 | 091-Z | 쿠싱의 산업·물류 관련 공개 뉴스가 생겼는가 | KUSH RSS/API + Cushing 산업어 Google News RSS | **FORWARD_ONLY / E1** — [무료 피드 수집·헤드라인 감사·시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) 완료; 90일 고정 시각 수집 전에는 이벤트 큐일 뿐 activity 점수 아님 |
 | 091-X | 시장이 Cushing 대 Houston/Midland 흐름 압력을 어떻게 가격화하는가 | 일간 위치 스프레드 | **PARK / E1** — [Cushing EIA 실측 표본·두 외부 레그 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091XZ/README.md) 완료; 무료·동일정의 장기 쌍 패널 미확보, Brent 대체 금지 |
 | 091-W | 쿠싱 공기가 지금 어떤가 + 연간 시설 배출 구조는 어떤가 | AirCasting · DEQ · IQAir · 연간 배출량 | **PARK / E1** — 실시간 [원자료 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091WZ/README.md)는 완료했고 쿠싱 연속 공개 측정소·재현 가능한 원시 패널 없음. 반면 [DEQ 2024 연간 VOC/HAP 시설 발자국](../../indexes/091-cushing-operations-nowcasting/20260908T091WENVZ/README.md)은 실제 공식 표본·시각화 완료; 둘 다 CFAM과 분리 |
-| 091-V | 산업·상업·인프라 공사가 늘었는가 | City/County building permits 및 State DEQ 시설허가 | **FORWARD_ONLY / E1** — City/County 장기 원장은 여전히 없지만, DEQ의 Cushing 시설허가 상태를 인간 검토형 이벤트 로그로 반복 수집 가능; 월간 공사량·busy score는 아님 |
+| 091-V | 산업·상업·인프라 공사가 늘었는가 | City/County building permits 및 State DEQ 시설허가 | **FORWARD_ONLY / E1** — [V2](../../indexes/091-cushing-operations-nowcasting/20260908T091V2Z/README.md)에서 고정 시설·허가번호·상태전이·중복제거 규칙을 동결한 인간 검토형 이벤트 원장으로 발전. 월간 공사량·busy score는 아님 |
 | 무효 실험 | Cushing Busy ML/DL | WTI·거래량 기반 합성 타깃 | **무효** — 실제 쿠싱 관측 아님 |
 
 ### 2026-09-08 PARK 재점검 결과
