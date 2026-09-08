@@ -39,6 +39,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 | [091-A ODOT AVC 40](workflow.md#2026-09-08-추가-소스-감사--faa--odot--deflock) | Cushing-area continuous traffic volume and vehicle classification | PARK | Strongest public truck-count route; obtain its dated history before testing |
 | [091-O Airport activity](../../indexes/091-cushing-operations-nowcasting/20260908T091OZ/README.md) | Jet-A, AvGas and ramp activity | PARK | Promising direct activity context; longer monthly history required |
 | [091-RAIL / 091-WASTE triage](../../indexes/091-cushing-operations-nowcasting/20260908T091RWDTZ/README.md) | Rail-to-pipeline context; industrial-waste-report path | PARK | Rail car and facility-tonnage histories have not been publicly obtained; neither is a CFAM input |
+| [PADD balance / calendar-spread audit](../../indexes/091-cushing-operations-nowcasting/20260908T091PADZ/README.md) | EIA PADD 2/3 stocks/utilization; attempted WTI curve | CONTEXT ONLY / PARK | PADD balance has no stable IS/OOS volatility relation; long free historical CL1–CL6 pair was not collected |
 
 ### Live inventory source
 
