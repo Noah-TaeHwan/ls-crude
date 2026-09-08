@@ -2,6 +2,8 @@
 
 **Decision:** preserve it, but as a **Cushing Retail Repricing Lag Monitor**, not an oil-price leading factor and not a truck-count proxy.
 
+**Audit trail:** [discovery → collection → proxy test → decision](process-log.md)
+
 ![Oklahoma retail gasoline and Cushing WTI](figures/091y-ok-retail-wti-proxy.svg)
 
 ## The strongest relationship actually found
