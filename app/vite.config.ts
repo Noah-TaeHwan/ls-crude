@@ -23,10 +23,11 @@ function gitText(args: string[]): string | null {
 }
 
 function gitStamp() {
-  const sha = gitText(["rev-parse", "--short=7", "HEAD"]) ?? "unknown";
+  const sha = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || gitText(["rev-parse", "--short=7", "HEAD"]) || "unknown";
   const branch =
-    gitText(["branch", "--show-current"]) ??
-    gitText(["rev-parse", "--abbrev-ref", "HEAD"]) ??
+    process.env.VERCEL_GIT_COMMIT_REF ||
+    gitText(["branch", "--show-current"]) ||
+    gitText(["rev-parse", "--abbrev-ref", "HEAD"]) ||
     "unknown";
   const porcelain = gitText(["status", "--porcelain", "--untracked-files=no"]);
   const dirty = porcelain != null;

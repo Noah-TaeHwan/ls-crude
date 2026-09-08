@@ -41,3 +41,31 @@
 - [화면·DOM·대사 증거](../design-evidence/degree-days-closeout/). 실제 iOS/VoiceOver 검수는 미실행.
 
 작업자 인계: 세 번째 dispatch는 제공자 rate_limit_exceeded가5회 반복됐다. Escape 입력 후 재시도 종료 화면을 확인하고 dispatch를 abandoned로 fence했다(터미널은 보존). 감독자가 파일 소유권을 인계받아 남은 중단 요청 기록·검사·SVG각주를 마쳤다. 이를 작업자 성공으로 기록하지 않는다.
+
+
+## 전달 영수증 — 2026-09-08 13:45 UTC
+
+- [PR #85](https://github.com/Noah-TaeHwan/ls-crude/pull/85) MERGED, merge `fcffb2c877eaed0a91b451c7b97896352fc93d31`. 연구·앱 CI 및 Vercel 프리뷰 PASS.
+- local main / origin/main / 실제 remote main을 위 SHA로 대조했다. root/main 및 pacu 체크아웃은 clean이며 사용자 pacu 터미널/워크트리를 보존했다.
+- Production `dpl_3APQ9fMZ1h2qGPnV2c7hV9DhHbKv`, target production, Ready. 배포 SHA는 위 merge SHA이며 `ls-crude.vercel.app` alias를 확인했다.
+- Ego로 운영 `/research?sample=degree-days`에서2016-02 자체-223/제공-255·차이 안내·월 그래프2개·가로넘침 없음 확인. 로컬5173도 같은 SHA와 값이다.
+- 로컬 서버는 root/main에서 재시작해 유지하고 테스트용5187은 종료했다.
+- 운영 footer가 빌드용 임시 Git 브랜치 `master`를 표시한 것을 발견했다. 후속 수정은 Vercel 배포 메타데이터의 SHA/브랜치를 먼저 사용한다. 실제 데이터나 병합 상태에는 영향이 없었다.
+
+이 영수증은 위 시점의 증거다. 후속 커밋의 CI/배포는 해당 PR의 최신 상태를 확인한다. 감독·자료 교정·웹 사례·프롬프트 전달 목표는 충족했고, 제공자/자체 차이의 원인과 최초 공개 빈티지 복원은 후속 연구다. WTI 관계는 여전히 NOT_RUN이다.
+
+배포 메타데이터 우선순위 재현(피처 브랜치에서 실행해도 main 표시):
+
+```bash
+cd app
+node --input-type=module <<'JS'
+import assert from 'node:assert/strict';
+process.env.VERCEL_GIT_COMMIT_REF='main';
+process.env.VERCEL_GIT_COMMIT_SHA='fcffb2c877eaed0a91b451c7b97896352fc93d31';
+const {default:config}=await import('./vite.config.ts');
+assert.equal(config.define.__LS_BUILD_BRANCH__,JSON.stringify('main'));
+assert.equal(config.define.__LS_BUILD_SHA__,JSON.stringify('fcffb2c'));
+JS
+```
+
+위 검사·타입 검사·빌드·Node23개 검사를 직접 통과했다. 배포 메타데이터 없는 로컬은 기존 Git 경로를 사용한다.
