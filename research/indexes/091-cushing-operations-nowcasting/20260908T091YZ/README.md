@@ -18,6 +18,14 @@ EIA's Cushing WTI `RWTC` series is long and daily, but that only solves one side
 of the pair. Oklahoma or U.S. retail averages may be useful external context,
 but are not substituted for Cushing local pump prices.
 
+## Deep-research verdict on a leading-indicator claim
+
+The premise fails twice: local retail price data has no historical panel here,
+and the economic ordering normally runs from crude/wholesale prices to retail
+prices. Cushing's documented Hudson refinery closed in 1982, so an operating
+local-refinery mechanism was not verified. The evidence, exceptions and frozen
+upgrade gates are in the [deep-research report](report-source.md).
+
 ## Forward-only contract
 
 For 90 days, record at a fixed weekly time:
