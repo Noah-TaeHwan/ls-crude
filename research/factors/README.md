@@ -30,6 +30,9 @@
 
 팩터별 무료 데이터 후보, 실제 원본 보관 위치, 수집 실패 사유와 IS/OOS 실행 상태는 [무료 데이터 수집·검증 장부](../reports/2026-09-03-free-data-acquisition-ledger.md)에 기록한다.
 
+Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보) 기준 001–050 전수 스크리닝 결과(통과 20개, 탈락 30개)는 [3단계 팩터 선별 장부](../reports/2026-09-08-3stage-factor-screening-ledger.md)에 기록한다.
+선별 팩터를 선형회귀·GBM·Deep MLP로 결합한 쿠싱 혼잡도 실증 분석은 [Cushing Busy Index ML/DL 검증 보고서](../reports/2026-09-08-cushing-busy-index-ml-dl-validation.md)에 있다.
+
 이번 전수 감사의 수집 가능성·미수집 사유·신규 테스트는 [전 팩터 무료 데이터 완결 감사](../reports/2026-09-03-full-free-data-completeness-audit.md)에 고정했다.
 
 서로 다른 전달경로를 묶은 4개 사전 등록 스택의 IS/OOS 반증 결과는 [결합 팩터 검정표](../reports/2026-09-03-combination-stack-test.md)에 있다. 현재 통과한 결합 가중치도 0개다.
