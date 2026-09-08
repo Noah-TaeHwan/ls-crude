@@ -19,6 +19,7 @@
 | 091-C | 계절·전국 문맥이 쿠싱 재고 상태를 설명하는가 | 052W Wikipedia, 086 수확, 090 결빙 | **RUN / 조합 미통과** |
 | 091-D | 탱크 자체의 빈·참 상태를 무료 영상으로 판독할 수 있는가 | Sentinel-2 L2A 대형 floating-roof 탱크 그림자 | **PARK / E1** — 메타데이터 표본만 확보 |
 | 091-E | 운영사의 실제 용량 제약 공지가 공개되는가 | Cushing 연결 crude pipeline apportionment | **PARK / E1** — 절차 확인, 공지 이력 미확보 |
+| 091-F | 도시 소비·반입 활동이 달라졌는가 | City sales tax와 use tax를 분리한 월별 수입 | **PARK / E1** — 실제 월별 표본·보고월 확인 |
 | 무효 실험 | Cushing Busy ML/DL | WTI·거래량 기반 합성 타깃 | **무효** — 실제 쿠싱 관측 아님 |
 
 ## 091-A — 숙박세 × 고정 도로구간 트럭
@@ -111,6 +112,20 @@ Keystone의 공식 tariff는 고객 포털의 Notice of Shipment와 `Mid-Month A
 ### 다음 단일 관문
 
 공개적으로 재사용 가능한 역사 공지를 제공하는 Cushing 연결 운영사를 하나라도 찾는다. 각 행에 pipeline, 방향, 서비스월, 발표시각, effective date, allocation/apportionment %, 정비/force-majeure 여부가 있어야 한다. 이 형식이 갖춰지기 전에는 FERC tariff나 기사 언급을 apportionment 사건 데이터로 바꾸지 않는다.
+
+## 091-F — Sales/Use Tax 도시활동 관측
+
+### 실제 표본과 정의
+
+City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각** 2023년 5~7월 월별로 제시된다. sales tax는 시가 ‘Cushing의 retail sales’에서 나온다고 설명하고, use tax는 Oklahoma 외부에서 구매해 쿠싱으로 배송·반입된 물품(온라인 판매·장비 포함)에 부과된다고 설명한다. 따라서 sales tax를 넓은 지역 소비·사업활동 관측으로, use tax를 물품 반입·조달 관측으로 따로 보존한다.
+
+둘을 단순 합계해 ‘foot traffic’ 또는 ‘쿠싱이 바쁨’으로 부르지 않는다. use tax에는 온라인 구매와 장비 반입이 포함될 수 있고, sales tax도 원유 터미널 운영량·근무자 수·원유 유입/유출을 직접 재지 않는다.
+
+### 확보 상태와 다음 단일 관문
+
+2025-11-17 의제 PDF에는 `DATE RECEIVED`, `MONTH REPORTED`, `SALES TAX MONTH` 필드가 있는 FY 2023/24~2025/26 sales tax 비교표가 있다. 현재 확인한 범위에서는 sales tax는 적어도 27개 월별 행, use tax는 3개 월별 공식 표본이다. [091-F 수집 기록](../../candidates/ALT-20260908-06.md)에 실제 숫자·한계를 남긴다.
+
+다음 단계는 의제 아카이브에서 sales와 use를 각각 60개월 이상 추출하고, 각 행의 세금월·수령일·문서 게시일을 분리하는 것이다. 그 전에는 차트·조합·EIA/가격 검정을 하지 않는다.
 
 ## 검정 해석 규칙
 
