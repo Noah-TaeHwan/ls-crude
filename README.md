@@ -77,6 +77,8 @@ research/.venv/bin/python research/notebooks/hunt-20260907/build_and_test.py
 
 ## 팀원이 시작하는 순서
 
+AI에게 **아이디어 선정 → 실제 데이터 접근·샘플 확인 → GitHub PR 기록**을 맡기려면 [복사해서 쓰는 AI 연구 접수 프롬프트](docs/ai-research-intake-workflow.md)를 사용합니다. 이번 단계는 자료의 접근성과 측정 적합성까지이며, 조합·가격 검정·웹 구현은 별도 작업입니다. [연구 방향](docs/research-direction-2026-09-08.md) → [쿠싱 관측판·역할](docs/cushing-observation-workflow-2026-09-08.md) → [아이디어에서 인디케이터까지](docs/idea-to-indicator-workflow-2026-09-08.md)에 대화의 흐름과 제안을 정리했습니다.
+
 1. [방법론](docs/research-methodology.md)으로 활동·맥락·WTI 가설과 반증 조건을 정합니다. [기존 팩터](research/factors/README.md)를 먼저 확인해 같은 가설을 새 발견으로 세지 않습니다.
 2. [후보 양식](research/candidates/_TEMPLATE.md)을 복사하고 [기록 규약](docs/recording-standard.md)에 따라 모든 칸을 채웁니다. 아직 모르는 값은 미확인, 결과는 미실행으로 씁니다. 실제 아이디어가 없으면 원장을 비워 둡니다.
 3. 후보 원장에 카드 요약 1행을 추가합니다. 새 후보는 PARK / NOT_STARTED / NOT_RUN에서 시작하고, 다음 행동·담당·재검토일을 지정합니다. 출처를 찾으면 [출처 표](research/gathering/sources/REGISTRY.md)에 중복 없이 등록합니다.
