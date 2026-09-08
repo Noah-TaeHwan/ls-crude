@@ -1,0 +1,11 @@
+{
+  "source": "https://aircasting.org/api/mobile/sessions.json",
+  "retrieved_at": "2026-09-08",
+  "bounding_box": {"west": -96.82, "east": -96.70, "south": 35.92, "north": 36.08},
+  "time_window_utc": ["2024-01-01T00:00:00Z", "2026-09-05T00:00:00Z"],
+  "measurement_type": "Particulate Matter",
+  "unit_symbol": "µg/m³",
+  "sensor_name_variants_checked": ["airbeam-pm2.5", "airbeam2-pm2.5", "airbeam3-pm2.5", "AirBeam-PM2.5", "AirBeam2-PM2.5", "AirBeam3-PM2.5"],
+  "response": {"sessions": [], "fetchableSessionsCount": 0},
+  "interpretation": "No public AirCasting PM2.5 session was returned for this Cushing-centred bounding box and date window. This is a coverage result, not evidence of clean air or inactive terminal operations."
+}
