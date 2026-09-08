@@ -28,6 +28,10 @@ Run the frozen [90-day collection protocol](091u-industrial-job-pulse-protocol.m
 using the blank [forward log](091u_job_pulse_log_template.csv). First validate
 the finished series against an independent operational series—not against WTI.
 
+The [v2 measurement design](091u-v2-measurement-design.md) separates fresh
+industrial demand, core terminal-operation roles, project/turnaround roles and
+stale vacancies without altering the frozen inclusion rules.
+
 ## Sources
 
 - [Plains Terminal Operator I public listing](https://www.linkedin.com/jobs/view/terminal-operator-i-at-plains-4409731603)

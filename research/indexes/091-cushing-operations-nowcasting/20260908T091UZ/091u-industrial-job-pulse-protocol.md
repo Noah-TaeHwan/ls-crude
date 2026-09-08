@@ -60,3 +60,12 @@ posting-age label, stale flag, and a canonical dedupe key.
 
 No include/exclude keyword, geographic rule, source universe, cadence, or
 dedupe method changes before the 90-day end review.
+
+## v2 role-lifecycle fields
+
+For an included role, also record (without changing its inclusion decision)
+`lifecycle_status` (`new`, `continuing`, `returned`, `removed`, or
+`source_unavailable`), `critical_operations_role`, and `project_role`.
+Definitions, boundaries and the post-pilot validation gate are fixed in
+[091-U v2 measurement design](091u-v2-measurement-design.md). `stale` remains
+a separate transparency flag and is never added to the momentum count.
