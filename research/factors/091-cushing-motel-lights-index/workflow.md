@@ -25,6 +25,7 @@
 | **091-C** 외부 문맥 | **가능** | Wikipedia·농업·결빙 공개 시계열 | 쿠싱 활동을 직접 재는 관측 |
 | **091-D** 탱크 그림자 | **부분가능** | Sentinel-2 10m 무료 영상·메타데이터 | 탱크 충전량을 안정적으로 읽을 수 있는 해상도·판독 검증 |
 | **091-E** 배관 제약 공지 | **부분가능** | 운영사 공지 경로·절차 | 장기·구조화된 Cushing apportionment 이력 |
+| **091-E2** PEBB flow constraint | **부분가능** | factor-local 공개 EBB/RSS/JSON 파서 | Plains·Enbridge·Enterprise의 Cushing 원유 일별 capacity·flow 원문 |
 | **091-GC** SPP grid congestion | **부분가능** | SPP RTBM bus LMP archive | 검증된 Cushing PNode와 연속 168시간 관측 |
 | **091-F** 판매·사용세 | **부분가능** | City 세목 표본 | 분리된 60개월 원문, 세금월·수령일·게시일 |
 | **091-G** calls for service | **부분가능** | 공개된 제한 표본 | 반복 가능한 월별 익명 집계 시계열 |
@@ -60,6 +61,7 @@
 | 091-C | 계절·전국 문맥이 쿠싱 재고 상태를 설명하는가 | 052W Wikipedia, 086 수확, 090 결빙 | **RUN / 조합 미통과** |
 | 091-D | 탱크 자체의 빈·참 상태를 무료 영상으로 판독할 수 있는가 | Sentinel-2 L2A 대형 floating-roof 탱크 그림자 | **PARK / E1** — 메타데이터 표본만 확보 |
 | 091-E | 운영사의 실제 용량 제약 공지가 공개되는가 | Cushing 연결 crude pipeline apportionment | **PARK / E1** — 절차 확인, 공지 이력 미확보 |
+| 091-E2 | 운영사의 일별 공개 capacity·flow EBB가 있는가 | Plains·Enbridge·Enterprise의 Cushing 연결 원유 EBB | **PARK / E1** — 원유에는 천연가스형 표준 EBB를 대체 적용할 수 없고, 공개 일별 피드 미확보. [PEBB-FCI](subtracks/pebb_fci/README.md)는 입력이 생길 때만 처리한다 |
 | 091-GC | SPP 혼잡도가 Cushing 인근 운영 문맥을 보이는가 | 검증된 Cushing-area bus/PNode congestion component | **PARK / E1** — factor-local 수집기는 수정·실행했으나 public archive timeout, PNode 미검증 |
 | 091-F | 도시 소비·반입 활동이 달라졌는가 | City sales tax와 use tax를 분리한 월별 수입 | **PARK / E1** — 실제 월별 표본·보고월 확인 |
 | 091-G | 지역 공공안전 요청량이 달라졌는가 | 911·Police calls for service 월별 익명 집계 | **PARK / E1** — 실제 월별 표본·시각화 완료 |
