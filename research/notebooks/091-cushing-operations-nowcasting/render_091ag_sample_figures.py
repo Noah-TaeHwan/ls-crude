@@ -7,6 +7,12 @@ OUT = Path(__file__).resolve().parents[2] / "indexes" / "091-cushing-operations-
 OUT.mkdir(parents=True, exist_ok=True)
 
 
+def save_clean_svg(fig: plt.Figure, filename: str) -> None:
+    path = OUT / filename
+    fig.savefig(path, format="svg")
+    path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines()) + "\n", encoding="utf-8")
+
+
 def save_hotel_tax() -> None:
     months = ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
     fy_2223 = [9488.70, 10695.90, 9156.57, 7090.35, 5521.83, 5369.78, 6124.48, 6030.60, 6895.19, 6662.04, 7460.20, 7433.66]
@@ -20,7 +26,7 @@ def save_hotel_tax() -> None:
     ax.grid(axis="y", alpha=0.3)
     ax.legend()
     fig.tight_layout()
-    fig.savefig(OUT / "091a-hotel-motel-tax-sample.svg", format="svg")
+    save_clean_svg(fig, "091a-hotel-motel-tax-sample.svg")
     plt.close(fig)
 
 
@@ -37,7 +43,7 @@ def save_police_calls() -> None:
     ax.grid(axis="y", alpha=0.3)
     ax.legend()
     fig.tight_layout()
-    fig.savefig(OUT / "091g-police-calls-sample.svg", format="svg")
+    save_clean_svg(fig, "091g-police-calls-sample.svg")
     plt.close(fig)
 
 
