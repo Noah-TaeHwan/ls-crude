@@ -21,7 +21,7 @@ export function DeskHeader({ source, ticker, freshness }: DeskHeaderProps) {
     ? freshness === "fresh"
       ? "정상"
       : freshness === "stale"
-        ? "업데이트 지연"
+        ? "최신성 확인"
         : "데이터 없음"
     : null;
 

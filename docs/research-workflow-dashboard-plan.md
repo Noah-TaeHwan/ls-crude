@@ -51,3 +51,9 @@ Agency-Agents: UI Designer 기획 검토, explorer 가격 경로 조사, Fronten
 - [데스크톱](design-evidence/research-workflow/desktop.png), [모바일 상세](design-evidence/research-workflow/mobile-detail.png), [브라우저 폭·오류 기록](design-evidence/research-workflow/browser.json).
 - 실제 사람 사용자 실험·VoiceOver·WebKit은 미검증이다. 개발 브라우저·로컬 테스트를 운영 배포 확인으로 간주하지 않는다.
 - graphify AST 갱신 완료. 기존 SQL parser 누락 경고는 별도이며 SQL 그래프 완전성은 주장하지 않는다.
+
+## 운영 반영 확인
+
+PR #65 병합·main CI 성공 뒤 수동 갱신 run `34180585677`의 validate/publish가 성공했다. 데이터 PR #66이 `3208487`로 자동 병합되고 Vercel 배포도 성공했다. ego 운영 화면과 `/wti-market-snapshot.json`에서 기준일 2026-09-04, 종가 91.48 USD, checkedAt 2026-09-08T02:36:37Z 일치를 확인했다. 운영 연구 화면의 후보 검색에서 도로 카드 원문 GitHub 링크로 실제 이동했다. 매일 cron 설정은 확인했고 새 주말 예약 실행 자체는 아직 도래하지 않았다.
+
+가격 기준일이 4일 지난 상태에서도 수집 확인은 성공할 수 있다. 그래서 공통 stale 배지는 “최신성 확인”으로 표시하고, 마지막 확인 지연과 가격 기준일 경과의 구체적인 이유를 본문에서 구분한다. 휴장일 달력 판정을 구현했다고 주장하지 않는다.
