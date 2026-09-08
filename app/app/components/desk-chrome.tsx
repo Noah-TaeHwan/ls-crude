@@ -6,6 +6,7 @@ import { cn } from "~/lib/cn";
 interface DeskHeaderProps {
   source: string;
   ticker: string;
+  contextLabel?: string;
   freshness?: "fresh" | "stale" | "unavailable";
 }
 
@@ -14,7 +15,7 @@ interface DeskHeaderProps {
  * @param props 데이터 출처와 종목, 신선도.
  * @returns 제품 머리글.
  */
-export function DeskHeader({ source, ticker, freshness }: DeskHeaderProps) {
+export function DeskHeader({ source, ticker, freshness, contextLabel }: DeskHeaderProps) {
   const navigation = useNavigation();
   const pending = navigation.state !== "idle";
   const freshnessLabel = freshness
@@ -43,6 +44,7 @@ export function DeskHeader({ source, ticker, freshness }: DeskHeaderProps) {
             <DeskNavLink to="/" end>
               연구 데스크
             </DeskNavLink>
+            <DeskNavLink to="/observations/visibility">관측</DeskNavLink>
             <DeskNavLink to="/research">후보 장부</DeskNavLink>
             <a className="desk-nav-link" href="/research#method">
               검증 방법
@@ -51,8 +53,8 @@ export function DeskHeader({ source, ticker, freshness }: DeskHeaderProps) {
               팀
             </a>
           </nav>
-          <p className="desk-source" title={`${source} · ${ticker} · 일봉`}>
-            <span>{ticker} · 일봉 관측</span>
+          <p className="desk-source" title={`${source} · ${contextLabel ?? `${ticker} · 일봉`}`}>
+            <span>{contextLabel ?? `${ticker} · 일봉 관측`}</span>
             {freshness ? (
               <span className="inline-flex items-center gap-2 whitespace-nowrap">
                 <span aria-hidden="true">·</span>
