@@ -21,7 +21,7 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 
 **성찬080 후속:** 잘못된 원안 링크를 교정하고 [제주 LNG·유류 336일 관측](research/indexes/ALT-20260908-20/20260908T073402Z/README.md)을 확보했습니다. 16,128시간 값·시간/일/월 합계 대사와 원단위·조건부비중 그림을 기록했습니다. 2024-03-31까지의 과거 보조표본이며 전국 지수·원유량·WTI 검증은 아닙니다. [탐색 과정·다음 행동](research/gathering/notes/2026-09-08-kpx-fuel-access.md).
 
-웹 시각화 구현 · **공개 배포 대기**: 현재 관측 아래와 연구 페이지에 수박의 실제 그림·연도별 27행 표·제약·다음 확인을 연결했습니다. 로컬 검증은 통과했으나 Vercel이 배포 한도(24시간 뒤 재시도)를 반환해 공개 사이트에는 아직 반영되지 않았습니다. 배포 후 확인할 위치는 [홈 연구 샘플](https://ls-crude.vercel.app/#research-sample)과 [연구 페이지](https://ls-crude.vercel.app/research#research-sample)입니다. 관측이 확보되면 먼저 시각화하고, 정의·공개시점을 확인한 적격 자료만 WTI와 비교합니다. [현재 방향 점검](docs/research-direction-2026-09-08.md#11-실제-수집과-웹-표시-후-방향-점검--2026-09-08-후속).
+웹 시각화 구현: 현재 관측 아래와 연구 페이지에 수박·제주 반응형 그래프, 원단위 표, 제약과 다음 확인을 연결했습니다. [홈 연구 샘플](https://ls-crude.vercel.app/#research-sample) · [제주 사례](https://ls-crude.vercel.app/research?sample=jeju#research-sample). PR #80의 Vercel 한도 오류는 당시 기록이며, PR #82의 첫 프리뷰는 정상 배포됐습니다. 운영 반영 여부는 해당 PR과 배포 후 검증으로 구분합니다. 관측 자료를 먼저 시각화하고, 정의·공개시점이 확인된 적격 자료만 WTI와 비교합니다. [현재 방향 점검](docs/research-direction-2026-09-08.md#11-실제-수집과-웹-표시-후-방향-점검--2026-09-08-후속).
 
 **성찬 목록 후속 1개:** [085 수박·냉장트럭 → ALT36](research/indexes/ALT-20260907-36/20260908T065043Z/README.md)의 공개 주간 XLSX를 실제 수집했습니다. 수박 단독 518행·409개 날짜의 관측 그림과 분모 대사를 확보해 E1→E2로 진전했습니다. 최신 수박 날짜는 2025-10-14이며 실시간 자료가 아닙니다. 소수값 정의·공개시점 미확인으로 PARK, WTI·HO 검정 NOT_RUN을 유지합니다. [이번 선택 이유·검토·다음 행동](research/gathering/notes/2026-09-08-watermelon-weekly-access.md).
 
