@@ -8,11 +8,11 @@ The five candidates are not five interchangeable votes on one invisible number. 
 | --- | --- | --- | --- |
 | 091-S | relative live footfall UI state at six fixed quick-service venues | forward-only, three fixed CT snapshots daily | live city-presence candidate |
 | 091-A | aggregate hotel/motel tax receipts | monthly and lagged | external-stay context candidate |
-| 091-D | possible tank-roof shadow pattern in Sentinel-2 imagery | irregular satellite scenes | storage-state feasibility pilot |
+| 091-D | possible tank-roof shadow pattern and its change at Cushing tank farms | irregular satellite scenes | terminal-side field-activity feasibility pilot |
 | 091-F | separate sales-tax and use-tax receipts | monthly and lagged | local-consumption / inbound-procurement control |
 | 091-O | airport Jet-A, AvGas, ramp stays and emergency-flight support | irregular municipal monthly reports | independently measured local physical-activity candidate |
 
-The goal is not a forced *Cushing Busy Score*. It is to establish whether a small, time-aligned **City Presence Monitor** can be measured. A separate storage-state observation (091-D) may later sit beside it, but does not get averaged into it.
+The goal is a small, time-aligned **Cushing Field Activity Monitor**. “Busy” has two legitimate axes: terminal-side operations (tank-state change) and city-side support activity (people, stays, local fuel and procurement). 091-D belongs to the first axis; S/A/F/O belong to the second. Neither axis is a substitute for the other.
 
 ## The only combinations worth pursuing
 
@@ -36,11 +36,15 @@ Use tax stays separate as an inbound-procurement context series; it is not added
 
 **Gate:** at least 60 complete, definition-stable months of hotel, sales and use tax with tax month, receipt date and public availability date recovered. Then validate the residual first against an independent local aggregate (O or a fixed road-truck panel), with disclosure lag enforced. No EIA or WTI test precedes this measurement check.
 
-### 3. D beside the monitor — never mixed into city-presence
+### 3. D × S/O/A/F — terminal activity confirmed by city-side support
 
-091-D asks whether large Cushing tanks look more empty or full in free 10 m Sentinel-2 imagery. That is a storage feasibility question, not a count of people, traffic, work shifts or local spending.
+091-D asks whether large Cushing tanks look more empty or full in free 10 m Sentinel-2 imagery. Its **level** is a storage-state observation; its **repeated change intensity** is a terminal-side operational-activity candidate. A tank farm repeatedly changing state is part of “Cushing is busy,” even though it is not a count of people, traffic, work shifts or local spending.
 
-**Gate:** two blinded human readers inspect a pre-fixed 20–30 large-tank sample across cloud-light scene pairs. If interior-shadow states cannot be repeatedly distinguished at 10 m, kill D. If they can, test aggregate storage-state classification independently against same-date public Cushing inventory timing. Even a pass is displayed next to the City Presence Monitor, not averaged with S/A/F/O.
+**Gate 1 — visual feasibility:** two blinded human readers inspect a pre-fixed 20–30 large-tank sample across cloud-light scene pairs. If interior-shadow states cannot be repeatedly distinguished at 10 m, kill D.
+
+**Gate 2 — terminal validity:** if Gate 1 passes, pre-register an aggregate `tank_change_intensity` based on the absolute state change of the same readable tanks between adjacent valid scenes. Test it against the appropriately aligned public Cushing inventory *change*, never as a fabricated barrel estimate. This establishes whether the free imagery is measuring the intended terminal motion.
+
+**Gate 3 — limited combination:** only after both D gates pass, a **Field Activity Alert** may require both (a) unusually high D change intensity and (b) a separately valid city-support confirmation: S×O at matching monthly cadence, or the A-residual validated against O/fixed trucks. The alert is an AND confirmation rule, not a weighted average that lets a missing or weak input masquerade as activity.
 
 ## Rejected combinations
 
@@ -48,7 +52,7 @@ Use tax stays separate as an inbound-procurement context series; it is not added
 | --- | --- |
 | S + A today | daily forward-only UI and lagged monthly tax have no shared completed panel |
 | A + F simple sum | same municipal accounting environment and different economic meanings; it would double count rather than confirm |
-| D + S/A/F/O score | tank fill state and city presence are distinct constructs |
+| D + S/A/F/O score today | D has no readable-pixel panel yet; after its two gates it becomes the terminal-side half of a two-axis AND alert, not a filler-weighted score |
 | any mix + WTI/EIA | the question is first whether Cushing is observably busy; market data cannot become its ground truth |
 | nightlight added as filler | 091-B failed its predeclared robust battery and is excluded |
 
@@ -64,6 +68,6 @@ This is a useful null on that route: the calendar archive alone does not yet rec
 | ---: | --- | --- |
 | 1 | S × O measurement-validation panel | **PREPARED / not yet testable** — S must accrue forward observations; O needs dated contiguous reports |
 | 2 | A residualised by F | **PREPARED / not yet testable** — 60-month separate tax panel absent |
-| 3 | D standalone visual feasibility | **PARK** — actual 10 m pixel review still absent |
+| 3 | D terminal activity × city-support confirmation | **PREPARED / not yet testable** — actual 10 m pixel review, then a valid D change panel, are still absent |
 
 No combination is claimed to be proven as of this report. That is the honest result of the available samples, not a reason to substitute WTI, imputed values, web-page counts, or an ML target for the missing operational truth.
