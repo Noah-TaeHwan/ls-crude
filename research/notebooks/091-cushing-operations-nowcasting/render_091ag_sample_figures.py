@@ -10,7 +10,10 @@ OUT.mkdir(parents=True, exist_ok=True)
 def save_clean_svg(fig: plt.Figure, filename: str) -> None:
     path = OUT / filename
     fig.savefig(path, format="svg")
-    path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines()) + "\n", encoding="utf-8")
+    path.write_text(
+        "\n".join(line.rstrip() for line in path.read_text(encoding="utf-8").splitlines()) + "\n",
+        encoding="utf-8",
+    )
 
 
 def save_hotel_tax() -> None:
