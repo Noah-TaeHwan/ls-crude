@@ -1,0 +1,23 @@
+{
+  "surface": "ego-browser task78 local5178",
+  "viewports": [
+    1440,
+    390
+  ],
+  "overflow": false,
+  "latestObserved": "2026-09-08T04:52Z",
+  "rows": 28,
+  "display": "lower bound >=10 SM",
+  "tableKeyboard": "Enter: false->true",
+  "routes": [
+    "/",
+    "/observations/visibility"
+  ],
+  "source": "NOAA/NWS AWC actual runtime response",
+  "nodeTests": 12,
+  "sourceAndCacheFailureCases": "node tests, not live-provider fault injection",
+  "screenshots": "CDP captureBeyondViewport=false; normal helper scrolled capture was blank",
+  "screenReader": "NOT_TESTED",
+  "production": "pending",
+  "staleUI": "local QA Date.now+3h -> stale; restored -> recent; observed timestamps unchanged"
+}

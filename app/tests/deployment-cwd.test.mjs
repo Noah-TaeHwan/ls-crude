@@ -161,6 +161,19 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.ok(text.includes(expectedCheckedAt), "SSR timestamp is explicitly KST");
     assert.doesNotMatch(body, /<form\b/i, "public home must not expose news CRUD forms");
 
+    assert.ok(body.indexOf('id="market"') < body.indexOf('id="observations"'), "observation follows the single daily chart");
+    assert.match(body, /href="\/observations\/visibility"/);
+    const visibility = await fetch(`${baseUrl}/observations/visibility`);
+    assert.equal(visibility.status, 200);
+    const visibilityBody = await visibility.text();
+    assert.match(visibilityBody, /KGLS · 시정 관측/);
+    assert.match(visibilityBody, /항로 앞이 잘 보일까/);
+    assert.match(visibilityBody, /ALT-20260908-16/);
+    assert.doesNotMatch(visibilityBody, /id="wti-daily-chart"/);
+    assert.doesNotMatch(visibilityBody, /<details[^>]* open/, "observations table starts collapsed");
+    const visibilityPost = await fetch(`${baseUrl}/observations/visibility`, { method: "POST", body: new URLSearchParams() });
+    assert.equal(visibilityPost.status, 405);
+
     const research = await fetch(`${baseUrl}/research`);
     assert.equal(research.status, 200);
     const researchBody = await research.text();

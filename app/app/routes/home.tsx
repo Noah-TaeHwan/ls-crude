@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { VisibilityObservation } from "~/components/visibility-observation";
+import { readVisibility } from "~/lib/visibility.server";
 import { WtiDailyChart } from "~/components/wti-daily-chart";
 import { ResearchIntake } from "~/components/research-intake";
 import { readResearchIntake } from "~/lib/research-intake.server";
@@ -32,7 +34,8 @@ export function meta({}: Route.MetaArgs) {
 
 /** @returns 실제 시장 관측과 현재 연구 정본. */
 export async function loader({}: Route.LoaderArgs) {
-  return { daily: await readWtiDaily(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
+  const [daily, visibility] = await Promise.all([readWtiDaily(), readVisibility()]);
+  return { daily, visibility, checkedAt: new Date().toISOString(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
 }
 
 /** @returns 공개 화면의 읽기 전용 응답. */
@@ -45,7 +48,7 @@ export function action({}: Route.ActionArgs) {
  * @param props 라우트 데이터.
  * @returns 공개 연구 데스크.
  */
-export default function Home({ loaderData: { market, ledger, intake, daily } }: Route.ComponentProps) {
+export default function Home({ loaderData: { market, ledger, intake, daily, visibility, checkedAt } }: Route.ComponentProps) {
   const revalidator = useRevalidator();
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -82,11 +85,13 @@ export default function Home({ loaderData: { market, ledger, intake, daily } }: 
           </aside>
         </section>
 
+        <MarketContext market={market} candidateScope={story.scope} daily={daily} />
+        <VisibilityObservation view={visibility} checkedAt={checkedAt} />
         <ResearchIntake {...intake} preview />
 
         <section className="py-10 sm:py-12" aria-labelledby="bridge-title">
           <div className="section-heading">
-            <div><p className="section-kicker">01 / THE SIGNAL HUNT</p><h2 id="bridge-title">이 흔적은 WTI와 어떻게 연결될까?</h2></div>
+            <div><p className="section-kicker">03 / THE SIGNAL HUNT</p><h2 id="bridge-title">이 흔적은 WTI와 어떻게 연결될까?</h2></div>
             <p className="max-w-sm text-sm leading-6 text-muted-foreground">Pentagon Pizza Index에서 가져온 것은<br className="hidden sm:block" /> 작은 현실의 변화를 시장과 연결하는 질문입니다.</p>
           </div>
           <div className="bridge-layout mt-6">
@@ -116,10 +121,9 @@ export default function Home({ loaderData: { market, ledger, intake, daily } }: 
           </div>
         </section>
 
-        <MarketContext market={market} candidateScope={story.scope} daily={daily} />
 
         <section className="py-10 sm:py-12" aria-labelledby="open-title">
-          <div className="section-heading"><div><p className="section-kicker">03 / WHAT REMAINS OPEN</p><h2 id="open-title">다음 단계는, 빈칸을 확인하는 일.</h2></div><Link className="source-link" to="/research#method">전체 검증 절차 <ArrowRight size={14} aria-hidden="true" /></Link></div>
+          <div className="section-heading"><div><p className="section-kicker">04 / WHAT REMAINS OPEN</p><h2 id="open-title">다음 단계는, 빈칸을 확인하는 일.</h2></div><Link className="source-link" to="/research#method">전체 검증 절차 <ArrowRight size={14} aria-hidden="true" /></Link></div>
           <ol className="method-grid mt-6">
             <li className="method-step"><span>01 / 자료</span><h3>실제로 무엇을 측정하나</h3><p>주문량, 열 이상, 환율. 이름이 비슷한 대체값이 원래 가설을 측정하는지 확인합니다.</p></li>
             <li className="method-step"><span>02 / 시각</span><h3>그때 알 수 있었나</h3><p>발생 시각과 공개 시각을 구분합니다. 나중에 수정된 자료가 과거 판단에 섞이지 않도록 합니다.</p></li>
@@ -141,7 +145,7 @@ function MarketContext({ market, candidateScope, daily }: { market: WtiMarketVie
   const snapshot = market.snapshot;
   const checkedAtKst = snapshot ? new Date(Date.parse(snapshot.checkedAt) + 9 * 3600000).toISOString().slice(0,16).replace("T", " ") : "—";
   return <section id="market" className="market-section" aria-labelledby="market-title">
-    <div className="section-heading"><div><p className="section-kicker">02 / WTI DAILY</p><h2 id="market-title">WTI 원유 가격</h2></div></div>
+    <div className="section-heading"><div><p className="section-kicker">01 / WTI DAILY</p><h2 id="market-title">WTI 원유 가격</h2></div></div>
     <WtiDailyChart view={daily} />
     <details className="mt-6 border-t border-border py-2"><summary className="min-h-11 cursor-pointer py-3 text-sm">실현변동성과 연구 기준 보기</summary>
       <div className="space-y-3 pb-4 text-sm leading-7 text-muted-foreground">

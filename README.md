@@ -4,7 +4,7 @@
 
 East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜타곤 피자 인덱스는 **활동 → 민감한 맥락 → 시장과의 가능한 관계**를 생각하는 참고 패턴입니다. 피자 주문을 복제하거나 특정 데이터·양의 상관을 찾아내는 것이 완료 조건은 아닙니다.
 
-현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-08 로컬 [원장](research/candidates/ledger.csv)은 **64행(KEEP 4 / PARK 49 / KILL 11)**입니다(repo empirical only). 앞선 공동 헌트는 기존8개 ID 재검토였습니다. 리뷰 후 KGLS 시정 관측 경로1개와 실제 샘플·그림을 추가했습니다. 기상 조건이며 물류 활동량·유가 예측 신호가 아닙니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
+현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-08 로컬 [원장](research/candidates/ledger.csv)은 **67행(KEEP 4 / PARK 52 / KILL 11)**입니다(repo empirical only). 앞선 공동 헌트는 기존8개 ID 재검토였습니다. 리뷰 후 KGLS 시정 관측 경로1개와 실제 샘플·그림을 추가했습니다. 기상 조건이며 물류 활동량·유가 예측 신호가 아닙니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
 
 | 항목 | 기준 |
 | --- | --- |
@@ -16,6 +16,8 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 | 기존 웹 | [LS CRUDE](https://ls-crude.vercel.app) · 시장 관측/기존 연구 장부. 이번 패스에서 배포 상태를 검증하지 않음 |
 
 ## Current research status — 2026-09-08
+
+웹 관측1개 연결: [갤버스턴 시정 상세](https://ls-crude.vercel.app/observations/visibility). 홈 WTI 일봉 아래에서 실제 AWC 관측을 확인하고 원표·출처·연구 기록으로 이동한다. 열린 화면5분 확인/서버10분 캐시이며 연구 원본의 장기 자동수집은 아니다.
 
 **다음 우선순위는 새로운 관측을 설명할 운영 근거1건 확보**입니다. [ALT-20260908-16](research/candidates/ALT-20260908-16.md)의 실제 시정28보고를 확보했고 모두 `10+` 하한입니다. 저시정·항만 차질 발견을 주장하지 않습니다. 손성찬: 공식 통항 제한/해제 공지의 시각 있는 사례1건 접근 확인. Noah: 공항 관측의 항로 대표성과 제품 표시 가치 판단(역할 제안). 기존 바지선·GPR·LA항은 재개 조건이 생길 때만 이어갑니다.
 
