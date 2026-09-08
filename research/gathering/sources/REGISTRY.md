@@ -151,3 +151,12 @@
 | TC Energy Keystone tariff / FERC eTariff | ALT-20260908-05 / 091-E apportionment 공지 접근 | https://www.tcenergy.com/siteassets/pdfs/oils-and-liquids/keystone-shipper-info/ferc/tc-keystone-ltd-ferc-5.5.0-rules-and-regulations-tariff.pdf ; https://www.ferc.gov/ferc-online/etariff | 공개 tariff 열람. Customer Portal의 historic notices는 공개·팀 재사용 가능 여부 미확인 | tariff 발효일은 절차 문서의 시점일 뿐 사건 공지·서비스월이 아님 | Mid-Month Apportionment 절차는 확인. Cushing 연결 실제 사건·allocation %·게시시각은 미수집 | [ALT-20260908-05](../../candidates/ALT-20260908-05.md) |
 | City of Cushing sales/use tax reports | ALT-20260908-06 / 091-F 도시 소비·반입 활동 | https://www.cityofcushing.com/sites/g/files/vyhlif4306/f/agendas/cm_report_september_23_final_.pdf ; https://www.cityofcushing.com/sites/g/files/vyhlif4306/f/agendas/cma.agenda.11.17.25.pdf | 공식 의제·보고서 공개 열람. 반복 전사·재배포 범위는 문서별 확인 필요 | 월별 세금월·보고월·수령일이 일부 표에 명시. 당시 공개 빈티지는 미복원 | sales/use 2023년 5~7월 표본, sales-tax 2023/24~2025/26 비교표 확인. use-tax 장기 표·60개월 분리 패널 미확보 | [ALT-20260908-06](../../candidates/ALT-20260908-06.md) |
 | Cushing Police Department annual report / City Manager Report | ALT-20260908-07 / 091-G 익명 911·Police Calls for Service | https://www.cityofcushing.com/sites/g/files/vyhlif4306/f/uploads/annual_report_2021.pdf ; https://www.cityofcushing.com/sites/g/files/vyhlif4306/f/agendas/cm_report_september_23_final_.pdf | 공식 공개 보고서. 개별 사건·신고 데이터는 수집·사용하지 않음 | 2023 보고서는 6~8월 월별 집계; 2021 연차는 월별 도표. 당시 발표 빈티지·60개월 정의는 미복원 | 3개월 익명 수치만 전사·시각화. 911/police calls는 공공안전 요청량이지 현장·경제 활동 측정값 아님 | [ALT-20260908-07](../../candidates/ALT-20260908-07.md) |
+
+## 2026-09-08 공동 헌트 출처 재검토
+
+기존 ALT-20260907-01~08 출처를 중복 등록하지 않고 [이번 접근 영수증·정의·권리 확인 범위](../notes/2026-09-08-joint-hunt.md#점수와-접근-영수증)에 연결한다. 새 원문 bulk 저장 없음. USDA 기존 허용 스냅샷만 재계산했으며 LA항 2개월 수치 인용은 전체 역사표 재배포 승인과 구분한다.
+
+- [IMF 출범일](https://www.imf.org/en/news/seminars/conferences/2023/11/15/launch-of-the-portwatch-platform): 2023-11-15 공개 출범 확인. 이전 관측일과 당시 공개성을 등치하지 않는다.
+- [NASA VNP46A2 v2 정의](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A2/): QA0 고품질·제품 버전 고정 필요. 기존 HEAD 성공을 AOI 시계열 수집으로 올리지 않는다.
+- [BTS TSA 측정 설명](https://www.bts.gov/browse-statistical-products-and-data/preliminary-estimates/preliminary-estimates-enplanements-tsa): screening과 enplanement 구분만 사용, 해당 문서의 2024 성과를 후보 선택에 쓰지 않음.
+- GPR 기본 URL 직접 응답 실패/공식 검색 발췌, Nightfire 세부 PDF 재열람 실패는 정상 원본 수집으로 표기하지 않는다. 정확한 경로·확인일·blocker는 위 노트.
