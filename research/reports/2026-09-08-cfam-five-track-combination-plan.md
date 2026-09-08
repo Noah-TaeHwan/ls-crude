@@ -71,3 +71,5 @@ This is a useful null on that route: the calendar archive alone does not yet rec
 | 3 | D terminal activity × city-support confirmation | **PREPARED / not yet testable** — actual 10 m pixel review, then a valid D change panel, are still absent |
 
 No combination is claimed to be proven as of this report. That is the honest result of the available samples, not a reason to substitute WTI, imputed values, web-page counts, or an ML target for the missing operational truth.
+
+The actual currently dateable overlap audit and its visual are recorded in [20260908T091COMBOZ](../indexes/091-cushing-operations-nowcasting/20260908T091COMBOZ/README.md). It confirms that S×O has zero valid matched rows and A×F has only three common tax months; neither is eligible for an association estimate.
