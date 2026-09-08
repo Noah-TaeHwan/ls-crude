@@ -30,6 +30,7 @@
 | 091-N | 시청이 공개하는 기록 중 실제 활동 패널이 있는가 | 부서·재정·공항·회의문서의 공개 경로 | **PARK / E1** — 실제 페이지 4개 원문 확보; 의제 첨부문서만 월별 집계 가능성이 있고 새 패널은 미발견 |
 | 091-O | 공항이 실제로 바쁜가 | Jet-A/AvGas 판매·ramp stay·응급비행 지원 | **PARK / E1** — 실제 월간보고 4건을 개별 시각화 완료; 불연속·짧은 표본이라 연관 검정은 불가 |
 | 091-U | 직접 산업직 수요가 늘었는가 | 사전 고정 규칙을 통과한 Cushing 산업직 공고 | **FORWARD_ONLY / E1** — 실제 고신뢰 공고 4건의 1회 스냅샷; 90일 전향 패널 대기 |
+| 091-V | 산업·상업·인프라 공사가 늘었는가 | City/County building permits 및 State DEQ 시설허가 | **PARK / E1** — City/County 장기 원장 미확보; DEQ 실제 시설심사 1건은 이벤트 경로일 뿐 월간 건설량 아님 |
 | 무효 실험 | Cushing Busy ML/DL | WTI·거래량 기반 합성 타깃 | **무효** — 실제 쿠싱 관측 아님 |
 
 ## 091-A — 숙박세 × 고정 도로구간 트럭
@@ -237,6 +238,12 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 실제 공개 1회 감사에서는 Plains Terminal Operator I, ONEOK Operator, Enterprise Products Operator, Pipeline, South Bow Gauger Technician의 **4개**가 고신뢰 규칙을 통과했다. 이 사실은 [091-U 스냅샷](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/README.md)에 제목·회사·규칙·URL만 남겼다. 이것은 현재 채용이 증가했다는 뜻이 아니라, 공개 자료로 이 필터를 적용할 수 있다는 E1 표본이다.
 
 따라서 현재 상태는 **FORWARD_ONLY / E1**이다. [동결된 90일 프로토콜](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/091u-industrial-job-pulse-protocol.md)에 따라 수요일 10:00 CT에 공개·무로그인 화면을 수동 점검하고, 공개 공고의 집계 필드만 기록한다. 12회 이상·80% 이상 완결 후에도 먼저 D의 terminal-state 변화, 기간이 명시된 O, 또는 고정 도로 트럭 같은 독립 운영 관측과 측정 타당성을 확인한다. WTI/EIA와 바로 검정하거나 검색 결과 수를 채용/작업량으로 바꾸지 않는다.
+
+## 091-V — Industrial Permit / Construction Monitor
+
+City의 건축코드와 경제개발 안내는 Cushing 내 building/plumbing/mechanical/fuel-gas/fire 허가가 City 절차임을 확인한다. 그러나 공개 검색에서 **날짜가 보존된 City/County 허가 대장·월별 발급 건수·산업/상업 분류 패널은 찾지 못했다.** 그래서 City의 허가 규정이나 회의 언급을 공사량으로 세지 않는다.
+
+State DEQ 공개 심사에는 `Cushing South Terminal`의 실제 시설허가 이벤트가 보인다. 이는 구체적 산업 시설의 규제 절차를 확인하는 유효 표본이지만, building permit·공사 시작·작업자 수·자재 반입량이 아니다. 따라서 이 트랙은 [091-F/V 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091FVZ/README.md)에서 **PARK / E1**로 보존한다. City/County가 시설·허가유형·발급일·상태를 가진 안정적 장기 대장을 공개할 때만, 우선 개별 이벤트/월간 집계를 시각화하고 D/U/O와의 결합 가능성을 다시 판정한다.
 
 ## 091-P — 지역 커뮤니티 발자국 · 운영 주의도
 

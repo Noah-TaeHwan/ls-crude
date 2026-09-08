@@ -27,6 +27,7 @@
 | [091-D](workflow.md#091-d--탱크-지붕-그림자-feasibility) | 대형 floating-roof 탱크의 Sentinel-2 그림자 | PARK / E1 — 실제 메타데이터 표본 확보, 무료 10m 픽셀 원본·탱크별 판독은 미검증 |
 | [091-E](workflow.md#091-e--파이프라인-apportionment-공지) | Cushing 연결 파이프라인의 배정·감축 공지 | PARK / E1 — Keystone의 절차는 확인, 실제 월별 공지 이력은 미확보 |
 | [091-F](workflow.md#091-f--salesuse-tax-도시활동-관측) | 판매세·사용세의 도시 소비/반입 활동 | PARK / E1 — 월별 공식 표본·보고월 확인; 60개월 원문·분리 패널 미확보 |
+| [091-V](workflow.md#091-v--industrial-permit--construction-monitor) | 산업·상업·인프라 허가 | PARK / E1 — City/County 장기 발급대장은 미확보; [DEQ 실제 산업허가 1건은 이벤트 경로](../../indexes/091-cushing-operations-nowcasting/20260908T091FVZ/README.md)로만 보존 |
 | [091-G](workflow.md#091-g--911경찰-calls-for-service-집계) | 911·경찰 call-for-service 집계 | PARK / E1 — 실제 월별 익명 집계 표본 확인; 장기 동일정의 패널 미확보 |
 | [091-H](workflow.md#091-h--쿠싱-여행의도-검색-관측) | “how to get to cushing” 공개 검색 관심 | PARK / E1 — 실제 장기 월별 표본은 있으나 2015–23의 26.9%가 0이고, 방문·작업 목적을 관측하지 않음 |
 | [091-I](workflow.md#091-i--공개-집계-이동-관측) | Census LODES 등 공개 집계 이동 경로 | PARK / E1 — 실제 2022 LODES OD를 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091INSZ/README.md) 완료; 연간 Payne County 고용구조라 현장 이동·footfall 미관측 |
