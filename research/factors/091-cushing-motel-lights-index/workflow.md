@@ -28,6 +28,7 @@
 | 091-L | 대체에너지 정책이 쿠싱 현장활동을 바꾸는가 | EV oil displacement·정책 노출 | **PARK / E1** — 연간 adoption 결과는 확인, 정책 빈티지·현장 정답 없음 |
 | 091-M | 시청 공개 채용이 늘었는가 | City Open Positions 목록 | **PARK / E1** — 실제 3건 공고 표본, 게시/마감/역사 없음 |
 | 091-N | 시청이 공개하는 기록 중 실제 활동 패널이 있는가 | 부서·재정·공항·회의문서의 공개 경로 | **PARK / E1** — 실제 페이지 4개 원문 확보; 의제 첨부문서만 월별 집계 가능성이 있고 새 패널은 미발견 |
+| 091-O | 공항이 실제로 바쁜가 | Jet-A/AvGas 판매·ramp stay·응급비행 지원 | **PARK / E1** — 실제 월간보고 4건에 운영 수치 있음; 불연속·짧은 표본이라 아직 개별 검정 불가 |
 | 무효 실험 | Cushing Busy ML/DL | WTI·거래량 기반 합성 타깃 | **무효** — 실제 쿠싱 관측 아님 |
 
 ## 091-A — 숙박세 × 고정 도로구간 트럭
@@ -217,6 +218,14 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 2. **부서 안내 페이지는 지표가 아니다.** Community Development는 permit/inspection 업무를, Airport는 경제개발 역할을, Finance는 주 감사원/연간 예산 경로를 보여 주지만 각각 날짜가 보존된 월별 permits, airport operations/fuel sales, utility output/load를 공개하지 않는다. 채용·행사·공지·페이지 갱신 건수도 웹 게시 활동일 뿐 현장 운영량이 아니다.
 
 따라서 이 트랙은 **PARK / E1**이다. 새 차트·상관·조합은 실행하지 않았다. 다음 단일 관문은 agenda packet 안에서 `60개월 이상 + 안정 정의 + 대상월 + 공개일 + 독립 운영 기준값`을 갖춘 하나의 집계 시계열을 실제로 찾는 것이다. 그 전에는 시청 웹사이트 전체를 하나의 ‘바쁨 점수’로 세지 않는다. 상세 표와 결정은 [`ALT-20260908-14`](../../candidates/ALT-20260908-14.md)에 보존한다.
+
+## 091-O — 쿠싱 공항 활동 월간보고
+
+091-N의 의제문서 경로에서 실제로 발견한 가장 강한 후보는 **Cushing Regional Airport Monthly Report**다. 2023-05-15, 06-20, 07-17, 09-18의 City Manager Report 네 건에는 transient overnight ramp stays/hangar rentals, Survival Flight 지원 건수, Jet-A/AvGas 판매 갤런, based aircraft가 숫자로 기록돼 있다. 예를 들어 Jet-A는 `3,600 / 4,800 / 4,400 / 5,300` 갤런, AvGas는 `3,200 / 4,700 / 4,500 / 3,600` 갤런이다. 원문과 해시·모든 표본값은 [`ALT-20260908-15` 영수증](../../gathering/raw/ALT-20260908-15/20260908T150000Z/README.md)에 보존했다.
+
+이는 실제 개인 이동정보가 아닌 **공항의 집계 운영 활동**이며, 따라서 ‘시청 페이지 조회수’보다 훨씬 나은 관측이다. 하지만 공항 한 곳의 항공유·항공기 활동일 뿐, 쿠싱 원유 터미널·파이프라인·전체 도로물류 또는 도시 전체 활동의 정답이 아니다. 보고서마다 메트릭의 정확한 대상 기간도 아직 분리 표기돼 있지 않아 보고일을 이용가능 시점으로만 보존한다.
+
+현재 표본은 불연속 4건이므로 차트·상관·CFAM 점수·WTI/EIA 검정은 **실행하지 않았다**. 재개 조건은 동일 정의의 60개월 이상 보고서와 metric-period/보고일 복원이다. 그 뒤에도 Jet-A, AvGas, ramp stays, emergency-flight support를 따로 시각화하고 독립 local ground truth와 먼저 측정타당성을 확인한다.
 
 ## 검정 해석 규칙
 
