@@ -54,5 +54,21 @@
     "outcome": "collected",
     "bytes": 39260,
     "sha256": "fd4dff267d4586dd9872fb17013659acad5f01b2ac9333251f33ec7db17ec0ce"
+  },
+  {
+    "file": "eia_ok_regular_retail_history.html",
+    "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=EMA_EPMR_PTC_SOK_DPG&f=M",
+    "http_status": 200,
+    "outcome": "collected (deep-check extension)",
+    "bytes": 19529,
+    "sha256": "c73d2af15ddf5fa27bfcdda1fd2830b4ac28eceac629eb6808a4b2fae79d79e5"
+  },
+  {
+    "file": "eia_wti_monthly_history.html",
+    "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RWTC&f=M",
+    "http_status": 200,
+    "outcome": "collected (deep-check extension)",
+    "bytes": 20480,
+    "sha256": "77983359f896a97134d341fd96bb2121d8d301c5b3c7e212dcc1bee63236fb20"
   }
 ]
