@@ -77,62 +77,92 @@ test("intake joins all CSV rows to cards and fails closed on damaged or inconsis
   assert.equal(parseResearchIntake(`${Object.keys(fields).join(",")}\n${row}\n`, { [fields.record_path]: card })[0].fields.name, fields.name);
 });
 
-test("latest WTI quote validates identity/time and preserves last good quote on failure", async () => {
-  const { parseWtiQuote, readWtiQuote } = await import("../app/lib/wti-quote.server.ts");
-  const now = new Date("2026-09-08T03:00:00Z");
-  const meta = { symbol: "CL=F", currency: "USD", instrumentType: "FUTURE", regularMarketPrice: 92.5, regularMarketTime: Date.parse("2026-09-08T02:50:00Z") / 1000 };
-  const body = (m) => ({ chart: { result: [{ meta: m }], error: null } });
-  assert.equal(parseWtiQuote(body({ ...meta, regularMarketPrice: -37 }), now).price, -37);
-  for (const value of [null, {}, body({ ...meta, symbol: "BZ=F" }), body({ ...meta, currency: "EUR" }), body({ ...meta, regularMarketPrice: NaN }), body({ ...meta, regularMarketTime: now.getTime() / 1000 + 120 })]) assert.throws(() => parseWtiQuote(value, now));
-  const fail = async () => { throw new Error("network down"); };
-  assert.deepEqual((await readWtiQuote(fail, now)).quote, null);
-  let requests = 0;
-  const fetcher = async () => { requests++; return new Response(JSON.stringify(body(meta))); };
-  const good = await readWtiQuote(fetcher, now);
-  assert.equal(good.quote.price, 92.5);
-  assert.equal(good.quote.observedAt, "2026-09-08T02:50:00.000Z");
-  await readWtiQuote(fetcher, new Date(now.getTime() + 30000));
-  assert.equal(requests, 1);
-  const failed = await readWtiQuote(fail, new Date(now.getTime() + 61000));
-  assert.deepEqual(failed.quote, good.quote);
-  assert.match(failed.error, /실패/);
-});
+/**
+ * 유효한 일봉 응답을 만들고 각 검사에서 경계값만 변경한다.
+ * @param dates 공급자 일봉 시각 목록.
+ * @returns 검증용 Yahoo 응답.
+ */
+function dailyBody(dates = ["2026-09-04T13:00:00Z", "2026-09-08T02:50:00Z"]) {
+  return { chart: { error: null, result: [{ meta: { symbol: "CL=F", currency: "USD", instrumentType: "FUTURE", dataGranularity: "1d", regularMarketPrice: 999 }, timestamp: dates.map((date) => Date.parse(date) / 1000), indicators: { quote: [{ open: dates.map(() => 90), high: dates.map(() => 95), low: dates.map(() => 89), close: dates.map(() => 92), volume: dates.map(() => 0) }] } }] } };
+}
 
-test("WTI intraday preserves actual values and gaps, isolates malformed/stale chart data", async () => {
-  const { parseWtiQuote } = await import("../app/lib/wti-quote.server.ts");
+test("daily WTI preserves actual latest provisional OHLC and rejects invalid identity, dates and prices", async () => {
+  const { parseWtiDaily } = await import("../app/lib/wti-daily.ts");
   const now = new Date("2026-09-08T03:00:00Z");
-  const end = now.getTime() / 1000;
-  const body = (timestamp, close, changes = {}) => ({ chart: { result: [{ meta: { symbol: "CL=F", currency: "USD", instrumentType: "FUTURE", regularMarketPrice: 92.5, regularMarketTime: end, dataGranularity: "5m", ...changes }, timestamp, indicators: { quote: [{ close }] } }] } });
-  const parsed = parseWtiQuote(body([end - 900, end - 600, end - 300, end], [-37, null, -37, 0]), now);
-  assert.deepEqual(parsed.points.map((p) => p.price), [-37, -37, 0]);
-  assert.equal(Date.parse(parsed.points[1].time) - Date.parse(parsed.points[0].time), 600000);
-  assert.equal(parsed.chartError, null);
-  assert.equal(parsed.interval, "5m");
-  assert.equal(parseWtiQuote(body([end], [92]), now).points.length, 1);
-  for (const input of [body([], []), body([end], [null]), body([end], []), body([end, end], [1, 2]), body([end, end - 300], [1, 2]), body([end + 120], [1]), body([end], ["92"]), body([end], [Infinity]), body([end], [92], { dataGranularity: "1d" })]) {
-    const quote = parseWtiQuote(input, now);
-    assert.equal(quote.price, 92.5);
-    assert.equal(quote.points.length, 0);
-    assert.ok(quote.chartError);
+  const parsed = parseWtiDaily(dailyBody(), now);
+  assert.equal(parsed.bars.at(-1).date, "2026-09-07");
+  assert.equal(parsed.bars.at(-1).close, 92);
+  assert.equal(parsed.observedAt, "2026-09-08T02:50:00.000Z");
+  assert.equal(parsed.partialLast, true);
+  assert.equal(parsed.missingCount, 0);
+  const missing = dailyBody();
+  missing.chart.result[0].indicators.quote[0].close[1] = null;
+  const omitted = parseWtiDaily(missing, now);
+  assert.equal(omitted.bars.length, 1);
+  assert.equal(omitted.missingCount, 1);
+  assert.equal(omitted.observedAt, parsed.bars[0].sourceAt);
+  assert.match(omitted.note, /1개/);
+  for (const price of [-37, 0, 92]) {
+    const flat = dailyBody();
+    for (const key of ["open", "high", "low", "close"]) flat.chart.result[0].indicators.quote[0][key].fill(price);
+    assert.equal(parseWtiDaily(flat, now).bars.at(-1).close, price);
   }
-  const stale = parseWtiQuote(body([end - 86400], [91]), now);
-  assert.equal(stale.points.length, 1);
-  assert.match(stale.chartError, /지연/);
-  const long = parseWtiQuote(body(Array.from({ length: 1600 }, (_, i) => end - (1599 - i) * 300), Array(1600).fill(92)), now);
-  assert.equal(long.points.length, 1500);
+  for (const mutate of [
+    (r) => { r.meta.symbol = "BZ=F"; }, (r) => { r.meta.currency = "EUR"; },
+    (r) => { r.meta.instrumentType = "EQUITY"; }, (r) => { r.meta.dataGranularity = "5m"; },
+    (r) => { r.timestamp.reverse(); }, (r) => { r.timestamp[1] = r.timestamp[0]; },
+    (r) => { r.timestamp[1] = r.timestamp[0] + 3600; },
+    (r) => { r.timestamp[1] = now.getTime() / 1000 + 1; },
+    (r) => { r.indicators.quote[0].close.pop(); },
+    (r) => { r.indicators.quote[0].close[0] = "92"; },
+    (r) => { r.indicators.quote[0].high[0] = Infinity; },
+    (r) => { r.indicators.quote[0].high[0] = 89; },
+    (r) => { r.indicators.quote[0].low[0] = 91; },
+    (r) => { r.indicators.quote[0].volume[0] = -1; },
+    (r) => { r.indicators.quote[0].close.fill(null); },
+  ]) {
+    const bad = dailyBody(); mutate(bad.chart.result[0]);
+    assert.throws(() => parseWtiDaily(bad, now));
+  }
+  for (const bad of [null, {}, { chart: { error: "failed" } }]) assert.throws(() => parseWtiDaily(bad, now));
 });
 
-test("WTI refresh retains timestamped chart on partial provider failure while updating quote", async () => {
-  const { readWtiQuote } = await import("../app/lib/wti-quote.server.ts");
-  const now = new Date("2026-09-09T03:00:00Z");
-  const timestamp = now.getTime() / 1000;
-  const meta = { symbol: "CL=F", currency: "USD", instrumentType: "FUTURE", regularMarketPrice: 92, regularMarketTime: timestamp, dataGranularity: "5m" };
-  const good = await readWtiQuote(async (url) => {
-    assert.match(url, /interval=5m&range=5d/);
-    return Response.json({ chart: { result: [{ meta, timestamp: [timestamp], indicators: { quote: [{ close: [92] }] } }] } });
-  }, now);
-  const partial = await readWtiQuote(async () => Response.json({ chart: { result: [{ meta: { ...meta, regularMarketPrice: 93, regularMarketTime: timestamp + 61 } }] } }), new Date(now.getTime() + 61000));
-  assert.equal(partial.quote.price, 93);
-  assert.deepEqual(partial.quote.points, good.quote.points);
-  assert.ok(partial.quote.chartError);
+test("all seven daily ranges keep latest actual bar and clamp calendar month/year boundaries", async () => {
+  const { DAILY_RANGES, filterDailyBars } = await import("../app/lib/wti-daily.ts");
+  const dates = ["2019-03-30", "2019-03-31", "2021-03-31", "2023-03-31", "2023-09-30", "2023-12-31", "2024-02-28", "2024-02-29", "2024-03-23", "2024-03-24", "2024-03-31"];
+  const bars = dates.map((date) => ({ date }));
+  const starts = ["2019-03-31", "2021-03-31", "2023-03-31", "2023-09-30", "2023-12-31", "2024-02-29", "2024-03-24"];
+  DAILY_RANGES.forEach((range, i) => {
+    const selected = filterDailyBars(bars, range);
+    assert.equal(selected[0].date, starts[i]);
+    assert.equal(selected.at(-1), bars.at(-1));
+  });
+  assert.equal(filterDailyBars([{ date: "2023-02-27" }, { date: "2023-02-28" }, { date: "2024-02-29" }], "1y")[0].date, "2023-02-28");
+  assert.deepEqual(filterDailyBars([], "1wk"), []);
+  assert.throws(() => filterDailyBars(bars, "5m"));
+});
+
+test("daily fetch caches whole snapshots and preserves their times on network or malformed response", async () => {
+  const { readWtiDaily } = await import("../app/lib/wti-daily.server.ts");
+  const now = new Date("2026-09-08T03:00:00Z");
+  const fail = async () => { throw new Error("network down"); };
+  assert.equal((await readWtiDaily(fail, now)).data, null);
+  let requests = 0;
+  const fetcher = async (url) => { requests++; assert.match(url, /interval=1d&range=5y/); return Response.json(dailyBody()); };
+  const good = await readWtiDaily(fetcher, now);
+  assert.equal(good.data.bars.length, 2);
+  await readWtiDaily(fetcher, new Date(now.getTime() + 30000));
+  assert.equal(requests, 1);
+  const failed = await readWtiDaily(fail, new Date(now.getTime() + 61000));
+  assert.deepEqual(failed.data, good.data);
+  assert.match(failed.error, /실패/);
+  const malformed = await readWtiDaily(async () => Response.json({ chart: { result: [{ meta: { regularMarketPrice: 123 } }] } }), new Date(now.getTime() + 62000));
+  assert.deepEqual(malformed.data, good.data);
+  assert.match(malformed.error, /실패/);
+  const older = dailyBody();
+  older.chart.result[0].timestamp.pop();
+  for (const values of Object.values(older.chart.result[0].indicators.quote[0])) values.pop();
+  const regressed = await readWtiDaily(async () => Response.json(older), new Date(now.getTime() + 63000));
+  assert.deepEqual(regressed.data, good.data);
+  assert.match(regressed.error, /실패/);
 });

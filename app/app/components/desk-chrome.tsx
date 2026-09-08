@@ -51,7 +51,7 @@ export function DeskHeader({ source, ticker, freshness }: DeskHeaderProps) {
               팀
             </a>
           </nav>
-          <p className="desk-source" title={`${source} · ${ticker} · 최근 완료 일봉`}>
+          <p className="desk-source" title={`${source} · ${ticker} · 일봉`}>
             <span>{ticker} · 일봉 관측</span>
             {freshness ? (
               <span className="inline-flex items-center gap-2 whitespace-nowrap">

@@ -151,7 +151,10 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.match(text, /5일 실현변동성 백분위/);
     assert.match(text, /후보 비교선은 아직 없습니다/);
     assert.ok(text.includes(String(livePercentile)), "RV5 percentile must come from the actual snapshot");
-    assert.ok(text.includes(marketSnapshot.bars.at(-1).close.toFixed(2)));
+    assert.match(text, /WTI 원유 가격/);
+    for (const label of ["5년", "3년", "1년", "6개월", "3개월", "1개월", "1주일"]) assert.ok(text.includes(label));
+    assert.doesNotMatch(body, /id="intraday-chart"|class="price-sparkline/);
+    assert.ok((body.match(/id="wti-daily-chart"/g) ?? []).length <= 1);
     assert.doesNotMatch(body, /원유 DEFCON|DEFCON 3/);
     const expectedCheckedAt = new Date(Date.parse(marketSnapshot.checkedAt) + 9 * 60 * 60 * 1_000)
       .toISOString().slice(0, 16).replace("T", " ");

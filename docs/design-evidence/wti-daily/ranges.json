@@ -1,0 +1,77 @@
+[
+  {
+    "range": "5년",
+    "count": 1258,
+    "first": "2021-09-07",
+    "last": "2026-09-07",
+    "lastClose": "92.84",
+    "headline": "92.84",
+    "graphs": 1
+  },
+  {
+    "range": "3년",
+    "count": 755,
+    "first": "2023-09-07",
+    "last": "2026-09-07",
+    "lastClose": "92.84",
+    "headline": "92.84",
+    "graphs": 1
+  },
+  {
+    "range": "1년",
+    "count": 252,
+    "first": "2025-09-08",
+    "last": "2026-09-07",
+    "lastClose": "92.84",
+    "headline": "92.84",
+    "graphs": 1
+  },
+  {
+    "range": "6개월",
+    "count": 127,
+    "first": "2026-03-09",
+    "last": "2026-09-07",
+    "lastClose": "92.84",
+    "headline": "92.84",
+    "graphs": 1
+  },
+  {
+    "range": "3개월",
+    "count": 64,
+    "first": "2026-06-08",
+    "last": "2026-09-07",
+    "lastClose": "92.84",
+    "headline": "92.84",
+    "graphs": 1
+  },
+  {
+    "range": "1개월",
+    "count": 22,
+    "first": "2026-08-07",
+    "last": "2026-09-07",
+    "lastClose": "92.84",
+    "headline": "92.84",
+    "graphs": 1
+  },
+  {
+    "range": "1주일",
+    "count": 6,
+    "first": "2026-08-31",
+    "last": "2026-09-07",
+    "lastClose": "92.84",
+    "headline": "92.84",
+    "graphs": 1
+  },
+  {
+    "width": 320,
+    "scroll": 320
+  },
+  {
+    "width": 390,
+    "scroll": 390
+  },
+  {
+    "width": 1440,
+    "scroll": 1440
+  }
+]
