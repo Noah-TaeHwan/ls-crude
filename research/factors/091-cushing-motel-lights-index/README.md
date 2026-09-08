@@ -25,12 +25,12 @@
 | [091-F](workflow.md#091-f--salesuse-tax-도시활동-관측) | 판매세·사용세의 도시 소비/반입 활동 | PARK / E1 — 월별 공식 표본·보고월 확인; 60개월 원문·분리 패널 미확보 |
 | [091-G](workflow.md#091-g--911경찰-calls-for-service-집계) | 911·경찰 call-for-service 집계 | PARK / E1 — 실제 월별 익명 집계 표본 확인; 장기 동일정의 패널 미확보 |
 | [091-H](workflow.md#091-h--쿠싱-여행의도-검색-관측) | “how to get to cushing” 공개 검색 관심 | PARK / E1 — 실제 장기 월별 표본은 있으나 2015–23의 26.9%가 0이고, 방문·작업 목적을 관측하지 않음 |
-| [091-I](workflow.md#091-i--공개-집계-이동-관측) | Census LODES 등 공개 집계 이동 경로 | PARK / E1 — 실제 LODES OD 표본 확보, 연간 고용구조라 현장 이동·footfall 미관측 |
-| [091-J](workflow.md#091-j--허브-근접-활동-관측) | 주차·호텔·점심·심야·경로·이벤트 | PARK / E1 — 신호별 데이터 접근 감사를 완료; 장기 공개 관측은 아직 조합 불가 |
-| [091-K](workflow.md#091-k--통신-신호-모빌리티-경로) | 통신 신호 기반 이동 | BLOCKED / E1 — 통신사·공급자 계약 데이터이며 본 프로젝트는 수집하지 않음 |
-| [091-L](workflow.md#091-l--미국-대체에너지-정책의-장기-구조-경로) | 미국 대체에너지 정책·전동화 | PARK / E1 — 연간 전동화 결과는 있으나 정책 자체·쿠싱 현장활동을 측정하지 않음 |
-| [091-M](workflow.md#091-m--쿠싱-시청-공개-구인공고) | City of Cushing 공개 구인공고 | PARK / E1 — 실제 3건 표본 확보, 시정부 공석일 뿐 장기 이력·현장 운영 측정 없음 |
-| [091-N](workflow.md#091-n--쿠싱-시청-공개자료-지도) | 시청 공개자료·부서·회의문서 경로 | PARK / E1 — 실제 4개 공식 페이지를 수집해 원문 영수증화; 의제 첨부문서가 유일한 유망 경로이며 새 장기 지표는 아직 없음 |
+| [091-I](workflow.md#091-i--공개-집계-이동-관측) | Census LODES 등 공개 집계 이동 경로 | PARK / E1 — 실제 2022 LODES OD를 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091INSZ/README.md) 완료; 연간 Payne County 고용구조라 현장 이동·footfall 미관측 |
+| [091-J](workflow.md#091-j--허브-근접-활동-관측) | 주차·호텔·점심·심야·경로·이벤트 | PARK / E1 — 실제/부재 신호를 [게이트보드](../../indexes/091-cushing-operations-nowcasting/20260908T091INSZ/README.md)로 시각화; 장기 공개 관측은 아직 조합 불가 |
+| [091-K](workflow.md#091-k--통신-신호-모빌리티-경로) | 통신 신호 기반 이동 | BLOCKED / E1 — 수집 금지 경계를 [게이트보드](../../indexes/091-cushing-operations-nowcasting/20260908T091INSZ/README.md)로 기록; 통신사·공급자 계약 데이터는 수집하지 않음 |
+| [091-L](workflow.md#091-l--미국-대체에너지-정책의-장기-구조-경로) | 미국 대체에너지 정책·전동화 | PARK / E1 — Factor 004의 IEA 실제 엔드포인트를 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091INSZ/README.md) 완료; 정책 자체·쿠싱 현장활동을 측정하지 않음 |
+| [091-M](workflow.md#091-m--쿠싱-시청-공개-구인공고) | City of Cushing 공개 구인공고 | PARK / E1 — 실제 3건 표본 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091INSZ/README.md) 완료; 시정부 공석일 뿐 장기 이력·현장 운영 측정 없음 |
+| [091-N](workflow.md#091-n--쿠싱-시청-공개자료-지도) | 시청 공개자료·부서·회의문서 경로 | PARK / E1 — 실제 4개 공식 페이지/0개 신규 장기패널을 [게이트보드](../../indexes/091-cushing-operations-nowcasting/20260908T091INSZ/README.md)로 시각화 |
 | [091-O](workflow.md#091-o--쿠싱-공항-활동-월간보고) | 공항 연료판매·ramp stay·응급비행 지원 | PARK / E1 — 실제 월간보고 4건의 직접 운영 수치를 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091OZ/README.md) 완료; 60개월·개별 기간 미확보 |
 | [091-P](workflow.md#091-p--지역-커뮤니티-발자국--운영-주의도) | 학교 등록학생·KUSH 지역 운영 보도 주의도 | PARK / E1 — 실제 공개 집계 두 개를 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091PZ/README.md) 완료; 전자는 연간 구조, 후자는 보도 주의도라 ‘현재 바쁨’의 정답을 측정하지 않음 |
 | [091-Q/R/S](workflow.md#091-qrs--날씨행사빠른-외식-관측) | NOAA 날씨 · KUSH 행사 · Google Maps Quick Service | **S만 FORWARD_ONLY / E1** — [실제 표본·개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/README.md) 완료. 고정 6점포의 [live footfall protocol](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md)로 90일 전향 검증을 시작할 수 있음 |

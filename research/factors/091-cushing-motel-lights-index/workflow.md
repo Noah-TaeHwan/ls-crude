@@ -259,6 +259,12 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 
 Google Maps의 `Popular times`는 집계 방문 기반의 상대 프로필이라는 점은 유용하지만, 이 실행에서 숫자·역사 시계열로 추출하지 않았다. 091-S는 이제 고정 바스켓 6개 점포와 Central Time `07:30 / 12:30 / 18:30`의 [전향 수동 관측 프로토콜](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md)로만 진행할 수 있다. `live 표시 여부·상대 busy label·영업 여부·delivery 표시`만 기록하고 고객/기기/개인 정보를 기록하지 않는다. 90일·80% 이상 완결 뒤에도 먼저 독립적인 지역 운영 집계와 함께 해당 UI 관측이 실제 활동을 설명하는지 측정타당성부터 판정한다.
 
+## 091-I~S 시각화 재감사 — 2026-09-08
+
+091-I 이후에 ‘실제 원문/표본은 있으나 의도한 관측이 아니어서’ 개별 그림이 생략된 상태를 보완했다. [I~S evidence & visualisation completion audit](../../indexes/091-cushing-operations-nowcasting/20260908T091INSZ/README.md)는 I의 LODES 연간 구조, J의 7개 근접신호 접근게이트, K의 통신수집 차단, L의 IEA 전동화 엔드포인트, M의 시청 3개 공석, N의 공식사이트 4개 경로/0개 신규 장기패널을 각각 그림으로 남긴다. O, P, Q/R/S는 이미 별도 개별 시각화가 있어 그 결과를 링크했다.
+
+그림이 있다고 해서 관계 검정이 가능해진 것은 아니다. I~N에는 timestamp가 맞는 독립 ‘쿠싱 바쁨’ 정답 패널이 없으므로 WTI/EIA·ML·조합 검정은 실행하지 않았다. 현재 후보의 우선순위는 [091-S Google Maps 고정 6점포 전향 footfall panel](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md) → 091-O 공항 물리활동 → 091-A 숙박세 → (미확보) 고정 트럭 카운터 순서다.
+
 ## 검정 해석 규칙
 
 - 모든 상관은 신호 **이용가능일 뒤** EIA 관측만 사용한 미래 28일 창이다.
