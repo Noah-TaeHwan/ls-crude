@@ -69,6 +69,7 @@ CFAM은 거래 모델이 아니라 공개 운영관측 실험으로 보존한다
 - 파일럿 스크립트: [`cushing_motel_lights_pilot.py`](../../notebooks/cushing_motel_lights_pilot.py)
 - CFAM 수집기: [`run_cfam.py`](../../notebooks/091-cushing-operations-nowcasting/run_cfam.py)
 - CFAM 동결 IS 영수증: [`20260908T110000Z`](../../indexes/091-cushing-operations-nowcasting/20260908T110000Z/README.md)
+- 실제 공개 관측값 표본: [`data-sample-2023.md`](data-sample-2023.md)
 - 원유 입력: [`clf-daily-2015-2026.csv`](../../data/clf-daily-2015-2026.csv)
 
 ## 출처
