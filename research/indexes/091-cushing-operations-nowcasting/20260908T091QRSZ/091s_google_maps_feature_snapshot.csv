@@ -1,0 +1,7 @@
+venue,popular_times_visible,delivery_visible,drive_through_visible
+Wendy's,True,True,True
+Taco Bell,True,True,True
+Sonic Drive-In,True,True,True
+Golden Chick,True,True,True
+Pizza Hut,True,False,False
+Boomarang Diner,True,True,True
