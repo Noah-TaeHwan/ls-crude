@@ -1,0 +1,80 @@
+[
+  {
+    "width": 320,
+    "scrollWidth": 320,
+    "charts": [
+      {
+        "id": "degree-days-level-plot",
+        "width": 182
+      },
+      {
+        "id": "degree-days-yoy-plot",
+        "width": 182
+      }
+    ],
+    "axes": [
+      "월별 냉난방도일 (°F·day)\nHDD · 난방\nCDD · 냉방\n0\n500\n1,000\n2015-01\n2019-06\n2023-12",
+      "월합계로 직접 계산한 전년동월차 (°F·day 차이)\nHDD 자체 전년차\nCDD 자체 전년차\n-250\n0\n250\n2016-01\n2019-12\n2023-12"
+    ]
+  },
+  {
+    "width": 390,
+    "scrollWidth": 390,
+    "charts": [
+      {
+        "id": "degree-days-level-plot",
+        "width": 252
+      },
+      {
+        "id": "degree-days-yoy-plot",
+        "width": 252
+      }
+    ],
+    "axes": [
+      "월별 냉난방도일 (°F·day)\nHDD · 난방\nCDD · 냉방\n0\n500\n1,000\n2015-01\n2019-06\n2023-12",
+      "월합계로 직접 계산한 전년동월차 (°F·day 차이)\nHDD 자체 전년차\nCDD 자체 전년차\n-250\n0\n250\n2016-01\n2019-12\n2023-12"
+    ]
+  },
+  {
+    "width": 768,
+    "scrollWidth": 753,
+    "charts": [
+      {
+        "id": "degree-days-level-plot",
+        "width": 575
+      },
+      {
+        "id": "degree-days-yoy-plot",
+        "width": 575
+      }
+    ],
+    "axes": [
+      "월별 냉난방도일 (°F·day)\nHDD · 난방\nCDD · 냉방\n0\n500\n1,000\n2015-01\n2019-06\n2023-12",
+      "월합계로 직접 계산한 전년동월차 (°F·day 차이)\nHDD 자체 전년차\nCDD 자체 전년차\n-250\n0\n250\n2016-01\n2019-12\n2023-12"
+    ]
+  },
+  {
+    "width": 1440,
+    "scrollWidth": 1425,
+    "charts": [
+      {
+        "id": "degree-days-level-plot",
+        "width": 1246
+      },
+      {
+        "id": "degree-days-yoy-plot",
+        "width": 1246
+      }
+    ],
+    "axes": [
+      "월별 냉난방도일 (°F·day)\nHDD · 난방\nCDD · 냉방\n0\n500\n1,000\n2015-01\n2019-06\n2023-12",
+      "월합계로 직접 계산한 전년동월차 (°F·day 차이)\nHDD 자체 전년차\nCDD 자체 전년차\n-250\n0\n250\n2016-01\n2019-12\n2023-12"
+    ]
+  },
+  {
+    "first": "2015-01\n\nHDD 880 · CDD 2 °F·day\n\n자체 전년차: HDD — · CDD —\n\n공급자 전년차: HDD -77 · CDD 1\n\n이 표본에 전년월이 없어 자체 차분은 계산하지 않았습니다."
+  },
+  {
+    "mismatch": "2016-02\n\nHDD 646 · CDD 1 °F·day\n\n자체 전년차: HDD -223 · CDD 1\n\n공급자 전년차: HDD -255 · CDD 1\n\n이 달은 자체 계산과 공급자 전년차가 다릅니다. 원인 미확인."
+  }
+]

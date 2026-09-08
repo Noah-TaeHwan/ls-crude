@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { test } from "node:test";
-import { readWatermelon, readJeju, nearestDateIndex, sampleShouldRevalidate } from "../app/lib/research-charts.ts";
+import { readWatermelon, readJeju, readDegreeDays, nearestDateIndex, sampleShouldRevalidate } from "../app/lib/research-charts.ts";
 
-const base = new URL("../../research/indexes/web-observations/v1/", import.meta.url);
+const base = new URL("../../research/indexes/web-observations/v2/", import.meta.url);
 const melon = JSON.parse(await readFile(new URL("watermelon.json", base), "utf8"));
 const jeju = JSON.parse(await readFile(new URL("jeju.json", base), "utf8"));
 
@@ -53,4 +53,19 @@ test("case-only navigation skips data reload but preserves refresh, other querie
   assert.equal(sampleShouldRevalidate({currentUrl,nextUrl:new URL("https://example.test/?sample=jeju&candidate=080"),defaultShouldRevalidate:true}),true);
   assert.equal(sampleShouldRevalidate({currentUrl,nextUrl:new URL("https://example.test/research?sample=jeju"),defaultShouldRevalidate:true}),true);
   assert.equal(sampleShouldRevalidate({currentUrl,nextUrl:new URL("https://example.test/?sample=jeju"),defaultShouldRevalidate:true,formMethod:"POST"}),true);
+});
+
+const degrees = JSON.parse(await readFile(new URL("degree-days.json", base), "utf8"));
+test("degree days preserve monthly totals and distinguish provider from own differences", () => {
+  const rows=readDegreeDays(degrees);
+  assert.equal(rows.length,108);
+  assert.equal(rows[0].hddYoy,null);
+  assert.equal(rows[13].hddYoy,-223);
+  assert.equal(rows[13].providerHDDYoy,-255);
+  assert.equal(rows.at(-1).month,"2023-12");
+  for (const mutate of [r=>{r.hdd=-1;},r=>{r.month="2015-02";},r=>{r.hddYoy=0;},r=>{r.providerHDDYoy="0";}]) {
+    const bad=structuredClone(degrees); mutate(bad.points[0]); assert.equal(readDegreeDays(bad),null);
+  }
+  const bad=structuredClone(degrees); bad.points[13].hddYoy=-255;
+  assert.equal(readDegreeDays(bad),null);
 });

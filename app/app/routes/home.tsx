@@ -94,7 +94,7 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
           <div className="section-heading"><div><p className="section-kicker">02 / FIELD NOTES</p><h2 id="observations-title">원유 시장 주변의 관측</h2></div><p>무엇을 측정하는지, 얼마나 자주 갱신되는지부터 살펴봅니다.</p></div>
           <div className="grid gap-6 lg:grid-cols-2"><VisibilityObservation view={visibility} checkedAt={checkedAt} compact /><TankerObservation view={tankers} checkedAt={checkedAt} /></div>
         </section>
-        <ResearchSample records={{ watermelon: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20") }} />
+        <ResearchSample records={{ watermelon: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20"), "degree-days": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-45") }} />
         <ResearchIntake {...intake} preview />
 
         <section className="py-10 sm:py-12" aria-labelledby="bridge-title">

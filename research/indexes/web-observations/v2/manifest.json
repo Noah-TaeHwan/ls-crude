@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "purpose": "Frozen display data, no new inference",
+  "cases": {
+    "watermelon": {
+      "source": "research/data/processed/ALT-20260907-36/20260908T065043Z/weekly.csv",
+      "source_sha256": "b74dbdf91030ea73346e147b37edff9d1073eda6f965b12433c91cf8a1e030a2",
+      "quality": "research/indexes/ALT-20260907-36/20260908T065043Z/quality.json",
+      "quality_sha256": "f1909518e995137223b12d880151767abf4979775ea0c062f44e8dfbc91b2977",
+      "output_sha256": "c0b7ca75d790d78d221403819eb333e37eb3c605f4989ad6a6dd964d2dcabf05",
+      "rows": 409
+    },
+    "jeju": {
+      "source": "research/data/processed/ALT-20260908-20/20260908T073402Z/daily.csv",
+      "source_sha256": "eab77e869af15647e3a71aab849acee39d9d68ee64cce4f1de8dd9ba05baf575",
+      "quality": "research/indexes/ALT-20260908-20/20260908T073402Z/quality.json",
+      "quality_sha256": "e88783b7f28fe08fd2cf72a9e8b41a96d2ba49cb71840d8622f14fd6d55d399a",
+      "output_sha256": "11dc2d286e7d5d87bd14aabf13d3361f6319e0291191d3ce7aad8ad6deb4b9a5",
+      "rows": 336
+    },
+    "degree-days": {
+      "source": "research/data/processed/ALT-20260907-45/20260908T120546Z/v2/degree-days.csv",
+      "source_sha256": "4e95f4f5525616c5913738d969848749a03c8236a18d4c2cc51825fa4bb11880",
+      "quality": "research/indexes/ALT-20260907-45/20260908T120546Z/v2/quality.json",
+      "quality_sha256": "12d5801a5b785d9d88868dad9fd40a2c48aa105318af33cc39e05169861ee849",
+      "output_sha256": "8e4dcdc9f48affae3fa9bbe8379b26e02a29b56ef676148121a105f3d98c605b",
+      "rows": 108
+    }
+  }
+}

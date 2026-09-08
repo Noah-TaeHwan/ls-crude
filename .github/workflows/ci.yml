@@ -21,6 +21,7 @@ jobs:
           python scripts/sync_candidate_ledger.py --self-test
           python scripts/sync_candidate_ledger.py --check
           python scripts/export_observation_charts.py --check
+          python notebooks/ALT-20260907-45/collect.py --self-test
       - name: Install and test
         run: |
           pip install -r requirements.txt

@@ -216,6 +216,13 @@ test("serves the public evidence brief routes from the repository root", async (
       assert.doesNotMatch(jejuBody, /id="watermelon-research-plot"/);
       for (const value of ["2024-03-31","6164.278","3997.953","39.34","바이오중유","자동 갱신 아님"]) assert.ok(jejuBody.includes(value));
     }
+    for (const route of ["/", "/research"]) {
+      const response=await fetch(`${baseUrl}${route}?sample=degree-days`);
+      assert.equal(response.status,200);
+      const html=await response.text();
+      for (const value of ["degree-days-level-plot","degree-days-yoy-plot","2023-12","192","20","65°F","자동 갱신 아님"]) assert.ok(html.includes(value),value);
+      assert.doesNotMatch(html,/id="jeju-generation-plot"|id="watermelon-research-plot"/);
+    }
     const unknownSample = await fetch(`${baseUrl}/research?sample=unknown`);
     assert.match(await unknownSample.text(), /id="watermelon-research-plot"/);
     assert.match(researchText, /개별 관측/);
@@ -265,6 +272,11 @@ test("serves research image bytes from the production start directory", async ()
       const quality = JSON.parse(await readFile(path.join(repositoryRoot, `research/indexes/${source}/quality.json`), "utf8"));
       assert.equal(createHash("sha256").update(Buffer.from(await response.arrayBuffer())).digest("hex"), quality.output_sha256[`research/indexes/${source}/observation.png`]);
     }
+    const svg=await fetch(`http://127.0.0.1:${port}/research/degree-days-v2.svg`);
+    assert.equal(svg.status,200);
+    assert.match(svg.headers.get("content-type"),/image\/svg/);
+    const source="research/indexes/ALT-20260907-45/20260908T120546Z/v2/degree-days-monthly-v2.svg";
+    assert.equal(createHash("sha256").update(Buffer.from(await svg.arrayBuffer())).digest("hex"),createHash("sha256").update(await readFile(path.join(repositoryRoot,source))).digest("hex"));
   } finally {
     await stop(child);
   }
