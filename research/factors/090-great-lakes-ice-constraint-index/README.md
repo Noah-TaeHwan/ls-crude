@@ -41,11 +41,39 @@
 
 따라서 090은 겨울 물류·위험 맥락을 설명하는 밈/모니터로 보존한다. 현 시점에서 오일 가격 또는 HO 방향을 예측하는 신호로 쓰지 않는다.
 
+## 090B 사전등록 확장 — Midwest Winter Fuel Squeeze
+
+단독 결빙률의 약한 결과를 좋게 보이게 만들기 위해 임계값을 사후 조정하지 않는다. 대신 전달경로가 다른 두 **지역** 확인 레그가 동시에 취약할 때만 090을 켜는 조건부 가설을 별도로 고정한다.
+
+```text
+Great Lakes ice anomaly (logistics constraint)
+AND low PADD 2 distillate inventory (thin local buffer)
+AND low PADD 2 refinery utilization (weak local supply)
+→ Midwest winter fuel-squeeze regime
+→ subsequent HO/ULSD volatility
+```
+
+| 요소 | 사전 고정 정의 | 역할 |
+| --- | --- | --- |
+| 결빙 제약 | 기존 090의 전체 오대호 결빙 월-일 z-score ≥ +1 | 물류 제약 |
+| 재고 완충 | EIA WPSR PADD 2 distillate 재고가 해당 주의 2015–2023 계절 백분위 25 이하 | 현지 완충 부족 |
+| 정유 공급 | EIA WPSR PADD 2 정유 가동률이 해당 주의 2015–2023 계절 백분위 25 이하 | 현지 공급 취약 |
+| 게이트 | 세 조건이 같은 공개 가능 시점에 모두 참일 때만 1, 나머지는 0 | 평균 점수화·중복 가중 금지 |
+
+### 고정 검정 계획
+
+- **표본·공개시점**: 2015–2023에서 정의를 고정하고 2024+를 한 번만 OOS로 연다. NOAA 관측은 다음 날부터, EIA 주간 수치는 보수적으로 다음 거래일부터 사용한다.
+- **대상**: 겨울(12–4월)의 비중첩 금요일 관측치. 1차 타깃은 이후 5거래일 `HO=F` 실현변동성이다. WTI 방향성이나 가격 예측으로 바꾸지 않는다.
+- **통과 규칙**: 결합 게이트의 IS·OOS가 모두 같은 가설 방향이고, 단독 090보다 일관된 효과를 보여야 한다. 한 구간만 좋은 값, 새로운 임계값 탐색, 또는 전국 재고로의 대체는 불통과다.
+
+이는 새 성과나 새 가중치가 아니다. **090B는 아직 미수집·미검정이며 가중치 0.0이다.** 087·088·010·038과는 지역·빈도·전달경로가 맞지 않아 결합하지 않는다.
+
 ## 다음에만 재개할 검정
 
 1. U.S. Coast Guard icebreaking operation day 또는 항로 개방·폐쇄 기록.
 2. St. Lawrence Seaway/Great Lakes lock delay·대기·화물량의 point-in-time 공개 패널.
-3. 전국 HO가 아니라 중서부 ULSD 현물 스프레드·Great Lakes 벌크 운임·곡물 basis 같은 더 직접적인 타깃.
+3. 위 090B의 PADD 2 재고·정유 입력을 실제 공표시점으로 확보하고 사전등록 사양을 한 번 검정한다.
+4. 전국 HO가 아니라 중서부 ULSD 현물 스프레드·Great Lakes 벌크 운임·곡물 basis 같은 더 직접적인 타깃.
 
 ## 출처
 
