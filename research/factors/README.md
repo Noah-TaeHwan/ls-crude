@@ -134,7 +134,7 @@
 | 088 | [Borderline Diesel Index](088-borderline-diesel-index/README.md) | 별도표 | 별도표 | HOLD — BTS 국경 트럭 YoY → HO RV21은 총량 IS/OOS +0.066/-0.275; 캐나다 OOS -0.384은 IS +0.087과 불일치 |
 | 089 | [Friday Escape Velocity](089-friday-escape-velocity/README.md) | 별도표 | 별도표 | HOLD — BTS 월간 항공 복합 → HO RV21은 IS/OOS +0.061/-0.567 부호 반전; Friday 자체는 무료 월간 집계에서 미측정 |
 | 090 | [Great Lakes Ice Constraint Index](090-great-lakes-ice-constraint-index/README.md) | 별도표 | 별도표 | HOLD — NOAA 결빙 90일 z → HO RV5는 IS/OOS -0.103/-0.228으로 약한 동일방향이나 비유의; 실제 쇄빙·지연 미측정 |
-| 091 | [Cushing Motel Lights Index](091-cushing-motel-lights-index/README.md) | 별도표 | 별도표 | HOLD — 월별 호텔세 14개월 파일럿의 다음 달 WTI RV 상관은 +0.235, p=.440; 신고 지연·OCR 전사·표본 부족으로 알파 아님 |
+| 091 | [Cushing Motel Lights Index](091-cushing-motel-lights-index/README.md) | 별도표 | 별도표 | HOLD — 호텔세 14개월 파일럿 미통과; CFAM 공개 야간광→이후 28일 쿠싱 재고 `r=+0.053` (p=.607, n=96), 변화폭 `r=+0.068` (p=.508)도 관계 없음 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -232,7 +232,7 @@
 | 088 | [Borderline Diesel Index](088-borderline-diesel-index/README.md) | BTS 국경 트럭 YoY → 난방유 수익률·변동성 | HOLD — BTS 국경 트럭 YoY → HO RV21은 총량 IS/OOS +0.066/-0.275; 캐나다 OOS -0.384은 IS +0.087과 불일치 | 0.0 |
 | 089 | [Friday Escape Velocity](089-friday-escape-velocity/README.md) | BTS 월간 항공수요 → 난방유·RBOB 변동성 | HOLD — BTS 월간 항공 복합 → HO RV21은 IS/OOS +0.061/-0.567 부호 반전; Friday 자체는 무료 월간 집계에서 미측정 | 0.0 |
 | 090 | [Great Lakes Ice Constraint Index](090-great-lakes-ice-constraint-index/README.md) | NOAA 결빙 제약 → 난방유 변동성 | HOLD — NOAA 결빙 90일 z → HO RV5는 IS/OOS -0.103/-0.228으로 약한 동일방향이나 비유의; 실제 쇄빙·지연 미측정 | 0.0 |
-| 091 | [Cushing Motel Lights Index](091-cushing-motel-lights-index/README.md) | 쿠싱 숙박세 → 지역 운영 맥락 | HOLD — 14개월 탐색 파일럿의 다음 달 WTI RV `r=+0.235`, p=.440. 신고 지연·OCR 전사·표본 부족으로 밈 모니터만 허용 | 0.0 |
+| 091 | [Cushing Motel Lights Index](091-cushing-motel-lights-index/README.md) | 쿠싱 숙박세·도시권 야간광 → 지역 운영 맥락 | HOLD — 호텔세 14개월 WTI 파일럿과 96개월 CFAM 야간광→이후 28일 EIA 쿠싱 재고 검정 모두 관계 없음. 도시 활동 연구로만 보존 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 

@@ -1,0 +1,16 @@
+[
+  {
+    "target": "next_28d_inventory_change_kbbl",
+    "n": 96,
+    "pearson_r": 0.05320653260183268,
+    "pearson_p": 0.6066568876045614,
+    "spearman_r": 0.09641888225718938
+  },
+  {
+    "target": "next_28d_abs_weekly_change_kbbl",
+    "n": 96,
+    "pearson_r": 0.06834555276284499,
+    "pearson_p": 0.508196086598554,
+    "spearman_r": 0.149770413530395
+  }
+]
