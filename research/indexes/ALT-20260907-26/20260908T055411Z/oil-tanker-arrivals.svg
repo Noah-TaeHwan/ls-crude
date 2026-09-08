@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="310" viewBox="0 0 840 310" role="img" aria-labelledby="title desc">
+<title id="title">Singapore oil tanker arrivals, monthly</title>
+<desc id="desc">Latest twelve sampled months. Counts above 75 GT, provisional latest month. Not cargo volume or WTI evidence.</desc>
+<rect width="840" height="310" fill="white"/>
+<text x="45" y="25">Oil tanker arrivals (>75 GT), monthly count</text>
+<text x="5" y="240.0" font-size="11">0</text><path d="M45 240.0 H825" stroke="#ddd"/>
+<text x="5" y="195.0" font-size="11">472</text><path d="M45 195.0 H825" stroke="#ddd"/>
+<text x="5" y="150.0" font-size="11">943</text><path d="M45 150.0 H825" stroke="#ddd"/>
+<text x="5" y="105.0" font-size="11">1415</text><path d="M45 105.0 H825" stroke="#ddd"/>
+<text x="5" y="60.0" font-size="11">1887</text><path d="M45 60.0 H825" stroke="#ddd"/>
+<rect x="50" y="78.8" width="42" height="161.2" fill="#17675f"/><text x="50" y="70.8" font-size="11">1689</text><text x="50" y="258" font-size="10">2025-08</text>
+<rect x="114" y="91.7" width="42" height="148.3" fill="#17675f"/><text x="114" y="83.7" font-size="11">1554</text><text x="114" y="258" font-size="10">2025-09</text>
+<rect x="178" y="76.4" width="42" height="163.6" fill="#17675f"/><text x="178" y="68.4" font-size="11">1715</text><text x="178" y="258" font-size="10">2025-10</text>
+<rect x="242" y="87.6" width="42" height="152.4" fill="#17675f"/><text x="242" y="79.6" font-size="11">1597</text><text x="242" y="258" font-size="10">2025-11</text>
+<rect x="306" y="85.6" width="42" height="154.4" fill="#17675f"/><text x="306" y="77.6" font-size="11">1618</text><text x="306" y="258" font-size="10">2025-12</text>
+<rect x="370" y="78.9" width="42" height="161.1" fill="#17675f"/><text x="370" y="70.9" font-size="11">1688</text><text x="370" y="258" font-size="10">2026-01</text>
+<rect x="434" y="96.6" width="42" height="143.4" fill="#17675f"/><text x="434" y="88.6" font-size="11">1503</text><text x="434" y="258" font-size="10">2026-02</text>
+<rect x="498" y="82.5" width="42" height="157.5" fill="#17675f"/><text x="498" y="74.5" font-size="11">1651</text><text x="498" y="258" font-size="10">2026-03</text>
+<rect x="562" y="103.4" width="42" height="136.6" fill="#17675f"/><text x="562" y="95.4" font-size="11">1432</text><text x="562" y="258" font-size="10">2026-04</text>
+<rect x="626" y="81.8" width="42" height="158.2" fill="#17675f"/><text x="626" y="73.8" font-size="11">1658</text><text x="626" y="258" font-size="10">2026-05</text>
+<rect x="690" y="88.2" width="42" height="151.8" fill="#17675f"/><text x="690" y="80.2" font-size="11">1591</text><text x="690" y="258" font-size="10">2026-06</text>
+<rect x="754" y="90.4" width="42" height="149.6" fill="#17675f"/><text x="754" y="82.4" font-size="11">1568</text><text x="754" y="258" font-size="10">2026-07</text>
+<text x="45" y="288" font-size="11">Source: MPA / data.gov.sg; Singapore Open Data Licence 1.0. Latest month preliminary.</text></svg>
