@@ -17,6 +17,8 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 
 ## Current research status — 2026-09-08
 
+웹 표시: 현재 관측 아래에 [과거 연구 샘플](https://ls-crude.vercel.app/#research-sample)을 배치합니다. [연구 페이지](https://ls-crude.vercel.app/research#research-sample)에서도 수박의 실제 그림·연도별 27행 원단위표·제약·다음 확인을 볼 수 있습니다. 관측이 확보되면 먼저 시각화하고, 정의·공개시점을 확인한 적격 자료만 WTI와 비교합니다. [현재 방향 점검](docs/research-direction-2026-09-08.md#11-실제-수집과-웹-표시-후-방향-점검--2026-09-08-후속).
+
 **성찬 목록 후속 1개:** [085 수박·냉장트럭 → ALT36](research/indexes/ALT-20260907-36/20260908T065043Z/README.md)의 공개 주간 XLSX를 실제 수집했습니다. 수박 단독 518행·409개 날짜의 관측 그림과 분모 대사를 확보해 E1→E2로 진전했습니다. 최신 수박 날짜는 2025-10-14이며 실시간 자료가 아닙니다. 소수값 정의·공개시점 미확인으로 PARK, WTI·HO 검정 NOT_RUN을 유지합니다. [이번 선택 이유·검토·다음 행동](research/gathering/notes/2026-09-08-watermelon-weekly-access.md).
 
 웹 관측2개: [갤버스턴 시정](https://ls-crude.vercel.app/observations/visibility)과 [싱가포르 월별 탱커 입항](https://ls-crude.vercel.app/observations/tankers). 홈의 단일 WTI 일봉 아래에 두 카드를 표시한다. 열린 화면5분 확인, 시정10분/월간6시간 캐시이며 각 자료의 관측시각·기준 월을 구분한다. 연구 원본의 장기 자동수집은 아니다.

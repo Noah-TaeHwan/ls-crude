@@ -1,0 +1,36 @@
+{
+  "checked_at": "2026-09-08T07:15:18.579930+00:00",
+  "browser": "Ego task80",
+  "routes": [
+    "http://localhost:5186/#research-sample",
+    "http://localhost:5186/research#research-sample"
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "page_width": 1440
+    },
+    {
+      "width": 390,
+      "page_width": 390
+    },
+    {
+      "width": 320,
+      "page_width": 320
+    }
+  ],
+  "image_natural_width": 1560,
+  "image_mobile_layout_width": 720,
+  "image_keyboard_pan_px": 80,
+  "keyboard_details_open": true,
+  "table_rows": 27,
+  "runtime_exceptions": [],
+  "typecheck": "PASS",
+  "build": "PASS",
+  "node_tests": {
+    "passed": 17,
+    "failed": 0
+  },
+  "http_image_sha256": "6086ea0d2b39fa16169d83d0d352194e47484b7b62fcd508efee8071d67d3550",
+  "evidence_boundary": "Local UI, SSR and actual app-start HTTP artifact verified. Production verification follows deployment; native screen-reader testing not performed."
+}

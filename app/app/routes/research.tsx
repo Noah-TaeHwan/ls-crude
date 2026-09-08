@@ -1,3 +1,4 @@
+import { ResearchSample } from "~/components/research-sample";
 import { useState } from "react";
 import { ResearchIntake } from "~/components/research-intake";
 import { readResearchIntake } from "~/lib/research-intake.server";
@@ -17,8 +18,9 @@ const LEDGER_URL = "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/
 /** 동결 뒤 새 미래 자료로 진행하는 연구 절차. */
 const METHOD_STEPS = [
   ["가설", "무엇을 측정하고 왜 WTI와 연결하는지 한 문장으로 씁니다."],
-  ["데이터 적격성", "공개 시각, 누락, 이용 조건과 반복 수집 가능성을 확인합니다."],
-  ["인샘플", "2015–2023 범위 안에서 관계와 실패 조건을 정합니다."],
+  ["접근·샘플", "자료를 실제로 얻고 단위·누락·이용 조건을 확인합니다."],
+  ["개별 관측", "확보한 표와 그림을 먼저 공개합니다. 최신 관측과 과거 연구 샘플을 구분합니다."],
+  ["인샘플", "공개 시점을 확인한 적격 자료만 2015–2023 안에서 비교합니다."],
   ["규칙 동결", "신호 정의, 기간, 임계값을 기록하고 고정합니다."],
   ["새 미래 검증", "동결 뒤 새로 쌓이는 자료에서 한 번 평가하고 판정을 남깁니다."],
 ] as const;
@@ -74,6 +76,7 @@ export default function Research({ loaderData }: Route.ComponentProps) {
           <aside className="research-status" aria-label="전체 연구 인벤토리"><p className="status-stamp">탐색 중 · 검증 결과 공개</p><dl><div><dt>기존 연구 인벤토리</dt><dd>{error ? "—" : records.length}<small>개</small></dd></div><div><dt>기준 통과</dt><dd>{passCount ?? "—"}<small>개</small></dd></div></dl><p className="mt-5 text-sm leading-7 text-muted-foreground">미검증·보관·별도 전략을 포함한 인벤토리입니다. 등록 건수는 검정 완료 건수가 아닙니다.</p><a className="source-link mt-4" href={LEDGER_URL} target="_blank" rel="noreferrer">현재 정본 장부 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></aside>
         </header>
 
+        <ResearchSample record={loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36")} />
         <ResearchIntake {...loaderData.intake} />
 
         <section id="ledger" className="py-10 sm:py-12" aria-labelledby="ledger-title">
