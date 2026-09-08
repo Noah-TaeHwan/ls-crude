@@ -1,0 +1,4 @@
+relationship,r,n,meaning
+same-month WTI return → Oklahoma regular-gas return,0.680463,299,contemporaneous pass-through
+WTI return → next-month Oklahoma regular-gas return,0.340380,299,retail repricing lag
+Oklahoma regular-gas return → next-month WTI return,0.105439,299,reverse-direction test

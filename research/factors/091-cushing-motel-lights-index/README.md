@@ -20,6 +20,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 - [Current Cushing pump-price board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md)
 - [2026-09-08 supplied-source audit: ODOT · FAA · OilPriceAPI · MacroMicro · DeFlock/OSM](../../indexes/091-cushing-operations-nowcasting/20260908T091SOURCEZ/README.md)
 - [091-Z free local-news cue monitor](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md)
+- [Rail · industrial-waste · diesel–gasoline feasibility audit](../../indexes/091-cushing-operations-nowcasting/20260908T091RWDTZ/README.md)
 - [Five-track combination plan](../../reports/2026-09-08-cfam-five-track-combination-plan.md)
 - [Completed validation battery](../../indexes/091-cushing-operations-nowcasting/20260908T091VZ/README.md)
 
@@ -29,12 +30,17 @@ history. **Cushing Field Activity Monitor** is the current name.
 | --- | --- | --- | --- |
 | **EIA Cushing inventory** | Actual weekly storage level | LIVE | Physical market context and research target; not an activity score input |
 | [091-Y Pump Price Board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md) | Local retail gasoline and diesel prices | FORWARD ONLY | Local product-stress display; [regional calibration](../../indexes/091-cushing-operations-nowcasting/20260908T091YCALZ/README.md) confirms WTI→retail pass-through, not pump→WTI alpha |
+| [091-YD Diesel–Gasoline Dislocation](../../indexes/091-cushing-operations-nowcasting/20260908T091RWDTZ/README.md#091-yd--cushing-dieselgasoline-retail-dislocation-board) | Fixed-station diesel minus regular-gasoline display price | FORWARD ONLY | Local product-price differential; not diesel gallons, truck volume or terminal throughput |
+| [091-YD Deep Check](../../indexes/091-cushing-operations-nowcasting/20260908T091YDEEPZ/README.md) | Long Oklahoma retail proxy versus Cushing WTI | VALIDATED AS PASS-THROUGH | WTI→retail is strong (`r=.680` same month; `.340` next month); retail→future WTI is not (`r=.105`) |
 | [091-Z News Cue Monitor](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) | Publicly reported industrial/news events | FORWARD ONLY | Free KUSH and Google News feeds; human-reviewed event queue, not a busyness score |
 | [091-V Permit Event Log](../../indexes/091-cushing-operations-nowcasting/20260908T091PARKZ/README.md) | Public DEQ industrial-permit status events | FORWARD ONLY | Facility/status review log; not a count of construction or local busyness |
+| [091-V2 Regulatory Event Pulse](../../indexes/091-cushing-operations-nowcasting/20260908T091V2Z/README.md) | Frozen-facility DEQ status transitions | FORWARD ONLY | Dated human-reviewed event ledger; initial three rows are visualized, not statistically tested |
 | [091-S Quick-service activity](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md) | Google Maps live busy labels at six fixed locations | FORWARD ONLY | 90-day manual activity-observation pilot |
 | [091-U Industrial Job Pulse](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/README.md) | Direct terminal, pipeline and industrial job postings | FORWARD ONLY | 90-day frozen-rule hiring panel |
 | [091-A ODOT AVC 40](workflow.md#2026-09-08-추가-소스-감사--faa--odot--deflock) | Cushing-area continuous traffic volume and vehicle classification | PARK | Strongest public truck-count route; obtain its dated history before testing |
 | [091-O Airport activity](../../indexes/091-cushing-operations-nowcasting/20260908T091OZ/README.md) | Jet-A, AvGas and ramp activity | PARK | Promising direct activity context; longer monthly history required |
+| [091-RAIL / 091-WASTE triage](../../indexes/091-cushing-operations-nowcasting/20260908T091RWDTZ/README.md) | Rail-to-pipeline context; industrial-waste-report path | PARK | Rail car and facility-tonnage histories have not been publicly obtained; neither is a CFAM input |
+| [PADD balance / calendar-spread audit](../../indexes/091-cushing-operations-nowcasting/20260908T091PADZ/README.md) | EIA PADD 2/3 stocks/utilization; attempted WTI curve | CONTEXT ONLY / PARK | PADD balance has no stable IS/OOS volatility relation; long free historical CL1–CL6 pair was not collected |
 
 ### Live inventory source
 

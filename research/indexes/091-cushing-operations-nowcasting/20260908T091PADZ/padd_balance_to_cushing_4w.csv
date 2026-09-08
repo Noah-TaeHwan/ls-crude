@@ -1,0 +1,5 @@
+signal,sample,pearson_r,n
+padd_stock_gap_z52,in,-0.060732,657
+padd_stock_gap_z52,out,-0.065544,136
+utilization_gap_pp,in,-0.102081,708
+utilization_gap_pp,out,0.393003,136
