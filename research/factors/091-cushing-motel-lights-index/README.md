@@ -18,6 +18,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 
 - [Workflow, all sub-tracks, sources and visuals](workflow.md)
 - [Current Cushing pump-price board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md)
+- [2026-09-08 supplied-source audit: ODOT · FAA · OilPriceAPI · MacroMicro · DeFlock/OSM](../../indexes/091-cushing-operations-nowcasting/20260908T091SOURCEZ/README.md)
 - [Five-track combination plan](../../reports/2026-09-08-cfam-five-track-combination-plan.md)
 - [Completed validation battery](../../indexes/091-cushing-operations-nowcasting/20260908T091VZ/README.md)
 
@@ -29,6 +30,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 | [091-Y Pump Price Board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md) | Local retail gasoline and diesel prices | FORWARD ONLY | Local product-stress display; add fixed stations before testing |
 | [091-S Quick-service activity](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md) | Google Maps live busy labels at six fixed locations | FORWARD ONLY | 90-day manual activity-observation pilot |
 | [091-U Industrial Job Pulse](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/README.md) | Direct terminal, pipeline and industrial job postings | FORWARD ONLY | 90-day frozen-rule hiring panel |
+| [091-A ODOT AVC 40](workflow.md#2026-09-08-추가-소스-감사--faa--odot--deflock) | Cushing-area continuous traffic volume and vehicle classification | PARK | Strongest public truck-count route; obtain its dated history before testing |
 | [091-O Airport activity](../../indexes/091-cushing-operations-nowcasting/20260908T091OZ/README.md) | Jet-A, AvGas and ramp activity | PARK | Promising direct activity context; longer monthly history required |
 
 ### Live inventory source
