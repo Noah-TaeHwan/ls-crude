@@ -1,0 +1,6 @@
+snapshot_date,snapshot_month,regular_credit_usd_per_gal,diesel_credit_usd_per_gal,rwtc_monthly_usd_per_bbl,rwtc_source_month,matching_note
+2025-08-09,2025-08,2.859,3.499,64.86,2025-08,same calendar month
+2025-11-25,2025-11,2.649,3.659,60.06,2025-11,same calendar month
+2025-12-14,2025-12,2.599,3.599,57.97,2025-12,same calendar month
+2026-04-15,2026-04,3.499,4.999,100.32,2026-04,same calendar month
+2026-09-08,2026-09,3.799,5.499,83.90,2026-08,latest monthly RWTC available in supplied workbook; not same calendar month

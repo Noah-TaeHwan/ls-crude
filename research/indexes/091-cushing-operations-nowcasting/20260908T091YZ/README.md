@@ -31,6 +31,20 @@ predecessor Kum & Go #0842 page at the same address/telephone is archived in
 Thus the five values are the complete reproducible first-party price history
 found at this vintage—not five values chosen from a longer hidden series.
 
+## Monthly RWTC robustness check
+
+The supplied EIA workbook `RWTCm.xls` was opened read-only. It contains the
+official **monthly** Cushing WTI series from 1986-01 through 2026-08 (release
+date 2026-09-02). Matching the five displays to their calendar-month WTI value
+(the 2026-09 live price must use the latest available 2026-08 monthly value)
+gives lower descriptive correlations: Regular `r=+0.865`, Diesel `r=+0.852`.
+An exact five-item permutation check gives two-sided `p=.058` and `.092`,
+respectively. The matched table is [retained here](raw/maverik-wayback-monthly-rwtc-robustness-20260908.csv).
+
+This is the appropriate conservative reading: there is visible price
+co-movement, but the result is sensitive to sampling convention and has only
+five observations. It neither establishes a lead nor authorizes a trading rule.
+
 EIA's Cushing WTI `RWTC` series is long and daily, but that only solves one side
 of the pair. Oklahoma or U.S. retail averages may be useful external context,
 but are not substituted for Cushing local pump prices.
@@ -70,4 +84,5 @@ Raw receipt: [raw](raw/README.md).
 
 - [Maverik #5097 official Cushing station page](https://locations.maverik.com/ok/cushing/2001-e-main-st)
 - [EIA Cushing WTI daily series](https://www.eia.gov/dnav/pet/hist/leafhandler.ashx?f=a&n=pet&s=rwtc)
+- [EIA Cushing WTI monthly series](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RWTC&f=M)
 - [GasBuddy location-price search documentation](https://help.gasbuddy.com/hc/en-us/articles/27612659871767-Finding-Prices)

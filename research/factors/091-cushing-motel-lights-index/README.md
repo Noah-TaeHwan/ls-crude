@@ -52,6 +52,18 @@
 
 이는 실제 작업인력, 터미널 가동, 객실점유율 또는 주유량을 직접 측정하지 않는다.
 
+## 직접 쿠싱 재고 라이브 소스
+
+[OilPriceAPI의 Cushing Storage 공개 화면](https://www.oilpriceapi.com/data/cushing-storage)은
+EIA 주간 쿠싱 재고를 사람이 읽기 쉬운 형태로 제공한다. 2026-09-08 확인값은
+**22.5 million barrels**, 추정 작업용량 대비 **29.6%**이며, 화면의 원천·갱신
+설명은 EIA 주간 수치와 수요일 발표 일정이다.
+
+이는 새로운 독립 팩터가 아니라, 이 카드가 이미 쓰는 공식 EIA 쿠싱 재고의
+**라이브 전달·표시 레이어**다. 따라서 CFAM 점수에 별도 가중치로 더하지 않고,
+대시보드의 현재 재고/용량 문맥으로만 사용한다. 장기 검정과 재현 원천은 계속
+공식 [EIA 쿠싱 ending stocks 시계열](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?f=W&n=PET&s=W_EPC0_SAX_YCUOK_MBBL)이다.
+
 ## 무료 입력과 경계
 
 - **후보 입력**: City of Cushing의 월별 Hotel/Motel Tax 비교표.
