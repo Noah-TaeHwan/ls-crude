@@ -45,6 +45,27 @@ This is the appropriate conservative reading: there is visible price
 co-movement, but the result is sensitive to sampling convention and has only
 five observations. It neither establishes a lead nor authorizes a trading rule.
 
+## Long-run regional mechanism calibration
+
+To test the *direction* without pretending that Midwest data are Cushing-station
+data, 091-YB pairs EIA's free weekly Midwest retail series with EIA's daily
+Cushing WTI series from 1994 onward. The test uses weekly **price changes**,
+not levels. Each retail Monday is paired only with WTI known by the preceding
+Friday.
+
+| relationship | Regular r | Diesel r | n | read-through |
+| --- | ---: | ---: | ---: | --- |
+| Prior-Friday WTI change → current retail change | `+0.445` | `+0.468` | 1,693 | Material downstream pass-through |
+| Retail change → WTI change 1–4 weeks later (largest absolute value) | `+0.101` | `+0.069` | 1,689–1,692 | No comparable retail-leading relation |
+
+![EIA Midwest pass-through lag profile](../20260908T091YCALZ/figures/091y-eia-midwest-pass-through-lags.svg)
+
+This is a useful mechanism result: pump prices are an intelligible local
+translation of upstream price conditions. It is not a Cushing-specific history
+and does **not** turn the five archived Maverik values into a WTI forecast.
+The complete lag grid, raw EIA receipts and reproduction script are in the
+[091-YB calibration](../20260908T091YCALZ/README.md).
+
 EIA's Cushing WTI `RWTC` series is long and daily, but that only solves one side
 of the pair. Oklahoma or U.S. retail averages may be useful external context,
 but are not substituted for Cushing local pump prices.

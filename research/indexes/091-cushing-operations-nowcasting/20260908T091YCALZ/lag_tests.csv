@@ -1,0 +1,19 @@
+direction,fuel,lag_weeks,r,n
+WTI prior change -> retail change,regular,0,0.4452949686795533,1693
+WTI prior change -> retail change,regular,1,0.34075094154581737,1692
+WTI prior change -> retail change,regular,2,0.10147910639957511,1691
+WTI prior change -> retail change,regular,3,0.07610827856838866,1690
+WTI prior change -> retail change,regular,4,0.09548149997631647,1689
+retail change -> future WTI change,regular,1,0.0723011225012155,1692
+retail change -> future WTI change,regular,2,0.10099554835351941,1691
+retail change -> future WTI change,regular,3,0.05137536981304515,1690
+retail change -> future WTI change,regular,4,-0.008710316832145683,1689
+WTI prior change -> retail change,diesel,0,0.46773677481522696,1693
+WTI prior change -> retail change,diesel,1,0.3846092110318211,1692
+WTI prior change -> retail change,diesel,2,0.13840215402417816,1691
+WTI prior change -> retail change,diesel,3,0.06688114583510991,1690
+WTI prior change -> retail change,diesel,4,0.11716539306872037,1689
+retail change -> future WTI change,diesel,1,0.010390481081197958,1692
+retail change -> future WTI change,diesel,2,0.06942749592293185,1691
+retail change -> future WTI change,diesel,3,0.035948160145734535,1690
+retail change -> future WTI change,diesel,4,-0.014442910853152673,1689

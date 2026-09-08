@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="385" viewBox="0 0 760 385">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="28" y="32" font-family="Arial" font-size="19" font-weight="700" fill="#172033">091-Y mechanism check: WTI change → Midwest retail change</text>
+<text x="28" y="53" font-family="Arial" font-size="11" fill="#556070">Weekly first differences; WTI is known by the prior Friday. This calibrates pass-through, not Cushing alpha.</text>
+<line x1="84" y1="210.0" x2="720" y2="210.0" stroke="#8a99a8"/>
+<line x1="84" y1="105" x2="84" y2="315" stroke="#8a99a8"/>
+<line x1="84" y1="315.0" x2="720" y2="315.0" stroke="#d8e0e8"/>
+<text x="42" y="319.0" font-family="Arial" font-size="11" fill="#556070">-0.4</text>
+<line x1="84" y1="262.5" x2="720" y2="262.5" stroke="#d8e0e8"/>
+<text x="42" y="266.5" font-family="Arial" font-size="11" fill="#556070">-0.2</text>
+<line x1="84" y1="210.0" x2="720" y2="210.0" stroke="#d8e0e8"/>
+<text x="42" y="214.0" font-family="Arial" font-size="11" fill="#556070">+0.0</text>
+<line x1="84" y1="157.5" x2="720" y2="157.5" stroke="#d8e0e8"/>
+<text x="42" y="161.5" font-family="Arial" font-size="11" fill="#556070">+0.2</text>
+<line x1="84" y1="105.0" x2="720" y2="105.0" stroke="#d8e0e8"/>
+<text x="42" y="109.0" font-family="Arial" font-size="11" fill="#556070">+0.4</text>
+<rect x="135" y="93.1" width="22" height="116.9" rx="2" fill="#1f77b4"/>
+<rect x="163" y="87.2" width="22" height="122.8" rx="2" fill="#d95f02"/>
+<text x="133" y="340" font-family="Arial" font-size="11" fill="#172033">0w prior</text>
+<rect x="240" y="120.6" width="22" height="89.4" rx="2" fill="#1f77b4"/>
+<rect x="268" y="109.0" width="22" height="101.0" rx="2" fill="#d95f02"/>
+<text x="238" y="340" font-family="Arial" font-size="11" fill="#172033">1w prior</text>
+<rect x="345" y="183.4" width="22" height="26.6" rx="2" fill="#1f77b4"/>
+<rect x="373" y="173.7" width="22" height="36.3" rx="2" fill="#d95f02"/>
+<text x="343" y="340" font-family="Arial" font-size="11" fill="#172033">2w prior</text>
+<rect x="450" y="190.0" width="22" height="20.0" rx="2" fill="#1f77b4"/>
+<rect x="478" y="192.4" width="22" height="17.6" rx="2" fill="#d95f02"/>
+<text x="448" y="340" font-family="Arial" font-size="11" fill="#172033">3w prior</text>
+<rect x="555" y="184.9" width="22" height="25.1" rx="2" fill="#1f77b4"/>
+<rect x="583" y="179.2" width="22" height="30.8" rx="2" fill="#d95f02"/>
+<text x="553" y="340" font-family="Arial" font-size="11" fill="#172033">4w prior</text>
+<rect x="532" y="73" width="12" height="12" fill="#1f77b4"/><text x="550" y="83" font-family="Arial" font-size="11">Regular</text>
+<rect x="620" y="73" width="12" height="12" fill="#d95f02"/><text x="638" y="83" font-family="Arial" font-size="11">Diesel</text>
+<text x="84" y="370" font-family="Arial" font-size="11" fill="#556070">Source: EIA public weekly Midwest retail series and daily Cushing WTI; full sample only.</text>
+</svg>

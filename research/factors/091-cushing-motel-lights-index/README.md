@@ -27,7 +27,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 | Track | What it observes | Status | Proper use |
 | --- | --- | --- | --- |
 | **EIA Cushing inventory** | Actual weekly storage level | LIVE | Physical market context and research target; not an activity score input |
-| [091-Y Pump Price Board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md) | Local retail gasoline and diesel prices | FORWARD ONLY | Local product-stress display; add fixed stations before testing |
+| [091-Y Pump Price Board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md) | Local retail gasoline and diesel prices | FORWARD ONLY | Local product-stress display; [regional calibration](../../indexes/091-cushing-operations-nowcasting/20260908T091YCALZ/README.md) confirms WTI→retail pass-through, not pump→WTI alpha |
 | [091-S Quick-service activity](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md) | Google Maps live busy labels at six fixed locations | FORWARD ONLY | 90-day manual activity-observation pilot |
 | [091-U Industrial Job Pulse](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/README.md) | Direct terminal, pipeline and industrial job postings | FORWARD ONLY | 90-day frozen-rule hiring panel |
 | [091-A ODOT AVC 40](workflow.md#2026-09-08-추가-소스-감사--faa--odot--deflock) | Cushing-area continuous traffic volume and vehicle classification | PARK | Strongest public truck-count route; obtain its dated history before testing |

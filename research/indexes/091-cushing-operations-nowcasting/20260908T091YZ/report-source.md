@@ -70,6 +70,13 @@ tested. The free EIA daily Cushing WTI series solves the crude leg, but it does
 not transform archive captures into a designed local-retail panel. [EIA Cushing
 WTI](https://www.eia.gov/dnav/pet/hist/leafhandler.ashx?f=a&n=pet&s=rwtc)
 
+The separate [091-YB Midwest calibration](../20260908T091YCALZ/README.md)
+uses a long EIA regional panel only to check the expected transmission direction.
+On weekly first differences, WTI known by the preceding Friday has `r=+0.445`
+with Monday Midwest Regular changes and `r=+0.468` with Diesel changes (`n=1,693`).
+The corresponding 1–4-week retail-to-future-WTI correlations are far smaller.
+This supports downstream pass-through, not Cushing-pump alpha.
+
 ### Monthly-series robustness
 
 The supplied official EIA `RWTCm.xls` workbook was independently read as a

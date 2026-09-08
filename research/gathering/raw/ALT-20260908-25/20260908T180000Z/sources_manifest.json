@@ -1,0 +1,23 @@
+[
+  {
+    "file": "midwest_regular_weekly.html",
+    "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?f=W&n=PET&s=EMM_EPM0_PTE_R20_DPG",
+    "http_status": 200,
+    "bytes": 182562,
+    "sha256": "f5f2aa020ddb7fb2046fc657e003fd2b3f7943eb581f85eb78b988ac6e241c67"
+  },
+  {
+    "file": "midwest_diesel_weekly.html",
+    "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?f=W&n=PET&s=EMD_EPD2D_PTE_R20_DPG",
+    "http_status": 200,
+    "bytes": 177589,
+    "sha256": "a14eb0a60f5a640998c212ab31d3d7f61a3bddd9c9f91764d4ab28d194b1ede7"
+  },
+  {
+    "file": "cushing_wti_daily.html",
+    "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?f=D&n=PET&s=RWTC",
+    "http_status": 200,
+    "bytes": 472300,
+    "sha256": "7da3e5b6632942bfedf02642fde22867d24bb0cf6477eff5ac9e5f9be4d92497"
+  }
+]
