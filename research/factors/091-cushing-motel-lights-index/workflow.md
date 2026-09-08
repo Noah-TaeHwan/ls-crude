@@ -20,6 +20,7 @@
 | 091-D | 탱크 자체의 빈·참 상태를 무료 영상으로 판독할 수 있는가 | Sentinel-2 L2A 대형 floating-roof 탱크 그림자 | **PARK / E1** — 메타데이터 표본만 확보 |
 | 091-E | 운영사의 실제 용량 제약 공지가 공개되는가 | Cushing 연결 crude pipeline apportionment | **PARK / E1** — 절차 확인, 공지 이력 미확보 |
 | 091-F | 도시 소비·반입 활동이 달라졌는가 | City sales tax와 use tax를 분리한 월별 수입 | **PARK / E1** — 실제 월별 표본·보고월 확인 |
+| 091-G | 지역 공공안전 요청량이 달라졌는가 | 911·Police calls for service 월별 익명 집계 | **PARK / E1** — 실제 월별 표본·시각화 완료 |
 | 무효 실험 | Cushing Busy ML/DL | WTI·거래량 기반 합성 타깃 | **무효** — 실제 쿠싱 관측 아님 |
 
 ## 091-A — 숙박세 × 고정 도로구간 트럭
@@ -39,7 +40,13 @@
 
 ODOT 표본에서 확인한 한 후보 구간은 AADT 9,300, 단일 트럭 10%, 복합 트럭 7%였지만, 이는 **최종 고정구간 선택이나 장기 트럭 시계열이 아니다.** 접근 확인용 실제 표본일 뿐이다. 이 수치를 월별로 보간하거나 쿠싱 활동 점수에 넣지 않는다.
 
-따라서 현재는 빈 차트나 추정치를 만들지 않는다. 수집 경로와 한계는 [091-A 데이터 접근 기록](../../gathering/notes/2026-09-08-cfam-091a-data-access.md)에 남긴다.
+### Hotel/Motel Tax 개별 시각화
+
+쿠싱의 공개 세목은 **Hotel/Motel Tax 통합값**이다. 호텔과 모텔을 분리한 세금·점유율은 이 자료에서 알 수 없다. 아래는 공식 2025-11-17 문서의 FY 2022/23·2023/24 24개월 표본을 그대로 그린 것이며, 두 해의 차트는 관측 경로를 보이는 용도일 뿐 쿠싱 운영 또는 가격과의 관계를 뜻하지 않는다.
+
+![Hotel/Motel Tax 공식 24개월 표본](../../indexes/091-cushing-operations-nowcasting/20260908T091AGZ/figures/091a-hotel-motel-tax-sample.svg)
+
+따라서 현재는 가격·재고 상관 차트나 추정치를 만들지 않는다. 수집 경로와 한계는 [091-A 데이터 접근 기록](../../gathering/notes/2026-09-08-cfam-091a-data-access.md)에 남긴다.
 
 ### 재개 조건 — 동결
 
@@ -126,6 +133,20 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 2025-11-17 의제 PDF에는 `DATE RECEIVED`, `MONTH REPORTED`, `SALES TAX MONTH` 필드가 있는 FY 2023/24~2025/26 sales tax 비교표가 있다. 현재 확인한 범위에서는 sales tax는 적어도 27개 월별 행, use tax는 3개 월별 공식 표본이다. [091-F 수집 기록](../../candidates/ALT-20260908-06.md)에 실제 숫자·한계를 남긴다.
 
 다음 단계는 의제 아카이브에서 sales와 use를 각각 60개월 이상 추출하고, 각 행의 세금월·수령일·문서 게시일을 분리하는 것이다. 그 전에는 차트·조합·EIA/가격 검정을 하지 않는다.
+
+## 091-G — 911/경찰 Calls for Service 집계
+
+### 실제 표본과 측정 경계
+
+공식 2023-09 City Manager Report에는 익명 월별 집계가 있다: 2023년 6·7·8월 각각 911 calls는 `378 / 351 / 249`, Police Calls for Service는 `1,205 / 1,110 / 1,109`이다. 2021 Cushing Police Annual Report도 calls-for-service의 월별 도표를 제공한다. 개별 신고, 위치, 사건유형, 전화번호, 피신고자 정보는 수집하지 않았다.
+
+![911 및 Police Calls for Service 공식 3개월 표본](../../indexes/091-cushing-operations-nowcasting/20260908T091AGZ/figures/091g-police-calls-sample.svg)
+
+이것은 공공안전·사건·교통·행정 수요의 혼합 집계다. 따라서 경찰호출이 늘었다고 경제활동·석유작업·현장 인력이 늘었다고 해석할 수 없다. ‘직접적 local activity intensity’ 지표가 아니라, **공개 월별 집계의 장기성·정의 안정성**을 검증할 후보일 뿐이다.
+
+### 다음 단일 관문
+
+동일 정의의 60개월 이상 월별 911·police-CFS 집계를 공식 PDF/연차보고서에서 확보한다. 정의·CAD 시스템·관할 변경을 확인하고, 익명 합계만으로 개별 시각화를 만든다. 그 뒤에도 먼저 Cushing 운영 기준값과의 측정 타당성부터 평가하며, EIA·가격 검정으로 바로 건너뛰지 않는다.
 
 ## 검정 해석 규칙
 
