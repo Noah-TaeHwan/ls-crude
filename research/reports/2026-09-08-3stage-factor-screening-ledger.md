@@ -113,7 +113,7 @@
 | **088** | Borderline Diesel Index (BDI) | ✅ PASS | ✅ PASS | ✅ PASS | 🟢 **PASSED** | BTS TransBorder 월간 국경 트럭 통과량 시계열 및 HO 표본 보존 |
 | **089** | Friday Escape Velocity (FEV) | ✅ PASS | ✅ PASS | ✅ PASS | 🟢 **PASSED** | BTS T-100 월간 국내선 항공 승객 시계열 및 HO/RBOB 표본 보존 |
 | **090** | Great Lakes Ice Constraint (GLICI)| ✅ PASS | ✅ PASS | ✅ PASS | 🟢 **PASSED** | NOAA Great Lakes 일별 결빙 면적 시계열 및 HO 변동성 표본 보존 |
-| **091** | Cushing Motel Lights (CMLI) | ✅ PASS | ✅ PASS | ✅ PASS | 🟢 **PASSED** | 쿠싱 숙박세 14개월 및 CFAM 공개 위성 야간광 96개월 시계열 표본 보존 |
+| **091** | Cushing Field Activity Monitor (CFAM) | ✅ PASS | ✅ PASS | ✅ PASS | 🟢 **PASSED** | 쿠싱 숙박세 14개월 및 CFAM 공개 위성 야간광 96개월 시계열 표본 보존 |
 
 ---
 
@@ -140,7 +140,7 @@
 2. **미 정유사 가동률 (원유 흡입력)**: [041 Refinery Utilization](041-refinery-utilization-proxy/README.md)
 3. **완제품 휘발유 수요 견인력**: [039 US Gasoline Demand](039-us-gasoline-demand-surprise/README.md)
 4. **전략비축유 정부 이송 부하**: [040 SPR Injection Watch](040-spr-injection-watch/README.md)
-5. **쿠싱 위성 야간광 및 숙박세**: [091 Cushing Motel Lights Index](091-cushing-motel-lights-index/README.md)
+5. **쿠싱 위성 야간광 및 숙박세**: 091 Cushing Field Activity Monitor (CFAM) — `research/factors/091-cushing-motel-lights-index/README.md`
 6. **지정학적 안보/초크포인트 긴장도**: [049 News Attention](049-geopolitical-news-attention-shock/README.md) / [050 Anti-USA Index](050-anti-usa-tension-index/README.md)
 
 ---

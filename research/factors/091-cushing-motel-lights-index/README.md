@@ -1,9 +1,11 @@
-# 091 — Cushing Motel Lights Index (CMLI)
+# 091 — Cushing Field Activity Monitor (CFAM)
 
 **상태**: ⏸️ **HOLD — 장기 공개 야간광 검정도 무효. 운영 nowcast 프로젝트만 보존**
 **가중치**: 0.0
 
-> “When the motel lights stay on, the tanks may still be asleep.”
+> “When the field stays active, the tanks may still be asleep.”
+
+> 이전 밈 명칭은 *Cushing Motel Lights Index*였다. 현재 공식 명칭은 **Cushing Field Activity Monitor (CFAM)**이며, ‘모텔 불빛’은 실제 관측 범위를 과장하지 않기 위해 더 이상 팩터명으로 쓰지 않는다.
 
 ## 091 하위 연구 트랙
 
