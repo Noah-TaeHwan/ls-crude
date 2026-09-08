@@ -59,7 +59,7 @@ ODOT 표본에서 확인한 한 후보 구간은 AADT 9,300, 단일 트럭 10%, 
 | --- | --- | --- | --- |
 | [ODOT Payne County AADT 지도](https://oklahoma.gov/content/dam/ok/en/odot/maps/aadt/county-maps/60_Payne.pdf) | Cushing 인근 **AVC 40**, 2023 AADT `6,178`; AVC는 일별 volume·classification 기록 장비라고 명시 | **PARK / 우선순위 상승** — 고정·공식·차종분류라서 091-A의 의도에 가장 가깝다 | AVC 40의 일별/월별 원자료와 차종 정의, 과거 파일, 공개 시점을 확보한 뒤 트럭 계열만 독립 시각화·검정 |
 | [FAA WeatherCams CUH](https://weathercams.faa.gov/) | 공개 앱은 이미지 이력 기능을 표방하지만, CUH API 경로는 이 수집 환경에서 인증을 요구 | **PARK** — 날씨/공항시정용이지 검증된 공항 활동 패널은 아님 | 공개된 CUH 시간표시 이미지 이력과 공항 활동 집계가 모두 확인될 때만 이벤트 문맥으로 재심사 |
-| [DeFlock OKC map](https://deflockokc.com/map.html) | OKC권 Flock ALPR의 crowdsourced **위치** 지도 | **EXCLUDE** — 통행량·차종·장기 집계가 없고 쿠싱 운영량을 측정하지 않음 | 위치·개별 차량·번호판 데이터를 수집하거나 추적하지 않음 |
+| [DeFlock / OSM Flock nodes](https://www.openstreetmap.org/node/13654690602) | 사용자가 제공한 OSM 노드 2개가 실제 Cushing **Flock Safety 고정 ALPR**임을 확인: `35.991102,-96.749917` 남동향 및 `35.965317,-96.749340` 북서향, 둘 다 `surveillance:zone=traffic` | **EXCLUDE** — 위치·방향만 공개되어 있고 통행량·차종 집계·장기 시계열이 없다 | 위치·개별 차량·번호판 데이터를 수집하거나 추적하지 않음. 공개된 익명 일별 통과량 통계가 독립적으로 제공될 때만 재심사 |
 
 ODOT은 기존 091-A의 막연한 ‘도로 데이터’가 아니라, **실제 Cushing-area continuous classifier**까지 좁혀진 첫 공식 경로다. 단, 현재 지도 한 장의 AADT 값은 장기 activity time series가 아니므로 즉시 점수화·상관분석하지 않는다.
 
