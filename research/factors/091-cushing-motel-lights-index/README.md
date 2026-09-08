@@ -18,6 +18,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 
 - [Workflow, all sub-tracks, sources and visuals](workflow.md)
 - [Current Cushing pump-price board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md)
+- [2026-09-08 supplied-source audit: ODOT · FAA · OilPriceAPI · MacroMicro · DeFlock/OSM](../../indexes/091-cushing-operations-nowcasting/20260908T091SOURCEZ/README.md)
 - [Five-track combination plan](../../reports/2026-09-08-cfam-five-track-combination-plan.md)
 - [Completed validation battery](../../indexes/091-cushing-operations-nowcasting/20260908T091VZ/README.md)
 

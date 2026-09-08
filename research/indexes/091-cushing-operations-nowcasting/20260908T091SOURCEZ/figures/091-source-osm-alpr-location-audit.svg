@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="285" viewBox="0 0 540 285">
+<rect width="540" height="285" fill="#f8fafc"/><text x="28" y="33" font-size="18" font-weight="700" fill="#172033">Cushing public ALPR-location audit</text>
+<text x="28" y="55" font-size="11" fill="#556070">Locations and camera directions only — no vehicle, plate or traffic-count data.</text>
+<rect x="45" y="75" width="450" height="175" rx="8" fill="#e8eef5" stroke="#b8c4d2"/>
+<text x="50" y="269" font-size="10" fill="#556070">North ↑</text><circle cx="251.1" cy="95.1" r="8" fill="#c73e1d"/><text x="264.1" y="90.1" font-size="12" fill="#172033">Northern Flock ALPR</text><text x="264.1" y="106.1" font-size="10" fill="#556070">direction 152°</text><circle cx="288.9" cy="224.9" r="8" fill="#c73e1d"/><text x="301.9" y="219.9" font-size="12" fill="#172033">Southern Flock ALPR</text><text x="301.9" y="235.9" font-size="10" fill="#556070">direction 324°</text></svg>

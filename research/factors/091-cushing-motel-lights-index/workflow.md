@@ -63,6 +63,9 @@ ODOT 표본에서 확인한 한 후보 구간은 AADT 9,300, 단일 트럭 10%, 
 
 ODOT은 기존 091-A의 막연한 ‘도로 데이터’가 아니라, **실제 Cushing-area continuous classifier**까지 좁혀진 첫 공식 경로다. 단, 현재 지도 한 장의 AADT 값은 장기 activity time series가 아니므로 즉시 점수화·상관분석하지 않는다.
 
+수집 원문, HTTP 접근 결과, SHA-256 영수증 및 두 개의 개별 시각화는
+[2026-09-08 supplied-source audit](../../indexes/091-cushing-operations-nowcasting/20260908T091SOURCEZ/README.md)에 고정했다. 이 감사는 숫자를 얻지 못한 링크도 실패 상태 자체를 보존한다.
+
 ### Hotel/Motel Tax 개별 시각화
 
 쿠싱의 공개 세목은 **Hotel/Motel Tax 통합값**이다. 호텔과 모텔을 분리한 세금·점유율은 이 자료에서 알 수 없다. 아래는 공식 2025-11-17 문서의 FY 2022/23·2023/24 24개월 표본을 그대로 그린 것이며, 두 해의 차트는 관측 경로를 보이는 용도일 뿐 쿠싱 운영 또는 가격과의 관계를 뜻하지 않는다.
