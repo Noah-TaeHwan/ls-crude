@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { WtiIntraday } from "~/components/wti-intraday";
+import { WtiDailyChart } from "~/components/wti-daily-chart";
 import { ResearchIntake } from "~/components/research-intake";
 import { readResearchIntake } from "~/lib/research-intake.server";
 import { data, Link, useRevalidator } from "react-router";
@@ -7,16 +7,12 @@ import { ArrowRight, ArrowUpRight, Search, ArrowDown } from "lucide-react";
 
 import type { Route } from "./+types/home";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
-import { readWtiQuote, type WtiQuoteView } from "~/lib/wti-quote.server";
+import { readWtiDaily } from "~/lib/wti-daily.server";
+import type { WtiDailyView } from "~/lib/wti-daily";
 import { readWtiMarketSnapshot } from "~/lib/market-snapshot.server";
 import { readResearchLedger } from "~/lib/research-ledger.server";
 import { RESEARCH_STORIES } from "~/lib/research-ledger";
 import type { ActionResult, WtiMarketView } from "~/lib/types";
-
-/** 최근 완료 일봉의 선택 범위. */
-const RANGE_OPTIONS = [20, 40, 60] as const;
-/** 차트 내부 좌표 크기와 여백. */
-const CHART = { width: 720, height: 200, pad: 12 };
 
 /**
  * 관측값이 있을 때만 숫자와 단위를 표시한다.
@@ -36,7 +32,7 @@ export function meta({}: Route.MetaArgs) {
 
 /** @returns 실제 시장 관측과 현재 연구 정본. */
 export async function loader({}: Route.LoaderArgs) {
-  return { quote: await readWtiQuote(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
+  return { daily: await readWtiDaily(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
 }
 
 /** @returns 공개 화면의 읽기 전용 응답. */
@@ -49,7 +45,7 @@ export function action({}: Route.ActionArgs) {
  * @param props 라우트 데이터.
  * @returns 공개 연구 데스크.
  */
-export default function Home({ loaderData: { market, ledger, intake, quote } }: Route.ComponentProps) {
+export default function Home({ loaderData: { market, ledger, intake, daily } }: Route.ComponentProps) {
   const revalidator = useRevalidator();
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -62,7 +58,7 @@ export default function Home({ loaderData: { market, ledger, intake, quote } }: 
   const record = ledger.records.find((item) => item.id === story.id);
   return (
     <>
-      <DeskHeader source="Yahoo Finance" ticker="CL=F" freshness={market.freshness} />
+      <DeskHeader source="Yahoo Finance" ticker="CL=F" />
       <main id="main-content" tabIndex={-1} className="desk-shell">
         <section className="research-hero" aria-labelledby="research-title">
           <div>
@@ -120,7 +116,7 @@ export default function Home({ loaderData: { market, ledger, intake, quote } }: 
           </div>
         </section>
 
-        <MarketContext market={market} candidateScope={story.scope} quote={quote} />
+        <MarketContext market={market} candidateScope={story.scope} daily={daily} />
 
         <section className="py-10 sm:py-12" aria-labelledby="open-title">
           <div className="section-heading"><div><p className="section-kicker">03 / WHAT REMAINS OPEN</p><h2 id="open-title">다음 단계는, 빈칸을 확인하는 일.</h2></div><Link className="source-link" to="/research#method">전체 검증 절차 <ArrowRight size={14} aria-hidden="true" /></Link></div>
@@ -137,64 +133,23 @@ export default function Home({ loaderData: { market, ledger, intake, quote } }: 
 }
 
 /**
- * 실제 완료 일봉과 이미 관측한 변동성을 보여준다. 후보 시계열 부재는 별도로 설명한다.
- * @param props 시장 스냅샷과 선택 사례의 확보 범위.
- * @returns 범위·날짜 탐색이 가능한 WTI 관측.
+ * 하나의 최신 일봉 가격 그래프와 별도 기준의 변동성 설명을 보여준다.
+ * @param props 최신 일봉, 완료봉 변동성, 선택 연구의 범위.
+ * @returns WTI 시장 관측 영역.
  */
-function MarketContext({ market, candidateScope, quote }: { market: WtiMarketView; candidateScope: string; quote: WtiQuoteView }) {
-  const [range, setRange] = useState(60);
-  const [selected, setSelected] = useState<number | null>(null);
-  const [metric, setMetric] = useState<"rv5" | "rv20">("rv5");
+function MarketContext({ market, candidateScope, daily }: { market: WtiMarketView; candidateScope: string; daily: WtiDailyView }) {
   const snapshot = market.snapshot;
-  const checkedAtKst = snapshot
-    ? new Date(Date.parse(snapshot.checkedAt) + 9 * 60 * 60 * 1_000).toISOString().slice(0, 16).replace("T", " ")
-    : "—";
-  const allBars = snapshot?.bars ?? [];
-  const bars = allBars.slice(-range);
-  const latest = allBars.at(-1);
-  const previous = allBars.at(-2);
-  const delta = latest && previous ? latest.close - previous.close : null;
-  const minimum = bars.length ? Math.min(...bars.map((bar) => bar.close)) : 0;
-  const maximum = bars.length ? Math.max(...bars.map((bar) => bar.close)) : 0;
-  const span = maximum - minimum || 1;
-  const pointIndex = Math.min(selected ?? bars.length - 1, bars.length - 1);
-  const point = bars[pointIndex];
-  const x = (index: number) => CHART.pad + (index / Math.max(bars.length - 1, 1)) * (CHART.width - 2 * CHART.pad);
-  const y = (close: number) => CHART.height - CHART.pad - ((close - minimum) / span) * (CHART.height - 2 * CHART.pad);
-  const path = bars.map((bar, index) => `${index ? "L" : "M"}${x(index).toFixed(2)},${y(bar.close).toFixed(2)}`).join(" ");
-  const rv = metric === "rv5" ? snapshot?.volatility.rv5AnnualizedPct : snapshot?.volatility.rv20AnnualizedPct;
-  return (
-    <section id="market" className="market-section" aria-labelledby="market-title">
-      <div className="section-heading"><div><p className="section-kicker">02 / WTI CONTEXT</p><h2 id="market-title">가설의 배경이 되는 원유 시장</h2></div><span className="data-status" data-freshness={market.freshness}><span aria-hidden="true" />{market.freshness === "fresh" ? "최근 완료 일봉" : market.freshness === "stale" ? "완료 일봉 기준일 확인" : "관측 데이터 없음"}</span></div>
-      <p className="mt-3 text-sm leading-7 text-muted-foreground">최근 수신 시세와 완료 일봉을 분리해서 보여줍니다. 실현변동성은 완료 일봉으로만 계산합니다.</p>
-      <WtiIntraday view={quote} />
-      {snapshot ? (
-        <div className="market-layout mt-6">
-          <div className="market-chart">
-            <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-sm text-muted-foreground">WTI · CL=F 최근 완료 거래일 종가</p><p className="mt-2 font-mono text-4xl text-watching tabular-nums">{number(latest?.close)}<span className="ml-2 text-sm text-muted-foreground">USD</span></p><p className="mt-2 text-xs text-muted-foreground">{snapshot.asOf}{delta == null ? "" : ` · 이전 거래일 대비 ${delta > 0 ? "+" : ""}${number(delta)} USD`}</p></div><div className="flex gap-1" role="group" aria-label="차트 표시 범위">{RANGE_OPTIONS.map((value) => <button className="filter-button" type="button" key={value} disabled={value > allBars.length} aria-pressed={range === value} onClick={() => { setRange(value); setSelected(null); }}>{value}봉</button>)}</div></div>
-            {bars.length > 1 ? <>
-              <svg viewBox={`0 0 ${CHART.width} ${CHART.height}`} role="img" aria-label={`최근 ${bars.length}개 WTI 종가 흐름`} aria-describedby="price-trend-summary" className="price-sparkline mt-6 w-full text-watching">
-                {[CHART.pad, CHART.height / 2, CHART.height - CHART.pad].map((line) => <line key={line} x1={CHART.pad} x2={CHART.width - CHART.pad} y1={line} y2={line} stroke="currentColor" opacity="0.15" />)}
-                <path d={path} fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-                {point && <><line x1={x(pointIndex)} x2={x(pointIndex)} y1={0} y2={CHART.height} stroke="currentColor" strokeDasharray="3 5" opacity="0.6" /><circle cx={x(pointIndex)} cy={y(point.close)} r="4" fill="currentColor" /></>}
-              </svg>
-              <div className="mt-2 flex justify-between font-mono text-xs text-muted-foreground"><span>{bars[0].date}</span><span>{bars.at(-1)?.date}</span></div>
-              <label className="mt-5 flex flex-wrap justify-between gap-2 text-sm" htmlFor="price-date"><span>관측일 탐색</span><output className="font-mono text-watching" htmlFor="price-date">{point?.date} · {number(point?.close)} USD</output></label>
-              <input id="price-date" className="mt-2 min-h-11 w-full accent-watching" type="range" min={0} max={bars.length - 1} value={pointIndex} onChange={(event) => setSelected(Number(event.target.value))} aria-valuetext={`${point?.date}, ${number(point?.close)} 달러`} />
-            </> : <div className="empty-state mt-6"><h3>가격 흐름을 그릴 자료가 부족합니다.</h3><p>완료 일봉이 2개 이상이면 흐름을 표시합니다.</p></div>}
-            <p id="price-trend-summary" className="mt-3 text-xs leading-6 text-muted-foreground">{bars.length ? `표시 범위 ${bars.length}봉 · 최저 ${number(minimum)} / 최고 ${number(maximum)} USD. 범위를 바꿔도 상단 최근 종가는 유지됩니다.` : "표시할 관측값이 없습니다."}</p>
-          </div>
-          <div className="market-stats">
-            <div className="flex gap-2" role="group" aria-label="실현변동성 기간">{(["rv5", "rv20"] as const).map((value) => <button key={value} type="button" className="filter-button" aria-pressed={metric === value} onClick={() => setMetric(value)}>RV {value === "rv5" ? "5" : "20"}일</button>)}</div>
-            <dl className="mt-4"><div className="market-fact"><dt>{metric === "rv5" ? "5일" : "20일"} 실현변동성 · 연환산</dt><dd>{number(rv, 1, "%")}</dd></div><div className="market-fact"><dt>5일 실현변동성 백분위 · 고정 기준</dt><dd>{number(snapshot.volatility.rv5ReferencePercentile, 0)}<small> / 100</small></dd></div></dl>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">백분위는 2015–2023의 5일 변동성 분포에서 현재 관측값의 위치입니다. 미래 예측 확률이 아닙니다.</p>
-            <div className="bridge-gap mt-5"><h3 className="text-sm font-medium">후보 비교선은 아직 없습니다.</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{candidateScope}. 공개 시각에 맞춘 시계열이 있어야 겹침·시간차 비교가 가능합니다.</p></div>
-          </div>
-        </div>
-      ) : <div className="empty-state mt-6"><h3>WTI 관측을 표시하지 못했습니다.</h3><p>현재 가격 대신 연구 기록을 먼저 살펴볼 수 있습니다.</p><Link className="action-link mt-4" to="/research">연구 기록 보기 <ArrowRight size={16} aria-hidden="true" /></Link></div>}
-      {market.freshnessReasons.length > 0 && <p role="status" className="mt-4 text-sm leading-7 text-primary">{market.freshnessReasons.join(" ")}{snapshot ? ` 마지막 완료 일봉은 ${snapshot.asOf}입니다.` : ""}</p>}
-      <p className="mt-4 text-xs leading-6 text-muted-foreground">확인 시각 {checkedAtKst} KST · 매일 15:30 KST 자동 확인 예정. 수집·검증·배포 후 반영되며 지연될 수 있습니다. 실시간 체결가나 거래소 공식 정산가가 아닌 Yahoo 일봉 종가입니다. 휴장일에는 최근 완료 거래일 값을 유지합니다.</p>
-      <details className="mt-6 border-t border-border py-2"><summary className="min-h-11 cursor-pointer py-3 text-sm">관측 출처·산식·데이터 확인</summary><div className="space-y-2 pb-4 text-sm leading-7 text-muted-foreground"><p>Yahoo Finance · CL=F · 일봉 · 자동조정 종가. 연속선물의 만기 교체에 따른 롤 갭이 포함될 수 있습니다.</p>{snapshot && <><p>산식: {snapshot.volatility.formula} · 연환산 {snapshot.volatility.annualization}일. 기준 분포 {snapshot.volatility.referenceStart}–{snapshot.volatility.referenceEnd}.</p><p>마지막 확인: {checkedAtKst} KST · 완료봉 {snapshot.provenance.rowCount.toLocaleString("ko-KR")}개</p><p className="break-all font-mono text-xs">SHA-256 {snapshot.provenance.contentSha256}</p></>}</div></details>
-    </section>
-  );
+  const checkedAtKst = snapshot ? new Date(Date.parse(snapshot.checkedAt) + 9 * 3600000).toISOString().slice(0,16).replace("T", " ") : "—";
+  return <section id="market" className="market-section" aria-labelledby="market-title">
+    <div className="section-heading"><div><p className="section-kicker">02 / WTI DAILY</p><h2 id="market-title">WTI 원유 가격</h2></div></div>
+    <WtiDailyChart view={daily} />
+    <details className="mt-6 border-t border-border py-2"><summary className="min-h-11 cursor-pointer py-3 text-sm">실현변동성과 연구 기준 보기</summary>
+      <div className="space-y-3 pb-4 text-sm leading-7 text-muted-foreground">
+        <p>변동성은 별도 완료 일봉 스냅샷 기준입니다. 위 가격 그래프의 변경 가능한 마지막 일봉을 계산에 섞지 않습니다.</p>
+        {snapshot ? <><p>기준일 {snapshot.asOf} · 확인 {checkedAtKst} KST</p><dl className="grid grid-cols-1 gap-4 sm:grid-cols-3"><div><dt>5일 실현변동성 · 연환산</dt><dd>{number(snapshot.volatility.rv5AnnualizedPct,1)}%</dd></div><div><dt>20일 실현변동성 · 연환산</dt><dd>{number(snapshot.volatility.rv20AnnualizedPct,1)}%</dd></div><div><dt>5일 실현변동성 백분위</dt><dd>{number(snapshot.volatility.rv5ReferencePercentile,0)} / 100</dd></div></dl><p>산식 {snapshot.volatility.formula} · 기준 분포 {snapshot.volatility.referenceStart}–{snapshot.volatility.referenceEnd}. 미래 예측 확률이 아닙니다.</p></> : <p>완료 일봉 변동성 자료를 표시하지 못했습니다.</p>}
+        {market.freshnessReasons.length>0 && <p>{market.freshnessReasons.join(" ")}</p>}
+        <p>후보 비교선은 아직 없습니다. {candidateScope}. 공개 시각에 맞춘 후보 시계열이 확보되어야 비교할 수 있습니다.</p>
+      </div>
+    </details>
+  </section>;
 }
