@@ -166,3 +166,10 @@
 | 출처 | 대상·접근 | 권리·시점 | 한계·영수증 |
 | --- | --- | --- | --- |
 | [AWC Data API](https://aviationweather.gov/data/api/) · [NWS KGLS](https://www.weather.gov/hgx/models) | ALT-20260908-16 Galveston Scholes 공항 시정; 단일역24h JSON, custom User-Agent, 키 불필요 | [NWS lawful reuse](https://www.weather.gov/disclaimer), 출처·비공식 파생물 표시. 확인2026-09-08. obsTime/receiptTime/reportTime/수집시각 분리, 최초 외부 공개시각 미확인 | 실제28보고, 전부10+하한. 항만통항·원유·WTI 미측정. [새UTC빈티지와재현](../../indexes/ALT-20260908-16/20260908T050739Z/README.md). 재요청은새rolling창이며 동일빈티지아님 |
+
+## 2026-09-08 수집 가능성 후속
+
+| 출처 | 후보·실제 수집 | 접근·권리·시점 | 근거 |
+| --- | --- | --- | --- |
+| MPA Tanker Arrivals Monthly | 기존26: 유형36행+총계12행,2025-08~2026-07 | [collection392](https://data.gov.sg/collections/392/view), 공식 datastore_search 키없이소표본. [SG Open Data Licence](https://data.gov.sg/open-data-licence), 출처·라이선스표시. 월별공표일미확인·최신월잠정 | [두dataset ID·코드·대사·그림](../../indexes/ALT-20260907-26/20260908T055411Z/README.md). 기존collection388 경로혼동해소. 벙커판매/전체선박과다름 |
+| USCG NAVCEN Port Status / LNM | 기존16후속: 상태표4행·이동제한계획1건, 원문2개 | [상태표](https://www.navcen.uscg.gov/port-status?zone=HOUSTON-GALVESTON)·[LNM](https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm0811g2026.pdf), [USCG 공개정보정책](https://www.uscg.mil/disclaim/). 관측시각/최초공개시각/실현폐쇄미확인 | [원본·추출·한계](../../indexes/ALT-20260908-16/20260908T055451Z/README.md). 표Last Changed를기상폐쇄시각으로해석하지않음 |

@@ -1,0 +1,24 @@
+{
+  "input_sha256": {
+    "breakdown": "9255c463dc32abbc3c30886032a0bb2ece1eb6c851d602182114b1c032c834f9",
+    "total": "1bcec76dcbda961afb65c70620dd41095a0490f2a89f84bde74424ca72ca1941"
+  },
+  "output_sha256": "889fe2efaefea0afd07c780071d027d9d9a5e0cb0aa25ff28f5b6721cd085120",
+  "months": 12,
+  "first_month": "2025-08",
+  "last_month": "2026-07",
+  "breakdown_rows": 36,
+  "total_rows": 12,
+  "duplicate_keys": 0,
+  "missing_counts": 0,
+  "sum_mismatches": 0,
+  "unit": "tanker arrivals per month (>75 GT); not unique ships, cargo tonnes or bunker sales",
+  "available_at": null,
+  "WTI_tests": "NOT_RUN",
+  "latest_month": {
+    "Chemical Tankers": 468,
+    "LNG & LPG Tankers": 231,
+    "Oil Tankers": 1568
+  },
+  "latest_total": 2267
+}
