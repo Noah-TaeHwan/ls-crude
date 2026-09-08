@@ -2,6 +2,10 @@
 
 ## [091-A/B/C 전체 워크플로우 및 시각화 →](workflow.md)
 
+## [5개 유망 트랙의 조합 게이트·검정 설계 →](../../reports/2026-09-08-cfam-five-track-combination-plan.md)
+
+## [S×O·A×F 실제 겹침 검정 및 시각화 →](../../indexes/091-cushing-operations-nowcasting/20260908T091COMBOZ/README.md)
+
 ## [091 광범위 검증 배터리 결과 →](../../indexes/091-cushing-operations-nowcasting/20260908T091VZ/README.md)
 
 **상태**: ⏸️ **HOLD — 장기 공개 야간광 검정도 무효. 운영 nowcast 프로젝트만 보존**
