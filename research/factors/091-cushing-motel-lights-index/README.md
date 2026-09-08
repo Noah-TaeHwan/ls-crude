@@ -36,6 +36,7 @@
 | [091-M](workflow.md#091-m--쿠싱-시청-공개-구인공고) | City of Cushing 공개 구인공고 | PARK / E1 — 실제 3건 표본 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091INSZ/README.md) 완료; 시정부 공석일 뿐 장기 이력·현장 운영 측정 없음 |
 | [091-N](workflow.md#091-n--쿠싱-시청-공개자료-지도) | 시청 공개자료·부서·회의문서 경로 | PARK / E1 — 실제 4개 공식 페이지/0개 신규 장기패널을 [게이트보드](../../indexes/091-cushing-operations-nowcasting/20260908T091INSZ/README.md)로 시각화 |
 | [091-O](workflow.md#091-o--쿠싱-공항-활동-월간보고) | 공항 연료판매·ramp stay·응급비행 지원 | PARK / E1 — 실제 월간보고 4건의 직접 운영 수치를 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091OZ/README.md) 완료; 60개월·개별 기간 미확보 |
+| [091-U](workflow.md#091-u--cushing-industrial-job-pulse) | 직접 산업직 공고의 전향 집계 | FORWARD_ONLY / E1 — [4개 고신뢰 공개 공고 스냅샷](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/README.md) 확보; 동결 규칙 90일 패널 대기 |
 | [091-P](workflow.md#091-p--지역-커뮤니티-발자국--운영-주의도) | 학교 등록학생·KUSH 지역 운영 보도 주의도 | PARK / E1 — 실제 공개 집계 두 개를 [개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091PZ/README.md) 완료; 전자는 연간 구조, 후자는 보도 주의도라 ‘현재 바쁨’의 정답을 측정하지 않음 |
 | [091-Q/R/S](workflow.md#091-qrs--날씨행사빠른-외식-관측) | NOAA 날씨 · KUSH 행사 · Google Maps Quick Service | **S만 FORWARD_ONLY / E1** — [실제 표본·개별 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/README.md) 완료. 고정 6점포의 [live footfall protocol](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md)로 90일 전향 검증을 시작할 수 있음 |
 

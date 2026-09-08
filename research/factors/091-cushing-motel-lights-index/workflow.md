@@ -29,6 +29,7 @@
 | 091-M | 시청 공개 채용이 늘었는가 | City Open Positions 목록 | **PARK / E1** — 실제 3건 공고 표본, 게시/마감/역사 없음 |
 | 091-N | 시청이 공개하는 기록 중 실제 활동 패널이 있는가 | 부서·재정·공항·회의문서의 공개 경로 | **PARK / E1** — 실제 페이지 4개 원문 확보; 의제 첨부문서만 월별 집계 가능성이 있고 새 패널은 미발견 |
 | 091-O | 공항이 실제로 바쁜가 | Jet-A/AvGas 판매·ramp stay·응급비행 지원 | **PARK / E1** — 실제 월간보고 4건을 개별 시각화 완료; 불연속·짧은 표본이라 연관 검정은 불가 |
+| 091-U | 직접 산업직 수요가 늘었는가 | 사전 고정 규칙을 통과한 Cushing 산업직 공고 | **FORWARD_ONLY / E1** — 실제 고신뢰 공고 4건의 1회 스냅샷; 90일 전향 패널 대기 |
 | 무효 실험 | Cushing Busy ML/DL | WTI·거래량 기반 합성 타깃 | **무효** — 실제 쿠싱 관측 아님 |
 
 ## 091-A — 숙박세 × 고정 도로구간 트럭
@@ -228,6 +229,14 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 현재 표본은 불연속 4건이므로 WTI/EIA 상관·CFAM 점수는 **실행하지 않았다**. 그러나 워크플로우의 개별 관측 단계는 [091-O 시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091OZ/README.md)로 완료했다. 보고일을 임시 시각표지로 보존한 Jet-A, AvGas, ramp stay/rental, Survival Flight 수치를 분리해서 그렸다. 네 불규칙 관측에 상관·회귀·Monte Carlo·ML을 적용하는 것은 검정이 아니라 곡선 맞추기이므로 하지 않는다.
 
 관측 그림은 현재4보고서로 완료되어 있다. 장기 관계 검정의 재개 조건은 동일 정의의 보고서·metric-period/실제 공개일 복원이며 60개월은 이 후보의 기존 준비 목표다. Jet-A, AvGas, ramp stays, emergency-flight support를 분리하고 독립 local ground truth와 측정타당성을 확인한 뒤 관계 검정 여부를 결정한다.
+
+## 091-U — Cushing Industrial Job Pulse
+
+사용자가 사전 고정한 강한 포함·제외 규칙을 그대로 적용해, Cushing 현장에 직접 귀속되는 terminal/pipeline/midstream/industrial-maintenance/heavy-logistics 공고만 센다. City 정부·소매·식당·호텔·교육·의료·종교·순수 사무·비산업 영업·일반 농업은 제외한다. 모호한 maintenance/CDL/general-construction 공고도 제외하고, duplicate는 회사·직무·Cushing 기준으로 한 건으로 묶는다.
+
+실제 공개 1회 감사에서는 Plains Terminal Operator I, ONEOK Operator, Enterprise Products Operator, Pipeline, South Bow Gauger Technician의 **4개**가 고신뢰 규칙을 통과했다. 이 사실은 [091-U 스냅샷](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/README.md)에 제목·회사·규칙·URL만 남겼다. 이것은 현재 채용이 증가했다는 뜻이 아니라, 공개 자료로 이 필터를 적용할 수 있다는 E1 표본이다.
+
+따라서 현재 상태는 **FORWARD_ONLY / E1**이다. [동결된 90일 프로토콜](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/091u-industrial-job-pulse-protocol.md)에 따라 수요일 10:00 CT에 공개·무로그인 화면을 수동 점검하고, 공개 공고의 집계 필드만 기록한다. 12회 이상·80% 이상 완결 후에도 먼저 D의 terminal-state 변화, 기간이 명시된 O, 또는 고정 도로 트럭 같은 독립 운영 관측과 측정 타당성을 확인한다. WTI/EIA와 바로 검정하거나 검색 결과 수를 채용/작업량으로 바꾸지 않는다.
 
 ## 091-P — 지역 커뮤니티 발자국 · 운영 주의도
 
