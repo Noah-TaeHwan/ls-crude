@@ -3,7 +3,7 @@
 | 항목 | 값 |
 | --- | --- |
 | 날짜 / 작성자 | 2026-09-08 KST / Academic division · Research Synthesist |
-| 상태 | 짧은 범위 문헌 검토, 내부 동료 검토용. 외부 peer review 완료 아님 |
+| 상태 | PARTIAL — 아래 원문 대조를 보완했으나 전체 학술 검토 완료·외부 peer review 완료 아님 |
 | 후보 / 정본 | [후보 원장](../../candidates/ledger.csv); 아래 canonical ID 사용 |
 | 연결 출처 | [출처 registry](../sources/REGISTRY.md); 이 메모의 직접 원출처 목록은 아래 |
 | 범위 | 지정학·운송·이동·연료 수요·위성 활동·뉴스 서사 proxy의 측정 및 해석 |
@@ -69,3 +69,15 @@
 ## 판정과 내부 검토
 
 Academic 산출물은 **내부 검토 준비** 상태다. 직접 출처, 확인 수준, 가설, repo 기록을 분리했고 shortlist는 기존 ID 8개를 연결했다. 이 메모만으로 공동 헌트의 8행 갱신·수집·재현·GOAL_MET를 선언하지 않는다. 독립 검토자는 원장 ID(이번 범위 ALT-20260907-01~08), 원출처와 문장 일치, 실행 결과의 숫자 전이 금지, 공급/수요/서사 혼용을 확인해야 한다. 새 후보의 학술적·금융적 유효성은 여전히 미검증이다.
+
+## 리뷰 후 원문 대조 — 2026-09-08
+
+위 확인 수준은 최초 작성 당시 기록이다. 아래는 이후 root가 정상 열람한 본문 해당 절과 한계를 대조한 내역이며 논문 전체의 재현·검토 완료를 뜻하지 않는다. BH 원문 증명과 독립적인 전체 학술 검토가 남아 **Academic PARTIAL**을 유지한다.
+
+| 주장 | 원문 위치·직접 URL | 대조와 제한 |
+| --- | --- | --- |
+| 원유 충격별 효과가 다르다 | [Kilian 저자 세미나 원고](https://www.bancaditalia.it/pubblicazioni/altri-atti-seminari/2009/Kilian_230209.pdf?language_id=1), §3·§3.2.2 | 공급/수요 구조충격을 구분한다는 논증 확인. 출판본 전문 접근은 AEA 로그인으로 제한; 세미나 원고와 최종판이 동일하다고 주장하지 않음. 구조 식별을 특정 지역 proxy의 단순 상관에 그대로 전이하지 않음 |
+| GPR는 뉴스 기반이며 측정 검증이 필요하다 | [저자 공개 AER 논문](https://www.matteoiacoviello.com/gpr_files/GPR_PAPER.pdf), 인쇄pp1195–1196 및 §II(p1204부터) | 기사비중 구성·수기 검토·관련지표 비교 근거 확인. 미국·영국·캐나다 신문 관점의 범위가 있으며 현장 활동이나 원유 손실량과 동일하지 않음 |
+| PortWatch는 추정치이고 개정된다 | [IMF WP25/93](https://www.imf.org/-/media/files/publications/wp/2025/english/wpiea2025093-print-pdf.pdf), §2 인쇄pp3–5(PDF pp5–7) | AIS원천·방법·범위 변경에 따른 개정 명시. 측정오류·환적·밸러스트·통관시점 불일치를 직접 확인. 공식 무역자료나 원유 배럴의 대체값으로 주장하지 않음 |
+| Black Marble의 해상도·품질 정의 | [NASA VNP46A2 공식 기술 페이지](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A2/), 제품 정의·v2변경·File Naming Convention | 500m·QA0 고품질·관측일과생산일 구분 본문 확인. 2018논문 전체를 읽었다는 뜻은 아니며 모텔별 인원 정확도 미검증 |
+| BH의 독립 검정 조건 | [출판사 summary](https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/j.2517-6161.1995.tb02031.x) | PDF 요청이 요약으로 돌아와 원문증명은 아직 미검토. 독립 조건의 설명만 유지; 우리의 자기상관된 시계열에 FDR가 보장된다고 주장하지 않음 |

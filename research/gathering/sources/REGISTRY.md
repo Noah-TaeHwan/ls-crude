@@ -160,3 +160,9 @@
 - [NASA VNP46A2 v2 정의](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A2/): QA0 고품질·제품 버전 고정 필요. 기존 HEAD 성공을 AOI 시계열 수집으로 올리지 않는다.
 - [BTS TSA 측정 설명](https://www.bts.gov/browse-statistical-products-and-data/preliminary-estimates/preliminary-estimates-enplanements-tsa): screening과 enplanement 구분만 사용, 해당 문서의 2024 성과를 후보 선택에 쓰지 않음.
 - GPR 기본 URL 직접 응답 실패/공식 검색 발췌, Nightfire 세부 PDF 재열람 실패는 정상 원본 수집으로 표기하지 않는다. 정확한 경로·확인일·blocker는 위 노트.
+
+## NOAA/NWS AWC METAR — KGLS 관측 시연
+
+| 출처 | 대상·접근 | 권리·시점 | 한계·영수증 |
+| --- | --- | --- | --- |
+| [AWC Data API](https://aviationweather.gov/data/api/) · [NWS KGLS](https://www.weather.gov/hgx/models) | ALT-20260908-16 Galveston Scholes 공항 시정; 단일역24h JSON, custom User-Agent, 키 불필요 | [NWS lawful reuse](https://www.weather.gov/disclaimer), 출처·비공식 파생물 표시. 확인2026-09-08. obsTime/receiptTime/reportTime/수집시각 분리, 최초 외부 공개시각 미확인 | 실제28보고, 전부10+하한. 항만통항·원유·WTI 미측정. [새UTC빈티지와재현](../../indexes/ALT-20260908-16/20260908T050739Z/README.md). 재요청은새rolling창이며 동일빈티지아님 |

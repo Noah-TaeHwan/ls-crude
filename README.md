@@ -4,7 +4,7 @@
 
 East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜타곤 피자 인덱스는 **활동 → 민감한 맥락 → 시장과의 가능한 관계**를 생각하는 참고 패턴입니다. 피자 주문을 복제하거나 특정 데이터·양의 상관을 찾아내는 것이 완료 조건은 아닙니다.
 
-현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-08 로컬 [원장](research/candidates/ledger.csv)은 **63행(KEEP 4 / PARK 48 / KILL 11)**입니다(repo empirical only). 이번 공동 헌트는 기존 8개 ID를 재검토했으며 새 발견 8개로 합산하지 않습니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
+현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-08 로컬 [원장](research/candidates/ledger.csv)은 **64행(KEEP 4 / PARK 49 / KILL 11)**입니다(repo empirical only). 앞선 공동 헌트는 기존8개 ID 재검토였습니다. 리뷰 후 KGLS 시정 관측 경로1개와 실제 샘플·그림을 추가했습니다. 기상 조건이며 물류 활동량·유가 예측 신호가 아닙니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
 
 | 항목 | 기준 |
 | --- | --- |
@@ -16,6 +16,10 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 | 기존 웹 | [LS CRUDE](https://ls-crude.vercel.app) · 시장 관측/기존 연구 장부. 이번 패스에서 배포 상태를 검증하지 않음 |
 
 ## Current research status — 2026-09-08
+
+**다음 우선순위는 새로운 관측을 설명할 운영 근거1건 확보**입니다. [ALT-20260908-16](research/candidates/ALT-20260908-16.md)의 실제 시정28보고를 확보했고 모두 `10+` 하한입니다. 저시정·항만 차질 발견을 주장하지 않습니다. 손성찬: 공식 통항 제한/해제 공지의 시각 있는 사례1건 접근 확인. Noah: 공항 관측의 항로 대표성과 제품 표시 가치 판단(역할 제안). 기존 바지선·GPR·LA항은 재개 조건이 생길 때만 이어갑니다.
+
+[리뷰 후 작업 결과·검증](research/gathering/notes/2026-09-08-observation-first-followup.md) · [시정 원자료 설명·그림](research/indexes/ALT-20260908-16/20260908T050739Z/README.md). 최신 관측 표시와 WTI 관계 검정의 완료를 분리하며, 앞선 학술 메모는 **PARTIAL**입니다.
 
 [공동 헌트: 점수·접근·차단·3분 데모·검토](research/gathering/notes/2026-09-08-joint-hunt.md) · [문헌 메모와 주석 후보표](research/gathering/notes/2026-09-08-joint-academic-memo.md).
 
@@ -78,10 +82,10 @@ research/.venv/bin/python research/notebooks/hunt-20260907/build_and_test.py
 AI에게 **아이디어 선정 → 실제 데이터 접근·샘플 확인 → GitHub PR 기록**을 맡기려면 [복사해서 쓰는 AI 연구 접수 프롬프트](docs/ai-research-intake-workflow.md)를 사용합니다. 이번 단계는 자료의 접근성과 측정 적합성까지이며, 조합·가격 검정·웹 구현은 별도 작업입니다. [연구 방향](docs/research-direction-2026-09-08.md) → [쿠싱 관측판·역할](docs/cushing-observation-workflow-2026-09-08.md) → [아이디어에서 인디케이터까지](docs/idea-to-indicator-workflow-2026-09-08.md)에 대화의 흐름과 제안을 정리했습니다.
 
 1. [방법론](docs/research-methodology.md)으로 활동·맥락·WTI 가설과 반증 조건을 정합니다. [기존 팩터](research/factors/README.md)를 먼저 확인해 같은 가설을 새 발견으로 세지 않습니다.
-2. [후보 양식](research/candidates/_TEMPLATE.md)을 복사하고 [기록 규약](docs/recording-standard.md)에 따라 모든 칸을 채웁니다. 아직 모르는 값은 미확인, 결과는 미실행으로 씁니다. 실제 아이디어가 없으면 원장을 비워 둡니다.
-3. 후보 원장에 카드 요약 1행을 추가합니다. 새 후보는 PARK / NOT_STARTED / NOT_RUN에서 시작하고, 다음 행동·담당·재검토일을 지정합니다. 출처를 찾으면 [출처 표](research/gathering/sources/REGISTRY.md)에 중복 없이 등록합니다.
+2. [후보 양식](research/candidates/_TEMPLATE.md)을 복사하고 [기록 규약](docs/recording-standard.md)의 초기12필드·활동·출처·접근/재개 조건을 작성합니다. 상세 구성·검정은 단계 진입 때 채웁니다. 새 아이디어가 없으면 기존 원장을 유지합니다.
+3. `python3 research/scripts/sync_candidate_ledger.py --write`로 카드에서 원장을 생성하고 `--check`로 대조합니다. 새 후보는 PARK / NOT_STARTED / NOT_RUN에서 시작하고, 다음 행동·담당·재검토일을 지정합니다. 출처를 찾으면 [출처 표](research/gathering/sources/REGISTRY.md)에 중복 없이 등록합니다.
 4. [수집 규칙](research/INTAKE.md)에 따라 허용된 자료만 수집합니다. raw 원본을 덮어쓰지 않고 수집시각·SHA-256·재취득 방법을 남깁니다. 지수 정의와 실행 영수증은 [indexes](research/indexes/README.md)에 둡니다.
-5. [검정 규약](docs/testing-protocol.md)으로 사전 계획 → 허용된 시간 구간 검정 → 동료 재현 → KEEP/KILL/PARK를 기록합니다. 실패·미실행도 기록하고 조용히 삭제하지 않습니다.
+5. 실제 샘플은 날짜·단위·결측과 개별 관측 그림으로 먼저 보여줄 수 있습니다. 관계 검정 적격 후보만 [검정 규약](docs/testing-protocol.md)으로 사전 계획 → 허용 구간 검정 → 동료 재현 → KEEP/KILL/PARK를 기록합니다. 실패·미실행도 기록하고 조용히 삭제하지 않습니다.
 
 실제 후보가 생겼을 때만 아래를 실행합니다. YYYYMMDD는 KST 등록일, NN은 그날 사용하지 않은 두 자리 번호로 바꿉니다.
 
@@ -89,7 +93,7 @@ AI에게 **아이디어 선정 → 실제 데이터 접근·샘플 확인 → Gi
 cp research/candidates/_TEMPLATE.md research/candidates/ALT-YYYYMMDD-NN.md
 ~~~
 
-후보를 기각하려면 같은 카드와 CSV의 decision을 KILL로 바꾸고 이유·근거·다음 행동을 남깁니다. 접근이 막히면 collection_status=BLOCKED, decision=PARK와 차단 해소 조건을 기록합니다. 단순 조사 대기는 NOT_STARTED/PARK입니다. KEEP은 후속 연구 자원 배정이며 알파 인증이 아닙니다.
+후보를 기각하려면 같은 카드의 decision을 KILL로 바꾸고 CSV를 재생성한 뒤 이유·근거·다음 행동을 남깁니다. 접근이 막히면 collection_status=BLOCKED, decision=PARK와 차단 해소 조건을 기록합니다. 단순 조사 대기는 NOT_STARTED/PARK입니다. KEEP은 후속 연구 자원 배정이며 알파 인증이 아닙니다.
 
 ## 기록·실행 위치
 
