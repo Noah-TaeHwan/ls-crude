@@ -1,0 +1,49 @@
+{
+  "checked_at": "2026-09-08T08:41:56.266368+00:00",
+  "browser": "Ego task85",
+  "surface": "http://localhost:5173",
+  "viewports": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "page_overflow": false,
+  "research_axis_font_px": 12,
+  "wti_axis_width_px": 64,
+  "wti_axis_font_px": 12,
+  "max_observed_wti_alignment_error_px": 0.0067,
+  "wti_pointer_first_middle_last": "PASS in all four viewports",
+  "wti_ranges": 7,
+  "wti_svg_count": 1,
+  "watermelon_default_points": 50,
+  "watermelon_all_points": 409,
+  "watermelon_keyboard_first_recent": "2022-07-05",
+  "watermelon_keyboard_first_full": "2000-05-09",
+  "jeju_touch_first": {
+    "date": "2023-05-01",
+    "lng_mwh": "4279.837",
+    "oil_mwh": "5255.988",
+    "share_pct_display": "55.12"
+  },
+  "jeju_latest_display": {
+    "date": "2024-03-31",
+    "lng_mwh": "6164.278",
+    "oil_mwh": "3997.953",
+    "share_pct_display": "39.34"
+  },
+  "jeju_keyboard_table_open": true,
+  "jeju_table_rows": 11,
+  "case_switch_preserves_hash": true,
+  "history_back": "PASS",
+  "case_only_data_revalidation": false,
+  "intake_jeju_link": "PASS",
+  "unknown_sample_defaults_to_watermelon": true,
+  "captured_runtime_exceptions": [],
+  "typecheck": "PASS",
+  "build": "PASS",
+  "node_tests": 22,
+  "export_check": "PASS",
+  "production": "Not verified by local QA; follow hosting status",
+  "screen_reader": "Not tested"
+}

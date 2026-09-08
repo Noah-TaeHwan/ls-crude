@@ -1,3 +1,4 @@
+import { SAMPLE_LINKS } from "~/lib/research-charts";
 import { useState } from "react";
 import { Link } from "react-router";
 import { INTAKE_ROOT, type IntakeRecord } from "~/lib/research-intake";
@@ -15,7 +16,7 @@ function IntakeCard({ record }: { record: IntakeRecord }) {
     <p className="mt-3 text-sm leading-7 text-muted-foreground">{f.decision_reason}</p>
     <div className="evidence-note mt-4"><h4 className="text-sm font-medium">다음 행동</h4><p className="mt-2 text-sm leading-7">{f.next_action}</p><p className="mt-2 text-xs leading-6 text-muted-foreground">담당 {f.owner} · 재검토 예정 {f.next_review_date}</p></div>
     <details className="mt-4 border-t border-border"><summary className="min-h-11 cursor-pointer py-3 text-sm text-primary">접근 결과·검토 근거<span className="sr-only"> — {f.name}</span></summary><dl className="space-y-3 pb-4 text-sm leading-7 text-muted-foreground" style={{ gridTemplateColumns: "1fr" }}>{[["실제 확보 범위", "coverage"], ["원본 보존 기록", "raw_path"], ["측정 한계", "analogy_limit"], ["공개 시점", "available_at"], ["검토자", "reviewer"], ["검토 결과", "review_result"]].map(([label, key]) => <div key={key}><dt className="font-medium text-foreground">{label}</dt><dd>{f[key] || "기록 없음 — 원문 확인 필요"}</dd></div>)}</dl></details>
-    <footer className="mt-auto flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-3"><a className="source-link" href={record.sourceHref}>후보 원문</a><a className="source-link" href={record.historyHref}>변경 이력</a>{record.notes.map((href, index) => <a key={href} className="source-link" href={href}>조사 노트 {record.notes.length > 1 ? index + 1 : ""}</a>)}</footer>
+    <footer className="mt-auto flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-3">{SAMPLE_LINKS[f.candidate_id] && <Link className="source-link" to={SAMPLE_LINKS[f.candidate_id]}>관측 그래프 보기</Link>}<a className="source-link" href={record.sourceHref}>후보 원문</a><a className="source-link" href={record.historyHref}>변경 이력</a>{record.notes.map((href, index) => <a key={href} className="source-link" href={href}>조사 노트 {record.notes.length > 1 ? index + 1 : ""}</a>)}</footer>
   </article>;
 }
 /**

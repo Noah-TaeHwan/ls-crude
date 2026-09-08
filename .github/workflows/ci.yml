@@ -20,6 +20,7 @@ jobs:
         run: |
           python scripts/sync_candidate_ledger.py --self-test
           python scripts/sync_candidate_ledger.py --check
+          python scripts/export_observation_charts.py --check
       - name: Install and test
         run: |
           pip install -r requirements.txt
@@ -43,4 +44,4 @@ jobs:
       - name: Build
         run: npm run build
       - name: Test
-        run: node --test tests/defcon-sample.test.mjs tests/deployment-cwd.test.mjs tests/visibility.test.mjs tests/tanker-arrivals.test.mjs
+        run: node --test tests/defcon-sample.test.mjs tests/deployment-cwd.test.mjs tests/visibility.test.mjs tests/tanker-arrivals.test.mjs tests/wti-chart-axis.test.mjs tests/research-charts.test.mjs

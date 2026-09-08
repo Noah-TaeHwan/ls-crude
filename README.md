@@ -17,6 +17,8 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 
 ## Current research status — 2026-09-08
 
+**반응형 그래프 구현:** 수박·제주 선택, 실제 날짜의 터치/키보드 탐색, 분자·분모/연료별 MWh, WTI 가격 눈금을 연결했습니다. [표시 데이터·재현](research/indexes/web-observations/v1/README.md) · [구현·검수 기록](docs/research-workflow-dashboard-plan.md). 고정 과거 샘플이며 공개 배포 완료 여부는 Vercel 차단 기록과 구분합니다.
+
 **성찬080 후속:** 잘못된 원안 링크를 교정하고 [제주 LNG·유류 336일 관측](research/indexes/ALT-20260908-20/20260908T073402Z/README.md)을 확보했습니다. 16,128시간 값·시간/일/월 합계 대사와 원단위·조건부비중 그림을 기록했습니다. 2024-03-31까지의 과거 보조표본이며 전국 지수·원유량·WTI 검증은 아닙니다. [탐색 과정·다음 행동](research/gathering/notes/2026-09-08-kpx-fuel-access.md).
 
 웹 시각화 구현 · **공개 배포 대기**: 현재 관측 아래와 연구 페이지에 수박의 실제 그림·연도별 27행 표·제약·다음 확인을 연결했습니다. 로컬 검증은 통과했으나 Vercel이 배포 한도(24시간 뒤 재시도)를 반환해 공개 사이트에는 아직 반영되지 않았습니다. 배포 후 확인할 위치는 [홈 연구 샘플](https://ls-crude.vercel.app/#research-sample)과 [연구 페이지](https://ls-crude.vercel.app/research#research-sample)입니다. 관측이 확보되면 먼저 시각화하고, 정의·공개시점을 확인한 적격 자료만 WTI와 비교합니다. [현재 방향 점검](docs/research-direction-2026-09-08.md#11-실제-수집과-웹-표시-후-방향-점검--2026-09-08-후속).
