@@ -1,5 +1,7 @@
 # 2026-09-08 — Cushing Busy Index (CBI): Linear Regression vs ML vs DL Empirical Audit
 
+> **무효화됨 — 실제 쿠싱 관측 검정이 아님.** 이 문서의 코드가 `cushing_busy_true`와 물리 입력 일부를 WTI 가격·거래량·계절성·난수에서 합성한다는 점이 2026-09-08 감사에서 확인됐다. 따라서 높은 R²는 생성한 목표를 맞춘 결과이며, 쿠싱의 실제 분주도·숙박·트럭·재고 또는 WTI 알파의 증거가 아니다. 삭제하지 않고 재현성·오류 감사 기록으로만 보존한다. 실제 관측 게이트는 [`2026-09-08-cushing-observation-combination-gate.md`](2026-09-08-cushing-observation-combination-gate.md)를 따른다.
+
 **문서 성격**: 쿠싱 허브 분주도(Cushing Hub Physical Activity & Congestion Index) 팩터 합성 및 3대 모델링 기법(선형회귀 / ML / DL) 실증 비교 검증 보고서  
 **참고 연구**: [LS CRUDE 연구 방향 — 뜻밖의 최신 흔적으로 원유 시장의 상태 읽기](https://share.onorca.dev/a/tsV3nMqt0cqb)  
 **분석 대상**: WTI 연속선물 `CL=F` 2,900거래일 (2016-01-01 ~ 2026-02-28)  
