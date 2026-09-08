@@ -131,7 +131,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 082 | Korea Kitchen Oil Stress / Palm–WTI Cointegration | — | — | HOLD — 한국 식용유 장기 소매가격·공개일·개정 이력 미확보; 팜유–WTI 공적분·선행성·OOS 미검정 |
 | 083 | Iced Americano Pass-Through | — | — | HOLD — 커피(외식) CPI의 월별 최초 공표일 패널이 없어 세 자산 사양 미검정 |
 | 084 | Trailhead Tailgate Index | 별도표 | 별도표 | REJECTED — RBOB 21일 수익률 IS/OOS `-0.127/+0.186` 부호 반전; RV OOS 값도 채택 불가 |
-| 085 | Watermelon Reefer Squeeze Index | 별도표 | 별도표 | HOLD — 공개 분기 물량 프록시 HO 수익률 +0.073/+0.465이나 OOS n=7; 주간 shortage 본신호 미검정 |
+| 085 | Watermelon Reefer Squeeze Index | 별도표 | 별도표 | HOLD — 공개 분기 물량 프록시 HO 수익률 +0.073/+0.465이나 OOS n=7; [주간 XLSX 518행 확보](../indexes/ALT-20260907-36/20260908T065043Z/README.md), 본신호 검정 보류 |
 | 086 | [Harvest Combine Diesel Pulse](086-harvest-combine-diesel-pulse/README.md) | 별도표 | 별도표 | HOLD — USDA 옥수수·대두 수확 진도 surprise → HO RV5는 IS +0.301이나 OOS +0.181, n=13·p=.553으로 재현 실패 |
 | 087 | [Chicken Wing Cold-Chain Index](087-chicken-wing-cold-chain-index/README.md) | 별도표 | 별도표 | REJECTED — USDA 주간 도계·냉동 가금 재고 복합 → HO RV5는 IS -0.063, OOS -0.179. 둘 다 유의하지 않음 |
 | 088 | [Borderline Diesel Index](088-borderline-diesel-index/README.md) | 별도표 | 별도표 | HOLD — BTS 국경 트럭 YoY → HO RV21은 총량 IS/OOS +0.066/-0.275; 캐나다 OOS -0.384은 IS +0.087과 불일치 |
@@ -229,7 +229,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 082 | [Korea Kitchen Oil Stress / Palm–WTI Cointegration](082-korea-kitchen-oil-stress/README.md) | 팜·대두·카놀라유·환율과 한국 식용유 가격의 원가 전가 | **HOLD** — 팜유–WTI 공적분은 검정 후보일 뿐, 선행성·시점·OOS 미검정 | 0.0 |
 | 083 | [Iced Americano Pass-Through](083-iced-americano-pass-through/README.md) | 커피(외식) CPI → 원화·국채·식품/급식 상대수익률 | **HOLD** — 공식 월별 CPI 원표·최초 공표일 패널 미확보; 세 자산 사양 모두 미검정 | 0.0 |
 | 084 | [Trailhead Tailgate Index](084-trailhead-tailgate-index/README.md) | 드라이브형 국립공원 방문 서프라이즈 → RBOB | **REJECTED** — RBOB 수익률 IS/OOS `-0.127/+0.186` 부호 반전; RV OOS `-0.282`는 n=23·IS 0 근처 | 0.0 |
-| 085 | [Watermelon Reefer Squeeze Index](085-watermelon-reefer-squeeze-index/README.md) | 수박 출하철 냉장 트럭 부족 → diesel/HO 물류 압력 | **HOLD** — 공개 분기 적재량 프록시는 HO 수익률 `+0.073/+0.465`이나 OOS n=7; 주간 shortage 본신호 미검정 | 0.0 |
+| 085 | [Watermelon Reefer Squeeze Index](085-watermelon-reefer-squeeze-index/README.md) | 수박 출하철 냉장 트럭 부족 → diesel/HO 물류 압력 | **HOLD** — 공개 분기 적재량 프록시는 HO 수익률 `+0.073/+0.465`이나 OOS n=7; [주간 XLSX 518행 확보](../indexes/ALT-20260907-36/20260908T065043Z/README.md), 본신호 검정 보류 | 0.0 |
 | 086 | [Harvest Combine Diesel Pulse](086-harvest-combine-diesel-pulse/README.md) | USDA 수확 진도 surprise → 난방유 변동성 | HOLD — USDA 옥수수·대두 수확 진도 surprise → HO RV5는 IS +0.301이나 OOS +0.181, n=13·p=.553으로 재현 실패 | 0.0 |
 | 087 | [Chicken Wing Cold-Chain Index](087-chicken-wing-cold-chain-index/README.md) | USDA 주간 도계·냉동재고 복합 → 난방유 변동성 | REJECTED — USDA 주간 도계·냉동 가금 재고 복합 → HO RV5는 IS -0.063, OOS -0.179. 둘 다 유의하지 않음 | 0.0 |
 | 088 | [Borderline Diesel Index](088-borderline-diesel-index/README.md) | BTS 국경 트럭 YoY → 난방유 수익률·변동성 | HOLD — BTS 국경 트럭 YoY → HO RV21은 총량 IS/OOS +0.066/-0.275; 캐나다 OOS -0.384은 IS +0.087과 불일치 | 0.0 |

@@ -95,7 +95,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 082 | Korea Kitchen Oil Stress / Palm–WTI Cointegration | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. 팜유–WTI Engle–Granger·잔차 평균회귀 후보; 한국 소매 식용유·USD/KRW·원료 역사/공개일 패널 및 IS/OOS 미검정 |
 | 083 | Iced Americano Pass-Through | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 적격성 검정. 커피(외식) CPI→USD/KRW·한국 3년물·식품/급식 상대수익률 3사양은 공식 월별 원표·최초 공표일 패널 부재로 미검정 |
 | 084 | Trailhead Tailgate Index | ⬜ 별도표 | ⬜ 별도표 | RBOB 108 월 | RBOB 23 월 | WTI 공통 타깃이 아닌 NPS 14개 드라이브형 공원 방문 YoY z-score × 다음 21거래일 RBOB 검정. 수익률 `-0.127/+0.186` 부호 반전, RV `-0.037/-0.282`은 IS 부재·작은 OOS로 기각 |
-| 085 | Watermelon Reefer Squeeze Index | ⬜ 별도표 | ⬜ 별도표 | HO 80 분기 | HO 7 분기 | WTI 공통 타깃이 아닌 공개 XLS 수박 분기 물량 YoY z-score → HO 21일 검정. 수익률 +0.073/+0.465, RV -0.103/-0.214이나 OOS n=7; 주간 shortage 본신호 미검정 |
+| 085 | Watermelon Reefer Squeeze Index | ⬜ 별도표 | ⬜ 별도표 | HO 80 분기 | HO 7 분기 | WTI 공통 타깃이 아닌 공개 XLS 수박 분기 물량 YoY z-score → HO 21일 검정. 수익률 +0.073/+0.465, RV -0.103/-0.214이나 OOS n=7; [주간 XLSX 518행 확보](../indexes/ALT-20260907-36/20260908T065043Z/README.md), 본신호 검정 보류 |
 | 086 | Harvest Combine Diesel Pulse | ⬜ 별도표 | ⬜ 별도표 | HO 85 주 | HO 13 주 | WTI 공통 타깃이 아닌 USDA 옥수수·대두 수확완료율의 평년 대비 surprise → 다음 5일 HO 검정. RV +0.301/+0.181; OOS p=.553·n=13으로 재현 실패. 수익률 -0.072/+0.373도 불안정 |
 | 087 | Chicken Wing Cold-Chain Index | ⬜ 별도표 | ⬜ 별도표 | HO 185 주 | HO 87 주 | WTI 공통 타깃이 아닌 USDA 도계 변화 + 냉동 기타 가금 재고감소의 52주 z 복합 → 다음 5일 HO 검정. RV -0.063/-0.179, 수익률 +0.094/+0.106. 모두 비유의; IS는 2019–2023 축소 구간 |
 | 088 | Borderline Diesel Index | ⬜ 별도표 | ⬜ 별도표 | HO 108 월 | HO 27 월 | BTS 캐나다·멕시코 미국 입국 truck crossings YoY → 다음 21일 HO 검정. 총량 RV +0.066/-0.275; 월말+6개월 지연. OOS 캐나다 -0.384은 IS +0.087과 불일치 |

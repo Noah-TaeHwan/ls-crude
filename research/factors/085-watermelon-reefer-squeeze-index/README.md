@@ -30,7 +30,7 @@ WTI 방향을 예측한다고 주장하지 않는다. 1차 타깃은 난방유 �
 
 ## 공개 XLS 분기 프록시 예비검정 — 2026-09-07
 
-주간 availability 본신호는 무료 API 키가 필요해 아직 쓰지 못했다. 대신 공개 XLS의 수박 분기 refrigerated shipment tons를 별도 예비 프록시로만 검정했다. 이는 본신호를 대체하지 않는다.
+당시에는 주간 availability API 경로를 키 미확보로 사용하지 못했다(2026-09-08 공개 XLSX 후속은 아래 참조). 대신 공개 XLS의 수박 분기 refrigerated shipment tons를 별도 예비 프록시로만 검정했다. 이는 본신호를 대체하지 않는다.
 
 - 표본: 2000Q1~2026Q1, 수박 행 993개를 분기 합산.
 - 신호: 전년동기 대비 분기 톤수의 20분기 rolling z-score.
@@ -55,3 +55,9 @@ USDA는 모든 상품·출하지의 움직임을 완전하게 포착한 수치�
 - [USDA Agricultural Refrigerated Truck Quarterly datasets](https://www.ams.usda.gov/services/transportation-analysis/agricultural-refrigerated-truck-quarterly-datasets)
 - [USDA Specialty Crops / My Market News](https://mymarketnews.ams.usda.gov/general-resources/Specialty-Crops)
 - [USDA National Truck Rate Report](https://mymarketnews.ams.usda.gov/viewReport/2375)
+
+## 2026-09-08 — 주간 본입력 수집 후속
+
+[ALT-20260907-36 실제 수집·그림·대사](../../indexes/ALT-20260907-36/20260908T065043Z/README.md): USDA 공식 무료 주간 XLSX를 키 없이 확보했다. **repo empirical only:** 수박 단독 518행/409개 날짜, 혼합 작물 행은 제외했다. 소수값을 반올림하지 않은 관측표를 구성했으며 마지막 수박 Date는 2025-10-14다. 원본 전체 마지막 날짜 2026-03-31과 구분한다.
+
+기존 분기 프록시 기각·가중치 0.0·HOLD를 유지한다. 소수 집계 방식과 최초 공개시점이 미확인이라 **52주 z-score와 새로운 HO/WTI 검정은 미실행**이다. 현 차단은 API 키가 아니라 자료의 정의·시점이며, 성찬님의 다음 검토는 같은 날짜·출하지 원보고서 대조다.
