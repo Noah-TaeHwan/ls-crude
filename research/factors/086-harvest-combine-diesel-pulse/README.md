@@ -51,3 +51,7 @@ IS의 변동성 상관은 흥미롭지만, **OOS에서 통계적으로 재현되
 - [USDA ESMIS Crop Progress archive](https://esmis.nal.usda.gov/publication/crop-progress)
 - [검정 기록](../../reports/2026-09-07-harvest-combine-diesel-pulse-test.md)
 
+## 091 쿠싱 맥락 브리지 — 불통과
+
+공개시점 이후의 EIA 쿠싱 재고를 다음 28일로만 붙이고, 겹침을 피하려 28일 간격으로 샘플링한 별도 탐색에서 순재고 변화는 `r=+0.229, p=.261, n=26`, 주간 재고변화 크기는 `r=-0.168, p=.411`이었다. 수확 진도 이례치를 쿠싱 재고 인출의 선행 신호라고 주장할 근거는 없다. 086은 기존의 HO 변동성 맥락 후보로만 유지한다. [상세 기록](../../reports/2026-09-08-cushing-context-bridge-test.md)
+

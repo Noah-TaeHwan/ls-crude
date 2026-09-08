@@ -77,6 +77,10 @@ CFAM은 거래 모델이 아니라 공개 운영관측 실험으로 보존한다
 
 따라서 4개를 합친 **Cushing Oil Stress Index는 실행하지 않았다.** 결측 입력을 0으로 처리하거나, WTI 가격·거래량·합성 변수를 대신 넣는 것은 이 조합의 검정이 아니다. 상세한 게이트 기록은 [`2026-09-08-cushing-observation-combination-gate.md`](../../reports/2026-09-08-cushing-observation-combination-gate.md)에 남긴다.
 
+### 외부 맥락 후보 브리지 — 052W · 086 · 090
+
+052W(전국 Wikipedia 불안 관심), 086(가을 수확), 090(겨울 결빙)을 실제 공개시점 기준으로 EIA 쿠싱 재고의 다음 28일 상태에 붙인 탐색도 완료했다. 각 신호의 순재고 변화 상관은 `+0.142` (n=101), `+0.229` (n=26), `-0.102` (n=91)로 모두 유의하지 않았다. 086과 090은 계절 창이 겹치지 않아 같은 날 조합이 0건이다. 이들은 쿠싱 활동 점수의 입력이 아니라 계절별 문맥 패널로만 보존한다. [검정 기록](../../reports/2026-09-08-cushing-context-bridge-test.md)
+
 ## 재현
 
 - 파일럿 스크립트: [`cushing_motel_lights_pilot.py`](../../notebooks/cushing_motel_lights_pilot.py)

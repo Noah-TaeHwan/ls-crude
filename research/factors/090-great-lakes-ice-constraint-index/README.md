@@ -80,3 +80,7 @@ AND low PADD 2 refinery utilization (weak local supply)
 - [NOAA GLERL Great Lakes ice cover](https://www.glerl.noaa.gov/data/ice/index.html)
 - [NOAA GLERL daily ice concentration ERDDAP](https://apps.glerl.noaa.gov/erddap/info/glerlIce/index.html)
 - [검정 기록](../../reports/2026-09-07-great-lakes-ice-constraint-test.md)
+
+## 091 쿠싱 맥락 브리지 — 불통과
+
+금요일 관측·다음날 이용가능 규칙과 28일 비중첩 샘플을 고정해 EIA 쿠싱 재고의 다음 28일을 본 결과, 순재고 변화 `r=-0.102, p=.336, n=91`, 주간 재고변화 크기 `r=+0.120, p=.257`이었다. 결빙 제약을 쿠싱 재고의 선행 신호로 추가하지 않는다. 또한 090은 12~4월, 086은 9~11월에만 관측되어 동시 조합 표본이 0건이므로 둘의 단일 스트레스 점수도 만들지 않는다. [상세 기록](../../reports/2026-09-08-cushing-context-bridge-test.md)
