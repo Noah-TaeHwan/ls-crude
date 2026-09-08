@@ -30,6 +30,7 @@
 | 091-N | 시청이 공개하는 기록 중 실제 활동 패널이 있는가 | 부서·재정·공항·회의문서의 공개 경로 | **PARK / E1** — 실제 페이지 4개 원문 확보; 의제 첨부문서만 월별 집계 가능성이 있고 새 패널은 미발견 |
 | 091-O | 공항이 실제로 바쁜가 | Jet-A/AvGas 판매·ramp stay·응급비행 지원 | **PARK / E1** — 실제 월간보고 4건을 개별 시각화 완료; 불연속·짧은 표본이라 연관 검정은 불가 |
 | 091-U | 직접 산업직 수요가 늘었는가 | 사전 고정 규칙을 통과한 Cushing 산업직 공고 | **FORWARD_ONLY / E1** — 실제 고신뢰 공고 4건의 1회 스냅샷; 90일 전향 패널 대기 |
+| 091-Y | 쿠싱 현지 운전자·트럭이 실제로 얼마를 내는가 | 고정 주유소 Regular/Diesel 공개 표시가격 | **FORWARD_ONLY / E1** — [Maverik 실제 1회 가격 표본·시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md) 완료; 현지 장기 패널이 없어 WTI 상관 검정 불가. 전국/주 평균으로 대체하지 않음 |
 | 091-X | 시장이 Cushing 대 Houston/Midland 흐름 압력을 어떻게 가격화하는가 | 일간 위치 스프레드 | **PARK / E1** — [Cushing EIA 실측 표본·두 외부 레그 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091XZ/README.md) 완료; 무료·동일정의 장기 쌍 패널 미확보, Brent 대체 금지 |
 | 091-W | 쿠싱 공기가 지금 어떤가 + 연간 시설 배출 구조는 어떤가 | AirCasting · DEQ · IQAir · 연간 배출량 | **PARK / E1** — 실시간 [원자료 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091WZ/README.md)는 완료했고 쿠싱 연속 공개 측정소·재현 가능한 원시 패널 없음. 반면 [DEQ 2024 연간 VOC/HAP 시설 발자국](../../indexes/091-cushing-operations-nowcasting/20260908T091WENVZ/README.md)은 실제 공식 표본·시각화 완료; 둘 다 CFAM과 분리 |
 | 091-V | 산업·상업·인프라 공사가 늘었는가 | City/County building permits 및 State DEQ 시설허가 | **PARK / E1** — City/County 장기 원장 미확보; DEQ 실제 시설심사 1건은 이벤트 경로일 뿐 월간 건설량 아님 |
