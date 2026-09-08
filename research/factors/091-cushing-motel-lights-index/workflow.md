@@ -195,6 +195,14 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 - p값은 소표본·계절성을 해소하지 않는 탐색적 기술치다.
 - 유의하지 않은 관계를 ML/DL·임계값·결측 대체로 살리지 않는다.
 
+## 광범위 검증 배터리 — 실제 장기 입력에 적용
+
+‘거의 모든 방법’은 무한히 많은 모델을 시도한다는 뜻이 아니라, **현재 데이터 형식에서 의미 있는 반증 방법을 사전에 고정해 모두 통과해야 한다**는 뜻으로 적용한다. 실제 장기 패널이 있는 입력은 야간광뿐이므로, 그 입력에 Pearson·Spearman·Kendall·winsor sensitivity·HAC/HC3 regression·moving-block bootstrap·random permutation·circular-shift null·leave-one-year-out·시간분할·expanding-window CV·원수준/계절정규화 민감도·시차 탐색 감사를 실행했다.
+
+결과는 [`20260908T091VZ`](../../indexes/091-cushing-operations-nowcasting/20260908T091VZ/README.md)에 고정했다. 96개 월간 관측에서 계절정규화 야간광은 이후 28일 재고 순변화에 `r=+.053`, block-bootstrap 95% CI `[-.073,+.188]`, circular p `.625`, CV R² `-.033`이며, 재고 변화 크기에도 `r=+.068`, CI `[-.071,+.258]`, circular p `.583`, CV R² `-.133`이다. 따라서 091-B는 **KILL as quantitative input**이다.
+
+이 결과는 야간광을 ‘쿠싱이 바쁨’의 진짜값으로 검증한 결과가 아니다. 호텔·트럭·운영공지처럼 서로 독립적인 장기 운영 관측 두 개 이상과 실제 공개 시점이 확보되기 전에는 CFAM 0–100 점수·ML/DL 모델·거래 지표를 만들지 않는다.
+
 ## 재현·근거
 
 - 통합 관측판: [2026-09-08 Cushing Observation Board](../../reports/2026-09-08-cushing-observation-board.md)
