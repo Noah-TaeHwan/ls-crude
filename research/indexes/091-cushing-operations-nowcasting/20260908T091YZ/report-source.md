@@ -70,6 +70,16 @@ tested. The free EIA daily Cushing WTI series solves the crude leg, but it does
 not transform archive captures into a designed local-retail panel. [EIA Cushing
 WTI](https://www.eia.gov/dnav/pet/hist/leafhandler.ashx?f=a&n=pet&s=rwtc)
 
+### Monthly-series robustness
+
+The supplied official EIA `RWTCm.xls` workbook was independently read as a
+monthly robustness check. It spans 1986-01 through 2026-08. Calendar-month
+matching reduces the descriptive correlations to `r=+0.865` for Regular and
+`r=+0.852` for Diesel. The exact five-item permutation p-values are `.058` and
+`.092`. The current 2026-09 display had to use August's last released monthly
+value, which makes the check deliberately conservative but also unsuitable for
+a timing claim. The input/output table is retained in [the raw receipt](raw/maverik-wayback-monthly-rwtc-robustness-20260908.csv).
+
 ## Why “high Cushing gasoline/diesel” is not WTI alpha
 
 1. **The station sells refined products, not Cushing-delivered crude.** Product

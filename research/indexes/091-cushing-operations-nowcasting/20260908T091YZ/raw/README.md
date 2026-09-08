@@ -16,3 +16,10 @@ also checked: the former supplies identity only (no displayed price) and the
 latter duplicates the 2025-12 Maverik capture. It is an exploratory `n=5`
 sample only. SHA-256:
 `d0c378a312f807390c5952eb84010c6a84eb882709d7d0661207cf5dedf3f53a`.
+
+`maverik-wayback-monthly-rwtc-robustness-20260908.csv` uses the supplied EIA
+`RWTCm.xls` workbook, read-only. It records an explicit calendar-month match
+for four archive points and the unavoidable 2026-09 live-price/2026-08
+monthly-RWTC mismatch. It is a robustness table, not an extra historical
+station-price source. SHA-256:
+`6fdeec4e019a248b2f12c4274c04e377d3f3cbf3f6384e404fc0ceaac03ca947`.
