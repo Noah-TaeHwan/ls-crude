@@ -20,6 +20,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 - [Current Cushing pump-price board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md)
 - [2026-09-08 supplied-source audit: ODOT · FAA · OilPriceAPI · MacroMicro · DeFlock/OSM](../../indexes/091-cushing-operations-nowcasting/20260908T091SOURCEZ/README.md)
 - [091-Z free local-news cue monitor](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md)
+- [091-U/Y/Z forward observation panel](../../indexes/091-cushing-operations-nowcasting/forward-panel/README.md)
 - [Rail · industrial-waste · diesel–gasoline feasibility audit](../../indexes/091-cushing-operations-nowcasting/20260908T091RWDTZ/README.md)
 - [Five-track combination plan](../../reports/2026-09-08-cfam-five-track-combination-plan.md)
 - [Completed validation battery](../../indexes/091-cushing-operations-nowcasting/20260908T091VZ/README.md)
@@ -33,6 +34,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 | [091-YD Diesel–Gasoline Dislocation](../../indexes/091-cushing-operations-nowcasting/20260908T091RWDTZ/README.md#091-yd--cushing-dieselgasoline-retail-dislocation-board) | Fixed-station diesel minus regular-gasoline display price | FORWARD ONLY | Local product-price differential; not diesel gallons, truck volume or terminal throughput |
 | [091-YD Deep Check](../../indexes/091-cushing-operations-nowcasting/20260908T091YDEEPZ/README.md) | Long Oklahoma retail proxy versus Cushing WTI | VALIDATED AS PASS-THROUGH | WTI→retail is strong (`r=.680` same month; `.340` next month); retail→future WTI is not (`r=.105`) |
 | [091-Z News Cue Monitor](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) | Publicly reported industrial/news events | FORWARD ONLY | Free KUSH and Google News feeds; human-reviewed event queue, not a busyness score |
+| [091-U/Y/Z forward panel](../../indexes/091-cushing-operations-nowcasting/forward-panel/README.md) | Scheduled hiring, local fuel-price and public-news observations | COLLECTION STARTED | The 2026-09-08 values are an unscheduled baseline; fixed-cadence panel collection begins without treating it as historical evidence |
 | [091-V Permit Event Log](../../indexes/091-cushing-operations-nowcasting/20260908T091PARKZ/README.md) | Public DEQ industrial-permit status events | FORWARD ONLY | Facility/status review log; not a count of construction or local busyness |
 | [091-V2 Regulatory Event Pulse](../../indexes/091-cushing-operations-nowcasting/20260908T091V2Z/README.md) | Frozen-facility DEQ status transitions | FORWARD ONLY | Dated human-reviewed event ledger; initial three rows are visualized, not statistically tested |
 | [091-S Quick-service activity](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md) | Google Maps live busy labels at six fixed locations | FORWARD ONLY | 90-day manual activity-observation pilot |
