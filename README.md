@@ -4,7 +4,7 @@
 
 East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜타곤 피자 인덱스는 **활동 → 민감한 맥락 → 시장과의 가능한 관계**를 생각하는 참고 패턴입니다. 피자 주문을 복제하거나 특정 데이터·양의 상관을 찾아내는 것이 완료 조건은 아닙니다.
 
-현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-07 [신규 원장](research/candidates/ledger.csv)은 병렬 탐색과 보관된 포지셔닝·관심도 탐색을 합친 **48행(KEEP 4 / PARK 34 / KILL 10)**입니다. KEEP은 18·21·31·32이며 후속 연구 배정을 뜻합니다. 새로 검증된 예측 지수는 없습니다. [통합·복구 기록](research/reports/2026-09-07-research-convergence.md)에 번호 대응과 재현 한계를 남겼습니다. [기존 팩터 이력](research/factors/README.md)은 별도로 보존합니다.
+현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-08 로컬 [원장](research/candidates/ledger.csv)은 **63행(KEEP 4 / PARK 48 / KILL 11)**입니다(repo empirical only). 이번 공동 헌트는 기존 8개 ID를 재검토했으며 새 발견 8개로 합산하지 않습니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
 
 | 항목 | 기준 |
 | --- | --- |
@@ -15,24 +15,22 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 | 역할·일정 | [PM 계획](docs/project-plan.md): Noah 데이터·기록·데모, 성찬 검정·반증, 상호 검토 **제안** |
 | 기존 웹 | [LS CRUDE](https://ls-crude.vercel.app) · 시장 관측/기존 연구 장부. 이번 패스에서 배포 상태를 검증하지 않음 |
 
-## Current research status — 2026-09-07
+## Current research status — 2026-09-08
 
-| 지금 보여줄 것 | 근거 / 다음 행동 |
+[공동 헌트: 점수·접근·차단·3분 데모·검토](research/gathering/notes/2026-09-08-joint-hunt.md) · [문헌 메모와 주석 후보표](research/gathering/notes/2026-09-08-joint-academic-memo.md).
+
+| 이번 우선순위 / 상태 | 근거와 다음 행동(09-09, 사람 배정 제안) |
 | --- | --- |
-| **01 Locks 27 곡물 바지선 — PARK** | [실제 지수·그림·18개 검정](research/indexes/ALT-20260907-01/README.md). 다음 달 WTI 수익률과 학습 `r=0.169, n=52`, 내부 검증 `r=-0.066, n=35` (repo empirical only). 공개 빈티지 미복원, 안정된 방향 관계 미확인. 손성찬: 과거 발행본 대조. |
-| **04 PortWatch / 07 GPR — PARK** | [04](research/candidates/ALT-20260907-04.md)는 2019–2023 기간 메타데이터, [07](research/candidates/ALT-20260907-07.md)은 공개 파일·빈티지 경로 확인. 실제 과거 공개값 패널과 검정은 미실행. 오태환: 권리/빈티지 조인 확인. |
-| **02 LA항 / 03 TSA — PARK** | 역사 URL 직접 취득은 각각 403. 공식 페이지 열람·현재 페이지 접근과 구분한다. [02](research/candidates/ALT-20260907-02.md) 손성찬 / [03](research/candidates/ALT-20260907-03.md) 오태환: 허용 수동 취득 확인. |
-| **05 Nightfire / 06 Black Marble — PARK** | [05](research/candidates/ALT-20260907-05.md)는 현 라이선스 승인 미확인. [06](research/candidates/ALT-20260907-06.md)은 파일 HEAD 접근 성공, AOI·QA·빈티지 조인 미구축. 인증 차단으로 오기하지 않음. |
-| **08 피자 인기시간대 — KILL** | [방문 상대값과 주문량의 측정 불일치, 검토한 API의 역사 경로 부재](research/candidates/ALT-20260907-08.md). 피자 주문·기관 활동을 추정하는 현재 방식 종료. |
+| **01 Locks27 — PARK** | [주간 변형·실제 계산·그림](research/indexes/joint-hunt-20260908/README.md). 기존 월간 결과와 별도 탐색. 손성찬: 당시 공개 빈티지 대사. |
+| **07 GPR / 02 LA항 — PARK** | [07](research/candidates/ALT-20260907-07.md)은 빈티지 패널 연결 대기. [02](research/candidates/ALT-20260907-02.md)는 2개월 수출 TEU 대사만 확보, 장기 패널·공표일·권리 미확인. Noah: 빈티지 연결 / 성찬: 허용 취득. |
+| **06 Black Marble — PARK** | [v2 QA 조건](research/candidates/ALT-20260907-06.md)을 명확히 함. Noah: 산업/대조 AOI·QA0·실제 관측 분모 고정. 모텔 투숙객 지수 아님. |
+| **04 PortWatch — PARK, E2** | [기존 계산 결함](research/gathering/notes/2026-09-08-joint-hunt.md#04-기존-검정-증거-하향)으로 E3 하향. 이전 숫자의 관계 근거 재사용 중지. Noah: 원 거래일축·가격창·타깃 경계 수정 계획. |
+| **03 TSA / 05 Nightfire — PARK** | 역사 접근·짧은 표본 / 이용 승인 차단 유지. [03](research/candidates/ALT-20260907-03.md) Noah / [05](research/candidates/ALT-20260907-05.md) 성찬. |
+| **08 인기시간대 — KILL** | [방문 상대값과 역사 주문량의 불일치](research/candidates/ALT-20260907-08.md). 현 방식 종료 유지. |
 
-[문헌 메모와 주석 후보표](research/gathering/notes/2026-09-07-activity-proxy-literature.md) · [8개 점수·접근 기록·3분 데모·목표 검토](research/gathering/notes/2026-09-07-activity-proxy-hunt.md). 점수는 조사 우선순위에 대한 판단이며 성과 수치가 아닙니다. 담당/09-08 행동은 제안이며 사람의 수락·재현 검토는 미실행입니다.
+재현: `research/.venv/bin/python research/notebooks/joint-hunt-20260908/run.py`. 입력·명령·가정은 [실행 안내](research/notebooks/joint-hunt-20260908/README.md)를 따른다. 원본 없는 팀원의 동일 빈티지 재현은 미검증이다. 이번 변경은 연구 기록이며 앱·배포 검증이 아니다.
 
-실제 입력을 가진 팀원은 아래로 재현합니다. 원본이 없으면 [수집·환경 안내](research/notebooks/ALT-20260907-01/README.md)를 먼저 따릅니다.
-
-```bash
-research/.venv/bin/python research/notebooks/ALT-20260907-01/hunt.py check
-research/.venv/bin/python research/notebooks/ALT-20260907-01/hunt.py analyze --candidate 01 --raw research/gathering/raw/ALT-20260907-01/20260907T062017Z
-```
+아래는 **2026-09-07 당시 이력**이다. 전체 현재 수와 혼합하지 않는다. 특히 04의 과거 관계 수치는 위 재검토 판정이 우선한다.
 
 ### 피자급 09–17
 
