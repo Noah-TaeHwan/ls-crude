@@ -1,0 +1,15 @@
+{
+  "accepted_rows": 0,
+  "collector": "calmf.py",
+  "daily_observation_days": 0,
+  "error": null,
+  "executed_at_utc": "2026-09-08T13:49:11Z",
+  "input_path": null,
+  "input_rows": 0,
+  "input_sha256": null,
+  "milestone_events": 0,
+  "output_path": "data\\calmf_weekly.csv",
+  "output_rows": 0,
+  "rejected_rows": 0,
+  "status": "park_no_reproducible_weekly_inputs"
+}

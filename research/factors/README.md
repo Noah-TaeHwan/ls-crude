@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–091은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–092는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## Current research status (2026-09-07)
@@ -41,7 +41,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 
 ## 라이브 상관관계 스코어보드
 
-**마지막 WTI 계산**: 2026-09-03 · **직접 에너지 타깃 최신 추가**: 090은 2026-09-07, 091은 2026-09-08 탐색 파일럿이다. 공통 WTI 타깃은 신호 공개 뒤 다음 5거래일 실현변동성이다. 월간 입력(011, 015, 022, 027, 030, 042–045, 088–089, 091)은 다음 21거래일, 연간 004는 다음 완전연도를 사용한다. 090은 겨울 일별 신호 → 다음 5거래일 HO 변동성이다.
+**마지막 WTI 계산**: 2026-09-03 · **직접 에너지 타깃 최신 추가**: 090은 2026-09-07, 091은 2026-09-08 탐색 파일럿이다. 092는 source gate만 실행했다. 공통 WTI 타깃은 신호 공개 뒤 다음 5거래일 실현변동성이다. 월간 입력(011, 015, 022, 027, 030, 042–045, 088–089, 091)은 다음 21거래일, 연간 004는 다음 완전연도를 사용한다. 090은 겨울 일별 신호 → 다음 5거래일 HO 변동성이다.
 
 이 표는 각 카드의 검증 헤더와 [상세 검증 로그](../reports/2026-09-03-factor-validation-share.md)를 요약한 **정식 라이브 매트릭스**다. `—`는 0이 아니라 적법한 공개 장기 신호·공개시점·표본이 아직 갖춰지지 않아 계산하지 못했다는 뜻이다. 새 수집·재계산은 카드, 이 표, 상세 로그를 같은 커밋에서 함께 갱신한다.
 
@@ -138,6 +138,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 089 | [Friday Escape Velocity](089-friday-escape-velocity/README.md) | 별도표 | 별도표 | HOLD — BTS 월간 항공 복합 → HO RV21은 IS/OOS +0.061/-0.567 부호 반전; Friday 자체는 무료 월간 집계에서 미측정 |
 | 090 | [Great Lakes Ice Constraint Index](090-great-lakes-ice-constraint-index/README.md) | 별도표 | 별도표 | HOLD — NOAA 결빙 90일 z → HO RV5는 IS/OOS -0.103/-0.228으로 약한 동일방향이나 비유의; 실제 쇄빙·지연 미측정 |
 | 091 | [Cushing Field Activity Monitor (CFAM)](091-cushing-motel-lights-index/README.md) | 별도표 | 별도표 | HOLD — 호텔세 14개월 파일럿 미통과; CFAM 공개 야간광→이후 28일 쿠싱 재고 `r=+0.053` (p=.607, n=96), 변화폭 `r=+0.068` (p=.508)도 관계 없음 |
+| 092 | [Cushing Last-Mile Logistics Feasibility (CALMF)](092-cushing-last-mile-logistics-feasibility/README.md) | — | — | PARK — Cushing/Payne County Amazon/Flex presence와 허용된 일별 route/block 집계가 미검증; WTI 검정 미실행 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -236,6 +237,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 089 | [Friday Escape Velocity](089-friday-escape-velocity/README.md) | BTS 월간 항공수요 → 난방유·RBOB 변동성 | HOLD — BTS 월간 항공 복합 → HO RV21은 IS/OOS +0.061/-0.567 부호 반전; Friday 자체는 무료 월간 집계에서 미측정 | 0.0 |
 | 090 | [Great Lakes Ice Constraint Index](090-great-lakes-ice-constraint-index/README.md) | NOAA 결빙 제약 → 난방유 변동성 | HOLD — NOAA 결빙 90일 z → HO RV5는 IS/OOS -0.103/-0.228으로 약한 동일방향이나 비유의; 실제 쇄빙·지연 미측정 | 0.0 |
 | 091 | [Cushing Field Activity Monitor (CFAM)](091-cushing-motel-lights-index/README.md) | 쿠싱 숙박세·도시권 야간광 → 지역 운영 맥락 | HOLD — 호텔세 14개월 WTI 파일럿과 96개월 CFAM 야간광→이후 28일 EIA 쿠싱 재고 검정 모두 관계 없음. 도시 활동 연구로만 보존 | 0.0 |
+| 092 | [Cushing Last-Mile Logistics Feasibility (CALMF)](092-cushing-last-mile-logistics-feasibility/README.md) | Cushing/Payne County last-mile 관측 가능성 | PARK — driver posting·Flex block·facility milestone은 완료 배송량이 아니며, 허용된 연속 공개 패널이 없어 WTI/에너지 검정 미실행 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
