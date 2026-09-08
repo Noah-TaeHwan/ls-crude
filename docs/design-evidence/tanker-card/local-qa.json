@@ -1,0 +1,27 @@
+{
+  "surface": "ego task79 local5178",
+  "viewports": [
+    1440,
+    1024,
+    390,
+    320
+  ],
+  "overflow": false,
+  "desktopColumns": 2,
+  "mobileColumns": 1,
+  "route": "/observations/tankers",
+  "monthlyRows": 12,
+  "latestMonth": "2026-07",
+  "latestCounts": {
+    "oil": 1568,
+    "chemical": 468,
+    "gas": 231,
+    "total": 2267
+  },
+  "keyboardDetails": "Enter opens native details",
+  "stalePolicy": "local QA Date.now+49h -> stale; restored -> monthly; underlying dates preserved",
+  "tests": 16,
+  "sourceErrorCases": "node injected failures; not live fault injection",
+  "screenReader": "NOT_TESTED",
+  "production": "pending"
+}

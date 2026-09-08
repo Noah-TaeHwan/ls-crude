@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { TankerObservation } from "~/components/tanker-observation";
+import { readTankerArrivals } from "~/lib/tanker-arrivals.server";
 import { VisibilityObservation } from "~/components/visibility-observation";
 import { readVisibility } from "~/lib/visibility.server";
 import { WtiDailyChart } from "~/components/wti-daily-chart";
@@ -34,8 +36,8 @@ export function meta({}: Route.MetaArgs) {
 
 /** @returns 실제 시장 관측과 현재 연구 정본. */
 export async function loader({}: Route.LoaderArgs) {
-  const [daily, visibility] = await Promise.all([readWtiDaily(), readVisibility()]);
-  return { daily, visibility, checkedAt: new Date().toISOString(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
+  const [daily, visibility, tankers] = await Promise.all([readWtiDaily(), readVisibility(), readTankerArrivals()]);
+  return { daily, visibility, tankers, checkedAt: new Date().toISOString(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
 }
 
 /** @returns 공개 화면의 읽기 전용 응답. */
@@ -48,7 +50,7 @@ export function action({}: Route.ActionArgs) {
  * @param props 라우트 데이터.
  * @returns 공개 연구 데스크.
  */
-export default function Home({ loaderData: { market, ledger, intake, daily, visibility, checkedAt } }: Route.ComponentProps) {
+export default function Home({ loaderData: { market, ledger, intake, daily, visibility, tankers, checkedAt } }: Route.ComponentProps) {
   const revalidator = useRevalidator();
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -86,7 +88,10 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
         </section>
 
         <MarketContext market={market} candidateScope={story.scope} daily={daily} />
-        <VisibilityObservation view={visibility} checkedAt={checkedAt} />
+        <section id="observations" className="py-10 sm:py-12" aria-labelledby="observations-title">
+          <div className="section-heading"><div><p className="section-kicker">02 / FIELD NOTES</p><h2 id="observations-title">원유 시장 주변의 관측</h2></div><p>무엇을 측정하는지, 얼마나 자주 갱신되는지부터 살펴봅니다.</p></div>
+          <div className="grid gap-6 lg:grid-cols-2"><VisibilityObservation view={visibility} checkedAt={checkedAt} compact /><TankerObservation view={tankers} checkedAt={checkedAt} /></div>
+        </section>
         <ResearchIntake {...intake} preview />
 
         <section className="py-10 sm:py-12" aria-labelledby="bridge-title">

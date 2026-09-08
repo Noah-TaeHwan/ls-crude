@@ -174,6 +174,21 @@ test("serves the public evidence brief routes from the repository root", async (
     const visibilityPost = await fetch(`${baseUrl}/observations/visibility`, { method: "POST", body: new URLSearchParams() });
     assert.equal(visibilityPost.status, 405);
 
+    assert.match(body, /id="visibility-observation"/);
+    assert.match(body, /id="tanker-observation"/);
+    assert.match(body, /href="\/observations\/tankers"/);
+    const tankers = await fetch(`${baseUrl}/observations/tankers`);
+    assert.equal(tankers.status, 200);
+    const tankerBody = await tankers.text();
+    assert.match(tankerBody, /MPA · 월간 입항/);
+    assert.match(tankerBody, /탱커는 얼마나 드나들까/);
+    assert.match(tankerBody, /ALT-20260907-26/);
+    assert.match(tankerBody, /Singapore Open Data Licence/);
+    assert.doesNotMatch(tankerBody, /id="wti-daily-chart"/);
+    assert.doesNotMatch(tankerBody, /<details[^>]* open/);
+    const tankerPost = await fetch(`${baseUrl}/observations/tankers`, { method: "POST", body: new URLSearchParams() });
+    assert.equal(tankerPost.status, 405);
+
     const research = await fetch(`${baseUrl}/research`);
     assert.equal(research.status, 200);
     const researchBody = await research.text();
