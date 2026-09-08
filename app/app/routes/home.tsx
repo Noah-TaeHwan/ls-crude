@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ResearchIntake } from "~/components/research-intake";
 import { readResearchIntake } from "~/lib/research-intake.server";
-import { data, Link } from "react-router";
+import { data, Link, useRevalidator } from "react-router";
 import { ArrowRight, ArrowUpRight, Search, ArrowDown } from "lucide-react";
 
 import type { Route } from "./+types/home";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
+import { readWtiQuote, type WtiQuoteView } from "~/lib/wti-quote.server";
 import { readWtiMarketSnapshot } from "~/lib/market-snapshot.server";
 import { readResearchLedger } from "~/lib/research-ledger.server";
 import { RESEARCH_STORIES } from "~/lib/research-ledger";
@@ -33,8 +34,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 /** @returns 실제 시장 관측과 현재 연구 정본. */
-export function loader({}: Route.LoaderArgs) {
-  return { market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
+export async function loader({}: Route.LoaderArgs) {
+  return { quote: await readWtiQuote(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
 }
 
 /** @returns 공개 화면의 읽기 전용 응답. */
@@ -47,7 +48,14 @@ export function action({}: Route.ActionArgs) {
  * @param props 라우트 데이터.
  * @returns 공개 연구 데스크.
  */
-export default function Home({ loaderData: { market, ledger, intake } }: Route.ComponentProps) {
+export default function Home({ loaderData: { market, ledger, intake, quote } }: Route.ComponentProps) {
+  const revalidator = useRevalidator();
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      if (document.visibilityState === "visible" && revalidator.state === "idle") void revalidator.revalidate();
+    }, 5 * 60 * 1000);
+    return () => window.clearInterval(timer);
+  }, [revalidator]);
   const [storyIndex, setStoryIndex] = useState(2);
   const story = RESEARCH_STORIES[storyIndex];
   const record = ledger.records.find((item) => item.id === story.id);
@@ -111,7 +119,7 @@ export default function Home({ loaderData: { market, ledger, intake } }: Route.C
           </div>
         </section>
 
-        <MarketContext market={market} candidateScope={story.scope} />
+        <MarketContext market={market} candidateScope={story.scope} quote={quote} />
 
         <section className="py-10 sm:py-12" aria-labelledby="open-title">
           <div className="section-heading"><div><p className="section-kicker">03 / WHAT REMAINS OPEN</p><h2 id="open-title">다음 단계는, 빈칸을 확인하는 일.</h2></div><Link className="source-link" to="/research#method">전체 검증 절차 <ArrowRight size={14} aria-hidden="true" /></Link></div>
@@ -132,7 +140,7 @@ export default function Home({ loaderData: { market, ledger, intake } }: Route.C
  * @param props 시장 스냅샷과 선택 사례의 확보 범위.
  * @returns 범위·날짜 탐색이 가능한 WTI 관측.
  */
-function MarketContext({ market, candidateScope }: { market: WtiMarketView; candidateScope: string }) {
+function MarketContext({ market, candidateScope, quote }: { market: WtiMarketView; candidateScope: string; quote: WtiQuoteView }) {
   const [range, setRange] = useState(60);
   const [selected, setSelected] = useState<number | null>(null);
   const [metric, setMetric] = useState<"rv5" | "rv20">("rv5");
@@ -157,7 +165,15 @@ function MarketContext({ market, candidateScope }: { market: WtiMarketView; cand
   return (
     <section id="market" className="market-section" aria-labelledby="market-title">
       <div className="section-heading"><div><p className="section-kicker">02 / WTI CONTEXT</p><h2 id="market-title">가설의 배경이 되는 원유 시장</h2></div><span className="data-status" data-freshness={market.freshness}><span aria-hidden="true" />{market.freshness === "fresh" ? "최근 완료 일봉" : market.freshness === "stale" ? "최신성 확인" : "관측 데이터 없음"}</span></div>
-      <p className="mt-3 text-sm leading-7 text-muted-foreground">아래는 이미 끝난 구간의 가격과 실현변동성입니다. 연구 타깃인 ‘신호 공개 이후의 변동성’과 구분합니다.</p>
+      <p className="mt-3 text-sm leading-7 text-muted-foreground">최근 수신 시세와 완료 일봉을 분리해서 보여줍니다. 실현변동성은 완료 일봉으로만 계산합니다.</p>
+      <div className="evidence-note mt-6" aria-label="Yahoo 최근 수신 시세">
+        <h3 className="text-sm font-medium">WTI · CL=F 최근 수신 시세</h3>
+        <p className="mt-2 font-mono text-4xl text-watching">{number(quote.quote?.price)} <span className="text-sm">USD</span></p>
+        <p className="mt-3 text-sm leading-7 text-muted-foreground">{quote.quote ? `시세 시각 ${new Date(Date.parse(quote.quote.observedAt) + 9 * 3600000).toISOString().slice(0, 19).replace("T", " ")} KST · 조회 시각 ${new Date(Date.parse(quote.quote.fetchedAt) + 9 * 3600000).toISOString().slice(0, 19).replace("T", " ")} KST` : "현재 시세를 확보하지 못했습니다. 아래 완료 일봉은 별도 자료입니다."}</p>
+        <p className="mt-2 text-xs leading-6 text-muted-foreground">페이지를 열 때 확인하고, 보이는 화면은 5분마다 자동 확인합니다. Yahoo 제공 지연과 휴장 시각이 포함될 수 있으며 확정 종가·공식 정산가가 아닙니다. 아래 차트·변동성에는 이 시세를 섞지 않습니다.</p>
+        {quote.error && <p role="status" className="mt-3 text-sm text-primary">{quote.error}</p>}
+        <button type="button" className="filter-button mt-3" onClick={() => window.location.reload()}>시세 다시 확인</button>
+      </div>
       {snapshot ? (
         <div className="market-layout mt-6">
           <div className="market-chart">
