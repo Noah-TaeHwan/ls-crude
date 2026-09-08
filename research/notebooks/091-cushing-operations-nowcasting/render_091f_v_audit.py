@@ -29,7 +29,8 @@ def main() -> None:
     frame["use_to_sales_ratio"] = frame["use_tax_usd"] / frame["sales_tax_usd"]
     frame.to_csv(OUT / "091f_three_month_tax_split.csv", index=False)
 
-    fig, (ax, gate) = plt.subplots(2, 1, figsize=(10, 7.4), constrained_layout=True, height_ratios=[1.25, 1])
+    fig, (ax, gate) = plt.subplots(2, 1, figsize=(13, 9.2), height_ratios=[1, 1])
+    fig.subplots_adjust(left=.28, right=.95, top=.93, bottom=.10, hspace=.82)
     ax.plot(frame["tax_month"], frame["use_to_sales_ratio"] * 100, color="#4f936d", marker="o", linewidth=2.5)
     for x, y in zip(frame["tax_month"], frame["use_to_sales_ratio"] * 100):
         ax.annotate(f"{y:.1f}%", (x, y), textcoords="offset points", xytext=(0, 8), ha="center", fontsize=10)
@@ -37,7 +38,7 @@ def main() -> None:
     ax.set_ylabel("use tax / sales tax")
     ax.set_title("091-F — exact public tax split: three common tax months", loc="left", fontweight="bold")
     ax.grid(axis="y", alpha=.25)
-    ax.text(0, -.26, "Descriptive only: the ratio rises 11.5% → 19.2% → 25.3%, but n=3 cannot establish a residual, seasonality, materials inflow, or Cushing activity relationship.", transform=ax.transAxes, fontsize=8.6)
+    ax.set_xlabel("Tax month — descriptive sample only; n=3")
 
     rows = ["Municipal building-permit count", "County building-permit count", "State DEQ industrial permit record"]
     state = ["not public", "not found", "one actual public record"]
@@ -50,7 +51,7 @@ def main() -> None:
     gate.set_xticks([])
     gate.invert_yaxis()
     gate.set_title("091-V — data-access audit, not a permit-volume model", loc="left", fontweight="bold")
-    gate.text(0, 1.12, "DEQ provides a dated facility review, but it is an environmental-permit workflow—not a building/construction count.", transform=gate.transAxes, fontsize=8.6)
+    gate.set_xlabel("Public data route status — not a permit-volume time series")
     for spine in gate.spines.values():
         spine.set_visible(False)
 
