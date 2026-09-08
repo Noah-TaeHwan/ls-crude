@@ -126,7 +126,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 077 | Korea Pump Pass-Through & Station Freeze | — | — | HOLD — 지역가격 역사·개별 주유소 스냅샷·공표시점 미감사; 국내 전가 모니터 후보 |
 | 078 | Korea Freight & Port Fuel Pulse | — | — | HOLD — 차종 정의·역사 연속성·첫 공개일 미수집; 교통·항만 집계 후보 |
 | 079 | Korea Naphtha Export Thermometer | — | — | HOLD — HS 바스켓·역사·공개일·개정 빈티지 미고정; 월간 무역 후보 |
-| 080 | Korea Fuel-Switch Dispatch Alert | — | — | HOLD — 연료별 발전량의 연속 역사·개정·공표시점 미감사; 연료전환 후보 |
+| 080 | Korea Fuel-Switch Dispatch Alert | — | — | HOLD — [제주 336일 보조관측 확보](../indexes/ALT-20260908-20/20260908T073402Z/README.md); 전국 연속 역사·개정·공표시점·WTI 미검증 |
 | 081 | Korea LPG Substitution Pulse | — | — | HOLD — 실제 차량·연료 판매·운행거리 장기 패널과 공개일 미확보; 상대가격 후보 |
 | 082 | Korea Kitchen Oil Stress / Palm–WTI Cointegration | — | — | HOLD — 한국 식용유 장기 소매가격·공개일·개정 이력 미확보; 팜유–WTI 공적분·선행성·OOS 미검정 |
 | 083 | Iced Americano Pass-Through | — | — | HOLD — 커피(외식) CPI의 월별 최초 공표일 패널이 없어 세 자산 사양 미검정 |
@@ -224,7 +224,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 077 | [Korea Pump Pass-Through & Station Freeze](077-korea-pump-pass-through-station-freeze/README.md) | 지역별 주유소 가격 전가·동결·분산 | **HOLD** — Opinet의 공식 지역 일평균은 확인; 개별 주유소 역사·공표시점은 미감사 | 0.0 |
 | 078 | [Korea Freight & Port Fuel Pulse](078-korea-freight-port-fuel-pulse/README.md) | 차종별 고속도로 흐름 × 산업항만 처리 | **HOLD** — 공식 집계 후보는 있으나 차종 정의·장기 공개일 패널 미수집 | 0.0 |
 | 079 | [Korea Naphtha Export Thermometer](079-korea-naphtha-export-thermometer/README.md) | 나프타·석유화학 무역 수량/단가 괴리 | **HOLD** — 관세청 월간 통계 후보; HS 범위·빈티지·공개일 미고정 | 0.0 |
-| 080 | [Korea Fuel-Switch Dispatch Alert](080-korea-fuel-switch-dispatch-alert/README.md) | 전력 연료믹스의 유류 발전 전환 | **HOLD** — KPX 연료별 발전량 후보의 연속 역사·정의·공개일 미감사 | 0.0 |
+| 080 | [Korea Fuel-Switch Dispatch Alert](080-korea-fuel-switch-dispatch-alert/README.md) | 전력 연료믹스의 유류 발전 전환 | **HOLD** — [제주 336일 보조관측 확보](../indexes/ALT-20260908-20/20260908T073402Z/README.md); 전국·세부연료·공개일·WTI 미검증 | 0.0 |
 | 081 | [Korea LPG Substitution Pulse](081-korea-lpg-substitution-pulse/README.md) | LPG–휘발유/경유 상대가격과 차량 연료 대체 | **HOLD** — 가격은 공개 후보이나 실제 연료전환·소비 장기 패널 미확보 | 0.0 |
 | 082 | [Korea Kitchen Oil Stress / Palm–WTI Cointegration](082-korea-kitchen-oil-stress/README.md) | 팜·대두·카놀라유·환율과 한국 식용유 가격의 원가 전가 | **HOLD** — 팜유–WTI 공적분은 검정 후보일 뿐, 선행성·시점·OOS 미검정 | 0.0 |
 | 083 | [Iced Americano Pass-Through](083-iced-americano-pass-through/README.md) | 커피(외식) CPI → 원화·국채·식품/급식 상대수익률 | **HOLD** — 공식 월별 CPI 원표·최초 공표일 패널 미확보; 세 자산 사양 모두 미검정 | 0.0 |

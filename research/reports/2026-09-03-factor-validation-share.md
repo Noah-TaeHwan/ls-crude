@@ -90,7 +90,7 @@ WTI 이외의 직접 에너지 타깃 검정은 이 표에 섞지 않으며, [�
 | 077 | Korea Pump Pass-Through & Station Freeze | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. Opinet 지역 일평균 가격 후보는 확인했지만 역사·개별 주유소·실제 공표시점 패널 미수집; WTI/변동성 검정 전 |
 | 078 | Korea Freight & Port Fuel Pulse | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. 도로공사 차종별 통행·해수부 항만 집계 후보는 확인했지만 정의·장기 공개일 패널 미수집 |
 | 079 | Korea Naphtha Export Thermometer | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. 관세청 월간 HS 무역 후보; HS 바스켓·공표일·개정 이력 미고정 |
-| 080 | Korea Fuel-Switch Dispatch Alert | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. KPX 연료별 발전량 공개 후보는 있으나 연속 역사·연료분류·공표일 미감사 |
+| 080 | Korea Fuel-Switch Dispatch Alert | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. KPX 연료별 발전량 공개 후보는 있으나 연속 역사·연료분류·공표일 미감사; [제주 336일 보조관측 확보](../indexes/ALT-20260908-20/20260908T073402Z/README.md), 전국·WTI 미검증 |
 | 081 | Korea LPG Substitution Pulse | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. 상대가격 후보만 있고 실제 차량 연료대체·소비 장기 패널 미확보 |
 | 082 | Korea Kitchen Oil Stress / Palm–WTI Cointegration | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 등록. 팜유–WTI Engle–Granger·잔차 평균회귀 후보; 한국 소매 식용유·USD/KRW·원료 역사/공개일 패널 및 IS/OOS 미검정 |
 | 083 | Iced Americano Pass-Through | ⬜ `—` | ⬜ `—` | — | — | 2026-09-07 적격성 검정. 커피(외식) CPI→USD/KRW·한국 3년물·식품/급식 상대수익률 3사양은 공식 월별 원표·최초 공표일 패널 부재로 미검정 |
