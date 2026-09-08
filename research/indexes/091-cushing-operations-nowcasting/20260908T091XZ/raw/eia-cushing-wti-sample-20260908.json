@@ -1,0 +1,19 @@
+{
+  "source": "https://api.eia.gov/v2/petroleum/pri/spt/data/",
+  "retrieved_at": "2026-09-08",
+  "query": {
+    "frequency": "daily",
+    "series": "RWTC",
+    "start": "2026-08-01",
+    "end": "2026-09-08",
+    "length": 5
+  },
+  "series_description": "Cushing, OK WTI Spot Price FOB (Dollars per Barrel)",
+  "data": [
+    {"period": "2026-09-01", "value": 91.48, "units": "$/BBL"},
+    {"period": "2026-08-31", "value": 87.03, "units": "$/BBL"},
+    {"period": "2026-08-28", "value": 84.57, "units": "$/BBL"},
+    {"period": "2026-08-27", "value": 84.81, "units": "$/BBL"},
+    {"period": "2026-08-26", "value": 83.46, "units": "$/BBL"}
+  ]
+}
