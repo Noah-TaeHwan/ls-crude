@@ -49,7 +49,7 @@ export function readWtiMarketSnapshot(now = new Date()): WtiMarketView {
     reasons.push(`마지막 확인 후 ${raw.freshnessPolicy.maxCheckAgeHours}시간이 지났습니다.`);
   }
   if (nowTime - asOf > raw.freshnessPolicy.maxBarAgeDays * DAY_MS) {
-    reasons.push(`마지막 일봉 후 ${raw.freshnessPolicy.maxBarAgeDays}일이 지났습니다.`);
+    reasons.push(`가격 기준일로부터 ${raw.freshnessPolicy.maxBarAgeDays}일이 지났습니다. 휴장 또는 제공자 갱신 지연 여부를 확인하세요.`);
   }
 
   return {

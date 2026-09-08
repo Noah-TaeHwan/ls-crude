@@ -2,7 +2,7 @@ name: update-wti-market
 
 on:
   schedule:
-    - cron: "30 6 * * 1-5"
+    - cron: "30 6 * * *"
   workflow_dispatch:
 
 permissions: {}
@@ -141,6 +141,7 @@ jobs:
     steps:
       - name: Open failure issue (one per day)
         env:
+          GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail

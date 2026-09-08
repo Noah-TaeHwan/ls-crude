@@ -46,3 +46,33 @@ test("research inventory joins every score to its source and rejects partial tab
   assert.deepEqual(parseResearchLedger(markdown.replace(/\n/g, "\r\n")), ledger);
   assert.throws(() => parseResearchLedger(`${markdown}\n## 라이브 상관관계 스코어보드\n`));
 });
+
+test("intake joins all CSV rows to cards and fails closed on damaged or inconsistent records", async () => {
+  const { readdir } = await import("node:fs/promises");
+  const { parseResearchIntake } = await import("../app/lib/research-intake.ts");
+  const root = path.join(appRoot, "../research/candidates");
+  const csv = await readFile(path.join(root, "ledger.csv"), "utf8");
+  const cards = Object.fromEntries(await Promise.all((await readdir(root)).filter((file) => /^ALT-.*\.md$/.test(file)).map(async (file) => [`research/candidates/${file}`, await readFile(path.join(root, file), "utf8")])));
+  const records = parseResearchIntake(csv, cards);
+  assert.equal(records.length, Object.keys(cards).length);
+  assert.ok(records.length >= 50);
+  const road = records.find(({ fields }) => fields.candidate_id === "ALT-20260908-02");
+  assert.equal(road.fields.collection_status, "BLOCKED");
+  assert.equal(road.fields.test_status, "NOT_RUN");
+  assert.match(road.fields.coverage, /미보존/);
+  assert.ok(road.notes.some((href) => href.endsWith("2026-09-08-cushing-live-intake-run01.md")));
+  assert.deepEqual(parseResearchIntake(csv.replace(/\n/g, "\r\n"), cards), records);
+  assert.throws(() => parseResearchIntake(csv + csv.split("\n")[1] + "\n", cards));
+  assert.throws(() => parseResearchIntake(csv.replace("public", "wrong"), cards));
+  assert.throws(() => parseResearchIntake(csv.replace("ALT-20260907-01", "ALT-20260230-00"), cards));
+  assert.throws(() => parseResearchIntake(csv + '"unclosed', cards));
+  assert.throws(() => parseResearchIntake(csv, {}));
+  const changed = { ...cards, [road.fields.record_path]: cards[road.fields.record_path].replace("| test_status | NOT_RUN |", "| test_status | RUN |") };
+  assert.throws(() => parseResearchIntake(csv, changed));
+  assert.throws(() => parseResearchIntake(csv.split("\n").slice(0, -2).join("\n"), cards));
+  const example = 'ALT-20260909-01';
+  const fields = { candidate_id: example, name: '쉼표, "인용"', thesis: "가설", availability: "public", collection_status: "NOT_STARTED", test_status: "NOT_RUN", evidence_level: "E4", decision: "PARK", decision_reason: "이유", next_action: "확인", owner: "오태환", next_review_date: "2026-09-15", record_path: `research/candidates/${example}.md` };
+  const row = Object.values(fields).map((value) => `"${value.replaceAll('"', '""')}"`).join(",");
+  const card = Object.entries(fields).filter(([key]) => key !== "record_path").map(([key, value]) => `| ${key} | ${value} |`).join("\n");
+  assert.equal(parseResearchIntake(`${Object.keys(fields).join(",")}\n${row}\n`, { [fields.record_path]: card })[0].fields.name, fields.name);
+});

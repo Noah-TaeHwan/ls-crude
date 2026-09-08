@@ -1,0 +1,50 @@
+[
+  {
+    "route": "/",
+    "width": 320,
+    "scroll": 320,
+    "cards": 2,
+    "errors": [],
+    "market": true
+  },
+  {
+    "route": "/research",
+    "width": 320,
+    "scroll": 320,
+    "cards": 6,
+    "errors": [],
+    "workflow": true
+  },
+  {
+    "route": "/",
+    "width": 390,
+    "scroll": 390,
+    "cards": 2,
+    "errors": [],
+    "market": true
+  },
+  {
+    "route": "/research",
+    "width": 390,
+    "scroll": 390,
+    "cards": 6,
+    "errors": [],
+    "workflow": true
+  },
+  {
+    "route": "/",
+    "width": 1440,
+    "scroll": 1440,
+    "cards": 2,
+    "errors": [],
+    "market": true
+  },
+  {
+    "route": "/research",
+    "width": 1440,
+    "scroll": 1440,
+    "cards": 6,
+    "errors": [],
+    "workflow": true
+  }
+]
