@@ -11,8 +11,9 @@ widget to a leading indicator.
 
 ## Direct answer
 
-**No—not as a leading indicator.** A later archive recovery supplied five
-irregular same-date Cushing retail observations. They have high contemporaneous
+**There is a real price relationship, but it runs from upstream markets to the
+pump—not from this pump to WTI.** Archive recovery supplied five irregular
+same-date Cushing retail observations. They have high contemporaneous
 correlations with matched WTI, but cannot establish prediction or direction of
 causality. A single Cushing retail station should not be used as a leading
 indicator for WTI, crude oil, gasoline futures, diesel futures, or energy
@@ -50,9 +51,17 @@ in [cushing-maverik-pump-price-snapshot-20260908.csv](raw/cushing-maverik-pump-p
 Wayback captures dated 2025-08-09, 2025-11-25, 2025-12-14 and 2026-04-15
 recovered historical Regular and Diesel displays from the same official page.
 Together with the live observation, `n=5` same-date/previous-business-day pairs
-produce exploratory Pearson correlations of `+0.973` (Regular) and `+0.952`
-(Diesel) with WTI. The paired sample and chart are in the [091-Y
-README](README.md).
+produce exploratory Pearson correlations of `+0.973` (Regular, two-sided
+`p=.005`) and `+0.952` (Diesel, `p=.013`) with WTI. That is a **real,
+descriptive co-movement finding**, not a forecast result. The paired sample and
+chart are in the [091-Y README](README.md).
+
+The address was previously Kum & Go #0842 (same `2001 E Main St` address and
+`918-225-4407` phone number). Its 2023-02-27 first-party Wayback capture was
+also recovered. It confirms the predecessor site identity, but its HTML has no
+fuel-price field. A Common Crawl 2025-12 copy duplicates the 2025-12-14
+Maverik observation rather than adding a date. Public archive coverage is
+therefore exhausted at five usable price dates as of this research vintage.
 
 This is still not predictive evidence: captures are irregular, selected by
 archive availability, one WTI match is seven calendar days earlier because no
@@ -113,9 +122,32 @@ researchable only after a multi-station forward panel exists.
 | Cushing former refinery closed in 1982 | [EPA, Hudson Refinery profile](https://cumulis.epa.gov/supercpad/SiteProfiles/index.cfm?fuseaction=second.cleanup&id=0601160) | Primary regulatory record |
 | Current local price observation | [Maverik #5097 official page](https://locations.maverik.com/ok/cushing/2001-e-main-st) | First-party current display; lacks historical export/freshness metadata |
 
-## Research stop rule
+## Historical-recovery audit and next measurement
 
-The decisive mechanism and the local historical-data gap are both established.
-Further broad searching would not justify a lead-lag test without creating a
-local panel. Research stops here pending forward observations or a legitimate
-historical station-price source.
+This was not stopped at a single live screen. The following public-history
+paths were checked:
+
+| route | result | contribution |
+| --- | --- | --- |
+| Maverik first-party page + Internet Archive | Four unique price-bearing captures, 2025-08 to 2026-04 | four dated Regular/Diesel observations |
+| live Maverik first-party page | current display on 2026-09-08 | fifth observation |
+| predecessor Kum & Go #0842 first-party page + Internet Archive | 2023 capture identifies the same address and telephone, but no prices | identity validation, no price point |
+| Common Crawl | one 2025-12 duplicate of the archived Maverik HTML | no incremental observation |
+| public discovery/listing pages | current/estimated values with no reproducible dated panel | excluded from the numerical test |
+
+The resulting price relationship is useful in two narrow ways:
+
+1. **A local pass-through board.** The Maverik display visibly translates
+   upstream energy conditions into a Cushing household/trucker price. It is
+   valid to say ``higher WTI and tighter product conditions coincide with higher
+   local pump prices`` in this sample.
+2. **A local-dislocation monitor.** With a fixed panel of multiple stations,
+   the residual after upstream WTI/product moves—not the dollar price itself—is
+   the testable object. A persistent Cushing diesel-minus-gasoline premium or
+   Cushing-vs-Oklahoma median residual could flag local product/logistics stress.
+
+It is **not** valid to call the raw board a WTI lead. The first pre-registered
+forward test will observe at least 12 weekly, time-stamped values at three or
+more fixed Cushing stations and test (a) local price changes after WTI changes,
+and (b) whether the residual adds anything after WTI and wholesale-product
+controls. No current result is promoted until then.

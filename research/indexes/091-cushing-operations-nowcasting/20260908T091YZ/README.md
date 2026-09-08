@@ -8,7 +8,7 @@ Regular** and **$5.499/gal Diesel**.
 
 ![Cushing local pump-price snapshot](figures/091y-cushing-pump-price-observation.svg)
 
-## Correlation verdict
+## Historical-price recovery and correlation verdict
 
 **Leading relationship: not established.** Four public Wayback snapshots plus
 the live display recovered five irregular local observations. Same-date
@@ -23,17 +23,26 @@ The exact paired observations and matching rule are retained in
 display had to match 2026-09-01 WTI because no later EIA daily observation was
 returned at collection time; this is another reason it cannot support a lead claim.
 
+The recovery was extended beyond the current Maverik screen: the official
+predecessor Kum & Go #0842 page at the same address/telephone is archived in
+2023 but contains no price field, and a Common Crawl copy duplicates the
+2025-12 Maverik observation. The public archive audit is retained in the
+[deep-research report](report-source.md#historical-recovery-audit-and-next-measurement).
+Thus the five values are the complete reproducible first-party price history
+found at this vintage—not five values chosen from a longer hidden series.
+
 EIA's Cushing WTI `RWTC` series is long and daily, but that only solves one side
 of the pair. Oklahoma or U.S. retail averages may be useful external context,
 but are not substituted for Cushing local pump prices.
 
 ## Deep-research verdict on a leading-indicator claim
 
-The premise fails twice: local retail price data has no historical panel here,
-and the economic ordering normally runs from crude/wholesale prices to retail
-prices. Cushing's documented Hudson refinery closed in 1982, so an operating
-local-refinery mechanism was not verified. The evidence, exceptions and frozen
-upgrade gates are in the [deep-research report](report-source.md).
+The **price relationship itself is visible**; what fails is the claim that this
+downstream retail board leads its upstream benchmark. Economic ordering normally
+runs from crude/wholesale prices to retail prices. Cushing's documented Hudson
+refinery closed in 1982, so an operating-local-refinery mechanism was not
+verified. The evidence, exceptions and frozen upgrade gates are in the
+[deep-research report](report-source.md).
 
 ## Forward-only contract
 
