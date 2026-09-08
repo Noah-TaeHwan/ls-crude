@@ -66,7 +66,7 @@ export function VisibilityObservation({ view, checkedAt, detail = false }: { vie
             {known.map(row => {
               const x = `${8 + 86 * (Date.parse(row.observedAt) - start) / Math.max(1, end - start)}%`;
               const y = 174 - 140 * row.value! / max;
-              return <g key={row.observedAt}><circle cx={x} cy={y} r="3.5" fill="var(--primary)"><title>{utc(row.observedAt)} · {label(row)}</title></circle>{row.relation !== "exact" && <text x={x} y={row.relation === "lower_bound" ? y - 7 : y + 20} textAnchor="middle" fontSize="17" fill="currentColor">{row.relation === "lower_bound" ? "↑" : "↓"}</text>}</g>;
+              return <g key={row.observedAt}><circle cx={x} cy={y} r="3.5" fill="var(--primary)"><title>{`${utc(row.observedAt)} · ${label(row)}`}</title></circle>{row.relation !== "exact" && <text x={x} y={row.relation === "lower_bound" ? y - 7 : y + 20} textAnchor="middle" fontSize="17" fill="currentColor">{row.relation === "lower_bound" ? "↑" : "↓"}</text>}</g>;
             })}
             <text x="8%" y="204" fontSize="12" fill="currentColor">{first.observedAt.slice(11, 16)} UTC</text><text x="94%" y="204" textAnchor="end" fontSize="12" fill="currentColor">{latest.observedAt.slice(11, 16)} UTC</text>
           </svg>
