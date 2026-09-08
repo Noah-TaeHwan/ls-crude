@@ -49,9 +49,19 @@
 | 입력 | 확보 상태 | 왜 아직 그림·검정을 하지 않는가 |
 | --- | --- | --- |
 | City Hotel/Motel Tax | 공식 2025-11-17 의제 PDF의 FY 2022/23·2023/24·2024/25 **36개월 월별 비교표**와 2023년 월별 표본을 확인 | 아직 60개월은 아니다. 세금은 객실점유율·근로자 수가 아니라 도시 전체 숙박 과세수입이며, 관측월·보고월·게시일을 행별로 복원해야 한다 |
-| ODOT 트럭 수치 | 공개 AADT Network API에서 쿠싱 반경 후보 도로의 2023 AADT·직전 AADT·일부 단일/복합 트럭 비율 필드를 실제 조회 | API는 현재/직전 연도 중심의 도로망이며, 고정 구간의 60개월·다년 실제 트럭 패널 또는 관측소 공개 빈티지를 제공한다는 증거가 아니다 |
+| ODOT 트럭 수치 | 공개 AADT Network API에서 쿠싱 반경 후보 도로의 2023 AADT·직전 AADT·일부 단일/복합 트럭 비율 필드를 실제 조회. 추가로 공식 Payne County AADT 지도에서 **AVC 40**과 2023 AADT `6,178`을 확인 | 지도는 AVC가 매일 교통량·차종 분류를 기록한다고 명시한다. 하지만 공개된 일별/월별 AVC 40 이력과 발표 빈티지는 아직 확보하지 못했다 |
 
 ODOT 표본에서 확인한 한 후보 구간은 AADT 9,300, 단일 트럭 10%, 복합 트럭 7%였지만, 이는 **최종 고정구간 선택이나 장기 트럭 시계열이 아니다.** 접근 확인용 실제 표본일 뿐이다. 이 수치를 월별로 보간하거나 쿠싱 활동 점수에 넣지 않는다.
+
+### 2026-09-08 추가 소스 감사 — FAA · ODOT · DeFlock
+
+| 경로 | 실제 확인값 | CFAM 판정 | 다음 행동 |
+| --- | --- | --- | --- |
+| [ODOT Payne County AADT 지도](https://oklahoma.gov/content/dam/ok/en/odot/maps/aadt/county-maps/60_Payne.pdf) | Cushing 인근 **AVC 40**, 2023 AADT `6,178`; AVC는 일별 volume·classification 기록 장비라고 명시 | **PARK / 우선순위 상승** — 고정·공식·차종분류라서 091-A의 의도에 가장 가깝다 | AVC 40의 일별/월별 원자료와 차종 정의, 과거 파일, 공개 시점을 확보한 뒤 트럭 계열만 독립 시각화·검정 |
+| [FAA WeatherCams CUH](https://weathercams.faa.gov/) | 공개 앱은 이미지 이력 기능을 표방하지만, CUH API 경로는 이 수집 환경에서 인증을 요구 | **PARK** — 날씨/공항시정용이지 검증된 공항 활동 패널은 아님 | 공개된 CUH 시간표시 이미지 이력과 공항 활동 집계가 모두 확인될 때만 이벤트 문맥으로 재심사 |
+| [DeFlock OKC map](https://deflockokc.com/map.html) | OKC권 Flock ALPR의 crowdsourced **위치** 지도 | **EXCLUDE** — 통행량·차종·장기 집계가 없고 쿠싱 운영량을 측정하지 않음 | 위치·개별 차량·번호판 데이터를 수집하거나 추적하지 않음 |
+
+ODOT은 기존 091-A의 막연한 ‘도로 데이터’가 아니라, **실제 Cushing-area continuous classifier**까지 좁혀진 첫 공식 경로다. 단, 현재 지도 한 장의 AADT 값은 장기 activity time series가 아니므로 즉시 점수화·상관분석하지 않는다.
 
 ### Hotel/Motel Tax 개별 시각화
 
