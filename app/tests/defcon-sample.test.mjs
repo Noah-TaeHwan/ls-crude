@@ -97,3 +97,42 @@ test("latest WTI quote validates identity/time and preserves last good quote on 
   assert.deepEqual(failed.quote, good.quote);
   assert.match(failed.error, /실패/);
 });
+
+test("WTI intraday preserves actual values and gaps, isolates malformed/stale chart data", async () => {
+  const { parseWtiQuote } = await import("../app/lib/wti-quote.server.ts");
+  const now = new Date("2026-09-08T03:00:00Z");
+  const end = now.getTime() / 1000;
+  const body = (timestamp, close, changes = {}) => ({ chart: { result: [{ meta: { symbol: "CL=F", currency: "USD", instrumentType: "FUTURE", regularMarketPrice: 92.5, regularMarketTime: end, dataGranularity: "5m", ...changes }, timestamp, indicators: { quote: [{ close }] } }] } });
+  const parsed = parseWtiQuote(body([end - 900, end - 600, end - 300, end], [-37, null, -37, 0]), now);
+  assert.deepEqual(parsed.points.map((p) => p.price), [-37, -37, 0]);
+  assert.equal(Date.parse(parsed.points[1].time) - Date.parse(parsed.points[0].time), 600000);
+  assert.equal(parsed.chartError, null);
+  assert.equal(parsed.interval, "5m");
+  assert.equal(parseWtiQuote(body([end], [92]), now).points.length, 1);
+  for (const input of [body([], []), body([end], [null]), body([end], []), body([end, end], [1, 2]), body([end, end - 300], [1, 2]), body([end + 120], [1]), body([end], ["92"]), body([end], [Infinity]), body([end], [92], { dataGranularity: "1d" })]) {
+    const quote = parseWtiQuote(input, now);
+    assert.equal(quote.price, 92.5);
+    assert.equal(quote.points.length, 0);
+    assert.ok(quote.chartError);
+  }
+  const stale = parseWtiQuote(body([end - 86400], [91]), now);
+  assert.equal(stale.points.length, 1);
+  assert.match(stale.chartError, /지연/);
+  const long = parseWtiQuote(body(Array.from({ length: 1600 }, (_, i) => end - (1599 - i) * 300), Array(1600).fill(92)), now);
+  assert.equal(long.points.length, 1500);
+});
+
+test("WTI refresh retains timestamped chart on partial provider failure while updating quote", async () => {
+  const { readWtiQuote } = await import("../app/lib/wti-quote.server.ts");
+  const now = new Date("2026-09-09T03:00:00Z");
+  const timestamp = now.getTime() / 1000;
+  const meta = { symbol: "CL=F", currency: "USD", instrumentType: "FUTURE", regularMarketPrice: 92, regularMarketTime: timestamp, dataGranularity: "5m" };
+  const good = await readWtiQuote(async (url) => {
+    assert.match(url, /interval=5m&range=5d/);
+    return Response.json({ chart: { result: [{ meta, timestamp: [timestamp], indicators: { quote: [{ close: [92] }] } }] } });
+  }, now);
+  const partial = await readWtiQuote(async () => Response.json({ chart: { result: [{ meta: { ...meta, regularMarketPrice: 93, regularMarketTime: timestamp + 61 } }] } }), new Date(now.getTime() + 61000));
+  assert.equal(partial.quote.price, 93);
+  assert.deepEqual(partial.quote.points, good.quote.points);
+  assert.ok(partial.quote.chartError);
+});

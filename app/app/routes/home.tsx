@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { WtiIntraday } from "~/components/wti-intraday";
 import { ResearchIntake } from "~/components/research-intake";
 import { readResearchIntake } from "~/lib/research-intake.server";
 import { data, Link, useRevalidator } from "react-router";
@@ -164,16 +165,9 @@ function MarketContext({ market, candidateScope, quote }: { market: WtiMarketVie
   const rv = metric === "rv5" ? snapshot?.volatility.rv5AnnualizedPct : snapshot?.volatility.rv20AnnualizedPct;
   return (
     <section id="market" className="market-section" aria-labelledby="market-title">
-      <div className="section-heading"><div><p className="section-kicker">02 / WTI CONTEXT</p><h2 id="market-title">가설의 배경이 되는 원유 시장</h2></div><span className="data-status" data-freshness={market.freshness}><span aria-hidden="true" />{market.freshness === "fresh" ? "최근 완료 일봉" : market.freshness === "stale" ? "최신성 확인" : "관측 데이터 없음"}</span></div>
+      <div className="section-heading"><div><p className="section-kicker">02 / WTI CONTEXT</p><h2 id="market-title">가설의 배경이 되는 원유 시장</h2></div><span className="data-status" data-freshness={market.freshness}><span aria-hidden="true" />{market.freshness === "fresh" ? "최근 완료 일봉" : market.freshness === "stale" ? "완료 일봉 기준일 확인" : "관측 데이터 없음"}</span></div>
       <p className="mt-3 text-sm leading-7 text-muted-foreground">최근 수신 시세와 완료 일봉을 분리해서 보여줍니다. 실현변동성은 완료 일봉으로만 계산합니다.</p>
-      <div className="evidence-note mt-6" aria-label="Yahoo 최근 수신 시세">
-        <h3 className="text-sm font-medium">WTI · CL=F 최근 수신 시세</h3>
-        <p className="mt-2 font-mono text-4xl text-watching">{number(quote.quote?.price)} <span className="text-sm">USD</span></p>
-        <p className="mt-3 text-sm leading-7 text-muted-foreground">{quote.quote ? `시세 시각 ${new Date(Date.parse(quote.quote.observedAt) + 9 * 3600000).toISOString().slice(0, 19).replace("T", " ")} KST · 조회 시각 ${new Date(Date.parse(quote.quote.fetchedAt) + 9 * 3600000).toISOString().slice(0, 19).replace("T", " ")} KST` : "현재 시세를 확보하지 못했습니다. 아래 완료 일봉은 별도 자료입니다."}</p>
-        <p className="mt-2 text-xs leading-6 text-muted-foreground">페이지를 열 때 확인하고, 보이는 화면은 5분마다 자동 확인합니다. Yahoo 제공 지연과 휴장 시각이 포함될 수 있으며 확정 종가·공식 정산가가 아닙니다. 아래 차트·변동성에는 이 시세를 섞지 않습니다.</p>
-        {quote.error && <p role="status" className="mt-3 text-sm text-primary">{quote.error}</p>}
-        <button type="button" className="filter-button mt-3" onClick={() => window.location.reload()}>시세 다시 확인</button>
-      </div>
+      <WtiIntraday view={quote} />
       {snapshot ? (
         <div className="market-layout mt-6">
           <div className="market-chart">
