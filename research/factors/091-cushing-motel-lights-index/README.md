@@ -20,6 +20,7 @@
 | [091-C](workflow.md#091-c--외부-문맥-브리지) | 052W · 086 · 090 외부 문맥 | RUN / 조합 미통과 |
 | [091-D](workflow.md#091-d--탱크-지붕-그림자-feasibility) | 대형 floating-roof 탱크의 Sentinel-2 그림자 | PARK / E1 — 실제 메타데이터 표본 확보, 무료 10m 픽셀 원본·탱크별 판독은 미검증 |
 | [091-E](workflow.md#091-e--파이프라인-apportionment-공지) | Cushing 연결 파이프라인의 배정·감축 공지 | PARK / E1 — Keystone의 절차는 확인, 실제 월별 공지 이력은 미확보 |
+| [091-F](workflow.md#091-f--salesuse-tax-도시활동-관측) | 판매세·사용세의 도시 소비/반입 활동 | PARK / E1 — 월별 공식 표본·보고월 확인; 60개월 원문·분리 패널 미확보 |
 
 개별 시각화·실제 입력 경계·재개 조건은 [091 workflow](workflow.md)에 모아 둔다.
 
