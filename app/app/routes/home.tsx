@@ -156,7 +156,7 @@ function MarketContext({ market, candidateScope }: { market: WtiMarketView; cand
   const rv = metric === "rv5" ? snapshot?.volatility.rv5AnnualizedPct : snapshot?.volatility.rv20AnnualizedPct;
   return (
     <section id="market" className="market-section" aria-labelledby="market-title">
-      <div className="section-heading"><div><p className="section-kicker">02 / WTI CONTEXT</p><h2 id="market-title">가설의 배경이 되는 원유 시장</h2></div><span className="data-status" data-freshness={market.freshness}><span aria-hidden="true" />{market.freshness === "fresh" ? "최근 완료 일봉" : market.freshness === "stale" ? "업데이트 지연" : "관측 데이터 없음"}</span></div>
+      <div className="section-heading"><div><p className="section-kicker">02 / WTI CONTEXT</p><h2 id="market-title">가설의 배경이 되는 원유 시장</h2></div><span className="data-status" data-freshness={market.freshness}><span aria-hidden="true" />{market.freshness === "fresh" ? "최근 완료 일봉" : market.freshness === "stale" ? "최신성 확인" : "관측 데이터 없음"}</span></div>
       <p className="mt-3 text-sm leading-7 text-muted-foreground">아래는 이미 끝난 구간의 가격과 실현변동성입니다. 연구 타깃인 ‘신호 공개 이후의 변동성’과 구분합니다.</p>
       {snapshot ? (
         <div className="market-layout mt-6">
