@@ -1,27 +1,46 @@
-# 091-W — Cushing Air Activity & Disruption Monitor
+# 091-W — Cushing Air Quality Now
 
 ## Decision
 
 **PARK / E1 — no public, repeatable Cushing air-quality panel was obtained.**
 
-This is deliberately not a score, backtest, or WTI relationship claim. The
-question is narrower: can pollution observations identify that Cushing is busy
-*now*? The answer from this audit is **not yet**.
+091-W is an **independent real-time environmental-status widget**, not a CFAM
+activity input and not an oil/WTI factor. Its only promise is literal:
+**“Cushing air is good / moderate / unhealthy right now.”** The audit asks
+whether a local, repeated, public measurement can power that display. The
+answer is **not yet**.
 
 ![091-W public-air observation gate](figures/091w-air-observation-gate.svg)
 
 ## What was actually checked
 
-| candidate | collection and observation test | result | CFAM role |
+| candidate | collection and observation test | result | 091-W dashboard role |
 | --- | --- | --- | --- |
-| AirCasting | Public API queried over a Cushing-centred box for 2024-01-01 through 2026-09-05. Six documented AirBeam PM2.5 sensor-name variants returned zero public mobile sessions; fixed active and dormant queries also returned none. | no local sample | **excluded** until coverage appears |
-| Oklahoma DEQ ambient network | The official current monitoring-site table has no Cushing station. A DEQ permit review says historical rural monitoring used Mannford, about 38 km ENE, in lieu of immediate-Cushing monitoring. | no continuous local monitor | **excluded** |
-| IQAir Cushing map | The visible location page is useful as a current display, but this audit could not obtain a station-identified, reproducible raw historical export; automated access was checkpointed. | non-reproducible | **excluded** |
-| DEQ point-source emissions inventory | Official facility emissions exist as annual inventory data. | valid environmental context, too slow for activity | **context only** |
+| AirCasting | Public API queried over a Cushing-centred box for 2024-01-01 through 2026-09-05. Six documented AirBeam PM2.5 sensor-name variants returned zero public mobile sessions; fixed active and dormant queries also returned none. | no local sample | **unavailable** until coverage appears |
+| Oklahoma DEQ ambient network | The official current monitoring-site table has no Cushing station. A DEQ permit review says historical rural monitoring used Mannford, about 38 km ENE, in lieu of immediate-Cushing monitoring. | no continuous local monitor | **unavailable** |
+| IQAir Cushing map | The visible location page is useful as a current display, but this audit could not obtain a station-identified, reproducible raw historical export; automated access was checkpointed. | non-reproducible | **unavailable** |
+| DEQ point-source emissions inventory | Official facility emissions exist as annual inventory data. | valid environmental context, too slow for activity | **annual context only** |
 
 The representative AirCasting response and acquisition ledger are in [raw](raw/README.md).
 
-## Why a pollution score would be wrong today
+## Dashboard contract — frozen
+
+If a qualifying source appears, 091-W displays a standalone **Air Quality
+Now** card. It is allowed to score air quality, because that is precisely what
+it measures.
+
+| field | display rule |
+| --- | --- |
+| PM2.5 / PM10 / AQI | show the provider's reported value and unit; do not silently convert a provider score into a pollutant reading |
+| Current status | `Good`, `Moderate`, `Unhealthy for sensitive groups`, `Unhealthy`, or `No local observation`, using the source's documented AQI categories |
+| Freshness | always show timestamp, monitor/provider name, monitor coordinates or distance, and missing/stale flag |
+| 24-hour change | show only when 24 comparable hourly observations exist; otherwise show `insufficient local history` |
+| CFAM | never add this number to the CFAM busy score |
+
+The initial card must say **“No verified Cushing local observation”** rather
+than borrowing a value from Tulsa, Mannford, or a state-wide forecast.
+
+## Why it must remain separate from CFAM
 
 Even if a local PM2.5 series existed, higher particulate pollution would not
 mean “the terminal is busier.” Wind direction, wildfire smoke, rain, road dust,
