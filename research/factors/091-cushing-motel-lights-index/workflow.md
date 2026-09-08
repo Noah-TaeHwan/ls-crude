@@ -25,6 +25,7 @@
 | 091-I | 공개 집계 이동 자료가 현장 이동을 잴 수 있는가 | Census LODES 등 | **PARK / E1** — LODES 실제 OD 원본은 확보, 연간 구조 자료라 실시간 이동 불가 |
 | 091-J | 허브 근접 활동 7종을 실제로 관측할 수 있는가 | 주차·호텔·점심·심야·경로·모바일·이벤트 | **PARK / E1** — 접근성·기존 표본을 분리 감사, 조합 미실행 |
 | 091-K | 통신 신호로 움직임을 재구성할 수 있는가 | CDR/base-station/device aggregation | **BLOCKED / E1** — carrier/licensed data, raw 또는 fine-grid 수집 금지 |
+| 091-L | 대체에너지 정책이 쿠싱 현장활동을 바꾸는가 | EV oil displacement·정책 노출 | **PARK / E1** — 연간 adoption 결과는 확인, 정책 빈티지·현장 정답 없음 |
 | 무효 실험 | Cushing Busy ML/DL | WTI·거래량 기반 합성 타깃 | **무효** — 실제 쿠싱 관측 아님 |
 
 ## 091-A — 숙박세 × 고정 도로구간 트럭
@@ -187,6 +188,14 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 세 번째 통신 신호 파이프라인은 본 연구의 무료·공개 경로가 아니다. CDR, 신호 강도, timing/network metadata, device-to-tower assignment, 100m site grid, home/work 추정 또는 개별 trajectory는 수집하지 않는다. 실제 공급자/통신사가 계약과 프라이버시 검토 아래 최소 집계·최소셀 억제·식별자 미제공 제품을 별도로 제공하는 경우에만 새 data-access 심사를 시작할 수 있다. [차단 기록](../../candidates/ALT-20260908-11.md)을 참조한다.
 
 집계 제품이 생겨도 먼저 고정 도로 카운터와 검증한다. 100m 격자나 개인·기기 관찰을 이용해 CFAM을 만드는 방식은 허용하지 않는다.
+
+## 091-L — 미국 대체에너지 정책의 장기 구조 경로
+
+정책은 쿠싱을 직접 ‘바쁘게’ 하는 관측이 아니라, 전동화·발전 전환·연료대체를 거쳐 전국/권역 수요와 물류를 바꿀 수 있는 **장기 구조 경로**다. 기존 [004 Transport Electrification](../004-renewable-displacement/README.md)은 IEA의 실제 연간 EV 석유대체량을 수집했지만, 이는 정책 자체가 아닌 adoption 결과이며 2015–2023 비교가 7–8개뿐이다. 다음해 WTI 수익률과의 탐색 상관도 `-.280`/`-.230`으로 통과하지 못했다.
+
+쿠싱 현장활동의 실제 정답(트럭·숙박·정비·throughput)과, 당시 이용가능했던 정책 노출의 장기 빈티지 패널이 모두 없으므로 상관·event study·DiD·ML을 실행하지 않았다. 정책 수·보도량·ETF를 사후로 세어 월간 CFAM 입력으로 만들면 정책 효과와 관심/가격/금리 충격을 혼동한다. 상세 경계는 [`ALT-20260908-12`](../../candidates/ALT-20260908-12.md)에 남긴다.
+
+재개 조건은 **(a)** 사전고정한 dated policy exposure/vintage panel, **(b)** 60개월 이상 독립 Cushing operational ground truth다. 두 조건이 생기면 그때만 사전고정 시차의 구조/이벤트 검정을 하며, 그 전에는 CFAM 점수에 넣지 않는다.
 
 ## 검정 해석 규칙
 
