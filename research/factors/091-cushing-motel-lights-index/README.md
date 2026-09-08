@@ -19,6 +19,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 - [Workflow, all sub-tracks, sources and visuals](workflow.md)
 - [Current Cushing pump-price board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md)
 - [2026-09-08 supplied-source audit: ODOT · FAA · OilPriceAPI · MacroMicro · DeFlock/OSM](../../indexes/091-cushing-operations-nowcasting/20260908T091SOURCEZ/README.md)
+- [091-Z free local-news cue monitor](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md)
 - [Five-track combination plan](../../reports/2026-09-08-cfam-five-track-combination-plan.md)
 - [Completed validation battery](../../indexes/091-cushing-operations-nowcasting/20260908T091VZ/README.md)
 
@@ -28,6 +29,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 | --- | --- | --- | --- |
 | **EIA Cushing inventory** | Actual weekly storage level | LIVE | Physical market context and research target; not an activity score input |
 | [091-Y Pump Price Board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md) | Local retail gasoline and diesel prices | FORWARD ONLY | Local product-stress display; [regional calibration](../../indexes/091-cushing-operations-nowcasting/20260908T091YCALZ/README.md) confirms WTI→retail pass-through, not pump→WTI alpha |
+| [091-Z News Cue Monitor](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) | Publicly reported industrial/news events | FORWARD ONLY | Free KUSH and Google News feeds; human-reviewed event queue, not a busyness score |
 | [091-S Quick-service activity](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md) | Google Maps live busy labels at six fixed locations | FORWARD ONLY | 90-day manual activity-observation pilot |
 | [091-U Industrial Job Pulse](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/README.md) | Direct terminal, pipeline and industrial job postings | FORWARD ONLY | 90-day frozen-rule hiring panel |
 | [091-A ODOT AVC 40](workflow.md#2026-09-08-추가-소스-감사--faa--odot--deflock) | Cushing-area continuous traffic volume and vehicle classification | PARK | Strongest public truck-count route; obtain its dated history before testing |

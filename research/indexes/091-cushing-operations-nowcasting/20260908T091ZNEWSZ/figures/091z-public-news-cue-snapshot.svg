@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="350" viewBox="0 0 760 350">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="28" y="32" font-family="Arial" font-size="19" font-weight="700" fill="#172033">091-Z — public Cushing news cue snapshot</text>
+<text x="28" y="53" font-family="Arial" font-size="11" fill="#556070">Frozen industry lexicon; a cue board, not a continuous local-activity score or trading signal.</text>
+<rect x="55" y="240" width="72" height="-28" rx="4" fill="#1f77b4"/>
+<text x="80" y="260" font-family="Arial" font-size="11" fill="#172033">physical</text>
+<text x="86" y="204" font-family="Arial" font-size="15" font-weight="700" fill="#172033">1</text>
+<rect x="220" y="240" width="72" height="0" rx="4" fill="#d95f02"/>
+<text x="245" y="260" font-family="Arial" font-size="11" fill="#172033">operations</text>
+<text x="251" y="232" font-family="Arial" font-size="15" font-weight="700" fill="#172033">0</text>
+<rect x="385" y="240" width="72" height="0" rx="4" fill="#2ca25f"/>
+<text x="410" y="260" font-family="Arial" font-size="11" fill="#172033">logistics</text>
+<text x="416" y="232" font-family="Arial" font-size="15" font-weight="700" fill="#172033">0</text>
+<rect x="550" y="240" width="72" height="0" rx="4" fill="#756bb1"/>
+<text x="575" y="260" font-family="Arial" font-size="11" fill="#172033">project_labor</text>
+<text x="581" y="232" font-family="Arial" font-size="15" font-weight="700" fill="#172033">0</text>
+<text x="28" y="290" font-family="Arial" font-size="11" font-weight="700" fill="#172033">Current matched headlines (deduplicated):</text>
+<text x="28" y="312" font-family="Arial" font-size="10" fill="#374151">• South Bow, Bridger to Develop New Oil Pipeline From Wyoming to Cushing, Oklahoma - Energ [pipeline]</text>
+</svg>

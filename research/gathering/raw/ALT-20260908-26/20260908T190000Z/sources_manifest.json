@@ -1,0 +1,23 @@
+[
+  {
+    "file": "kush_news_feed.xml",
+    "url": "https://www.1600kush.com/category/news/feed/",
+    "http_status": 200,
+    "bytes": 52793,
+    "sha256": "05a890ab3067b968de34af4684ef858dc223063236cbdd6bd1065a9acd20e771"
+  },
+  {
+    "file": "kush_wp_posts.json",
+    "url": "https://www.1600kush.com/wp-json/wp/v2/posts?per_page=20",
+    "http_status": 200,
+    "bytes": 114591,
+    "sha256": "f4645b3b33c72cded5982b9de1da333683f097839412acf9d064b16ad9853b03"
+  },
+  {
+    "file": "google_news_cushing_industry.xml",
+    "url": "https://news.google.com/rss/search?q=%22Cushing%22%20%28pipeline%20OR%20terminal%20OR%20crude%20OR%20storage%20OR%20refinery%20OR%20midstream%20OR%20oilfield%29%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+    "http_status": 200,
+    "bytes": 81841,
+    "sha256": "f4961660854176e7d0c36fbdb89d528a4fc0348c891d5dbcc04db7a36c921ffd"
+  }
+]
