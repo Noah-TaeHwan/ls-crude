@@ -1,0 +1,14 @@
+ENERGY FUTURES PRODUCTS
+2026 DAILY INFORMATION BULLETIN
+PG61 BULLETIN # 171@ Fri, Sep 04, 2026 PG61
+PRELIMINARY
+GLOBEX OPEN SETT. PRICE & PT. CHGE OPEN INTEREST GLOBEX VOLUME PNT/PIT VOLUME GLOBEX HIGH/LOW
+WTT FUT WTI MIDLAND (ARG) VS. WTI TRADE MTH
+OCT26 ---- ---- 1.23 - 0.04 ---- ---- 30187 UNCH
+NOV26 ---- ---- 0.96 - 0.01 ---- ---- 28459 UNCH
+DEC26 ---- ---- 0.88 - 0.01 ---- ---- 30075 UNCH
+FF FUT WTI MIDLAND(ARGUS) VS WTI FINCL FUT
+
+Source: https://www.cmegroup.com/daily_bulletin/current/Section61_Energy_Futures_Products.pdf
+Extraction scope: official PDF page 7 / lines 791–844 as rendered by the public document parser on 2026-09-08.
+The three listed WTT contract rows are retained as a small actual sample. The full bulletin is not copied into this repository.

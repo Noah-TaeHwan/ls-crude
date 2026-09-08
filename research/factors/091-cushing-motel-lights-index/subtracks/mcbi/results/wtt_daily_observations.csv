@@ -1,0 +1,4 @@
+bulletin_date,contract_month,wtt_settlement_usd_per_bbl,source_url,source_representation,source_content_sha256,parser
+2026-09-04,DEC26,0.88,https://www.cmegroup.com/daily_bulletin/current/Section61_Energy_Futures_Products.pdf,official_pdf_text_extract,2c655010734a85275e13abe187c7b93989196d9759f275df9e4a14c1783bc8c5,cme_section61_wtt_v1
+2026-09-04,NOV26,0.96,https://www.cmegroup.com/daily_bulletin/current/Section61_Energy_Futures_Products.pdf,official_pdf_text_extract,2c655010734a85275e13abe187c7b93989196d9759f275df9e4a14c1783bc8c5,cme_section61_wtt_v1
+2026-09-04,OCT26,1.23,https://www.cmegroup.com/daily_bulletin/current/Section61_Energy_Futures_Products.pdf,official_pdf_text_extract,2c655010734a85275e13abe187c7b93989196d9759f275df9e4a14c1783bc8c5,cme_section61_wtt_v1
