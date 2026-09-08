@@ -1,0 +1,150 @@
+{
+  "candidate": "ALT-20260907-45",
+  "version": "v2",
+  "base_run": "20260908T120546Z",
+  "source": "NOAA CPC population-weighted monthly degree days, statesCONUS files (same raw as v1, no re-collection)",
+  "unit": "degree-days (\u00b0F\u00b7day), 65\u00b0F base, CONUS monthly total from UNITED STATES row of POPULATION WEIGHTED section",
+  "unit_reference": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/cdus/degree_days/ddayexp.shtml (old explainer; do not project its population-weight base year onto 2015-2023)",
+  "months": 108,
+  "first_month": "2015-01",
+  "last_month": "2023-12",
+  "raw_files": 216,
+  "hdd_sum": 36249,
+  "cdd_sum": 12720,
+  "hdd_min": 0,
+  "hdd_max": 913,
+  "cdd_min": 0,
+  "cdd_max": 386,
+  "mismatch_count": 20,
+  "mismatches": [
+    {
+      "month": "2016-02",
+      "kind": "heating",
+      "own_yoy": -223,
+      "provider_yoy": -255
+    },
+    {
+      "month": "2016-03",
+      "kind": "heating",
+      "own_yoy": -133,
+      "provider_yoy": -113
+    },
+    {
+      "month": "2016-03",
+      "kind": "cooling",
+      "own_yoy": -1,
+      "provider_yoy": -2
+    },
+    {
+      "month": "2016-04",
+      "kind": "heating",
+      "own_yoy": 14,
+      "provider_yoy": 19
+    },
+    {
+      "month": "2016-05",
+      "kind": "heating",
+      "own_yoy": 42,
+      "provider_yoy": 45
+    },
+    {
+      "month": "2016-05",
+      "kind": "cooling",
+      "own_yoy": -20,
+      "provider_yoy": -23
+    },
+    {
+      "month": "2016-06",
+      "kind": "heating",
+      "own_yoy": -2,
+      "provider_yoy": 2
+    },
+    {
+      "month": "2016-06",
+      "kind": "cooling",
+      "own_yoy": 10,
+      "provider_yoy": 5
+    },
+    {
+      "month": "2016-07",
+      "kind": "cooling",
+      "own_yoy": 46,
+      "provider_yoy": 44
+    },
+    {
+      "month": "2016-09",
+      "kind": "heating",
+      "own_yoy": -11,
+      "provider_yoy": -16
+    },
+    {
+      "month": "2016-09",
+      "kind": "cooling",
+      "own_yoy": 21,
+      "provider_yoy": 28
+    },
+    {
+      "month": "2016-10",
+      "kind": "heating",
+      "own_yoy": -64,
+      "provider_yoy": -67
+    },
+    {
+      "month": "2016-10",
+      "kind": "cooling",
+      "own_yoy": 23,
+      "provider_yoy": 26
+    },
+    {
+      "month": "2016-11",
+      "kind": "heating",
+      "own_yoy": -24,
+      "provider_yoy": -36
+    },
+    {
+      "month": "2016-12",
+      "kind": "heating",
+      "own_yoy": 205,
+      "provider_yoy": 198
+    },
+    {
+      "month": "2017-01",
+      "kind": "heating",
+      "own_yoy": -105,
+      "provider_yoy": -96
+    },
+    {
+      "month": "2017-01",
+      "kind": "cooling",
+      "own_yoy": 5,
+      "provider_yoy": 6
+    },
+    {
+      "month": "2017-02",
+      "kind": "heating",
+      "own_yoy": -108,
+      "provider_yoy": -90
+    },
+    {
+      "month": "2020-02",
+      "kind": "heating",
+      "own_yoy": -32,
+      "provider_yoy": -57
+    },
+    {
+      "month": "2021-02",
+      "kind": "heating",
+      "own_yoy": 118,
+      "provider_yoy": 143
+    }
+  ],
+  "provider_note": "provider MON DEV FROM L YR parsed as-is; cause of the 20 own-vs-provider differences is unconfirmed, no correction applied",
+  "output_sha256": {
+    "research/data/processed/ALT-20260907-45/20260908T120546Z/v2/degree-days.csv": "4e95f4f5525616c5913738d969848749a03c8236a18d4c2cc51825fa4bb11880",
+    "research/indexes/ALT-20260907-45/20260908T120546Z/v2/degree-days-monthly-v2.svg": "f9884e284ec2aa01c1dd1b8bdbbc0dcdee976b5a5d423e40132fa59ec2878abc",
+    "research/indexes/ALT-20260907-45/20260908T120546Z/v2/degree-days-yoy-v2.svg": "81df75b34cac76271b05ab9e86ebb4a17ff80fc9b85a3cb45cf9391753a485d5"
+  },
+  "code_sha256": "b9961fb2ca83b0992dbf1a7bf57260f718651f3043d2c8b899d7b7ffd0ca1425",
+  "available_at": "per-file Last-Modified recorded in raw requests.json; monthly vintage not restored",
+  "WTI_tests": "NOT_RUN"
+}

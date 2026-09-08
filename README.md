@@ -4,7 +4,7 @@
 
 East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜타곤 피자 인덱스는 **활동 → 민감한 맥락 → 시장과의 가능한 관계**를 생각하는 참고 패턴입니다. 피자 주문을 복제하거나 특정 데이터·양의 상관을 찾아내는 것이 완료 조건은 아닙니다.
 
-현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-08 로컬 [원장](research/candidates/ledger.csv)은 **67행(KEEP 5 / PARK 51 / KILL 11)**입니다(repo empirical only). 앞선 공동 헌트는 기존8개 ID 재검토였습니다. 리뷰 후 KGLS 시정 관측 경로1개와 실제 샘플·그림을 추가했습니다. 기상 조건이며 물류 활동량·유가 예측 신호가 아닙니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
+현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-08 로컬 [원장](research/candidates/ledger.csv)은 **68행(KEEP 6 / PARK 51 / KILL 11)**입니다(repo empirical only). 앞선 공동 헌트는 기존8개 ID 재검토였습니다. 리뷰 후 KGLS 시정 관측 경로1개와 실제 샘플·그림을 추가했습니다. 기상 조건이며 물류 활동량·유가 예측 신호가 아닙니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
 
 | 항목 | 기준 |
 | --- | --- |
@@ -17,7 +17,9 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 
 ## Current research status — 2026-09-08
 
-**반응형 그래프 구현:** 수박·제주 선택, 실제 날짜의 터치/키보드 탐색, 분자·분모/연료별 MWh, WTI 가격 눈금을 연결했습니다. [표시 데이터·재현](research/indexes/web-observations/v1/README.md) · [구현·검수 기록](docs/research-workflow-dashboard-plan.md). 고정 과거 샘플이며 공개 배포 완료 여부는 Vercel 차단 기록과 구분합니다.
+**CPC 도일 감독 검토:** 난방/냉방·가중 구간 파서를 강화하고, 108개월의 월합계와 자체/제공 전년차를 구분하는 과거 연구 사례를 추가했습니다. 192개 비교값 중 20개(14개월)가 다르며 원인은 미확인입니다(repo empirical only). [검토·전달 상태](docs/reviews/2026-09-08-degree-days-closeout.md) · [표시 데이터 v2](research/indexes/web-observations/v2/README.md) · [다음 AI에게 줄 전달 프롬프트](docs/ai-research-delivery-prompt.md). WTI 검정은 NOT_RUN, 최종 우승 지수 없음.
+
+**반응형 그래프:** 수박·제주·미국 냉난방도일 선택, 실제 관측의 터치/키보드 탐색, 원단위 표와 WTI 가격 눈금을 제공합니다. 고정 연구 사례와 갱신 관측은 구분합니다. [구현·검수 기록](docs/research-workflow-dashboard-plan.md).
 
 **성찬080 후속:** 잘못된 원안 링크를 교정하고 [제주 LNG·유류 336일 관측](research/indexes/ALT-20260908-20/20260908T073402Z/README.md)을 확보했습니다. 16,128시간 값·시간/일/월 합계 대사와 원단위·조건부비중 그림을 기록했습니다. 2024-03-31까지의 과거 보조표본이며 전국 지수·원유량·WTI 검증은 아닙니다. [탐색 과정·다음 행동](research/gathering/notes/2026-09-08-kpx-fuel-access.md).
 

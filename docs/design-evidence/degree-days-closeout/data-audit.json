@@ -1,0 +1,9 @@
+{
+  "raw_files": 216,
+  "raw_bytes": 1648944,
+  "months": 108,
+  "mismatched_values": 20,
+  "mismatched_months": 14,
+  "all_raw_derived_provider_hashes": "PASS",
+  "independent_negative_parser_probes": "PASS"
+}

@@ -2,8 +2,10 @@
 export interface WatermelonPoint { date: string; numerator: number; denominator: number; fractional: number }
 /** 제주 원단위 표시값. 소수 문자열은 원래 정밀도를 보존한다. */
 export interface JejuPoint { date: string; lngMwh: string; oilMwh: string; sharePct: string }
+/** 월 합계와 서로 다른 정의의 전년차. 첫해 자체 차분은 결측이다. */
+export interface DegreePoint { month: string; hdd:number; cdd:number; hddYoy:number|null; cddYoy:number|null; providerHDDYoy:number|null; providerCDDYoy:number|null }
 /** 접수 카드에서 해당 연구 사례로 이동하는 고정 연결. */
-export const SAMPLE_LINKS: Record<string, string> = { "ALT-20260907-36": "/research?sample=watermelon#research-sample", "ALT-20260908-20": "/research?sample=jeju#research-sample" };
+export const SAMPLE_LINKS: Record<string, string> = { "ALT-20260907-36": "/research?sample=watermelon#research-sample", "ALT-20260908-20": "/research?sample=jeju#research-sample", "ALT-20260907-45":"/research?sample=degree-days#research-sample" };
 
 /** @param args 현재·다음 URL과 라우터 기본 판단. @returns 사례 선택만 바뀌면 시장 재조회 없이 전환하며 수동·주기 갱신은 유지한다. */
 export function sampleShouldRevalidate({currentUrl,nextUrl,defaultShouldRevalidate,formMethod}:{currentUrl:URL;nextUrl:URL;defaultShouldRevalidate:boolean;formMethod?:string}): boolean {
@@ -40,6 +42,17 @@ export function readJeju(value: unknown): JejuPoint[] | null {
   }) || !ordered(v.points)) return null;
   if (v.points[0].date !== "2023-05-01" || v.points.at(-1)!.date !== "2024-03-31") return null;
   return v.points;
+}
+/** @param value 고정 표시 원본. @returns 월 순서·합계·자체 차분을 검사한 관측 또는 오류 상태. */
+export function readDegreeDays(value:unknown): DegreePoint[]|null {
+  const v=value as {candidateId?:unknown;runId?:unknown;revision?:unknown;points?:DegreePoint[]};
+  if (!v || v.candidateId!=="ALT-20260907-45" || v.runId!=="20260908T120546Z" || v.revision!=="v2" || !Array.isArray(v.points) || v.points.length!==108) return null;
+  const rows=v.points;
+  if (!rows.every((r,i)=>r && r.month===`${2015+Math.floor(i/12)}-${String(i%12+1).padStart(2,"0")}` && [r.hdd,r.cdd].every(n=>Number.isSafeInteger(n)&&n>=0) && [r.providerHDDYoy,r.providerCDDYoy].every(n=>n===null||Number.isSafeInteger(n)))) return null;
+  if (!rows.every((r,i)=>i<12 ? r.hddYoy===null&&r.cddYoy===null : r.hddYoy===r.hdd-rows[i-12].hdd && r.cddYoy===r.cdd-rows[i-12].cdd)) return null;
+  if (rows.reduce((n,r)=>n+r.hdd,0)!==36249 || rows.reduce((n,r)=>n+r.cdd,0)!==12720) return null;
+  const mismatches=rows.slice(12).reduce((n,r)=>n+Number(r.providerHDDYoy!==null&&r.hddYoy!==r.providerHDDYoy)+Number(r.providerCDDYoy!==null&&r.cddYoy!==r.providerCDDYoy),0);
+  return mismatches===20 ? rows : null;
 }
 /**
  * 실제 관측 날짜 중 포인터에 가장 가까운 것을 찾는다. 달력 공백에 값을 만들지 않는다.
