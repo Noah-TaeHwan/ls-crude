@@ -175,12 +175,22 @@ function CushingBusyCase() {
   return (
     <article className="min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
       <div className="flex flex-wrap items-center gap-3 text-xs">
-        <span className="status-stamp">091 보드 · 합성 점수 없음</span>
+        <span className="status-stamp">091 보드</span>
         <span className="card-verdict">{cushingBoard.verdict}</span>
       </div>
       <h3 className="mt-5 text-xl font-medium sm:text-2xl">{cushingBoard.question}</h3>
-      <p className="mt-4 text-sm leading-7 text-muted-foreground">{cushingBoard.verdict_note}</p>
-      <p className="mt-3 text-sm leading-7">점수는 지금 안 만든다. 091-S 식당 상대라벨이 90일·예정 슬롯 80%를 채우고, 그와 독립된 쿠싱 운영 시계열(고정 도로 트럭 또는 공항 월보)이 측정타당성을 통과한 뒤에만 최대 2–3개를 미리 적은 가중치로 묶는다. mock 0–100, 전국 CFSP, WTI는 분자에 넣지 않는다.</p>
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        <p className="text-5xl font-semibold tabular-nums">
+          {cushingBoard.score.readiness}
+          <span className="mt-2 block text-base font-normal">관측 충실도 / 100</span>
+        </p>
+        <p className="text-5xl font-semibold tabular-nums text-muted-foreground">
+          —
+          <span className="mt-2 block text-base font-normal text-foreground">현장 바쁨 / 100</span>
+        </p>
+      </div>
+      <p className="mt-3 text-sm leading-7 text-muted-foreground">{cushingBoard.score.readiness_detail}</p>
+      <p className="mt-1 text-sm leading-7 text-muted-foreground">{cushingBoard.score.busy_detail}</p>
       <h4 className="mt-6 text-sm font-medium">식당가 · 091-S</h4>
       <p className="mt-2 text-sm">{(restaurants?.venues ?? []).join(" · ")}</p>
       <p className="mt-2 text-sm text-muted-foreground">{restaurants?.last_observation}</p>

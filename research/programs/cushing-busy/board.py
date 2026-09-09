@@ -17,6 +17,14 @@ BOARD = {
     "factor_ledger": "091 CFAM",
     "composite": None,
     "verdict": "INSUFFICIENT",
+    "score": {
+        "readiness": 80,
+        "readiness_label": "관측 충실도",
+        "readiness_detail": "4/5 activity lanes have a dated snapshot. 091-S restaurant labels: 0 rows.",
+        "busy": None,
+        "busy_label": "현장 바쁨",
+        "busy_detail": "Not computed. 091-S has no quieter/usual/busier row yet.",
+    },
     "verdict_note": "No independently validated local activity series. Do not invent a 0–100 busy index.",
     "as_of_utc": "2026-09-09T03:20:00Z",
     "lanes": {
