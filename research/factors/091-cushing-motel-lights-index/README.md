@@ -82,11 +82,11 @@
 
 | ID | 관측 | 상태 | 증거 | 쓰지 않는 해석 |
 | --- | --- | --- | --- | --- |
-| **091-EXEC** | Plains → Enbridge → ONEOK 경영진의 비정기 외부 노출 | FORWARD_ONLY / E1 | [exec](subtracks/exec/README.md) | 인터뷰 횟수 = 바쁨, CEO → WTI |
-| **091-EXL** | 같은 행의 Cushing/storage/capacity/throughput/tightness 언급 | FORWARD_ONLY / E1 | 같은 카드 | 키워드 수 = 처리량 |
-| **091-EXE** | 정기 캘린더 대비 이벤트 서프라이즈 | FORWARD_ONLY / E1 | 같은 카드 | 실적콜을 고정보로 취급 |
+| **091-EXEC** | Plains → Enbridge → ONEOK 경영진 공개 노출 | KEEP / FORWARD_ONLY / E1 | [exec](subtracks/exec/README.md) | 인터뷰 횟수 = 바쁨, CEO → WTI |
+| **091-EXL** | 같은 행의 Cushing/storage/capacity/throughput/tightness 언급 | KEEP / FORWARD_ONLY / E1 | 같은 카드 | 키워드 수 = 처리량 |
+| **091-EXE** | Actual_30d minus ExpectedScheduled_30d | KEEP / FORWARD_ONLY / E1 | 같은 카드 | 실적콜·AGM을 서프라이즈로 셈 |
 
-`VisibilityShock`와 `LanguageShift`는 분리 기록. 곱한 `ExecPressure`는 두 열이 30일을 채운 뒤에만. 검정 타깃은 트럭·허가·EIA 재고이지 CL이 아니다.
+VisibilityShock와 LanguageShift는 분리. ExecPressure 곱은 60일 금지, 90일 전향 기록이 기본. 타깃 순서: 트럭·허가·일자리·숙박 → EIA 재고 → 생존 시에만 WTI. 선호 경로: Executive Surprise → Permit/Job → Heavy truck.
 
 전향 3종 묶음: [091-U/Y/Z forward panel](../../indexes/091-cushing-operations-nowcasting/forward-panel/README.md). 2026-09-08 값은 비정기 베이스라인이다.
 
