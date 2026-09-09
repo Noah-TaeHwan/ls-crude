@@ -1,0 +1,49 @@
+[
+  {
+    "width": 390,
+    "overflow": false,
+    "price": "93.03 USD",
+    "chartCount": 1
+  },
+  {
+    "width": 1440,
+    "overflow": false,
+    "price": "93.03 USD",
+    "chartCount": 1
+  },
+  {
+    "range": "5년",
+    "price": "93.03 USD",
+    "last": "2026-09-08"
+  },
+  {
+    "range": "3년",
+    "price": "93.03 USD",
+    "last": "2026-09-08"
+  },
+  {
+    "range": "1년",
+    "price": "93.03 USD",
+    "last": "2026-09-08"
+  },
+  {
+    "range": "6개월",
+    "price": "93.03 USD",
+    "last": "2026-09-08"
+  },
+  {
+    "range": "3개월",
+    "price": "93.03 USD",
+    "last": "2026-09-08"
+  },
+  {
+    "range": "1개월",
+    "price": "93.03 USD",
+    "last": "2026-09-08"
+  },
+  {
+    "range": "1주일",
+    "price": "93.03 USD",
+    "last": "2026-09-08"
+  }
+]

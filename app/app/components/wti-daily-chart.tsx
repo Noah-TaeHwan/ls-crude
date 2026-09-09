@@ -45,7 +45,7 @@ export function WtiDailyChart({ view }: { view: WtiDailyView }) {
   }
 
   return <div id="daily-prices" className="mt-6 min-w-0">
-    <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-sm text-muted-foreground">WTI · CL=F · 일봉</p><p id="daily-latest-price" className="mt-2 font-mono text-4xl text-watching">{latest ? latest.close.toFixed(2) : "—"} <span className="text-sm">USD</span></p><p className="mt-2 text-sm text-muted-foreground">{latest?.date ?? "자료 없음"}{delta == null ? "" : ` · 이전 일봉 대비 ${delta >= 0 ? "+" : ""}${delta.toFixed(2)} USD`}{data?.partialLast ? " · 마지막 일봉 변경 가능" : ""}</p></div><button type="button" className="filter-button" disabled={revalidator.state !== "idle"} onClick={() => void revalidator.revalidate()}>{revalidator.state === "idle" ? "가격 다시 확인" : "확인 중…"}</button></div>
+    <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-sm text-muted-foreground">WTI · CL=F · {data?.excludedTail ? "확인 가능한 일봉" : "일봉"}</p><p id="daily-latest-price" className="mt-2 font-mono text-4xl text-watching">{latest ? latest.close.toFixed(2) : "—"} <span className="text-sm">USD</span></p><p className="mt-2 text-sm text-muted-foreground">{latest?.date ?? "자료 없음"}{delta == null ? "" : ` · 이전 일봉 대비 ${delta >= 0 ? "+" : ""}${delta.toFixed(2)} USD`}{data?.partialLast ? " · 마지막 일봉 변경 가능" : ""}</p></div><button type="button" className="filter-button" disabled={revalidator.state !== "idle"} onClick={() => void revalidator.revalidate()}>{revalidator.state === "idle" ? "가격 다시 확인" : "확인 중…"}</button></div>
     <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label="일봉 조회 기간">{DAILY_RANGES.map(value => <button key={value} type="button" className="filter-button" aria-pressed={range === value} onClick={() => { setRange(value); setSelectedDate(null); }}>{LABELS[value]}</button>)}</div>
     <p className="mt-3 text-xs leading-6 text-muted-foreground">모든 기간을 일봉으로 표시합니다. <span className="text-watching">상승(종가 ≥ 시가)</span> · <span className="text-primary">하락(종가 &lt; 시가)</span></p>
     {view.error && <p role="status" className="mt-3 text-sm text-primary">{view.error}</p>}
@@ -72,7 +72,8 @@ export function WtiDailyChart({ view }: { view: WtiDailyView }) {
       <dl className="mt-2 grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">{[["시가",selected.open],["고가",selected.high],["저가",selected.low],["종가",selected.close]].map(([label,value])=><div key={label}><dt className="text-muted-foreground">{label}</dt><dd className="font-mono">{Number(value).toFixed(2)}</dd></div>)}</dl>
       <p id="daily-summary" className="mt-4 text-xs leading-6 text-muted-foreground">{LABELS[range]} · {bars.length}개 일봉 · 최저 {low.toFixed(2)} / 최고 {high.toFixed(2)} USD. 기간을 바꿔도 상단 가격과 마지막 일봉은 동일합니다. 휴장일·누락값은 임의로 채우지 않습니다.</p>
     </> : <div className="empty-state mt-5"><h3>일봉을 표시할 자료가 없습니다.</h3><p>자료가 확보되면 같은 화면에서 가격과 기간별 일봉을 표시합니다.</p></div>}
-    {data && <p className="mt-4 text-xs leading-6 text-muted-foreground">최신 일봉 원천 시각 {kst(data.observedAt)} KST · 조회 {kst(data.fetchedAt)} KST</p>}
+    {data?.excludedTail && <p className="mt-3 text-xs leading-6 text-muted-foreground">제외한 추가 시세 시각 {kst(data.excludedTail.sourceAt)} KST · 뉴욕 달력일 {data.excludedTail.calendarDate}. 기존 일봉과 합산하거나 다음 날짜로 옮기지 않았습니다.</p>}
+    {data && <p className="mt-4 text-xs leading-6 text-muted-foreground">표시 일봉 원천 시각 {kst(data.observedAt)} KST · 조회 {kst(data.fetchedAt)} KST</p>}
     <p className="mt-2 text-xs leading-6 text-muted-foreground">Yahoo Finance CL=F 일봉 · 날짜는 원천 시각의 뉴욕 날짜입니다. 마지막 일봉은 장중에 바뀔 수 있고 제공자 지연이 있습니다. 페이지를 열 때와 보이는 화면에서 5분마다 확인합니다. 공식 정산가가 아니며 만기 교체에 따른 가격 차이가 포함될 수 있습니다.</p>
   </div>;
 }
