@@ -1,0 +1,155 @@
+{
+  "candidate_id": "ALT-20260907-02",
+  "run_id": "20260909T003314Z",
+  "months": 138,
+  "first_month": "2015-01",
+  "last_month": "2026-07",
+  "missing_months": {
+    "2026": [
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
+  },
+  "quarantined_months": [
+    {
+      "year": 2020,
+      "month": "November",
+      "bad_cell": "889.,748.15",
+      "error": "bad TEU value: '889.,748.15'",
+      "clean_cells": {
+        "loaded_imports": "464819.70",
+        "empty_imports": "1247.70",
+        "total_imports": "466067.40",
+        "loaded_exports": "130916.50",
+        "empty_exports": "292762.25",
+        "total_exports": "423678.75",
+        "provider_yoy_pct": "22.06"
+      }
+    }
+  ],
+  "reconciliation": {
+    "months": 138,
+    "import_side_ok": 137,
+    "export_side_ok": 134,
+    "grand_total_ok": 135,
+    "mismatches": [
+      "2020-07",
+      "2022-11",
+      "2025-03",
+      "2025-10"
+    ]
+  },
+  "provider_yoy_check": {
+    "compared": 125,
+    "matched": 125,
+    "mismatches": []
+  },
+  "annual_total_check": {
+    "compared": 12,
+    "matched": 8,
+    "mismatches": [
+      {
+        "year": "2020",
+        "months": 11,
+        "computed": [
+          "4362220.70",
+          "48063.15",
+          "4410283.85",
+          "1400489.45",
+          "2512876.45",
+          "3913365.95",
+          "8323649.80"
+        ],
+        "provided": [
+          "4827040.40",
+          "49310.85",
+          "4876351.25",
+          "1531405.95",
+          "2805638.75",
+          "4337044.70",
+          "9213395.95"
+        ]
+      },
+      {
+        "year": "2022",
+        "months": 12,
+        "computed": [
+          "4975735.35",
+          "39579.95",
+          "5015315.30",
+          "1187084.50",
+          "3708759.05",
+          "4895943.55",
+          "9911158.85"
+        ],
+        "provided": [
+          "4975735.35",
+          "39579.95",
+          "5015315.30",
+          "1187084.50",
+          "3708759.05",
+          "4895843.55",
+          "9911158.85"
+        ]
+      },
+      {
+        "year": "2025",
+        "months": 12,
+        "computed": [
+          "5316713.30",
+          "3793.15",
+          "5320509.45",
+          "1429260.00",
+          "3489551.95",
+          "4918817.95",
+          "10239318.40"
+        ],
+        "provided": [
+          "5316713.30",
+          "3793.15",
+          "5320506.45",
+          "1429260.00",
+          "3489551.95",
+          "4918811.95",
+          "10239318.40"
+        ]
+      },
+      {
+        "year": "2026",
+        "months": 7,
+        "computed": [
+          "3175443.00",
+          "1079.00",
+          "3176522.00",
+          "826582.25",
+          "2079962.50",
+          "2906544.75",
+          "6083066.75"
+        ],
+        "provided": [
+          "3175433.00",
+          "1079.00",
+          "3176522.00",
+          "826582.25",
+          "2079962.50",
+          "2906544.75",
+          "6083066.75"
+        ]
+      }
+    ]
+  },
+  "main_page_crosscheck": {
+    "compared": 3,
+    "matched": 3,
+    "mismatches": [],
+    "ref": "2026-07"
+  },
+  "output_sha256": {
+    "research/data/processed/ALT-20260907-02/20260909T003314Z/monthly.csv": "3de4bdf2527c1a0973d8025a190f852ac8c730d88d56887920acda5f03609c25",
+    "research/indexes/ALT-20260907-02/20260909T003314Z/display.json": "1fda90b6a034df4e1de1d39671b46de78409c6da3d3ed4c5ca67bb025e52f2e2",
+    "research/indexes/ALT-20260907-02/20260909T003314Z/observation.svg": "a4aa5704579fbcc14dd6e2b88a8f861038cc3f977dbacb6c64be7368c5054e51"
+  }
+}

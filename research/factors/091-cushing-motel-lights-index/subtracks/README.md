@@ -14,6 +14,7 @@ Nothing here is a CFAM composite input, a backtest, or a trading signal yet.
 | [091-Z2 / Oklahoma Energy Today](okenergytoday/README.md) | Does a regional energy outlet add earlier, independently confirmable Cushing event discovery? | One dated Cushing inventory/maintenance/pipeline-context article was audited. It is useful as a human-reviewed cue, not as a numeric activity input. | **FORWARD_ONLY / source-pass** |
 | [091-X / MCBI-WTT](mcbi/README.md) | Can a free Midland–Cushing physical basis be constructed without changing the definition? | Three real CME WTT observations were retained. WTT is a Midland (Argus) versus WTI Trade Month futures differential, not Midland cash minus Cushing spot. | **SOURCE-PASS / SERIES-PARK** |
 | [091-GC / GCPSI](gcpsi/README.md) | Can a verified Cushing-area SPP PNode congestion series be retrieved and interpreted as an operational context? | The correct hourly aggregation route was implemented. The one-day public archive probe timed out before download and no Cushing PNode mapping is verified. | **PARK / E1** |
+| [091-LM / CALMF](calmf/README.md) | Can lawful public aggregates show a Cushing/Payne County last-mile activity shift? | No verified local Amazon/Flex geography or permitted, reproducible aggregate posting/block panel exists. Sparse permits are event-ledger context only. | **PARK / E0** |
 
 ## What this retry did and did not do
 
@@ -34,6 +35,7 @@ Nothing here is a CFAM composite input, a backtest, or a trading signal yet.
 | WMCSI | Authorized or reproducible daily M1/M2 settlements with a frozen roll and availability rule, then at least 30 sessions. |
 | MCBI | Ninety valid daily WTT bulletins under a frozen contract rule **and** a source-authorized, definition-matched Midland physical price leg. |
 | GCPSI | A publicly verified Cushing-area PNode, 168 continuous hourly observations, then agreement with an independent CFAM physical observation. |
+| CALMF | A verified Cushing/Payne County service geography plus permitted aggregate daily driver-posting and delivery-block (or completed-route) panels, then 30 continuous days and a 90-day validation panel. |
 
 The detailed code, raw-minimal sample, results, and receipts remain in each
 linked subdirectory above.

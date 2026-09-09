@@ -16,6 +16,29 @@ At fixed Central Time windows — 07:30, 12:30, and 18:30 — record the fields 
 
 The record is a manual observation of a public UI. Do not collect reviews, customer identities, phone/device data, transaction details, staff names, photos, or location traces. Do not infer numeric visitor counts from a bar chart.
 
+## Submitted five-minute monitor — safe implementation boundary
+
+The submitted monitor concept has been retained as a **forward-only recording
+workflow** in [`manual_busy_label_recorder.py`](../../../notebooks/091-cushing-operations-nowcasting/manual_busy_label_recorder.py).
+The original code's `mock_busyness()` produced time-of-day synthetic values and
+did not call its declared Maps API key; those values must not enter 091-S.
+
+The recorder therefore requires a human to enter only a visible public relative
+label. It makes no Maps request, does not automate/scrape the UI, and never
+stores customer, device, transaction, review, or location-trace data. A valid
+five-minute cadence is optional operational monitoring, not five-minute
+footfall data or a backtest.
+
+Example after a human reads the public venue page:
+
+```text
+python research/notebooks/091-cushing-operations-nowcasting/manual_busy_label_recorder.py --venue "Wendy's" --maps-url "https://maps.app.goo.gl/g8bMaDQDnoMc9roT8" --label usual --open yes --delivery shown --drive-through shown
+```
+
+Its generated CSV is ignored as a forward observation file. It becomes a
+research input only after the frozen 90-day completeness and measurement-
+validity gate below.
+
 ## First measurement-validity test
 
 Do not create a 0–100 score or test WTI/EIA. After 90 calendar days with at least 80% complete scheduled observations:
