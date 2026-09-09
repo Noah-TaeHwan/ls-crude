@@ -1,41 +1,60 @@
 # 091-EXEC — Cushing Operator Executive Visibility
 
 **Layer:** communication. Not physical activity.  
-**Status:** FORWARD_ONLY / E1  
+**Status:** KEEP / FORWARD_ONLY / E1  
 **Not a new factor.** Lives under 091.
 
-Question: does abnormal public exposure or language from Cushing-connected operators show up *before* field operations move?
+Question: does operator communication leave a trace *before* Cushing operations move?
 
 ```text
-091 = Physical Activity + Operator Communication
+CFAM = Physical Observation + Operator Communication
 ```
 
-Do not add VisibilityShock to the busy board. Do not multiply into 091-S/U/Y/V. Promote to “operational regime change” only if a physical lane and this layer move together *after* both have independent panels.
+Do not add this layer to the busy meter. Do not mix into 091-S / U / Y / V. A joint “regime change” label is allowed only after both layers have independent panels and move together.
+
+Preferred later path, not a score today:
+
+```text
+Executive Surprise → Permit / Job activity → Heavy truck activity
+```
+
+That is how 091 would leave “is the field busy?” and become “what prints before the field changes?”
 
 ## Split IDs (do not collapse)
 
-| ID | Object | First record |
+| ID | Object | Definition |
 | --- | --- | --- |
-| **091-EXEC** | unscheduled external visibility | event rows |
-| **091-EXL** | language on Cushing / storage / capacity / throughput / tightness | token flags on the same rows |
-| **091-EXE** | event surprise vs the firm’s own calendar | scheduled_or_unscheduled |
+| **091-EXEC** | visibility | raw public appearances, tagged scheduled vs not |
+| **091-EXL** | language | Cushing / storage / capacity / throughput / tightness flags on the same rows |
+| **091-EXE** | calendar surprise | excess vs the firm’s own booked calendar |
 
-Later, and only later:
+091-EXE is **not** “showed up unscheduled.” It is excess over what the calendar already promised:
 
-`ExecPressure_t = VisibilityShock_t × LanguageShift_t`
+```text
+EXE_t = ActualAppearances_30d − ExpectedScheduledAppearances_30d
+```
 
-`VisibilityShock_t = z(unscheduled external hits in trailing 30d)`  
-`LanguageShift_t = z(Cushing-ops token rate)`
+Earnings calls and AGMs sit in Expected. They do not inflate the shock.
+
+## Gates before any composite
+
+`VisibilityShock` and `LanguageShift` stay separate columns.
+
+`ExecPressure_t = VisibilityShock_t × LanguageShift_t` is **not** computed at 30 days. 30 days is too short even for a baseline, and it breaks the 091 90-day / measurement-validity rule.
+
+Minimum: **60 forward days of rows**. Preferred before any product: **90 forward days**, same bar as 091-S.
+
+z-windows, if used later, are estimated only on that completed forward panel.
 
 ## Basket
 
-Start with Plains. Then Enbridge, ONEOK. No celebrity CEOs outside midstream names that actually touch Cushing.
+Plains first. Then Enbridge, ONEOK. No celebrity CEOs who do not operate Cushing midstream.
 
 ## Information weight (pre-registered)
 
 | event_type | weight class |
 | --- | --- |
-| scheduled earnings call | baseline / low |
+| scheduled earnings call / AGM | baseline — belongs in Expected, not in EXE |
 | industry conference keynote | medium |
 | unscheduled CNBC / Bloomberg hit | high |
 | special investor update | high |
@@ -60,18 +79,21 @@ expansion_mentioned
 source
 ```
 
-Public IR pages, official transcripts, official press rooms, Congress.gov witness lists only. No personal accounts, face ID, or flight tracking.
+Public IR, official transcripts, official press rooms, Congress.gov witness lists only. No personal accounts, face ID, or flight tracking.
 
-## Tests (not WTI)
+## Target order (frozen)
 
-```
-ExecShock_t → TruckActivity_{t+1:t+30}
-ExecShock_t → PermitActivity_{t+1:t+90}
-ExecShock_t → CushingStocks_{t+1:t+8w}
-```
+1. `EXEC → truck / permit / job / lodging`
+2. `EXEC → EIA Cushing stocks`
+3. `EXEC → WTI` — last, and only if (1) survives. Do not rescue a dead physical link with CL.
 
-Kill if communication shocks do not precede an independent physical series. Do not rescue with CL.
+Kill / PARK if communication shocks do not precede an independent physical series.
+
+## Read of two futures
+
+- Plains unscheduled hits rise → Cushing/capacity/throughput language rises → permits/jobs/trucks rise in 2–6 weeks: then EXEC is a candidate lead of field change.
+- CEO visibility rises → physical lanes flat: then it was PR. KILL or PARK. Do not keep it as a busy input.
 
 ## Next
 
-One Plains IR / transcript month, tagged with the schema. No z-score until 30 days of unscheduled rows exist.
+One Plains IR month tagged to the schema. No z-score, no ExecPressure, no WTI column.
