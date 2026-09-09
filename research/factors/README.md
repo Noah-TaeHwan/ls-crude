@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–092는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–093은 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## Current research status (2026-09-07)
@@ -139,7 +139,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 090 | [Great Lakes Ice Constraint Index](090-great-lakes-ice-constraint-index/README.md) | 별도표 | 별도표 | HOLD — NOAA 결빙 90일 z → HO RV5는 IS/OOS -0.103/-0.228으로 약한 동일방향이나 비유의; 실제 쇄빙·지연 미측정 |
 | 091 | [Cushing Field Activity Monitor (CFAM)](091-cushing-motel-lights-index/README.md) | 별도표 | 별도표 | HOLD — 호텔세 14개월 파일럿 미통과; CFAM 공개 야간광→이후 28일 쿠싱 재고 `r=+0.053` (p=.607, n=96), 변화폭 `r=+0.068` (p=.508)도 관계 없음 |
 | 092 | [Cushing Last-Mile Logistics Feasibility (CALMF)](092-cushing-last-mile-logistics-feasibility/README.md) | — | — | PARK — Cushing/Payne County Amazon/Flex presence와 허용된 일별 route/block 집계가 미검증; WTI 검정 미실행 |
-| 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | 별도표 | 미실행 | HOLD — food-CPI 대체 검정 미통과; 계란 원자료·공표일·FX 미확보로 계란 가설 자체는 미검정 |
+| 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | -0.022 | — | HOLD — WTI RV21 IS r=-0.022, 결합 9개월도 예상 반대. 계란 원문·공표일·FX가 없어 계란 가설 자체는 미검정 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 

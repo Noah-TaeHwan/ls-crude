@@ -55,3 +55,7 @@
 - ego 모바일 390×844: 날짜 입력49→24, 2024-07-16의 0/1·0.0% readout 확인, 가로 넘침 false. `/tmp/huchen-mobile-snapshot.txt`, `/tmp/huchen-mobile.png`를 Main 직접 읽었다. 기본 캡처의 빈 이미지 문제는 같은 ego heredoc 내 `Page.captureScreenshot`으로 실제 렌더링 캡처를 확인했다.
 - `graphify update .`: 5469 nodes/6870 edges 갱신, SQL 파서 미설치 경고. 그래프 정본 의미검토 완료를 뜻하지 않는다.
 - 새 Markdown 로컬 링크 실파일 해석 PASS. 두 번의 명령 cwd 오류는 올바른 app/루트 경로에서 재실행했으며 성공으로 세지 않았다.
+
+## 동시 작업 통합
+
+PR #89 검토 중 main에 PR #88의093행 복원과 PR #87 도일 영수증 정정이 먼저 병합되었다. origin/main을 정상 merge하고093행은 main 정본 그대로 보존해 중복 수정을 제거했다. PR #89의 최종 diff는093행을 새로 추가하지 않는다.
