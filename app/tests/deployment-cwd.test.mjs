@@ -204,6 +204,45 @@ test("serves the public evidence brief routes from the repository root", async (
     const tankerPost = await fetch(`${baseUrl}/observations/tankers`, { method: "POST", body: new URLSearchParams() });
     assert.equal(tankerPost.status, 405);
 
+    const cushing = await fetch(`${baseUrl}/observations/cushing-busy`);
+    assert.equal(cushing.status, 200);
+    const cushingBody = await cushing.text();
+    const cushingText = cushingBody.split("<script")[0].replace(/<[^>]*>/g, "");
+    assert.match(cushingText, /쿠싱 현장은 지금 바쁜가/);
+    assert.match(cushingText, /아직 판단할 수 없습니다/);
+    assert.match(cushingText, /보드 정리 시각/);
+    assert.match(cushingText, /KST/);
+    assert.match(cushingText, /고정 기록/);
+    assert.doesNotMatch(cushingText, /2026-09-09T03:25:00Z/);
+    assert.doesNotMatch(cushingText, /화면을 연 시각/);
+    assert.match(cushingText, /관측 대상 식당 6곳/);
+    assert.match(cushingText, /관측 기록 아직 없음/);
+    assert.match(cushingText, /인허가 상태 확인 기록/);
+    assert.match(cushingText, /관측별 기록과 출처 펼치기/);
+    assert.match(cushingText, /수치·기준 주는 아래 원문 기록에서 확인하세요/);
+    assert.match(cushingBody, /함께 볼 재고 자료/);
+    assert.match(cushingBody, /PROGRAM\.md/);
+    assert.match(cushingBody, /Boomarang Diner/);
+    assert.doesNotMatch(cushingText, /관측 충실도 \/ 100/);
+    assert.doesNotMatch(cushingText, /현장 바쁨 \/ 100/);
+    assert.doesNotMatch(cushingBody, /text-5xl/);
+    assert.doesNotMatch(cushingBody, /3\.799/);
+    assert.doesNotMatch(cushingBody, /3\.790/);
+    assert.doesNotMatch(cushingBody, /현재S0%|현재 S0%/);
+    const cushingPost = await fetch(`${baseUrl}/observations/cushing-busy`, { method: "POST", body: new URLSearchParams() });
+    assert.equal(cushingPost.status, 405);
+    for (const route of ["/", "/research"]) {
+      const homeCushing = await fetch(`${baseUrl}${route}?sample=cushing-busy`);
+      const homeCushingBody = await homeCushing.text();
+      assert.equal(homeCushing.status, 200);
+      const homeCushingText = homeCushingBody.split("<script")[0].replace(/<[^>]*>/g, "");
+      assert.match(homeCushingText, /아직 판단할 수 없습니다/);
+      assert.match(homeCushingText, /보드 정리 시각/);
+      assert.match(homeCushingBody, /href="\/observations\/cushing-busy"/);
+      assert.doesNotMatch(homeCushingText, /관측 충실도 \/ 100/);
+      assert.doesNotMatch(homeCushingText, /현장 바쁨 \/ 100/);
+    }
+
     const research = await fetch(`${baseUrl}/research`);
     assert.equal(research.status, 200);
     const researchBody = await research.text();

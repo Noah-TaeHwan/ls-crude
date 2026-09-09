@@ -1,5 +1,6 @@
 import { VisibilityObservation } from "~/components/visibility-observation";
 import { TankerObservation } from "~/components/tanker-observation";
+import { CushingObservation } from "~/components/cushing-observation";
 import cushingBoard from "../routes/cushing-busy-board.json";
 import type { VisibilityView } from "~/lib/visibility";
 import type { TankerView } from "~/lib/tanker-arrivals";
@@ -168,47 +169,14 @@ function DataTable({title,headers,rows}:{title:string;headers:string[];rows:stri
   return <details className="mt-5 border-t border-border"><summary className="min-h-11 cursor-pointer py-3 text-sm text-primary">{title}</summary><div role="region" aria-label={title+", 작은 화면에서는 가로로 스크롤"} tabIndex={0} className="overflow-x-auto"><table className="w-full min-w-[460px] text-right text-sm"><caption className="pb-3 text-left">{title} · 고정 연구 빈티지</caption><thead><tr>{headers.map(h=><th key={h} scope="col" className="border-b border-border py-3 pr-3">{h}</th>)}</tr></thead><tbody>{rows.map(([first,...cells])=><tr key={first}><th scope="row" className="border-b border-border py-2 pr-3 font-normal">{first}</th>{cells.map((v,i)=><td key={i} className="border-b border-border py-2 pr-3 font-mono">{v}</td>)}</tr>)}</tbody></table></div></details>;
 }
 
+/**
+ * 쿠싱 현장 관측을 홈 카드에서 공유 컴포넌트로 보여준다. 점수·합성·추세를 만들지 않는다.
+ * @returns 질문→판단 보류→흔적/없음/다음 확인 구조의 홈 카드.
+ */
 function CushingBusyCase() {
-  const activity = cushingBoard.lanes.activity_forward;
-  const context = cushingBoard.lanes.physical_context;
-  const restaurants = activity.find((row) => row.id === "091-S");
   return (
     <article className="min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
-      <div className="flex flex-wrap items-center gap-3 text-xs">
-        <span className="status-stamp">091 보드</span>
-        <span className="card-verdict">{cushingBoard.verdict}</span>
-      </div>
-      <h3 className="mt-5 text-xl font-medium sm:text-2xl">{cushingBoard.question}</h3>
-      <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        <p className="text-5xl font-semibold tabular-nums">
-          {cushingBoard.score.readiness}
-          <span className="mt-2 block text-base font-normal">관측 충실도 / 100</span>
-        </p>
-        <p className="text-5xl font-semibold tabular-nums text-muted-foreground">
-          —
-          <span className="mt-2 block text-base font-normal text-foreground">현장 바쁨 / 100</span>
-        </p>
-      </div>
-      <p className="mt-3 text-sm leading-7 text-muted-foreground">{cushingBoard.score.readiness_detail}</p>
-      <p className="mt-1 text-sm leading-7 text-muted-foreground">{cushingBoard.score.busy_detail}</p>
-      <h4 className="mt-6 text-sm font-medium">식당가 · 091-S</h4>
-      <p className="mt-2 text-sm">{(restaurants?.venues ?? []).join(" · ")}</p>
-      <p className="mt-2 text-sm text-muted-foreground">{restaurants?.last_observation}</p>
-      <ul className="mt-5 space-y-2 text-sm">
-        {activity.map((row) => (
-          <li key={row.id}><strong>{row.id}</strong> {row.name} · {row.last_observation ?? "날짜 행 없음"}</li>
-        ))}
-      </ul>
-      <h4 className="mt-6 text-sm font-medium">재고 문맥 — 바쁨 아님</h4>
-      <ul className="mt-2 space-y-2 text-sm">
-        {context.map((row) => (
-          <li key={row.id}><strong>{row.id}</strong> {row.name} · {row.last_observation}</li>
-        ))}
-      </ul>
-      <footer className="mt-5 flex flex-wrap gap-5 border-t border-border pt-4 text-sm">
-        <a className="source-link" href="/observations/cushing-busy">전체 보드 →</a>
-        <a className="source-link" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/programs/cushing-busy/PROGRAM.md">프로그램 원문</a>
-      </footer>
+      <CushingObservation board={cushingBoard} />
     </article>
   );
 }
