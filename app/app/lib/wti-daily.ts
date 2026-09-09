@@ -26,7 +26,6 @@ function newYorkDay(time: Date): string {
 
 /**
  * Yahoo 일봉의 종목·배열·가격·시각을 검증하고 실제 OHLC만 반환한다.
- * 같은 뉴욕 날짜의 모호한 추가 시세는 정규 일봉과 합치지 않고 제외한다.
  * @param value Yahoo chart 응답.
  * @param now 조회 기준 시각.
  * @returns 최신 잠정 일봉까지 포함한 정상 응답.

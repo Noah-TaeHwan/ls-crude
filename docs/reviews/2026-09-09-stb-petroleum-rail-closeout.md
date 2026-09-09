@@ -69,4 +69,4 @@ PR #95는 고정·갱신 자료를 홈 `/?sample=`로 모으고 `/research?sampl
 
 ## PR #98 재병합
 
-PR #98이 같은 Yahoo 중복 날짜를 **교체가 아니라 제외**로 처리한다. 이 브랜치의 후속 봉 교체 테스트는 제거하고 정본 파서·픽스처를 PR #98에 맞춘다. `readWtiDaily`의 User-Agent `ls-crude-observations/1.0`만 유지한다.
+PR #98이 같은 Yahoo 중복 날짜를 **교체가 아니라 제외**로 처리한다. 이 브랜치의 후속 봉 교체 테스트는 제거하고 정본 파서·픽스처를 PR #98에 맞춘다. pause closeout에서 Yahoo User-Agent와 추가 JSDoc은 STB43 범위가 아니라 `origin/main`과 같게 되돌렸다.

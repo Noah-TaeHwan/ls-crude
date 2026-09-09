@@ -14,7 +14,7 @@ let cached: WtiDailySnapshot | null = null;
 export async function readWtiDaily(fetcher: typeof fetch = fetch, now = new Date()): Promise<WtiDailyView> {
   if (cached && now.getTime() >= Date.parse(cached.fetchedAt) && now.getTime() - Date.parse(cached.fetchedAt) < 60000) return { data: cached, error: null };
   try {
-    const response = await fetcher(URL, { signal: AbortSignal.timeout(3500), headers: { Accept: "application/json", "User-Agent": "ls-crude-observations/1.0" } });
+    const response = await fetcher(URL, { signal: AbortSignal.timeout(3500), headers: { Accept: "application/json" } });
     if (!response.ok) throw new Error(`Yahoo HTTP ${response.status}`);
     const next = parseWtiDaily(await response.json(), now);
     if (cached && next.bars.at(-1)!.date < cached.bars.at(-1)!.date) throw new Error("Yahoo 일봉 기준일 역행");
