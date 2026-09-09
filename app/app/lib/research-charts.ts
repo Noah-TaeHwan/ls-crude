@@ -4,8 +4,10 @@ export interface WatermelonPoint { date: string; numerator: number; denominator:
 export interface JejuPoint { date: string; lngMwh: string; oilMwh: string; sharePct: string }
 /** 월 합계와 서로 다른 정의의 전년차. 첫해 자체 차분은 결측이다. */
 export interface DegreePoint { month: string; hdd:number; cdd:number; hddYoy:number|null; cddYoy:number|null; providerHDDYoy:number|null; providerCDDYoy:number|null }
+/** 미국 4사 주간 originated 차종. 결측을 0으로 바꾸지 않는다. */
+export interface RailPoint { date: string; bnsf: number; up: number; csx: number; ns: number }
 /** 접수 카드에서 해당 연구 사례로 이동하는 고정 연결. */
-export const SAMPLE_LINKS: Record<string, string> = { "ALT-20260908-16":"/?sample=visibility#research-sample", "ALT-20260907-26":"/?sample=tankers#research-sample", "ALT-20260907-02":"/?sample=empties#research-sample", "ALT-20260907-36": "/?sample=watermelon#research-sample", "ALT-20260908-20": "/?sample=jeju#research-sample", "ALT-20260907-45":"/?sample=degree-days#research-sample" };
+export const SAMPLE_LINKS: Record<string, string> = { "ALT-20260908-16":"/?sample=visibility#research-sample", "ALT-20260907-26":"/?sample=tankers#research-sample", "ALT-20260907-02":"/?sample=empties#research-sample", "ALT-20260907-36": "/?sample=watermelon#research-sample", "ALT-20260908-20": "/?sample=jeju#research-sample", "ALT-20260907-45":"/?sample=degree-days#research-sample", "ALT-20260907-43":"/?sample=petroleum-rail#research-sample" };
 
 /** @param args 현재·다음 URL과 라우터 기본 판단. @returns 사례 선택만 바뀌면 시장 재조회 없이 전환하며 수동·주기 갱신은 유지한다. */
 export function sampleShouldRevalidate({currentUrl,nextUrl,defaultShouldRevalidate,formMethod}:{currentUrl:URL;nextUrl:URL;defaultShouldRevalidate:boolean;formMethod?:string}): boolean {
@@ -53,6 +55,16 @@ export function readDegreeDays(value:unknown): DegreePoint[]|null {
   if (rows.reduce((n,r)=>n+r.hdd,0)!==36249 || rows.reduce((n,r)=>n+r.cdd,0)!==12720) return null;
   const mismatches=rows.slice(12).reduce((n,r)=>n+Number(r.providerHDDYoy!==null&&r.hddYoy!==r.providerHDDYoy)+Number(r.providerCDDYoy!==null&&r.cddYoy!==r.providerCDDYoy),0);
   return mismatches===20 ? rows : null;
+}
+/** @param value 고정 표시 원본. @returns 미국 4사 주간 차종 또는 오류 상태. */
+export function readPetroleumRail(value: unknown): RailPoint[] | null {
+  const v = value as {candidateId?:unknown;runId?:unknown;points?:RailPoint[]};
+  if (!v || v.candidateId !== "ALT-20260907-43" || v.runId !== "20260909T003038Z" || !Array.isArray(v.points) || v.points.length !== 493) return null;
+  if (!v.points.every(r => r && ["bnsf","up","csx","ns"].every(k => Number.isSafeInteger(r[k as keyof RailPoint]) && (r[k as keyof RailPoint] as number) > 0)) || !ordered(v.points)) return null;
+  if (v.points[0].date !== "2017-03-29" || v.points.at(-1)!.date !== "2026-09-02") return null;
+  if (!v.points.every(r => new Date(r.date+"T00:00:00Z").getUTCDay() === 3)) return null;
+  if (v.points.reduce((n,r)=>n+r.bnsf,0) !== 2381801 || v.points.reduce((n,r)=>n+r.up,0) !== 1434967 || v.points.reduce((n,r)=>n+r.csx,0) !== 665175 || v.points.reduce((n,r)=>n+r.ns,0) !== 440741) return null;
+  return v.points;
 }
 /**
  * 실제 관측 날짜 중 포인터에 가장 가까운 것을 찾는다. 달력 공백에 값을 만들지 않는다.

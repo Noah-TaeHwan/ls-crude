@@ -230,7 +230,15 @@ test("serves the public evidence brief routes from the repository root", async (
       for (const value of ["degree-days-level-plot","degree-days-yoy-plot","2023-12","192","20","65°F","자동 갱신 아님"]) assert.ok(html.includes(value),value);
       assert.doesNotMatch(html,/id="jeju-generation-plot"|id="watermelon-research-plot"/);
     }
+    for (const route of ["/", "/research"]) {
+      const response=await fetch(`${baseUrl}${route}?sample=petroleum-rail`);
+      assert.equal(response.status,200);
+      const html=await response.text();
+      for (const value of ["petroleum-rail-plot","2026-09-02","5712","3351","carloads","자동 갱신 아님","Petroleum Products"]) assert.ok(html.includes(value),value);
+      assert.doesNotMatch(html,/id="jeju-generation-plot"|id="watermelon-research-plot"|id="degree-days-level-plot"|id="empties-plot"/);
+    }
     assert.doesNotMatch(body,/id="empties-plot"/,"default home keeps frozen LA sample behind its case button");
+    assert.doesNotMatch(body,/id="petroleum-rail-plot"/,"default home keeps frozen rail sample behind its case button");
     for (const route of ["/", "/research"]) {
       const response=await fetch(`${baseUrl}${route}?sample=empties`);
       const html=await response.text();
@@ -248,11 +256,11 @@ test("serves the public evidence brief routes from the repository root", async (
       assert.match(html,new RegExp(`id="${id}"`));
       assert.ok(html.indexOf('id="research-sample"')<html.indexOf(`id="${id}"`));
       assert.ok(html.includes("갱신 관측"));assert.ok(html.includes(unit));
-      assert.doesNotMatch(html,/id="watermelon-research-plot"|id="empties-plot"/);
+      assert.doesNotMatch(html,/id="watermelon-research-plot"|id="empties-plot"|id="petroleum-rail-plot"/);
     }
     const unknownSample = await fetch(`${baseUrl}/research?sample=unknown`);
     assert.doesNotMatch(await unknownSample.text(), /id="watermelon-research-plot"/);
-    for(const kind of ["watermelon","jeju","degree-days","empties","visibility","tankers"]) {
+    for(const kind of ["watermelon","jeju","degree-days","empties","visibility","tankers","petroleum-rail"]) {
       const redirect=await fetch(`${baseUrl}/research?sample=${kind}`,{redirect:"manual"});
       assert.equal(redirect.status,308);assert.equal(redirect.headers.get("location"),`/?sample=${kind}#research-sample`);
     }
@@ -310,6 +318,11 @@ test("serves research image bytes from the production start directory", async ()
     assert.match(svg.headers.get("content-type"),/image\/svg/);
     const source="research/indexes/ALT-20260907-45/20260908T120546Z/v2/degree-days-monthly-v2.svg";
     assert.equal(createHash("sha256").update(Buffer.from(await svg.arrayBuffer())).digest("hex"),createHash("sha256").update(await readFile(path.join(repositoryRoot,source))).digest("hex"));
+    const rail=await fetch(`http://127.0.0.1:${port}/research/petroleum-rail-20260909.svg`);
+    assert.equal(rail.status,200);
+    assert.match(rail.headers.get("content-type"),/image\/svg/);
+    const railSource="research/indexes/ALT-20260907-43/20260909T003038Z/observation.svg";
+    assert.equal(createHash("sha256").update(Buffer.from(await rail.arrayBuffer())).digest("hex"),createHash("sha256").update(await readFile(path.join(repositoryRoot,railSource))).digest("hex"));
     const la=await fetch(`http://127.0.0.1:${port}/research/la-empties-v2.svg`);
     assert.equal(la.status,200);assert.match(la.headers.get("content-type"),/image\/svg/);
     const laReceipt=JSON.parse(await readFile(path.join(repositoryRoot,"research/indexes/ALT-20260907-02/20260909T003314Z/v2/receipt.json"),"utf8"));

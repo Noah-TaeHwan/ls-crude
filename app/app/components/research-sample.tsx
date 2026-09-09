@@ -9,37 +9,46 @@ import melonInput from "../../../research/indexes/web-observations/v2/watermelon
 import degreeInput from "../../../research/indexes/web-observations/v2/degree-days.json";
 import degreeQuality from "../../../research/indexes/ALT-20260907-45/20260908T120546Z/v2/quality.json";
 import jejuInput from "../../../research/indexes/web-observations/v2/jeju.json";
+import railInput from "../../../research/indexes/web-observations/v2/petroleum-rail.json";
 import mq from "../../../research/indexes/ALT-20260907-36/20260908T065043Z/quality.json";
 import jq from "../../../research/indexes/ALT-20260908-20/20260908T073402Z/quality.json";
+import rq from "../../../research/indexes/ALT-20260907-43/20260909T003038Z/quality.json";
 import coverage from "../../../research/indexes/ALT-20260907-36/20260908T065043Z/yearly-coverage.csv?raw";
 import monthly from "../../../research/indexes/ALT-20260908-20/20260908T073402Z/monthly.csv?raw";
-import { readWatermelon, readJeju, readDegreeDays } from "~/lib/research-charts";
+import railYears from "../../../research/indexes/ALT-20260907-43/20260909T003038Z/yearly-coverage.csv?raw";
+import { readWatermelon, readJeju, readDegreeDays, readPetroleumRail } from "~/lib/research-charts";
 import type { IntakeRecord } from "~/lib/research-intake";
 import { ResearchChart } from "~/components/research-chart";
 
 /** 현재 원장의 판정 표시명. */
 const DECISIONS: Record<string,string> = { PARK:"조건 대기", KEEP:"후속 연구 유지", KILL:"현 방식 종료" };
 /** 검증 실패는 결측 상태로 유지하는 고정 빈티지. */
-const MELON = readWatermelon(melonInput), JEJU = readJeju(jejuInput), DEGREES = readDegreeDays(degreeInput);
+const MELON = readWatermelon(melonInput), JEJU = readJeju(jejuInput), DEGREES = readDegreeDays(degreeInput), RAIL = readPetroleumRail(railInput);
 /** 검토된 원단위 표. */
 const YEARS = coverage.trim().split(/\r?\n/).slice(1).map(r=>r.split(","));
 /** 월별 비중은 월합계 기반이며 일별 비중 평균과 다르다. */
 const MONTHS = monthly.trim().split(/\r?\n/).slice(1).map(r=>r.split(","));
+/** 미국 4사 연도별 originated 합. 2017·2026은 부분 연도다. */
+const RAIL_YEARS = railYears.trim().split(/\r?\n/).slice(1).map(r=>r.split(","));
 /** 사례별 고정 출처와 관측 범위. */
 const CASES = {
   watermelon: {label:"수박 · 냉장트럭",title:"수박이 냉장트럭을 바쁘게 만들까?",path:"ALT-20260907-36/20260908T065043Z",start:mq.pure_start,end:mq.pure_end,collected:mq.source.retrieved_at.slice(0,16).replace("T"," ")+" UTC",png:"/research/watermelon-20260908.png",source:"https://www.ams.usda.gov/services/transportation-analysis/agricultural-refrigerated-truck-quarterly-datasets"},
   jeju: {label:"제주 · LNG와 유류",title:"제주의 LNG·유류 발전량은 어떻게 달랐을까?",path:"ALT-20260908-20/20260908T073402Z",start:jq.start,end:jq.end,collected:"2026-09-08 07:34 UTC",png:"/research/jeju-20260908.png",source:"https://www.data.go.kr/data/15069334/fileData.do"},
   "degree-days": {label:"미국 · 냉난방도일",title:"냉난방에 필요한 날씨 조건은 얼마나 달랐을까?",path:"ALT-20260907-45/20260908T120546Z/v2",start:"2015-01",end:"2023-12",collected:"2026-09-08 12:09 UTC",png:"/research/degree-days-v2.svg",source:"https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/cdus/degree_days/"},
   empties: {label:"LA항 · 빈 컨테이너",title:"빈 컨테이너는 얼마나 돌아갈까?",path:"ALT-20260907-02/20260909T003314Z",start:"2015-01",end:"2026-07",collected:"2026-09-09 00:33 UTC",png:"/research/la-empties-v2.svg",source:"https://portoflosangeles.org/business/statistics/container-statistics"},
+  "petroleum-rail": {label:"미국 · 석유 철도",title:"석유 제품은 철도로 얼마나 실렸을까?",path:"ALT-20260907-43/20260909T003038Z",start:rq.start,end:rq.end,collected:rq.source.completed_at.slice(0,16).replace("T"," ")+" UTC",png:"/research/petroleum-rail-20260909.svg",source:"https://www.stb.gov/reports-data/rail-service-data/"},
 } as const;
 
+/** 자료 탐색에 넘기는 고정 사례 정본. */
+interface SampleRecords { watermelon?:IntakeRecord;jeju?:IntakeRecord;"degree-days"?:IntakeRecord;empties?:IntakeRecord;"petroleum-rail"?:IntakeRecord }
+
 /** @param props 사례별 현재 정본. @returns URL로 선택하는 과거 연구 사례. */
-export function ResearchSample({ records, live }: {live:{visibility:VisibilityView;tankers:TankerView;checkedAt:string};records:{watermelon?:IntakeRecord;jeju?:IntakeRecord;"degree-days"?:IntakeRecord;empties?:IntakeRecord}}) {
+export function ResearchSample({ records, live }: {live:{visibility:VisibilityView;tankers:TankerView;checkedAt:string};records:SampleRecords}) {
   const [params] = useSearchParams();
   const navigate = useNavigate();
   const requested = params.get("sample");
-  const kind = requested === "jeju" || requested === "degree-days" || requested === "empties" ? requested : "watermelon";
   const liveKind = requested === "visibility" || requested === "tankers" ? requested : null;
+  const kind = requested && requested in CASES ? requested as keyof typeof CASES : "watermelon";
   const selectedCase = liveKind ?? kind;
   const options = [...Object.entries(CASES).map(([key,value])=>({key,label:value.label})),{key:"visibility",label:"갤버스턴 · 시정"},{key:"tankers",label:"싱가포르 · 탱커 입항"}];
   const info = CASES[kind], record = records[kind];
@@ -52,7 +61,7 @@ export function ResearchSample({ records, live }: {live:{visibility:VisibilityVi
       <h3 className="mt-5 text-xl font-medium sm:text-2xl">{info.title}</h3>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2"><div><dt className="text-muted-foreground">관측 기간</dt><dd className="mt-1 font-mono">{info.start} ~ {info.end}</dd></div><div><dt className="text-muted-foreground">자료를 수집한 시각</dt><dd className="mt-1 font-mono">{info.collected}</dd></div></dl>
       {!record ? <div role="status" className="empty-state mt-5"> 해당 후보 정본을 확인하지 못했습니다. 다른 사례 또는 연구 원문을 확인하세요.</div> : <>
-        {kind === "watermelon" ? <WatermelonCase /> : kind === "jeju" ? <JejuCase /> : kind === "degree-days" ? <DegreeDaysCase /> : <EmptiesCase />}
+        {kind === "watermelon" ? <WatermelonCase /> : kind === "jeju" ? <JejuCase /> : kind === "degree-days" ? <DegreeDaysCase /> : kind === "empties" ? <EmptiesCase /> : <RailCase />}
         <div className="evidence-note mt-6"><h4 className="text-sm font-medium">다음 확인 · {record.fields.owner}</h4><p className="mt-2 text-sm leading-7">{record.fields.next_action}</p><p className="mt-2 text-xs text-muted-foreground">재검토 예정 {record.fields.next_review_date} · 사람 배정 제안</p></div>
       </>}
       <footer className="mt-5 flex flex-wrap gap-5 border-t border-border pt-4 text-sm">{info.png && <a className="source-link" href={info.png} download>연구 그림 다운로드</a>}{record && <a className="source-link" href={record.sourceHref}>가설·판정 원문</a>}<a className="source-link" href={evidence}>재현 코드·영수증</a><a className="source-link" href={info.source}>제공기관 자료 정의</a></footer>
@@ -125,6 +134,25 @@ function DegreeDaysCase() {
     <p className="mt-4 text-sm leading-7 text-muted-foreground">비교 가능한 192개 값 중 <strong className="text-foreground">{degreeQuality.mismatch_count}개</strong>가 공급자의 전년차와 다릅니다. 자체 뺄셈은 원본 월합계와 일치하지만, 비교 정의·가중·개정 중 무엇이 차이를 만드는지는 미확인입니다. 공급자 전년차를 재현했다고 주장하지 않습니다.</p>
     <p className="mt-3 text-xs leading-6 text-muted-foreground">출처 NOAA CPC. 이 그림은 연구팀의 파생 시각화이며 공식 NOAA 예측이나 WTI 신호가 아닙니다. 첫 12개월의 자체 전년차는 —로 표시합니다.</p>
     <DataTable title="월별 원단위와 두 전년차 비교표" headers={["월","HDD","CDD","HDD 자체차","HDD 제공차","CDD 자체차","CDD 제공차"]} rows={rows.map(r=>[r.month,String(r.hdd),String(r.cdd),fmt(r.hddYoy),fmt(r.providerHDDYoy),fmt(r.cddYoy),fmt(r.providerCDDYoy)])}/>
+  </>;
+}
+
+/** @returns 미국 4사 주간 originated 차종을 보여주는 철도 사례. */
+function RailCase() {
+  const [selected,setSelected] = useState(RAIL ? RAIL.length-1 : 0);
+  if (!RAIL) return <p role="status">철도 표시 자료 검증 실패. 원문을 확인하세요.</p>;
+  const rows=RAIL, point=rows[selected];
+  const dates=rows.map(r=>r.date);
+  const bnsf=rows.map(r=>r.bnsf), up=rows.map(r=>r.up), csx=rows.map(r=>r.csx), ns=rows.map(r=>r.ns);
+  const maximum=Math.ceil(Math.max(...bnsf,...up,...csx,...ns)/1000)*1000;
+  return <>
+    <p className="mt-4 text-sm leading-7 text-muted-foreground">STB가 집계한 Petroleum Products originated {rq.weeks}주입니다. 원유 배럴이 아니고, 미국 4사(BNSF·UP·CSX·NS)만 그립니다. CN·CP/KCS/CPKC를 합친 산업 총량도, EIA 원유-철도 월간 배럴도 아닙니다.</p>
+    <p className="my-4 text-xs leading-6 text-muted-foreground">그래프를 터치하거나 주 탐색을 사용하세요. 헤더 날짜는 수요일입니다. 파일 수정시각은 각 주의 최초 공표일이 아닙니다.</p>
+    <ResearchChart id="petroleum-rail-plot" title="주간 originated 차종" dates={dates} series={[{label:"BNSF",color:"#16745b",values:bnsf},{label:"UP",color:"#edb958",values:up},{label:"CSX",color:"#78b7ed",values:csx},{label:"NS",color:"#c47c5a",values:ns}]} maximum={maximum} unit="carloads" selected={selected} onSelect={setSelected} description="STB Petroleum Products originated, 미국 4사, 2017년3월29일부터2026년9월2일,493주"/>
+    <div id="petroleum-rail-readout" aria-live="polite" className="mt-5 rounded-sm border border-border p-4 text-sm leading-7"><strong className="font-mono">{point.date}</strong><p>BNSF <strong>{point.bnsf.toLocaleString("en-US")}</strong> · UP <strong>{point.up.toLocaleString("en-US")}</strong></p><p>CSX <strong>{point.csx.toLocaleString("en-US")}</strong> · NS <strong>{point.ns.toLocaleString("en-US")}</strong> carloads originated</p></div>
+    <label htmlFor="petroleum-rail-week" className="mt-4 block text-sm">철도 관측 주 탐색</label><input id="petroleum-rail-week" type="range" min={0} max={rows.length-1} value={selected} onChange={e=>setSelected(Number(e.target.value))} aria-valuetext={point.date+", BNSF "+point.bnsf+", UP "+point.up+", CSX "+point.csx+", NS "+point.ns} className="min-h-11 w-full accent-primary"/>
+    <p className="mt-4 text-xs leading-6 text-muted-foreground">출처 Surface Transportation Board, EP 724. CP는 {rq.cp_kcs_last}까지, CPKC는 {rq.cpkc_first}부터라 합치지 않았습니다. 전년비 로그 지수는 만들지 않았습니다. 2024년 이후 {rows.filter(r=>r.date>="2024-01-01").length}주도 이 빈티지에 포함되어 SEEN입니다.</p>
+    <DataTable title="연도별 미국 4사 originated 합" headers={["연도","주 수","BNSF","UP","CSX","NS"]} rows={RAIL_YEARS.map(([year,weeks,bnsf,up,csx,ns])=>[year,weeks,Number(bnsf).toLocaleString("en-US"),Number(up).toLocaleString("en-US"),Number(csx).toLocaleString("en-US"),Number(ns).toLocaleString("en-US")])}/>
   </>;
 }
 

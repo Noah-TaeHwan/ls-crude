@@ -25,6 +25,14 @@
       "quality_sha256": "12d5801a5b785d9d88868dad9fd40a2c48aa105318af33cc39e05169861ee849",
       "output_sha256": "8e4dcdc9f48affae3fa9bbe8379b26e02a29b56ef676148121a105f3d98c605b",
       "rows": 108
+    },
+    "petroleum-rail": {
+      "source": "research/data/processed/ALT-20260907-43/20260909T003038Z/weekly-originated.csv",
+      "source_sha256": "247560f22374b7f9ea1f2ed365b7b035d1da3964f13546edc25c9f4d6884516e",
+      "quality": "research/indexes/ALT-20260907-43/20260909T003038Z/quality.json",
+      "quality_sha256": "407fe37af8c479c6d52ccb6dd524d6230035a777deacc66c3730434db5a95323",
+      "output_sha256": "107bf2370092841a58d49a2c55b77acdc5b565b1dc7694207710d11e95f540ea",
+      "rows": 493
     }
   }
 }
