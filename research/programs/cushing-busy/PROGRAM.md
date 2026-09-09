@@ -24,9 +24,18 @@ National CFSP, UMCSENT, US average gasoline, nightlights, WTI, mock 0–100
 Maps scores, Genscape/Kpler stubs, ocean tankers, hotel-tax pilots that
 failed their own tests.
 
-## Rule
+## Score rule
 
-The program **does not emit a busy score**. It lists each lane’s last
-dated observation and whether the 90-day / source gate is open. Two
-independent validated activity series would be required before a
-composite is even discussed.
+There is **no busy score today**. `verdict = INSUFFICIENT`.
+
+A composite is allowed only after all of these hold:
+
+1. 091-S has 90 calendar days of scheduled slots at ≥80% complete
+   (quieter / usual / busier / not shown only).
+2. One other *Cushing* operating series — fixed-road trucks or airport
+   monthly Jet-A — passes measurement validity against an independent
+   local count.
+3. Weights are written down before the first combination. At most three
+   series. No fill-ins with WTI, national CFSP, nightlights, or mock 0–100.
+
+Until then the desk shows the lanes side by side and refuses a number.
