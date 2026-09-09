@@ -11,7 +11,8 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "research/indexes/web-observations/v2"
 SOURCES = {"watermelon": ("ALT-20260907-36", "20260908T065043Z", "weekly.csv", ""),
            "jeju": ("ALT-20260908-20", "20260908T073402Z", "daily.csv", ""),
-           "degree-days": ("ALT-20260907-45", "20260908T120546Z", "degree-days.csv", "v2")}
+           "degree-days": ("ALT-20260907-45", "20260908T120546Z", "degree-days.csv", "v2"),
+           "petroleum-rail": ("ALT-20260907-43", "20260909T003038Z", "weekly-originated.csv", "")}
 
 
 def sha(path):
@@ -41,7 +42,18 @@ def validate(kind, data, quality):
             assert share.is_finite() and abs(share - 100 * oil / (gas + oil)) < Decimal("1e-20")
         assert sum(Decimal(r["lngMwh"]) for r in rows) == Decimal(quality["lng_mwh"])
         assert sum(Decimal(r["oilMwh"]) for r in rows) == Decimal(quality["oil_category_mwh"])
-
+    elif kind == "petroleum-rail":
+        assert len(rows) == quality["weeks"] == 493
+        assert dates[0] == quality["start"] == "2017-03-29" and dates[-1] == quality["end"] == "2026-09-02"
+        for r in rows:
+            for key in ("bnsf", "up", "csx", "ns"):
+                assert type(r[key]) is int and r[key] > 0
+        assert sum(r["bnsf"] for r in rows) == quality["originated_us4_sum"]["BNSF"] == 2381801
+        assert sum(r["up"] for r in rows) == quality["originated_us4_sum"]["UP"] == 1434967
+        assert sum(r["csx"] for r in rows) == quality["originated_us4_sum"]["CSX"] == 665175
+        assert sum(r["ns"] for r in rows) == quality["originated_us4_sum"]["NS"] == 440741
+        assert quality["mismatch_values"] == quality["mismatch_weeks"] == 0
+        assert quality["zeros_in_us4_originated"] == 0
     else:
         assert len(rows) == quality["months"] == 108
         assert rows[0]["month"] == "2015-01" and rows[-1]["month"] == "2023-12"
@@ -65,6 +77,7 @@ def run(write=False):
     if write:
         OUT.mkdir(parents=True, exist_ok=True)
         manifest = {"version": 2, "purpose": "Frozen display data, no new inference", "cases": {}}
+        previous = json.loads((OUT / "manifest.json").read_text()) if (OUT / "manifest.json").exists() else {"cases": {}}
     else:
         manifest = json.loads((OUT / "manifest.json").read_text())
         assert manifest["version"] == 2 and set(manifest["cases"]) == set(SOURCES), "display version/cases changed"
@@ -78,12 +91,24 @@ def run(write=False):
         output = OUT / (kind + ".json")
         if write:
             source = ROOT / "research/data/processed" / cid / run_id / revision / filename
+            if not source.exists():
+                assert output.exists() and kind in previous["cases"], f"cannot create {kind} without processed source"
+                record = previous["cases"][kind]
+                assert record["quality"] == str(quality_path.relative_to(ROOT))
+                assert sha(output) == record["output_sha256"] and sha(quality_path) == record["quality_sha256"]
+                data = json.loads(output.read_text())
+                assert data["candidateId"] == cid and data["runId"] == run_id and data.get("revision", "") == revision
+                validate(kind, data, quality)
+                manifest["cases"][kind] = record
+                continue
             assert sha(source) == quality["output_sha256"][str(source.relative_to(ROOT))], "processed source hash changed"
             rows = list(csv.DictReader(source.open()))
             if kind == "watermelon":
                 points = [{"date":r["date"], "denominator":int(r["observed_districts"]), "numerator":int(r["value_ge4"]), "fractional":int(r["fractional_values"])} for r in rows]
             elif kind == "jeju":
                 points = [{"date":r["date"], "lngMwh":r["lng_mwh"], "oilMwh":r["oil_category_mwh"], "sharePct":r["oil_share_of_two_fuels_pct"]} for r in rows]
+            elif kind == "petroleum-rail":
+                points = [{"date":r["date"], "bnsf":int(r["bnsf"]), "up":int(r["up"]), "csx":int(r["csx"]), "ns":int(r["ns"])} for r in rows]
             else:
                 fields = {"hdd":"hdd", "cdd":"cdd", "hddYoy":"hdd_yoy", "cddYoy":"cdd_yoy", "providerHDDYoy":"provider_hdd_yoy", "providerCDDYoy":"provider_cdd_yoy"}
                 points = [{"month":r["month"], **{key:None if r[col] == "" else int(r[col]) for key,col in fields.items()}} for r in rows]
@@ -108,9 +133,13 @@ def run(write=False):
     if write:
         content = (json.dumps(manifest, indent=2)+"\n").encode()
         path = OUT / "manifest.json"
-        if path.exists(): assert path.read_bytes() == content
-        else: path.write_bytes(content)
-    print("PASS: three frozen charts; source hashes, all rows and aggregate reconciliation")
+        if path.exists():
+            old = json.loads(path.read_bytes())
+            assert old["version"] == manifest["version"] and old["purpose"] == manifest["purpose"]
+            for kind, rec in old["cases"].items():
+                assert rec == manifest["cases"][kind], "existing frozen case changed"
+        path.write_bytes(content)
+    print("PASS: frozen charts; source hashes, all rows and aggregate reconciliation")
 
 
 if __name__ == "__main__":

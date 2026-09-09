@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { test } from "node:test";
-import { readWatermelon, readJeju, readDegreeDays, nearestDateIndex, sampleShouldRevalidate } from "../app/lib/research-charts.ts";
+import { readWatermelon, readJeju, readDegreeDays, readPetroleumRail, nearestDateIndex, sampleShouldRevalidate } from "../app/lib/research-charts.ts";
 
 const base = new URL("../../research/indexes/web-observations/v2/", import.meta.url);
 const melon = JSON.parse(await readFile(new URL("watermelon.json", base), "utf8"));
@@ -68,4 +68,16 @@ test("degree days preserve monthly totals and distinguish provider from own diff
   }
   const bad=structuredClone(degrees); bad.points[13].hddYoy=-255;
   assert.equal(readDegreeDays(bad),null);
+});
+
+const rail = JSON.parse(await readFile(new URL("petroleum-rail.json", base), "utf8"));
+test("petroleum rail preserves weekly originated counts for four U.S. railroads", () => {
+  const rows=readPetroleumRail(rail);
+  assert.equal(rows.length,493);
+  assert.equal(rows[0].date,"2017-03-29");
+  assert.deepEqual(rows.at(-1),{date:"2026-09-02",bnsf:5712,up:3351,csx:1504,ns:883});
+  assert.equal(rows.reduce((n,r)=>n+r.bnsf,0),2381801);
+  for (const mutate of [r=>{r.bnsf=0;},r=>{r.date="2017-03-30";},r=>{r.up=-1;},r=>{r.csx="1504";}]) {
+    const bad=structuredClone(rail); mutate(bad.points[0]); assert.equal(readPetroleumRail(bad),null);
+  }
 });

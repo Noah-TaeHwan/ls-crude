@@ -1,0 +1,49 @@
+# 석유 철도 관측 — 독립 검토와 로컬 화면
+
+검토 기록 시각: 2026-09-09T01:44:08.945771+00:00. 수행: 구현 메인, 독립 Reality Checker(`generalPurpose`, 이 하네스에 `reality-checker` enum 없음). 사람 검토 미실행.
+
+이 보고서는 원본→계산→표/그림→로컬 화면까지다. git/PR/운영 배포는 별도 단계이며 여기서 완료로 쓰지 않는다. WTI 검정은 NOT_RUN이다.
+
+## 독립 검토 — 원본·파서·원장
+
+검토자가 파일을 수정하지 않고 명령을 재실행했다. 메인이 SHA와 동일 명령을 다시 확인했다.
+
+| 범위 | 증거 | 상태 |
+| --- | --- | --- |
+| 원본 xlsx | SHA-256 `0e103085f77052e9f03b03dcd9184a2e9db7b5e459d0a2f8d85814813b206d6f`, 7,658,204 bytes. receipts `candidate_id` ALT-20260907-43 | PASS |
+| 파서 self-test | `python3 research/notebooks/ALT-20260907-43/collect.py --self-test` | PASS |
+| 재생 | `--run 20260909T003038Z`. CSV/quality/SVG 바이트 불변. 신규 `execution-20260909T013220843881Z.json`만 추가 | PASS |
+| 표시 정의 | Petroleum Products originated, 미국 4사, 493주, 합 4,922,684. 불일치 0값/0주 | PASS |
+| 마지막 주 2026-09-02 | BNSF 5712, UP 3351, CSX 1504, NS 883 | PASS |
+| 연도 표 | 2017=40주, 2026=35주. 연도 4사 합 = quality 합 | PASS |
+| 원장 | 68행, KEEP 7 / PARK 50 / KILL 11. 43은 COLLECTED/NOT_RUN/E2/KEEP | PASS |
+| 로컬 Markdown 링크 | 카드·노트·index README·v2 README | PASS |
+| WTI | quality·카드·UI 모두 NOT_RUN | NOT_RUN |
+| 운영 URL | 이 검토 시점 `ls-crude.vercel.app?sample=petroleum-rail`은 수박 폴백·SVG 404 | NOT_RUN |
+
+옛 `research/indexes/ALT-20260907-43/access-receipt.json`의 `candidate_id`는 ALT-20260907-22다. 덮어쓰지 않았다.
+
+## 메인 재검증 — 로컬 프로덕션 화면
+
+사용자 `localhost:5173`은 `/Users/noah/orca/ls-crude` main 워크트리라서 이 브랜치가 아니다. 죽이지 않았다. 이 체크아웃의 `app/build`를 `127.0.0.1:4173`에만 올렸다. 브라우저 자동화는 ego-browser task space 94만 사용했다.
+
+| 범위 | 증거 | 상태 |
+| --- | --- | --- |
+| 연구 `?sample=petroleum-rail` | 제목, plot id `petroleum-rail-plot`, 스탬프 과거 연구 샘플, 마지막 주 5,712/3,351/1,504/883 | PASS |
+| 슬라이더·화살표 | 첫 주 2017-03-29 BNSF 5,965. ArrowRight 두 번 2017-04-12 5,307. JSON과 일치 | PASS |
+| 연도 표 | details 펼침 후 2017 40주·2026 35주, CSV와 동일 | PASS |
+| 잘못된 sample | `not-a-case` → 수박 + USDA 403 aside | PASS |
+| 사례 전환 | 수박·제주·도일·철도 왕복. 수박 403 aside 유지 | PASS |
+| 홈 | WTI 7기간, 홈에서 철도 샘플 전환, 가로 넘침 없음 | PASS |
+| 390·320px | overflowX false, plot·readout 유지 | PASS |
+| 운영 배포 | 이 단계에서 미실행 | NOT_RUN |
+
+검수 후 4173 서버는 종료했다. 5173은 보존했다.
+
+## 남은 제약
+
+- 주별 최초 공표일·개정 패널 없음 → `asof_safe=NOT_PROVEN`, WTI 부적격
+- 2024+ 140주 SEEN. 미열람 OOS로 소급 금지
+- Petroleum Products 차종 ≠ 원유 배럴. 미국 4사 ≠ 산업 합계. AAR RTI 표시 금지
+- KEEP은 효과 인증이 아님. 사람 배정은 제안
+- Git commit/PR/병합/운영 화면은 이 보고서 작성 시점에 미실행
