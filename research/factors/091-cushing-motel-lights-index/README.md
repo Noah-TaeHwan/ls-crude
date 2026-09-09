@@ -78,6 +78,16 @@
 | **091-Z** | KUSH / Google News / OK Energy Today 산업 큐 | FORWARD_ONLY / E1 | [뉴스 모니터](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) · [OKET](subtracks/okenergytoday/README.md) | 헤드라인 수 = 바쁨 점수 |
 | **091-V / V2** | DEQ 산업허가 상태 전이 (인간 검토) | FORWARD_ONLY / E1 | [허가 로그](../../indexes/091-cushing-operations-nowcasting/20260908T091PARKZ/README.md) · [V2 pulse](../../indexes/091-cushing-operations-nowcasting/20260908T091V2Z/README.md) | 월간 공사량, 도시 바쁨 |
 
+### 1b. 커뮤니케이션 층 — 현장 활동과 같은 점수로 합치지 않음
+
+| ID | 관측 | 상태 | 증거 | 쓰지 않는 해석 |
+| --- | --- | --- | --- | --- |
+| **091-EXEC** | Plains → Enbridge → ONEOK 경영진의 비정기 외부 노출 | FORWARD_ONLY / E1 | [exec](subtracks/exec/README.md) | 인터뷰 횟수 = 바쁨, CEO → WTI |
+| **091-EXL** | 같은 행의 Cushing/storage/capacity/throughput/tightness 언급 | FORWARD_ONLY / E1 | 같은 카드 | 키워드 수 = 처리량 |
+| **091-EXE** | 정기 캘린더 대비 이벤트 서프라이즈 | FORWARD_ONLY / E1 | 같은 카드 | 실적콜을 고정보로 취급 |
+
+`VisibilityShock`와 `LanguageShift`는 분리 기록. 곱한 `ExecPressure`는 두 열이 30일을 채운 뒤에만. 검정 타깃은 트럭·허가·EIA 재고이지 CL이 아니다.
+
 전향 3종 묶음: [091-U/Y/Z forward panel](../../indexes/091-cushing-operations-nowcasting/forward-panel/README.md). 2026-09-08 값은 비정기 베이스라인이다.
 
 ### 2. 물리 문맥 — 활동 점수가 아님
