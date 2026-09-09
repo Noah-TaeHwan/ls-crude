@@ -77,6 +77,7 @@
 | 091-N | 시청이 공개하는 기록 중 실제 활동 패널이 있는가 | 부서·재정·공항·회의문서의 공개 경로 | **PARK / E1** — 실제 페이지 4개 원문 확보; 의제 첨부문서만 월별 집계 가능성이 있고 새 패널은 미발견 |
 | 091-O | 공항이 실제로 바쁜가 | Jet-A/AvGas 판매·ramp stay·응급비행 지원 | **PARK / E1** — 실제 월간보고 4건을 개별 시각화 완료; 불연속·짧은 표본이라 연관 검정은 불가 |
 | 091-U | 직접 산업직 수요가 늘었는가 | 사전 고정 규칙을 통과한 Cushing 산업직 공고 | **FORWARD_ONLY / E1** — 실제 고신뢰 공고 4건의 1회 스냅샷; 90일 전향 패널 대기 |
+| 091-S | 쿠싱 QSR 상대 혼잡 라벨이 현장 발자국인가 | 고정 6개 점포의 Maps live relative label | **FORWARD_ONLY / E1** — 수동 기록만. 제출 5분 모니터의 mock 0–100은 기각. [qsr_live](subtracks/qsr_live/README.md) |
 | 091-Y | 쿠싱 현지 운전자·트럭이 실제로 얼마를 내는가 | 고정 주유소 Regular/Diesel 공개 표시가격 | **FORWARD_ONLY / E1** — [Maverik 실제 1회 가격 표본·시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md) 완료; 현지 장기 패널이 없어 WTI 상관 검정 불가. 전국/주 평균으로 대체하지 않음 |
 | 091-RAIL | 철도 수송이 쿠싱 현장 흐름을 보이는가 | Stroud rail-to-pipeline 연결 문맥 | **PARK / E1** — [철도·폐기물·제품가격 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091RWDTZ/README.md) 완료. 공개 Cushing/Stroud 탱크차·편성·처리량 시계열은 미확보; Sentinel-2로 탱크차를 세지 않음 |
 | 091-WASTE | 산업 폐기물 반입이 현장 작업을 보이는가 | DEQ 월간 보고 양식·의무 | **PARK / E1** — 양식은 공개지만 Cushing 시설별 월간 톤수 이력은 미확보. 식당 결제·주문 데이터를 대체하지 않음 |
