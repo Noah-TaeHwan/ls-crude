@@ -142,7 +142,6 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | -0.022 | — | HOLD — WTI RV21 IS r=-0.022, 결합 9개월도 예상 반대. 계란 원문·공표일·FX가 없어 계란 가설 자체는 미검정 |
 | 094 | [Saharan Hurricane Suppression Index (SHSI)](094-saharan-hurricane-suppression-index/README.md) | — | — | PARK — Dust→Hurricane→Gulf 사슬 카드. Stage 1 전 WTI 직행 금지 |
 | 095 | [Oil–Helix Dislocation (OHD)](095-oil-helix-dislocation/README.md) | 0.174 / 0.305 | lead ≈ 0 | PARK — T1/T2 삼각형 캐치업 ~50%. Brent/OSB가 틀린 쪽을 못 가리킴 |
-| 095 | [Energy Executive Public Visibility (EEPV)](095-energy-executive-public-visibility/README.md) | — | — | PARK — IR·콜·청문만. SNS·얼굴 금지. 동시 마커 후보 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -245,11 +244,26 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | 이란 식품·환율 압력 × 쿠싱 tightness 조건부 변동성 가설 | HOLD — 실제 food-CPI 대체 검정은 WTI RV21 IS `r=-0.022`, 결합 9개월도 예상 반대. 계란 원문·공표일·FX가 없어 계란 가설 자체는 미검정 | 0.0 |
 | 094 | [Saharan Hurricane Suppression Index (SHSI)](094-saharan-hurricane-suppression-index/README.md) | MDR 먼지 충격 → 허리케인 억제 → 걸프 차질 프리미엄 | PARK — 재분석·스톰 패널 미수집. 크랙·캘린더가 CL보다 우선 타깃 | 0.0 |
 | 095 | [Oil–Helix Dislocation (OHD)](095-oil-helix-dislocation/README.md) | WTI와 HLX/HOS가 어긋날 때 누가 맞나 | PARK — 1일 리드랙 실패. HOS 전향만 | 0.0 |
-| 095 | [Energy Executive Public Visibility (EEPV)](095-energy-executive-public-visibility/README.md) | 에너지 임원 공식 출연 빈도·CEO 비중 | PARK — 패널 없음. 049/052 조회수와 합치지 않음 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
 새로 제안한 실물 원유 22개 아이디어의 원안별 번호·병합·안전상 분석 제외·무료 데이터 수집 상태는 [실물 22개 장부](../gathering/notes/2026-09-03-physical-oil-22-idea-intake.md)에 보존한다. 22개 중 실제 공개 원시 데이터로 즉시 검증 가능한 3·6·7·22는 038–041로 카드화했다.
+
+## 번호중복 참고이력
+
+현 정본 후보카드 ALT-20260909-02가 095 OHD를 가리키므로, 위 두 표에는 095 OHD 두 행만 둔다. 같은 인벤토리에서 중복 ID를 합산하지 않는 것은 관리상 구분이며, EEPV 원안의 PARK 판정은 그대로 보존한다. EEPV 기각/폐기 선언, ID 새 할당, 원문 파일 삭제가 아니며, 이전 가설의 정체성/새 번호는 이 작업에서 정하지 않는다.
+
+스코어보드 원형:
+
+| # | 팩터 | IS r | OOS r | 상태 |
+| ---: | --- | ---: | ---: | --- |
+| 095 | [Energy Executive Public Visibility (EEPV)](095-energy-executive-public-visibility/README.md) | — | — | PARK — IR·콜·청문만. SNS·얼굴 금지. 동시 마커 후보 |
+
+인벤토리 원형:
+
+| # | 카드 | 역할 | 현재 검증 결론 | Oil Pizza |
+| --- | --- | --- | --- | ---: |
+| 095 | [Energy Executive Public Visibility (EEPV)](095-energy-executive-public-visibility/README.md) | 에너지 임원 공식 출연 빈도·CEO 비중 | PARK — 패널 없음. 049/052 조회수와 합치지 않음 | 0.0 |
 
 ## 세 개의 장부
 
