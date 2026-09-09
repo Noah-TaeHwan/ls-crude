@@ -14,4 +14,18 @@ Frozen rules
 - Target order: truck / permit / job / lodging → EIA Cushing stocks → WTI last.
 - Preferred path if it ever lives: Executive Surprise → Permit/Job → Heavy truck.
 - Basket start: Plains. Then Enbridge, ONEOK.
-- No rows collected on this stamp. Next action is one Plains IR month tagged to the schema.
+- Sample: plains_events_20260615_20260807.csv (5 official IR/call rows). Not 90 days. No z-score.
+
+## 2026-09-09 Plains sample (IR only)
+
+Window: 2026-06-15 to 2026-08-07. ir.plains.com press list plus official Q2 call summaries.
+
+- 2026-06-15 capex guidance PR — unscheduled vs quarterly calendar — capacity/expansion, no Cushing
+- 2026-06-30 K-3 notice — scheduled admin — no tokens
+- 2026-07-06 distribution + earnings date — scheduled — no tokens
+- 2026-08-07 earnings release — scheduled — capacity/expansion
+- 2026-08-07 earnings call, Willie Chiang CEO — scheduled — Cushing terminal named; capacity/throughput/expansion
+
+Unscheduled CNBC/Bloomberg hit for Chiang in this window: none found. EXE excess in the slice is the 06-15 capex PR only. Cushing language sits on the scheduled call, so it is EXL on a baseline event, not EXE surprise.
+
+Do not treat 5 rows as VisibilityShock. Enbridge/ONEOK not opened.
