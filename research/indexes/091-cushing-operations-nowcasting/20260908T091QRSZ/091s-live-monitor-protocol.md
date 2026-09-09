@@ -19,9 +19,14 @@ The record is a manual observation of a public UI. Do not collect reviews, custo
 ## Submitted five-minute monitor — safe implementation boundary
 
 The submitted monitor concept has been retained as a **forward-only recording
-workflow** in [`manual_busy_label_recorder.py`](../../../notebooks/091-cushing-operations-nowcasting/manual_busy_label_recorder.py).
+workflow** in two places:
+
+- single-row CLI: [`manual_busy_label_recorder.py`](../../../notebooks/091-cushing-operations-nowcasting/manual_busy_label_recorder.py)
+- basket pass / optional 5-minute prompt loop: [`busyness_monitor.py`](../../../factors/091-cushing-motel-lights-index/subtracks/qsr_live/busyness_monitor.py)
+
 The original code's `mock_busyness()` produced time-of-day synthetic values and
 did not call its declared Maps API key; those values must not enter 091-S.
+`--mock` may print a demo table. It writes no CSV row.
 
 The recorder therefore requires a human to enter only a visible public relative
 label. It makes no Maps request, does not automate/scrape the UI, and never
