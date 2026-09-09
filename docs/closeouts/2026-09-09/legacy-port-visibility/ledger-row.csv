@@ -1,0 +1,2 @@
+candidate_id,name,thesis,availability,collection_status,test_status,evidence_level,decision,decision_reason,next_action,owner,next_review_date,record_path
+ALT-20260908-01,Houston/Galveston Port Visibility Signal,휴스턴 권역 시정 악화가 쿠싱 통항 차질로 연결되는가,public,COLLECTING,NOT_RUN,E1,KEEP,샘플 확보 성공 및 USCG 교차 검증 진행,오태환,2026-09-08,research/candidates/ALT-20260908-01.md

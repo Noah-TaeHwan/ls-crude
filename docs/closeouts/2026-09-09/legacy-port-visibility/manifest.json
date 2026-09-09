@@ -1,0 +1,17 @@
+{
+  "source_branch": "research/cushing-harvest-diesel-intake-test",
+  "source_commit": "9dd5eae7b4b89bb5b8be497f3cc0a92680bf5cd0",
+  "status": "ARCHIVED_NOT_CANONICAL",
+  "files": {
+    "candidate.md": {
+      "source_path": "research/candidates/ALT-20260908-01.md",
+      "sha256": "b00ddfe14f5ecfa54919156a33ee4925a18035b0c14c20952457b3c7e6cec2f1"
+    },
+    "raw-receipt.md": {
+      "source_path": "research/gathering/raw/ALT-20260908-01/20260908T021320Z/README.md",
+      "sha256": "41229f7bb80524f743ffeda4c19f390b828eae83ef5c36b76219cebb03e4af1b"
+    }
+  },
+  "legacy_header_columns": 13,
+  "legacy_row_columns": 12
+}
