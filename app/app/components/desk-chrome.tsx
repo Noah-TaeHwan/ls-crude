@@ -41,17 +41,8 @@ export function DeskHeader({ source, ticker, freshness, contextLabel }: DeskHead
             <span>LS CRUDE<span className="desk-brand-caption">ALTERNATIVE DATA RESEARCH</span></span>
           </Link>
           <nav aria-label="주요 화면" className="desk-nav">
-            <DeskNavLink to="/" end>
-              연구 데스크
-            </DeskNavLink>
-            <Link className="desk-nav-link" to="/#observations">관측</Link>
-            <DeskNavLink to="/research">후보 장부</DeskNavLink>
-            <a className="desk-nav-link" href="/research#method">
-              검증 방법
-            </a>
-            <a className="desk-nav-link" href="/research#team">
-              팀
-            </a>
+            <DeskNavLink to="/" end>메인</DeskNavLink>
+            <DeskNavLink to="/research">리서치</DeskNavLink>
           </nav>
           <p className="desk-source" title={`${source} · ${contextLabel ?? `${ticker} · 일봉`}`}>
             <span>{contextLabel ?? `${ticker} · 일봉 관측`}</span>

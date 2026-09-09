@@ -15,13 +15,17 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 | 역할·일정 | [PM 계획](docs/project-plan.md): Noah 데이터·기록·데모, 성찬 검정·반증, 상호 검토 **제안** |
 | 기존 웹 | [LS CRUDE](https://ls-crude.vercel.app) · 시장 관측/기존 연구 장부. 이번 패스에서 배포 상태를 검증하지 않음 |
 
-## Current research status — 2026-09-08
+## Current research status — 2026-09-09
+
+**LA항 빈 컨테이너 감독 교정:** 138개월의 고정 자료를 기존 과거 연구 사례의 네 번째 버튼으로 연결했습니다. 상단 독립 관측 영역은 제거하고, 시정·탱커까지 총6개 버튼의 자료 탐색으로 묶습니다. 갱신 관측과 고정 표본의 상태·주기는 구분하며 실제 계산 분모와 제공기관 합계의 차이를 표시합니다. PR #91에서 실패한 연구 장부 CI는 정본 링크를 바로잡아 복구했습니다. 수집기·원본 보존 검증과 최종 전달은 [감독 기록](docs/reviews/2026-09-09-trout-supervision.md)을 따릅니다. PARK·WTI 관계 NOT_RUN 유지.
 
 **수박 원보고서 대사 후속(2026-09-09):** USDA 정책 첫 요청 403으로 후속 수집을 중단했습니다. 신규 관측은 없으며 기존 과거 표본을 유지합니다. 수집 영수증 사전 기록과 파서 세 가지 오류 수정을 검증했습니다. [실행·차단·전달 상태](research/gathering/notes/2026-09-09-watermelon-source-reconciliation.md). 전체 수집·대사 목표는 PARTIAL입니다.
 
 **CPC 도일 감독 검토:** 난방/냉방·가중 구간 파서를 강화하고, 108개월의 월합계와 자체/제공 전년차를 구분하는 과거 연구 사례를 추가했습니다. 192개 비교값 중 20개(14개월)가 다르며 원인은 미확인입니다(repo empirical only). [검토·전달 상태](docs/reviews/2026-09-08-degree-days-closeout.md) · [표시 데이터 v2](research/indexes/web-observations/v2/README.md) · [다음 AI에게 줄 전달 프롬프트](docs/ai-research-delivery-prompt.md). WTI 검정은 NOT_RUN, 최종 우승 지수 없음.
 
-**반응형 그래프:** 수박·제주·미국 냉난방도일 선택, 실제 관측의 터치/키보드 탐색, 원단위 표와 WTI 가격 눈금을 제공합니다. 고정 연구 사례와 갱신 관측은 구분합니다. [구현·검수 기록](docs/research-workflow-dashboard-plan.md).
+**메인 구성:** 소개 → WTI 일봉 → 통합 자료 탐색의 세 영역입니다. 상단 메뉴는 메인/리서치 두 페이지이며 가설·접근 기록, 연결 가설과 검증 조건은 리서치에서 봅니다.
+
+**반응형 그래프:** 수박·제주·미국 냉난방도일·LA항 빈 컨테이너 선택, 실제 관측의 터치/키보드 탐색, 원단위 표와 WTI 가격 눈금을 제공합니다. 고정 연구 사례와 갱신 관측은 구분합니다. [구현·검수 기록](docs/research-workflow-dashboard-plan.md).
 
 **성찬080 후속:** 잘못된 원안 링크를 교정하고 [제주 LNG·유류 336일 관측](research/indexes/ALT-20260908-20/20260908T073402Z/README.md)을 확보했습니다. 16,128시간 값·시간/일/월 합계 대사와 원단위·조건부비중 그림을 기록했습니다. 2024-03-31까지의 과거 보조표본이며 전국 지수·원유량·WTI 검증은 아닙니다. [탐색 과정·다음 행동](research/gathering/notes/2026-09-08-kpx-fuel-access.md).
 

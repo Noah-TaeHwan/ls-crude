@@ -165,3 +165,10 @@ node --test tests/empties.test.mjs   # app/ 디렉터리에서
 - E2/PARK/NOT_RUN 유지에 동의. PARK 해제는 §4 관문 충족 후 별도 검정 명세 동결이 조건.
 
 REVIEW_ISSUES
+
+## 6. 사후 수정 확인 부기 (2026-09-09 UTC, 메인 작성 — 검토자 원문 불변)
+
+§3.1~§3.4 수정 완료, §3.5 병합 후 해소 확인. 검증: 수집기 self-test PASS·`--run`
+결정적 재생·원장 68카드 check PASS·깨진 로컬 링크 0건(4개 문서 전수 검사)·
+앱 empties 테스트 2/2·main 브랜치 링크 2건 SHA 해석 확인.
+검토자의 REVIEW_ISSUES 판정은 유지한다. E2/PARK/NOT_RUN 유지에 변동 없음.

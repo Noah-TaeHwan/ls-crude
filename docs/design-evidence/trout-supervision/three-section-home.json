@@ -1,0 +1,33 @@
+{
+  "nav": [
+    {
+      "text": "메인",
+      "url": "/"
+    },
+    {
+      "text": "리서치",
+      "url": "/research"
+    }
+  ],
+  "top": [
+    {
+      "tag": "SECTION",
+      "id": "",
+      "heading": "원유 시장을 읽을새로운 흔적을 찾습니다."
+    },
+    {
+      "tag": "SECTION",
+      "id": "market",
+      "heading": "WTI 원유 가격"
+    },
+    {
+      "tag": "DIV",
+      "id": "observations",
+      "heading": "아이디어를 실제 자료로 열어보면."
+    }
+  ],
+  "wti": 1,
+  "intake": false,
+  "buttons": 6,
+  "overflow": false
+}

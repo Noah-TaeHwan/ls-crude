@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { test } from "node:test";
 import path from "node:path";
 
-import { EMPTIES_RUN, readEmpties } from "../app/lib/empties.ts";
+import { EMPTIES_RUN, readEmpties, exportDenominator } from "../app/lib/empties.ts";
 
 /** 저장소 루트 경로. */
 const repoRoot = path.resolve(import.meta.dirname, "../..");
@@ -56,4 +56,12 @@ test("empties fails closed on wrong vintage, gaps, and bad arithmetic", async ()
   assert.equal(readEmpties(grandShift), null);
   assert.equal(readEmpties(null), null);
   assert.equal(readEmpties({}), null);
+});
+
+test("display denominator uses source parts, not the provider's inconsistent total", async () => {
+  const display=JSON.parse(await readFile(displayPath,"utf8"));
+  const row=readEmpties(display).find(r=>r.month==="2022-11");
+  assert.equal(exportDenominator(row),327788);
+  assert.equal(Number(row.totalExports)-exportDenominator(row),100);
+  assert.ok(Math.abs(100*Number(row.emptyExports)/exportDenominator(row)-Number(row.emptySharePct))<1e-6);
 });

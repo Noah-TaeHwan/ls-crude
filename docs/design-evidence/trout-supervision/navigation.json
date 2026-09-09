@@ -1,0 +1,32 @@
+[
+  {
+    "url": "http://127.0.0.1:5187/",
+    "standalone": false,
+    "defaultEmpties": false,
+    "wti": 1
+  },
+  {
+    "url": "http://127.0.0.1:5187/?sample=empties#research-sample",
+    "inSample": true
+  },
+  {
+    "jeju": "2024-03-31\n\nLNG 6164.278 MWh · 유류 3997.953 MWh\n\n두 연료 합계 10162.231 MWh · 조건부 유류 비중 39.34%",
+    "url": "http://127.0.0.1:5187/?sample=jeju#research-sample"
+  },
+  {
+    "back": "?sample=empties",
+    "empties": true
+  },
+  {
+    "legacy": {
+      "url": "http://127.0.0.1:5187/research?sample=empties#research-sample",
+      "title": "LS CRUDE — 후보 장부와 검증 과정",
+      "w": 390,
+      "h": 1000,
+      "sx": 0,
+      "sy": 604.5,
+      "pw": 390,
+      "ph": 13099
+    }
+  }
+]
