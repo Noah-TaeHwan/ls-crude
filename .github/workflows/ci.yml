@@ -22,6 +22,7 @@ jobs:
           python scripts/sync_candidate_ledger.py --check
           python scripts/export_observation_charts.py --check
           python notebooks/ALT-20260907-45/collect.py --self-test
+          python notebooks/ALT-20260907-02/collect.py --self-test
           python notebooks/ALT-20260907-36/collect.py --self-test
           python notebooks/ALT-20260907-43/collect.py --self-test
       - name: Install and test

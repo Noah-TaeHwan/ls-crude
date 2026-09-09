@@ -23,6 +23,7 @@ function newYorkDay(time: Date): string {
 
 /**
  * Yahoo 일봉의 종목·배열·가격·시각을 검증하고 실제 OHLC만 반환한다.
+ * 같은 뉴욕 날짜에 더 늦은 시각이 있으면 마지막 일봉만 교체한다.
  * @param value Yahoo chart 응답.
  * @param now 조회 기준 시각.
  * @returns 최신 잠정 일봉까지 포함한 정상 응답.
@@ -48,12 +49,18 @@ export function parseWtiDaily(value: unknown, now = new Date()): WtiDailySnapsho
     if (typeof time !== "number" || !Number.isFinite(time) || time <= 0 || time * 1000 > now.getTime() || (i > 0 && time <= times[i - 1])) throw new Error("Yahoo 일봉 시각 오류");
     const sourceAt = new Date(time * 1000).toISOString();
     const date = newYorkDay(new Date(sourceAt));
-    if (dates.has(date)) throw new Error("Yahoo 일봉 날짜 중복");
-    dates.add(date);
     const [open, high, low, close] = fields.map((key) => (quote[key] as (number | null)[])[i]);
     if (open === null || high === null || low === null || close === null) { missingCount++; continue; }
     if (high < Math.max(open, close, low) || low > Math.min(open, close, high)) throw new Error("Yahoo 일봉 고가·저가 범위 오류");
-    bars.push({ date, sourceAt, open, high, low, close, volume: (quote.volume as (number | null)[] | undefined)?.[i] ?? null });
+    const bar = { date, sourceAt, open, high, low, close, volume: (quote.volume as (number | null)[] | undefined)?.[i] ?? null };
+    if (dates.has(date)) {
+      const previous = bars.at(-1);
+      if (!previous || previous.date !== date) throw new Error("Yahoo 일봉 날짜 중복");
+      bars[bars.length - 1] = bar;
+      continue;
+    }
+    dates.add(date);
+    bars.push(bar);
   }
   if (!bars.length) throw new Error("Yahoo 유효 일봉 없음");
   const last = bars.at(-1)!;

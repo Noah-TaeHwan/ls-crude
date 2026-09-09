@@ -40,10 +40,25 @@
 
 검수 후 4173 서버는 종료했다. 5173은 보존했다.
 
+## PR #92 재병합 후 화면 (ego task 96)
+
+PR #92가 상단 단독 관측 카드를 없애고 홈을 소개 → WTI 일봉 → 통합 자료 탐색으로 바꿨다. 충돌은 그 레이아웃을 유지한 채 석유 철도를 고정 사례로 붙였다. 사용자 5173은 보존했고, 이 체크아웃만 `127.0.0.1:4173`에서 다시 검수했다.
+
+| 범위 | 증거 | 상태 |
+| --- | --- | --- |
+| 홈 사례 버튼 | 수박·제주·도일·LA항·석유 철도·시정·탱커. 기본은 수박. FIELD NOTES 없음 | PASS |
+| 철도 전환 | `?sample=petroleum-rail`, 마지막 주 2026-09-02 BNSF 5,712 · UP 3,351 · CSX 1,504 · NS 883 | PASS |
+| 첫 주 탐색 | native range 0 → 2017-03-29 BNSF 5,965 · UP 2,108 · CSX 1,172 · NS 924 | PASS |
+| empties·시정·탱커 | 각각 plot/관측 id, 철도 plot 없음. unknown sample → 수박+USDA aside | PASS |
+| 390·320px | overflowX false, 철도 plot 유지, WTI 7기간 | PASS |
+| Yahoo 일봉 | 같은 뉴욕 날짜 완료봉+장중봉이 전체를 버리던 함정. 후속 시각으로 교체. User-Agent `ls-crude-observations/1.0` | PASS |
+
+검수 후 4173은 종료했다. 5173은 보존했다.
+
 ## 남은 제약
 
 - 주별 최초 공표일·개정 패널 없음 → `asof_safe=NOT_PROVEN`, WTI 부적격
 - 2024+ 140주 SEEN. 미열람 OOS로 소급 금지
 - Petroleum Products 차종 ≠ 원유 배럴. 미국 4사 ≠ 산업 합계. AAR RTI 표시 금지
 - KEEP은 효과 인증이 아님. 사람 배정은 제안
-- Git commit/PR/병합/운영 화면은 이 보고서 작성 시점에 미실행
+- Git 병합·운영 SHA·운영 화면은 이 절 작성 시점에 미실행. 아래 전달 영수증이 채워지면 갱신한다.

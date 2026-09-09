@@ -1,0 +1,462 @@
+root
+  anchor [ref=19051, loc=href:/?sample=empties#main-content, url=http://127.0.0.1:5187/?sample=empties#main-content]
+    text "본문으로 건너뛰기"
+  container
+    container
+      anchor "LS CRUDE 연구 데스크" [ref=19054, loc=css:a[aria-label="LS CRUDE 연구 데스크"], url=http://127.0.0.1:5187/]
+        text "LS"
+        container
+          text "LS CRUDE"
+          text "ALTERNATIVE DATA RESEARCH"
+      container "주요 화면"
+        anchor [ref=19059, loc=unstable, url=http://127.0.0.1:5187/]
+          text "연구 데스크"
+        anchor [ref=19060, loc=href:/#observations, url=http://127.0.0.1:5187/#observations]
+          text "관측"
+        anchor [ref=19061, loc=href:/research, url=http://127.0.0.1:5187/research]
+          text "후보 장부"
+        anchor [ref=19062, loc=unstable, url=http://127.0.0.1:5187/research#method]
+          text "검증 방법"
+        anchor [ref=19063, loc=href:/research#team, url=http://127.0.0.1:5187/research#team]
+          text "팀"
+      paragraph
+        text "CL=F · 일봉 관측"
+    status
+  container [ref=19067, loc=unstable]
+    container "원유 시장을 읽을 새로운 흔적을 찾습니다."
+      paragraph
+        text "EAST CAMP AI QUANT 4기"
+        text "/"
+        text "오태환 × 손성찬"
+      heading
+        text "원유 시장을 읽을"
+        text "새로운"
+        text "흔적"
+        text "을 찾습니다."
+      paragraph
+        text "피자 주문처럼 작지만 설명 가능한 현실의 흔적에서 출발합니다. 공개 데이터를 찾아 개별 관측으로 보여주고, 적격한 자료를 WTI와 비교합니다. 보류�..."
+      anchor [ref=19076, loc=href:/research#research-sample, url=http://127.0.0.1:5187/research#research-sample]
+        text "실제 수집 사례 보기"
+        svg_root
+      anchor [ref=19035, loc=href:/?sample=empties#market, url=http://127.0.0.1:5187/?sample=empties#market]
+        text "WTI 관측 보기"
+        svg_root
+      container "연구 현황"
+        paragraph
+          svg_root
+          text "탐색 중"
+        unordered_list
+          list_item
+            text "기존 연구 인벤토리"
+          list_item
+            text "93"
+            text "개"
+          list_item
+            text "기준 통과"
+          list_item
+            text "0"
+            text "개"
+        paragraph
+          text "아직 채택할 신호가 없습니다."
+        paragraph
+          text "등록 규모와 검정 완료 건수는 다릅니다. 데이터 적격성, 공개 시점, 독립적인 관계를 확인하고 있습니다."
+        anchor [ref=19099, loc=unstable, url=http://127.0.0.1:5187/research#method]
+          text "어떤 기준으로 판단하나요?"
+          svg_root
+    container "WTI 원유 가격"
+      paragraph
+        text "01 / WTI DAILY"
+      heading
+        text "WTI 원유 가격"
+      paragraph
+        text "WTI · CL=F · 일봉"
+      paragraph
+        text "94.46"
+        text "USD"
+      paragraph
+        text "2026-09-08"
+        text "· 이전 일봉 대비 +2.98 USD"
+        text "· 마지막 일봉 변경 가능"
+      button [ref=19115, loc=unstable]
+        text "가격 다시 확인"
+      button [ref=19117, loc=unstable]
+        text "5년"
+      button [ref=19118, loc=unstable]
+        text "3년"
+      button [ref=19119, loc=unstable]
+        text "1년"
+      button [ref=19120, loc=unstable]
+        text "6개월"
+      button [ref=19121, loc=unstable]
+        text "3개월"
+      button [ref=19122, loc=unstable]
+        text "1개월"
+      button [ref=19123, loc=unstable]
+        text "1주일"
+      paragraph
+        text "모든 기간을 일봉으로 표시합니다."
+        text "상승(종가 ≥ 시가)"
+        text "·"
+        text "하락(종가 < 시가)"
+      status
+        text "최신 일봉은 잠정값이며 거래 중 변할 수 있습니다. 수신 원본 중 OHLC가 누락된 3개 일봉은 제외했습니다."
+      paragraph
+        text "USD"
+      image "WTI 1년 일봉 252개, 마지막 2026-09-08 94.46 달러"
+      text "54.98"
+      text "87.23"
+      text "119.48"
+      text "2025-09-08"
+      text "2026-09-08"
+      container
+        text "거래일 탐색 ·"
+        output [ref=19901, loc=unstable]
+          text "2026-09-08"
+          text "· 종가"
+          text "94.46"
+          text "USD"
+      spinbutton [ref=19902, loc=unstable]
+      unordered_list
+        list_item
+          text "시가"
+        list_item
+          text "94.31"
+        list_item
+          text "고가"
+        list_item
+          text "94.78"
+        list_item
+          text "저가"
+        list_item
+          text "94.15"
+        list_item
+          text "종가"
+        list_item
+          text "94.46"
+      paragraph
+        text "1년"
+        text "·"
+        text "252"
+        text "개 일봉 · 최저"
+        text "54.98"
+        text "/ 최고"
+        text "119.48"
+        text "USD. 기간을 바꿔도 상단 가격과 마지막 일봉은 동일합니다. 휴장일·누락값은 임의로 채우지 않습니다."
+      paragraph
+        text "최신 일봉 원천 시각"
+        text "2026-09-09 10:27:30"
+        text "KST · 조회"
+        text "2026-09-09 10:37:35"
+        text "KST"
+      paragraph
+        text "Yahoo Finance CL=F 일봉 · 날짜는 원천 시각의 뉴욕 날짜입니다. 마지막 일봉은 장중에 바뀔 수 있고 제공자 지연이 있습니다. 페이지를 열 때와 보이는 화�..."
+      container
+        container [ref=19927, loc=unstable]
+          text "실현변동성과 연구 기준 보기"
+        container
+          paragraph
+            text "변동성은 별도 완료 일봉 스냅샷 기준입니다. 위 가격 그래프의 변경 가능한 마지막 일봉을 계산에 섞지 않습니다."
+          paragraph
+            text "기준일"
+            text "2026-09-04"
+            text "· 확인"
+            text "2026-09-08 20:39"
+            text "KST"
+          unordered_list
+            list_item
+              text "5일 실현변동성 · 연환산"
+            list_item
+              text "42.6"
+              text "%"
+            list_item
+              text "20일 실현변동성 · 연환산"
+            list_item
+              text "36.0"
+              text "%"
+            list_item
+              text "5일 실현변동성 백분위"
+            list_item
+              text "73"
+              text "/ 100"
+          paragraph
+            text "산식"
+            text "100 × sqrt((252 / N) × sum(r_t²))"
+            text "· 기준 분포"
+            text "2015-01-01"
+            text "–"
+            text "2023-12-31"
+            text ". 미래 예측 확률이 아닙니다."
+          paragraph
+            text "가격 기준일로부터 4일이 지났습니다. 휴장 또는 제공자 갱신 지연 여부를 확인하세요."
+          paragraph
+            text "후보 비교선은 아직 없습니다."
+            text "데이터 적격성 확인에서 보류"
+            text ". 공개 시각에 맞춘 후보 시계열이 확보되어야 비교할 수 있습니다."
+    container "아이디어를 실제 자료로 열어보면."
+      container
+        container
+          paragraph
+            text "RESEARCH IN PRACTICE / 자료 탐색"
+          heading
+            text "아이디어를 실제 자료로 열어보면."
+        anchor [ref=19950, loc=unstable, url=https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/indexes/ALT-20260907-02/20260909T003314Z/README.md]
+          text "수집·대사 기록 →"
+      group "연구 사례 선택"
+        button [ref=19952, loc=unstable]
+          text "수박 · 냉장트럭"
+        button [ref=19953, loc=unstable]
+          text "제주 · LNG와 유류"
+        button [ref=19954, loc=unstable]
+          text "미국 · 냉난방도일"
+        button [ref=19955, loc=unstable]
+          text "LA항 · 빈 컨테이너"
+        button [ref=19956, loc=unstable]
+          text "갤버스턴 · 시정"
+        button [ref=19957, loc=unstable]
+          text "싱가포르 · 탱커 입항"
+      container
+        container
+          text "과거 연구 샘플 · 자동 갱신 아님"
+          text "조건 대기 · PARK"
+          text "이 샘플의 WTI 관계 검정 미실행"
+        heading
+          text "빈 컨테이너는 얼마나 돌아갈까?"
+        unordered_list
+          container
+            list_item
+              text "관측 기간"
+            list_item
+              text "2015-01"
+              text "~"
+              text "2026-07"
+          container
+            list_item
+              text "자료를 수집한 시각"
+            list_item
+              text "2026-09-09 00:33 UTC"
+        paragraph
+          text "LA항의 빈 컨테이너 회송을 살펴본 138개월 표본입니다. 빈수출 ÷ (빈수출 + 적재수출) 비중이며, TEU는 컨테이너 크기 환산 단위입니다. 중량·연료량·WTI..."
+        paragraph
+          text "점을 터치하거나 아래 월 탐색을 사용하세요. 2020-11은 원문 Total 셀 오타로 제외했고, 2026-08 이후 자료는 이 표본에 없습니다."
+        container "수출 컨테이너 중 빈 상자 비중 (%)"
+          container
+            text "수출 컨테이너 중 빈 상자 비중"
+            container
+              text "("
+              text "%"
+              text ")"
+          container
+            container
+            text "빈수출 ÷ (빈수출 + 적재수출)"
+          container
+            image "LA항 월별 빈수출 비중 138개 관측. 2015-01부터2026-07, 2020-11은 결측."
+            container
+              text "0"
+              text "50"
+              text "100"
+            container
+              text "2015-01"
+              text "2020-09"
+              text "2026-07"
+        container
+          text "2026-07"
+          paragraph
+            text "빈수출"
+            container
+              text "348,691.25"
+              text "TEU"
+            text "· 적재수출"
+            text "111,775.50"
+            text "TEU"
+          paragraph
+            text "계산 분모"
+            text "460,466.75"
+            text "TEU"
+            text "· 빈 비중"
+            text "75.73"
+            text "%"
+          paragraph
+            text "제공기관 수출 합계"
+            text "460,466.75"
+            text "TEU"
+        text "LA항 관측 월 탐색"
+        spinbutton [ref=24193, loc=unstable]
+        paragraph
+          text "월별 합계 대사에서"
+          text "4"
+          text "개월이 달랐습니다. 연간/YTD 행은"
+          text "12"
+          text "건 중"
+          text "8"
+          text "건이 일치했습니다. 분할 셀 자체의 오기는 이 대사만으로 잡히지 않습니다. 최초 공표일·개정 이력은 미복원입니다."
+        container [ref=24177, loc=unstable]
+          text "전체 138개월 원단위·분모 비교표"
+        container
+          region "LA항 월별 원단위 표, 작은 화면에서 가로 스크롤"
+            table
+              text "TEU · 비중 % · 계산 분모와 제공기관 합계 구분"
+              table_row
+                table_cell
+                  text "월"
+                table_cell
+                  text "적재수출"
+                table_cell
+                  text "빈수출"
+                table_cell
+                  text "계산 분모"
+                table_cell
+                  text "제공 합계"
+                table_cell
+                  text "빈 비중"
+              table_row
+                table_cell
+                  text "2015-01"
+                table_cell
+                  text "124,365.25"
+                table_cell
+                  text "137,118.25"
+                table_cell
+                  text "261,483.50"
+                table_cell
+                  text "261,483.50"
+                table_cell
+                  text "52.44"
+              table_row
+                table_cell
+                  text "2015-02"
+                table_cell
+                  text "131,806.50"
+                table_cell
+                  text "110,900.75"
+                table_cell
+                  text "242,707.25"
+                table_cell
+                  text "242,707.25"
+                table_cell
+                  text "45.69"
+              table_row
+                table_cell
+                  text "2015-03"
+                table_cell
+                  text "145,536.25"
+                table_cell
+                  text "207,118.00"
+                table_cell
+                  text "352,654.25"
+                table_cell
+                  text "352,654.25"
+                table_cell
+                  text "58.73"
+              table_row
+                table_cell
+                  text "2015-04"
+                table_cell
+                  text "145,655.75"
+                table_cell
+                  text "177,723.75"
+                table_cell
+                  text "323,379.50"
+                table_cell
+                  text "323,379.50"
+                table_cell
+                  text "54.96"
+              table_row
+                table_cell
+                  text "2015-05"
+                table_cell
+                  text "152,917.00"
+                table_cell
+                  text "182,188.75"
+                table_cell
+                  text "335,105.75"
+                table_cell
+                  text "335,105.75"
+                table_cell
+                  text "54.37"
+              table_row
+                table_cell
+                  text "2015-06"
+                table_cell
+                  text "143,549.25"
+                table_cell
+                  text "200,472.75"
+                table_cell
+                  text "344,022.00"
+                table_cell
+                  text "344,022.00"
+                table_cell
+                  text "58.27"
+              table_row
+                table_cell
+                  text "2015-07"
+                table_cell
+                  text "136,402.00"
+                table_cell
+                  text "200,724.00"
+                table_cell
+                  text "337,126.00"
+                table_cell
+                  text "337,126.00"
+                table_cell
+                  text "59.54"
+              table_row
+                table_cell
+                  text "2015-08"
+                table_cell
+                  text "143,936.00"
+                table_cell
+                  text "225,413.00"
+                table_cell
+                  text "369,349.00"
+                table_cell
+                  text "369,349.00"
+                table_cell
+                  text "61.03"
+              table_row
+                table_cell
+                  text "2015-09"
+                table_cell
+                  text "124,286.00"
+                table_cell
+                  text "222,057.50"
+                table_cell
+                  text "346,343.50"
+                table_cell
+                  text "346,343.50"
+                table_cell
+                  text "64.11"
+              table_row
+                table_cell
+                  text "2015-10"
+                table_cell
+                  text "134,963.75"
+                table_cell
+                  text "197,209.50"
+                table_cell
+                  text "332,173.25"
+                table_cell
+                  text "332,173.25"
+                table_cell
+                  text "59.37"
+              table_row
+                table_cell
+                  text "2015-11"
+                table_cell
+                  text "142,020.25"
+                table_cell
+                  text "199,233.90"
+                table_cell
+                  text "341,254.15"
+                table_cell
+                  text "341,254.15"
+                table_cell
+                  text "58.38"
+              table_row
+                table_cell
+                  text "2015-12"
+                table_cell
+                  text "131,239.00"
+                table_cell
+                  text "163,990.75"
+                table_cell
+                  text "295,229.75"

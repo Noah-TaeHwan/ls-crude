@@ -148,7 +148,8 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.match(body, /data-source="Yahoo Finance"/);
     const text = body.split("<script")[0].replace(/<[^>]*>/g, "");
     assert.match(text, /아직 채택할 신호가 없습니다/);
-    assert.match(text, /공개 이후 다음 5거래일/);
+    assert.doesNotMatch(text,/RESEARCH INTAKE|THE SIGNAL HUNT|WHAT REMAINS OPEN/);
+    assert.match(body, /href="\/research"[^>]*>리서치/);
     assert.match(text, /5일 실현변동성 백분위/);
     assert.match(text, /후보 비교선은 아직 없습니다/);
     assert.ok(text.includes(String(livePercentile)), "RV5 percentile must come from the actual snapshot");
@@ -163,7 +164,7 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.doesNotMatch(body, /<form\b/i, "public home must not expose news CRUD forms");
 
     assert.ok(body.indexOf('id="market"') < body.indexOf('id="observations"'), "observation follows the single daily chart");
-    assert.match(body, /href="\/observations\/visibility"/);
+    assert.doesNotMatch(body, /id="visibility-observation"/, "default home shows observations only after case selection");
     const visibility = await fetch(`${baseUrl}/observations/visibility`);
     assert.equal(visibility.status, 200);
     const visibilityBody = await visibility.text();
@@ -175,19 +176,19 @@ test("serves the public evidence brief routes from the repository root", async (
     const visibilityPost = await fetch(`${baseUrl}/observations/visibility`, { method: "POST", body: new URLSearchParams() });
     assert.equal(visibilityPost.status, 405);
 
-    assert.match(body, /id="visibility-observation"/);
-    assert.match(body, /id="tanker-observation"/);
-    assert.ok(body.indexOf('id="tanker-observation"') < body.indexOf('id="research-sample"'));
-    assert.ok(body.indexOf('id="research-sample"') < body.indexOf('id="intake"'));
-    assert.match(body, /href="\/research#research-sample"/);
-    const sample = body.slice(body.indexOf('id="research-sample"'), body.indexOf('id="intake"'));
+
+    assert.doesNotMatch(body, /id="tanker-observation"/);
+    assert.doesNotMatch(body, /02 \/ FIELD NOTES/);
+    assert.doesNotMatch(body, /id="intake"/);
+    assert.match(body, /href="\/#research-sample"/);
+    const sample = body.slice(body.indexOf('id="research-sample"'), body.indexOf("</main>"));
     for (const label of ["과거 연구 샘플", "자동 갱신 아님", "WTI 관계 검정 미실행", "2025-10-14", "332", "소수값", "원단위 표"]) assert.ok(sample.includes(label));
     assert.match(sample, /<svg id="watermelon-research-plot"/);
     assert.doesNotMatch(sample, /<img/);
     assert.match(sample, /href="\/research\/watermelon-20260908.png"/);
     assert.match(body, /id="wti-price-axis"/);
     assert.match(body, /data-price-tick=/);
-    assert.match(body, /href="\/observations\/tankers"/);
+
     const tankers = await fetch(`${baseUrl}/observations/tankers`);
     assert.equal(tankers.status, 200);
     const tankerBody = await tankers.text();
@@ -228,7 +229,28 @@ test("serves the public evidence brief routes from the repository root", async (
       assert.equal(response.status,200);
       const html=await response.text();
       for (const value of ["petroleum-rail-plot","2026-09-02","5712","3351","carloads","자동 갱신 아님","Petroleum Products"]) assert.ok(html.includes(value),value);
-      assert.doesNotMatch(html,/id="jeju-generation-plot"|id="watermelon-research-plot"|id="degree-days-level-plot"/);
+      assert.doesNotMatch(html,/id="jeju-generation-plot"|id="watermelon-research-plot"|id="degree-days-level-plot"|id="empties-plot"/);
+    }
+    assert.doesNotMatch(body,/id="empties-plot"/,"default home keeps frozen LA sample behind its case button");
+    assert.doesNotMatch(body,/id="petroleum-rail-plot"/,"default home keeps frozen rail sample behind its case button");
+    for (const route of ["/", "/research"]) {
+      const response=await fetch(`${baseUrl}${route}?sample=empties`);
+      const html=await response.text();
+      assert.equal(response.status,200);
+      assert.ok(html.indexOf('id="research-sample"')<html.indexOf('id="empties-plot"'));
+      assert.equal((html.match(/id="empties-plot"/g)||[]).length,1);
+      for(const value of ["LA항 · 빈 컨테이너","자동 갱신 아님","계산 분모","제공기관 수출 합계","75.73"]) assert.ok(html.includes(value),value);
+    }
+    const legacyEmpties=await fetch(`${baseUrl}/observations/empties`,{redirect:"manual"});
+    assert.equal(legacyEmpties.status,308);
+    assert.equal(legacyEmpties.headers.get("location"),"/research?sample=empties#research-sample");
+    for (const route of ["/", "/research"]) for(const [kind,id,unit] of [["visibility","visibility-observation","SM"],["tankers","tanker-observation","75 GT"]]) {
+      const response=await fetch(`${baseUrl}${route}?sample=${kind}`);
+      const html=await response.text();assert.equal(response.status,200);
+      assert.match(html,new RegExp(`id="${id}"`));
+      assert.ok(html.indexOf('id="research-sample"')<html.indexOf(`id="${id}"`));
+      assert.ok(html.includes("갱신 관측"));assert.ok(html.includes(unit));
+      assert.doesNotMatch(html,/id="watermelon-research-plot"|id="empties-plot"|id="petroleum-rail-plot"/);
     }
     const unknownSample = await fetch(`${baseUrl}/research?sample=unknown`);
     assert.match(await unknownSample.text(), /id="watermelon-research-plot"/);
@@ -289,6 +311,10 @@ test("serves research image bytes from the production start directory", async ()
     assert.match(rail.headers.get("content-type"),/image\/svg/);
     const railSource="research/indexes/ALT-20260907-43/20260909T003038Z/observation.svg";
     assert.equal(createHash("sha256").update(Buffer.from(await rail.arrayBuffer())).digest("hex"),createHash("sha256").update(await readFile(path.join(repositoryRoot,railSource))).digest("hex"));
+    const la=await fetch(`http://127.0.0.1:${port}/research/la-empties-v2.svg`);
+    assert.equal(la.status,200);assert.match(la.headers.get("content-type"),/image\/svg/);
+    const laReceipt=JSON.parse(await readFile(path.join(repositoryRoot,"research/indexes/ALT-20260907-02/20260909T003314Z/v2/receipt.json"),"utf8"));
+    assert.equal(createHash("sha256").update(Buffer.from(await la.arrayBuffer())).digest("hex"),laReceipt.outputs["observation-v2.svg"]);
   } finally {
     await stop(child);
   }

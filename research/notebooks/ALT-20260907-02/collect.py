@@ -5,15 +5,18 @@
     python3 research/notebooks/ALT-20260907-02/collect.py --self-test
     python3 research/notebooks/ALT-20260907-02/collect.py --collect
     python3 research/notebooks/ALT-20260907-02/collect.py --run <RUN_ID>
+    python3 research/notebooks/ALT-20260907-02/collect.py --figure-v2 <RUN_ID>
 """
 
 import argparse
 import csv
 import hashlib
+import io
 import json
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
@@ -82,14 +85,28 @@ def clean(text):
     return text.replace("\xa0", " ").strip()
 
 
+def _strip_sign_paren(token, kind):
+    """선행 '-' 하나 또는 전체 감싸는 괄호 하나만 음수로 인정한다.
+    짝없는 괄호('(12.00', '12.00)')와 '-(' 혼합은 거부한다."""
+    negative = False
+    if token.startswith("-"):
+        negative = True
+        token = token[1:]
+    if "(" in token or ")" in token:
+        if negative or not (token.startswith("(") and token.endswith(")")
+                            and len(token) >= 2):
+            raise ValueError(f"bad {kind} value: {'-' if negative else ''}{token!r}")
+        negative = True
+        token = token[1:-1]
+    return negative, token
+
+
 def parse_number(token):
     """TEU 수치. 괄호는 음수 표기. 소수는 보존하며 정수로 강제하지 않는다."""
     token = clean(token)
     if not VALUE_RE.fullmatch(token):
         raise ValueError(f"bad TEU value: {token!r}")
-    negative = (token.startswith("-") or
-                (token.startswith("(") and token.endswith(")")))
-    token = token.strip("()").lstrip("-")
+    negative, token = _strip_sign_paren(token, "TEU")
     try:
         value = Decimal(token.replace(",", ""))
     except InvalidOperation:
@@ -101,9 +118,8 @@ def parse_pct(token):
     token = clean(token)
     if not PCT_RE.fullmatch(token):
         raise ValueError(f"bad pct value: {token!r}")
-    negative = (token.startswith("-") or
-                (token.startswith("(") and token.endswith(")")))
-    token = token.strip("()%").lstrip("-")
+    negative, token = _strip_sign_paren(token, "pct")
+    token = token.rstrip("%")
     try:
         value = Decimal(token)
     except InvalidOperation:
@@ -234,6 +250,11 @@ def fetch(url, timeout=TIMEOUT):
         return response.status, response.read()
 
 
+def _record_request(receipt_path, receipt, entry):
+    receipt["requests"].append(entry)
+    atomic_write_json(receipt_path, receipt)
+
+
 def collect(years, main_page=True):
     run_id = utc_now().strftime("%Y%m%dT%H%M%SZ")
     run_dir = RAW_BASE / run_id
@@ -260,11 +281,32 @@ def collect(years, main_page=True):
                     (run_dir / f"pola_{name}.html").write_bytes(body)
                 else:
                     entry["error"] = f"HTTP {status}"
-            except Exception as exc:  # noqa: BLE001 - 영수증에 기록이 목적
+            except KeyboardInterrupt:
+                # 사용자 중단: 해당 요청을 영수증에 남기고 즉시 raise한다.
                 entry.update({"completed_at": utc_now().isoformat(),
-                              "status": "ERROR", "error": f"{type(exc).__name__}: {exc}"})
-            receipt["requests"].append(entry)
-            atomic_write_json(receipt_path, receipt)
+                              "status": "INTERRUPTED",
+                              "error": "KeyboardInterrupt",
+                              "error_type": "KeyboardInterrupt"})
+                _record_request(receipt_path, receipt, entry)
+                receipt["status"] = "aborted"
+                receipt["abort_reason"] = (f"KeyboardInterrupt at {name}; "
+                                           "remaining requests not attempted")
+                atomic_write_json(receipt_path, receipt)
+                raise
+            except Exception as exc:  # noqa: BLE001 - 영수증에 기록이 목적
+                code = getattr(exc, "code", None)
+                if isinstance(code, int):
+                    # 실제 urllib.error.HTTPError: 코드 정수를 보존한다.
+                    entry.update({"completed_at": utc_now().isoformat(),
+                                  "status": code,
+                                  "error": f"{type(exc).__name__} {code}: {exc}",
+                                  "error_type": type(exc).__name__})
+                else:
+                    entry.update({"completed_at": utc_now().isoformat(),
+                                  "status": "ERROR",
+                                  "error": f"{type(exc).__name__}: {exc}",
+                                  "error_type": type(exc).__name__})
+            _record_request(receipt_path, receipt, entry)
             code = entry["status"]
             if code in (403, 429):
                 receipt["status"] = "aborted"
@@ -273,10 +315,16 @@ def collect(years, main_page=True):
                 break
             time.sleep(INTERVAL)
         else:
-            receipt["status"] = "complete"
+            ok = sum(1 for e in receipt["requests"] if e["status"] == 200)
+            if ok == len(receipt["requests"]) and ok > 0:
+                receipt["status"] = "complete"
+            elif ok > 0:
+                receipt["status"] = "partial"
+            else:
+                receipt["status"] = "failed"
             atomic_write_json(receipt_path, receipt)
     finally:
-        # 중간 중단·전체 실패에도 영수증이 남는다.
+        # 예상 밖 경로의 중단에도 영수증이 남는다.
         if receipt["status"] == "running":
             receipt["status"] = "interrupted"
             atomic_write_json(receipt_path, receipt)
@@ -288,10 +336,37 @@ def collect(years, main_page=True):
 
 
 def load_run_html(run_id):
+    """원본 HTML을 읽기 전에 request.json 영수증을 먼저 대사한다.
+    변조·누락·추가 파일·실패 영수증이면 빌드를 금지한다."""
     run_dir = RAW_BASE / run_id
+    receipt_path = run_dir / "request.json"
+    if not receipt_path.is_file():
+        raise ValueError(f"missing request.json for run {run_id}; build forbidden")
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    if receipt.get("status") != "complete":
+        raise ValueError(f"receipt status {receipt.get('status')!r} is not complete; build forbidden")
+    requests = receipt.get("requests", [])
+    names = [e.get("name") for e in requests]
+    if len(set(names)) != len(names):
+        raise ValueError("duplicate request names in receipt; build forbidden")
+    expected = {}
+    for e in requests:
+        for field in ("name", "url", "status", "bytes", "sha256"):
+            if field not in e:
+                raise ValueError(f"request entry missing {field}: {e.get('name')!r}")
+        if e["status"] != 200:
+            raise ValueError(f"non-200 entry {e['name']!r} in complete receipt; build forbidden")
+        expected[f"pola_{e['name']}.html"] = e
+    actual = {p.name: p for p in run_dir.glob("pola_*.html")}
+    if set(actual) != set(expected):
+        raise ValueError(f"file set mismatch: missing={sorted(set(expected) - set(actual))} "
+                         f"extra={sorted(set(actual) - set(expected))}; build forbidden")
     files = {}
-    for path in sorted(run_dir.glob("pola_*.html")):
-        files[path.stem.replace("pola_", "")] = path.read_bytes()
+    for fname, e in expected.items():
+        body = actual[fname].read_bytes()
+        if len(body) != e["bytes"] or hashlib.sha256(body).hexdigest() != e["sha256"]:
+            raise ValueError(f"tampered file {fname}; build forbidden")
+        files[e["name"]] = body
     return files
 
 
@@ -422,8 +497,9 @@ def _fmt_teu(value):
     return f"{value:.2f}"
 
 
-def write_figure(idx_dir, ordered, panel):
-    """월별 빈수출 비중·중간 원단위 2단 그림(SVG, 표준 라이브러리만)."""
+def _render_figure_bytes(ordered, panel):
+    """월별 빈수출 비중·중간 원단위 2단 그림 바이트(SVG, 표준 라이브러리만).
+    v1 렌더러이며 픽셀 단위까지 고정한다. 수정판은 --figure-v2 경로만 쓴다."""
     W, H, PAD_L, PAD_T, PANEL_H, GAP = 860, 470, 64, 26, 170, 60
     xs = list(range(len(ordered)))
     shares = []
@@ -489,9 +565,147 @@ def write_figure(idx_dir, ordered, panel):
     parts.append(f'<text x="{PAD_L}" y="{PAD_T + PANEL_H + GAP - 8}" font-size="11">아래: Empty Exports(주황) vs Loaded Exports(청록), TEU. '
                  "2020-11 제외(원본 Total 셀 오타). 출처: Port of Los Angeles (credit). 빈티지: 2026-09-09 수집 현재본.</text>")
     parts.append("</svg>")
-    path = idx_dir / "observation.svg"
-    path.write_text("\n".join(parts) + "\n", encoding="utf-8")
-    return path
+    return ("\n".join(parts) + "\n").encode("utf-8")
+
+
+def _calendar_with_gaps(ordered):
+    """ordered(월 오름차순)를 달력 연속으로 펼치고 빈 달에 None을 둔다."""
+    months, prev = [], None
+    for key in ordered:
+        y, m = int(key[:4]), int(key[5:])
+        if prev is not None:
+            py, pm = prev
+            cy, cm = py, pm
+            while True:
+                cm += 1
+                if cm > 12:
+                    cm, cy = 1, cy + 1
+                if (cy, cm) >= (y, m):
+                    break
+                months.append(None)
+        months.append(key)
+        prev = (y, m)
+    return months
+
+
+def _render_figure_v2_bytes(ordered, panel):
+    """수정 그림(v2). 양 패널이 같은 달력 x축을 쓰고, 빈 달은 두 계열 다 끊는다.
+    v1 렌더러는 손대지 않는다."""
+    W, PAD_L, PAD_T, PANEL_H, GAP = 860, 64, 26, 170, 60
+    FOOT_H = 30
+    H = PAD_T + PANEL_H + GAP + PANEL_H + FOOT_H
+    cal = _calendar_with_gaps(ordered)
+    n = len(cal)
+
+    def x(i):
+        return PAD_L + i * (W - PAD_L - 20) / max(1, n - 1)
+
+    def series(get):
+        return [None if k is None else get(panel[k]) for k in cal]
+
+    shares = series(lambda r: float(100 * r["empty_exports"]
+                                    / (r["loaded_exports"] + r["empty_exports"])))
+    raw_e = series(lambda r: float(r["empty_exports"]))
+    raw_l = series(lambda r: float(r["loaded_exports"]))
+
+    def scale(vals, top):
+        nums = [v for v in vals if v is not None]
+        lo, hi = min(nums), max(nums)
+        pad = (hi - lo) * 0.08 or 1
+        lo -= pad
+        hi += pad
+        return lo, hi, lambda v: top + PANEL_H - (v - lo) / (hi - lo) * PANEL_H
+
+    slo, shi, sy = scale(shares, PAD_T)
+    rlo, rhi, ry = scale(raw_e + raw_l, PAD_T + PANEL_H + GAP)
+
+    def path(vals, yfun):
+        d, prev = "", False
+        for i, v in enumerate(vals):
+            if v is None:
+                prev = False
+                continue
+            xx, yy = x(i), yfun(v)
+            d += f"{'L' if prev else 'M'}{xx:.1f},{yy:.1f}"
+            prev = True
+        return d
+
+    parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" role="img">',
+             f'<text x="{PAD_L}" y="16" font-size="13">LA항 빈수출 비중 S_m = 100 x Empty/(Empty+Loaded) — 월별 TEU (v2, {ordered[0]}~{ordered[-1]})</text>']
+    for top, lo, hi, unit in ((PAD_T, slo, shi, "%"), (PAD_T + PANEL_H + GAP, rlo, rhi, "TEU")):
+        for frac, lab in ((0, f"{hi:,.1f}{unit}"), (0.5, f"{(lo + hi) / 2:,.1f}{unit}"),
+                          (1, f"{lo:,.1f}{unit}")):
+            y = top + PANEL_H * frac
+            parts.append(f'<line x1="{PAD_L}" y1="{y}" x2="{W - 20}" y2="{y}" stroke="#ccc"/>'
+                         f'<text x="4" y="{y + 4}" font-size="10">{lab}</text>')
+    for i, k in enumerate(cal):
+        if k is not None and k.endswith("-01"):
+            parts.append(f'<text x="{x(i):.1f}" y="{H - FOOT_H + 2}" font-size="10">{k[:4]}</text>')
+    parts.append(f'<text x="{x(n - 1):.1f}" y="{H - FOOT_H + 2}" font-size="10" text-anchor="end">{ordered[-1]}</text>')
+    parts.append(f'<path d="{path(shares, sy)}" fill="none" stroke="#1d4ed8" stroke-width="1.5"/>')
+    parts.append(f'<path d="{path(raw_e, ry)}" fill="none" stroke="#b45309" stroke-width="1.2"/>')
+    parts.append(f'<path d="{path(raw_l, ry)}" fill="none" stroke="#0d9488" stroke-width="1.2"/>')
+    parts.append(f'<text x="{PAD_L}" y="{H - 8}" font-size="11">아래: Empty Exports(주황) vs Loaded Exports(청록), TEU. '
+                 "2020-11 공백(원본 Total 셀 오타 격리). 출처: Port of Los Angeles (credit).</text>")
+    parts.append("</svg>")
+    return ("\n".join(parts) + "\n").encode("utf-8")
+
+
+def write_figure_v2(run_id, out_svg=None):
+    """v2 그림과 별도 영수증을 v2/ 경로에만 쓴다. v1 산출물은 건드리지 않는다."""
+    result = build_panel(run_id)
+    ordered, panel = result["ordered"], result["panel"]
+    svg_bytes = _render_figure_v2_bytes(ordered, panel)
+    v2_dir = IDX_BASE / run_id / "v2"
+    v2_dir.mkdir(parents=True, exist_ok=True)
+    svg_path = out_svg or (v2_dir / "observation-v2.svg")
+    _write_bytes_guarded(svg_path, svg_bytes)
+    raw_dir = RAW_BASE / run_id
+    raw_hashes = {}
+    for p in sorted(raw_dir.glob("pola_*.html")):
+        raw_hashes[p.name] = hashlib.sha256(p.read_bytes()).hexdigest()
+    monthly_path = PROCESSED_BASE / run_id / "monthly.csv"
+    receipt = {"run_id": run_id, "figure": "v2", "generated_at_utc": utc_now().isoformat(),
+               "code_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+               "inputs": {"monthly_csv_sha256": hashlib.sha256(monthly_path.read_bytes()).hexdigest(),
+                          "raw_html_sha256": raw_hashes},
+               "outputs": {svg_path.name: hashlib.sha256(svg_bytes).hexdigest()}}
+    receipt_path = v2_dir / "receipt.json"
+    _write_receipt_guarded(receipt_path, receipt)
+    return {"svg": str(svg_path.relative_to(ROOT)), "receipt": str(receipt_path.relative_to(ROOT))}
+
+
+def _write_bytes_guarded(path, data):
+    """기존 파일과 바이트가 다르면 덮어쓰지 않고 실패한다. 동일하면 허용."""
+    if path.exists():
+        if path.read_bytes() == data:
+            return "identical"
+        raise FileExistsError(f"refusing to overwrite with different bytes: {path}")
+    path.write_bytes(data)
+    return "written"
+
+
+def _write_receipt_guarded(path, receipt):
+    """영수증은 generated_at_utc를 제외한 내용이 동일할 때만 갱신한다."""
+    data = (json.dumps(receipt, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    if path.exists():
+        old = json.loads(path.read_bytes().decode("utf-8"))
+        new = dict(receipt)
+        if old.get("generated_at_utc") == new.pop("generated_at_utc", None):
+            pass
+        old.pop("generated_at_utc", None)
+        if old != new:
+            raise FileExistsError(f"refusing to overwrite receipt with different content: {path}")
+    path.write_bytes(data)
+    return "written"
+
+
+def _quality_key(path):
+    """quality.json용 경로 키. 저장소 밖 temp 산출물은 파일명으로 둔다."""
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return path.name
 
 
 def write_index_artifacts(run_id, result):
@@ -500,22 +714,23 @@ def write_index_artifacts(run_id, result):
     proc_dir = PROCESSED_BASE / run_id
     proc_dir.mkdir(parents=True, exist_ok=True)
     idx_dir.mkdir(parents=True, exist_ok=True)
+    buffer = io.StringIO()
+    writer = csv.writer(buffer)
+    writer.writerow(["month", "loaded_imports", "empty_imports", "total_imports",
+                     "loaded_exports", "empty_exports", "total_exports",
+                     "total_teus", "empty_export_share_pct", "provider_yoy_pct"])
+    for key in ordered:
+        r = panel[key]
+        denom = r["loaded_exports"] + r["empty_exports"]
+        share = (100 * r["empty_exports"] / denom) if denom > 0 else ""
+        writer.writerow([key, str(r["loaded_imports"]), str(r["empty_imports"]),
+                         str(r["total_imports"]), str(r["loaded_exports"]),
+                         str(r["empty_exports"]), str(r["total_exports"]),
+                         str(r["total_teus"]),
+                         (str(share) if share == "" else f"{share:.6f}"),
+                         str(r["provider_yoy_pct"])])
     out_csv = proc_dir / "monthly.csv"
-    with out_csv.open("w", encoding="utf-8", newline="") as stream:
-        writer = csv.writer(stream)
-        writer.writerow(["month", "loaded_imports", "empty_imports", "total_imports",
-                         "loaded_exports", "empty_exports", "total_exports",
-                         "total_teus", "empty_export_share_pct", "provider_yoy_pct"])
-        for key in ordered:
-            r = panel[key]
-            denom = r["loaded_exports"] + r["empty_exports"]
-            share = (100 * r["empty_exports"] / denom) if denom > 0 else ""
-            writer.writerow([key, str(r["loaded_imports"]), str(r["empty_imports"]),
-                             str(r["total_imports"]), str(r["loaded_exports"]),
-                             str(r["empty_exports"]), str(r["total_exports"]),
-                             str(r["total_teus"]),
-                             (str(share) if share == "" else f"{share:.6f}"),
-                             str(r["provider_yoy_pct"])])
+    csv_bytes = buffer.getvalue().encode("utf-8")
     # 표시용 동결 JSON (앱 빌드타임 import)
     points = []
     snake_to_camel = {"loaded_imports": "loadedImports", "empty_imports": "emptyImports",
@@ -533,8 +748,7 @@ def write_index_artifacts(run_id, result):
         points.append(point)
     display = {"candidateId": "ALT-20260907-02", "runId": run_id, "points": points}
     display_path = idx_dir / "display.json"
-    display_path.write_text(json.dumps(display, ensure_ascii=False, separators=(",", ":")) + "\n",
-                            encoding="utf-8")
+    display_bytes = (json.dumps(display, ensure_ascii=False, separators=(",", ":")) + "\n").encode("utf-8")
     quality = {"candidate_id": "ALT-20260907-02", "run_id": run_id,
                "months": len(ordered), "first_month": ordered[0], "last_month": ordered[-1],
                "missing_months": result["missing_months"],
@@ -543,12 +757,17 @@ def write_index_artifacts(run_id, result):
                "annual_total_check": result["annual_check"],
                "main_page_crosscheck": result["main_check"],
                "output_sha256": {}}
-    for path in [out_csv, display_path]:
-        quality["output_sha256"][str(path.relative_to(ROOT))] = hashlib.sha256(path.read_bytes()).hexdigest()
-    fig_path = write_figure(idx_dir, ordered, panel)
-    quality["output_sha256"][str(fig_path.relative_to(ROOT))] = hashlib.sha256(fig_path.read_bytes()).hexdigest()
-    (idx_dir / "quality.json").write_text(json.dumps(quality, ensure_ascii=False, indent=2) + "\n",
-                                          encoding="utf-8")
+    _write_bytes_guarded(out_csv, csv_bytes)
+    _write_bytes_guarded(display_path, display_bytes)
+    quality["output_sha256"][_quality_key(out_csv)] = hashlib.sha256(csv_bytes).hexdigest()
+    quality["output_sha256"][_quality_key(display_path)] = hashlib.sha256(display_bytes).hexdigest()
+    fig_bytes = _render_figure_bytes(ordered, panel)
+    fig_path = idx_dir / "observation.svg"
+    _write_bytes_guarded(fig_path, fig_bytes)
+    quality["output_sha256"][_quality_key(fig_path)] = hashlib.sha256(fig_bytes).hexdigest()
+    quality_path = idx_dir / "quality.json"
+    _write_bytes_guarded(quality_path, (json.dumps(quality, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
+    quality = json.loads(quality_path.read_bytes().decode("utf-8"))
     return quality
 
 
@@ -590,6 +809,18 @@ def self_test():
     # 실제 연도표의 마이너스 부호(-22.77%)도 수락한다.
     assert parse_pct("-22.77%") == Decimal("-22.77")
     assert parse_number("-1,234.50") == Decimal("-1234.50")
+    assert parse_number("(44,176.30)") == Decimal("-44176.30")
+    assert parse_pct("(8.02%)") == Decimal("-8.02")
+    # 1c. 음성: 짝없는 괄호와 '-(' 혼합은 거부한다.
+    for fun, bads in ((parse_number, ["(12.00", "12.00)", "-(1.00)", "(1,000", "1,000)", "((1.00))"]),
+                      (parse_pct, ["(12.00%", "12.00%)", "-(1.00%)", "(-1.00%)", "((1.00%)"])):
+        for bad in bads:
+            try:
+                fun(bad)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError(f"unbalanced paren accepted: {bad!r}")
     # 표시 정규화: 정수 표기(2024-04 Empty Imports 253)는 253.00으로 표기만 맞춘다.
     assert _fmt_teu(Decimal("253")) == "253.00"
     assert _fmt_teu(Decimal("348691.25")) == "348691.25"
@@ -682,34 +913,222 @@ def self_test():
     assert naive_ok, "fixture broken: totals should still match"
     assert not strict_ok, "strict split check passed on swapped values"
 
-    # 6. 모의 실행: 403 뒤 남은 요청을 계속하지 않고 영수증이 남는다.
-    calls = {"n": 0}
-
-    def fake_fetch(url, timeout=TIMEOUT):
-        calls["n"] += 1
-        if calls["n"] == 1:
-            return 200, b"<html></html>"
-        return 403, b"forbidden"
-
-    real_fetch = globals()["fetch"]
-    real_sleep = time.sleep
-    tmp_base = globals()["RAW_BASE"]
+    # 7. 실패 경로: 실제 HTTPError 예외 형식의 403/429는 코드를 보존하고 즉시중단한다.
     import tempfile
-    sandbox = Path(tempfile.mkdtemp(prefix="pola-mock-"))
-    try:
+
+    def _sandbox_collect(fake_fetch, years=(2099, 2100)):
+        sandbox = Path(tempfile.mkdtemp(prefix="pola-mock-"))
+        real_fetch, real_sleep = globals()["fetch"], time.sleep
+        tmp_base, tmp_idx, tmp_proc = globals()["RAW_BASE"], globals()["IDX_BASE"], globals()["PROCESSED_BASE"]
         globals()["fetch"] = fake_fetch
         globals()["RAW_BASE"] = sandbox
         time.sleep = lambda s: None
-        run_id = collect([2099, 2100], main_page=False)
-        receipt = json.loads((sandbox / run_id / "request.json").read_text())
+        try:
+            return sandbox, collect(list(years), main_page=False), None
+        except KeyboardInterrupt as ki:
+            return sandbox, None, ki
+        finally:
+            globals()["fetch"] = real_fetch
+            globals()["RAW_BASE"] = tmp_base
+            globals()["IDX_BASE"] = tmp_idx
+            globals()["PROCESSED_BASE"] = tmp_proc
+            time.sleep = real_sleep
+
+    def _http_error(code):
+        return urllib.error.HTTPError("http://x/", code,
+                                      "Forbidden" if code == 403 else "Too Many Requests", {}, None)
+
+    def _only_run_dir(sandbox):
+        dirs = [d for d in sandbox.iterdir() if d.is_dir()]
+        assert len(dirs) == 1, f"expected 1 run dir, got {len(dirs)}"
+        return dirs[0]
+
+    for code in (403, 429):
+        calls = {"n": 0}
+
+        def fake_status_error(url, timeout=TIMEOUT, _code=code, _calls=calls):
+            _calls["n"] += 1
+            if _calls["n"] == 1:
+                return 200, b"<html></html>"
+            raise _http_error(_code)
+
+        sandbox, _, err = _sandbox_collect(fake_status_error)
+        assert err is None, f"unexpected raise for HTTP {code}"
+        receipt = json.loads((_only_run_dir(sandbox) / "request.json").read_text())
         assert receipt["status"] == "aborted", receipt["status"]
-        assert len(receipt["requests"]) == 2, "requests after 403 must not continue"
-        assert (sandbox / run_id / "pola_2099.html").exists()
-        assert not (sandbox / run_id / "pola_2100.html").exists()
+        second = receipt["requests"][1]
+        assert second["status"] == code and second["error_type"] == "HTTPError", second
+        assert not (_only_run_dir(sandbox) / "pola_2100.html").exists()
+
+    # 7b. KeyboardInterrupt 첫 요청 → 즉시 raise, 1행에 URL/시각/error_type 기록.
+    def fake_ki_first(url, timeout=TIMEOUT):
+        raise KeyboardInterrupt()
+
+    sandbox, _, err = _sandbox_collect(fake_ki_first)
+    assert isinstance(err, KeyboardInterrupt), "KeyboardInterrupt swallowed"
+    receipt = json.loads((_only_run_dir(sandbox) / "request.json").read_text())
+    assert receipt["status"] == "aborted" and len(receipt["requests"]) == 1
+    first = receipt["requests"][0]
+    assert first["name"] == "2099" and first["url"].endswith("2099"), first
+    assert first["status"] == "INTERRUPTED" and first["error_type"] == "KeyboardInterrupt", first
+    assert first["started_at"] and first["completed_at"], first
+
+    # 7c. 2성공 뒤 중단 → 3행, 즉시 raise.
+    calls = {"n": 0}
+
+    def fake_ki_third(url, timeout=TIMEOUT):
+        calls["n"] += 1
+        if calls["n"] <= 2:
+            return 200, b"<html></html>"
+        raise KeyboardInterrupt()
+
+    sandbox, _, err = _sandbox_collect(fake_ki_third, (2099, 2100, 2101))
+    assert isinstance(err, KeyboardInterrupt), "KeyboardInterrupt swallowed"
+    receipt = json.loads((_only_run_dir(sandbox) / "request.json").read_text())
+    assert receipt["status"] == "aborted" and len(receipt["requests"]) == 3, receipt["status"]
+    assert [e["status"] for e in receipt["requests"]] == [200, 200, "INTERRUPTED"]
+
+    # 7d. 일반 실패 1회 뒤 성공 → complete가 아니라 partial.
+    calls = {"n": 0}
+
+    def fake_url_error_once(url, timeout=TIMEOUT):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise urllib.error.URLError("boom")
+        return 200, b"<html></html>"
+
+    sandbox, _, err = _sandbox_collect(fake_url_error_once)
+    assert err is None, f"unexpected raise: {err!r}"
+    receipt = json.loads((_only_run_dir(sandbox) / "request.json").read_text())
+    assert receipt["status"] == "partial", receipt["status"]
+    assert receipt["requests"][0]["error_type"] == "URLError"
+
+    # 7e. 전부 실패 → failed.
+    def fake_url_error_always(url, timeout=TIMEOUT):
+        raise urllib.error.URLError("down")
+
+    sandbox, _, err = _sandbox_collect(fake_url_error_always)
+    assert err is None, f"unexpected raise: {err!r}"
+    receipt = json.loads((_only_run_dir(sandbox) / "request.json").read_text())
+    assert receipt["status"] == "failed", receipt["status"]
+
+    # 8. load_run_html은 영수증을 먼저 대사한다. temp 산출물로만 반증한다.
+    load_base = Path(tempfile.mkdtemp(prefix="pola-loadbase-"))
+    real_raw = globals()["RAW_BASE"]
+    globals()["RAW_BASE"] = load_base
+    try:
+        def _write_run(dirname, receipt, bodies):
+            run_dir = load_base / dirname
+            run_dir.mkdir()
+            if receipt is not None:
+                (run_dir / "request.json").write_text(json.dumps(receipt, ensure_ascii=False) + "\n")
+            for fname, body in bodies.items():
+                (run_dir / fname).write_bytes(body)
+            return dirname
+
+        def _entry(name, body):
+            return {"name": name, "url": f"http://x/{name}",
+                    "started_at": "2020-01-01T00:00:00+00:00",
+                    "completed_at": "2020-01-01T00:00:01+00:00", "status": 200,
+                    "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest()}
+
+        tiny_a, tiny_b = b"<html>a</html>", b"<html>b</html>"
+
+        def _good_receipt(rid):
+            return {"run_id": rid, "status": "complete",
+                    "requests": [_entry("2099", tiny_a), _entry("2100", tiny_b)]}
+
+        ok_dir = _write_run("20200101T000000Z", _good_receipt("20200101T000000Z"),
+                            {"pola_2099.html": tiny_a, "pola_2100.html": tiny_b})
+        loaded = load_run_html(ok_dir)
+        assert set(loaded) == {"2099", "2100"} and loaded["2099"] == tiny_a
+
+        bad_receipt = _good_receipt("20200202T000000Z")
+        bad_receipt["requests"][0] = dict(bad_receipt["requests"][0])
+        bad_receipt["requests"][0]["status"] = 404
+        cases = [
+            ("tampered", _good_receipt("20200202T000000Z"),
+             {"pola_2099.html": b"tampered!!", "pola_2100.html": tiny_b}),
+            ("missing", _good_receipt("20200202T000000Z"), {"pola_2099.html": tiny_a}),
+            ("extra", _good_receipt("20200202T000000Z"),
+             {"pola_2099.html": tiny_a, "pola_2100.html": tiny_b, "pola_9999.html": b"<html>e</html>"}),
+            ("failed-receipt", {"run_id": "20200202T000000Z", "status": "failed", "requests": []},
+             {"pola_2099.html": tiny_a}),
+            ("dup-names", {"run_id": "20200202T000000Z", "status": "complete",
+                           "requests": [_entry("2099", tiny_a), _entry("2099", tiny_a)]},
+             {"pola_2099.html": tiny_a}),
+            ("no-receipt", None, {"pola_2099.html": tiny_a}),
+            ("non200-in-complete", bad_receipt, {"pola_2099.html": tiny_a, "pola_2100.html": tiny_b}),
+        ]
+        for i, (label, receipt_obj, bodies) in enumerate(cases):
+            dirname = f"20200202T00000{i}Z"
+            if receipt_obj is not None:
+                receipt_obj = json.loads(json.dumps(receipt_obj))
+                receipt_obj["run_id"] = dirname
+            _write_run(dirname, receipt_obj, bodies)
+            try:
+                load_run_html(dirname)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError(f"forbidden build allowed: {label}")
     finally:
-        globals()["fetch"] = real_fetch
-        globals()["RAW_BASE"] = tmp_base
-        time.sleep = real_sleep
+        globals()["RAW_BASE"] = real_raw
+    # 9. 쓰기 가드: 동일 바이트 재실행은 허용, 다른 바이트 덮어쓰기는 거부한다.
+    def _mini_result():
+        panel = {}
+        for key, le, ee in (("2020-01", "100.00", "300.00"),
+                            ("2020-02", "200.00", "200.00"),
+                            ("2020-04", "150.00", "150.00")):
+            panel[key] = {"loaded_imports": Decimal("0"), "empty_imports": Decimal("0"),
+                          "total_imports": Decimal("0"), "loaded_exports": Decimal(le),
+                          "empty_exports": Decimal(ee),
+                          "total_exports": Decimal(le) + Decimal(ee),
+                          "total_teus": Decimal(le) + Decimal(ee),
+                          "provider_yoy_pct": Decimal("0")}
+        return {"panel": panel, "ordered": sorted(panel),
+                "recon": {"months": 3, "import_side_ok": 3, "export_side_ok": 3,
+                          "grand_total_ok": 3, "mismatches": []},
+                "yoy": {"compared": 0, "matched": 0, "mismatches": []},
+                "missing_months": {}, "quarantined_months": [],
+                "annual_check": {"compared": 0, "matched": 0, "mismatches": []},
+                "main_check": {"compared": 0, "matched": 0, "mismatches": [], "ref": None}}
+
+    guard_base = Path(tempfile.mkdtemp(prefix="pola-guard-"))
+    real_idx, real_proc = globals()["IDX_BASE"], globals()["PROCESSED_BASE"]
+    globals()["IDX_BASE"] = guard_base / "idx"
+    globals()["PROCESSED_BASE"] = guard_base / "proc"
+    try:
+        write_index_artifacts("20990101T000000Z", _mini_result())
+        write_index_artifacts("20990101T000000Z", _mini_result())  # 동일 재실행 허용
+        disp = guard_base / "idx" / "20990101T000000Z" / "display.json"
+        before = disp.read_bytes()
+        disp.write_bytes(before + b" ")
+        try:
+            write_index_artifacts("20990101T000000Z", _mini_result())
+        except FileExistsError:
+            pass
+        else:
+            raise AssertionError("overwrite with different bytes allowed")
+        assert disp.read_bytes() == before + b" ", "guarded file was modified"
+    finally:
+        globals()["IDX_BASE"] = real_idx
+        globals()["PROCESSED_BASE"] = real_proc
+
+    # 10. v2 그림: 달력 공백에서 끊기고, 양 패널 마지막 x가 일치하며, 재생이 결정적이다.
+    cal = _calendar_with_gaps(["2020-01", "2020-02", "2020-04"])
+    assert cal == ["2020-01", "2020-02", None, "2020-04"], cal
+    mini = _mini_result()
+    svg = _render_figure_v2_bytes(mini["ordered"], mini["panel"]).decode("utf-8")
+    data_paths = re.findall(r'<path d="([^"]+)"', svg)
+    assert len(data_paths) == 3, len(data_paths)
+    for d in data_paths:
+        first_xs = [float(seg.split("L")[0].split(",")[0]) for seg in d.split("M") if seg]
+        assert abs(max(first_xs) - 840.0) < 0.05, max(first_xs)
+    assert sum(d.count("M") for d in data_paths) >= 6, "gap break missing"
+    assert "2020-04" in svg and "Port of Los Angeles" in svg
+    svg2 = _render_figure_v2_bytes(mini["ordered"], mini["panel"])
+    assert svg2 == svg.encode("utf-8"), "v2 render not deterministic"
     print("SELF-TEST PASS")
 
 
@@ -718,6 +1137,10 @@ def main(argv):
     parser.add_argument("--self-test", action="store_true")
     parser.add_argument("--collect", action="store_true")
     parser.add_argument("--run", default=None)
+    parser.add_argument("--figure-v2", default=None, metavar="RUN_ID",
+                        help="v2 수정 그림과 별도 영수증을 v2/ 경로에만 생성한다")
+    parser.add_argument("--v2-out", default=None,
+                        help="v2 SVG 출력 경로(기본값은 <run>/v2/observation-v2.svg)")
     parser.add_argument("--years", default="2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026")
     args = parser.parse_args(argv)
     if args.self_test:
@@ -736,6 +1159,10 @@ def main(argv):
                           "mismatches": quality["reconciliation"]["mismatches"],
                           "yoy_mismatches": len(quality["provider_yoy_check"]["mismatches"])},
                          ensure_ascii=False))
+        return 0
+    if args.figure_v2:
+        out = Path(args.v2_out) if args.v2_out else None
+        print(json.dumps(write_figure_v2(args.figure_v2, out), ensure_ascii=False))
         return 0
     parser.print_help()
     return 2

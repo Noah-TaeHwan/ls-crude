@@ -1,9 +1,11 @@
+import { readVisibility } from "~/lib/visibility.server";
+import { readTankerArrivals } from "~/lib/tanker-arrivals.server";
 import { ResearchSample } from "~/components/research-sample";
 export { sampleShouldRevalidate as shouldRevalidate } from "~/lib/research-charts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ResearchIntake } from "~/components/research-intake";
 import { readResearchIntake } from "~/lib/research-intake.server";
-import { data, Link } from "react-router";
+import { data, Link, useRevalidator } from "react-router";
 import { ArrowRight, ArrowUpRight, Search } from "lucide-react";
 
 import type { Route } from "./+types/research";
@@ -36,8 +38,9 @@ export function meta({}: Route.MetaArgs) {
  * @param args 현재 URL.
  * @returns 연구 기록과 최초 검색어.
  */
-export function loader({ request }: Route.LoaderArgs) {
-  return { ...readResearchLedger(), intake: readResearchIntake(), initialQuery: new URL(request.url).searchParams.get("candidate") ?? "" };
+export async function loader({ request }: Route.LoaderArgs) {
+  const [visibility,tankers] = await Promise.all([readVisibility(),readTankerArrivals()]);
+  return { live:{visibility,tankers,checkedAt:new Date().toISOString()}, ...readResearchLedger(), intake: readResearchIntake(), initialQuery: new URL(request.url).searchParams.get("candidate") ?? "" };
 }
 
 /** @returns 공개 연구 화면의 읽기 전용 응답. */
@@ -51,6 +54,11 @@ export function action({}: Route.ActionArgs) {
  * @returns 연구 기록 화면.
  */
 export default function Research({ loaderData }: Route.ComponentProps) {
+  const revalidator=useRevalidator();
+  useEffect(()=>{
+    const timer=window.setInterval(()=>{if(document.visibilityState==="visible"&&revalidator.state==="idle")void revalidator.revalidate();},5*60000);
+    return ()=>window.clearInterval(timer);
+  },[revalidator]);
   const [query, setQuery] = useState(loaderData.initialQuery);
   const [filter, setFilter] = useState("전체");
   const [limit, setLimit] = useState(PAGE_SIZE);
@@ -77,7 +85,7 @@ export default function Research({ loaderData }: Route.ComponentProps) {
           <aside className="research-status" aria-label="전체 연구 인벤토리"><p className="status-stamp">탐색 중 · 검증 결과 공개</p><dl><div><dt>기존 연구 인벤토리</dt><dd>{error ? "—" : records.length}<small>개</small></dd></div><div><dt>기준 통과</dt><dd>{passCount ?? "—"}<small>개</small></dd></div></dl><p className="mt-5 text-sm leading-7 text-muted-foreground">미검증·보관·별도 전략을 포함한 인벤토리입니다. 등록 건수는 검정 완료 건수가 아닙니다.</p><a className="source-link mt-4" href={LEDGER_URL} target="_blank" rel="noreferrer">현재 정본 장부 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></aside>
         </header>
 
-        <ResearchSample records={{ watermelon: loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20"), "degree-days": loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-45"), "petroleum-rail": loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-43") }} />
+        <ResearchSample live={loaderData.live} records={{ watermelon: loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20"), "degree-days": loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-45"), empties: loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-02"), "petroleum-rail": loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-43") }} />
         <ResearchIntake {...loaderData.intake} />
 
         <section id="ledger" className="py-10 sm:py-12" aria-labelledby="ledger-title">
@@ -98,7 +106,7 @@ export default function Research({ loaderData }: Route.ComponentProps) {
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{record.conclusion.replace(/폭증/g, "관측")}</p>
                 <details className="mt-4 border-t border-border"><summary className="min-h-11 cursor-pointer py-3 text-sm text-primary">검정 요약과 근거 <span className="sr-only">— {record.name}</span></summary>
                   <div className="pb-4"><p className="text-xs leading-6 text-muted-foreground">정본의 과거 검정 요약입니다. IS는 인샘플, OOS는 이미 평가한 이후 구간입니다. ‘—’는 0이 아니라 해당 검정값 없음입니다.</p><dl className="mt-3 grid grid-cols-2 gap-3"><div><dt>IS 상관계수 r</dt><dd className="mt-1 font-mono">{record.inSample}</dd></div><div><dt>OOS 상관계수 r</dt><dd className="mt-1 font-mono">{record.outSample}</dd></div></dl><p className="mt-3 text-xs leading-6 text-muted-foreground">공통 타깃은 공개 이후 WTI 변동성입니다. 월간·연간 입력과 별도 에너지 체인 후보는 타깃이 다릅니다. 정확한 기간·표본·통제 조건은 연구 원문을 확인하세요.</p>
-                    {story && <div className="evidence-note mt-4"><h4 className="text-sm font-medium text-primary">{record.id === "001" ? "철회한 원안과 후속 가설" : "WTI 연결 가설과 다음 조건"}</h4><p className="mt-2 text-sm leading-7">{story.evidence}</p><p className="mt-2 text-sm leading-7 text-muted-foreground">{story.next}</p></div>}
+                    {story && <div className="evidence-note mt-4"><h4 className="text-sm font-medium text-primary">{record.id === "001" ? "철회한 원안과 후속 가설" : "WTI 연결 가설과 다음 조건"}</h4><p className="mt-2 text-sm leading-7">관측하려는 흔적: {story.trace}</p><p className="mt-2 text-sm leading-7">시장 연결 가설: {story.mechanism}</p><p className="mt-2 text-sm leading-7">{story.evidence}</p><p className="mt-2 text-sm leading-7 text-muted-foreground">{story.next}</p></div>}
                   </div>
                 </details>
                 <footer className="mt-auto border-t border-border pt-3"><a className="source-link" href={record.sourceHref} target="_blank" rel="noreferrer">연구 원문 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only">— {record.name} (새 탭)</span></a></footer>

@@ -111,7 +111,6 @@ test("daily WTI preserves actual latest provisional OHLC and rejects invalid ide
     (r) => { r.meta.symbol = "BZ=F"; }, (r) => { r.meta.currency = "EUR"; },
     (r) => { r.meta.instrumentType = "EQUITY"; }, (r) => { r.meta.dataGranularity = "5m"; },
     (r) => { r.timestamp.reverse(); }, (r) => { r.timestamp[1] = r.timestamp[0]; },
-    (r) => { r.timestamp[1] = r.timestamp[0] + 3600; },
     (r) => { r.timestamp[1] = now.getTime() / 1000 + 1; },
     (r) => { r.indicators.quote[0].close.pop(); },
     (r) => { r.indicators.quote[0].close[0] = "92"; },
@@ -125,6 +124,14 @@ test("daily WTI preserves actual latest provisional OHLC and rejects invalid ide
     assert.throws(() => parseWtiDaily(bad, now));
   }
   for (const bad of [null, {}, { chart: { error: "failed" } }]) assert.throws(() => parseWtiDaily(bad, now));
+  const session = dailyBody(["2026-09-08T04:00:00Z", "2026-09-09T02:05:52Z"]);
+  session.chart.result[0].indicators.quote[0].close = [93.03, 94.41];
+  const replaced = parseWtiDaily(session, new Date("2026-09-09T02:15:00Z"));
+  assert.equal(replaced.bars.length, 1);
+  assert.equal(replaced.bars[0].date, "2026-09-08");
+  assert.equal(replaced.bars[0].close, 94.41);
+  assert.equal(replaced.bars[0].sourceAt, "2026-09-09T02:05:52.000Z");
+  assert.equal(replaced.partialLast, true);
 });
 
 test("all seven daily ranges keep latest actual bar and clamp calendar month/year boundaries", async () => {

@@ -1,3 +1,8 @@
+import { VisibilityObservation } from "~/components/visibility-observation";
+import { TankerObservation } from "~/components/tanker-observation";
+import type { VisibilityView } from "~/lib/visibility";
+import type { TankerView } from "~/lib/tanker-arrivals";
+import { EmptiesCase } from "~/components/empties-observation";
 import { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 import melonInput from "../../../research/indexes/web-observations/v2/watermelon.json";
@@ -30,30 +35,37 @@ const CASES = {
   watermelon: {label:"수박 · 냉장트럭",title:"수박이 냉장트럭을 바쁘게 만들까?",path:"ALT-20260907-36/20260908T065043Z",start:mq.pure_start,end:mq.pure_end,collected:mq.source.retrieved_at.slice(0,16).replace("T"," ")+" UTC",png:"/research/watermelon-20260908.png",source:"https://www.ams.usda.gov/services/transportation-analysis/agricultural-refrigerated-truck-quarterly-datasets"},
   jeju: {label:"제주 · LNG와 유류",title:"제주의 LNG·유류 발전량은 어떻게 달랐을까?",path:"ALT-20260908-20/20260908T073402Z",start:jq.start,end:jq.end,collected:"2026-09-08 07:34 UTC",png:"/research/jeju-20260908.png",source:"https://www.data.go.kr/data/15069334/fileData.do"},
   "degree-days": {label:"미국 · 냉난방도일",title:"냉난방에 필요한 날씨 조건은 얼마나 달랐을까?",path:"ALT-20260907-45/20260908T120546Z/v2",start:"2015-01",end:"2023-12",collected:"2026-09-08 12:09 UTC",png:"/research/degree-days-v2.svg",source:"https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/cdus/degree_days/"},
+  empties: {label:"LA항 · 빈 컨테이너",title:"빈 컨테이너는 얼마나 돌아갈까?",path:"ALT-20260907-02/20260909T003314Z",start:"2015-01",end:"2026-07",collected:"2026-09-09 00:33 UTC",png:"/research/la-empties-v2.svg",source:"https://portoflosangeles.org/business/statistics/container-statistics"},
   "petroleum-rail": {label:"미국 · 석유 철도",title:"석유 제품은 철도로 얼마나 실렸을까?",path:"ALT-20260907-43/20260909T003038Z",start:rq.start,end:rq.end,collected:rq.source.completed_at.slice(0,16).replace("T"," ")+" UTC",png:"/research/petroleum-rail-20260909.svg",source:"https://www.stb.gov/reports-data/rail-service-data/"},
 } as const;
 
+/** 자료 탐색에 넘기는 고정 사례 정본. */
+interface SampleRecords { watermelon?:IntakeRecord;jeju?:IntakeRecord;"degree-days"?:IntakeRecord;empties?:IntakeRecord;"petroleum-rail"?:IntakeRecord }
+
 /** @param props 사례별 현재 정본. @returns URL로 선택하는 과거 연구 사례. */
-export function ResearchSample({ records }: {records:{watermelon?:IntakeRecord;jeju?:IntakeRecord;"degree-days"?:IntakeRecord;"petroleum-rail"?:IntakeRecord}}) {
+export function ResearchSample({ records, live }: {live:{visibility:VisibilityView;tankers:TankerView;checkedAt:string};records:SampleRecords}) {
   const [params] = useSearchParams();
   const navigate = useNavigate();
   const requested = params.get("sample");
+  const liveKind = requested === "visibility" || requested === "tankers" ? requested : null;
   const kind = requested && requested in CASES ? requested as keyof typeof CASES : "watermelon";
+  const selectedCase = liveKind ?? kind;
+  const options = [...Object.entries(CASES).map(([key,value])=>({key,label:value.label})),{key:"visibility",label:"갤버스턴 · 시정"},{key:"tankers",label:"싱가포르 · 탱커 입항"}];
   const info = CASES[kind], record = records[kind];
-  const evidence = "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/indexes/"+info.path+"/README.md";
+  const evidence = liveKind ? "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/candidates/"+(liveKind==="visibility"?"ALT-20260908-16":"ALT-20260907-26")+".md" : "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/indexes/"+info.path+"/README.md";
   return <section id="research-sample" className="border-t border-border py-10 sm:py-12" aria-labelledby="sample-title">
-    <div className="section-heading"><div><p className="section-kicker">RESEARCH IN PRACTICE / 확보한 과거 자료</p><h2 id="sample-title">아이디어를 실제 자료로 열어보면.</h2></div><a className="source-link" href={evidence}>수집·대사 기록 →</a></div>
-    <div role="group" aria-label="연구 사례 선택" className="mt-5 flex flex-wrap gap-3">{(Object.keys(CASES) as (keyof typeof CASES)[]).map(key=><button key={key} type="button" className="filter-button" aria-pressed={kind===key} aria-controls="sample-case" onClick={()=>{const next=new URLSearchParams(params);next.set("sample",key);navigate("?"+next.toString()+"#research-sample",{preventScrollReset:true});}}>{CASES[key].label}</button>)}</div>
-    <article id="sample-case" className="mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
+    <div className="section-heading"><div><p className="section-kicker">RESEARCH IN PRACTICE / 자료 탐색</p><h2 id="sample-title">아이디어를 실제 자료로 열어보면.</h2></div><a className="source-link" href={evidence}>수집·대사 기록 →</a></div>
+    <div role="group" aria-label="연구 사례 선택" className="mt-5 flex flex-wrap gap-3">{options.map(({key,label})=><button key={key} type="button" className="filter-button" aria-pressed={selectedCase===key} aria-controls="sample-case" onClick={()=>{const next=new URLSearchParams(params);next.set("sample",key);navigate("?"+next.toString()+"#research-sample",{preventScrollReset:true});}}>{label}</button>)}</div>
+    {liveKind ? <div id="sample-case" className="mt-5"><p className="status-stamp">갱신 관측 · 자료별 기준 시각과 주기 확인</p>{liveKind === "visibility" ? <VisibilityObservation view={live.visibility} checkedAt={live.checkedAt} compact /> : <TankerObservation view={live.tankers} checkedAt={live.checkedAt} />}</div> : <article id="sample-case" className="mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
       <div className="flex flex-wrap items-center gap-3 text-xs"><span className="status-stamp">과거 연구 샘플 · 자동 갱신 아님</span><span className="card-verdict">{record ? DECISIONS[record.fields.decision]+" · "+record.fields.decision : "현재 판정 확인 필요"}</span><span className="text-muted-foreground">이 샘플의 WTI 관계 검정 미실행</span></div>
       <h3 className="mt-5 text-xl font-medium sm:text-2xl">{info.title}</h3>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2"><div><dt className="text-muted-foreground">관측 기간</dt><dd className="mt-1 font-mono">{info.start} ~ {info.end}</dd></div><div><dt className="text-muted-foreground">자료를 수집한 시각</dt><dd className="mt-1 font-mono">{info.collected}</dd></div></dl>
       {!record ? <div role="status" className="empty-state mt-5"> 해당 후보 정본을 확인하지 못했습니다. 다른 사례 또는 연구 원문을 확인하세요.</div> : <>
-        {kind === "watermelon" ? <WatermelonCase /> : kind === "jeju" ? <JejuCase /> : kind === "degree-days" ? <DegreeDaysCase /> : <RailCase />}
+        {kind === "watermelon" ? <WatermelonCase /> : kind === "jeju" ? <JejuCase /> : kind === "degree-days" ? <DegreeDaysCase /> : kind === "empties" ? <EmptiesCase /> : <RailCase />}
         <div className="evidence-note mt-6"><h4 className="text-sm font-medium">다음 확인 · {record.fields.owner}</h4><p className="mt-2 text-sm leading-7">{record.fields.next_action}</p><p className="mt-2 text-xs text-muted-foreground">재검토 예정 {record.fields.next_review_date} · 사람 배정 제안</p></div>
       </>}
-      <footer className="mt-5 flex flex-wrap gap-5 border-t border-border pt-4 text-sm"><a className="source-link" href={info.png} download>연구 그림 다운로드</a>{record && <a className="source-link" href={record.sourceHref}>가설·판정 원문</a>}<a className="source-link" href={evidence}>재현 코드·영수증</a><a className="source-link" href={info.source}>제공기관 자료 정의</a></footer>
-    </article>
+      <footer className="mt-5 flex flex-wrap gap-5 border-t border-border pt-4 text-sm">{info.png && <a className="source-link" href={info.png} download>연구 그림 다운로드</a>}{record && <a className="source-link" href={record.sourceHref}>가설·판정 원문</a>}<a className="source-link" href={evidence}>재현 코드·영수증</a><a className="source-link" href={info.source}>제공기관 자료 정의</a></footer>
+    </article>}
   </section>;
 }
 

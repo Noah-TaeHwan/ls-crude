@@ -1,0 +1,74 @@
+[
+  {
+    "width": 320,
+    "overflow": false,
+    "buttons": [
+      {
+        "text": "수박 · 냉장트럭",
+        "pressed": "false"
+      },
+      {
+        "text": "제주 · LNG와 유류",
+        "pressed": "false"
+      },
+      {
+        "text": "미국 · 냉난방도일",
+        "pressed": "false"
+      },
+      {
+        "text": "LA항 · 빈 컨테이너",
+        "pressed": "true"
+      }
+    ],
+    "chartInSample": true
+  },
+  {
+    "width": 390,
+    "overflow": false,
+    "buttons": [
+      {
+        "text": "수박 · 냉장트럭",
+        "pressed": "false"
+      },
+      {
+        "text": "제주 · LNG와 유류",
+        "pressed": "false"
+      },
+      {
+        "text": "미국 · 냉난방도일",
+        "pressed": "false"
+      },
+      {
+        "text": "LA항 · 빈 컨테이너",
+        "pressed": "true"
+      }
+    ],
+    "chartInSample": true
+  },
+  {
+    "width": 1440,
+    "overflow": false,
+    "buttons": [
+      {
+        "text": "수박 · 냉장트럭",
+        "pressed": "false"
+      },
+      {
+        "text": "제주 · LNG와 유류",
+        "pressed": "false"
+      },
+      {
+        "text": "미국 · 냉난방도일",
+        "pressed": "false"
+      },
+      {
+        "text": "LA항 · 빈 컨테이너",
+        "pressed": "true"
+      }
+    ],
+    "chartInSample": true
+  },
+  {
+    "nov2022": "2022-11\n\n빈수출 237,672.25 TEU · 적재수출 90,115.75 TEU\n\n계산 분모 327,788.00 TEU · 빈 비중 72.51%\n\n제공기관 수출 합계 327,888.00 TEU\n\n제공기관 합계가 계산 분모와 100.00 TEU 다릅니다. 비중에는 분할값 합계를 사용했습니다. 원인 미확인."
+  }
+]
