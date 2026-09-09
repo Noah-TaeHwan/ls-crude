@@ -3,9 +3,13 @@
 National regular gasoline, private hourly earnings, and Michigan sentiment.
 Not Cushing field activity.
 
-![components](figures/cfsp_components.png)
+**Figure 1 — components.** Weekly EIA regular gasoline ($/gal), monthly Fuel Work Hours, UMCSENT.
 
-![experimental score display](figures/cfsp_score_display.png)
+![Figure 1. CFSP components](figures/cfsp_components.png)
+
+**Figure 2 — experimental score.** `0.7 z(FWH) + 0.3 (−z(UMCSENT))` on the 2017–2026 overlap. Not a WTI or CFAM input.
+
+![Figure 2. Experimental CFSP](figures/cfsp_score_display.png)
 
 | Field | Value |
 | --- | --- |
