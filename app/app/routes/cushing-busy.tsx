@@ -60,6 +60,9 @@ export default function CushingBusy({ loaderData }: Route.ComponentProps) {
                   <span className="text-sm font-normal text-muted-foreground">{row.status}</span>
                 </p>
                 <p className="mt-1 text-sm">{row.last_observation ?? "아직 날짜 있는 행 없음"}</p>
+                {"venues" in row && Array.isArray((row as {venues?: string[]}).venues) ? (
+                  <p className="mt-1 text-sm">{((row as {venues?: string[]}).venues ?? []).join(" · ")}</p>
+                ) : null}
                 <p className="mt-1 text-sm text-muted-foreground">{row.note}</p>
               </li>
             ))}

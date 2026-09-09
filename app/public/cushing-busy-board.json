@@ -4,16 +4,24 @@
   "factor_ledger": "091 CFAM",
   "composite": null,
   "verdict": "INSUFFICIENT",
-  "verdict_note": "No independently validated local activity series. Do not invent a 0–100 busy index.",
-  "as_of_utc": "2026-09-09T03:20:00Z",
+  "verdict_note": "No independently validated local activity series. Do not invent a 0\u2013100 busy index.",
+  "as_of_utc": "2026-09-09T03:25:00Z",
   "lanes": {
     "activity_forward": [
       {
         "id": "091-S",
-        "name": "QSR relative busy label",
+        "name": "Cushing restaurant strip \u2014 relative busy label",
         "status": "FORWARD_ONLY",
-        "last_observation": null,
-        "note": "Frozen six venues. Manual Maps relative label only. Mock scores excluded."
+        "last_observation": "basket frozen: Wendy's, Taco Bell, Sonic, Golden Chick, Pizza Hut, Boomarang Diner. No dated human label row yet.",
+        "note": "This IS the restaurant-busy lane. Allowed field: quieter / usual / busier / not shown. Excluded: mock 0\u2013100, order counts, Uber Eats volume.",
+        "venues": [
+          "Wendy's",
+          "Taco Bell",
+          "Sonic Drive-In",
+          "Golden Chick",
+          "Pizza Hut",
+          "Boomarang Diner"
+        ]
       },
       {
         "id": "091-U",
@@ -54,12 +62,30 @@
       }
     ],
     "excluded": [
-      {"id": "091-B", "reason": "Nightlights failed the 28-day inventory test; killed as quantitative input."},
-      {"id": "091-CFSP", "reason": "National gasoline/wage/sentiment. Wrong geography."},
-      {"id": "WTI", "reason": "Price is the research target, not a busy sensor."},
-      {"id": "pipeline-by-name flow", "reason": "No free EIA named-line series."},
-      {"id": "Cushing tankers", "reason": "Inland hub. No ocean tanker panel."},
-      {"id": "mock Maps 0–100", "reason": "Synthetic hour-of-day, not an observation."}
+      {
+        "id": "091-B",
+        "reason": "Nightlights failed the 28-day inventory test; killed as quantitative input."
+      },
+      {
+        "id": "091-CFSP",
+        "reason": "National gasoline/wage/sentiment. Wrong geography."
+      },
+      {
+        "id": "WTI",
+        "reason": "Price is the research target, not a busy sensor."
+      },
+      {
+        "id": "pipeline-by-name flow",
+        "reason": "No free EIA named-line series."
+      },
+      {
+        "id": "Cushing tankers",
+        "reason": "Inland hub. No ocean tanker panel."
+      },
+      {
+        "id": "mock Maps 0\u2013100",
+        "reason": "Synthetic hour-of-day, not an observation."
+      }
     ]
   }
 }
