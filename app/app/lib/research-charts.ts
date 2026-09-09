@@ -6,8 +6,10 @@ export interface JejuPoint { date: string; lngMwh: string; oilMwh: string; share
 export interface DegreePoint { month: string; hdd:number; cdd:number; hddYoy:number|null; cddYoy:number|null; providerHDDYoy:number|null; providerCDDYoy:number|null }
 /** 미국 4사 주간 originated 차종. 결측을 0으로 바꾸지 않는다. */
 export interface RailPoint { date: string; bnsf: number; up: number; csx: number; ns: number }
+/** Yahoo 일봉 HLX와 WTI(CL=F). 음수 선물은 실제 정산이며 0으로 바꾸지 않는다. */
+export interface HelixPoint { date: string; hlx: number; cl: number }
 /** 접수 카드에서 해당 연구 사례로 이동하는 고정 연결. */
-export const SAMPLE_LINKS: Record<string, string> = { "ALT-20260908-16":"/?sample=visibility#research-sample", "ALT-20260907-26":"/?sample=tankers#research-sample", "ALT-20260907-02":"/?sample=empties#research-sample", "ALT-20260907-36": "/?sample=watermelon#research-sample", "ALT-20260908-20": "/?sample=jeju#research-sample", "ALT-20260907-45":"/?sample=degree-days#research-sample", "ALT-20260907-43":"/?sample=petroleum-rail#research-sample", "091-CFAM":"/?sample=cushing-busy#research-sample" };
+export const SAMPLE_LINKS: Record<string, string> = { "ALT-20260908-16":"/?sample=visibility#research-sample", "ALT-20260907-26":"/?sample=tankers#research-sample", "ALT-20260907-02":"/?sample=empties#research-sample", "ALT-20260907-36": "/?sample=watermelon#research-sample", "ALT-20260908-20": "/?sample=jeju#research-sample", "ALT-20260907-45":"/?sample=degree-days#research-sample", "ALT-20260907-43":"/?sample=petroleum-rail#research-sample", "ALT-20260909-02":"/?sample=helix#research-sample", "091-CFAM":"/?sample=cushing-busy#research-sample" };
 
 /** @param args 현재·다음 URL과 라우터 기본 판단. @returns 사례 선택만 바뀌면 시장 재조회 없이 전환하며 수동·주기 갱신은 유지한다. */
 export function sampleShouldRevalidate({currentUrl,nextUrl,defaultShouldRevalidate,formMethod}:{currentUrl:URL;nextUrl:URL;defaultShouldRevalidate:boolean;formMethod?:string}): boolean {
@@ -65,6 +67,31 @@ export function readPetroleumRail(value: unknown): RailPoint[] | null {
   if (!v.points.every(r => new Date(r.date+"T00:00:00Z").getUTCDay() === 3)) return null;
   if (v.points.reduce((n,r)=>n+r.bnsf,0) !== 2381801 || v.points.reduce((n,r)=>n+r.up,0) !== 1434967 || v.points.reduce((n,r)=>n+r.csx,0) !== 665175 || v.points.reduce((n,r)=>n+r.ns,0) !== 440741) return null;
   return v.points;
+}
+/**
+ * 고정 HLX–WTI 일봉 CSV를 검사한다. 음수 CL은 유지하고 행을 메우지 않는다.
+ * @param csv Yahoo 런 CSV 원문.
+ * @returns 검증된 일봉 또는 오류 상태.
+ */
+export function readHelix(csv: unknown): HelixPoint[] | null {
+  if (typeof csv !== "string") return null;
+  const lines = csv.replace(/^\uFEFF/, "").trim().split(/\r?\n/);
+  if (lines[0] !== "date,hlx,cl,spy,xle" || lines.length !== 2482) return null;
+  const rows: HelixPoint[] = [];
+  for (const line of lines.slice(1)) {
+    const parts = line.split(",");
+    if (parts.length !== 5) return null;
+    const [date, hlxText, clText, spyText, xleText] = parts;
+    const hlx = Number(hlxText), cl = Number(clText), spy = Number(spyText), xle = Number(xleText);
+    if (!Number.isFinite(hlx) || hlx <= 0 || !Number.isFinite(cl) || !Number.isFinite(spy) || !Number.isFinite(xle)) return null;
+    rows.push({ date, hlx, cl });
+  }
+  if (!ordered(rows) || rows.length !== 2481) return null;
+  if (rows[0].date !== "2016-09-09" || rows[0].hlx !== 7.019999980926514 || rows[0].cl !== 45.880001068115234) return null;
+  if (rows.at(-1)!.date !== "2026-09-01" || rows.at(-1)!.hlx !== 10.600000381469727 || rows.at(-1)!.cl !== 90.22000122070312) return null;
+  if (rows.filter((row) => row.date >= "2024-01-01").length !== 644) return null;
+  if (!rows.some((row) => row.date === "2020-04-20" && row.cl === -37.630001068115234)) return null;
+  return rows;
 }
 /**
  * 실제 관측 날짜 중 포인터에 가장 가까운 것을 찾는다. 달력 공백에 값을 만들지 않는다.

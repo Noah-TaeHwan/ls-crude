@@ -182,6 +182,12 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.doesNotMatch(body, /id="intake"/);
     assert.match(body, /href="\/#research-sample"/);
     const sample = body.slice(body.indexOf('id="research-sample"'), body.indexOf("</main>"));
+    const optionGroup = sample.match(/aria-label="연구 사례 선택"[^>]*>([\s\S]*?)<\/div>/);
+    assert.ok(optionGroup, "sample option group present");
+    const optionLabels = [...optionGroup[1].matchAll(/>([^<]+)<\/button>/g)].map((match) => match[1].trim());
+    assert.equal(optionLabels[0], "쿠싱 · 현장 바쁨");
+    assert.equal(optionLabels[1], "HLX · 오일서비스");
+    assert.equal(optionLabels.length, 9);
     for (const label of ["과거 연구 샘플", "자동 갱신 아님", "WTI 관계 검정 미실행", "2025-10-14", "332", "소수값", "원단위 표"]) assert.ok(sample.includes(label));
     assert.match(sample, /<svg id="watermelon-research-plot"/);
     assert.doesNotMatch(sample, /<img/);
@@ -248,7 +254,7 @@ test("serves the public evidence brief routes from the repository root", async (
     const researchBody = await research.text();
     const researchText = researchBody.split("<script")[0].replace(/<[^>]*>/g, "");
     assert.match(researchBody, /id="research-sample"/);
-    assert.doesNotMatch(researchBody, /id="(?:watermelon-research-plot|jeju-generation-plot|degree-days-level-plot|empties-plot|visibility-observation|tanker-observation|wti-daily-chart)"/);
+    assert.doesNotMatch(researchBody, /id="(?:watermelon-research-plot|jeju-generation-plot|degree-days-level-plot|empties-plot|visibility-observation|tanker-observation|wti-daily-chart|helix-index-plot)"/);
     assert.match(researchBody, /href="\/#research-sample"/);
     assert.match(researchBody,/작업 상태로 살펴보기/);
     assert.match(researchBody,/원본 확보/);
@@ -283,6 +289,16 @@ test("serves the public evidence brief routes from the repository root", async (
     }
     assert.doesNotMatch(body,/id="empties-plot"/,"default home keeps frozen LA sample behind its case button");
     assert.doesNotMatch(body,/id="petroleum-rail-plot"/,"default home keeps frozen rail sample behind its case button");
+    assert.doesNotMatch(body,/id="helix-index-plot"/,"default home keeps frozen HLX sample behind its case button");
+    for (const route of ["/", "/research"]) {
+      const response=await fetch(`${baseUrl}${route}?sample=helix`);
+      assert.equal(response.status,200);
+      const html=await response.text();
+      for (const value of ["helix-index-plot","HLX · 오일서비스","2016-09-09","2026-09-01","10.60","90.22","-37.63","트레이딩 미개방","HOS","2481"]) assert.ok(html.includes(value),value);
+      assert.doesNotMatch(html,/id="watermelon-research-plot"|id="empties-plot"|id="petroleum-rail-plot"/);
+      const patterns = [...html.split("<script")[0].matchAll(/<path[^>]*vector-effect="non-scaling-stroke"[^>]*stroke-dasharray="([^"]*)"/g)].map(match => match[1]);
+      assert.equal(new Set(patterns).size, 2, "HLX and WTI series must remain distinguishable without color");
+    }
     for (const route of ["/", "/research"]) {
       const response=await fetch(`${baseUrl}${route}?sample=empties`);
       const html=await response.text();
@@ -304,7 +320,7 @@ test("serves the public evidence brief routes from the repository root", async (
     }
     const unknownSample = await fetch(`${baseUrl}/research?sample=unknown`);
     assert.doesNotMatch(await unknownSample.text(), /id="watermelon-research-plot"/);
-    for(const kind of ["watermelon","jeju","degree-days","empties","visibility","tankers","petroleum-rail"]) {
+    for(const kind of ["watermelon","jeju","degree-days","empties","visibility","tankers","petroleum-rail","helix"]) {
       const redirect=await fetch(`${baseUrl}/research?sample=${kind}`,{redirect:"manual"});
       assert.equal(redirect.status,308);assert.equal(redirect.headers.get("location"),`/?sample=${kind}#research-sample`);
     }

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { test } from "node:test";
-import { readWatermelon, readJeju, readDegreeDays, readPetroleumRail, nearestDateIndex, sampleShouldRevalidate } from "../app/lib/research-charts.ts";
+import { readWatermelon, readJeju, readDegreeDays, readPetroleumRail, readHelix, nearestDateIndex, sampleShouldRevalidate } from "../app/lib/research-charts.ts";
 
 const base = new URL("../../research/indexes/web-observations/v2/", import.meta.url);
 const melon = JSON.parse(await readFile(new URL("watermelon.json", base), "utf8"));
@@ -80,4 +80,19 @@ test("petroleum rail preserves weekly originated counts for four U.S. railroads"
   for (const mutate of [r=>{r.bnsf=0;},r=>{r.date="2017-03-30";},r=>{r.up=-1;},r=>{r.csx="1504";}]) {
     const bad=structuredClone(rail); mutate(bad.points[0]); assert.equal(readPetroleumRail(bad),null);
   }
+});
+
+const helixCsv = await readFile(new URL("../../research/indexes/095-oil-helix-dislocation/20260909T095HLXZ/hlx_wti_spy_xle_20160909_20260901.csv", import.meta.url), "utf8");
+test("helix daily prices keep the negative WTI print and reject damaged copies", () => {
+  const rows = readHelix(helixCsv);
+  assert.equal(rows.length, 2481);
+  assert.deepEqual(rows[0], { date: "2016-09-09", hlx: 7.019999980926514, cl: 45.880001068115234 });
+  assert.deepEqual(rows.at(-1), { date: "2026-09-01", hlx: 10.600000381469727, cl: 90.22000122070312 });
+  assert.equal(rows.filter((row) => row.date >= "2024-01-01").length, 644);
+  assert.equal(rows.find((row) => row.date === "2020-04-20").cl, -37.630001068115234);
+  assert.equal(readHelix(null), null);
+  assert.equal(readHelix(helixCsv.replace("date,hlx,cl,spy,xle", "date,hlx,cl")), null);
+  assert.equal(readHelix(helixCsv.replace("7.019999980926514", "0")), null);
+  assert.equal(readHelix(helixCsv.replace("-37.630001068115234", "0")), null);
+  assert.equal(readHelix(helixCsv.replace("2026-09-01", "2026-09-02")), null);
 });

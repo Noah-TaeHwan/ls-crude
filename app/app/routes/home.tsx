@@ -84,7 +84,7 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
 
         <MarketContext market={market} daily={daily} />
         <div id="observations">
-        <ResearchSample live={{visibility,tankers,checkedAt}} records={{ watermelon: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20"), "degree-days": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-45"), empties: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-02"), "petroleum-rail": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-43") }} />
+        <ResearchSample live={{visibility,tankers,checkedAt}} records={{ helix: intake.records.find((item) => item.fields.candidate_id === "ALT-20260909-02"), watermelon: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20"), "degree-days": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-45"), empties: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-02"), "petroleum-rail": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-43") }} />
         </div>
       </main>
       <DeskFooter />
