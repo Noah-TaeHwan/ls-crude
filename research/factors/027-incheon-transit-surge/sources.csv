@@ -1,5 +1,0 @@
-source_id,source_name,url,role,status_and_boundary
-incheon_stats,Incheon Airport Statistics,https://www.airport.kr/co_en/4272/subview.do,Aggregate transfer-passenger cargo and route context,2010 onward transfer-passenger monthly series verified and 2015-2026 collected; use following-month first business-day plus five; transfer is not nationality
-kto_arrivals,Korea Tourism Data Lab arrivals,https://datalab.visitkorea.or.kr/datalab/portal/ts/getEntcnyFrgnCust2Form.do,National-level country-of-origin visitor context,Not an Incheon transit series; preserve release timing and do not infer individual travel
-visa_notice,VISITKOREA group visa fee waiver notice,https://english.visitkorea.or.kr/svc/contents/contentsView.do?menuSn=177&vcontsId=1591587,Policy-control event,Fee waiver is not general visa-free entry
-incheon_open_api,Incheon International Airport monthly statistics API,https://www.data.go.kr/data/15134562/openapi.do,027B cargo-jet wedge candidate,Official aggregate monthly flights passengers and cargo; source path changed after 2024-10 so definitions release dates and history must be audited before use
