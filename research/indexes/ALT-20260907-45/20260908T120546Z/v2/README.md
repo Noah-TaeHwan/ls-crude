@@ -3,8 +3,8 @@
 - 정본: [v1 관측 영수증](../README.md). v2는 같은 원본 216개·같은 파싱으로 공급자 전년차 열을 파싱해 자체 차분과 대사한 것으로, v1 CSV·quality·SVG 바이트는 변경하지 않았다.
 - 원본: `research/gathering/raw/ALT-20260907-45/20260908T120546Z/` (gitignored, 216 파일·SHA 전수 대조).
 - 코드: `research/notebooks/ALT-20260907-45/collect.py` SHA-256 `b9961fb2ca83b0992dbf1a7bf57260f718651f3043d2c8b899d7b7ffd0ca1425`.
-- 코드 변경 공개: 리뷰 전 초안 코드 `830ddf6448e265899a14464039184331620bd34c01b080f28214d8343fa207d1`에서 파서 강화(제목행 종류 검증·구간 경계 내 유일 US행·엄격 월토큰·매 시도 영수증·중단 로직)와 실행 영수증 분리로 변경됐다. CSV 내용은 동일하다(SHA-256 `4e95f4f5525616c5913738d969848749a03c8236a18d4c2cc51825fa4bb11880` 불변).
-- 실행: `python3 research/notebooks/ALT-20260907-45/collect.py --self-test` 후 `--v2 --run 20260908T120546Z` (재수집 없음, 재실행冪等). 실행시각·명령·Python·코드 해시는 [execution-20260908T133517649819Z.json](execution-20260908T133517649819Z.json)에만 기록하고 quality.json에는 넣지 않는다.
+- 코드 변경 공개: 미커밋 초안 `830ddf6448e265899a14464039184331620bd34c01b080f28214d8343fa207d1` → 중간 초안 `06398ad317c6602020ab5410eaf53a75795c8bd4521731a25af33670584b577e` → 최종 `b9961fb2ca83b0992dbf1a7bf57260f718651f3043d2c8b899d7b7ffd0ca1425`로 파서 강화(제목행 종류 검증·구간 경계 내 유일 US행·엄격 월토큰·매 시도 영수증·중단 기록)와 실행 영수증 분리·각주 2줄 분리를 반영했다. CSV 내용은 세 단계 내내 동일하다(SHA-256 `4e95f4f5525616c5913738d969848749a03c8236a18d4c2cc51825fa4bb11880` 불변).
+- 실행: `python3 research/notebooks/ALT-20260907-45/collect.py --self-test` 후 `--v2 --run 20260908T120546Z` (재수집 없음, 재실행冪等). 실행시각·명령·Python·코드 해시는 [execution-20260909T001558923940Z.json](execution-20260909T001558923940Z.json)에만 기록하고 quality.json에는 넣지 않는다.
 - 출력: `research/data/processed/ALT-20260907-45/20260908T120546Z/v2/degree-days.csv` (gitignored).
 
 ## 계약
