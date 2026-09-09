@@ -1,0 +1,6 @@
+date,company,executive,event_type,scheduled_or_unscheduled,external_or_company_event,cushing_mentioned,storage_mentioned,capacity_mentioned,throughput_mentioned,tightness_mentioned,maintenance_mentioned,expansion_mentioned,source
+2026-06-15,Plains,company_release,capex_guidance_update,unscheduled,company_event,0,0,1,0,0,0,1,https://ir.plains.com/news-events/press-releases
+2026-06-30,Plains,,tax_form_K3,scheduled,company_event,0,0,0,0,0,0,0,https://ir.plains.com/news-events/press-releases
+2026-07-06,Plains,company_release,distribution_and_earnings_date,scheduled,company_event,0,0,0,0,0,0,0,https://ir.plains.com/news-events/press-releases
+2026-08-07,Plains,Willie Chiang,earnings_call,scheduled,company_event,1,0,1,1,0,0,1,https://ir.plains.com/news-events/press-releases
+2026-08-07,Plains,Willie Chiang,earnings_release,scheduled,company_event,0,0,1,0,0,0,1,https://www.globenewswire.com/news-release/2026/08/07/3341045/0/en/plains-all-american-reports-second-quarter-2026-results.html
