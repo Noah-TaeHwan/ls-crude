@@ -45,6 +45,18 @@ export default function CushingBusy({ loaderData }: Route.ComponentProps) {
         <section className="mt-8 max-w-3xl">
           <p className="text-sm text-muted-foreground">as of {view.as_of_utc} · checked {checkedAt}</p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight">{view.question}</h1>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <p className="text-5xl font-semibold tabular-nums">
+              {view.score.readiness}
+              <span className="mt-2 block text-base font-normal">관측 충실도 / 100</span>
+            </p>
+            <p className="text-5xl font-semibold tabular-nums text-muted-foreground">
+              —
+              <span className="mt-2 block text-base font-normal text-foreground">현장 바쁨 / 100</span>
+            </p>
+          </div>
+          <p className="mt-3 text-sm text-muted-foreground">{view.score.readiness_detail}</p>
+          <p className="mt-1 text-sm text-muted-foreground">{view.score.busy_detail}</p>
           <p className="mt-4 text-lg">
             {view.verdict}
             <span className="block text-base font-normal text-muted-foreground">{view.verdict_note}</span>
