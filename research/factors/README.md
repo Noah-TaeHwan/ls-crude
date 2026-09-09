@@ -139,6 +139,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 090 | [Great Lakes Ice Constraint Index](090-great-lakes-ice-constraint-index/README.md) | 별도표 | 별도표 | HOLD — NOAA 결빙 90일 z → HO RV5는 IS/OOS -0.103/-0.228으로 약한 동일방향이나 비유의; 실제 쇄빙·지연 미측정 |
 | 091 | [Cushing Field Activity Monitor (CFAM)](091-cushing-motel-lights-index/README.md) | 별도표 | 별도표 | HOLD — 호텔세 14개월 파일럿 미통과; CFAM 공개 야간광→이후 28일 쿠싱 재고 `r=+0.053` (p=.607, n=96), 변화폭 `r=+0.068` (p=.508)도 관계 없음 |
 | 092 | [Cushing Last-Mile Logistics Feasibility (CALMF)](092-cushing-last-mile-logistics-feasibility/README.md) | — | — | PARK — Cushing/Payne County Amazon/Flex presence와 허용된 일별 route/block 집계가 미검증; WTI 검정 미실행 |
+| 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | 별도표 | 미실행 | HOLD — food-CPI 대체 검정 미통과; 계란 원자료·공표일·FX 미확보로 계란 가설 자체는 미검정 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 

@@ -66,6 +66,11 @@ function WatermelonCase() {
     <label htmlFor="watermelon-date" className="mt-4 block text-sm">수박 관측 날짜 탐색</label><input id="watermelon-date" type="range" min={0} max={rows.length-1} value={selected} onChange={e=>setDate(rows[Number(e.target.value)].date)} aria-valuetext={point.date+", "+point.numerator+"/"+point.denominator+"개 출하지, "+(100*point.numerator/point.denominator).toFixed(1)+"퍼센트"} className="min-h-11 w-full accent-primary" />
     <div className="mt-6"><h4 className="mb-2 text-sm font-medium">연도별 보고 날짜 수</h4><div className="grid grid-cols-[minmax(0,1fr)_3.5rem]"><svg id="watermelon-coverage" className="h-36 w-full" role="img" aria-label="2000~2026년 보고 날짜 수. 2019년과2026년은 보고행 없음. 아래 표에서 정확한 수치 확인 가능">{YEARS.map(([year,,count],i)=><rect key={year} x={100*(i+.15)/YEARS.length+"%"} width={70/YEARS.length+"%"} y={92-84*Number(count)/30+"%"} height={84*Number(count)/30+"%"} fill="#94c8ac" />)}</svg><div className="relative font-mono text-xs text-muted-foreground" aria-hidden="true">{[0,15,30].map(v=><span key={v} className="absolute left-2 -translate-y-1/2" style={{top:92-84*v/30+"%"}}>{v}</span>)}</div><div className="flex justify-between font-mono text-xs text-muted-foreground"><span>2000</span><span>2013</span><span>2026</span></div></div></div>
     <p className="mt-4 text-xs leading-6 text-muted-foreground">U.S. Department of Agriculture / AMS. 보고행 없음은 활동 0이 아닙니다. 소수값 {mq.pure_fractional_rows}개의 생성 방식과 최초 공개일은 미확인입니다. 원안의 52주 지수는 아직 만들지 않았습니다.</p>
+    <aside className="evidence-note mt-4 text-sm leading-7" aria-label="수박 원보고서 대사 상태">
+      <p><strong>원보고서 대사 · 접근 차단</strong> — 2026-09-09 09:29 KST 공식 정책 페이지가 접근을 거부해 후속 수집을 중단했습니다. 위 그림은 앞서 확보한 과거 표본이며 새 관측이 추가된 것은 아닙니다.</p>
+      <p>정상 접근이 회복되거나 허용된 원보고서 경로가 확인되면 소수값의 뜻과 보고 날짜를 대조합니다.</p>
+      <a className="source-link" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/indexes/ALT-20260907-36/20260909T002929Z/README.md">접근 결과와 재개 조건 →</a>
+    </aside>
     <DataTable title="연도별 원단위 표와 데이터 범위" headers={["연도","보고행","관측 날짜","출하지 표기","소수값"]} rows={YEARS} />
   </>;
 }
