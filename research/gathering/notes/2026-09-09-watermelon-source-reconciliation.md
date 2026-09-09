@@ -41,8 +41,8 @@
 | 의미상 전체 지역/기간 적격성 | 외부 앵커 미확보 | Reality Checker + Main | BLOCKED |
 | WTI/HO 검정 | 이번 미실행, 기존 노출 보존 | Main | NOT_RUN |
 | 웹 구현·로컬 화면 | ego 390px 안내·키보드 날짜변경·넘침 없음; 앱 typecheck/build·23 tests | Main | PASS |
-| CI·PR·병합·main 동기화 | 실행 후 기입 | Main | NOT_RUN |
-| 운영배포·실제 화면 | 실행 후 기입 | Main | NOT_RUN |
+| CI·PR·병합·main 동기화 | [PR89](https://github.com/Noah-TaeHwan/ls-crude/pull/89), CI34296095179, main 3f8175d 세 SHA 일치 | Main | PASS |
+| 운영배포·실제 화면 | dpl_12rgwcJEAofVCKDeDQdxjmbqBLHe READY/production, ego footer3f8175d·차단 안내 | Main | PASS |
 
 전체 목표 **PARTIAL**: 신규 데이터 수집·대사·개별 그림 진전은 접근 차단으로 달성하지 못했다. 안전성 수정과 실패 전달은 별도 완료 증거로 평가한다. 다음 행동 하나: 정상 공식 접근 또는 허용 원보고서 경로 확인 후 같은 후보의 새 UTC run으로 대사를 재개한다.
 
@@ -59,3 +59,14 @@
 ## 동시 작업 통합
 
 PR #89 검토 중 main에 PR #88의093행 복원과 PR #87 도일 영수증 정정이 먼저 병합되었다. origin/main을 정상 merge하고093행은 main 정본 그대로 보존해 중복 수정을 제거했다. PR #89의 최종 diff는093행을 새로 추가하지 않는다.
+
+## 병합·운영 전달 증거
+
+- [PR #89 MERGED](https://github.com/Noah-TaeHwan/ls-crude/pull/89), merge `3f8175de3e0ecc0f7456deb54f3d16d52477f608`, 2026-09-09T00:43:08Z. [CI 연구·앱 SUCCESS](https://github.com/Noah-TaeHwan/ls-crude/actions/runs/34296095179).
+- `/Users/noah/orca/ls-crude` main의 clean 상태를 확인하고 `git merge --ff-only origin/main` 실행. local main/origin/main/`git ls-remote origin refs/heads/main` 모두 위 merge SHA 일치.
+- [Vercel 운영 배포](https://vercel.com/noah-tae-hwan-s-projects/ls-crude/12rgwcJEAofVCKDeDQdxjmbqBLHe): `dpl_12rgwcJEAofVCKDeDQdxjmbqBLHe`, READY, production. GitHub의 해당 commit 상태 URL과 `vercel inspect https://ls-crude.vercel.app --json` ID 일치.
+- [실제 수박 화면](https://ls-crude.vercel.app/research?sample=watermelon#research-sample): ego snapshot과 렌더링 캡처에서 build `3f8175d`, 원보고서 대사 차단, 신규 관측 없음, 다음 조건을 Main이 직접 확인. `/tmp/huchen-production-snapshot.txt`, `/tmp/huchen-production.png`. 운영 가로 넘침 false.
+- 로컬 실제 터치 날짜40→2025-08-12,1/3·33.3%·소수2개, 키보드 날짜49→24의 readout 확인. 1280×900 데스크톱 캡처도 직접 확인. 빈 자료 거부는 앱 단위검사, 실제 오래된 표본 표시는 ego 확인. VoiceOver 독립 검사는 NOT_RUN.
+- 이 완료표를 반영하는 후속 문서 PR은 제품 코드를 바꾸지 않는다. 후속 문서 커밋의 CI·병합·동기화·최종 배포 상태는 해당 PR의 최종 closeout 영수증을 따른다.
+
+**완료 판정: PARTIAL.** 수집기 안전성/기존 표본 회귀/차단 이유의 웹 전달과 제품 배포는 PASS. 신규 원본·소수값 의미 대사·새 개별 그림은 확보하지 못했다. WTI/HO 검정은 NOT_RUN. 다른 후보를 새 성과로 끼워 넣지 않았다.

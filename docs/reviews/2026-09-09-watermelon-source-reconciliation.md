@@ -27,6 +27,8 @@ GBrain recall 응답 지연으로 중단했으며 건강/최신성은 미검증.
 
 ## 전달 검증
 
-앱 typecheck/build/Node, ego 로컬 화면, CI, 운영 배포, main 동기화는 실행 후 아래 실행 노트에서 각각 확정한다. 이 검토 보고서는 데이터/수집기 독립 검토 완료이며 운영 독립 검토 완료 주장이 아니다.
+앱 typecheck/build/23 Node tests, 36 연구 tests, ego 로컬 모바일/데스크톱·터치/키보드, CI34296095179, PR89 병합, 운영 READY·footer3f8175d, main3종 SHA 일치를 Main이 확인했다. 상세는 아래 실행 노트에 확정했다. 이 검토 보고서는 데이터/수집기 독립 검토 완료이며 운영 독립 검토 완료 주장이 아니다.
 
 [실행 노트와 최종 단계표](../../research/gathering/notes/2026-09-09-watermelon-source-reconciliation.md) · [실제 403 영수증](../../research/indexes/ALT-20260907-36/20260909T002929Z/README.md).
+
+최종 일관성 검토: 별도 Reality Checker가 영수증 SHA·UTC/KST·후속 미실행·신규0·후보/원장·로컬11링크·PARTIAL 판정 일치를 재검증했다. Main도 동일 표면을 확인했다. 웹/운영은 Main 검수이며 검토자의 운영 검증으로 소급하지 않는다.
