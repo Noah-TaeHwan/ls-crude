@@ -1,0 +1,18 @@
+{
+  "source": "EIA PET.W_EPC0_SAX_YCUOK_MBBL.W via hist_xls (no API key)",
+  "file": "W_EPC0_SAX_YCUOK_MBBLw.xls",
+  "sha256": "ceec373d99f402eba325d31e0fc3793de71ed805500757c6bbfd0e126c150b85",
+  "bytes": 79872,
+  "retrieved_at_utc": "2026-09-09T02:20:50Z",
+  "release_date_on_file": "2026-09-02",
+  "next_release_on_file": "2026-09-10",
+  "latest_week": "2026-08-28",
+  "latest_stock_kbbl": 22508.0,
+  "wow_change_kbbl": 80.0,
+  "wow_change_pct": 0.35669698591047627,
+  "pct_of_ref_working": 29.615789473684213,
+  "n_weeks": 1169,
+  "first_week": "2004-04-09",
+  "api_v2_without_key": "403",
+  "submitted_script_default": "blocked \u2014 EIA_API_KEY missing"
+}
