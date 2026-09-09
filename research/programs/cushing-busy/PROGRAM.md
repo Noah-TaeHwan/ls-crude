@@ -17,7 +17,7 @@ app/app/routes/cushing-busy.tsx   same board on the desk
 | --- | --- | --- |
 | Activity, forward only | **091-S restaurant strip** (Wendy's, Taco Bell, Sonic, Golden Chick, Pizza Hut, Boomarang), 091-U jobs, 091-Y pump, 091-Z news, 091-V permits | Local traces. S is the restaurant-busy lane. None is validated as “busy”. |
 | Physical context | 091-EIA Cushing stocks | Tells you how full the tanks are. Explicitly **not** activity. |
-| Communication (not on the busy meter) | 091-EXEC / EXL / EXE | Operator intent. Plains first. Never mixed into the 0–100 readiness or busy display. |
+| Communication (not on the busy meter) | 091-EXEC / EXL / EXE | Operator intent. Plains first. 90-day forward rows before any ExecPressure. Never mixed into readiness or busy. |
 
 ## Out of this dash
 
