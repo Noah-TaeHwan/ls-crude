@@ -23,10 +23,11 @@ BOARD = {
         "activity_forward": [
             {
                 "id": "091-S",
-                "name": "QSR relative busy label",
+                "name": "Cushing restaurant strip — relative busy label",
                 "status": "FORWARD_ONLY",
-                "last_observation": None,
-                "note": "Frozen six venues. Manual Maps relative label only. Mock scores excluded.",
+                "last_observation": "basket frozen: Wendy's, Taco Bell, Sonic, Golden Chick, Pizza Hut, Boomarang Diner. No dated human label row yet.",
+                "note": "This IS the restaurant-busy lane. Allowed: quieter / usual / busier / not shown. Excluded: mock 0–100, order counts, Uber Eats volume.",
+                "venues": ["Wendy's", "Taco Bell", "Sonic Drive-In", "Golden Chick", "Pizza Hut", "Boomarang Diner"],
             },
             {
                 "id": "091-U",

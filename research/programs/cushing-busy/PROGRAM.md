@@ -15,7 +15,7 @@ app/app/routes/cushing-busy.tsx   same board on the desk
 
 | Lane | Source | Why it is here |
 | --- | --- | --- |
-| Activity, forward only | 091-S QSR labels, 091-U industrial jobs, 091-Y local pump, 091-Z local news, 091-V DEQ permit events | Closest *local* operational traces. None is validated as “busy”. |
+| Activity, forward only | **091-S restaurant strip** (Wendy's, Taco Bell, Sonic, Golden Chick, Pizza Hut, Boomarang), 091-U jobs, 091-Y pump, 091-Z news, 091-V permits | Local traces. S is the restaurant-busy lane. None is validated as “busy”. |
 | Physical context | 091-EIA Cushing stocks | Tells you how full the tanks are. Explicitly **not** activity. |
 
 ## Out of this dash
