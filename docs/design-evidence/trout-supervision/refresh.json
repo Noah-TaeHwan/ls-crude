@@ -1,0 +1,10 @@
+{
+  "selectionFetches": [
+    "http://127.0.0.1:5187/__manifest?paths=%2F%2C%2Fobservations%2C%2Fobservations%2Fvisibility%2C%2Fresearch&version=0.09515361658915422"
+  ],
+  "refreshFetches": [
+    "http://127.0.0.1:5187/research.data?sample=tankers",
+    "http://127.0.0.1:5187/__manifest?paths=%2Fobservations%2C%2Fobservations%2Ftankers&version=0.09515361658915422"
+  ],
+  "selected": "싱가포르 · 탱커 입항"
+}

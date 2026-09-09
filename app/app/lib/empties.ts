@@ -57,3 +57,6 @@ export function readEmpties(value: unknown): EmptiesPoint[] | null {
   })) return null;
   return rows;
 }
+
+/** @param point 월별 관측. @returns 비중 계산에 실제 사용한 적재+빈수출 분모. */
+export const exportDenominator = (point: EmptiesPoint) => Number(point.loadedExports) + Number(point.emptyExports);

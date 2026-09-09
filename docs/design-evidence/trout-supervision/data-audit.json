@@ -1,0 +1,16 @@
+{
+  "raw_files": 13,
+  "raw_bytes": 1671875,
+  "months": 138,
+  "raw_to_csv_fields": 966,
+  "quarantined": [
+    "2020-11"
+  ],
+  "denominator_differences": [
+    "2020-07",
+    "2022-11",
+    "2025-03",
+    "2025-10"
+  ],
+  "original_artifacts_unchanged": true
+}
