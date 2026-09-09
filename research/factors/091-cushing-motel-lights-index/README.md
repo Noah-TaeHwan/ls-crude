@@ -9,7 +9,7 @@
 | **질문** | 터미널·물류·외부 인력·로컬 서비스 강도가 달라졌는가 |
 | **아닌 것** | WTI 가격 팩터, EIA 재고 대리변수, 모텔 불빛 = 탱크 활동 |
 | **이전 이름** | Cushing Motel Lights Index — 이력명만 유지 |
-| **갱신** | 2026-09-09 — 하위 트랙 원장을 이 카드에 복원하고, 제출된 5분 혼잡 모니터를 091-S 기록 워크플로로만 편입 |
+| **갱신** | 2026-09-09 — EIA 주간 재고 hist XLS 실수집·그림 ([091-EIAZ](../../indexes/091-cushing-operations-nowcasting/20260909T091EIAZ/README.md)). API 키 경로는 403. 활동 점수로 쓰지 않음 |
 
 091은 **하나의** 쿠싱 운영 관측 프로젝트다. `091-A`부터 `091-Z`까지는 새 팩터가 아니라 같은 질문을 다른 공개 관측으로 확인한 하위 작업이다. 새 번호로 복제하지 않는다.
 
@@ -50,7 +50,7 @@
 
 | 묶음 | 트랙 | 의미 |
 | --- | --- | --- |
-| LIVE 문맥 | EIA Cushing stocks | 연구 타깃·물리 재고. 활동 점수 입력 아님 |
+| LIVE 문맥 | [091-EIA / CSSM](subtracks/cssm/README.md) | 연구 타깃·물리 재고. 활동 점수 입력 아님 |
 | FORWARD_ONLY | S, U, Y, YD, Z, V/V2 | 고정 규칙 전향 기록 중. 90일·측정타당성 전 |
 | RUN / 미통과 | B, C | 장기 패널은 있으나 사전 검정 실패. 정량 입력 폐기 |
 | PARK | A, D, E, E2, F, G, GC, H, I, J, L, LM, M, N, O, P, Q, R, RAIL, WASTE, W, X, X2 | 경로·표본은 남김. 장기성·정의·직접성 미달 |
@@ -82,7 +82,7 @@
 
 | ID | 관측 | 상태 | 증거 | 쓰지 않는 해석 |
 | --- | --- | --- | --- | --- |
-| **EIA Cushing** | 주간 ending stocks | LIVE | [EIA series](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?f=W&n=PET&s=W_EPC0_SAX_YCUOK_MBBL) | OilPriceAPI·MacroMicro와 이중 계산 |
+| **091-EIA / CSSM** | 주간 ending stocks excl. SPR | LIVE 문맥 | [subtrack](subtracks/cssm/README.md) · [2026-09-09 pull](../../indexes/091-cushing-operations-nowcasting/20260909T091EIAZ/README.md) · 최신주 2026-08-28 = 22,508 kbbl (+80) | 파이프라인 유량, 탱커, CFAM 바쁨, OilPriceAPI 이중계산 |
 | **091-YD deep** | OK 소매 프록시 vs Cushing WTI | 통과 = **전가**만 | `r(WTI→retail)=.680` 당월, `.340` 익월; `r(retail→future WTI)=.105` | 소매가 알파 |
 
 OilPriceAPI Cushing Storage와 MacroMicro 차트는 **같은 EIA**의 표시층이다. 두 번째 신호가 아니다.
