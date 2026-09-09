@@ -1,0 +1,8 @@
+{
+  "attempted_at_utc": "2026-09-08T09:02:55Z",
+  "method": "urllib public-PDF request from collect_mcbi.py",
+  "source_url": "https://www.cmegroup.com/daily_bulletin/current/Section61_Energy_Futures_Products.pdf",
+  "status": "HTTP 403: Forbidden",
+  "interpretation": "The direct automated binary request was blocked by CME. This is an access result, not evidence that the public bulletin or its WTT table does not exist.",
+  "fallback_used": "official_pdf_text_extract with explicit representation label and content hash"
+}

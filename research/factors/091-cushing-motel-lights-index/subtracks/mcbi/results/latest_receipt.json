@@ -1,0 +1,14 @@
+{
+  "bulletin_date": "2026-09-04",
+  "collected_at_utc": "2026-09-08T09:05:13Z",
+  "collector": "collect_mcbi.py",
+  "instrument": "CME WTT: WTI Midland (Argus) vs. WTI Trade Month futures",
+  "not_a_midland_cushing_spot_basis": true,
+  "parsed_contract_rows": 3,
+  "source_bytes": 776,
+  "source_content_sha256": "2c655010734a85275e13abe187c7b93989196d9759f275df9e4a14c1783bc8c5",
+  "source_representation": "official_pdf_text_extract",
+  "source_url": "https://www.cmegroup.com/daily_bulletin/current/Section61_Energy_Futures_Products.pdf",
+  "status": "ok",
+  "wtt_section_found": true
+}

@@ -47,7 +47,9 @@ posting-age label, stale flag, and a canonical dedupe key.
 
 ## Fixed observation schedule and decision
 
-- **Cadence:** once weekly, Wednesday 10:00 Central Time, for 90 days.
+- **Cadence:** once weekly, Thursday 01:00 Korea Standard Time, for 90 days.
+  Record the corresponding America/Chicago timestamp on every row; the fixed
+  KST slot avoids an ambiguous scheduler shift at the U.S. daylight-saving boundary.
 - **Main number:** count of unique included active public postings.
 - **Review number:** separate count of borderline roles; never add it to main.
 - **Missing source:** write `source_unavailable`; never treat as zero listings.

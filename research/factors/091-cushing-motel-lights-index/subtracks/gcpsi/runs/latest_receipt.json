@@ -1,0 +1,9 @@
+{
+  "status": "source_network_timeout",
+  "date_requested": "2026-09-07",
+  "node_pattern": "CUSH",
+  "explicit_nodes": [],
+  "matched_5m_rows": 0,
+  "daily_rows": 0,
+  "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+}

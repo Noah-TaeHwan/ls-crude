@@ -25,6 +25,8 @@
 | **091-C** 외부 문맥 | **가능** | Wikipedia·농업·결빙 공개 시계열 | 쿠싱 활동을 직접 재는 관측 |
 | **091-D** 탱크 그림자 | **부분가능** | Sentinel-2 10m 무료 영상·메타데이터 | 탱크 충전량을 안정적으로 읽을 수 있는 해상도·판독 검증 |
 | **091-E** 배관 제약 공지 | **부분가능** | 운영사 공지 경로·절차 | 장기·구조화된 Cushing apportionment 이력 |
+| **091-E2** PEBB flow constraint | **부분가능** | factor-local 공개 EBB/RSS/JSON 파서 | Plains·Enbridge·Enterprise의 Cushing 원유 일별 capacity·flow 원문 |
+| **091-GC** SPP grid congestion | **부분가능** | SPP RTBM bus LMP archive | 검증된 Cushing PNode와 연속 168시간 관측 |
 | **091-F** 판매·사용세 | **부분가능** | City 세목 표본 | 분리된 60개월 원문, 세금월·수령일·게시일 |
 | **091-G** calls for service | **부분가능** | 공개된 제한 표본 | 반복 가능한 월별 익명 집계 시계열 |
 | **091-H** 방문 검색 | **부분가능** | 공개 검색 관심 표본 | 방문·작업 목적이 구분된 안정적인 장기 패널 |
@@ -39,11 +41,12 @@
 | **091-W** 공기·배출 | **부분가능** | AirCasting/IQAir 접근성, DEQ 연간 시설 배출 | 쿠싱의 연속·검증 가능한 공기질 측정소 패널 |
 | **091-V** 건설·허가 | **가능 (전향 이벤트)** | DEQ Cushing 산업시설의 permit type·status | City/County 장기 허가 원장과 월간 공사량 |
 | **091-X** 위치 스프레드 | **부분가능** | EIA Cushing 레그 | Houston/Midland와 동일정의·무료 장기 쌍 |
+| **091-X2** WTI M1–M2 스프레드 | **부분가능** | factor-local M1/M2 계산기 | 고정 roll·이용가능시각을 가진 무료/허가된 일별 결제값 패널 |
 | **091-Y** 펌프가격 | **가능 (전향)** | Maverik 현재 Regular/Diesel 표시가, 5개 아카이브 점 | 다점포·주간·시간표시 장기 패널 |
 | **091-RAIL** 철도 탱크차 | **부분가능** | Stroud rail-to-pipeline 문맥·철도 인프라 원문 | 쿠싱/Stroud의 날짜별 탱크차·편성·처리량 장기 패널 |
 | **091-WASTE** 산업 폐기물 | **부분가능** | DEQ 월간 산업폐기물 보고 양식·보고 의무 | 쿠싱 시설별 월간 반입량·보고일 장기 원문 |
 | **091-YD** 디젤–휘발유 차 | **가능 (전향)** | 고정 Cushing 점포의 현재 diesel·regular 표시가격 | 고정 다점포·주간·시간표시 장기 패널 및 독립 활동 정답 |
-| **091-Z** 지역 뉴스 큐 | **가능 (전향)** | KUSH RSS/API, Cushing 산업어 Google News RSS | 고정 시각 90일 이력과 실제 사건 포착률 검정 |
+| **091-Z** 지역 뉴스 큐 | **가능 (전향)** | KUSH RSS/API, Cushing 산업어 Google News RSS, Oklahoma Energy Today | 고정 시각 90일 이력과 실제 사건 포착률 검정 |
 
 **바로 수집을 계속할 수 있는 트랙:** `091-B`, `091-C`, `091-U`, `091-Y`,
 `091-Z`. 이 중 현장성 있는 전향 관측판은 `091-U/Y/Z`다. 나머지는 표본을
@@ -59,6 +62,8 @@
 | 091-C | 계절·전국 문맥이 쿠싱 재고 상태를 설명하는가 | 052W Wikipedia, 086 수확, 090 결빙 | **RUN / 조합 미통과** |
 | 091-D | 탱크 자체의 빈·참 상태를 무료 영상으로 판독할 수 있는가 | Sentinel-2 L2A 대형 floating-roof 탱크 그림자 | **PARK / E1** — 메타데이터 표본만 확보 |
 | 091-E | 운영사의 실제 용량 제약 공지가 공개되는가 | Cushing 연결 crude pipeline apportionment | **PARK / E1** — 절차 확인, 공지 이력 미확보 |
+| 091-E2 | 운영사의 일별 공개 capacity·flow EBB가 있는가 | Plains·Enbridge·Enterprise의 Cushing 연결 원유 EBB | **PARK / E1** — 원유에는 천연가스형 표준 EBB를 대체 적용할 수 없고, 공개 일별 피드 미확보. [PEBB-FCI](subtracks/pebb_fci/README.md)는 입력이 생길 때만 처리한다 |
+| 091-GC | SPP 혼잡도가 Cushing 인근 운영 문맥을 보이는가 | 검증된 Cushing-area bus/PNode congestion component | **PARK / E1** — factor-local 수집기는 수정·실행했으나 public archive timeout, PNode 미검증 |
 | 091-F | 도시 소비·반입 활동이 달라졌는가 | City sales tax와 use tax를 분리한 월별 수입 | **PARK / E1** — 실제 월별 표본·보고월 확인 |
 | 091-G | 지역 공공안전 요청량이 달라졌는가 | 911·Police calls for service 월별 익명 집계 | **PARK / E1** — 실제 월별 표본·시각화 완료 |
 | 091-H | 쿠싱 방문 의도가 바뀌었는가 | `how to get to cushing` 공개 집계 검색 관심 | **PARK / E1** — 장기 표본은 실제 확보했으나 희소·현재빈티지이며 방문/작업 목적 미관측 |
@@ -74,8 +79,9 @@
 | 091-RAIL | 철도 수송이 쿠싱 현장 흐름을 보이는가 | Stroud rail-to-pipeline 연결 문맥 | **PARK / E1** — [철도·폐기물·제품가격 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091RWDTZ/README.md) 완료. 공개 Cushing/Stroud 탱크차·편성·처리량 시계열은 미확보; Sentinel-2로 탱크차를 세지 않음 |
 | 091-WASTE | 산업 폐기물 반입이 현장 작업을 보이는가 | DEQ 월간 보고 양식·의무 | **PARK / E1** — 양식은 공개지만 Cushing 시설별 월간 톤수 이력은 미확보. 식당 결제·주문 데이터를 대체하지 않음 |
 | 091-YD | 현지 디젤과 휘발유 가격의 차가 벌어지는가 | 고정 점포 Diesel − Regular 표시가격 | **FORWARD_ONLY / E1** — 지역 제품가격 스트레스 보드. [장기 공개 프록시 검정](../../indexes/091-cushing-operations-nowcasting/20260908T091YDEEPZ/README.md)은 WTI→소매 재가격화만 확인했고, 소매→미래 WTI 관계는 미통과. 디젤 판매량·트럭 대기·터미널 처리량이 아니며, 90일 고정 시각 기록 전에는 현지 검정하지 않음 |
-| 091-Z | 쿠싱의 산업·물류 관련 공개 뉴스가 생겼는가 | KUSH RSS/API + Cushing 산업어 Google News RSS | **FORWARD_ONLY / E1** — [무료 피드 수집·헤드라인 감사·시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) 완료; 90일 고정 시각 수집 전에는 이벤트 큐일 뿐 activity 점수 아님 |
+| 091-Z | 쿠싱의 산업·물류 관련 공개 뉴스가 생겼는가 | KUSH RSS/API + Cushing 산업어 Google News RSS + Oklahoma Energy Today | **FORWARD_ONLY / E1** — [무료 피드 수집·헤드라인 감사·시각화](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) 완료; [Oklahoma Energy Today는 발견용 보조 출처](subtracks/okenergytoday/README.md)로 추가. 90일 고정 시각 수집 전에는 이벤트 큐일 뿐 activity 점수 아님 |
 | 091-X | 시장이 Cushing 대 Houston/Midland 흐름 압력을 어떻게 가격화하는가 | 일간 위치 스프레드 | **PARK / E1** — [Cushing EIA 실측 표본·두 외부 레그 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091XZ/README.md) 완료; 무료·동일정의 장기 쌍 패널 미확보, Brent 대체 금지 |
+| 091-X2 | M1–M2가 prompt delivery·저장 압력을 어떻게 가격화하는가 | NYMEX WTI M1 − M2 | **PARK / E1** — [WMCSI](subtracks/wmcsi/README.md) 계산기는 완료. `CL=F` 단독이나 임의 contract pair를 역사적 M1/M2 롤 체인으로 대체하지 않으며, 검증된 결제값 패널 미확보 |
 | 091-W | 쿠싱 공기가 지금 어떤가 + 연간 시설 배출 구조는 어떤가 | AirCasting · DEQ · IQAir · 연간 배출량 | **PARK / E1** — 실시간 [원자료 접근성 감사](../../indexes/091-cushing-operations-nowcasting/20260908T091WZ/README.md)는 완료했고 쿠싱 연속 공개 측정소·재현 가능한 원시 패널 없음. 반면 [DEQ 2024 연간 VOC/HAP 시설 발자국](../../indexes/091-cushing-operations-nowcasting/20260908T091WENVZ/README.md)은 실제 공식 표본·시각화 완료; 둘 다 CFAM과 분리 |
 | 091-V | 산업·상업·인프라 공사가 늘었는가 | City/County building permits 및 State DEQ 시설허가 | **FORWARD_ONLY / E1** — [V2](../../indexes/091-cushing-operations-nowcasting/20260908T091V2Z/README.md)에서 고정 시설·허가번호·상태전이·중복제거 규칙을 동결한 인간 검토형 이벤트 원장으로 발전. 월간 공사량·busy score는 아님 |
 | 무효 실험 | Cushing Busy ML/DL | WTI·거래량 기반 합성 타깃 | **무효** — 실제 쿠싱 관측 아님 |
@@ -194,6 +200,15 @@ Keystone의 공식 tariff는 고객 포털의 Notice of Shipment와 `Mid-Month A
 
 공개적으로 재사용 가능한 역사 공지를 제공하는 Cushing 연결 운영사를 하나라도 찾는다. 각 행에 pipeline, 방향, 서비스월, 발표시각, effective date, allocation/apportionment %, 정비/force-majeure 여부가 있어야 한다. 이 형식이 갖춰지기 전에는 FERC tariff나 기사 언급을 apportionment 사건 데이터로 바꾸지 않는다.
 
+### Factor-local FPATSI 재시도 — 2026-09-08
+
+[FPATSI 수집기·영수증·출력](subtracks/fpatsi/README.md)은 Plains Pipeline,
+Enbridge Pipelines, Enterprise Products만 고정해 다시 확인했다. FERC
+eLibrary의 개별 공개 문서는 접근 가능하지만, 이 세 운영사의 Cushing 연결
+운영 공지로 구성된 완전한 날짜별 apportionment feed는 확인되지 않았다. 따라서
+출력은 의도적으로 header-only이며, `0%` constraint 또는 `0` stress를 만들지
+않는다. 현재 상태는 **PARK / E1**이고, 재개 조건은 위의 단일 관문 그대로다.
+
 ## 091-F — Sales/Use Tax 도시활동 관측
 
 ### 실제 표본과 정의
@@ -221,6 +236,25 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 ### 다음 단일 관문
 
 동일 정의의 60개월 이상 월별 911·police-CFS 집계를 공식 PDF/연차보고서에서 확보한다. 짧은 표본의 익명 합계는 이미 관측 그림으로 표시할 수 있으며, 장기 비교에는 정의·CAD 시스템·관할 변경 확인이 필요하다. 그 뒤에도 먼저 Cushing 운영 기준값과의 측정 타당성부터 평가하며, EIA·가격 검정으로 바로 건너뛰지 않는다.
+
+## 091-GC — SPP grid congestion feasibility
+
+이 트랙은 전력 혼잡을 곧바로 pipeline pumping 또는 `Cushing busy`로 부르지
+않는다. SPP의 2020 ITP는 Cushing Oilfield, Cushing Tap, Shell Cushing
+Tap/Shell Pipeline 69kV corridor를 언급하지만, 이를 안정적인 공개 PNode ID로
+매핑하지는 않는다. 따라서 해당 명칭은 향후 탐색 문자열일 뿐, 코드에 노드를
+추정 삽입할 근거가 아니다.
+
+[factor-local GCPSI 수집기와 receipt](subtracks/gcpsi/README.md)는
+5분 congestion을 먼저 시간별로 집계한 뒤 24/168시간 z-score를 계산하도록
+수정했다. `2026-09-07`의 한 날짜 public RTBM bus archive 재시도는 소스 수신
+전 network timeout으로 종료돼 빈 header와 오류 영수증만 보존했다. 이는 SPP
+혼잡 0 또는 쿠싱 활동 0이 아니다.
+
+재개 전제는 (1) source·좌표·stable ID가 있는 Cushing-area PNode 하나,
+(2) 그 노드의 연속 168시간 자료, (3) 독립 CFAM 실제 운영 관측을 상대로 한
+선행 측정타당성 검정이다. 그 전에는 composite, backtest, pumping stress 해석을
+금지한다.
 
 ## 091-H — 쿠싱 여행의도 검색 관측
 
@@ -301,7 +335,21 @@ City Manager의 2023-09 공식 보고서에는 sales tax와 use tax가 **각각*
 
 실제 공개 1회 감사에서는 Plains Terminal Operator I, ONEOK Operator, Enterprise Products Operator, Pipeline, South Bow Gauger Technician의 **4개**가 고신뢰 규칙을 통과했다. 이 사실은 [091-U 스냅샷](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/README.md)에 제목·회사·규칙·URL만 남겼다. 이것은 현재 채용이 증가했다는 뜻이 아니라, 공개 자료로 이 필터를 적용할 수 있다는 E1 표본이다.
 
-따라서 현재 상태는 **FORWARD_ONLY / E1**이다. [동결된 90일 프로토콜](../../indexes/091-cushing-operations-nowcasting/20260908T091UZ/091u-industrial-job-pulse-protocol.md)에 따라 수요일 10:00 CT에 공개·무로그인 화면을 수동 점검하고, 공개 공고의 집계 필드만 기록한다. 12회 이상·80% 이상 완결 후에도 먼저 D의 terminal-state 변화, 기간이 명시된 O, 또는 고정 도로 트럭 같은 독립 운영 관측과 측정 타당성을 확인한다. WTI/EIA와 바로 검정하거나 검색 결과 수를 채용/작업량으로 바꾸지 않는다.
+따라서 현재 상태는 **FORWARD_ONLY / E1**이다. [동결된 90일 프로토콜](../../indexes/091-cushing-operations-nowcasting/forward-panel/README.md)에 따라 목요일 01:00 KST의 고정 슬롯에서 공개·무로그인 화면을 점검하고, 각 행에는 America/Chicago 관측시각도 남긴다. 공개 공고의 집계 필드만 기록한다. 12회 이상·80% 이상 완결 후에도 먼저 D의 terminal-state 변화, 기간이 명시된 O, 또는 고정 도로 트럭 같은 독립 운영 관측과 측정 타당성을 확인한다. WTI/EIA와 바로 검정하거나 검색 결과 수를 채용/작업량으로 바꾸지 않는다.
+
+## 091-X — market-corridor context (MCBI/WTT)
+
+기존 091-X의 핵심은 Midland와 Cushing의 **동일 정의 물리 가격**을 무료로
+일치시킬 수 있는가다. [factor-local MCBI/WTT retry](subtracks/mcbi/README.md)는
+CME의 실제 `WTT FUT` 3개 settlement를 보존하는 데에는 성공했다. 그러나 WTT는
+`WTI Midland (Argus) vs. WTI Trade Month futures` differential이며, Midland cash
+minus Cushing spot이 아니다. 따라서 WTT를 MCBI로 개명하거나 Cushing pipeline
+stress로 점수화하지 않는다.
+
+최소 90개의 유효 bulletin, 사전 고정 front-contract/roll 규칙, 그리고
+source-authorized·정의 일치 Midland 현물 leg가 동시에 생긴 뒤에만 matched basis를
+만들 수 있다. 그때도 첫 검정은 이후 공개되는 EIA Cushing 재고 변화 같은 물리
+정답과의 타당성 확인이다. 현재 상태는 **SOURCE-PASS / SERIES-PARK**다.
 
 ## 091-V — Industrial Permit / Construction Monitor
 
