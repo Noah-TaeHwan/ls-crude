@@ -50,7 +50,7 @@
 
 | 묶음 | 트랙 | 의미 |
 | --- | --- | --- |
-| LIVE 문맥 | EIA Cushing stocks | 연구 타깃·물리 재고. 활동 점수 입력 아님 |
+| LIVE 문맥 | [091-EIA / CSSM](subtracks/cssm/README.md) | 연구 타깃·물리 재고. 활동 점수 입력 아님 |
 | FORWARD_ONLY | S, U, Y, YD, Z, V/V2 | 고정 규칙 전향 기록 중. 90일·측정타당성 전 |
 | RUN / 미통과 | B, C | 장기 패널은 있으나 사전 검정 실패. 정량 입력 폐기 |
 | PARK | A, D, E, E2, F, G, GC, H, I, J, L, LM, M, N, O, P, Q, R, RAIL, WASTE, W, X, X2 | 경로·표본은 남김. 장기성·정의·직접성 미달 |
@@ -82,7 +82,7 @@
 
 | ID | 관측 | 상태 | 증거 | 쓰지 않는 해석 |
 | --- | --- | --- | --- | --- |
-| **EIA Cushing** | 주간 ending stocks excl. SPR | LIVE 문맥 | [2026-09-09 pull](../../indexes/091-cushing-operations-nowcasting/20260909T091EIAZ/README.md) · 최신주 2026-08-28 = 22,508 kbbl (+80) | 파이프라인 유량, 탱커, CFAM 바쁨, OilPriceAPI 이중계산 |
+| **091-EIA / CSSM** | 주간 ending stocks excl. SPR | LIVE 문맥 | [subtrack](subtracks/cssm/README.md) · [2026-09-09 pull](../../indexes/091-cushing-operations-nowcasting/20260909T091EIAZ/README.md) · 최신주 2026-08-28 = 22,508 kbbl (+80) | 파이프라인 유량, 탱커, CFAM 바쁨, OilPriceAPI 이중계산 |
 | **091-YD deep** | OK 소매 프록시 vs Cushing WTI | 통과 = **전가**만 | `r(WTI→retail)=.680` 당월, `.340` 익월; `r(retail→future WTI)=.105` | 소매가 알파 |
 
 OilPriceAPI Cushing Storage와 MacroMicro 차트는 **같은 EIA**의 표시층이다. 두 번째 신호가 아니다.
