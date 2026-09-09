@@ -83,6 +83,7 @@
 | ID | 관측 | 상태 | 증거 | 쓰지 않는 해석 |
 | --- | --- | --- | --- | --- |
 | **091-EIA / CSSM** | 주간 ending stocks excl. SPR | LIVE 문맥 | [subtrack](subtracks/cssm/README.md) · [2026-09-09 pull](../../indexes/091-cushing-operations-nowcasting/20260909T091EIAZ/README.md) · 최신주 2026-08-28 = 22,508 kbbl (+80) | 파이프라인 유량, 탱커, CFAM 바쁨, OilPriceAPI 이중계산 |
+| **091-CFSP** | 전국 휘발유÷임금 + UMCSENT | CONTEXT / PARK | [subtrack](subtracks/cfsp/README.md) · [2026-09-09 pull](../../indexes/091-cushing-operations-nowcasting/20260909T091CFSPZ/README.md) · 2026-07 CFSP +0.77 | 쿠싱 현장 바쁨, 091-Y 현지 펌프가, WTI 알파 |
 | **091-YD deep** | OK 소매 프록시 vs Cushing WTI | 통과 = **전가**만 | `r(WTI→retail)=.680` 당월, `.340` 익월; `r(retail→future WTI)=.105` | 소매가 알파 |
 
 OilPriceAPI Cushing Storage와 MacroMicro 차트는 **같은 EIA**의 표시층이다. 두 번째 신호가 아니다.
