@@ -187,7 +187,9 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.doesNotMatch(sample, /<img/);
     assert.match(sample, /href="\/research\/watermelon-20260908.png"/);
     assert.match(body, /id="wti-price-axis"/);
-    assert.match(body,/92\.00/,"SSR test price must come from the explicit fixture");
+    assert.match(body,/<p id="daily-latest-price"[^>]*>93\.03/,"SSR must preserve the canonical daily row, not the ambiguous tail");
+    assert.match(body,/확인 가능한 일봉/);
+    assert.match(body,/일봉 귀속이 불명확해 제외/);
     assert.match(body, /data-price-tick=/);
 
     const tankers = await fetch(`${baseUrl}/observations/tankers`);

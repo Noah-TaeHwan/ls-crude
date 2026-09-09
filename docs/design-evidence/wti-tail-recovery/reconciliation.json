@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-09-09T02:20:10.529Z",
+  "rawRows": 1261,
+  "validBars": 1257,
+  "missingCount": 3,
+  "excludedTail": {
+    "sourceAt": "2026-09-09T02:10:05.000Z",
+    "calendarDate": "2026-09-08"
+  },
+  "displayLast": {
+    "date": "2026-09-08",
+    "sourceAt": "2026-09-08T04:00:00.000Z",
+    "open": 92.26000213623047,
+    "high": 94.7300033569336,
+    "low": 90.87000274658203,
+    "close": 93.02999877929688,
+    "volume": 0
+  },
+  "prefixUnchanged": true
+}
