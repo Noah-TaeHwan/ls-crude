@@ -97,3 +97,7 @@ Kill / PARK if communication shocks do not precede an independent physical serie
 ## Next
 
 One Plains IR month tagged to the schema. No z-score, no ExecPressure, no WTI column.
+
+## Sample figures
+
+See [20260909T091EXECZ](../../../indexes/091-cushing-operations-nowcasting/20260909T091EXECZ/README.md).

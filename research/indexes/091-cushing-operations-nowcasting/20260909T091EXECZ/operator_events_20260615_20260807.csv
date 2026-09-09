@@ -1,0 +1,12 @@
+date,company,executive,event_type,scheduled_or_unscheduled,external_or_company_event,cushing_mentioned,storage_mentioned,capacity_mentioned,throughput_mentioned,tightness_mentioned,maintenance_mentioned,expansion_mentioned,source
+2026-06-15,Plains,company_release,capex_guidance_update,unscheduled,company_event,0,0,1,0,0,0,1,https://ir.plains.com/news-events/press-releases
+2026-06-30,Plains,,tax_form_K3,scheduled,company_event,0,0,0,0,0,0,0,https://ir.plains.com/news-events/press-releases
+2026-07-06,Plains,company_release,distribution_and_earnings_date,scheduled,company_event,0,0,0,0,0,0,0,https://ir.plains.com/news-events/press-releases
+2026-08-07,Plains,Willie Chiang,earnings_call,scheduled,company_event,1,0,1,1,0,0,1,https://ir.plains.com/news-events/press-releases
+2026-08-07,Plains,Willie Chiang,earnings_release,scheduled,company_event,0,0,1,0,0,0,1,https://www.globenewswire.com/news-release/2026/08/07/3341045/0/en/plains-all-american-reports-second-quarter-2026-results.html
+2026-07-20,Enbridge,Greg Ebel,project_kickoff_ceremony,unscheduled,external,0,0,1,0,0,0,1,https://www.enbridge.com/stories/2026/july/construction-begins-on-sunrise-expansion-program-in-bc
+2026-07-28,Enbridge,company_release,dividend_declaration,scheduled,company_event,0,0,0,0,0,0,0,https://www.enbridge.com/media-center/news/details?id=123884
+2026-07-31,Enbridge,company_release,earnings_release,scheduled,company_event,0,0,0,0,0,0,0,https://www.enbridge.com/media-center
+2026-07-09,ONEOK,company_release,earnings_call_schedule,scheduled,company_event,0,0,0,0,0,0,0,https://ir.oneok.com/news-and-events/press-releases/2026
+2026-07-15,ONEOK,company_release,dividend_declaration,scheduled,company_event,0,0,0,0,0,0,0,https://ir.oneok.com/news-and-events/press-releases/2026
+2026-08-03,ONEOK,Pierce H. Norton II,earnings_release,scheduled,company_event,0,0,1,1,0,0,1,https://ir.oneok.com/news-and-events/press-releases/2026

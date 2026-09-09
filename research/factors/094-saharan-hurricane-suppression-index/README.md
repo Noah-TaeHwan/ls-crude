@@ -56,3 +56,7 @@ Saharan Dust → Atlantic Hurricane Risk → Gulf Oil Disruption Risk
 ## 다음
 
 Earthdata로 MDR 상자 일별 DUEXTTAU 한 시즌과 같은 창 HURDAT2 형성 사건을 맞춰 Stage 1만 돌릴 수 있는지 확인한다. 대시보드·0–100·CL 결합은 그 전 금지.
+
+## Visualization status (2026-09-09)
+
+No chart this pass. DustAOD grid was not downloaded. Drawing a fake SAL map would violate the card.
