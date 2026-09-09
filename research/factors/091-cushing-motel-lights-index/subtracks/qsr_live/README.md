@@ -19,16 +19,16 @@ or a CFAM score.
 
 ## Frozen basket
 
-| Venue | Public Maps short link |
-| --- | --- |
-| Wendy's | https://maps.app.goo.gl/g8bMaDQDnoMc9roT8 |
-| Taco Bell | https://maps.app.goo.gl/yTqHLrTgNEpwXSar9 |
-| Sonic Drive-In | https://maps.app.goo.gl/XuwHFkr1iwhEnCcT7 |
-| Golden Chick | https://maps.app.goo.gl/eNWcXPHvQcWH9iB1A |
-| Pizza Hut | https://maps.app.goo.gl/2pi7HqucdZ1J1m527 |
-| Boomarang Diner | https://maps.app.goo.gl/ajaYq841CJrCgL898 |
+| Venue | Address | Maps query (do not use goo.gl) |
+| --- | --- | --- |
+| Wendy's | 1415 E Main St, Cushing, OK 74023 | https://www.google.com/maps/search/?api=1&query=Wendy%27s+1415+E+Main+St+Cushing+OK+74023 |
+| Taco Bell | 1438 E Main St, Cushing, OK 74023 | https://www.google.com/maps/search/?api=1&query=Taco+Bell+1438+E+Main+St+Cushing+OK+74023 |
+| Sonic Drive-In | 705 E Main St, Cushing, OK 74023 | https://www.google.com/maps/search/?api=1&query=Sonic+Drive-In+705+E+Main+St+Cushing+OK+74023 |
+| Golden Chick | 1544 E Main St, Cushing, OK 74023 | https://www.google.com/maps/search/?api=1&query=Golden+Chick+1544+E+Main+St+Cushing+OK+74023 |
+| Pizza Hut | 2007 E Main St, Cushing, OK 74023 | https://www.google.com/maps/search/?api=1&query=Pizza+Hut+2007+E+Main+St+Cushing+OK+74023 |
+| Boomarang Diner | 929 E Main St, Cushing, OK 74023 | https://www.google.com/maps/search/?api=1&query=Boomarang+Diner+929+E+Main+St+Cushing+OK+74023 |
 
-If a short link does not open that venue, stop and fix the URL before recording.
+2026-09-09: goo.gl short links retired. Wendy's old short link opened Cushing Sports Complex. Record only if the opened pin matches the address.
 
 ## Run
 

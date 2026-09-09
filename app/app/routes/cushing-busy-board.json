@@ -12,7 +12,7 @@
         "id": "091-S",
         "name": "Cushing restaurant strip \u2014 relative busy label",
         "status": "FORWARD_ONLY",
-        "last_observation": "basket frozen: Wendy's, Taco Bell, Sonic, Golden Chick, Pizza Hut, Boomarang Diner. No dated human label row yet.",
+        "last_observation": "basket addresses frozen 2026-09-09. goo.gl retired after Wendy's short link opened Sports Complex. No dated human label row yet.",
         "note": "This IS the restaurant-busy lane. Allowed field: quieter / usual / busier / not shown. Excluded: mock 0\u2013100, order counts, Uber Eats volume.",
         "venues": [
           "Wendy's",
