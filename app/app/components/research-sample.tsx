@@ -18,14 +18,15 @@ import rq from "../../../research/indexes/ALT-20260907-43/20260909T003038Z/quali
 import coverage from "../../../research/indexes/ALT-20260907-36/20260908T065043Z/yearly-coverage.csv?raw";
 import monthly from "../../../research/indexes/ALT-20260908-20/20260908T073402Z/monthly.csv?raw";
 import railYears from "../../../research/indexes/ALT-20260907-43/20260909T003038Z/yearly-coverage.csv?raw";
-import { readWatermelon, readJeju, readDegreeDays, readPetroleumRail } from "~/lib/research-charts";
+import helixCsv from "../../../research/indexes/095-oil-helix-dislocation/20260909T095HLXZ/hlx_wti_spy_xle_20160909_20260901.csv?raw";
+import { readWatermelon, readJeju, readDegreeDays, readPetroleumRail, readHelix } from "~/lib/research-charts";
 import type { IntakeRecord } from "~/lib/research-intake";
 import { ResearchChart } from "~/components/research-chart";
 
 /** 현재 원장의 판정 표시명. */
 const DECISIONS: Record<string,string> = { PARK:"조건 대기", KEEP:"후속 연구 유지", KILL:"현 방식 종료" };
 /** 검증 실패는 결측 상태로 유지하는 고정 빈티지. */
-const MELON = readWatermelon(melonInput), JEJU = readJeju(jejuInput), DEGREES = readDegreeDays(degreeInput), RAIL = readPetroleumRail(railInput);
+const MELON = readWatermelon(melonInput), JEJU = readJeju(jejuInput), DEGREES = readDegreeDays(degreeInput), RAIL = readPetroleumRail(railInput), HELIX = readHelix(helixCsv);
 /** 검토된 원단위 표. */
 const YEARS = coverage.trim().split(/\r?\n/).slice(1).map(r=>r.split(","));
 /** 월별 비중은 월합계 기반이며 일별 비중 평균과 다르다. */
@@ -34,6 +35,7 @@ const MONTHS = monthly.trim().split(/\r?\n/).slice(1).map(r=>r.split(","));
 const RAIL_YEARS = railYears.trim().split(/\r?\n/).slice(1).map(r=>r.split(","));
 /** 사례별 고정 출처와 관측 범위. */
 const CASES = {
+  helix: {label:"HLX · 오일서비스",title:"HLX와 WTI는 같이 움직이다가 어디서 어긋날까?",path:"095-oil-helix-dislocation/20260909T095HLXZ",start:"2016-09-09",end:"2026-09-01",collected:"2026-09-09 UTC",png:"/research/helix-hlx-wti-20260909.png",source:"https://finance.yahoo.com/quote/HLX/history/"},
   watermelon: {label:"수박 · 냉장트럭",title:"수박이 냉장트럭을 바쁘게 만들까?",path:"ALT-20260907-36/20260908T065043Z",start:mq.pure_start,end:mq.pure_end,collected:mq.source.retrieved_at.slice(0,16).replace("T"," ")+" UTC",png:"/research/watermelon-20260908.png",source:"https://www.ams.usda.gov/services/transportation-analysis/agricultural-refrigerated-truck-quarterly-datasets"},
   jeju: {label:"제주 · LNG와 유류",title:"제주의 LNG·유류 발전량은 어떻게 달랐을까?",path:"ALT-20260908-20/20260908T073402Z",start:jq.start,end:jq.end,collected:"2026-09-08 07:34 UTC",png:"/research/jeju-20260908.png",source:"https://www.data.go.kr/data/15069334/fileData.do"},
   "degree-days": {label:"미국 · 냉난방도일",title:"냉난방에 필요한 날씨 조건은 얼마나 달랐을까?",path:"ALT-20260907-45/20260908T120546Z/v2",start:"2015-01",end:"2023-12",collected:"2026-09-08 12:09 UTC",png:"/research/degree-days-v2.svg",source:"https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/cdus/degree_days/"},
@@ -42,7 +44,7 @@ const CASES = {
 } as const;
 
 /** 자료 탐색에 넘기는 고정 사례 정본. */
-interface SampleRecords { watermelon?:IntakeRecord;jeju?:IntakeRecord;"degree-days"?:IntakeRecord;empties?:IntakeRecord;"petroleum-rail"?:IntakeRecord }
+interface SampleRecords { helix?:IntakeRecord;watermelon?:IntakeRecord;jeju?:IntakeRecord;"degree-days"?:IntakeRecord;empties?:IntakeRecord;"petroleum-rail"?:IntakeRecord }
 
 /** @param props 사례별 현재 정본. @returns URL로 선택하는 과거 연구 사례. */
 export function ResearchSample({ records, live }: {live:{visibility:VisibilityView;tankers:TankerView;checkedAt:string};records:SampleRecords}) {
@@ -53,8 +55,8 @@ export function ResearchSample({ records, live }: {live:{visibility:VisibilityVi
   const kind = requested && requested in CASES ? requested as keyof typeof CASES : "watermelon";
   const selectedCase = liveKind ?? kind;
   const options = [
-    ...Object.entries(CASES).filter(([key]) => key !== "petroleum-rail").map(([key,value])=>({key,label:value.label})),
     {key:"cushing-busy",label:"쿠싱 · 현장 바쁨"},
+    ...Object.entries(CASES).filter(([key]) => key !== "petroleum-rail").map(([key,value])=>({key,label:value.label})),
     {key:"petroleum-rail",label:CASES["petroleum-rail"].label},
     {key:"visibility",label:"갤버스턴 · 시정"},
     {key:"tankers",label:"싱가포르 · 탱커 입항"},
@@ -63,18 +65,42 @@ export function ResearchSample({ records, live }: {live:{visibility:VisibilityVi
   const evidence = liveKind === "cushing-busy" ? "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/programs/cushing-busy/PROGRAM.md" : liveKind ? "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/candidates/"+(liveKind==="visibility"?"ALT-20260908-16":"ALT-20260907-26")+".md" : "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/indexes/"+info.path+"/README.md";
   return <section id="research-sample" className="border-t border-border py-10 sm:py-12" aria-labelledby="sample-title">
     <div className="section-heading"><div><p className="section-kicker">RESEARCH IN PRACTICE / 자료 탐색</p><h2 id="sample-title">아이디어를 실제 자료로 열어보면.</h2></div><a className="source-link" href={evidence}>자료·연구 기록 →</a></div>
-    <div role="group" aria-label="연구 사례 선택" className="sample-options mt-5 grid auto-rows-fr grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-8">{options.map(({key,label})=><button key={key} type="button" className="filter-button min-w-0 w-full" aria-pressed={selectedCase===key} aria-controls="sample-case" onClick={()=>{const next=new URLSearchParams(params);next.set("sample",key);navigate("?"+next.toString()+"#research-sample",{preventScrollReset:true});}}>{label}</button>)}</div>
+    <div role="group" aria-label="연구 사례 선택" className="sample-options mt-5 grid auto-rows-fr grid-cols-2 gap-3 md:grid-cols-3">{options.map(({key,label})=><button key={key} type="button" className="filter-button min-w-0 w-full" aria-pressed={selectedCase===key} aria-controls="sample-case" onClick={()=>{const next=new URLSearchParams(params);next.set("sample",key);navigate("?"+next.toString()+"#research-sample",{preventScrollReset:true});}}>{label}</button>)}</div>
     {liveKind ? <div id="sample-case" className="sample-panel mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7"><p className="status-stamp mb-5">{liveKind === "cushing-busy" ? "고정 연구 보드 · 자료별 관측 시각 확인" : "갱신 관측 · 자료별 기준 시각과 주기 확인"}</p>{liveKind === "cushing-busy" ? <CushingBusyCase /> : liveKind === "visibility" ? <VisibilityObservation view={live.visibility} checkedAt={live.checkedAt} compact /> : <TankerObservation view={live.tankers} checkedAt={live.checkedAt} />}</div> : <article id="sample-case" className="mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
-      <div className="flex flex-wrap items-center gap-3 text-xs"><span className="status-stamp">과거 연구 샘플 · 자동 갱신 아님</span><span className="card-verdict">{record ? DECISIONS[record.fields.decision]+" · "+record.fields.decision : "현재 판정 확인 필요"}</span><span className="text-muted-foreground">이 샘플의 WTI 관계 검정 미실행</span></div>
+      <div className="flex flex-wrap items-center gap-3 text-xs"><span className="status-stamp">과거 연구 샘플 · 자동 갱신 아님</span><span className="card-verdict">{record ? DECISIONS[record.fields.decision]+" · "+record.fields.decision : "현재 판정 확인 필요"}</span><span className="text-muted-foreground">{kind === "helix" ? "WTI 관계 검정 기록 있음 · 트레이딩 미개방" : "이 샘플의 WTI 관계 검정 미실행"}</span></div>
       <h3 className="mt-5 text-xl font-medium sm:text-2xl">{info.title}</h3>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2"><div><dt className="text-muted-foreground">관측 기간</dt><dd className="mt-1 font-mono">{info.start} ~ {info.end}</dd></div><div><dt className="text-muted-foreground">자료를 수집한 시각</dt><dd className="mt-1 font-mono">{info.collected}</dd></div></dl>
       {!record ? <div role="status" className="empty-state mt-5">해당 후보 정본을 확인하지 못했습니다. 다른 사례 또는 연구 원문을 확인하세요.</div> : <>
-        {kind === "watermelon" ? <WatermelonCase /> : kind === "jeju" ? <JejuCase /> : kind === "degree-days" ? <DegreeDaysCase /> : kind === "empties" ? <EmptiesCase /> : <RailCase />}
+        {kind === "helix" ? <HelixCase /> : kind === "watermelon" ? <WatermelonCase /> : kind === "jeju" ? <JejuCase /> : kind === "degree-days" ? <DegreeDaysCase /> : kind === "empties" ? <EmptiesCase /> : <RailCase />}
         <div className="evidence-note mt-6"><h4 className="text-sm font-medium">다음 확인 · {record.fields.owner}</h4><p className="mt-2 text-sm leading-7">{record.fields.next_action}</p><p className="mt-2 text-xs text-muted-foreground">재검토 예정 {record.fields.next_review_date} · 사람 배정 제안</p></div>
       </>}
       <footer className="mt-5 flex flex-wrap gap-5 border-t border-border pt-4 text-sm">{info.png && <a className="source-link" href={info.png} download>연구 그림 다운로드</a>}{record && <a className="source-link" href={record.sourceHref}>가설·판정 원문</a>}<a className="source-link" href={evidence}>재현 코드·영수증</a><a className="source-link" href={info.source}>제공기관 자료 정의</a></footer>
     </article>}
   </section>;
+}
+
+/**
+ * HLX와 WTI를 첫날=100으로 겹쳐 보여준다. 잔차 알파나 매매 신호가 아니다.
+ * @returns 고정 Yahoo 일봉 괴리 관측.
+ */
+function HelixCase() {
+  const [selected, setSelected] = useState(HELIX ? HELIX.length - 1 : 0);
+  if (!HELIX) return <p role="status">HLX 표시 자료 검증 실패. 원문을 확인하세요.</p>;
+  const rows = HELIX, point = rows[selected], first = rows[0];
+  const dates = rows.map((row) => row.date);
+  const hlxIndex = rows.map((row) => 100 * row.hlx / first.hlx);
+  const clIndex = rows.map((row) => 100 * row.cl / first.cl);
+  const lo = Math.min(...hlxIndex, ...clIndex), hi = Math.max(...hlxIndex, ...clIndex);
+  const minimum = Math.floor(lo / 50) * 50, maximum = Math.ceil(hi / 50) * 50;
+  const fmt = (value: number) => value.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return <>
+    <p className="mt-4 text-sm leading-7 text-muted-foreground">성찬님의 095 Oil–Helix 괴리 가설입니다. HLX 주가와 WTI 선물(CL=F)을 첫 관측일=100으로 겹칩니다. 달러 단위가 달라 원가격을 한 축에 올리지 않았습니다. 같은 날 어긋남이 어느 시장이 틀렸는지를 가리키는지는 이미 검정했고, 현재 판정은 조건 대기입니다.</p>
+    <p className="my-4 text-xs leading-6 text-muted-foreground">그래프를 터치하거나 날짜 탐색을 사용하세요. 2020-04-20 WTI -37.63은 실제 선물 정산이며 0으로 바꾸지 않았습니다. 2024-01-01 이후 {rows.filter((row) => row.date >= "2024-01-01").length}일은 이 빈티지에 포함되어 이미 본 아웃샘플입니다.</p>
+    <ResearchChart id="helix-index-plot" title="첫 관측일=100 지수" dates={dates} series={[{label:"HLX 주가 지수",color:"#edb958",values:hlxIndex},{label:"WTI CL=F 지수",color:"#78b7ed",values:clIndex}]} minimum={minimum} maximum={maximum} unit="지수" selected={selected} onSelect={setSelected} description="HLX와 WTI 일봉을 2016년9월9일=100으로 지수화, 2026년9월1일까지 2481일. 음수 WTI는 실제 정산입니다."/>
+    <div id="helix-readout" aria-live="polite" className="mt-5 rounded-sm border border-border p-4 text-sm leading-7"><strong className="font-mono">{point.date}</strong><p>HLX <strong>{fmt(point.hlx)}</strong> USD · 지수 <strong>{fmt(hlxIndex[selected])}</strong></p><p>WTI CL=F <strong>{fmt(point.cl)}</strong> USD · 지수 <strong>{fmt(clIndex[selected])}</strong></p></div>
+    <label htmlFor="helix-date" className="mt-4 block text-sm">HLX·WTI 관측 날짜 탐색</label><input id="helix-date" type="range" min={0} max={rows.length-1} value={selected} onChange={(event)=>setSelected(Number(event.target.value))} aria-valuetext={point.date+", HLX "+fmt(point.hlx)+", WTI "+fmt(point.cl)} className="min-h-11 w-full accent-primary"/>
+    <p className="mt-4 text-xs leading-6 text-muted-foreground">출처 Yahoo Finance, 런 20260909T095HLXZ. 마지막 HLX는 2026-09-01입니다. 다음날부터는 HOS이며 이 시계열에 붙이지 않습니다. 잔차 캐치업은 오일서비스 피어와 같고, WTI 반전은 동전 던지기라 트레이딩을 열지 않았습니다.</p>
+  </>;
 }
 
 /** @returns 실제 날짜와 분모를 탐색하는 수박 관측. */
