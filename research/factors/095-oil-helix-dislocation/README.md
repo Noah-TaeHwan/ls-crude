@@ -37,6 +37,10 @@ WTI reversal 52% vs 45–47%. Coin flip.
 
 Residual |OHD| shrinks because regression errors mean-revert. That is not Helix-specific.
 
+## 095-C triangles (20260909T095TRIZ)
+
+Independent T1 WTI–Brent–HLX and T2 WTI–HLX–OSB(ex-HLX). Sign states only. Isolated catch-up ~50–56%. WTI reversal ~50%. Brent almost never isolates WTI. No 4-way score. Trading not opened.
+
 ## Verdict
 
 ```
@@ -47,7 +51,9 @@ HLX → WTI LEAD: FAIL
 OHD DISLOCATION: OPENED
 CATCH-UP VS REVERSAL: residual catch-up YES, WTI reversal NO, peer-equal
 HELIX-SPECIFIC INFORMATION: NO
-TRADING VALUE: LOCKED
+TRIANGLE 1 BRENT ID MISPRICED SIDE: NO
+TRIANGLE 2 OSB ID MISPRICED SIDE: NO
+TRADING VALUE: NOT OPENED
 STRUCTURAL BREAK: HIGH
 STATUS: PARK
 ```
