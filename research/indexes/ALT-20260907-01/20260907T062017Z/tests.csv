@@ -1,0 +1,19 @@
+split,variant,lag_months,n,pearson_r,first_signal_month,last_signal_month,inference,asof_safe
+train,primary,-1,53,0.206830616709,2016-01,2020-12,NOT_PROVEN; no p-values,NOT_PROVEN
+train,primary,0,53,0.252088446014,2016-01,2020-12,NOT_PROVEN; no p-values,NOT_PROVEN
+train,primary,1,52,0.169196157845,2016-01,2020-11,NOT_PROVEN; no p-values,NOT_PROVEN
+train,primary,2,51,0.0631409770884,2016-01,2020-10,NOT_PROVEN; no p-values,NOT_PROVEN
+train,dollar,1,53,0.102789805325,2016-01,2020-11,NOT_PROVEN; no p-values,NOT_PROVEN
+train,placebo12,1,40,-0.109611798457,2017-01,2020-11,NOT_PROVEN; no p-values,NOT_PROVEN
+train,no2020,1,41,0.131331673695,2016-01,2019-11,NOT_PROVEN; no p-values,NOT_PROVEN
+train,delay1,1,51,0.0631409770884,2016-02,2020-11,NOT_PROVEN; no p-values,NOT_PROVEN
+train,wti_baseline,1,68,0.178396711195,2015-02,2020-11,NOT_PROVEN; no p-values,NOT_PROVEN
+validation,primary,-1,34,-0.0107610004097,2021-03,2023-12,NOT_PROVEN; no p-values,NOT_PROVEN
+validation,primary,0,35,-0.229351491174,2021-02,2023-12,NOT_PROVEN; no p-values,NOT_PROVEN
+validation,primary,1,35,-0.0658020445474,2021-01,2023-11,NOT_PROVEN; no p-values,NOT_PROVEN
+validation,primary,2,34,0.107803998296,2021-01,2023-10,NOT_PROVEN; no p-values,NOT_PROVEN
+validation,dollar,1,35,-0.0985513820589,2021-01,2023-11,NOT_PROVEN; no p-values,NOT_PROVEN
+validation,placebo12,1,23,0.000750588172398,2022-01,2023-11,NOT_PROVEN; no p-values,NOT_PROVEN
+validation,no2020,1,23,-0.253664830443,2022-01,2023-11,NOT_PROVEN; no p-values,NOT_PROVEN
+validation,delay1,1,34,0.107803998296,2021-02,2023-11,NOT_PROVEN; no p-values,NOT_PROVEN
+validation,wti_baseline,1,35,0.0338892096832,2021-01,2023-11,NOT_PROVEN; no p-values,NOT_PROVEN

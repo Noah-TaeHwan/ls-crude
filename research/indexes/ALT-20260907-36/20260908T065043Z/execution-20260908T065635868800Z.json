@@ -1,0 +1,13 @@
+{
+  "command": [
+    "research/notebooks/ALT-20260907-36/collect.py",
+    "--run",
+    "20260908T065043Z"
+  ],
+  "executed_at": "2026-09-08T06:56:35.796440+00:00",
+  "python": "3.13.15 (main, Aug  5 2026, 12:25:43) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "code_sha256": "d6e31d95992733cfdbe886ae87ee4d6d81a08fdd20cc3259f7d3433166661a22",
+  "git_revision": "d6abb18945559771c9938475fc983958feebe870",
+  "worktree_dirty": true,
+  "raw_sha256": "d223c27bdbcb610887379cb0daac1af50fb5772e2edca7399606723ad430e27b"
+}

@@ -1,0 +1,68 @@
+{
+  "candidate_id": "ALT-20260907-01",
+  "run": "20260908T044354588864Z",
+  "created_at": "2026-09-08T04:43:54.521958+00:00",
+  "plan_sha256": "bd00e242ead85fcbc6044601180cc8bd8370d92355e69e1decdc8afb9ca95fc6",
+  "code_sha256": "eb626523d95a225c915577b1a99257cfc44d5855f4077cd4d0271a2b9c981b00",
+  "input_manifest": "research/gathering/raw/ALT-20260907-01/20260907T062017Z/manifest.json",
+  "manifest_sha256": "92c97da2722c72e97489846dfccb6cc41d8d143933dab17501a97f82467d9a10",
+  "inputs": [
+    {
+      "url": "https://agtransport.usda.gov/api/views/n4pw-9ygw.json",
+      "attempted_at_utc": "2026-09-07T06:20:17.524131+00:00",
+      "method": "stdlib urllib GET, default headers, no credentials",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-01/20260907T062017Z/metadata.json",
+      "sha256": "2b775345f6dd0b20cc221c3000b0a4699c714c7753674fceaee88ab26e605453",
+      "bytes": 17679
+    },
+    {
+      "url": "https://agtransport.usda.gov/resource/n4pw-9ygw.json?%24where=date+%3E%3D+%272015-01-01T00%3A00%3A00%27+AND+date+%3C+%272024-01-01T00%3A00%3A00%27+AND+lock+in+%28%27MS+Locks+27%27%2C%27Miss+Locks+27%27%29&%24order=date%2Ccommodity&%24limit=10000",
+      "attempted_at_utc": "2026-09-07T06:20:18.611011+00:00",
+      "method": "stdlib urllib GET, default headers, no credentials",
+      "status": 200,
+      "content_type": "application/json;charset=utf-8",
+      "path": "research/gathering/raw/ALT-20260907-01/20260907T062017Z/activity.json",
+      "sha256": "3084f6df9a3083f086a2f9a9bc13bf77138ab5e0069409d3b4ac46926a74e101",
+      "bytes": 246926
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/CL=F/history/",
+      "path": "research/gathering/raw/ALT-20260907-01/20260907T062017Z/wti.csv",
+      "sha256": "ca318154ae3fa11e96771d4c5c1d47c7edfb9ea59872f631b37352af22bd8750",
+      "rows": 2262,
+      "start": "2015-01-02",
+      "end": "2023-12-29",
+      "format": "immutable yfinance-returned normalized CSV; HTTP wire bytes unavailable",
+      "options": {
+        "ticker": "CL=F",
+        "start": "2015-01-01",
+        "end_exclusive": "2024-01-01",
+        "interval": "1d",
+        "auto_adjust": true,
+        "multi_level_index": false
+      },
+      "collected_at_utc": "2026-09-07T06:20:22.220653+00:00"
+    }
+  ],
+  "versions": {
+    "python": "3.13.15",
+    "pandas": "3.0.5",
+    "numpy": "2.5.2",
+    "matplotlib": "3.11.1"
+  },
+  "outputs": {
+    "research/indexes/joint-hunt-20260908/20260908T044354588864Z/reconciliation.json": "bf13a3ad2e1adc0468cbb0c102cfe25e1f5aa955c6da4d65fda4eddd497a5b5b",
+    "research/indexes/joint-hunt-20260908/20260908T044354588864Z/relationships.svg": "50f50ac5584fc1c64dce449d9535d3b2cc0dfac8e6d2412741a940f1b2a25426",
+    "research/indexes/joint-hunt-20260908/20260908T044354588864Z/tests.csv": "113e48b9e7726393e69a37f9417e9defa890d0283032a79165c8a8f7ac7c3f08",
+    "research/indexes/joint-hunt-20260908/20260908T044354588864Z/activity.svg": "2e32b302284e4acfb23068ed42ab6a22d9f54f1f4cd87faf95899a9ef27c376e",
+    "research/data/processed/joint-hunt-20260908/20260908T044354588864Z/pairs.csv": "2a1f179b8c32b10dfdf9e85e296e6d34819952ac6952b5fa5e13f5dd7ba004f1",
+    "research/data/processed/joint-hunt-20260908/20260908T044354588864Z/weekly.csv": "a0e42a4a392d9e079bbc55d3c92d52b606ff5e6f590c9ae257749ebcfbedf2d1"
+  },
+  "asof_safe": "NOT_PROVEN",
+  "oos": "NOT_LOADED; NOT_RUN",
+  "claims": "repo empirical only",
+  "review": "runnable invariants PASS; independent review pending",
+  "calendar_completeness": "Yahoo returned rows only; exchange holiday calendar NOT_PROVEN"
+}

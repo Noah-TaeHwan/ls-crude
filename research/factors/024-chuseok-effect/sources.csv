@@ -1,0 +1,4 @@
+source_id,source_name,url,role,status_and_boundary
+incheon_stats,Incheon Airport Statistics,https://www.airport.kr/co_en/4272/subview.do,Aggregate monthly passenger and cargo context,Monthly release after following-month business-day plus five; no live Chuseok alert
+korea_expressway,한국도로공사 AVC API,https://www.data.go.kr/data/15066742/openapi.do?recommendDataYn=Y,Potential aggregate traffic context,History and release timing not verified; no vehicle or individual tracking
+knoc_refinery,KNOC refinery utilization,https://www.data.go.kr/data/15045416/fileData.do,Annual refinery context only,Not a pre-Chuseok operational signal

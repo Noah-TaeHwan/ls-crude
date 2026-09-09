@@ -1,0 +1,7 @@
+{
+  "command": "collect.py --v2 --run 20260908T120546Z",
+  "built_at": "2026-09-09T00:15:58.923682+00:00",
+  "python": "3.13.15",
+  "code_sha256": "b9961fb2ca83b0992dbf1a7bf57260f718651f3043d2c8b899d7b7ffd0ca1425",
+  "base_run": "20260908T120546Z"
+}

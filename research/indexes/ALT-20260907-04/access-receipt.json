@@ -1,0 +1,44 @@
+[
+  {
+    "id": "portwatch_faq",
+    "url": "https://portwatch.imf.org/pages/faqs",
+    "time_utc": "2026-09-07T06:17:05.085651+00:00",
+    "curl_exit": 0,
+    "http_and_effective": "200\thttps://portwatch.imf.org/pages/faqs",
+    "stderr": "",
+    "bytes": 264985,
+    "sha256": "2201989a0c16fa1a7d843edf414126b370be97bf15ed0770f0744a0e4acea517",
+    "candidate_id": "ALT-20260907-04",
+    "body_path": "research/gathering/raw/ALT-20260907-04/20260907T061705Z/portwatch_faq.body",
+    "evidence_type": "source metadata / access response; NOT an analyzed activity series",
+    "method": "GET"
+  },
+  {
+    "id": "portwatch_metadata",
+    "method": "GET",
+    "url": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Daily_Chokepoints_Data/FeatureServer/0?f=pjson",
+    "time_utc": "2026-09-07T06:19:13.261584+00:00",
+    "http_and_effective": "200\thttps://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Daily_Chokepoints_Data/FeatureServer/0?f=pjson",
+    "curl_exit": 0,
+    "stderr": "",
+    "bytes": 13449,
+    "sha256": "87894e6fbe10bf7cb0ff9996348de6bb3ac9d7f5bbe72eff47ad4aff9167bd04",
+    "candidate_id": "ALT-20260907-04",
+    "body_path": "research/gathering/raw/ALT-20260907-04/20260907T061913Z/portwatch_metadata.body",
+    "evidence_type": "source metadata / access response; NOT an analyzed activity series"
+  },
+  {
+    "id": "portwatch_coverage",
+    "method": "GET",
+    "url": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query?where=portid%3D%27chokepoint6%27+AND+date+%3C%3D+date+%272023-12-31%27&outStatistics=%5B%7B%22statisticType%22%3A+%22min%22%2C+%22onStatisticField%22%3A+%22date%22%2C+%22outStatisticFieldName%22%3A+%22min_date%22%7D%2C+%7B%22statisticType%22%3A+%22max%22%2C+%22onStatisticField%22%3A+%22date%22%2C+%22outStatisticFieldName%22%3A+%22max_date%22%7D%2C+%7B%22statisticType%22%3A+%22count%22%2C+%22onStatisticField%22%3A+%22date%22%2C+%22outStatisticFieldName%22%3A+%22n_dates%22%7D%5D&f=json&returnGeometry=false",
+    "time_utc": "2026-09-07T06:20:23.331100+00:00",
+    "http_and_effective": "200\thttps://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query?where=portid%3D%27chokepoint6%27+AND+date+%3C%3D+date+%272023-12-31%27&outStatistics=%5B%7B%22statisticType%22%3A+%22min%22%2C+%22onStatisticField%22%3A+%22date%22%2C+%22outStatisticFieldName%22%3A+%22min_date%22%7D%2C+%7B%22statisticType%22%3A+%22max%22%2C+%22onStatisticField%22%3A+%22date%22%2C+%22outStatisticFieldName%22%3A+%22max_date%22%7D%2C+%7B%22statisticType%22%3A+%22count%22%2C+%22onStatisticField%22%3A+%22date%22%2C+%22outStatisticFieldName%22%3A+%22n_dates%22%7D%5D&f=json&returnGeometry=false",
+    "curl_exit": 0,
+    "stderr": "",
+    "bytes": 607,
+    "sha256": "96343a81962f3b5ef57eea4c19d4a27f9d5c16d27e030dae7328a8283d824a16",
+    "candidate_id": "ALT-20260907-04",
+    "body_path": "research/gathering/raw/ALT-20260907-04/20260907T062023Z/portwatch_coverage.body",
+    "evidence_type": "source metadata / access response; NOT an analyzed activity series"
+  }
+]

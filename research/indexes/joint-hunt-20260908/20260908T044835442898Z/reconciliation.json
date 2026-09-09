@@ -1,0 +1,24 @@
+{
+  "known_tons": 217649472.0,
+  "complete_week_tons": 214009449.0,
+  "incomplete_week_known_tons": 3640023.0,
+  "source_rows": 1880,
+  "missing_ton_cells": 10,
+  "source_zero_cells": 389,
+  "calendar_weeks": 470,
+  "observed_weeks": 470,
+  "missing_calendar_weeks": 0,
+  "incomplete_observed_weeks": 10,
+  "complete_weeks": 460,
+  "zero_complete_weeks": 5,
+  "signal_weeks": 398,
+  "missing_signal_weeks": 72,
+  "wti_rows": 2262,
+  "wti_nonpositive": 1,
+  "wti_missing_returned_close": 0,
+  "wti_valid_returns": 468,
+  "invalid_price_weeks": [
+    "2015-01-03",
+    "2020-04-25"
+  ]
+}

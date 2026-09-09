@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-09-07T06:38:49.421371+00:00",
+  "reviewer": "Academic division AI / Research Synthesist",
+  "scope": "Factual source linkage, construct validity, source chronology, hypothesis-versus-repo-empirical boundary; no numeric model recalculation",
+  "status": "GOAL_MET",
+  "scope_only": true,
+  "scholarly_peer_review_completed": false,
+  "human_review_completed": false,
+  "files_reviewed": [
+    {
+      "path": "README.md",
+      "sha256": "e214f54f8ff8eda77a4b173886eeec273e86a722cddc1122e733744c35c27ad6"
+    },
+    {
+      "path": "research/gathering/notes/2026-09-07-activity-proxy-literature.md",
+      "sha256": "8b2c513388e9c2ce1204177407eebe76e45cbd6f54310fe9c663da5f09b5671e"
+    },
+    {
+      "path": "research/candidates/ALT-20260907-01.md",
+      "sha256": "c4fc1bbdf7ba177fc8e317bfc269e3e380bff67829be58c6ee1cbcef7cf56f83"
+    },
+    {
+      "path": "research/candidates/ALT-20260907-02.md",
+      "sha256": "1ffa330660047a20529946023a1082396a46833957cb4d954a951eb6ba9027dc"
+    },
+    {
+      "path": "research/candidates/ALT-20260907-03.md",
+      "sha256": "2756920bd250d90737b52a339ea2d4ac89ef41602ecb284b927e15b17246eb99"
+    },
+    {
+      "path": "research/candidates/ALT-20260907-04.md",
+      "sha256": "9a94d534a9e4e170e7e9a3f0a5671d366519f8ab3f42fe16e54015118b3b1695"
+    },
+    {
+      "path": "research/candidates/ALT-20260907-05.md",
+      "sha256": "1809ece17fe64a8b7bb9d9dedaa7d35963cee336ae83ca5492c27d3a8bfc7428"
+    },
+    {
+      "path": "research/candidates/ALT-20260907-06.md",
+      "sha256": "b9b6cf42f839d00b52330dc720bcf94748b9ec7f2911f1d57323a38c357cfe55"
+    },
+    {
+      "path": "research/candidates/ALT-20260907-07.md",
+      "sha256": "0bc29ba214e58da6b218e7eda6658a0006dfe0e849dcf4262d82e688d943caaf"
+    },
+    {
+      "path": "research/candidates/ALT-20260907-08.md",
+      "sha256": "8641438aac3832a532fea1322479b1b439f7a46fba6f5f0a5325d215d401e155"
+    },
+    {
+      "path": "research/indexes/ALT-20260907-01/README.md",
+      "sha256": "cc8b3b14f0a0b88839e69a8377af00dc9eb05ed9f85c395ee4322cb970c61f1b"
+    },
+    {
+      "path": "research/indexes/ALT-20260907-02/README.md",
+      "sha256": "1836044fb1868fb46e7cfb6ac0585f31d30daa2ab061bff56b377c09487e73c2"
+    },
+    {
+      "path": "research/indexes/ALT-20260907-03/README.md",
+      "sha256": "78025c515d6a06822dcee939437dd574f2ad7872b2b2be69eb97a502fde03993"
+    },
+    {
+      "path": "research/indexes/ALT-20260907-04/README.md",
+      "sha256": "cecfecf684f6f8f4aeb8d2327ba77134cea76eaab85baf35315330ba51686642"
+    },
+    {
+      "path": "research/indexes/ALT-20260907-05/README.md",
+      "sha256": "319be68bd9823ec26e6dd622a9235594e4dbe8afbd6e4b00297f62fa1ba5fc75"
+    },
+    {
+      "path": "research/indexes/ALT-20260907-06/README.md",
+      "sha256": "fdf4a4992efc30d9e41de8cc96a8bf66036d638c4b48cf4df1c20eee1c1cc7dc"
+    },
+    {
+      "path": "research/indexes/ALT-20260907-07/README.md",
+      "sha256": "ba160c4e51ff6b71fa61a9f5da07a1c67206b1a1493665ce4dfd3d3d1ef2a03c"
+    },
+    {
+      "path": "research/indexes/ALT-20260907-08/README.md",
+      "sha256": "a626655f58a48624e265f6de37f1cd45af8337bc68f2cd66010e6196c8927047"
+    }
+  ],
+  "checks": {
+    "candidate_ids": 8,
+    "primary_evidence_groups_in_memo": 9,
+    "local_links_checked": 113,
+    "broken_links": [],
+    "non_run_candidate_language": "PASS after root corrections for 02-07",
+    "nightfire_approval_boundary": "PASS: current license process verified, team approval unconfirmed; no original VNF data collected",
+    "black_marble_boundary": "PASS: official data policy includes CC0 default with exceptions; sample HEAD 200 is header access only; 2019 observation and 2025 production are distinguished",
+    "gpr_boundary": "PASS: author page CC BY4.0 href and vintage directory confirmed; no claim of complete historical-as-of panel",
+    "google_boundary": "PASS: visits-relative-to-weekly-peak is not orders or institutional attribution; API absence scoped to inspected fields; terms 3.2.3(a) source present",
+    "literature_scope": "PASS: narrative review search limits, evidence weights, source dependence, missing WTI-specific replication disclosed",
+    "empirical_claims": "PASS: computed WTI figures labeled repo empirical only; unrun tests are NOT_RUN; numeric reconciliation belongs to Finance review"
+  },
+  "source_chronology": [
+    {
+      "candidate": "05",
+      "source_document_date": "2026-01-26",
+      "source_url": "https://payneinstitute.mines.edu/wp-content/uploads/sites/149/2026/01/VNF_academic_license_agreement_20260130.pdf",
+      "observation": "Current academic license requires signed agreement and approval for no-cost one-year access. Machine-readable redistribution restriction and shorter-than-weekly exceptions checked in official downloaded PDF."
+    },
+    {
+      "candidate": "06",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/VNP46A2/2019/001/VNP46A2.A2019001.h00v01.002.2025014140219.h5",
+      "observation": "HEAD200; last-modified 2025-01-14; object filename observes 2019-01-01. Neither HEAD nor production date proves original public availability."
+    },
+    {
+      "candidate": "07",
+      "source_url": "https://www.matteoiacoviello.com/gpr.htm",
+      "observation": "Captured author HTML directly confirms CC BY4.0, start-of-month/monthly and Monday/daily schedules with holiday exceptions, revisions and older-vintage links."
+    },
+    {
+      "candidate": "04",
+      "source_url": "https://portwatch.imf.org/pages/faqs",
+      "observation": "Official FAQ snapshot and linked prior repo note support update schedule and revisions; current API metadata is not historical first-release evidence."
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "ACADEMIC-01",
+      "severity": "P2",
+      "finding": "Unrun candidate footers could read as completed alignment/scenario results.",
+      "resolution": "Root added explicit NOT_RUN and future-plan wording for cards 02-07; re-read verified."
+    },
+    {
+      "id": "ACADEMIC-02",
+      "severity": "P2",
+      "finding": "Nightfire index note asserted absence of team approval rather than non-confirmation.",
+      "resolution": "Root changed to unconfirmed within this session; re-read verified."
+    }
+  ],
+  "unresolved_findings": [],
+  "access_receipt_hash_checks": [
+    {
+      "id": "nightfire_license",
+      "method": "GET",
+      "http": "200",
+      "sha256_verified": true,
+      "time_utc": "2026-09-07T06:17:05.085892+00:00"
+    },
+    {
+      "id": "nightfire_current_pdf",
+      "method": "GET",
+      "http": "200",
+      "sha256_verified": true,
+      "time_utc": "2026-09-07T06:19:13.262148+00:00"
+    },
+    {
+      "id": "blackmarble_archive",
+      "method": "GET",
+      "http": "200",
+      "sha256_verified": true,
+      "time_utc": "2026-09-07T06:17:05.086101+00:00"
+    },
+    {
+      "id": "blackmarble_file_head",
+      "method": "HEAD",
+      "http": "200",
+      "sha256_verified": true,
+      "time_utc": "2026-09-07T06:19:13.262019+00:00"
+    },
+    {
+      "id": "gpr_page",
+      "method": "GET",
+      "http": "200",
+      "sha256_verified": true,
+      "time_utc": "2026-09-07T06:17:05.083693+00:00"
+    },
+    {
+      "id": "gpr_xls_head",
+      "method": "HEAD",
+      "http": "200",
+      "sha256_verified": true,
+      "time_utc": "2026-09-07T06:19:13.261917+00:00"
+    },
+    {
+      "id": "gpr_vintages",
+      "method": "GET",
+      "http": "200",
+      "sha256_verified": true,
+      "time_utc": "2026-09-07T06:20:23.330605+00:00"
+    }
+  ],
+  "limitations": [
+    "No statement of scholarly journal peer-review readiness or exhaustive literature coverage.",
+    "No independent numeric recalculation performed in this scoped review; Finance owns that evidence.",
+    "Official source policy descriptions do not substitute for human eligibility or license approval.",
+    "Underlying seven PARK decisions and as-of blockers remain research outcomes, not failures of this scoped claims review."
+  ]
+}
