@@ -23,6 +23,8 @@
 
 상세 가설·영수증·그림은 [workflow.md](workflow.md)가 정본이다. 이 카드는 **현재 지도**다.
 
+쿠싱이 바쁜가 **대시 프로그램**은 팩터 카드가 아니다: [programs/cushing-busy](../../programs/cushing-busy/PROGRAM.md). 화면 경로 `/observations/cushing-busy`.
+
 ## 읽는 순서
 
 1. 아래 **전체 하위 트랙 원장**에서 상태만 먼저 본다.
