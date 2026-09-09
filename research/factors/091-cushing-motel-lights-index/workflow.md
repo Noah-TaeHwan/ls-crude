@@ -34,6 +34,7 @@
 | **091-J** 주차·식사·심야 등 | **부분가능** | 일부 공개 위치·시설 정보 | 장기·익명·집계된 교통/체류/회전 관측 |
 | **091-K** 통신 신호 | **불가** | 없음 | CDR·기지국·세밀 기기 위치 — 수집하지 않음 |
 | **091-L** 대체에너지 정책 | **부분가능** | 연간 공개 정책·보급 자료 | 정책 빈티지와 쿠싱 현장활동을 잇는 정답 시계열 |
+| **091-LM** last-mile 물류 | **부분가능** | sparse permit·facility event 후보 | 검증된 Cushing/Payne County 서비스 지역 및 허용된 일별 driver-posting·delivery-block 집계 패널 |
 | **091-M** 시청 채용 | **부분가능** | 현재 City 공고 | 게시일·마감일을 포함한 장기 아카이브 |
 | **091-N** 시청 문서 | **부분가능** | 의제·재정·부서·공항 문서 | 일관된 월별 활동 원장 |
 | **091-O** 공항 활동 | **부분가능** | Jet-A/AvGas·ramp 월간 보고서 표본 | 연속·장기 월별 보고 시계열 |
@@ -71,6 +72,7 @@
 | 091-J | 허브 근접 활동 7종을 실제로 관측할 수 있는가 | 주차·호텔·점심·심야·경로·모바일·이벤트 | **PARK / E1** — 접근성·기존 표본을 분리 감사, 조합 미실행 |
 | 091-K | 통신 신호로 움직임을 재구성할 수 있는가 | CDR/base-station/device aggregation | **BLOCKED / E1** — carrier/licensed data, raw 또는 fine-grid 수집 금지 |
 | 091-L | 대체에너지 정책이 쿠싱 현장활동을 바꾸는가 | EV oil displacement·정책 노출 | **PARK / E1** — 연간 adoption 결과는 확인, 정책 빈티지·현장 정답 없음 |
+| 091-LM | 지역 last-mile fulfilment가 실제로 변했는가 | 허용된 Cushing/Payne County 집계 driver-posting·delivery-block | **PARK / E0** — [CALMF](subtracks/calmf/README.md)는 서비스 지역·공개 집계 패널을 확인하지 못했다. app/account offer, 개인 데이터, 완료경로 추정은 사용하지 않는다 |
 | 091-M | 시청 공개 채용이 늘었는가 | City Open Positions 목록 | **PARK / E1** — 실제 3건 공고 표본, 게시/마감/역사 없음 |
 | 091-N | 시청이 공개하는 기록 중 실제 활동 패널이 있는가 | 부서·재정·공항·회의문서의 공개 경로 | **PARK / E1** — 실제 페이지 4개 원문 확보; 의제 첨부문서만 월별 집계 가능성이 있고 새 패널은 미발견 |
 | 091-O | 공항이 실제로 바쁜가 | Jet-A/AvGas 판매·ramp stay·응급비행 지원 | **PARK / E1** — 실제 월간보고 4건을 개별 시각화 완료; 불연속·짧은 표본이라 연관 검정은 불가 |

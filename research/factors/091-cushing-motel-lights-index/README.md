@@ -18,6 +18,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 
 - [Workflow, all sub-tracks, sources and visuals](workflow.md)
 - [Factor-local FPATSI · MCBI · GCPSI retry ledger](subtracks/README.md)
+- [091-LM CALMF last-mile feasibility subtrack](subtracks/calmf/README.md)
 - [Current Cushing pump-price board](../../indexes/091-cushing-operations-nowcasting/20260908T091YZ/README.md)
 - [2026-09-08 supplied-source audit: ODOT · FAA · OilPriceAPI · MacroMicro · DeFlock/OSM](../../indexes/091-cushing-operations-nowcasting/20260908T091SOURCEZ/README.md)
 - [091-Z free local-news cue monitor](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md)
@@ -37,6 +38,7 @@ history. **Cushing Field Activity Monitor** is the current name.
 | [091-Z News Cue Monitor](../../indexes/091-cushing-operations-nowcasting/20260908T091ZNEWSZ/README.md) | Publicly reported industrial/news events | FORWARD ONLY | Free KUSH, Google News, and [Oklahoma Energy Today audit](subtracks/okenergytoday/README.md); human-reviewed event queue, not a busyness score |
 | [091-U/Y/Z forward panel](../../indexes/091-cushing-operations-nowcasting/forward-panel/README.md) | Scheduled hiring, local fuel-price and public-news observations | COLLECTION STARTED | The 2026-09-08 values are an unscheduled baseline; fixed-cadence panel collection begins without treating it as historical evidence |
 | [091 factor-local source retries](subtracks/README.md) | Pipeline constraint notices, market-corridor differential and grid-congestion feasibility | PARK / E1 | Audit artifacts only; none enters CFAM until its own source and measurement gate passes |
+| [091-LM CALMF](subtracks/calmf/README.md) | Cushing/Payne County last-mile fulfilment observability | PARK / E0 | Source-gate audit and collector only; no verified local service geography or permitted daily aggregate route/block panel |
 | [091-V Permit Event Log](../../indexes/091-cushing-operations-nowcasting/20260908T091PARKZ/README.md) | Public DEQ industrial-permit status events | FORWARD ONLY | Facility/status review log; not a count of construction or local busyness |
 | [091-V2 Regulatory Event Pulse](../../indexes/091-cushing-operations-nowcasting/20260908T091V2Z/README.md) | Frozen-facility DEQ status transitions | FORWARD ONLY | Dated human-reviewed event ledger; initial three rows are visualized, not statistically tested |
 | [091-S Quick-service activity](../../indexes/091-cushing-operations-nowcasting/20260908T091QRSZ/091s-live-monitor-protocol.md) | Google Maps live busy labels at six fixed locations | FORWARD ONLY | 90-day manual activity-observation pilot |
