@@ -141,7 +141,6 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 092 | [Archived pointer — CALMF moved to 091-LM](092-cushing-last-mile-logistics-feasibility/README.md) | — | — | 독립 팩터가 아님; CFAM 하위 관측트랙 091-LM으로 통합 |
 | 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | -0.022 | — | HOLD — WTI RV21 IS r=-0.022, 결합 9개월도 예상 반대. 계란 원문·공표일·FX가 없어 계란 가설 자체는 미검정 |
 | 094 | [Saharan Hurricane Suppression Index (SHSI)](094-saharan-hurricane-suppression-index/README.md) | — | — | PARK — Dust→Hurricane→Gulf 사슬 카드. Stage 1 전 WTI 직행 금지 |
-| 095 | [Oil–Helix Dislocation (OHD)](095-oil-helix-dislocation/README.md) | 0.174 / 0.305 | lead ≈ 0 | PARK — A 리드 FAIL · B 피어동등 · C 삼각형 ~50%. HOS 접합 금지. 트레이딩 미개방 |
 | 095 | [Energy Executive Public Visibility (EEPV)](095-energy-executive-public-visibility/README.md) | — | — | PARK — IR·콜·청문만. SNS·얼굴 금지. 동시 마커 후보 |
 | 096 | [Oil Market Confirmation Hexagon (OMCH)](096-oil-market-confirmation-hexagon/README.md) | IS γ=+0.011 | OOS γ≈0 | PARK — 20일 1차 H1 FAIL. 육각형이 Brent 단독을 못 이김 |
 
@@ -245,7 +244,6 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 092 | [Archived pointer — CALMF is 091-LM](092-cushing-last-mile-logistics-feasibility/README.md) | CFAM 하위 관측트랙 | PARK — driver posting·Flex block·facility milestone은 완료 배송량이 아니며, 허용된 연속 공개 패널이 없어 WTI/에너지 검정 미실행 | — |
 | 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | 이란 식품·환율 압력 × 쿠싱 tightness 조건부 변동성 가설 | HOLD — 실제 food-CPI 대체 검정은 WTI RV21 IS `r=-0.022`, 결합 9개월도 예상 반대. 계란 원문·공표일·FX가 없어 계란 가설 자체는 미검정 | 0.0 |
 | 094 | [Saharan Hurricane Suppression Index (SHSI)](094-saharan-hurricane-suppression-index/README.md) | MDR 먼지 충격 → 허리케인 억제 → 걸프 차질 프리미엄 | PARK — 재분석·스톰 패널 미수집. 크랙·캘린더가 CL보다 우선 타깃 | 0.0 |
-| 095 | [Oil–Helix Dislocation (OHD)](095-oil-helix-dislocation/README.md) | WTI–HLX 어긋남에서 Brent/OSB가 틀린 쪽을 가리키나 | PARK — 세 배터리 후 NO. 트레이딩 미개방 | 0.0 |
 | 095 | [Energy Executive Public Visibility (EEPV)](095-energy-executive-public-visibility/README.md) | 에너지 임원 공식 출연 빈도·CEO 비중 | PARK — 패널 없음. 049/052 조회수와 합치지 않음 | 0.0 |
 | 096 | [Oil Market Confirmation Hexagon (OMCH)](096-oil-market-confirmation-hexagon/README.md) | WTI가 나머지 5시장 함의에서 이탈하면 되돌리나 | PARK — 1차 20일 γ 부호 실패. Brent만으로 충분 | 0.0 |
 
