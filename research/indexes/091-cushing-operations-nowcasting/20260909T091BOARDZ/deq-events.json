@@ -1,0 +1,28 @@
+{
+  "runId": "20260909T091BOARDZ",
+  "source": "https://applications.deq.ok.gov/PermitsPublicReview/",
+  "retrievedUtc": "2026-09-09T16:00:00Z",
+  "events": [
+    {
+      "facility": "Cushing Tank Terminal",
+      "permit": "2024-1222-TVR",
+      "status": "issued",
+      "receiptDate": "2024-12-04",
+      "statusDate": null
+    },
+    {
+      "facility": "Tidal Cushing Crude Terminal",
+      "permit": "2025-0311-TVR2",
+      "status": "issued",
+      "receiptDate": null,
+      "statusDate": null
+    },
+    {
+      "facility": "Cushing South Terminal",
+      "permit": "2024-1235-O",
+      "status": "technical review",
+      "receiptDate": null,
+      "statusDate": null
+    }
+  ]
+}

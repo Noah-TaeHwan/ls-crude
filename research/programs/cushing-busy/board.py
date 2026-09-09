@@ -26,7 +26,7 @@ BOARD = {
         "busy_detail": "Not computed. 091-S has no quieter/usual/busier row yet.",
     },
     "verdict_note": "No independently validated local activity series. Do not invent a 0–100 busy index.",
-    "as_of_utc": "2026-09-09T03:20:00Z",
+    "as_of_utc": "2026-09-09T16:00:00Z",
     "lanes": {
         "activity_forward": [
             {
@@ -62,7 +62,7 @@ BOARD = {
                 "id": "091-V",
                 "name": "DEQ permit status events",
                 "status": "FORWARD_ONLY",
-                "last_observation": "V2 frozen-facility ledger started 2026-09-08",
+                "last_observation": "Cushing Tank Terminal 2024-1222-TVR issued, receipt 2024-12-04; Tidal 2025-0311-TVR2 issued; South Terminal technical review",
                 "note": "Event log, not monthly construction volume.",
             },
         ],
@@ -73,7 +73,28 @@ BOARD = {
                 "status": "LIVE_CONTEXT",
                 "last_observation": "week 2026-08-28 = 22,508 kbbl (+80 wow)",
                 "note": "How full the tanks are. Not how busy the field is.",
-            }
+            },
+            {
+                "id": "091-AADT",
+                "name": "East Main annual AADT",
+                "status": "ANNUAL_CONTEXT",
+                "last_observation": "SITE_ID 600645, 2015-2025. 2025 AADT 11,648. Not a permanent station.",
+                "note": "Annual average daily traffic, not daily trucks.",
+            },
+            {
+                "id": "091-BPS",
+                "name": "Cushing city residential building permits",
+                "status": "MONTHLY_CONTEXT",
+                "last_observation": "Census BPS 2024-01..2026-07, 31 months, 29 housing units total.",
+                "note": "Housing units authorized, not tank or industrial construction.",
+            },
+            {
+                "id": "091-Q",
+                "name": "KCUH METAR weather",
+                "status": "LIVE_CONTEXT",
+                "last_observation": "AWC JSON, keyless. Confounder only.",
+                "note": "Airport weather, not activity.",
+            },
         ],
         "excluded": [
             {"id": "091-B", "reason": "Nightlights failed the 28-day inventory test; killed as quantitative input."},
