@@ -66,3 +66,7 @@ PR #92가 상단 단독 관측 카드를 없애고 홈을 소개 → WTI 일봉 
 ## PR #95·#96 재병합
 
 PR #95는 고정·갱신 자료를 홈 `/?sample=`로 모으고 `/research?sample=`을 308로 보낸다. PR #96은 EIA 쿠싱 주간 재고 수집·그림이며 자료 탐색 버튼을 추가하지 않는다. 석유 철도는 홈 고정 사례로 유지하고 SAMPLE_LINKS만 `/?sample=petroleum-rail#research-sample`로 맞춘다. `/Users/noah/orca/ls-crude`는 `fix/wti-session-tail`에 미커밋 WTI 파일이 있어 이 작업이 그 워크트리를 바꾸거나 강제 동기화하지 않는다.
+
+## PR #98 재병합
+
+PR #98이 같은 Yahoo 중복 날짜를 **교체가 아니라 제외**로 처리한다. 이 브랜치의 후속 봉 교체 테스트는 제거하고 정본 파서·픽스처를 PR #98에 맞춘다. `readWtiDaily`의 User-Agent `ls-crude-observations/1.0`만 유지한다.

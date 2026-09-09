@@ -111,6 +111,7 @@ test("daily WTI preserves actual latest provisional OHLC and rejects invalid ide
     (r) => { r.meta.symbol = "BZ=F"; }, (r) => { r.meta.currency = "EUR"; },
     (r) => { r.meta.instrumentType = "EQUITY"; }, (r) => { r.meta.dataGranularity = "5m"; },
     (r) => { r.timestamp.reverse(); }, (r) => { r.timestamp[1] = r.timestamp[0]; },
+    (r) => { r.timestamp[1] = r.timestamp[0] + 3600; },
     (r) => { r.timestamp[1] = now.getTime() / 1000 + 1; },
     (r) => { r.indicators.quote[0].close.pop(); },
     (r) => { r.indicators.quote[0].close[0] = "92"; },
@@ -124,14 +125,6 @@ test("daily WTI preserves actual latest provisional OHLC and rejects invalid ide
     assert.throws(() => parseWtiDaily(bad, now));
   }
   for (const bad of [null, {}, { chart: { error: "failed" } }]) assert.throws(() => parseWtiDaily(bad, now));
-  const session = dailyBody(["2026-09-08T04:00:00Z", "2026-09-09T02:05:52Z"]);
-  session.chart.result[0].indicators.quote[0].close = [93.03, 94.41];
-  const replaced = parseWtiDaily(session, new Date("2026-09-09T02:15:00Z"));
-  assert.equal(replaced.bars.length, 1);
-  assert.equal(replaced.bars[0].date, "2026-09-08");
-  assert.equal(replaced.bars[0].close, 94.41);
-  assert.equal(replaced.bars[0].sourceAt, "2026-09-09T02:05:52.000Z");
-  assert.equal(replaced.partialLast, true);
 });
 
 test("all seven daily ranges keep latest actual bar and clamp calendar month/year boundaries", async () => {
@@ -172,4 +165,43 @@ test("daily fetch caches whole snapshots and preserves their times on network or
   const regressed = await readWtiDaily(async () => Response.json(older), new Date(now.getTime() + 63000));
   assert.deepEqual(regressed.data, good.data);
   assert.match(regressed.error, /실패/);
+});
+
+// 실제 Yahoo 응답의 최소 3행 재현. 운영 데이터 대체물이 아니다.
+test("ambiguous Yahoo live tail is isolated without merging or relabeling daily OHLC", async () => {
+  const { parseWtiDaily }=await import("../app/lib/wti-daily.ts");
+  const fixture=JSON.parse(await readFile(path.join(appRoot,"tests/fixtures/yahoo-duplicate-tail.json"),"utf8"));
+  const now=new Date(fixture.retrievedAt);
+  const result=parseWtiDaily(fixture.body,now);
+  const prefix=structuredClone(fixture.body);prefix.chart.result[0].timestamp.pop();
+  for(const values of Object.values(prefix.chart.result[0].indicators.quote[0]))values.pop();
+  assert.deepEqual(result.bars,parseWtiDaily(prefix,now).bars);
+  assert.equal(result.bars.length,2);
+  assert.equal(result.bars.at(-1).date,"2026-09-08");
+  assert.equal(result.bars.at(-1).close,93.02999877929688);
+  assert.equal(result.bars.at(-1).volume,0);
+  assert.equal(result.observedAt,"2026-09-08T04:00:00.000Z");
+  assert.equal(result.excludedTail.sourceAt,"2026-09-09T02:10:05.000Z");
+  assert.equal(result.missingCount,0);
+  assert.match(result.note,/최신 실시간 가격을 보장하지 않습니다/);
+  const missing=structuredClone(fixture.body);missing.chart.result[0].indicators.quote[0].close[0]=null;
+  assert.equal(parseWtiDaily(missing,now).missingCount,1);
+  assert.equal(parseWtiDaily(missing,now).bars.length,1);
+  for(const mutate of [
+    r=>{delete r.meta.regularMarketTime;},r=>{r.meta.regularMarketTime--;},
+    r=>{r.meta.exchangeTimezoneName="UTC";},r=>{r.timestamp[1]+=3600;},
+    r=>{r.timestamp[2]=r.timestamp[1];},r=>{r.timestamp[2]=now.getTime()/1000+1;},
+    r=>{r.indicators.quote[0].high[2]=1;},r=>{r.indicators.quote[0].close[2]=null;},
+    r=>{r.indicators.quote[0].close[1]=null;},
+    r=>{r.indicators.quote[0].volume[2]=-1;},r=>{r.indicators.quote[0].open[2]="94";},
+    r=>{r.timestamp[0]=r.timestamp[1];r.timestamp[1]+=3600;},
+  ]) {const bad=structuredClone(fixture.body);mutate(bad.chart.result[0]);assert.throws(()=>parseWtiDaily(bad,now));}
+  const middle=structuredClone(fixture.body), r=middle.chart.result[0];
+  r.timestamp.push(r.timestamp.at(-1)+3600);for(const values of Object.values(r.indicators.quote[0]))values.push(values.at(-1));r.meta.regularMarketTime=r.timestamp.at(-1);
+  assert.throws(()=>parseWtiDaily(middle,new Date(now.getTime()+7200000)));
+  // 겨울 뉴욕 자정은 UTC05:00이다. 고정 UTC 오프셋을 사용하지 않는다.
+  const winter=structuredClone(fixture.body), w=winter.chart.result[0];
+  w.timestamp=[Date.parse("2026-01-05T05:00Z")/1000,Date.parse("2026-01-06T05:00Z")/1000,Date.parse("2026-01-07T02:00Z")/1000];w.meta.regularMarketTime=w.timestamp.at(-1);
+  assert.equal(parseWtiDaily(winter,new Date("2026-01-07T03:00Z")).bars.at(-1).date,"2026-01-06");
+  for(const price of [-37,0]){const copy=structuredClone(fixture.body);for(const field of ["open","high","low","close"])copy.chart.result[0].indicators.quote[0][field].fill(price);assert.equal(parseWtiDaily(copy,now).bars.at(-1).close,price);}
 });

@@ -15,6 +15,8 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 | 역할·일정 | [PM 계획](docs/project-plan.md): Noah 데이터·기록·데모, 성찬 검정·반증, 상호 검토 **제안** |
 | 기존 웹 | [LS CRUDE](https://ls-crude.vercel.app) · 시장 관측/기존 연구 장부. 이번 패스에서 배포 상태를 검증하지 않음 |
 
+[메인·리서치 개편 맥락과 현재 경계](docs/page-work-context.md) — 다음 작업의 진입점.
+
 ## Current research status — 2026-09-09
 
 **리서치 화면:** 메인 관측 그래프와 외부 자료 조회를 제거하고 가설·근거·판정·다음 행동 탐색에 집중합니다. ALT 작업 상태/판정 필터, 별도 접힌 과거 검정 장부, 출처·판정 방법을 제공합니다. [목적·구성·검수 기준](docs/research-review-desk-plan.md).
