@@ -1,6 +1,7 @@
 import { VisibilityObservation } from "~/components/visibility-observation";
 import { TankerObservation } from "~/components/tanker-observation";
 import { CushingObservation } from "~/components/cushing-observation";
+import type { CushingWeatherView } from "~/lib/cushing-weather";
 import cushingBoard from "../routes/cushing-busy-board.json";
 import type { VisibilityView } from "~/lib/visibility";
 import type { TankerView } from "~/lib/tanker-arrivals";
@@ -47,7 +48,7 @@ const CASES = {
 interface SampleRecords { helix?:IntakeRecord;watermelon?:IntakeRecord;jeju?:IntakeRecord;"degree-days"?:IntakeRecord;empties?:IntakeRecord;"petroleum-rail"?:IntakeRecord }
 
 /** @param props 사례별 현재 정본. @returns URL로 선택하는 과거 연구 사례. */
-export function ResearchSample({ records, live }: {live:{visibility:VisibilityView;tankers:TankerView;checkedAt:string};records:SampleRecords}) {
+export function ResearchSample({ records, live }: {live:{visibility:VisibilityView;tankers:TankerView;weather:CushingWeatherView;checkedAt:string};records:SampleRecords}) {
   const [params] = useSearchParams();
   const navigate = useNavigate();
   const requested = params.get("sample");
@@ -66,7 +67,7 @@ export function ResearchSample({ records, live }: {live:{visibility:VisibilityVi
   return <section id="research-sample" className="border-t border-border py-10 sm:py-12" aria-labelledby="sample-title">
     <div className="section-heading"><div><p className="section-kicker">RESEARCH IN PRACTICE / 자료 탐색</p><h2 id="sample-title">아이디어를 실제 자료로 열어보면.</h2></div><a className="source-link" href={evidence}>자료·연구 기록 →</a></div>
     <div role="group" aria-label="연구 사례 선택" className="sample-options mt-5 grid auto-rows-fr grid-cols-2 gap-3 md:grid-cols-3">{options.map(({key,label})=><button key={key} type="button" className="filter-button min-w-0 w-full" aria-pressed={selectedCase===key} aria-controls="sample-case" onClick={()=>{const next=new URLSearchParams(params);next.set("sample",key);navigate("?"+next.toString()+"#research-sample",{preventScrollReset:true});}}>{label}</button>)}</div>
-    {liveKind ? <div id="sample-case" className="sample-panel mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7"><p className="status-stamp mb-5">{liveKind === "cushing-busy" ? "고정 연구 보드 · 자료별 관측 시각 확인" : "갱신 관측 · 자료별 기준 시각과 주기 확인"}</p>{liveKind === "cushing-busy" ? <CushingBusyCase /> : liveKind === "visibility" ? <VisibilityObservation view={live.visibility} checkedAt={live.checkedAt} compact /> : <TankerObservation view={live.tankers} checkedAt={live.checkedAt} />}</div> : <article id="sample-case" className="mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
+    {liveKind ? <div id="sample-case" className="sample-panel mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7"><p className="status-stamp mb-5">{liveKind === "cushing-busy" ? "고정 연구 보드 · 자료별 관측 시각 확인" : "갱신 관측 · 자료별 기준 시각과 주기 확인"}</p>{liveKind === "cushing-busy" ? <CushingBusyCase weather={live.weather} /> : liveKind === "visibility" ? <VisibilityObservation view={live.visibility} checkedAt={live.checkedAt} compact /> : <TankerObservation view={live.tankers} checkedAt={live.checkedAt} />}</div> : <article id="sample-case" className="mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
       <div className="flex flex-wrap items-center gap-3 text-xs"><span className="status-stamp">과거 연구 샘플 · 자동 갱신 아님</span><span className="card-verdict">{record ? DECISIONS[record.fields.decision]+" · "+record.fields.decision : "현재 판정 확인 필요"}</span><span className="text-muted-foreground">{kind === "helix" ? "WTI 관계 검정 기록 있음 · 트레이딩 미개방" : "이 샘플의 WTI 관계 검정 미실행"}</span></div>
       <h3 className="mt-5 text-xl font-medium sm:text-2xl">{info.title}</h3>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2"><div><dt className="text-muted-foreground">관측 기간</dt><dd className="mt-1 font-mono">{info.start} ~ {info.end}</dd></div><div><dt className="text-muted-foreground">자료를 수집한 시각</dt><dd className="mt-1 font-mono">{info.collected}</dd></div></dl>
@@ -197,12 +198,9 @@ function DataTable({title,headers,rows}:{title:string;headers:string[];rows:stri
 
 /**
  * 쿠싱 현장 관측을 홈 카드에서 공유 컴포넌트로 보여준다. 점수·합성·추세를 만들지 않는다.
+ * @param props.weather 홈 카드에 넘기는 KCUH 날씨.
  * @returns 질문→판단 보류→흔적/없음/다음 확인 구조의 홈 카드.
  */
-function CushingBusyCase() {
-  return (
-    <article className="min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
-      <CushingObservation board={cushingBoard} />
-    </article>
-  );
+function CushingBusyCase({ weather }: { weather: CushingWeatherView }) {
+  return <CushingObservation board={cushingBoard} weather={weather} />;
 }

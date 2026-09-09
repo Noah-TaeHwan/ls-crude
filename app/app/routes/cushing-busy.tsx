@@ -1,7 +1,9 @@
-import { data, Link } from "react-router";
+import { useEffect } from "react";
+import { data, Link, useRevalidator } from "react-router";
 import type { Route } from "./+types/cushing-busy";
 import { DeskHeader, DeskFooter } from "~/components/desk-chrome";
 import { CushingObservation } from "~/components/cushing-observation";
+import { readCushingWeather } from "~/lib/cushing-weather.server";
 import board from "./cushing-busy-board.json";
 
 export function meta({}: Route.MetaArgs) {
@@ -15,7 +17,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function loader({}: Route.LoaderArgs) {
-  return { board };
+  return { board, weather: await readCushingWeather() };
 }
 
 export function action({}: Route.ActionArgs) {
@@ -28,16 +30,23 @@ export function action({}: Route.ActionArgs) {
  * @returns 쿠싱 상세 화면.
  */
 export default function CushingBusy({ loaderData }: Route.ComponentProps) {
-  const { board: view } = loaderData;
+  const { board: view, weather } = loaderData;
+  const revalidator = useRevalidator();
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      if (document.visibilityState === "visible" && revalidator.state === "idle") void revalidator.revalidate();
+    }, 5 * 60 * 1000);
+    return () => window.clearInterval(timer);
+  }, [revalidator]);
   return (
     <>
       <DeskHeader source="091 CFAM / cushing-busy" ticker="Cushing, OK" contextLabel="현장 활동 보드 · 점수 없음" />
       <main id="main-content" tabIndex={-1} className="desk-shell">
-        <Link className="secondary-link mt-7 inline-flex min-h-11 items-center" to="/">
+        <Link className="secondary-link mt-7 inline-flex min-h-11 items-center" to="/?sample=cushing-busy#research-sample">
           ← 관측 데스크
         </Link>
-        <section className="mt-8 max-w-3xl" aria-labelledby="cushing-title">
-          <CushingObservation board={view} detail />
+        <section className="mt-8 max-w-4xl" aria-labelledby="cushing-title">
+          <CushingObservation board={view} weather={weather} detail />
         </section>
         <div className="mb-16" />
       </main>

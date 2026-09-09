@@ -1,0 +1,23 @@
+{
+  "runId": "20260909T091BOARDZ",
+  "siteId": "600645",
+  "community": "CUSHING",
+  "county": "PAYNE",
+  "road": "EAST MAIN ST",
+  "permStation": false,
+  "source": "https://services6.arcgis.com/RBtoEUQ2lmN0K3GY/ArcGIS/rest/services/AADT_Count_Site_Locations/FeatureServer/1",
+  "retrievedUtc": "2026-09-09T16:00:00Z",
+  "points": [
+    { "year": 2015, "aadt": 12500, "trucks": null },
+    { "year": 2016, "aadt": 12800, "trucks": null },
+    { "year": 2017, "aadt": 12000, "trucks": null },
+    { "year": 2018, "aadt": 10800, "trucks": null },
+    { "year": 2019, "aadt": 9500, "trucks": null },
+    { "year": 2020, "aadt": 9200, "trucks": null },
+    { "year": 2021, "aadt": 9200, "trucks": null },
+    { "year": 2022, "aadt": 9300, "trucks": null },
+    { "year": 2023, "aadt": 9300, "trucks": null },
+    { "year": 2024, "aadt": 9300, "trucks": null },
+    { "year": 2025, "aadt": 11648, "trucks": 291 }
+  ]
+}

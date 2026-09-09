@@ -4,16 +4,24 @@
   "factor_ledger": "091 CFAM",
   "composite": null,
   "verdict": "INSUFFICIENT",
+  "score": {
+    "readiness": 80,
+    "readiness_label": "\uad00\uce21 \ucda9\uc2e4\ub3c4",
+    "readiness_detail": "4/5 activity lanes have a dated snapshot. 091-S restaurant labels: 0 rows.",
+    "busy": null,
+    "busy_label": "\ud604\uc7a5 \ubc14\uc068",
+    "busy_detail": "Not computed. 091-S has no quieter/usual/busier row yet."
+  },
   "verdict_note": "No independently validated local activity series. Do not invent a 0\u2013100 busy index.",
-  "as_of_utc": "2026-09-09T03:25:00Z",
+  "as_of_utc": "2026-09-09T16:00:00Z",
   "lanes": {
     "activity_forward": [
       {
         "id": "091-S",
         "name": "Cushing restaurant strip \u2014 relative busy label",
         "status": "FORWARD_ONLY",
-        "last_observation": "basket addresses frozen 2026-09-09. goo.gl retired after Wendy's short link opened Sports Complex. No dated human label row yet.",
-        "note": "This IS the restaurant-busy lane. Allowed field: quieter / usual / busier / not shown. Excluded: mock 0\u2013100, order counts, Uber Eats volume.",
+        "last_observation": "basket frozen: Wendy's, Taco Bell, Sonic, Golden Chick, Pizza Hut, Boomarang Diner. No dated human label row yet.",
+        "note": "This IS the restaurant-busy lane. Allowed: quieter / usual / busier / not shown. Excluded: mock 0\u2013100, order counts, Uber Eats volume.",
         "venues": [
           "Wendy's",
           "Taco Bell",
@@ -48,7 +56,7 @@
         "id": "091-V",
         "name": "DEQ permit status events",
         "status": "FORWARD_ONLY",
-        "last_observation": "V2 frozen-facility ledger started 2026-09-08",
+        "last_observation": "Cushing Tank Terminal 2024-1222-TVR issued, receipt 2024-12-04; Tidal 2025-0311-TVR2 issued; South Terminal technical review",
         "note": "Event log, not monthly construction volume."
       }
     ],
@@ -59,6 +67,27 @@
         "status": "LIVE_CONTEXT",
         "last_observation": "week 2026-08-28 = 22,508 kbbl (+80 wow)",
         "note": "How full the tanks are. Not how busy the field is."
+      },
+      {
+        "id": "091-AADT",
+        "name": "East Main annual AADT",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "SITE_ID 600645, 2015-2025. 2025 AADT 11,648. Not a permanent station.",
+        "note": "Annual average daily traffic, not daily trucks."
+      },
+      {
+        "id": "091-BPS",
+        "name": "Cushing city residential building permits",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "Census BPS 2024-01..2026-07, 31 months, 29 housing units total.",
+        "note": "Housing units authorized, not tank or industrial construction."
+      },
+      {
+        "id": "091-Q",
+        "name": "KCUH METAR weather",
+        "status": "LIVE_CONTEXT",
+        "last_observation": "AWC JSON, keyless. Confounder only.",
+        "note": "Airport weather, not activity."
       }
     ],
     "excluded": [
@@ -88,12 +117,5 @@
       }
     ]
   },
-  "score": {
-    "readiness": 80,
-    "readiness_label": "\uad00\uce21 \ucda9\uc2e4\ub3c4",
-    "readiness_detail": "4/5 activity lanes have a dated snapshot. 091-S restaurant labels: 0 rows.",
-    "busy": null,
-    "busy_label": "\ud604\uc7a5 \ubc14\uc068",
-    "busy_detail": "Not computed. 091-S has no quieter/usual/busier row yet."
-  }
+  "generated_at_utc": "2026-09-09T08:45:22Z"
 }

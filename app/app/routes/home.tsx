@@ -3,6 +3,7 @@ export { sampleShouldRevalidate as shouldRevalidate } from "~/lib/research-chart
 import { useEffect } from "react";
 import { readTankerArrivals } from "~/lib/tanker-arrivals.server";
 import { readVisibility } from "~/lib/visibility.server";
+import { readCushingWeather } from "~/lib/cushing-weather.server";
 import { WtiDailyChart } from "~/components/wti-daily-chart";
 import { readResearchIntake } from "~/lib/research-intake.server";
 import { data, Link, useRevalidator } from "react-router";
@@ -34,8 +35,8 @@ export function meta({}: Route.MetaArgs) {
 
 /** @returns 실제 시장 관측과 현재 연구 정본. */
 export async function loader({}: Route.LoaderArgs) {
-  const [daily, visibility, tankers] = await Promise.all([readWtiDaily(), readVisibility(), readTankerArrivals()]);
-  return { daily, visibility, tankers, checkedAt: new Date().toISOString(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
+  const [daily, visibility, tankers, weather] = await Promise.all([readWtiDaily(), readVisibility(), readTankerArrivals(), readCushingWeather()]);
+  return { daily, visibility, tankers, weather, checkedAt: new Date().toISOString(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
 }
 
 /** @returns 공개 화면의 읽기 전용 응답. */
@@ -48,7 +49,7 @@ export function action({}: Route.ActionArgs) {
  * @param props 라우트 데이터.
  * @returns 공개 연구 데스크.
  */
-export default function Home({ loaderData: { market, ledger, intake, daily, visibility, tankers, checkedAt } }: Route.ComponentProps) {
+export default function Home({ loaderData: { market, ledger, intake, daily, visibility, tankers, weather, checkedAt } }: Route.ComponentProps) {
   const revalidator = useRevalidator();
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -84,7 +85,7 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
 
         <MarketContext market={market} daily={daily} />
         <div id="observations">
-        <ResearchSample live={{visibility,tankers,checkedAt}} records={{ helix: intake.records.find((item) => item.fields.candidate_id === "ALT-20260909-02"), watermelon: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20"), "degree-days": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-45"), empties: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-02"), "petroleum-rail": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-43") }} />
+        <ResearchSample live={{visibility,tankers,weather,checkedAt}} records={{ helix: intake.records.find((item) => item.fields.candidate_id === "ALT-20260909-02"), watermelon: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20"), "degree-days": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-45"), empties: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-02"), "petroleum-rail": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-43") }} />
         </div>
       </main>
       <DeskFooter />

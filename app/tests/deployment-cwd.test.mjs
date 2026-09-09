@@ -226,7 +226,13 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.match(cushingText, /인허가 상태 확인 기록/);
     assert.match(cushingText, /관측별 기록과 출처 펼치기/);
     assert.match(cushingText, /수치·기준 주는 아래 원문 기록에서 확인하세요/);
-    assert.match(cushingBody, /함께 볼 재고 자료/);
+    assert.match(cushingBody, /날짜가 있는 문맥/);
+    assert.match(cushingText, /쿠싱 상업원유 재고/);
+    assert.match(cushingText, /이스트 메인 연간 교통량/);
+    assert.match(cushingText, /쿠싱 시 주거 건축허가/);
+    assert.match(cushingText, /인허가 상태 사건/);
+    assert.match(cushingText, /쿠싱 공항 날씨/);
+    assert.doesNotMatch(cushingText, /현장 바쁨 점수/);
     assert.match(cushingBody, /PROGRAM\.md/);
     assert.match(cushingBody, /Boomarang Diner/);
     assert.doesNotMatch(cushingText, /관측 충실도 \/ 100/);
