@@ -1,7 +1,7 @@
 # 🛢️ LS CRUDE — Oil & Energy Chain Factor Research Map
 
 **주 대상 가격**: Yahoo Finance WTI 연속선물 `CL=F`. WTI 매트릭스와 별도로, 전달경로가 직접적인 정제품·가스 선물만 [에너지 체인 검정표](../reports/2026-09-04-energy-chain-target-matrix.md)에 분리 기록한다.
-**현재 상태**: 아래 001–095는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
+**현재 상태**: 아래 001–096는 연구 인벤토리다. 검증을 마친 실거래 알파 목록이 아니다.
 **선정 규칙**: 후보 선택·가중치 조정은 `2015-01-01`~`2023-12-31` 인샘플에서만 한다. 기준을 동결한 뒤에만 2024년 이후 아웃샘플을 한 번 연다.
 
 ## Current research status (2026-09-07)
@@ -142,6 +142,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | -0.022 | — | HOLD — WTI RV21 IS r=-0.022, 결합 9개월도 예상 반대. 계란 원문·공표일·FX가 없어 계란 가설 자체는 미검정 |
 | 094 | [Saharan Hurricane Suppression Index (SHSI)](094-saharan-hurricane-suppression-index/README.md) | — | — | PARK — Dust→Hurricane→Gulf 사슬 카드. Stage 1 전 WTI 직행 금지 |
 | 095 | [Oil–Helix Dislocation (OHD)](095-oil-helix-dislocation/README.md) | 0.174 / 0.305 | lead ≈ 0 | PARK — A 리드 FAIL · B 피어동등 · C 삼각형 ~50%. HOS 접합 금지. 트레이딩 미개방 |
+| 096 | [Oil Market Confirmation Hexagon (OMCH)](096-oil-market-confirmation-hexagon/README.md) | IS γ=+0.011 | OOS γ≈0 | PARK — 20일 1차 H1 FAIL. 육각형이 Brent 단독을 못 이김 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -244,6 +245,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | 이란 식품·환율 압력 × 쿠싱 tightness 조건부 변동성 가설 | HOLD — 실제 food-CPI 대체 검정은 WTI RV21 IS `r=-0.022`, 결합 9개월도 예상 반대. 계란 원문·공표일·FX가 없어 계란 가설 자체는 미검정 | 0.0 |
 | 094 | [Saharan Hurricane Suppression Index (SHSI)](094-saharan-hurricane-suppression-index/README.md) | MDR 먼지 충격 → 허리케인 억제 → 걸프 차질 프리미엄 | PARK — 재분석·스톰 패널 미수집. 크랙·캘린더가 CL보다 우선 타깃 | 0.0 |
 | 095 | [Oil–Helix Dislocation (OHD)](095-oil-helix-dislocation/README.md) | WTI–HLX 어긋남에서 Brent/OSB가 틀린 쪽을 가리키나 | PARK — 세 배터리 후 NO. 트레이딩 미개방 | 0.0 |
+| 096 | [Oil Market Confirmation Hexagon (OMCH)](096-oil-market-confirmation-hexagon/README.md) | WTI가 나머지 5시장 함의에서 이탈하면 되돌리나 | PARK — 1차 20일 γ 부호 실패. Brent만으로 충분 | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
