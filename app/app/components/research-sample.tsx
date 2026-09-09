@@ -1,5 +1,6 @@
 import { VisibilityObservation } from "~/components/visibility-observation";
 import { TankerObservation } from "~/components/tanker-observation";
+import cushingBoard from "../routes/cushing-busy-board.json";
 import type { VisibilityView } from "~/lib/visibility";
 import type { TankerView } from "~/lib/tanker-arrivals";
 import { EmptiesCase } from "~/components/empties-observation";
@@ -47,16 +48,22 @@ export function ResearchSample({ records, live }: {live:{visibility:VisibilityVi
   const [params] = useSearchParams();
   const navigate = useNavigate();
   const requested = params.get("sample");
-  const liveKind = requested === "visibility" || requested === "tankers" ? requested : null;
+  const liveKind = requested === "visibility" || requested === "tankers" || requested === "cushing-busy" ? requested : null;
   const kind = requested && requested in CASES ? requested as keyof typeof CASES : "watermelon";
   const selectedCase = liveKind ?? kind;
-  const options = [...Object.entries(CASES).map(([key,value])=>({key,label:value.label})),{key:"visibility",label:"갤버스턴 · 시정"},{key:"tankers",label:"싱가포르 · 탱커 입항"}];
+  const options = [
+    ...Object.entries(CASES).filter(([key]) => key !== "petroleum-rail").map(([key,value])=>({key,label:value.label})),
+    {key:"cushing-busy",label:"쿠싱 · 현장 바쁨"},
+    {key:"petroleum-rail",label:CASES["petroleum-rail"].label},
+    {key:"visibility",label:"갤버스턴 · 시정"},
+    {key:"tankers",label:"싱가포르 · 탱커 입항"},
+  ];
   const info = CASES[kind], record = records[kind];
-  const evidence = liveKind ? "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/candidates/"+(liveKind==="visibility"?"ALT-20260908-16":"ALT-20260907-26")+".md" : "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/indexes/"+info.path+"/README.md";
+  const evidence = liveKind === "cushing-busy" ? "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/programs/cushing-busy/PROGRAM.md" : liveKind ? "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/candidates/"+(liveKind==="visibility"?"ALT-20260908-16":"ALT-20260907-26")+".md" : "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/indexes/"+info.path+"/README.md";
   return <section id="research-sample" className="border-t border-border py-10 sm:py-12" aria-labelledby="sample-title">
     <div className="section-heading"><div><p className="section-kicker">RESEARCH IN PRACTICE / 자료 탐색</p><h2 id="sample-title">아이디어를 실제 자료로 열어보면.</h2></div><a className="source-link" href={evidence}>수집·대사 기록 →</a></div>
     <div role="group" aria-label="연구 사례 선택" className="mt-5 flex flex-wrap gap-3">{options.map(({key,label})=><button key={key} type="button" className="filter-button" aria-pressed={selectedCase===key} aria-controls="sample-case" onClick={()=>{const next=new URLSearchParams(params);next.set("sample",key);navigate("?"+next.toString()+"#research-sample",{preventScrollReset:true});}}>{label}</button>)}</div>
-    {liveKind ? <div id="sample-case" className="mt-5"><p className="status-stamp">갱신 관측 · 자료별 기준 시각과 주기 확인</p>{liveKind === "visibility" ? <VisibilityObservation view={live.visibility} checkedAt={live.checkedAt} compact /> : <TankerObservation view={live.tankers} checkedAt={live.checkedAt} />}</div> : <article id="sample-case" className="mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
+    {liveKind ? <div id="sample-case" className="mt-5"><p className="status-stamp">갱신 관측 · 자료별 기준 시각과 주기 확인</p>{liveKind === "cushing-busy" ? <CushingBusyCase /> : liveKind === "visibility" ? <VisibilityObservation view={live.visibility} checkedAt={live.checkedAt} compact /> : <TankerObservation view={live.tankers} checkedAt={live.checkedAt} />}</div> : <article id="sample-case" className="mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
       <div className="flex flex-wrap items-center gap-3 text-xs"><span className="status-stamp">과거 연구 샘플 · 자동 갱신 아님</span><span className="card-verdict">{record ? DECISIONS[record.fields.decision]+" · "+record.fields.decision : "현재 판정 확인 필요"}</span><span className="text-muted-foreground">이 샘플의 WTI 관계 검정 미실행</span></div>
       <h3 className="mt-5 text-xl font-medium sm:text-2xl">{info.title}</h3>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2"><div><dt className="text-muted-foreground">관측 기간</dt><dd className="mt-1 font-mono">{info.start} ~ {info.end}</dd></div><div><dt className="text-muted-foreground">자료를 수집한 시각</dt><dd className="mt-1 font-mono">{info.collected}</dd></div></dl>
@@ -159,4 +166,39 @@ function RailCase() {
 /** @param props 원단위 표의 제목·열·값. @returns 키보드로 펼치는 원단위 표. */
 function DataTable({title,headers,rows}:{title:string;headers:string[];rows:string[][]}) {
   return <details className="mt-5 border-t border-border"><summary className="min-h-11 cursor-pointer py-3 text-sm text-primary">{title}</summary><div role="region" aria-label={title+", 작은 화면에서는 가로로 스크롤"} tabIndex={0} className="overflow-x-auto"><table className="w-full min-w-[460px] text-right text-sm"><caption className="pb-3 text-left">{title} · 고정 연구 빈티지</caption><thead><tr>{headers.map(h=><th key={h} scope="col" className="border-b border-border py-3 pr-3">{h}</th>)}</tr></thead><tbody>{rows.map(([first,...cells])=><tr key={first}><th scope="row" className="border-b border-border py-2 pr-3 font-normal">{first}</th>{cells.map((v,i)=><td key={i} className="border-b border-border py-2 pr-3 font-mono">{v}</td>)}</tr>)}</tbody></table></div></details>;
+}
+
+function CushingBusyCase() {
+  const activity = cushingBoard.lanes.activity_forward;
+  const context = cushingBoard.lanes.physical_context;
+  const restaurants = activity.find((row) => row.id === "091-S");
+  return (
+    <article className="min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
+      <div className="flex flex-wrap items-center gap-3 text-xs">
+        <span className="status-stamp">091 보드 · 합성 점수 없음</span>
+        <span className="card-verdict">{cushingBoard.verdict}</span>
+      </div>
+      <h3 className="mt-5 text-xl font-medium sm:text-2xl">{cushingBoard.question}</h3>
+      <p className="mt-4 text-sm leading-7 text-muted-foreground">{cushingBoard.verdict_note}</p>
+      <p className="mt-3 text-sm leading-7">점수는 지금 안 만든다. 091-S 식당 상대라벨이 90일·예정 슬롯 80%를 채우고, 그와 독립된 쿠싱 운영 시계열(고정 도로 트럭 또는 공항 월보)이 측정타당성을 통과한 뒤에만 최대 2–3개를 미리 적은 가중치로 묶는다. mock 0–100, 전국 CFSP, WTI는 분자에 넣지 않는다.</p>
+      <h4 className="mt-6 text-sm font-medium">식당가 · 091-S</h4>
+      <p className="mt-2 text-sm">{(restaurants?.venues ?? []).join(" · ")}</p>
+      <p className="mt-2 text-sm text-muted-foreground">{restaurants?.last_observation}</p>
+      <ul className="mt-5 space-y-2 text-sm">
+        {activity.map((row) => (
+          <li key={row.id}><strong>{row.id}</strong> {row.name} · {row.last_observation ?? "날짜 행 없음"}</li>
+        ))}
+      </ul>
+      <h4 className="mt-6 text-sm font-medium">재고 문맥 — 바쁨 아님</h4>
+      <ul className="mt-2 space-y-2 text-sm">
+        {context.map((row) => (
+          <li key={row.id}><strong>{row.id}</strong> {row.name} · {row.last_observation}</li>
+        ))}
+      </ul>
+      <footer className="mt-5 flex flex-wrap gap-5 border-t border-border pt-4 text-sm">
+        <a className="source-link" href="/observations/cushing-busy">전체 보드 →</a>
+        <a className="source-link" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/programs/cushing-busy/PROGRAM.md">프로그램 원문</a>
+      </footer>
+    </article>
+  );
 }
