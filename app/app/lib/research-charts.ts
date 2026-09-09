@@ -5,7 +5,7 @@ export interface JejuPoint { date: string; lngMwh: string; oilMwh: string; share
 /** 월 합계와 서로 다른 정의의 전년차. 첫해 자체 차분은 결측이다. */
 export interface DegreePoint { month: string; hdd:number; cdd:number; hddYoy:number|null; cddYoy:number|null; providerHDDYoy:number|null; providerCDDYoy:number|null }
 /** 접수 카드에서 해당 연구 사례로 이동하는 고정 연결. */
-export const SAMPLE_LINKS: Record<string, string> = { "ALT-20260908-16":"/research?sample=visibility#research-sample", "ALT-20260907-26":"/research?sample=tankers#research-sample", "ALT-20260907-02":"/research?sample=empties#research-sample", "ALT-20260907-36": "/research?sample=watermelon#research-sample", "ALT-20260908-20": "/research?sample=jeju#research-sample", "ALT-20260907-45":"/research?sample=degree-days#research-sample" };
+export const SAMPLE_LINKS: Record<string, string> = { "ALT-20260908-16":"/?sample=visibility#research-sample", "ALT-20260907-26":"/?sample=tankers#research-sample", "ALT-20260907-02":"/?sample=empties#research-sample", "ALT-20260907-36": "/?sample=watermelon#research-sample", "ALT-20260908-20": "/?sample=jeju#research-sample", "ALT-20260907-45":"/?sample=degree-days#research-sample" };
 
 /** @param args 현재·다음 URL과 라우터 기본 판단. @returns 사례 선택만 바뀌면 시장 재조회 없이 전환하며 수동·주기 갱신은 유지한다. */
 export function sampleShouldRevalidate({currentUrl,nextUrl,defaultShouldRevalidate,formMethod}:{currentUrl:URL;nextUrl:URL;defaultShouldRevalidate:boolean;formMethod?:string}): boolean {

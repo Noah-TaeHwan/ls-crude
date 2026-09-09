@@ -1,0 +1,32 @@
+[
+  {
+    "width": 320,
+    "overflow": false,
+    "legacyOpen": false,
+    "methodOpen": false,
+    "charts": 0
+  },
+  {
+    "width": 390,
+    "overflow": false,
+    "legacyOpen": false,
+    "methodOpen": false,
+    "charts": 0
+  },
+  {
+    "width": 1440,
+    "overflow": false,
+    "legacyOpen": false,
+    "methodOpen": false,
+    "charts": 0
+  },
+  {
+    "deepLinkOpen": true,
+    "query": "018",
+    "card": true
+  },
+  {
+    "redirect": "http://localhost:5173/?sample=empties#research-sample",
+    "empties": true
+  }
+]

@@ -132,7 +132,7 @@ test("serves the public evidence brief routes from the repository root", async (
   assert.ok(marketSnapshot.freshnessPolicy.maxBarAgeDays > 0);
   const port = await findFreePort();
   const output = [];
-  const child = spawn(process.execPath, [serveEntrypoint, serverEntrypoint], {
+  const child = spawn(process.execPath, ["--import", path.join(appRoot,"tests/fixtures/ssr-yahoo.mjs"), serveEntrypoint, serverEntrypoint], {
     cwd: repositoryRoot,
     env: { NODE_ENV: "production", HOST: "127.0.0.1", PORT: String(port) },
     stdio: ["ignore", "pipe", "pipe"],
@@ -187,6 +187,7 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.doesNotMatch(sample, /<img/);
     assert.match(sample, /href="\/research\/watermelon-20260908.png"/);
     assert.match(body, /id="wti-price-axis"/);
+    assert.match(body,/92\.00/,"SSR test price must come from the explicit fixture");
     assert.match(body, /data-price-tick=/);
 
     const tankers = await fetch(`${baseUrl}/observations/tankers`);
@@ -206,8 +207,11 @@ test("serves the public evidence brief routes from the repository root", async (
     const researchBody = await research.text();
     const researchText = researchBody.split("<script")[0].replace(/<[^>]*>/g, "");
     assert.match(researchBody, /id="research-sample"/);
-    assert.match(researchBody, /<svg id="watermelon-research-plot"/);
-    assert.match(researchBody, /href="\/research\/watermelon-20260908.png"/);
+    assert.doesNotMatch(researchBody, /id="(?:watermelon-research-plot|jeju-generation-plot|degree-days-level-plot|empties-plot|visibility-observation|tanker-observation|wti-daily-chart)"/);
+    assert.match(researchBody, /href="\/#research-sample"/);
+    assert.match(researchBody,/작업 상태로 살펴보기/);
+    assert.match(researchBody,/원본 확보/);
+    assert.match(researchBody,/차단·실패/);
     for (const route of ["/", "/research"]) {
       const jejuResponse = await fetch(`${baseUrl}${route}?sample=jeju`);
       const jejuBody = await jejuResponse.text();
@@ -235,7 +239,7 @@ test("serves the public evidence brief routes from the repository root", async (
     }
     const legacyEmpties=await fetch(`${baseUrl}/observations/empties`,{redirect:"manual"});
     assert.equal(legacyEmpties.status,308);
-    assert.equal(legacyEmpties.headers.get("location"),"/research?sample=empties#research-sample");
+    assert.equal(legacyEmpties.headers.get("location"),"/?sample=empties#research-sample");
     for (const route of ["/", "/research"]) for(const [kind,id,unit] of [["visibility","visibility-observation","SM"],["tankers","tanker-observation","75 GT"]]) {
       const response=await fetch(`${baseUrl}${route}?sample=${kind}`);
       const html=await response.text();assert.equal(response.status,200);
@@ -245,16 +249,22 @@ test("serves the public evidence brief routes from the repository root", async (
       assert.doesNotMatch(html,/id="watermelon-research-plot"|id="empties-plot"/);
     }
     const unknownSample = await fetch(`${baseUrl}/research?sample=unknown`);
-    assert.match(await unknownSample.text(), /id="watermelon-research-plot"/);
+    assert.doesNotMatch(await unknownSample.text(), /id="watermelon-research-plot"/);
+    for(const kind of ["watermelon","jeju","degree-days","empties","visibility","tankers"]) {
+      const redirect=await fetch(`${baseUrl}/research?sample=${kind}`,{redirect:"manual"});
+      assert.equal(redirect.status,308);assert.equal(redirect.headers.get("location"),`/?sample=${kind}#research-sample`);
+    }
     assert.match(researchText, /개별 관측/);
     const inventory = parseResearchLedger(await readFile(path.join(repositoryRoot, "research/factors/README.md"), "utf8"));
     assert.ok(researchText.includes(`전체 ${inventory.records.length}개`));
-    assert.match(researchText, /기준 통과0개/);
+    assert.ok(researchText.includes(`기준 통과 ${inventory.passCount}개`));
     assert.match(researchText, /검정 요약과 근거/);
     assert.match(researchBody, /001-pentagon-ubereats\/README.md/);
     assert.doesNotMatch(researchBody, /<details[^>]* open/, "details start collapsed");
     const linked = await fetch(`${baseUrl}/research?candidate=018`);
-    assert.match(await linked.text(), /018-refinery-thermal-flare\/README.md/);
+    const linkedBody=await linked.text();
+    assert.match(linkedBody, /018-refinery-thermal-flare\/README.md/);
+    assert.match(linkedBody, /<details id="ledger" open/);
 
     const legacyGet = await fetch(`${baseUrl}/backtest`, { redirect: "manual" });
     assert.equal(legacyGet.status, 308);
