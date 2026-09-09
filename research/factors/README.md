@@ -141,7 +141,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 092 | [Archived pointer — CALMF moved to 091-LM](092-cushing-last-mile-logistics-feasibility/README.md) | — | — | 독립 팩터가 아님; CFAM 하위 관측트랙 091-LM으로 통합 |
 | 093 | [Iran Egg Stress × Cushing Tightness Gate](093-iran-egg-cushing-tightness-gate/README.md) | -0.022 | — | HOLD — WTI RV21 IS r=-0.022, 결합 9개월도 예상 반대. 계란 원문·공표일·FX가 없어 계란 가설 자체는 미검정 |
 | 094 | [Saharan Hurricane Suppression Index (SHSI)](094-saharan-hurricane-suppression-index/README.md) | — | — | PARK — Dust→Hurricane→Gulf 사슬 카드. Stage 1 전 WTI 직행 금지 |
-| 095 | [Oil–Helix Dislocation (OHD)](095-oil-helix-dislocation/README.md) | 0.174 / 0.305 | lead ≈ 0 | PARK — 동시상관만. HLX≠HOS 접합 금지. 합병 2026-09-01 |
+| 095 | [Oil–Helix Dislocation (OHD)](095-oil-helix-dislocation/README.md) | 0.174 / 0.305 | lead ≈ 0 | PARK — 리드 실패. OHD 캐치업 k=20 HLX 91.5% vs OIH 92.3%. Helix-specific NO |
 | 095 | [Energy Executive Public Visibility (EEPV)](095-energy-executive-public-visibility/README.md) | — | — | PARK — IR·콜·청문만. SNS·얼굴 금지. 동시 마커 후보 |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
