@@ -1,6 +1,8 @@
 import { ResearchSample } from "~/components/research-sample";
 export { sampleShouldRevalidate as shouldRevalidate } from "~/lib/research-charts";
 import { useEffect, useState } from "react";
+import { EmptiesObservation } from "~/components/empties-observation";
+import { readEmptiesView } from "~/lib/empties.server";
 import { TankerObservation } from "~/components/tanker-observation";
 import { readTankerArrivals } from "~/lib/tanker-arrivals.server";
 import { VisibilityObservation } from "~/components/visibility-observation";
@@ -39,7 +41,7 @@ export function meta({}: Route.MetaArgs) {
 /** @returns 실제 시장 관측과 현재 연구 정본. */
 export async function loader({}: Route.LoaderArgs) {
   const [daily, visibility, tankers] = await Promise.all([readWtiDaily(), readVisibility(), readTankerArrivals()]);
-  return { daily, visibility, tankers, checkedAt: new Date().toISOString(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
+  return { daily, visibility, tankers, empties: readEmptiesView(), checkedAt: new Date().toISOString(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
 }
 
 /** @returns 공개 화면의 읽기 전용 응답. */
@@ -52,7 +54,7 @@ export function action({}: Route.ActionArgs) {
  * @param props 라우트 데이터.
  * @returns 공개 연구 데스크.
  */
-export default function Home({ loaderData: { market, ledger, intake, daily, visibility, tankers, checkedAt } }: Route.ComponentProps) {
+export default function Home({ loaderData: { market, ledger, intake, daily, visibility, tankers, empties, checkedAt } }: Route.ComponentProps) {
   const revalidator = useRevalidator();
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -93,6 +95,7 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
         <section id="observations" className="py-10 sm:py-12" aria-labelledby="observations-title">
           <div className="section-heading"><div><p className="section-kicker">02 / FIELD NOTES</p><h2 id="observations-title">원유 시장 주변의 관측</h2></div><p>무엇을 측정하는지, 얼마나 자주 갱신되는지부터 살펴봅니다.</p></div>
           <div className="grid gap-6 lg:grid-cols-2"><VisibilityObservation view={visibility} checkedAt={checkedAt} compact /><TankerObservation view={tankers} checkedAt={checkedAt} /></div>
+          <div className="mt-6"><EmptiesObservation view={empties} /></div>
         </section>
         <ResearchSample records={{ watermelon: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20"), "degree-days": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-45") }} />
         <ResearchIntake {...intake} preview />
