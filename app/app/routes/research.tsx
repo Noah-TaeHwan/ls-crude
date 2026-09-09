@@ -1,11 +1,8 @@
-import { readVisibility } from "~/lib/visibility.server";
-import { readTankerArrivals } from "~/lib/tanker-arrivals.server";
-import { ResearchSample } from "~/components/research-sample";
-export { sampleShouldRevalidate as shouldRevalidate } from "~/lib/research-charts";
+import { SAMPLE_LINKS } from "~/lib/research-charts";
 import { useState, useEffect } from "react";
 import { ResearchIntake } from "~/components/research-intake";
 import { readResearchIntake } from "~/lib/research-intake.server";
-import { data, Link, useRevalidator } from "react-router";
+import { data, Link, redirect, useLocation } from "react-router";
 import { ArrowRight, ArrowUpRight, Search } from "lucide-react";
 
 import type { Route } from "./+types/research";
@@ -30,7 +27,7 @@ const METHOD_STEPS = [
 
 /** @returns 연구 장부 검색 설명. */
 export function meta({}: Route.MetaArgs) {
-  return [{ title: "LS CRUDE — 후보 장부와 검증 과정" }, { name: "description", content: "공개 대안 데이터 연구 인벤토리. 보류와 기각의 이유, 검정 기록과 원문을 탐색합니다." }];
+  return [{ title: "LS CRUDE — 가설 검토와 다음 행동" }, { name: "description", content: "공개 대안 데이터 연구 인벤토리. 보류와 기각의 이유, 검정 기록과 원문을 탐색합니다." }];
 }
 
 /**
@@ -38,9 +35,12 @@ export function meta({}: Route.MetaArgs) {
  * @param args 현재 URL.
  * @returns 연구 기록과 최초 검색어.
  */
-export async function loader({ request }: Route.LoaderArgs) {
-  const [visibility,tankers] = await Promise.all([readVisibility(),readTankerArrivals()]);
-  return { live:{visibility,tankers,checkedAt:new Date().toISOString()}, ...readResearchLedger(), intake: readResearchIntake(), initialQuery: new URL(request.url).searchParams.get("candidate") ?? "" };
+export function loader({ request }: Route.LoaderArgs) {
+  const params=new URL(request.url).searchParams;
+  const sample=params.get("sample");
+  const mainLink=Object.values(SAMPLE_LINKS).find(href=>new URL(href,"https://ls-crude.local").searchParams.get("sample")===sample);
+  if(sample&&mainLink)return redirect(mainLink,308);
+  return { ...readResearchLedger(), intake:readResearchIntake(), initialQuery:params.get("candidate")??"" };
 }
 
 /** @returns 공개 연구 화면의 읽기 전용 응답. */
@@ -54,15 +54,15 @@ export function action({}: Route.ActionArgs) {
  * @returns 연구 기록 화면.
  */
 export default function Research({ loaderData }: Route.ComponentProps) {
-  const revalidator=useRevalidator();
-  useEffect(()=>{
-    const timer=window.setInterval(()=>{if(document.visibilityState==="visible"&&revalidator.state==="idle")void revalidator.revalidate();},5*60000);
-    return ()=>window.clearInterval(timer);
-  },[revalidator]);
+  const { hash }=useLocation();
+  /** @returns 판정 기준 링크가 실제 내용을 펼쳐 보이게 한다. */
+  function revealMethod(){const section=document.getElementById("method");if(section instanceof HTMLDetailsElement)section.open=true;}
+  useEffect(()=>{if(hash==="#method")revealMethod();},[hash]);
   const [query, setQuery] = useState(loaderData.initialQuery);
   const [filter, setFilter] = useState("전체");
   const [limit, setLimit] = useState(PAGE_SIZE);
   const { records, passCount, error } = loaderData;
+  useEffect(()=>{setQuery(loaderData.initialQuery);setFilter("전체");setLimit(PAGE_SIZE);},[loaderData.initialQuery]);
   const normalized = query.trim().toLocaleLowerCase("ko");
   const filtered = records.filter((record) => {
     const story = RESEARCH_STORIES.find((item) => item.id === record.id);
@@ -78,18 +78,19 @@ export default function Research({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      <DeskHeader source="Yahoo Finance" ticker="CL=F" />
+      <DeskHeader source="GitHub 연구 정본" ticker="LS CRUDE" contextLabel="가설 · 근거 · 다음 행동" />
       <main id="main-content" tabIndex={-1} className="desk-shell">
-        <header className="research-hero">
-          <div><p className="eyebrow">RESEARCH LEDGER / 공개 연구 기록</p><h1 className="hero-title">가설에서 판정까지,<br />연구 기록을 따라갑니다.</h1><p className="hero-copy">무엇을 측정하려 했는지, 어떤 자료를 확보했는지, 어디에서 멈췄는지를 확인하세요. {error ? "현재 판정을 불러오지 못했습니다." : "아직 채택할 신호는 없습니다."}</p><Link className="secondary-link mt-5" to="/">연결 가설과 WTI 관측 보기 <ArrowRight size={16} aria-hidden="true" /></Link></div>
-          <aside className="research-status" aria-label="전체 연구 인벤토리"><p className="status-stamp">탐색 중 · 검증 결과 공개</p><dl><div><dt>기존 연구 인벤토리</dt><dd>{error ? "—" : records.length}<small>개</small></dd></div><div><dt>기준 통과</dt><dd>{passCount ?? "—"}<small>개</small></dd></div></dl><p className="mt-5 text-sm leading-7 text-muted-foreground">미검증·보관·별도 전략을 포함한 인벤토리입니다. 등록 건수는 검정 완료 건수가 아닙니다.</p><a className="source-link mt-4" href={LEDGER_URL} target="_blank" rel="noreferrer">현재 정본 장부 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></aside>
+        <header className="border-b border-border py-10 sm:py-12">
+          <p className="eyebrow">RESEARCH / 가설과 검토 기록</p>
+          <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">어떤 가설을 더 확인할까?</h1>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-muted-foreground">측정하려던 활동, 확보한 근거, 보류한 이유와 다음 행동을 확인합니다. 원본 확보와 검정 완료는 다르며, 후속 연구 유지는 예측력 인증이 아닙니다.</p>
+          <div className="mt-5 flex flex-wrap gap-5 text-sm"><Link id="research-sample" className="source-link" to="/#research-sample">확보한 자료는 메인에서 보기 <ArrowRight size={15} aria-hidden="true" /></Link><a className="source-link" href="#method" onClick={revealMethod}>판정 기준 확인</a></div>
         </header>
 
-        <ResearchSample live={loaderData.live} records={{ watermelon: loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20"), "degree-days": loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-45"), empties: loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-02"), "petroleum-rail": loaderData.intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-43") }} />
         <ResearchIntake {...loaderData.intake} />
 
-        <section id="ledger" className="py-10 sm:py-12" aria-labelledby="ledger-title">
-          <div className="section-heading"><div><p className="section-kicker">01 / EXPLORE THE EVIDENCE</p><h2 id="ledger-title">후보를 열면, 멈춘 이유가 보입니다.</h2></div><a className="source-link" href="#method">판정 기준 확인 <ArrowRight size={14} aria-hidden="true" /></a></div>
+        <details id="ledger" open={!!loaderData.initialQuery} className="border-t border-border py-6"><summary className="cursor-pointer py-4 text-lg font-medium">과거 검정 기록 <span className="font-mono text-sm text-muted-foreground">{error ? "확인 필요" : `${records.length}개 기록 · 기준 통과 ${passCount ?? "—"}개`}</span></summary><p className="mb-5 text-sm leading-7 text-muted-foreground">기존 factors 장부의 검정·보관 기록입니다. 위 ALT 가설 장부와 겹치므로 건수를 합산하지 않습니다.</p>
+          <div className="section-heading"><div><p className="section-kicker">01 / EXPLORE THE EVIDENCE</p><h2 id="ledger-title">후보를 열면, 멈춘 이유가 보입니다.</h2></div><a className="source-link" href="#method" onClick={revealMethod}>판정 기준 확인 <ArrowRight size={14} aria-hidden="true" /></a></div>
           {error ? <div className="empty-state mt-6" role="status"><h3>연구 장부 확인이 필요합니다.</h3><p>{error}</p><a className="action-link mt-4" href={LEDGER_URL}>정본 장부 열기</a></div> : <>
             <div className="ledger-toolbar mt-6">
               <div><label htmlFor="ledger-search" className="mb-2 block text-sm">전체 {records.length}개 · 이름·관측 대상·판정 이유 검색</label><div className="relative"><Search size={17} aria-hidden="true" className="pointer-events-none absolute top-4 left-3 text-muted-foreground" /><input id="ledger-search" type="search" value={query} onChange={(event) => { setQuery(event.target.value); setLimit(PAGE_SIZE); }} placeholder="예: 피자, 정유, 공개시점, 018" className="min-h-12 w-full rounded-sm border border-border bg-background py-3 pr-3 pl-10 text-sm placeholder:text-muted-foreground" /></div></div>
@@ -114,13 +115,12 @@ export default function Research({ loaderData }: Route.ComponentProps) {
             })}</div> : <div className="empty-state mt-5"><Search size={24} aria-hidden="true" /><h3>조건에 맞는 연구 기록이 없습니다.</h3><p>전체 {records.length}개를 검색했습니다. 검색어를 바꾸거나 판정 필터를 초기화하세요.</p><button className="action-link mt-4" type="button" onClick={reset}>검색·필터 초기화 <ArrowRight size={16} aria-hidden="true" /></button></div>}
             {visible.length < filtered.length && <button className="secondary-link mt-6 w-full justify-center border border-border" type="button" onClick={() => setLimit((current) => current + PAGE_SIZE)}>연구 기록 더 보기 ({filtered.length - visible.length}개 남음) <ArrowRight size={16} aria-hidden="true" /></button>}
           </>}
-        </section>
+        </details>
 
-        <section id="history" className="border-t border-border py-10 sm:py-12" aria-labelledby="history-title"><div className="section-heading"><div><p className="section-kicker">02 / DECISION TRAIL</p><h2 id="history-title">결론까지 따라갈 수 있는 기록</h2></div></div><div className="method-grid mt-6"><div className="method-step"><span>01 / 질문과 시행착오</span><h3>자료를 찾은 과정</h3><p>가설, 수집 실패와 다음 확인할 조건을 한 장씩 남깁니다.</p><a className="source-link mt-3" href="https://github.com/Noah-TaeHwan/ls-crude/tree/main/research/gathering/notes" target="_blank" rel="noreferrer">조사 노트 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></div><div className="method-step"><span>02 / 데이터의 경계</span><h3>출처와 공개 시점</h3><p>무엇을 수집했고, 언제 이용 가능했는지와 사용 조건을 확인합니다.</p><a className="source-link mt-3" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/gathering/sources/REGISTRY.md" target="_blank" rel="noreferrer">출처 등록부 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></div><div className="method-step"><span>03 / 유지한 판정</span><h3>검정과 반증</h3><p>관계가 사라지거나 반전된 결과도 같은 기준으로 보존합니다.</p><a className="source-link mt-3" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/reports/2026-09-03-factor-validation-share.md" target="_blank" rel="noreferrer">상세 검증 로그 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></div></div></section>
+        <details id="history" className="border-t border-border py-6"><summary className="cursor-pointer py-4 text-lg font-medium">조사 노트·출처·검증 원문</summary><div aria-labelledby="history-title"><div className="section-heading"><div><p className="section-kicker">02 / DECISION TRAIL</p><h2 id="history-title">결론까지 따라갈 수 있는 기록</h2></div></div><div className="method-grid mt-6"><div className="method-step"><span>01 / 질문과 시행착오</span><h3>자료를 찾은 과정</h3><p>가설, 수집 실패와 다음 확인할 조건을 한 장씩 남깁니다.</p><a className="source-link mt-3" href="https://github.com/Noah-TaeHwan/ls-crude/tree/main/research/gathering/notes" target="_blank" rel="noreferrer">조사 노트 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></div><div className="method-step"><span>02 / 데이터의 경계</span><h3>출처와 공개 시점</h3><p>무엇을 수집했고, 언제 이용 가능했는지와 사용 조건을 확인합니다.</p><a className="source-link mt-3" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/gathering/sources/REGISTRY.md" target="_blank" rel="noreferrer">출처 등록부 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></div><div className="method-step"><span>03 / 유지한 판정</span><h3>검정과 반증</h3><p>관계가 사라지거나 반전된 결과도 같은 기준으로 보존합니다.</p><a className="source-link mt-3" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/reports/2026-09-03-factor-validation-share.md" target="_blank" rel="noreferrer">상세 검증 로그 <ArrowUpRight size={14} aria-hidden="true" /><span className="sr-only"> (새 탭)</span></a></div></div></div></details>
 
-        <section id="method" className="border-t border-border py-10 sm:py-12" aria-labelledby="method-title"><div className="section-heading"><div><p className="section-kicker">03 / METHOD & LIMITS</p><h2 id="method-title">관계가 남는지, 순서대로 묻습니다.</h2></div></div><ol className="method-grid mt-6" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 180px), 1fr))" }}>{METHOD_STEPS.map(([title, body], index) => <li key={title} className="method-step"><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></li>)}</ol><div className="evidence-note mt-6"><h3 className="text-base font-medium">이미 본 구간은 새로운 검증이 아닙니다.</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">2024–2026 구간은 이미 확인에 사용했습니다. 새 후보는 규칙을 동결한 뒤 새로 쌓이는 미래 자료에서 확인합니다. 높은 단일 구간 상관이나 등록 후보 수를 성과로 세지 않습니다.</p></div><details className="mt-5 border-y border-border py-2"><summary className="min-h-11 cursor-pointer py-3 text-sm">가격·뉴스·시간차 비교의 경계</summary><div className="space-y-2 pb-4 text-sm leading-7 text-muted-foreground"><p>가격은 Yahoo Finance CL=F 일봉, 뉴스 정본은 Investing.com CSV입니다. 관측 시각과 실제 공개 시각을 구분하고, 그때 알 수 없었던 정보를 과거 자료에 섞지 않습니다.</p><p>대부분의 후보는 공개 이후 다음 5거래일 WTI 실현변동성을 묻습니다. 월간·연간 입력과 정제품·개별 주식 후보의 다른 타깃은 각 원문에 분리합니다.</p><p>겹침·시간차 비교는 공개 시각에 맞춘 실제 후보 시계열이 확보된 뒤에 가능합니다. 현재 화면의 WTI 관측만으로 후보의 관계를 확인할 수는 없습니다.</p></div></details></section>
+        <details id="method" className="border-t border-border py-6"><summary className="cursor-pointer py-4 text-lg font-medium">판정 방법과 검증의 한계</summary><div aria-labelledby="method-title"><div className="section-heading"><div><p className="section-kicker">03 / METHOD & LIMITS</p><h2 id="method-title">관계가 남는지, 순서대로 묻습니다.</h2></div></div><ol className="method-grid mt-6" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 180px), 1fr))" }}>{METHOD_STEPS.map(([title, body], index) => <li key={title} className="method-step"><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></li>)}</ol><div className="evidence-note mt-6"><h3 className="text-base font-medium">이미 본 구간은 새로운 검증이 아닙니다.</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">2024–2026 구간은 이미 확인에 사용했습니다. 새 후보는 규칙을 동결한 뒤 새로 쌓이는 미래 자료에서 확인합니다. 높은 단일 구간 상관이나 등록 후보 수를 성과로 세지 않습니다.</p></div><details className="mt-5 border-y border-border py-2"><summary className="min-h-11 cursor-pointer py-3 text-sm">가격·뉴스·시간차 비교의 경계</summary><div className="space-y-2 pb-4 text-sm leading-7 text-muted-foreground"><p>가격은 Yahoo Finance CL=F 일봉, 뉴스 정본은 Investing.com CSV입니다. 관측 시각과 실제 공개 시각을 구분하고, 그때 알 수 없었던 정보를 과거 자료에 섞지 않습니다.</p><p>대부분의 후보는 공개 이후 다음 5거래일 WTI 실현변동성을 묻습니다. 월간·연간 입력과 정제품·개별 주식 후보의 다른 타깃은 각 원문에 분리합니다.</p><p>겹침·시간차 비교는 공개 시각에 맞춘 실제 후보 시계열이 확보된 뒤에 가능합니다. 메인의 WTI 관측만으로 후보의 관계를 확인할 수는 없습니다.</p></div></details></div></details>
 
-        <section id="team" className="border-t border-border py-10 sm:py-12" aria-labelledby="team-title"><div className="section-heading"><div><p className="section-kicker">04 / TWO RESEARCHERS, ONE RECORD</p><h2 id="team-title">두 사람이 함께 남기는 증거</h2></div><p className="text-sm text-muted-foreground">이스트캠프 AI 퀀트 4기 미니 프로젝트</p></div><div className="team-grid mt-6"><article><p className="eyebrow">DATA / FEATURES / DASHBOARD</p><h3 className="mt-3 text-xl font-medium">오태환 <span className="font-mono text-sm text-muted-foreground">Noah</span></h3><p className="mt-3 text-sm leading-7 text-muted-foreground">공개 자료 수집, 피처와 데이터 파이프라인, 연구 데스크를 연결합니다.</p></article><article><p className="eyebrow">MODELS / VALIDATION / BACKTEST</p><h3 className="mt-3 text-xl font-medium">손성찬 <span className="font-mono text-sm text-muted-foreground">Liam</span></h3><p className="mt-3 text-sm leading-7 text-muted-foreground">모델 실험과 검정, 반증 기록을 통해 가설을 다시 확인합니다.</p></article></div></section>
       </main>
       <DeskFooter />
     </>

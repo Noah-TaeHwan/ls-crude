@@ -17,11 +17,13 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 
 ## Current research status — 2026-09-09
 
+**리서치 화면:** 메인 관측 그래프와 외부 자료 조회를 제거하고 가설·근거·판정·다음 행동 탐색에 집중합니다. ALT 작업 상태/판정 필터, 별도 접힌 과거 검정 장부, 출처·판정 방법을 제공합니다. [목적·구성·검수 기준](docs/research-review-desk-plan.md).
+
 **LA항 빈 컨테이너 감독 교정:** 138개월의 고정 자료를 기존 과거 연구 사례의 네 번째 버튼으로 연결했습니다. 상단 독립 관측 영역은 제거하고, 시정·탱커까지 총6개 버튼의 자료 탐색으로 묶습니다. 갱신 관측과 고정 표본의 상태·주기는 구분하며 실제 계산 분모와 제공기관 합계의 차이를 표시합니다. PR #91에서 실패한 연구 장부 CI는 정본 링크를 바로잡아 복구했습니다. 수집기·원본 보존 검증과 최종 전달은 [감독 기록](docs/reviews/2026-09-09-trout-supervision.md)을 따릅니다. PARK·WTI 관계 NOT_RUN 유지.
 
 **수박 원보고서 대사 후속(2026-09-09):** USDA 정책 첫 요청 403으로 후속 수집을 중단했습니다. 신규 관측은 없으며 기존 과거 표본을 유지합니다. 수집 영수증 사전 기록과 파서 세 가지 오류 수정을 검증했습니다. [실행·차단·전달 상태](research/gathering/notes/2026-09-09-watermelon-source-reconciliation.md). 전체 수집·대사 목표는 PARTIAL입니다.
 
-**성찬 43 석유 철도(2026-09-09):** STB EP 724 주간 Petroleum Products originated 493주를 수집·대사했고, 미국 4사 원단위 그림을 과거 연구 사례로 연결했습니다. 표시 정본은 STB이며 AAR 숫자는 올리지 않습니다. 차종은 원유 배럴이 아니고, 주별 최초 공표일은 미복원입니다. WTI 검정 NOT_RUN, KEEP은 효과 인증이 아닙니다. 로컬 프로덕션 빌드에서 화면을 검수했고, 운영 같은 경로는 이 브랜치 병합·배포 뒤에 확인합니다. [수집 노트](research/gathering/notes/2026-09-09-stb-petroleum-rail-access.md) · [관측](research/indexes/ALT-20260907-43/20260909T003038Z/README.md) · [검토](docs/reviews/2026-09-09-stb-petroleum-rail-closeout.md) · [웹 경로](https://ls-crude.vercel.app/research?sample=petroleum-rail#research-sample).
+**성찬 43 석유 철도(2026-09-09):** STB EP 724 주간 Petroleum Products originated 493주를 수집·대사했고, 미국 4사 원단위 그림을 과거 연구 사례로 연결했습니다. 표시 정본은 STB이며 AAR 숫자는 올리지 않습니다. 차종은 원유 배럴이 아니고, 주별 최초 공표일은 미복원입니다. WTI 검정 NOT_RUN, KEEP은 효과 인증이 아닙니다. 로컬 프로덕션 빌드에서 화면을 검수했고, 운영 같은 경로는 이 브랜치 병합·배포 뒤에 확인합니다. [수집 노트](research/gathering/notes/2026-09-09-stb-petroleum-rail-access.md) · [관측](research/indexes/ALT-20260907-43/20260909T003038Z/README.md) · [검토](docs/reviews/2026-09-09-stb-petroleum-rail-closeout.md) · [웹 경로](https://ls-crude.vercel.app/?sample=petroleum-rail#research-sample).
 
 **CPC 도일 감독 검토:** 난방/냉방·가중 구간 파서를 강화하고, 108개월의 월합계와 자체/제공 전년차를 구분하는 과거 연구 사례를 추가했습니다. 192개 비교값 중 20개(14개월)가 다르며 원인은 미확인입니다(repo empirical only). [검토·전달 상태](docs/reviews/2026-09-08-degree-days-closeout.md) · [표시 데이터 v2](research/indexes/web-observations/v2/README.md) · [다음 AI에게 줄 전달 프롬프트](docs/ai-research-delivery-prompt.md). WTI 검정은 NOT_RUN, 최종 우승 지수 없음.
 
@@ -31,7 +33,7 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 
 **성찬080 후속:** 잘못된 원안 링크를 교정하고 [제주 LNG·유류 336일 관측](research/indexes/ALT-20260908-20/20260908T073402Z/README.md)을 확보했습니다. 16,128시간 값·시간/일/월 합계 대사와 원단위·조건부비중 그림을 기록했습니다. 2024-03-31까지의 과거 보조표본이며 전국 지수·원유량·WTI 검증은 아닙니다. [탐색 과정·다음 행동](research/gathering/notes/2026-09-08-kpx-fuel-access.md).
 
-웹 시각화 구현: 자료 탐색에 수박·제주·도일·LA항·석유 철도 고정 표본과 시정·탱커 갱신 관측을 연결했습니다. 석유 철도는 이 브랜치에서 검수했고 운영 반영은 병합·배포 후 같은 URL로 확인합니다. [홈 연구 샘플](https://ls-crude.vercel.app/#research-sample) · [제주 사례](https://ls-crude.vercel.app/research?sample=jeju#research-sample) · [석유 철도](https://ls-crude.vercel.app/research?sample=petroleum-rail#research-sample). PR #80의 Vercel 한도 오류는 당시 기록이며, PR #82의 첫 프리뷰는 정상 배포됐습니다. 운영 반영 여부는 해당 PR과 배포 후 검증으로 구분합니다. 관측 자료를 먼저 시각화하고, 정의·공개시점이 확인된 적격 자료만 WTI와 비교합니다. [현재 방향 점검](docs/research-direction-2026-09-08.md#11-실제-수집과-웹-표시-후-방향-점검--2026-09-08-후속).
+웹 시각화 구현: 자료 탐색에 수박·제주·도일·LA항·석유 철도 고정 표본과 시정·탱커 갱신 관측을 연결했습니다. 석유 철도는 이 브랜치에서 검수했고 운영 반영은 병합·배포 후 같은 URL로 확인합니다. [홈 연구 샘플](https://ls-crude.vercel.app/#research-sample) · [제주 사례](https://ls-crude.vercel.app/?sample=jeju#research-sample) · [석유 철도](https://ls-crude.vercel.app/?sample=petroleum-rail#research-sample). PR #80의 Vercel 한도 오류는 당시 기록이며, PR #82의 첫 프리뷰는 정상 배포됐습니다. 운영 반영 여부는 해당 PR과 배포 후 검증으로 구분합니다. 관측 자료를 먼저 시각화하고, 정의·공개시점이 확인된 적격 자료만 WTI와 비교합니다. [현재 방향 점검](docs/research-direction-2026-09-08.md#11-실제-수집과-웹-표시-후-방향-점검--2026-09-08-후속).
 
 **성찬 목록 후속 1개:** [085 수박·냉장트럭 → ALT36](research/indexes/ALT-20260907-36/20260908T065043Z/README.md)의 공개 주간 XLSX를 실제 수집했습니다. 수박 단독 518행·409개 날짜의 관측 그림과 분모 대사를 확보해 E1→E2로 진전했습니다. 최신 수박 날짜는 2025-10-14이며 실시간 자료가 아닙니다. 소수값 정의·공개시점 미확인으로 PARK, WTI·HO 검정 NOT_RUN을 유지합니다. [이번 선택 이유·검토·다음 행동](research/gathering/notes/2026-09-08-watermelon-weekly-access.md).
 

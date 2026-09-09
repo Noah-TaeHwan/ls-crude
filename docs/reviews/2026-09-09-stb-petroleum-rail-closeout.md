@@ -62,3 +62,7 @@ PR #92가 상단 단독 관측 카드를 없애고 홈을 소개 → WTI 일봉 
 - Petroleum Products 차종 ≠ 원유 배럴. 미국 4사 ≠ 산업 합계. AAR RTI 표시 금지
 - KEEP은 효과 인증이 아님. 사람 배정은 제안
 - Git 병합·운영 SHA·운영 화면은 이 절 작성 시점에 미실행. 아래 전달 영수증이 채워지면 갱신한다.
+
+## PR #95·#96 재병합
+
+PR #95는 고정·갱신 자료를 홈 `/?sample=`로 모으고 `/research?sample=`을 308로 보낸다. PR #96은 EIA 쿠싱 주간 재고 수집·그림이며 자료 탐색 버튼을 추가하지 않는다. 석유 철도는 홈 고정 사례로 유지하고 SAMPLE_LINKS만 `/?sample=petroleum-rail#research-sample`로 맞춘다. `/Users/noah/orca/ls-crude`는 `fix/wti-session-tail`에 미커밋 WTI 파일이 있어 이 작업이 그 워크트리를 바꾸거나 강제 동기화하지 않는다.
