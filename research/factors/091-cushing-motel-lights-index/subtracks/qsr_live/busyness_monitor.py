@@ -26,12 +26,12 @@ OUTPUT = (
 )
 
 FROZEN_VENUES = [
-    {"name": "Wendy's", "maps_url": "https://maps.app.goo.gl/g8bMaDQDnoMc9roT8"},
-    {"name": "Taco Bell", "maps_url": "https://maps.app.goo.gl/yTqHLrTgNEpwXSar9"},
-    {"name": "Sonic Drive-In", "maps_url": "https://maps.app.goo.gl/XuwHFkr1iwhEnCcT7"},
-    {"name": "Golden Chick", "maps_url": "https://maps.app.goo.gl/eNWcXPHvQcWH9iB1A"},
-    {"name": "Pizza Hut", "maps_url": "https://maps.app.goo.gl/2pi7HqucdZ1J1m527"},
-    {"name": "Boomarang Diner", "maps_url": "https://maps.app.goo.gl/ajaYq841CJrCgL898"},
+    {"name": "Wendy's", "address": "1415 E Main St, Cushing, OK 74023", "maps_url": "https://www.google.com/maps/search/?api=1&query=Wendy%27s+1415+E+Main+St+Cushing+OK+74023"},
+    {"name": "Taco Bell", "address": "1438 E Main St, Cushing, OK 74023", "maps_url": "https://www.google.com/maps/search/?api=1&query=Taco+Bell+1438+E+Main+St+Cushing+OK+74023"},
+    {"name": "Sonic Drive-In", "address": "705 E Main St, Cushing, OK 74023", "maps_url": "https://www.google.com/maps/search/?api=1&query=Sonic+Drive-In+705+E+Main+St+Cushing+OK+74023"},
+    {"name": "Golden Chick", "address": "1544 E Main St, Cushing, OK 74023", "maps_url": "https://www.google.com/maps/search/?api=1&query=Golden+Chick+1544+E+Main+St+Cushing+OK+74023"},
+    {"name": "Pizza Hut", "address": "2007 E Main St, Cushing, OK 74023", "maps_url": "https://www.google.com/maps/search/?api=1&query=Pizza+Hut+2007+E+Main+St+Cushing+OK+74023"},
+    {"name": "Boomarang Diner", "address": "929 E Main St, Cushing, OK 74023", "maps_url": "https://www.google.com/maps/search/?api=1&query=Boomarang+Diner+929+E+Main+St+Cushing+OK+74023"},
 ]
 
 OPTIONAL_WATCHLIST = [
