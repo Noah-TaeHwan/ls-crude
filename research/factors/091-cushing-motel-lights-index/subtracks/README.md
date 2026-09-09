@@ -17,6 +17,7 @@ Nothing here is a CFAM composite input, a backtest, or a trading signal yet.
 | [091-LM / CALMF](calmf/README.md) | Can lawful public aggregates show a Cushing/Payne County last-mile activity shift? | No verified local Amazon/Flex geography or permitted, reproducible aggregate posting/block panel exists. Sparse permits are event-ledger context only. | **PARK / E0** |
 | [091-S / QSR live](qsr_live/README.md) | Can the submitted five-minute Maps monitor record frozen-venue busy labels without inventing visits? | Mock 0–100 scores and unused API-key path were rejected. The recorder prompts for visible public labels on the frozen six-venue basket only. | **FORWARD_ONLY / E1** |
 | [091-EIA / CSSM](cssm/README.md) | Can official weekly Cushing stocks be pulled and charted without calling them field activity or pipeline flow? | Hist XLS collected 2026-09-09: 1,169 weeks, latest 2026-08-28 = 22,508 kbbl. API-key path 403. Genscape/Kpler not called. | **LIVE context / E1** |
+| [091-CFSP](cfsp/README.md) | Does national gasoline ÷ wage (+ sentiment) measure Cushing field activity? | EIA XLS + BLS public API + FRED CSV collected. Last complete month 2026-07 CFSP +0.77. Geography is US, not Cushing. Dashboard keys not present. | **CONTEXT / PARK** |
 
 ## What this retry did and did not do
 
