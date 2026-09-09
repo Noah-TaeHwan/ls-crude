@@ -5,11 +5,13 @@ import hashlib
 import io
 import json
 import math
+import os
 import re
 import subprocess
 import sys
 import tempfile
 import urllib.request
+import urllib.error
 import zipfile
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
@@ -20,6 +22,57 @@ ROOT = Path(__file__).resolve().parents[3]
 CID = "ALT-20260907-36"
 URL = "https://www.ams.usda.gov/sites/default/files/media/WeeklyTruckAvailabilitybyOriginandCommodity.xlsx"
 NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+
+
+def collect_requests(raw, requests, opener=urllib.request.urlopen):
+    """첫 요청 전 영수증을 보존하고 실패·중단 시 뒤 요청을 실행하지 않는다."""
+    receipt = {"started_at": datetime.now(timezone.utc).isoformat(), "status": "RUNNING", "requests": []}
+    target = raw / "requests.json"
+    if target.exists():
+        raise FileExistsError("existing receipt; use a new UTC run")
+
+    def save():
+        with tempfile.NamedTemporaryFile(mode="w", dir=raw, delete=False) as stream:
+            json.dump(receipt, stream, indent=2)
+            stream.write("\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(stream.name, target)
+
+    save()
+    for name, url in requests:
+        entry = {"url": url, "parameters": {}, "file": name,
+                 "started_at": datetime.now(timezone.utc).isoformat(), "status": "RUNNING"}
+        receipt["requests"].append(entry)
+        save()
+        try:
+            with opener(urllib.request.Request(url, headers={"User-Agent": "ls-crude-research/1.0"}), timeout=30) as response:
+                entry["http_status"] = response.status
+                if response.status != 200:
+                    raise ValueError("unexpected HTTP status")
+                data = response.read(20_000_001)
+                if not data or len(data) > 20_000_000:
+                    raise ValueError("empty or oversized response")
+                entry.update(content_type=response.headers.get("Content-Type"),
+                             last_modified=response.headers.get("Last-Modified"),
+                             bytes=len(data), sha256=sha(data))
+            with (raw / name).open("xb") as stream:
+                stream.write(data)
+            entry["status"] = "PASS"
+        except BaseException as exc:
+            entry.update(status="INTERRUPTED" if isinstance(exc, (KeyboardInterrupt, SystemExit)) else "FAILED",
+                         error=type(exc).__name__)
+            if getattr(exc, "code", None) is not None:
+                entry["http_status"] = exc.code
+            receipt["status"] = entry["status"]
+            raise
+        finally:
+            entry["completed_at"] = datetime.now(timezone.utc).isoformat()
+            receipt["updated_at"] = entry["completed_at"]
+            save()
+    receipt["status"] = "PASS"
+    save()
+    return receipt
 
 
 def sha(data):
@@ -48,14 +101,22 @@ def parse(data, retrieved_at):
         records = []
         for row in ET.fromstring(z.read("xl/worksheets/sheet1.xml")).findall("m:sheetData/m:row", NS):
             cells = {}
+            row_number = row.get("r")
             for cell in row:
                 assert cell.find("m:f", NS) is None, "formula not accepted"
+                address = re.fullmatch(r"([A-D])([1-9][0-9]*)", cell.attrib["r"])
+                assert address is not None, "invalid cell address"
+                if row_number is None:
+                    row_number = address[2]
+                assert address[2] == row_number, "cell belongs to another row"
                 col = re.sub(r"\d+$", "", cell.attrib["r"])
                 assert col in "ABCD" and len(col) == 1 and col not in cells, "column changed"
                 value = cell.find("m:v", NS)
                 assert value is not None and value.text is not None, "missing cell"
                 kind = cell.get("t", "n")
                 assert kind in ("s", "n"), "cell type changed"
+                if kind == "s":
+                    assert re.fullmatch(r"[0-9]+", value.text) and int(value.text) < len(strings), "invalid shared string index"
                 cells[col] = strings[int(value.text)] if kind == "s" else value.text
             assert set(cells) == set("ABCD"), "missing column"
             records.append([cells[c] for c in "ABCD"])
@@ -69,7 +130,7 @@ def parse(data, retrieved_at):
         assert district.strip() and commodity.strip(), "empty label"
         rating = float(value)
         assert math.isfinite(rating) and 1 <= rating <= 5, "invalid availability"
-        key = (day, district, commodity)
+        key = (day, district.strip(), commodity.strip())
         assert key not in seen, "duplicate date/district/commodity"
         seen.add(key)
         rows.append({"date": day.isoformat(), "district": district, "commodity": commodity, "value": rating})
@@ -154,6 +215,40 @@ def plot(weekly, yearly, end):
 
 
 def self_test():
+    for fail_after, error in [(0, urllib.error.HTTPError(URL, 403, "Forbidden", {}, None)),
+                              (0, urllib.error.HTTPError(URL, 429, "Limited", {}, None)),
+                              (1, KeyboardInterrupt())]:
+        with tempfile.TemporaryDirectory() as folder:
+            raw = Path(folder)
+            calls = []
+
+            class Reply:
+                status = 200
+                headers = {}
+
+                def __enter__(self): return self
+                def __exit__(self, *args): pass
+                def read(self, limit): return b"sample"
+
+            def opener(request, timeout):
+                initial = json.loads((raw/"requests.json").read_text())
+                assert initial["requests"][-1]["status"] == "RUNNING"
+                calls.append(request.full_url)
+                if len(calls) > fail_after:
+                    raise error
+                return Reply()
+
+            try:
+                collect_requests(raw, [(f"{i}.bin", URL) for i in range(3)], opener)
+            except BaseException as exc:
+                assert exc is error
+            else:
+                raise AssertionError("ignored failure")
+            final = json.loads((raw/"requests.json").read_text())
+            assert len(calls) == fail_after+1 == len(final["requests"])
+            assert final["status"] == ("INTERRUPTED" if fail_after else "FAILED")
+            assert len(list(raw.glob("*.bin"))) == fail_after
+    print("PASS: receipt before request; 403/429 first failure; partial success then interruption; no later requests")
     xml = '<worksheet xmlns="'+NS['m']+'"><sheetData><row>'+''.join(f'<c r="{c}1" t="s"><v>{i}</v></c>' for i,c in enumerate('ABCD'))+'</row><row><c r="A2"><v>45664</v></c><c r="B2" t="s"><v>4</v></c><c r="C2" t="s"><v>5</v></c><c r="D2"><v>3.5</v></c></row></sheetData></worksheet>'
     def workbook(sheet):
         stream = io.BytesIO()
@@ -163,10 +258,20 @@ def self_test():
             z.writestr('xl/worksheets/sheet1.xml', sheet)
         return stream.getvalue()
     assert parse(workbook(xml), '2025-02-01')[0] == {"date":"2025-01-07","district":"A","commodity":"WATERMELONS","value":3.5}
-    for broken in [xml.replace('<v>3.5</v>', '<v>NaN</v>'), xml.replace('<v>3.5</v>', '<v>6</v>'), xml.replace('<v>3.5</v>', ''), xml.replace('<v>3.5</v>', '<f>1+2</f><v>3.5</v>')]:
+    for broken in [xml.replace('<v>3.5</v>', '<v>NaN</v>'), xml.replace('<v>3.5</v>', '<v>6</v>'), xml.replace('<v>3.5</v>', ''), xml.replace('<v>3.5</v>', '<f>1+2</f><v>3.5</v>'),
+                   xml.replace('<v>4</v>', '<v>-1</v>'), xml.replace('B2', 'B999'),
+                   xml.replace('45664', '-1'), xml.replace('45664', '99999'),
+                   xml.replace('<c r="D2"><v>3.5</v></c>', '')]:
         try: parse(workbook(broken), '2025-02-01')
         except AssertionError: pass
         else: raise AssertionError('accepted malformed workbook')
+    data_row = xml[xml.index('<row><c r="A2"'):xml.index('</sheetData>')]
+    for invalid in [b'<html>not an XLSX</html>', workbook(xml.replace(data_row, '')),
+                    workbook(xml.replace(data_row, data_row+data_row)),
+                    workbook(xml.replace(xml[xml.index('<row>'):xml.index('</row>')+6], ''))]:
+        try: parse(invalid, '2025-02-01')
+        except (AssertionError, zipfile.BadZipFile): pass
+        else: raise AssertionError('accepted wrong file or missing/duplicate rows')
     rows = [{"date":"2025-01-07","district":"A","commodity":"WATERMELONS.","value":3.5},
             {"date":"2025-01-07","district":"B","commodity":"WATERMELON","value":4.0},
             {"date":"2025-01-21","district":"C","commodity":"LIMES AND WATERMELONS","value":5.0}]
@@ -192,19 +297,9 @@ def run(run_id, collect):
     raw = ROOT/"research/gathering/raw"/CID/run_id
     if collect:
         raw.mkdir(parents=True, exist_ok=False)
-        receipt = {"url": URL, "requested_at": datetime.now(timezone.utc).isoformat()}
-        try:
-            with urllib.request.urlopen(urllib.request.Request(URL, headers={"User-Agent":"ls-crude-research/1.0"}), timeout=30) as response:
-                data = response.read(20_000_001)
-                assert len(data) <= 20_000_000, "oversized response"
-                receipt.update(http_status=response.status, content_type=response.headers.get("Content-Type"), last_modified=response.headers.get("Last-Modified"),
-                               retrieved_at=datetime.now(timezone.utc).isoformat(), bytes=len(data), sha256=sha(data))
-            (raw/"weekly.xlsx").write_bytes(data)
-        except Exception as exc:
-            receipt.update(failed_at=datetime.now(timezone.utc).isoformat(), error=type(exc).__name__)
-            raise
-        finally:
-            (raw/"request.json").write_text(json.dumps(receipt, indent=2)+"\n")
+        receipt = collect_requests(raw, [("weekly.xlsx", URL)])["requests"][0]
+        receipt["retrieved_at"] = receipt["completed_at"]
+        preserve(raw/"request.json", (json.dumps(receipt, indent=2)+"\n").encode())
     receipt = json.loads((raw/"request.json").read_text())
     data = (raw/"weekly.xlsx").read_bytes()
     assert receipt["http_status"] == 200 and receipt["url"] == URL and receipt["sha256"] == sha(data), "source receipt/hash mismatch"

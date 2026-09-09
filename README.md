@@ -17,6 +17,8 @@ East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜�
 
 ## Current research status — 2026-09-08
 
+**수박 원보고서 대사 후속(2026-09-09):** USDA 정책 첫 요청 403으로 후속 수집을 중단했습니다. 신규 관측은 없으며 기존 과거 표본을 유지합니다. 수집 영수증 사전 기록과 파서 세 가지 오류 수정을 검증했습니다. [실행·차단·전달 상태](research/gathering/notes/2026-09-09-watermelon-source-reconciliation.md). 전체 수집·대사 목표는 PARTIAL입니다.
+
 **CPC 도일 감독 검토:** 난방/냉방·가중 구간 파서를 강화하고, 108개월의 월합계와 자체/제공 전년차를 구분하는 과거 연구 사례를 추가했습니다. 192개 비교값 중 20개(14개월)가 다르며 원인은 미확인입니다(repo empirical only). [검토·전달 상태](docs/reviews/2026-09-08-degree-days-closeout.md) · [표시 데이터 v2](research/indexes/web-observations/v2/README.md) · [다음 AI에게 줄 전달 프롬프트](docs/ai-research-delivery-prompt.md). WTI 검정은 NOT_RUN, 최종 우승 지수 없음.
 
 **반응형 그래프:** 수박·제주·미국 냉난방도일 선택, 실제 관측의 터치/키보드 탐색, 원단위 표와 WTI 가격 눈금을 제공합니다. 고정 연구 사례와 갱신 관측은 구분합니다. [구현·검수 기록](docs/research-workflow-dashboard-plan.md).
