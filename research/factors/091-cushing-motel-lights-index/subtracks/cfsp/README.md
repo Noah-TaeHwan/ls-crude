@@ -16,6 +16,16 @@ CFSP = 0.7 × z(FWH) + 0.3 × [−z(UMCSENT)]
 Geography is the United States. Oklahoma / Cushing pump prices are 091-Y, a
 different series.
 
+## Charts (2026-09-09 pull)
+
+Gasoline weekly, Fuel Work Hours, UMCSENT:
+
+![CFSP components](../../../indexes/091-cushing-operations-nowcasting/20260909T091CFSPZ/figures/cfsp_components.png)
+
+Experimental composite (display only, not a CFAM input):
+
+![CFSP score display](../../../indexes/091-cushing-operations-nowcasting/20260909T091CFSPZ/figures/cfsp_score_display.png)
+
 ## Gate result (2026-09-09)
 
 | Source | Path that ran | Result |
