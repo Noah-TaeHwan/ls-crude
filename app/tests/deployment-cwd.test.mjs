@@ -229,6 +229,9 @@ test("serves the public evidence brief routes from the repository root", async (
       const html=await response.text();
       for (const value of ["degree-days-level-plot","degree-days-yoy-plot","2023-12","192","20","65°F","자동 갱신 아님"]) assert.ok(html.includes(value),value);
       assert.doesNotMatch(html,/id="jeju-generation-plot"|id="watermelon-research-plot"/);
+      const paths = [...html.split("<script")[0].matchAll(/<path[^>]*vector-effect="non-scaling-stroke"[^>]* d="([^"]*)"/g)].map(match => match[1]);
+      assert.deepEqual(paths.map(d => (d.match(/[ML]/g) ?? []).length), [108,108,96,96], "null prior-year months must not become plotted observations");
+      assert.ok(paths.every(d => d.trim().startsWith("M") && !/NaN|Infinity/.test(d)), "each observed run starts without bridging missing months");
     }
     for (const route of ["/", "/research"]) {
       const response=await fetch(`${baseUrl}${route}?sample=petroleum-rail`);
@@ -236,6 +239,8 @@ test("serves the public evidence brief routes from the repository root", async (
       const html=await response.text();
       for (const value of ["petroleum-rail-plot","2026-09-02","5712","3351","carloads","자동 갱신 아님","Petroleum Products"]) assert.ok(html.includes(value),value);
       assert.doesNotMatch(html,/id="jeju-generation-plot"|id="watermelon-research-plot"|id="degree-days-level-plot"|id="empties-plot"/);
+      const patterns = [...html.split("<script")[0].matchAll(/<path[^>]*vector-effect="non-scaling-stroke"[^>]*stroke-dasharray="([^"]*)"/g)].map(match => match[1]);
+      assert.equal(new Set(patterns).size, 4, "all four rail series must remain distinguishable without color");
     }
     assert.doesNotMatch(body,/id="empties-plot"/,"default home keeps frozen LA sample behind its case button");
     assert.doesNotMatch(body,/id="petroleum-rail-plot"/,"default home keeps frozen rail sample behind its case button");
