@@ -63,3 +63,14 @@ ALPHA CANDIDATE: NO
 LIVE ENGINE: KILL
 NEXT DATA WORTH INGESTING (not 097 alpha): quarterly WI utilization, US offshore BH rigs
 ```
+
+## F. Added 2026-09-10 — quarterly WI utilization
+
+Source: Hornbeck 8-K combo deck, Helix Well Intervention active-fleet utilization and dayrate 1Q23–2Q26 (14 quarters). File: `indexes/097-.../20260910T097UTILZ/wi_utilization_quarterly.csv`.
+
+| test | r | n |
+| --- | ---: | ---: |
+| util_t → HLX log return t+1 | −0.07 | 12 |
+| same-quarter util vs HLX | +0.16 | 13 |
+
+FRED drilling IP / oil-gas payrolls: download blocked from this host (HTTP2). Baker Hughes weekly offshore: no clean public CSV ingested. Still not alpha.
