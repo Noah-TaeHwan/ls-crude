@@ -1,6 +1,6 @@
 # 094 — Saharan Hurricane Suppression Index (SHSI)
 
-**상태:** PARK / E0 — 카드만. 격자 미수집. WTI 미검정.  
+**상태:** PARK / E1 — Stage 0 only. HURDAT2 genesis 1980–2024 collected. MERRA-2 dust still missing. No SHSI.  
 **후보:** [ALT-20260909-01](../../candidates/ALT-20260909-01.md)  
 **가중치:** 0.0
 
@@ -60,3 +60,5 @@ Earthdata로 MDR 상자 일별 DUEXTTAU 한 시즌과 같은 창 HURDAT2 형성 
 ## Visualization status (2026-09-09)
 
 No chart this pass. DustAOD grid was not downloaded. Drawing a fake SAL map would violate the card.
+
+See [STAGE0.md](STAGE0.md) (20260910T094S0Z).
