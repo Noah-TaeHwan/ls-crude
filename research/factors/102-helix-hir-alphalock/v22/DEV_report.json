@@ -1,0 +1,26 @@
+{
+  "engine": "HELIX v22 PROD-2TURN-HIR",
+  "mode": "DEV_ONLY",
+  "change": "production_execution:adjusted_open_to_open_plus_diagnostics",
+  "config_hash": "cf60c4bd41142c93af901d1c261862a8dd49622a488615d262ad7cbb118481cc",
+  "data_hash": "1adb55da9d673f06c931f9c5074daaed8c30040547292f2a4062a2957c88b2ad",
+  "dev": {
+    "n": 38,
+    "mean_pct": 2.6449904040108025,
+    "median_pct": 0.681749034679258,
+    "win_pct": 55.26315789473685,
+    "profit_factor": 1.7630516602184425,
+    "event_sharpe": 0.1392644042618779,
+    "event_t": 0.8584834437470523
+  },
+  "dev_bootstrap_95_lower_pct": -2.3125875575258643,
+  "dev_signflip_p": 0.25037499250015,
+  "neighbors_positive": 6,
+  "advance": false,
+  "checks": [
+    "n_DEV=38 >= 40: False",
+    "DEV mean=2.645% > 0: True",
+    "neighbors positive=6/9 >= 7/9: False"
+  ],
+  "status": "NOT_PROVEN / PARK"
+}
