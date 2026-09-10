@@ -310,3 +310,7 @@ Market-neutral strategy (012)
 
 압축 원본 패키지는 번호와 무관하게 그대로 보존한다. 합성 데이터 데모의 상관·적중률은 실증 결과가 아니다.
 | 098 | [US Oil Price Suppression](098-us-oil-price-suppression/README.md) | — | mixed / coin | **KILL as alpha** — 9 valid SPR/jawbone prints, no edge vs placebo. War events go the other way. Catalog only. |
+
+| 099 | [FOMC MP1 daily proxy](099-fomc-mp1-daily-proxy/README.md) | +0.02 / +0.02 | +5d OOS r=+0.38 wrong sign | PARK — not the 30-min window |
+| 100 | [HOS Regime B](100-hos-regime-b/README.md) | — | n=5 | FORWARD_ONLY — 60d not filled |
+| 101 | [EIA inventory consensus](101-eia-inventory-consensus/README.md) | — | n=8 r=−0.11 | PARK / E1 — no free archive |
