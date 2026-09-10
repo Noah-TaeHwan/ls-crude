@@ -74,12 +74,13 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
           <aside className="research-status" aria-label="연구 현황">
             <p className="status-stamp"><Search size={14} aria-hidden="true" /> 탐색 중</p>
             <dl>
-              <div><dt>기존 연구 인벤토리</dt><dd>{ledger.error ? "—" : ledger.records.length}<small>개</small></dd></div>
+              <div><dt>보관 기록</dt><dd>{ledger.error ? "—" : ledger.records.length}<small>개</small></dd></div>
+              <div><dt>진행 후보</dt><dd>{intake.error ? "—" : intake.records.length}<small>개</small></dd></div>
               <div><dt>기준 통과</dt><dd>{ledger.passCount ?? "—"}<small>개</small></dd></div>
             </dl>
             <p className="mt-5 text-base font-medium">{ledger.error ? "연구 장부 확인이 필요합니다." : "아직 채택할 신호가 없습니다."}</p>
             <p className="mt-2 text-sm leading-7 text-muted-foreground">{ledger.error ?? "등록 규모와 검정 완료 건수는 다릅니다. 데이터 적격성, 공개 시점, 독립적인 관계를 확인하고 있습니다."}</p>
-            <Link className="source-link mt-4" to="/research#method">어떤 기준으로 판단하나요? <ArrowUpRight size={14} aria-hidden="true" /></Link>
+            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2"><Link className="source-link" to="/research#intake">진행 후보 보기 <ArrowUpRight size={14} aria-hidden="true" /></Link><Link className="source-link" to="/research#method">어떤 기준으로 판단하나요? <ArrowUpRight size={14} aria-hidden="true" /></Link></div>
           </aside>
         </section>
 
