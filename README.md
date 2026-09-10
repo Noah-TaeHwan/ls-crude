@@ -4,7 +4,7 @@
 
 East Camp AI Quant 4기 미니프로젝트 · 오태환(Noah) × 손성찬. 펜타곤 피자 인덱스는 **활동 → 민감한 맥락 → 시장과의 가능한 관계**를 생각하는 참고 패턴입니다. 피자 주문을 복제하거나 특정 데이터·양의 상관을 찾아내는 것이 완료 조건은 아닙니다.
 
-현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-09 로컬 [원장](research/candidates/ledger.csv)은 **68행(KEEP 7 / PARK 50 / KILL 11)**입니다(repo empirical only). 앞선 공동 헌트는 기존8개 ID 재검토였습니다. 리뷰 후 KGLS 시정 관측 경로1개와 실제 샘플·그림을 추가했습니다. 기상 조건이며 물류 활동량·유가 예측 신호가 아닙니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
+현재는 **대안 데이터 지수를 계속 탐색 중**입니다. 2026-09-10 로컬 [원장](research/candidates/ledger.csv)은 **73행(KEEP 7 / PARK 54 / KILL 12)**입니다(repo empirical only). 방향은 [방향 한 장 2026-09-10](docs/research-direction-2026-09-10.md)의 깔때기를 따릅니다: 이야기 먼저, IS로만 고르기, 떨어진 것도 기록. 옛 연구 97건(`research/factors/`)은 별도 보관함이며 행을 합산하지 않습니다. 주제 기준 140개 안팎, 겹침 대조는 발표 후 일입니다. 앞선 공동 헌트는 기존8개 ID 재검토였습니다. 리뷰 후 KGLS 시정 관측 경로1개와 실제 샘플·그림을 추가했습니다. 기상 조건이며 물류 활동량·유가 예측 신호가 아닙니다. KEEP은 후속 연구 배정이고 검증된 예측 지수는 없습니다. [이번 기록](research/gathering/notes/2026-09-08-joint-hunt.md) · [기존 팩터 이력](research/factors/README.md).
 
 | 항목 | 기준 |
 | --- | --- |
