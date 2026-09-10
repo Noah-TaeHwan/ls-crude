@@ -38,3 +38,5 @@ that is not already in the Henry Hub prompt, and that survives a frozen holdout?
 5. Equities last, and only versus HH residual, never versus WTI.
 
 Stage 1 does not trade. It asks: after the Thursday print, does next-session HH move with the stock change in the textbook direction?
+
+Stage 1 result 2026-09-10: [STAGE1.md](STAGE1.md) — NOT_PROVEN.
