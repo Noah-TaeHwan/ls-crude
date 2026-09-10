@@ -1,0 +1,10 @@
+date,label,class,wti_fwd5_pct,wti_fwd20_pct,note
+2011-06-23,IEA Libya SPR 30mm,emergency_release,+4.7,+9.3,valid
+2021-11-23,Biden SPR 50mm high gas,price_jawbone_release,-18.0,-7.6,valid
+2022-03-01,IEA coordinated 30mm,emergency_release,+17.9,+0.8,war premium
+2022-03-31,Biden 180mm 1mm b/d,emergency_release,-4.3,+4.3,valid
+2022-05-24,Biden addl SPR,emergency_release,+4.9,-5.1,valid
+2022-06-14,Biden addl SPR,emergency_release,-11.3,-21.6,valid
+2022-07-26,Biden addl SPR,emergency_release,-0.6,-1.3,valid
+2022-10-19,Biden 15mm + $70 refill talk,jawbone_release,+2.7,+0.0,valid
+2026-03-01,Iran-war SPR window (GAO),emergency_release,+28.6,+36.8,war dominates
