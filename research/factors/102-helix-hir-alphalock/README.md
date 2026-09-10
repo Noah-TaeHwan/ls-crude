@@ -1,5 +1,10 @@
 # 102 — Helix HIR Alpha-Lock (v19 real tape)
 
+
+> Helix confirms oil-service comovement. On the same tape, residual pairs and the cycle-lag engine did not clear frozen out-of-sample and cost gates. That is supporting material for models that assume comovement, and a counter-example for models that turn comovement into alpha.
+>
+> 헬릭스 테이프는 석유서비스 동행을 확인한다. 같은 테이프에서 잔차 페어와 사이클 래그 엔진은 고정 표본 밖·비용 후 전진 규칙을 통과하지 못했다. 동행을 가정하는 모형에는 보조 자료가 되고, 동행을 알파로 바꾸는 모형에는 반례에 가깝다.
+
 **VERDICT: NOT_PROVEN**
 
 Handoff: HELIX v19 ALPHA-LOCK. Real Yahoo daily tape, aligned n=3640, 2012-01-03 → 2026-09-01. No HLX–HOS splice. Proof holdout ends **2026-04-21**. M&A window 2026-04-22–2026-09-01 reported separately (1 event, unused).
