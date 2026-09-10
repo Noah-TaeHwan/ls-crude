@@ -1,0 +1,35 @@
+{
+ "run": "20260910T091AQSZ",
+ "label": "Payne County ambient PM2.5, annual (Stillwater monitor)",
+ "retrieved": "2026-09-10T00:00:00Z",
+ "endpoints": [
+  "https://aqs.epa.gov/aqsweb/airdata/aqs_monitors.zip",
+  "https://aqs.epa.gov/aqsweb/airdata/annual_conc_by_monitor_{1999..2003}.zip"
+ ],
+ "geography": "Payne County, Oklahoma \u2014 Stillwater site 40-119-0614 (NOT Cushing city; no Cushing-city ozone/PM monitor exists in AQS)",
+ "ozone_probe": "no 44201 (ozone) monitor rows for OK/Payne in aqs_monitors.csv; frozen series is PM2.5 only",
+ "monitor_universe_payne": "19 aqs_monitors.csv rows for 40-119: 0610/0611 TSP+metals (Stillwater, ended 1970s-80s), 0612 TSP+sulfation (Cushing, ended 1971), 0613 TSP (Cushing, ended 1974), 0614 PM2.5+met-station params (Stillwater, 1999-01-01..2003-01-09)",
+ "standard_rule": "one row per year from the PM25 Annual 1997 standard slice (identical means repeat under 2006/2012/2024 standards); daily-mean metric slices excluded to avoid duplicates",
+ "range": "1999..2003 \u2014 5 annual rows",
+ "annual_means_ug_m3": [
+  9.464103,
+  10.635185,
+  9.398333,
+  10.328333,
+  6.7
+ ],
+ "mean_sum": 46.525954,
+ "partial_2003": "kept as disclosed: 2 obs, 3%, completeness N (monitor closed 2003-01-09); not filled, not annualized beyond the published mean",
+ "missing": "2004+ monitor discontinued (no rows, not zeros); pre-1999 no PM2.5 monitor in Payne",
+ "csv": "payne_pm25_stillwater_annual.csv",
+ "json": "payne_pm25_stillwater_annual.json",
+ "raw": "research/gathering/raw/091-cushing-aqs/ (gitignored; annual zips 1999-2003 + aqs_monitors.zip, all HTTP 200)",
+ "notJoined": [
+  "WTI",
+  "busy score",
+  "DEQ VOC tons",
+  "TRI pounds",
+  "Cushing city relabel",
+  "statewide Oklahoma relabel"
+ ]
+}

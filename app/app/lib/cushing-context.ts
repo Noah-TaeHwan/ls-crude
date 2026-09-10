@@ -1,5 +1,7 @@
 /** EIA Cushing 주간 재고. 단위는 thousand barrels. */
 export interface CushingStockPoint { date: string; stockKbbl: number }
+/** EIA Cushing 월간 재고. 주간 시계열과 섞지 않는다. */
+export interface CushingMonthlyStockPoint { month: string; stockKbbl: number }
 /** ODOT East Main 연간 AADT. 트럭은 2025만 있다. */
 export interface CushingAadtPoint { year: number; aadt: number; trucks: number | null }
 /** Census BPS Cushing 시 주거 허가 호수. */
@@ -41,6 +43,37 @@ export function readCushingStocks(csv: unknown): CushingStockPoint[] | null {
   if (rows[0].date !== "2004-04-09" || rows[0].stockKbbl !== 11677) return null;
   if (rows.at(-1)!.date !== "2026-08-28" || rows.at(-1)!.stockKbbl !== 22508) return null;
   if (rows.reduce((n, row) => n + row.stockKbbl, 0) !== 40862385) return null;
+  return rows;
+}
+
+/**
+ * 고정 EIA 월간 재고 CSV를 검사한다. 빈 달을 0으로 채우지 않고 주간 표와 섞지 않는다.
+ * @param csv 091-EIA-M 런 CSV 원문.
+ * @returns 검증된 월간 재고 또는 오류 상태.
+ */
+export function readCushingMonthlyStocks(csv: unknown): CushingMonthlyStockPoint[] | null {
+  if (typeof csv !== "string") return null;
+  const lines = csv.replace(/^\uFEFF/, "").trim().split(/\r?\n/);
+  if (lines[0] !== "month,stock_kbbl" || lines.length !== 271) return null;
+  const rows: CushingMonthlyStockPoint[] = [];
+  for (const line of lines.slice(1)) {
+    const parts = line.split(",");
+    if (parts.length !== 2) return null;
+    const month = parts[0];
+    const stockKbbl = Number(parts[1]);
+    if (!/^\d{4}-\d{2}$/.test(month) || Number(month.slice(5, 7)) < 1 || Number(month.slice(5, 7)) > 12) return null;
+    if (!Number.isSafeInteger(stockKbbl) || stockKbbl <= 0) return null;
+    if (rows.length) {
+      const prev = rows.at(-1)!.month;
+      const [py, pm] = prev.split("-").map(Number);
+      const expect = pm === 12 ? `${py + 1}-01` : `${py}-${String(pm + 1).padStart(2, "0")}`;
+      if (month !== expect) return null;
+    }
+    rows.push({ month, stockKbbl });
+  }
+  if (rows.length !== 270 || rows[0].month !== "2004-01" || rows[0].stockKbbl !== 12890) return null;
+  if (rows.at(-1)!.month !== "2026-06" || rows.at(-1)!.stockKbbl !== 19515) return null;
+  if (rows.reduce((n, row) => n + row.stockKbbl, 0) !== 9427093) return null;
   return rows;
 }
 

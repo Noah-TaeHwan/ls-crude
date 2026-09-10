@@ -1,0 +1,326 @@
+{
+ "runId": "20260909T091QCEWQZ",
+ "areaFips": "40119",
+ "geography": "Payne County, Oklahoma",
+ "sourceBase": "https://data.bls.gov/cew/data/api/{year}/{qtr}/area/40119.csv",
+ "retrievedUtc": "2026-09-09T15:15:26Z",
+ "unit": "employment level, month3 of quarter (Mar/Jun/Sep/Dec)",
+ "suppression": "BLS disclosure_code N kept as null, never 0",
+ "rows": [
+  {
+   "year": 2015,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 33207,
+   "privateMining21": 994
+  },
+  {
+   "year": 2015,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 33016,
+   "privateMining21": 881
+  },
+  {
+   "year": 2015,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 34245,
+   "privateMining21": 789
+  },
+  {
+   "year": 2015,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 33882,
+   "privateMining21": 710
+  },
+  {
+   "year": 2016,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 33536,
+   "privateMining21": 618
+  },
+  {
+   "year": 2016,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 32941,
+   "privateMining21": 612
+  },
+  {
+   "year": 2016,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 34307,
+   "privateMining21": 623
+  },
+  {
+   "year": 2016,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 33847,
+   "privateMining21": 659
+  },
+  {
+   "year": 2017,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 33527,
+   "privateMining21": 672
+  },
+  {
+   "year": 2017,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 32164,
+   "privateMining21": 708
+  },
+  {
+   "year": 2017,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 33072,
+   "privateMining21": 883
+  },
+  {
+   "year": 2017,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 34218,
+   "privateMining21": 873
+  },
+  {
+   "year": 2018,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 34176,
+   "privateMining21": 818
+  },
+  {
+   "year": 2018,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 32249,
+   "privateMining21": 873
+  },
+  {
+   "year": 2018,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 33904,
+   "privateMining21": 761
+  },
+  {
+   "year": 2018,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 33909,
+   "privateMining21": 806
+  },
+  {
+   "year": 2019,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 33977,
+   "privateMining21": 745
+  },
+  {
+   "year": 2019,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 33033,
+   "privateMining21": 717
+  },
+  {
+   "year": 2019,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 33346,
+   "privateMining21": 690
+  },
+  {
+   "year": 2019,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 33782,
+   "privateMining21": 547
+  },
+  {
+   "year": 2020,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 33393,
+   "privateMining21": 449
+  },
+  {
+   "year": 2020,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 31160,
+   "privateMining21": 373
+  },
+  {
+   "year": 2020,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 31721,
+   "privateMining21": 325
+  },
+  {
+   "year": 2020,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 32299,
+   "privateMining21": 303
+  },
+  {
+   "year": 2021,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 31696,
+   "privateMining21": 330
+  },
+  {
+   "year": 2021,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 31368,
+   "privateMining21": 329
+  },
+  {
+   "year": 2021,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 33024,
+   "privateMining21": 332
+  },
+  {
+   "year": 2021,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 33183,
+   "privateMining21": 326
+  },
+  {
+   "year": 2022,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 33373,
+   "privateMining21": 358
+  },
+  {
+   "year": 2022,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 32813,
+   "privateMining21": 394
+  },
+  {
+   "year": 2022,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 34258,
+   "privateMining21": 454
+  },
+  {
+   "year": 2022,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 34166,
+   "privateMining21": 462
+  },
+  {
+   "year": 2023,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 34566,
+   "privateMining21": 434
+  },
+  {
+   "year": 2023,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 34159,
+   "privateMining21": 429
+  },
+  {
+   "year": 2023,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 35212,
+   "privateMining21": 412
+  },
+  {
+   "year": 2023,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 34943,
+   "privateMining21": 408
+  },
+  {
+   "year": 2024,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 35324,
+   "privateMining21": 416
+  },
+  {
+   "year": 2024,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 34614,
+   "privateMining21": 429
+  },
+  {
+   "year": 2024,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 35581,
+   "privateMining21": 432
+  },
+  {
+   "year": 2024,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 35503,
+   "privateMining21": 416
+  },
+  {
+   "year": 2025,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 35418,
+   "privateMining21": 402
+  },
+  {
+   "year": 2025,
+   "qtr": 2,
+   "month": 6,
+   "totalCovered": 34651,
+   "privateMining21": 390
+  },
+  {
+   "year": 2025,
+   "qtr": 3,
+   "month": 9,
+   "totalCovered": 35349,
+   "privateMining21": 365
+  },
+  {
+   "year": 2025,
+   "qtr": 4,
+   "month": 12,
+   "totalCovered": 35418,
+   "privateMining21": 338
+  },
+  {
+   "year": 2026,
+   "qtr": 1,
+   "month": 3,
+   "totalCovered": 35001,
+   "privateMining21": 345
+  }
+ ]
+}

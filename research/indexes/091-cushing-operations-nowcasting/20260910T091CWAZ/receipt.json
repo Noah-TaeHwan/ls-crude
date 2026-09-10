@@ -1,0 +1,64 @@
+{
+  "runId": "20260910T091CWAZ",
+  "label": "Cushing city EPA ECHO CWA/NPDES inspections, dated, not busy",
+  "verdict": "frozen",
+  "retrieved": "2026-09-09T21:06:07Z",
+  "sourceName": "EPA ECHO CWA facility search (cwa_rest_services, keyless) + per-facility DFR (dfr_rest_services, keyless)",
+  "sourceBase": "https://echodata.epa.gov/echo/cwa_rest_services.get_facilities",
+  "endpoints": [
+    "https://echodata.epa.gov/echo/cwa_rest_services.get_facilities?p_st=OK&p_zip=74023&output=JSON",
+    "https://echodata.epa.gov/echo/cwa_rest_services.get_qid?qid=625&output=JSON",
+    "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=<SourceID>&output=JSON (x18 Cushing-city permits)"
+  ],
+  "queryId": "625",
+  "queryRows": 19,
+  "inspRows": 4,
+  "geography": "Cushing city, Oklahoma (ECHO CWPCity=CUSHING, state OK)",
+  "countyAsFiled": {
+    "Payne": 12,
+    "Lincoln": 1,
+    "null": 5
+  },
+  "rowCount": 18,
+  "datedLastInspection": 4,
+  "dateRange": [
+    "2025-04-10",
+    "2026-01-06"
+  ],
+  "dateRule": "DFR InspectionEnforcementSummary DateLastInspection (CWA Inspection/Evaluation) MM/DD/YYYY normalized to ISO, cross-checked against ComplianceHistory; null stays null, never 0",
+  "windowStart": "2021-09-05",
+  "windowEnd": "2026-03-31",
+  "inspectionCountDisclosed": 18,
+  "inspectionCountSum": 19,
+  "lastTypeAsFiled": "Base Program - Evaluation (State-led, all 4 dated rows)",
+  "statusAsFiled": {
+    "No Violation Identified": 9,
+    "Terminated Permit": 5,
+    "Not Applicable": 4
+  },
+  "permitStatusAsFiled": {
+    "Effective": 9,
+    "Terminated": 6,
+    "Not Needed": 2,
+    "null": 1
+  },
+  "formalActionsSum": 5,
+  "penaltiesDisclosed": "$35,000 on OK0026701; $0 on OK0043320/OK0044598 (shared FRS 110011006570); null elsewhere",
+  "excludedNonCushingCities": [
+    "CRUSHING (OK0044881 MARKETLINK, as filed)"
+  ],
+  "csv": "cushing_echo_cwa_inspections.csv",
+  "json": "cushing_echo_cwa_inspections.json",
+  "reader": "app/app/lib/cushing-echo-cwa.ts",
+  "test": "app/tests/cushing-echo-cwa.test.mjs (3 pass)",
+  "notJoined": [
+    "WTI",
+    "busy score",
+    "TRI pounds",
+    "DEQ VOC tons",
+    "CAA air FCE rows",
+    "statewide Oklahoma inspections",
+    "throughput",
+    "enforcement-case penalties (no keyless case service; 404)"
+  ]
+}

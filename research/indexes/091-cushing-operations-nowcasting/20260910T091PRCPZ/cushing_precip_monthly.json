@@ -1,0 +1,235 @@
+{
+  "runId": "20260910T091PRCPZ",
+  "station": "US1OKPY0019",
+  "stationName": "CUSHING 3.2 E, OK (CoCoRaHS, Payne County)",
+  "dataset": "GHCN-Daily PRCP (tenths of mm), NCEI keyless bulk",
+  "label": "Cushing CUH precipitation, monthly confounder, not activity",
+  "source": "NOAA NCEI GHCN-Daily station US1OKPY0019 (CUSHING 3.2 E, OK)",
+  "sourceUrl": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/all/US1OKPY0019.dly",
+  "frozenUtc": "2026-09-09T17:33:30Z",
+  "firstPeriod": "2017-05",
+  "lastPeriod": "2021-11",
+  "monthCount": 55,
+  "rows": [
+    {
+      "period": "2017-05",
+      "precipIn": null
+    },
+    {
+      "period": "2017-06",
+      "precipIn": 2.22
+    },
+    {
+      "period": "2017-07",
+      "precipIn": 2.929
+    },
+    {
+      "period": "2017-08",
+      "precipIn": null
+    },
+    {
+      "period": "2017-09",
+      "precipIn": 1.823
+    },
+    {
+      "period": "2017-10",
+      "precipIn": 5.669
+    },
+    {
+      "period": "2017-11",
+      "precipIn": 0.524
+    },
+    {
+      "period": "2017-12",
+      "precipIn": 1.008
+    },
+    {
+      "period": "2018-01",
+      "precipIn": 0.209
+    },
+    {
+      "period": "2018-02",
+      "precipIn": 4.063
+    },
+    {
+      "period": "2018-03",
+      "precipIn": 1.043
+    },
+    {
+      "period": "2018-04",
+      "precipIn": 2.272
+    },
+    {
+      "period": "2018-05",
+      "precipIn": 3.571
+    },
+    {
+      "period": "2018-06",
+      "precipIn": null
+    },
+    {
+      "period": "2018-07",
+      "precipIn": 3.689
+    },
+    {
+      "period": "2018-08",
+      "precipIn": null
+    },
+    {
+      "period": "2018-09",
+      "precipIn": 3.906
+    },
+    {
+      "period": "2018-10",
+      "precipIn": 2.571
+    },
+    {
+      "period": "2018-11",
+      "precipIn": 0.606
+    },
+    {
+      "period": "2018-12",
+      "precipIn": null
+    },
+    {
+      "period": "2019-01",
+      "precipIn": 3.508
+    },
+    {
+      "period": "2019-02",
+      "precipIn": 1.244
+    },
+    {
+      "period": "2019-03",
+      "precipIn": null
+    },
+    {
+      "period": "2019-04",
+      "precipIn": 4.031
+    },
+    {
+      "period": "2019-05",
+      "precipIn": 15.791
+    },
+    {
+      "period": "2019-06",
+      "precipIn": 5.441
+    },
+    {
+      "period": "2019-07",
+      "precipIn": null
+    },
+    {
+      "period": "2019-08",
+      "precipIn": 11.079
+    },
+    {
+      "period": "2019-09",
+      "precipIn": 6.031
+    },
+    {
+      "period": "2019-10",
+      "precipIn": 4.512
+    },
+    {
+      "period": "2019-11",
+      "precipIn": 3.453
+    },
+    {
+      "period": "2019-12",
+      "precipIn": 1.449
+    },
+    {
+      "period": "2020-01",
+      "precipIn": 3.795
+    },
+    {
+      "period": "2020-02",
+      "precipIn": 1.236
+    },
+    {
+      "period": "2020-03",
+      "precipIn": 6.606
+    },
+    {
+      "period": "2020-04",
+      "precipIn": 2.0
+    },
+    {
+      "period": "2020-05",
+      "precipIn": 3.484
+    },
+    {
+      "period": "2020-06",
+      "precipIn": 1.189
+    },
+    {
+      "period": "2020-07",
+      "precipIn": 6.555
+    },
+    {
+      "period": "2020-08",
+      "precipIn": 1.5
+    },
+    {
+      "period": "2020-09",
+      "precipIn": 3.531
+    },
+    {
+      "period": "2020-10",
+      "precipIn": 5.449
+    },
+    {
+      "period": "2020-11",
+      "precipIn": 1.224
+    },
+    {
+      "period": "2020-12",
+      "precipIn": 2.362
+    },
+    {
+      "period": "2021-01",
+      "precipIn": 3.031
+    },
+    {
+      "period": "2021-02",
+      "precipIn": 0.646
+    },
+    {
+      "period": "2021-03",
+      "precipIn": 3.106
+    },
+    {
+      "period": "2021-04",
+      "precipIn": 4.791
+    },
+    {
+      "period": "2021-05",
+      "precipIn": 6.244
+    },
+    {
+      "period": "2021-06",
+      "precipIn": 11.508
+    },
+    {
+      "period": "2021-07",
+      "precipIn": 3.803
+    },
+    {
+      "period": "2021-08",
+      "precipIn": 2.791
+    },
+    {
+      "period": "2021-09",
+      "precipIn": 0.0
+    },
+    {
+      "period": "2021-10",
+      "precipIn": 9.031
+    },
+    {
+      "period": "2021-11",
+      "precipIn": null
+    }
+  ]
+}

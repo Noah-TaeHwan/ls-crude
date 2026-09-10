@@ -1,0 +1,65 @@
+{
+  "runId": "20260910T091RCRAZ",
+  "label": "Cushing city EPA ECHO RCRA hazardous-waste handlers, dated, not busy",
+  "verdict": "frozen",
+  "retrieved": "2026-09-10T00:00:00Z",
+  "sourceName": "EPA ECHO RCRA facility search (rcra_rest_services, keyless) + per-handler DFR (dfr_rest_services, keyless)",
+  "sourceBase": "https://echodata.epa.gov/echo/rcra_rest_services.get_facilities",
+  "endpoints": [
+    "https://echodata.epa.gov/echo/rcra_rest_services.get_facilities?p_st=OK&p_zip=74023&output=JSON",
+    "https://echodata.epa.gov/echo/rcra_rest_services.get_qid?qid=204&output=JSON",
+    "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=<SourceID>&output=JSON (x51 Cushing-city handlers)"
+  ],
+  "queryId": "204",
+  "queryRows": 51,
+  "inspRows": 17,
+  "geography": "Cushing city, Oklahoma (ECHO RCRACity=CUSHING, state OK)",
+  "countyAsFiled": {
+    "Payne": 50,
+    "Lincoln": 1
+  },
+  "rowCount": 51,
+  "datedLastInspection": 17,
+  "dateRange": [
+    "1985-08-28",
+    "2021-07-15"
+  ],
+  "dateRule": "Facility-table RCRALastInspectionDate (lifetime last RCRA inspection) MM/DD/YYYY normalized to ISO; null stays null, never 0",
+  "windowStart": "2021-09-05",
+  "windowEnd": "2026-09-30",
+  "inspectionCountDisclosed": 51,
+  "inspectionCountSum": 0,
+  "lastIeaDated": 8,
+  "lastFeaDated": 1,
+  "wasteHistoryHandlers": 11,
+  "wasteYears": ["2023", "2024", "2025", "2026"],
+  "wasteUnits": "not disclosed in DFR payload; values kept as verbatim strings",
+  "statusAsFiled": {
+    "Active (H    )": 27,
+    "Inactive (     )": 24
+  },
+  "universeAsFiled": {
+    "Other": 26,
+    "VSQG": 19,
+    "SQG": 5,
+    "Transporter": 1
+  },
+  "formalActionsSum": 0,
+  "penaltiesDisclosed": "$0 on all 51 rows",
+  "excludedNonCushingCities": [],
+  "csv": "cushing_rcra_handlers.csv",
+  "json": "cushing_rcra_handlers.json",
+  "reader": "app/app/lib/cushing-rcra.ts",
+  "test": "app/tests/cushing-rcra.test.mjs (3 pass)",
+  "notJoined": [
+    "WTI",
+    "busy score",
+    "TRI pounds",
+    "DEQ VOC tons",
+    "CAA air FCE rows",
+    "CWA water inspection rows",
+    "statewide Oklahoma handlers",
+    "throughput",
+    "enforcement-case penalties (no keyless case surface used)"
+  ]
+}

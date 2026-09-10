@@ -35,8 +35,8 @@
         "id": "091-U",
         "name": "Industrial job pulse",
         "status": "FORWARD_ONLY",
-        "last_observation": "2026-09-08 snapshot, 4 high-trust postings",
-        "note": "Hiring list is not crew-on-site."
+        "last_observation": "2026-09-08 snapshot, 4 postings share one audit instant; posting-age labels are not publication dates. 20260909T091UBOARDZ: 0 dated rows, event log not frozen.",
+        "note": "Hiring list is not crew-on-site. Do not invert relative ages into dates."
       },
       {
         "id": "091-Y",
@@ -49,8 +49,8 @@
         "id": "091-Z",
         "name": "Local industrial news cue",
         "status": "FORWARD_ONLY",
-        "last_observation": "KUSH / Google News / OK Energy Today audit 2026-09-08",
-        "note": "Headline count is not activity."
+        "last_observation": "20260909T091ZBOARDZ: 1 dated Cushing+industry cue. South Bow/Bridger pipeline headline published 2026-09-07T15:59:45Z. 78 other audit rows excluded.",
+        "note": "Event list. Headline count is not activity."
       },
       {
         "id": "091-V",
@@ -69,6 +69,13 @@
         "note": "How full the tanks are. Not how busy the field is."
       },
       {
+        "id": "091-EIA-M",
+        "name": "Cushing monthly ending stocks",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "month 2026-06 = 19,515 kbbl. Release 2026-08-31. Not the weekly WPSR series.",
+        "note": "Monthly tank-farm stocks. Not field activity. Do not mix with weekly."
+      },
+      {
         "id": "091-AADT",
         "name": "East Main annual AADT",
         "status": "ANNUAL_CONTEXT",
@@ -81,6 +88,314 @@
         "status": "MONTHLY_CONTEXT",
         "last_observation": "Census BPS 2024-01..2026-07, 31 months, 29 housing units total.",
         "note": "Housing units authorized, not tank or industrial construction."
+      },
+      {
+        "id": "091-QCEW",
+        "name": "Payne County QCEW employment",
+        "status": "COUNTY_CONTEXT",
+        "last_observation": "quarterly 2015-Q1..2026-Q1, 45 quarters. 2026-Q1 total covered 35,001; private NAICS 21 = 345. 2026-Q2 404 not filled. 2025-Q1 industry slice still shown.",
+        "note": "Payne County time series, not Cushing city. Stillwater/OSU dominate. Not a busy meter."
+      },
+      {
+        "id": "091-P",
+        "name": "Cushing High School annual enrollment",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "school years 2019-20..2024-25, 5 years, 2023-24 missing. 2024-25 = 529. Checksum of five totals = 2532.",
+        "note": "School headcount, not field busy. 2023-24 is missing, not zero."
+      },
+      {
+        "id": "091-KUSH",
+        "name": "KUSH monthly operational attention",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "monthly 2008-02..2026-06, 221 months, sum 101. Last 2026-06-01 = 1. Zeros are observed.",
+        "note": "Title attention, not on-site headcount. Not busy."
+      },
+      {
+        "id": "091-POP",
+        "name": "Cushing city annual Census population",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2010..2024, 15 years, 2024 = 8,444. Checksum 119988, place 4018850. 2010\u20132019 and 2020\u20132024 vintages; 2020 step is vintage break.",
+        "note": "City resident population, not field busy. Vintage break disclosed as published, not smoothed."
+      },
+      {
+        "id": "091-HUC",
+        "name": "Payne County annual Census housing units",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2010..2024, 15 years, 2024 = 37,437. Checksum 539269, county 40119. 2010\u20132019 and 2020\u20132024 vintages; 2019\u21922020 step is vintage break.",
+        "note": "County housing stock, not Cushing city. Not permits. Not field busy. Vintage break disclosed as published, not smoothed."
+      },
+      {
+        "id": "091-COC",
+        "name": "Payne County annual PEP population components",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2010..2024, 15 years, 2024 = 84,199. Births sum 11379, deaths sum 8193, net-mig sum 3807, county 40119. 2010\u20132019 and 2020\u20132024 vintages; 2019\u21922020 step is vintage break.",
+        "note": "County demographics, not Cushing city. Not housing units. Not field busy. Vintage break disclosed as published, not smoothed. 2010 and 2020 component flows are partial periods as published."
+      },
+      {
+        "id": "091-Q-D",
+        "name": "KCUH daily airport temperature",
+        "status": "DAILY_CONTEXT",
+        "last_observation": "daily 2015-01-01..2026-09-08, 4269 days, station CUH on OK_ASOS. Max-temp int sum 307313. 38 temp-gap days stay missing. Trace precip stays missing.",
+        "note": "Daily max/min temperature confounder, not activity. Live METAR stays on 091-Q. Never joined with WTI or busy."
+      },
+      {
+        "id": "091-MESO",
+        "name": "Mesonet OILT daily max temperature",
+        "status": "DAILY_CONTEXT",
+        "last_observation": "daily 2015-01-01..2026-09-08, 4269 days, station OILT Oilton 24.3 km from Cushing. Tmax sum100 30206129. 110 temp-gap days stay missing. Last disclosed 2026-09-08 = 103.8 F.",
+        "note": "Daily max-temperature confounder, not activity. Not KCUH airport temperature. Never joined with WTI or busy."
+      },
+      {
+        "id": "091-MESR",
+        "name": "Mesonet OILT daily rainfall",
+        "status": "DAILY_CONTEXT",
+        "last_observation": "daily 2015-01-01..2026-09-08, 4269 days, station OILT Oilton 24.3 km from Cushing. Rain sum100 48232, 4142 disclosed. 127 rain-gap days stay missing, observed 0.00 dry kept. Last disclosed 2026-09-08 = 0 in.",
+        "note": "Daily rainfall confounder, not activity. Not GHCN monthly precipitation. Not KCUH airport. Never joined with WTI or busy."
+      },
+      {
+        "id": "091-SOIL",
+        "name": "Mesonet OILT daily soil temperature",
+        "status": "DAILY_CONTEXT",
+        "last_observation": "daily 2015-01-01..2026-09-08, 4269 days, station OILT Oilton 24.3 km from Cushing. SAVG sum100 25436779, 4081 disclosed. 188 soil-gap days stay missing, never filled with 0. Last disclosed 2026-09-08 = 84.51 F.",
+        "note": "Daily soil-temperature confounder at 10 cm under sod, not air temp. Not rain, not KCUH airport, not moisture. Never joined with WTI or busy."
+      },
+      {
+        "id": "091-HUM",
+        "name": "Mesonet OILT daily mean relative humidity",
+        "status": "DAILY_CONTEXT",
+        "last_observation": "daily 2015-01-01..2026-09-08, 4269 days, station OILT Oilton 24.3 km from Cushing. HAVG havgSum100 29276766, 4155 disclosed. 114 humidity-gap days stay missing, never filled with 0. Last disclosed 2026-09-08 = 51.19%.",
+        "note": "Daily mean-relative-humidity confounder, not air temp. Not rain, not soil, not KCUH airport, not busy. Never joined with WTI or busy."
+      },
+      {
+        "id": "091-WSPD",
+        "name": "Mesonet OILT daily mean wind speed",
+        "status": "DAILY_CONTEXT",
+        "last_observation": "daily 2015-01-01..2026-09-08, 4269 days, station OILT Oilton 24.3 km from Cushing. WSPD wspdSum100 2573065, 3997 disclosed. 272 wind-gap days stay missing, never filled with 0. Last disclosed 2026-09-08 = 6.68 mph.",
+        "note": "Daily mean-wind-speed confounder, not air temp. Not rain, not soil, not humidity, not KCUH airport, not busy. Never joined with WTI or busy."
+      },
+      {
+        "id": "091-PRES",
+        "name": "Mesonet OILT daily mean station pressure",
+        "status": "DAILY_CONTEXT",
+        "last_observation": "daily 2015-01-01..2026-09-08, 4269 days, station OILT Oilton 24.3 km from Cushing. PAVG pavgSum100 12127694, 4165 disclosed. 104 pressure-gap days stay missing, never filled with 0. Last disclosed 2026-09-08 = 29.1 inHg.",
+        "note": "Daily mean-station-pressure confounder, not air temp. Not rain, not soil, not humidity, not wind, not KCUH airport, not busy. Never joined with WTI or busy."
+      },
+      {
+        "id": "091-VOC",
+        "name": "Cushing city terminal annual VOC",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2020..2024, 5 years, 2024 = 1,206.389 t. Checksum 6470.934, layers 5/7/6/1/8. 2024 matches frozen 091-WENVZ (17 rows, HAP 19.715 t).",
+        "note": "Terminal-context disclosed VOC tons, not AQI. Not field busy. Not Agra, not hub radius."
+      },
+      {
+        "id": "091-TRI",
+        "name": "Cushing city annual TRI on-site releases",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 1989..2003 + 2024, 16 years, 2024 = 0 lb disclosed. Checksum 924142. 2004-2023 missing, not zero. 1989-2003 Evans vs 2024 Batch Plant city aggregate.",
+        "note": "Toxic-release disclosure, not field busy. Not a DEQ VOC substitute."
+      },
+      {
+        "id": "091-GHG",
+        "name": "Cushing city annual GHGRP CO2e",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2016..2019, 4 years, 2019 = 36,271.846 tCO2e. Checksum 165176.638, Battle Ridge Plant 1012793. 2010-2015 and 2020-2023 missing, not zero.",
+        "note": "Facility emissions log, not TRI pounds. Not VOC tons. Not field busy. Not statewide. Missing stays missing, not zero."
+      },
+      {
+        "id": "091-PHMSA",
+        "name": "Cushing PHMSA hazardous-liquid incidents",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2010..2025, 16 years, 141 HL incidents, 2025 = 3. Fatalities 0, injuries 0. Dated 2010-01-11..2025-12-08 log.",
+        "note": "Incident log, not throughput. Not field busy. Not WTI."
+      },
+      {
+        "id": "091-FRA",
+        "name": "Cushing FRA highway-rail crossing incidents",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 1976/1980/1982, 3 sparse points, 3 Form 57 incidents, each year 1. Killed 0, injured 1. Dated 1976-10-15..1982-05-11 log. After 1982 no disclosed rows, left missing.",
+        "note": "Incident log, not throughput. Not PHMSA. Not field busy. Not WTI."
+      },
+      {
+        "id": "091-NHTSA",
+        "name": "Cushing FMCSA filed-city crashes",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 1993/1997/1999-2003/2005-2025 sparse, 28 years, 129 crashes, 2025 = 8. Fatalities 5, injuries 99. Dated 1993-01-27..2025-10-06 log.",
+        "note": "Traffic-safety log, not FARS fatalities. Not all crashes. Not field busy. Not WTI."
+      },
+      {
+        "id": "091-OSHA",
+        "name": "Cushing OSHA workplace-safety inspections",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 1973..2026 sparse, 43 years, 162 inspections, 2026 = 2. Violations disclosed 86 rows sum 354; 76 undisclosed stay null. Dated 1973-04-25..2026-08-14 log.",
+        "note": "Workplace-safety log, not QCEW employment. Not penalties. Not field busy. Not WTI."
+      },
+      {
+        "id": "091-CAP",
+        "name": "Cushing tank working storage capacity",
+        "status": "SEMIANNUAL_CONTEXT",
+        "last_observation": "semiannual 2011-03-31..2019-09-01 then annual March 2020..2024-03-01, 23 points, 2024-03-01 = 78,410 kbbl working. Checksum 1642412. Report discontinued after March 2024.",
+        "note": "Tank room, not stocks. Not field busy. Not WTI."
+      },
+      {
+        "id": "091-LAUS",
+        "name": "Payne County monthly LAUS unemployment rate",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "monthly 2015-01..2026-07, 139 months, 138 disclosed. Last 2026-07 = 4.5 preliminary. 2025-10 BLS unpublished, left missing.",
+        "note": "County labor-market rate, not Cushing city. Not QCEW employment. Not field busy. Missing stays missing, not zero."
+      },
+      {
+        "id": "091-LAUE",
+        "name": "Payne County monthly LAUS employment level",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "monthly 2015-01..2026-07, 139 months, 138 disclosed. Last 2026-07 = 38,543 preliminary. 2025-10 BLS unpublished, left missing.",
+        "note": "County labor-market count, not Cushing city. Not the unemployment-rate chart. Not QCEW employment. Not field busy. Missing stays missing, not zero."
+      },
+      {
+        "id": "091-LAUF",
+        "name": "Payne County monthly LAUS labor force",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "monthly 2015-01..2026-07, 139 months, 138 disclosed. Last 2026-07 = 40,352 preliminary. 2025-10 BLS unpublished, left missing.",
+        "note": "County civilian labor force, not Cushing city. Not the unemployment-rate or employed-persons chart. Not QCEW employment. Not field busy. Missing stays missing, not zero."
+      },
+      {
+        "id": "091-PRCP",
+        "name": "Cushing city monthly GHCN precipitation",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "monthly 2017-05..2021-11, 55 months, 47 disclosed. Last disclosed 2021-10 = 9.031 in. 2021-09 = 0.000 observed dry. 8 partial months stay missing.",
+        "note": "Weather confounder, not CUH airport temperature. Not field busy. Missing stays missing, not zero. Never joined with WTI."
+      },
+      {
+        "id": "091-STAX",
+        "name": "Cushing city monthly OTC sales-tax distributions",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "monthly 2025-08/2025-09/2026-08/2026-09, 4 sparse points, last 2026-09 = 577,814.84 USD. Checksum 229231800 cents. OTC distribution months; missing months stay missing.",
+        "note": "City OTC sales-tax distributions, not hotel/lodging tax. Not use tax. Not county totals. Not field busy. Never joined with WTI."
+      },
+      {
+        "id": "091-STM",
+        "name": "Payne County monthly NOAA storm events",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "monthly 2024-01..2026-05 sparse, 22 months, 112 events, 2026-05 = 3. Injuries 10, deaths 0, magnitudes disclosed 44. Dated 2024-01-13..2026-05-08 log. Only 3 rows locate at CUSHING, kept inside the Payne set.",
+        "note": "Weather confounder, not GHCN precipitation. Not KCUH temperature. Not Cushing city. Not field busy. Months without rows stay missing, not zero. Never joined with WTI."
+      },
+      {
+        "id": "091-ECHO",
+        "name": "Cushing city EPA ECHO air-facility last-FCE counts",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 1998/2005/2006/2010/2015/2020/2022/2023/2024/2025/2026 sparse, 11 years, 44 CAA facilities, 29 dated last FCE 1998-11-19..2026-05-05, 2026 = 4. Undisclosed 15 stay null. County as filed Payne 33 + Lincoln 11.",
+        "note": "Regulatory log of last evaluations, not TRI. Not VOC. Not all historical inspections. Not field busy. Not WTI. Not statewide."
+      },
+      {
+        "id": "091-CWA",
+        "name": "Cushing city EPA ECHO water-facility last-inspection counts",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2025/2026 sparse, 2 years, 18 CWA permits, 4 dated last CWA Inspection/Evaluation 2025-04-10..2026-01-06, 2025 = 3, 2026 = 1. Undisclosed 14 stay null. CRUSHING typo row excluded.",
+        "note": "Water regulatory log of last inspections, not CAA air FCE. Not TRI. Not VOC. Not field busy. Not WTI. Not statewide."
+      },
+      {
+        "id": "091-DMR",
+        "name": "Cushing city EPA ECHO DMR effluent-flow monthly report counts",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "monthly 2015-01..2026-07, 139 months, 1722 dated flow rows, 2026-07 = 12. 880 numeric as filed, 842 NODI null kept empty. Mixed MGD/gal/d never summed.",
+        "note": "Water discharge log, not CWA last-inspection counts. Not CAA air FCE. Not TRI. Not VOC. Not field busy. Not WTI. Not statewide. Months without rows stay missing, not zero."
+      },
+      {
+        "id": "091-RCRA",
+        "name": "Cushing city EPA ECHO RCRA handler last-inspection counts",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 1985/1994/2001/2005/2008/2010/2011/2013/2014/2017/2021 sparse, 11 years, 51 RCRA handlers, 17 dated last inspections 1985-08-28..2021-07-15, 2021 = 1. Undisclosed 34 stay null. Window inspection-count sum 0 as disclosed.",
+        "note": "Waste log of last inspections, not TRI pounds. Not CAA air FCE. Not CWA water inspections. Not field busy. Not WTI. Not statewide."
+      },
+      {
+        "id": "091-USGS",
+        "name": "Cimarron River near Ripley daily streamflow",
+        "status": "DAILY_CONTEXT",
+        "last_observation": "daily 1987-10-01..2026-09-09, 14224 days, site 07161450 near Ripley, Payne County, 12.8 km from Cushing. Thousandths checksum 24894472300. Max 137000 cfs on 1993-05-10. Gapless as published, nothing filled.",
+        "note": "Hydrology confounder, not GHCN precipitation. Not NOAA storm counts. Payne County gage, not a Cushing-city gage. Not field busy. A missing day would be an absent row, never zero. Never joined with WTI."
+      },
+      {
+        "id": "091-GW",
+        "name": "Payne County USGS well daily groundwater depth",
+        "status": "DAILY_CONTEXT",
+        "last_observation": "daily 2017-06-29..2018-10-22, 481 days, well 360339096450201 Cimarron3, Payne County, 8.7 km from Cushing. Parameter 72019 depth-to-water ft, hundredths checksum 347450. Range 5.73..7.74 ft, larger = deeper. Gapless as published, nothing filled.",
+        "note": "Hydrology confounder, not streamflow discharge. Not 07161450 cfs. Payne County well, not a Cushing-city well. Not field busy. A missing day would be an absent row, never zero. Never joined with WTI."
+      },
+      {
+        "id": "091-FEMA",
+        "name": "Payne County FEMA disaster designations",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 1974..2025 sparse, 25 years, 39 designations, 2025 = 3. DR 24, EM 8, FM 7. Dated 1974-06-10..2025-05-21 log.",
+        "note": "Disaster log, not NOAA storm counts. Not Cushing city. Not field busy. Not WTI. Years without rows stay missing, not zero."
+      },
+      {
+        "id": "091-NFIP",
+        "name": "Payne County NFIP flood-insurance claims",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 1980..2021 sparse, 20 years, 100 claims, 2021 = 1. countyCode 40119 as filed. Dated 1980-06-19..2021-06-27 log. Paid-building cents 107090889; 21 null paid-building rows left null.",
+        "note": "Flood-insurance log, not FEMA disaster designations. Not NOAA storm counts. Not Cushing city; city is redacted as filed. Not field busy. Not WTI. Years without rows stay missing, not zero."
+      },
+      {
+        "id": "091-NFPP",
+        "name": "Payne County NFIP policies in force",
+        "status": "MONTHLY_CONTEXT",
+        "last_observation": "monthly 2009-01..2026-10, 214 dated months, 4039 policy records, 2010-08 = 44 peak, 2026-10 = 1. censusGeoid prefix 40119 as filed.",
+        "note": "Policy stock by effective month, not claims. Not FEMA disaster designations. Not Cushing city; city is redacted as filed. Not field busy. Not WTI. Months without rows stay missing, not zero."
+      },
+      {
+        "id": "091-AQS",
+        "name": "Payne County Stillwater annual PM2.5",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 1999..2003, 5 years, Stillwater monitor 40-119-0614. Mean sum 46.525954. 2003 = 6.7 disclosed 2-obs partial year. 2004+ monitor discontinued, left missing.",
+        "note": "Ambient-air confounder, not Cushing city. Not VOC. Not TRI. Not field busy. Not statewide. Never joined with WTI."
+      },
+      {
+        "id": "091-INC",
+        "name": "Payne County annual BEA CAINC1 personal income",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 1969..2024, 56 years, 2024 = 4,121,797. Checksum 85834209, county 40119. Thousands of dollars as filed, never converted.",
+        "note": "County income, not Cushing city. Not population. Not per-capita. Not field busy. Missing years would stay missing, not zero. Never joined with WTI."
+      },
+      {
+        "id": "091-SDWIS",
+        "name": "Cushing city drinking-water SDWIS violations",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2017/2024 sparse, 2 years, 23 violations, 2017 = 21, 2024 = 2. PWS OK2006061 CUSHING as filed. Dated 2017-01-01..2024-10-17 compliance-begin log. Enforcement-count sum 4.",
+        "note": "Drinking-water regulatory log, not CWA NPDES inspections. Not VOC tons. Not TRI. Not field busy. Not WTI. Not statewide. Years without a dated begin stay missing, not zero. 2017 = 21 VOC monitoring rows sharing one filed begin date, never spread."
+      },
+      {
+        "id": "091-SOI",
+        "name": "ZIP 74023 annual IRS SOI individual income tax",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2016..2022, 7 years, 2022 = 4,190 returns. Returns sum 29330, AGI thousands sum 1634370, ZIP 74023 as filed, never converted.",
+        "note": "ZIP tax stats, not BEA county income. Not Cushing city. Not population. Not field busy. Missing years would stay missing, not zero. Never joined with WTI."
+      },
+      {
+        "id": "091-NBI",
+        "name": "Payne County NBI bridge-inspection counts",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2022..2024 sparse, 3 years, 384 bridges, 2024 = 74. County 119 as filed, no Cushing place-18850 rows. Dated 2022-03..2024-01 Item-90 log. 2022 = 27, 2023 = 283.",
+        "note": "Bridge log, not AADT. Not Cushing city. Not field busy. Not WTI. Years without rows stay missing, not zero."
+      },
+      {
+        "id": "091-LODE",
+        "name": "Payne County annual LODES workplace jobs",
+        "status": "ANNUAL_CONTEXT",
+        "last_observation": "annual 2002..2023, 22 years, 2023 = 35,589 jobs over 701 blocks. Jobs sum 713340, county 40119, S000/JT00/C000 as filed. No gap years in this freeze; 2024 trailing probe 404, no invented points. 2022 WAC 33401 vs 091-I OD 32543 are different filed tables, both kept as published.",
+        "note": "County employment structure, not Cushing city. Not QCEW. Not field busy. Missing years would stay missing, not zero. Never joined with WTI."
+      },
+      {
+        "id": "091-DRT",
+        "name": "Payne County weekly US Drought Monitor D0-or-worse area",
+        "status": "WEEKLY_CONTEXT",
+        "last_observation": "weekly 2014-12-30..2026-09-01, 610 Tuesday map-date weeks, FIPS 40119. D0-or-worse county-area percent as filed, last 2026-09-01 = 100. d0Sum100 checksum 3342984. No gap weeks in this freeze; a future gap stays missing, not zero.",
+        "note": "Weather confounder, not GHCN monthly precipitation. Not Mesonet daily rainfall. Not Cushing city. Not field busy. Never joined with WTI."
+      },
+      {
+        "id": "091-WQP",
+        "name": "Iowa Tribe Sand1 ambient pH samples",
+        "status": "SAMPLE_CONTEXT",
+        "last_observation": "sampled 2005-09-01..2021-09-17, 366 filed rows on 283 dates, site IOWATROK_WQX-SND1 Sand1 Payne County 16.71 km from Cushing. Hundredths checksum 297220, 14 QC replicates kept. Filed 0.0 on 2009-05-05 kept. Missing dates stay missing.",
+        "note": "Ambient water chemistry, not USGS 07161450 discharge. Not groundwater depth. Not DMR. Not field busy. Never joined with WTI."
       },
       {
         "id": "091-Q",
@@ -117,5 +432,5 @@
       }
     ]
   },
-  "generated_at_utc": "2026-09-09T08:45:22Z"
+  "generated_at_utc": "2026-09-10T01:15:20Z"
 }

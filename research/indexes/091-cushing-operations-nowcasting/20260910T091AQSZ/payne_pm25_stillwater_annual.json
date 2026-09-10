@@ -1,0 +1,72 @@
+{
+ "runId": "20260910T091AQSZ",
+ "geography": "Payne County, Oklahoma (Stillwater monitor 40-119-0614)",
+ "frequency": "annual summary year",
+ "unit": "ug/m3 (LC)",
+ "parameter": "PM2.5 - Local Conditions (88101), POC 1, 24-HOUR, Daily Mean",
+ "monitor": {
+  "state_code": "40",
+  "county_code": "119",
+  "site_num": "0614",
+  "city": "Stillwater",
+  "address": "1506 S. MAIN",
+  "lat": 36.107274,
+  "lon": -97.059479,
+  "local_site_name": "WEATHER STATION - STILLWATER MESONET SITE",
+  "method": "R & P Model 2025 PM2.5 Sequential w/WINS - GRAVIMETRIC",
+  "first_year": 1999,
+  "last_sample_date": "2003-01-09"
+ },
+ "rows": [
+  {
+   "year": 1999,
+   "annual_mean_ug_m3": 9.464103,
+   "obs_count": 39,
+   "obs_percent": 65,
+   "completeness": "N",
+   "certification": "Certification not required",
+   "max_daily_ug_m3": 23.8,
+   "max_date": "1999-07-11"
+  },
+  {
+   "year": 2000,
+   "annual_mean_ug_m3": 10.635185,
+   "obs_count": 54,
+   "obs_percent": 87,
+   "completeness": "N",
+   "certification": "Uncertified (past due)",
+   "max_daily_ug_m3": 21.7,
+   "max_date": "2000-02-12"
+  },
+  {
+   "year": 2001,
+   "annual_mean_ug_m3": 9.398333,
+   "obs_count": 60,
+   "obs_percent": 98,
+   "completeness": "Y",
+   "certification": "Uncertified (past due)",
+   "max_daily_ug_m3": 34.7,
+   "max_date": "2001-09-16"
+  },
+  {
+   "year": 2002,
+   "annual_mean_ug_m3": 10.328333,
+   "obs_count": 60,
+   "obs_percent": 98,
+   "completeness": "Y",
+   "certification": "Certified",
+   "max_daily_ug_m3": 33.5,
+   "max_date": "2002-04-20"
+  },
+  {
+   "year": 2003,
+   "annual_mean_ug_m3": 6.7,
+   "obs_count": 2,
+   "obs_percent": 3,
+   "completeness": "N",
+   "certification": "Certified",
+   "max_daily_ug_m3": 8.0,
+   "max_date": "2003-01-03"
+  }
+ ]
+}

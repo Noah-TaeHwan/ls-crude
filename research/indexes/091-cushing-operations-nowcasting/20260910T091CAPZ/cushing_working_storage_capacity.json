@@ -1,0 +1,123 @@
+{
+  "runId": "20260910T091CAPZ",
+  "geography": "Cushing, Oklahoma (EIA commercial crude oil market center)",
+  "frequency": "semiannual March/September 2011-2019, annual March from 2020 (report discontinued)",
+  "unit": "thousand barrels (EIA printed unit)",
+  "rows": [
+    {
+      "period": "2011-03-31",
+      "workingStorageKbbl": 48001,
+      "shellKbbl": 57750
+    },
+    {
+      "period": "2011-09-30",
+      "workingStorageKbbl": 55010,
+      "shellKbbl": 66403
+    },
+    {
+      "period": "2012-03-31",
+      "workingStorageKbbl": 61928,
+      "shellKbbl": 74846
+    },
+    {
+      "period": "2012-09-30",
+      "workingStorageKbbl": 63788,
+      "shellKbbl": 77182
+    },
+    {
+      "period": "2013-03-31",
+      "workingStorageKbbl": 64972,
+      "shellKbbl": 79656
+    },
+    {
+      "period": "2013-09-30",
+      "workingStorageKbbl": 66996,
+      "shellKbbl": 79966
+    },
+    {
+      "period": "2014-03-31",
+      "workingStorageKbbl": 67294,
+      "shellKbbl": 81419
+    },
+    {
+      "period": "2014-09-30",
+      "workingStorageKbbl": 70812,
+      "shellKbbl": 85116
+    },
+    {
+      "period": "2015-03-31",
+      "workingStorageKbbl": 71278,
+      "shellKbbl": 86408
+    },
+    {
+      "period": "2015-09-01",
+      "workingStorageKbbl": 72688,
+      "shellKbbl": 87984
+    },
+    {
+      "period": "2016-03-01",
+      "workingStorageKbbl": 76921,
+      "shellKbbl": 90981
+    },
+    {
+      "period": "2016-09-30",
+      "workingStorageKbbl": 77049,
+      "shellKbbl": 91299
+    },
+    {
+      "period": "2017-03-01",
+      "workingStorageKbbl": 76946,
+      "shellKbbl": 91306
+    },
+    {
+      "period": "2017-09-30",
+      "workingStorageKbbl": 78037,
+      "shellKbbl": 92299
+    },
+    {
+      "period": "2018-03-01",
+      "workingStorageKbbl": 75294,
+      "shellKbbl": 92065
+    },
+    {
+      "period": "2018-09-01",
+      "workingStorageKbbl": 75075,
+      "shellKbbl": 91579
+    },
+    {
+      "period": "2019-03-01",
+      "workingStorageKbbl": 76415,
+      "shellKbbl": 92579
+    },
+    {
+      "period": "2019-09-01",
+      "workingStorageKbbl": 76114,
+      "shellKbbl": 94846
+    },
+    {
+      "period": "2020-03-01",
+      "workingStorageKbbl": 76342,
+      "shellKbbl": 93321
+    },
+    {
+      "period": "2021-03-01",
+      "workingStorageKbbl": 76603,
+      "shellKbbl": 94009
+    },
+    {
+      "period": "2022-03-01",
+      "workingStorageKbbl": 78449,
+      "shellKbbl": 98599
+    },
+    {
+      "period": "2023-03-01",
+      "workingStorageKbbl": 77990,
+      "shellKbbl": 98695
+    },
+    {
+      "period": "2024-03-01",
+      "workingStorageKbbl": 78410,
+      "shellKbbl": 97742
+    }
+  ]
+}

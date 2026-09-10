@@ -1,0 +1,65 @@
+{
+  "runId": "20260910T091SDWISZ",
+  "label": "Cushing city SDWIS drinking-water violations, dated, not busy",
+  "verdict": "frozen",
+  "retrieved": "2026-09-09T21:34:38Z",
+  "sourceName": "ECHO SDWA system search (sdw_rest_services, keyless) + per-system DFR (dfr_rest_services, keyless); SDWIS/Fed via ECHO",
+  "sourceBase": "https://echodata.epa.gov/echo/sdw_rest_services.get_systems",
+  "endpoints": [
+    "https://echodata.epa.gov/echo/sdw_rest_services.get_systems?output=JSON&p_st=OK&p_co=Payne",
+    "https://echodata.epa.gov/echo/sdw_rest_services.get_qid?qid=837&output=JSON",
+    "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=OK2006061&output=JSON",
+    "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=OK1020908&output=JSON",
+    "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=OK2006065&output=JSON"
+  ],
+  "queryId": "837",
+  "queryRows": 115,
+  "queryRepeatQids": [163, 837],
+  "queryRepeatIdSetsEqual": true,
+  "geography": "Cushing city, Oklahoma (SDWIS PWSName=CUSHING, state OK; Payne County)",
+  "pwsId": "OK2006061",
+  "systemName": "CUSHING",
+  "systemType": "Community water system, ground water, local government, population 8371, active",
+  "systemExtractDate": "2026-07-09",
+  "rowCount": 23,
+  "datedComplianceBegin": 23,
+  "dateRange": [
+    "2017-01-01",
+    "2024-10-17"
+  ],
+  "dateRule": "DFR ViolationsEnforcementActions CompliancePeriodBeginDate MM/DD/YYYY normalized to ISO; null stays null, never 0; only rows with a disclosed begin date kept",
+  "categoryAsFiled": {
+    "MR": 21,
+    "TT": 1,
+    "RPT": 1
+  },
+  "ruleAsFiled": {
+    "Volatile Organic Chemicals": 21,
+    "Lead and Copper Rule Revisions": 2
+  },
+  "statusAsFiled": {
+    "Archived": 21,
+    "Resolved": 2
+  },
+  "enforcementCountSum": 4,
+  "dfrSummaryContext": "SDWA window 2021-04-01..2026-03-31, CurrentStatus No Violation Identified, QtrsInNC 4, last SDWA visit 2025-04-17 (context only, not rows)",
+  "excludedNonDated": [
+    "OK1020908 CUSHING: 12 DFR rows with enforcement-action dates only (1981-1996), no violation ID/rule/contaminant/compliance date disclosed",
+    "OK2006065 CUSHING COUNTRY CLUB: 0 violation rows",
+    "OK2006061: 7 SDWA sanitary-survey inspection rows (different log, not violations)"
+  ],
+  "csv": "cushing_sdwis_violations.csv",
+  "json": "cushing_sdwis_violations.json",
+  "reader": "app/app/lib/cushing-sdwis.ts",
+  "test": "app/tests/cushing-sdwis.test.mjs (3 pass)",
+  "notJoined": [
+    "WTI",
+    "busy score",
+    "TRI pounds",
+    "DEQ VOC tons",
+    "CWA NPDES inspection rows",
+    "statewide Oklahoma violations",
+    "throughput",
+    "sample-result table"
+  ]
+}

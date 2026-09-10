@@ -1,0 +1,121 @@
+{
+ "runId": "20260910T091LODEZ",
+ "areaFips": "40119",
+ "geography": "Payne County, Oklahoma",
+ "frequency": "annual",
+ "segment": "S000",
+ "jobType": "JT00",
+ "column": "C000",
+ "rows": [
+  {
+   "year": 2002,
+   "blocks": 654,
+   "jobs": 31097
+  },
+  {
+   "year": 2003,
+   "blocks": 642,
+   "jobs": 31134
+  },
+  {
+   "year": 2004,
+   "blocks": 645,
+   "jobs": 31060
+  },
+  {
+   "year": 2005,
+   "blocks": 646,
+   "jobs": 30836
+  },
+  {
+   "year": 2006,
+   "blocks": 652,
+   "jobs": 31422
+  },
+  {
+   "year": 2007,
+   "blocks": 687,
+   "jobs": 32867
+  },
+  {
+   "year": 2008,
+   "blocks": 699,
+   "jobs": 31318
+  },
+  {
+   "year": 2009,
+   "blocks": 725,
+   "jobs": 30872
+  },
+  {
+   "year": 2010,
+   "blocks": 730,
+   "jobs": 30486
+  },
+  {
+   "year": 2011,
+   "blocks": 591,
+   "jobs": 30480
+  },
+  {
+   "year": 2012,
+   "blocks": 650,
+   "jobs": 31273
+  },
+  {
+   "year": 2013,
+   "blocks": 660,
+   "jobs": 31282
+  },
+  {
+   "year": 2014,
+   "blocks": 673,
+   "jobs": 33594
+  },
+  {
+   "year": 2015,
+   "blocks": 695,
+   "jobs": 32901
+  },
+  {
+   "year": 2016,
+   "blocks": 712,
+   "jobs": 34319
+  },
+  {
+   "year": 2017,
+   "blocks": 720,
+   "jobs": 34506
+  },
+  {
+   "year": 2018,
+   "blocks": 721,
+   "jobs": 34547
+  },
+  {
+   "year": 2019,
+   "blocks": 715,
+   "jobs": 34648
+  },
+  {
+   "year": 2020,
+   "blocks": 668,
+   "jobs": 32875
+  },
+  {
+   "year": 2021,
+   "blocks": 688,
+   "jobs": 32833
+  },
+  {
+   "year": 2022,
+   "blocks": 675,
+   "jobs": 33401
+  },
+  {
+   "year": 2023,
+   "blocks": 701,
+   "jobs": 35589
+  }
+ ]
+}
