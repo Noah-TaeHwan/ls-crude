@@ -1,5 +1,12 @@
 # 104 — Helix sleeve hedge
 
+## What shipped
+
+A usable risk sleeve. Not a signal.
+
+DEV vol 66.8% → 51.3%. HOLD vol 50.9% → 37.8%. Return engines 097/102/103 remain NOT_PROVEN.
+
+
 Not an alpha book. Operating rule: if you already hold a well-intervention name, hedge oil-service beta with OII.
 
 > Helix confirms oil-service comovement. Residual pairs and the cycle-lag engine did not clear frozen return gates. This card uses comovement as a **hedge**, not as a gap-fill entry.
