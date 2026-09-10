@@ -317,3 +317,4 @@ Market-neutral strategy (012)
 | 102 | [Helix HIR Alpha-Lock](102-helix-hir-alphalock/README.md) | DEV −0.60% / HOLD −0.25% | NOT_PROVEN | v19 real tape |
 | 103 | [Helix peer pairs](103-helix-peer-pairs/README.md) | DEV HLX-OII −3.23% / HOLD +1.08% boot lo −1.97% | NOT_PROVEN | residual is white noise |
 | 104 | [Helix sleeve hedge](104-helix-sleeve-hedge/README.md) | DEV vol 66.8→51.3%, HOLD 50.9→37.8% | KEEP risk sleeve | not alpha |
+| 105 | [External overlays](105-external-overlays/README.md) | USO-XLE / OFS-equity-alpha / OII hedge | MAP | not a book |
