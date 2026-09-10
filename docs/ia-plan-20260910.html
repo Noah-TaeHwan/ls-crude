@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LS CRUDE — 웹사이트 IA 기획안 (2026-09-10)</title>
+<style>
+  :root { color-scheme: light; }
+  body { font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height: 1.7; max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; color: #1a1a1a; background: #faf9f6; }
+  h1 { font-size: 26px; margin-bottom: 4px; }
+  h2 { font-size: 19px; margin-top: 44px; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; }
+  h3 { font-size: 16px; margin-top: 24px; }
+  .sub { color: #666; font-size: 14px; }
+  .map { background: #1a1a1a; color: #e8e6e1; border-radius: 10px; padding: 20px; overflow-x: auto; }
+  .map pre { margin: 0; font-size: 13px; line-height: 1.65; font-family: "SF Mono", Menlo, monospace; }
+  .hl { color: #ffd479; } .new { color: #8ce99a; } .old { color: #ff9d9d; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 12px; background: #fff; }
+  th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; vertical-align: top; }
+  th { background: #f0eee9; }
+  .before { color: #999; } .after { color: #0a6b2d; font-weight: 600; }
+  .card { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px 18px; margin-top: 12px; }
+  .num { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .num div { flex: 1; min-width: 150px; background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 14px; text-align: center; }
+  .num b { font-size: 30px; display: block; }
+  .dont { background: #fff5f5; border: 1px solid #e5b4b4; border-radius: 10px; padding: 16px 18px; margin-top: 12px; }
+  .mock { background: #fff; border: 2px dashed #999; border-radius: 10px; padding: 18px; margin-top: 12px; }
+  .mock .hero { font-size: 22px; font-weight: 700; }
+  .mock .btns span { display: inline-block; border: 1px solid #999; border-radius: 6px; padding: 4px 10px; margin: 4px 6px 0 0; font-size: 13px; }
+  footer { margin-top: 48px; font-size: 13px; color: #888; }
+</style>
+</head>
+<body>
+
+<h1>LS CRUDE 웹사이트 IA 기획안</h1>
+<p class="sub">2026-09-10 · 목적: 첫 화면 10초 안에 "검증 중인 연구 데스크"가 읽히기 · 원칙: 말만 바꾸기 (페이지·순서·숫자 그대로)</p>
+
+<h2>1. 지금 지도</h2>
+<div class="map"><pre>
+/ (메인)
+├─ 첫머리: <span class="old">"흔적을 찾습니다"</span> + 숫자 3개
+├─ WTI 그래프
+└─ 버튼 9개 <span class="old">← 고정 6 + 갱신 2 + 보드 1, 옷이 똑같음</span>
+
+/research
+├─ 진행 후보 73
+├─ 보관 기록 97
+└─ 방법 설명
+
+/cushing-busy <span class="hl">(숨은 3번 페이지)</span>
+</pre></div>
+
+<h2>2. 문제 3개</h2>
+<div class="card"><h3>① 첫머리가 찾는다는 말만 해</h3><p>"흔적을 찾습니다"는 발견한 것처럼 들려. 실제로는 못 찾았어. 심사자는 이 간극을 본다.</p></div>
+<div class="card"><h3>② 버튼 9개가 같은 옷을 입고 있어</h3><p>옛 고정 자료랑 갱신 관측이 구분 안 돼. 눌러보기 전에는 모른다.</p></div>
+<div class="card"><h3>③ 옛말이 남아 있어</h3><p>"가설의 근거", "후보를 열면" — 통일한 말(진행 후보·보관 기록)이 아냐.</p></div>
+
+<h2>3. 바꾼 뒤 지도</h2>
+<div class="map"><pre>
+/ (메인)
+├─ 첫머리: <span class="new">"검증 중인 연구 데스크입니다"</span> + 숫자 3개
+│           <span class="new">(진행 73 · 이야기 46 · 찾은 관계 0)</span>
+├─ WTI 그래프
+└─ 버튼 9개 <span class="new">(고정· / 갱신· / 보드· 딱지)</span>
+
+/research — 말만 통일, 구조 그대로
+/cushing-busy — 그대로 (메뉴에 안 올림)
+</pre></div>
+
+<h2>4. 첫 화면 미리보기 (바뀐 뒤 느낌)</h2>
+<div class="mock">
+  <div class="hero">공개 자료가 WTI를 설명하는지,<br>검증 중인 연구 데스크입니다.</div>
+  <p>진행 후보 73 · 이야기 됨 46 · 찾은 관계 0 — 떨어진 것도 다 보여줍니다.</p>
+  <div class="btns"><span>고정· 수박</span><span>고정· 제주</span><span>고정· 도일</span><span>갱신· 시정</span><span>갱신· 탱커</span><span>보드· 쿠싱</span><span>…</span></div>
+</div>
+
+<h2>5. 카피 전후 표</h2>
+<table>
+<tr><th>위치</th><th>바꾸기 전</th><th>바꾼 뒤</th></tr>
+<tr><td>메인 첫머리</td><td class="before">흔적을 찾습니다</td><td class="after">검증 중인 연구 데스크입니다</td></tr>
+<tr><td>메인 설명</td><td class="before">비교합니다 (순서 불명확)</td><td class="after">관측값을 먼저 보여주고, 적격 자료만 비교합니다. 채택 신호는 아직 없습니다</td></tr>
+<tr><td>버튼 9개</td><td class="before">구분 없음</td><td class="after">고정· / 갱신· / 보드· 두 글자</td></tr>
+<tr><td>리서치 제목</td><td class="before">어떤 가설을 더 확인할까?</td><td class="after">어떤 진행 후보를 더 확인할까?</td></tr>
+<tr><td>보관 영역</td><td class="before">후보를 열면, 멈춘 이유가 보입니다</td><td class="after">보관 기록을 열면, 멈춘 이유가 보입니다</td></tr>
+<tr><td>자료 영역</td><td class="before">아이디어를 실제 자료로 열어보면</td><td class="after">확보한 자료를 직접 열어보면</td></tr>
+</table>
+
+<h2>6. 손대지 않는 것</h2>
+<div class="dont"><p>새 페이지·새 버튼 없음. 순서 안 바꿈. 73+97 합산 안 함. 카드 등급 공개 안 함. 리다이렉트·딥링크 유지. (동결 9/13 전 카피 수준만)</p></div>
+
+<div class="num"><div><b>73</b>진행 후보</div><div><b>46</b>이야기 됨</div><div><b>0</b>찾은 관계</div></div>
+
+<footer>근거: 증거 수집 에이전트 IA 목록 + UI 설계 리뷰 (2026-09-10). 승인 후 실행. 구현 전 브레인스토밍 게이트 적용.</footer>
+</body>
+</html>
