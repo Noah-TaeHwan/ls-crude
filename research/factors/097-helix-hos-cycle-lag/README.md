@@ -33,6 +33,10 @@ Levels, correlation, beta, volume, excess, year bars, OOS gap scatter, drawdown.
 
 ![drawdown](figures/fig_drawdown.png)
 
+![WI util](figures/fig_wi_util.png)
+
+![util scatter](figures/fig_util_scatter.png)
+
 Target is the **equity**, not WTI. Same-day energy-chain ICs in `screen/factor_screen.csv` are descriptive. They are not an oil-trading signal.
 
 ## Workflow
