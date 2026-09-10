@@ -1,0 +1,40 @@
+{
+  "engine": "HELIX v23 CAPPED-EPISODE 2TURN-HIR",
+  "mode": "DEV_ONLY",
+  "change": "episode_definition:two_turn_confirmation_with_10_session_cap",
+  "config": {
+    "lookback": 252,
+    "ridge_lambda": 1.0,
+    "z_window": 252,
+    "z_threshold": -1.5,
+    "horizon": 20,
+    "base_cost": 0.004,
+    "stress_cost": 0.01,
+    "episode_wait_cap": 10,
+    "min_dev_events": 40,
+    "min_positive_neighbors": 7,
+    "bootstrap_samples": 20000,
+    "signflip_samples": 50000,
+    "seed": 23023
+  },
+  "config_hash": "4bf69bb31072d557a965cf4dca420d1c2f6303c16acee75cd0074fef7f2efbf2",
+  "data_start": "2012-01-04",
+  "data_end": "2026-09-01",
+  "DEV": {
+    "n": 37,
+    "mean_pct": 3.854908584664776,
+    "median_pct": 0.7159001311835226,
+    "win_pct": 59.45945945945946,
+    "profit_factor": 2.2967888892862063,
+    "event_sharpe": 0.20135474692930902,
+    "event_t": 1.2247931099192813
+  },
+  "bootstrap_95_lower_pct": -1.242078883945585,
+  "signflip_p": 0.12427751444971101,
+  "positive_neighbors": 6,
+  "neighbors_total": 9,
+  "ADVANCE": false,
+  "hold_opened": false,
+  "kill_condition": "FAIL if n<40 OR mean<=0 OR positive_neighbors<7",
+  "status": "NOT_PROVEN \u2014 DEV move documented, HOLD still sealed"
+}
