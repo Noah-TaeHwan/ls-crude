@@ -30,6 +30,6 @@ export function readResearchIntake() {
   try {
     return { records: parseResearchIntake(csv, cards), error: null };
   } catch {
-    return { records: [], error: "접수 장부와 후보 카드의 형식·일치를 확인하지 못했습니다. GitHub 정본을 확인해 주세요." };
+    return { records: [], error: "진행 후보 장부와 후보 카드의 형식·일치를 확인하지 못했습니다. GitHub 정본을 확인해 주세요." };
   }
 }

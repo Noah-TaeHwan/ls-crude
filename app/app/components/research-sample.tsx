@@ -75,7 +75,7 @@ export function ResearchSample({ records, live }: {live:{visibility:VisibilityVi
       {record ? (
         <div className="evidence-note mt-6"><h4 className="text-sm font-medium">다음 확인 · {record.fields.owner}</h4><p className="mt-2 text-sm leading-7">{record.fields.next_action}</p><p className="mt-2 text-xs text-muted-foreground">재검토 예정 {record.fields.next_review_date} · 사람 배정 제안</p></div>
       ) : (
-        <div role="status" className="evidence-note mt-6 text-sm leading-7">접수 원장의 판정 스탬프는 이 화면에서 읽지 못했습니다. 위 시계열과 깃허브 연구 기록은 고정 런입니다.</div>
+        <div role="status" className="evidence-note mt-6 text-sm leading-7">진행 후보 원장의 판정 스탬프는 이 화면에서 읽지 못했습니다. 위 시계열과 깃허브 연구 기록은 고정 런입니다.</div>
       )}
       <footer className="mt-5 flex flex-wrap gap-5 border-t border-border pt-4 text-sm">{info.png && <a className="source-link" href={info.png} download>연구 그림 다운로드</a>}{record && <a className="source-link" href={record.sourceHref}>가설·판정 원문</a>}<a className="source-link" href={evidence}>재현 코드·영수증</a><a className="source-link" href={info.source}>제공기관 자료 정의</a></footer>
     </article>}
