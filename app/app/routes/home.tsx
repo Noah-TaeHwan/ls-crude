@@ -64,8 +64,8 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
         <section className="research-hero" aria-labelledby="research-title">
           <div>
             <p className="eyebrow">EAST CAMP AI QUANT 4기 <span aria-hidden="true">/</span> 오태환 × 손성찬</p>
-            <h1 id="research-title" className="hero-title">원유 시장을 읽을<br />새로운 <em className="not-italic text-primary">흔적</em>을 찾습니다.</h1>
-            <p className="hero-copy">피자 주문처럼 작지만 설명 가능한 현실의 흔적에서 출발합니다. 공개 데이터를 찾아 개별 관측으로 보여주고, 적격한 자료를 WTI와 비교합니다. 보류와 기각의 이유도 함께 기록합니다.</p>
+            <h1 id="research-title" className="hero-title">공개 자료가 WTI를 설명하는지<br />검증 중인 <em className="not-italic text-primary">연구 데스크</em>입니다.</h1>
+            <p className="hero-copy">피자 주문처럼 작은 현실의 흔적에서 출발합니다. 확보한 자료의 실제 관측값을 먼저 보여주고, 적격 자료만 WTI와 비교합니다. 아직 채택한 신호는 없고, 보류와 기각의 이유도 함께 기록합니다.</p>
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <Link className="action-link" to="/#research-sample">실제 수집 사례 보기 <ArrowRight size={17} aria-hidden="true" /></Link>
               <a className="secondary-link" href="#market">WTI 관측 보기 <ArrowDown size={15} aria-hidden="true" /></a>
@@ -79,7 +79,7 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
               <div><dt>기준 통과</dt><dd>{ledger.passCount ?? "—"}<small>개</small></dd></div>
             </dl>
             <p className="mt-5 text-base font-medium">{ledger.error ? "연구 장부 확인이 필요합니다." : "아직 채택할 신호가 없습니다."}</p>
-            <p className="mt-2 text-sm leading-7 text-muted-foreground">{ledger.error ?? "등록 규모와 검정 완료 건수는 다릅니다. 데이터 적격성, 공개 시점, 독립적인 관계를 확인하고 있습니다."}</p>
+            <p className="mt-2 text-sm leading-7 text-muted-foreground">{ledger.error ?? "진행 후보와 보관 기록은 겹치므로 더하지 않습니다. 데이터 적격성, 공개 시점, 독립적인 관계를 확인하고 있습니다."}</p>
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2"><Link className="source-link" to="/research#intake">진행 후보 보기 <ArrowUpRight size={14} aria-hidden="true" /></Link><Link className="source-link" to="/research#method">어떤 기준으로 판단하나요? <ArrowUpRight size={14} aria-hidden="true" /></Link></div>
           </aside>
         </section>
@@ -110,7 +110,7 @@ function MarketContext({ market, daily }: { market: WtiMarketView; daily: WtiDai
         <p>변동성은 별도 완료 일봉 스냅샷 기준입니다. 위 가격 그래프의 변경 가능한 마지막 일봉을 계산에 섞지 않습니다.</p>
         {snapshot ? <><p>기준일 {snapshot.asOf} · 확인 {checkedAtKst} KST</p><dl className="grid grid-cols-1 gap-4 sm:grid-cols-3"><div><dt>5일 실현변동성 · 연환산</dt><dd>{number(snapshot.volatility.rv5AnnualizedPct,1)}%</dd></div><div><dt>20일 실현변동성 · 연환산</dt><dd>{number(snapshot.volatility.rv20AnnualizedPct,1)}%</dd></div><div><dt>5일 실현변동성 백분위</dt><dd>{number(snapshot.volatility.rv5ReferencePercentile,0)} / 100</dd></div></dl><p>산식 {snapshot.volatility.formula} · 기준 분포 {snapshot.volatility.referenceStart}–{snapshot.volatility.referenceEnd}. 미래 예측 확률이 아닙니다.</p></> : <p>완료 일봉 변동성 자료를 표시하지 못했습니다.</p>}
         {market.freshnessReasons.length>0 && <p>{market.freshnessReasons.join(" ")}</p>}
-        <p>후보 비교선은 아직 없습니다. 공개 시각에 맞춘 후보 시계열이 확보되어야 비교할 수 있습니다.</p>
+        <p>후보 비교선은 아직 없습니다. 공개 시각에 맞춘 후보 시계열이 확보되어야 비교할 수 있고, 위 그래프만으로 어떤 후보의 관계도 확인할 수 없습니다.</p>
       </div>
     </details>
   </section>;

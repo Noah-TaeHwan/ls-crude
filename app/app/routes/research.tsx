@@ -82,15 +82,15 @@ export default function Research({ loaderData }: Route.ComponentProps) {
       <main id="main-content" tabIndex={-1} className="desk-shell">
         <header className="border-b border-border py-10 sm:py-12">
           <p className="eyebrow">RESEARCH / 가설과 검토 기록</p>
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">어떤 가설을 더 확인할까?</h1>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-muted-foreground">측정하려던 활동, 확보한 근거, 보류한 이유와 다음 행동을 확인합니다. 원본 확보와 검정 완료는 다르며, 후속 연구 유지는 예측력 인증이 아닙니다.</p>
+          <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">어떤 진행 후보를 더 확인할까?</h1>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-muted-foreground">측정하려던 활동, 확보한 근거, 보류한 이유와 다음 행동을 확인합니다. 진행 후보와 아래 보관 기록은 겹치므로 더하지 않습니다. 원본 확보와 검정 완료는 다르며, 후속 연구 유지는 예측력 인증이 아닙니다.</p>
           <div className="mt-5 flex flex-wrap gap-5 text-sm"><Link id="research-sample" className="source-link" to="/#research-sample">확보한 자료는 메인에서 보기 <ArrowRight size={15} aria-hidden="true" /></Link><a className="source-link" href="#method" onClick={revealMethod}>판정 기준 확인</a></div>
         </header>
 
         <ResearchIntake {...loaderData.intake} />
 
         <details id="ledger" open={!!loaderData.initialQuery} className="border-t border-border py-6"><summary className="cursor-pointer py-4 text-lg font-medium">보관 기록 <span className="font-mono text-sm text-muted-foreground">{error ? "확인 필요" : `${records.length}개 기록 · 기준 통과 ${passCount ?? "—"}개`}</span></summary><p className="mb-5 text-sm leading-7 text-muted-foreground">보관한 옛 연구의 검정 기록입니다. 위 진행 후보와 겹치므로 건수를 합산하지 않습니다.</p>
-          <div className="section-heading"><div><p className="section-kicker">01 / EXPLORE THE EVIDENCE</p><h2 id="ledger-title">후보를 열면, 멈춘 이유가 보입니다.</h2></div><a className="source-link" href="#method" onClick={revealMethod}>판정 기준 확인 <ArrowRight size={14} aria-hidden="true" /></a></div>
+          <div className="section-heading"><div><p className="section-kicker">01 / EXPLORE THE EVIDENCE</p><h2 id="ledger-title">보관 기록을 열면, 멈춘 이유가 보입니다.</h2></div><a className="source-link" href="#method" onClick={revealMethod}>판정 기준 확인 <ArrowRight size={14} aria-hidden="true" /></a></div>
           {error ? <div className="empty-state mt-6" role="status"><h3>연구 장부 확인이 필요합니다.</h3><p>{error}</p><a className="action-link mt-4" href={LEDGER_URL}>정본 장부 열기</a></div> : <>
             <div className="ledger-toolbar mt-6">
               <div><label htmlFor="ledger-search" className="mb-2 block text-sm">전체 {records.length}개 · 이름·관측 대상·판정 이유 검색</label><div className="relative"><Search size={17} aria-hidden="true" className="pointer-events-none absolute top-4 left-3 text-muted-foreground" /><input id="ledger-search" type="search" value={query} onChange={(event) => { setQuery(event.target.value); setLimit(PAGE_SIZE); }} placeholder="예: 피자, 정유, 공개시점, 018" className="min-h-12 w-full rounded-sm border border-border bg-background py-3 pr-3 pl-10 text-sm placeholder:text-muted-foreground" /></div></div>

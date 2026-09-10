@@ -185,8 +185,8 @@ test("serves the public evidence brief routes from the repository root", async (
     const optionGroup = sample.match(/aria-label="연구 사례 선택"[^>]*>([\s\S]*?)<\/div>/);
     assert.ok(optionGroup, "sample option group present");
     const optionLabels = [...optionGroup[1].matchAll(/>([^<]+)<\/button>/g)].map((match) => match[1].trim());
-    assert.equal(optionLabels[0], "쿠싱 · 현장 바쁨");
-    assert.equal(optionLabels[1], "HLX · 오일서비스");
+    assert.equal(optionLabels[0], "보드 · 쿠싱 현장 바쁨");
+    assert.equal(optionLabels[1], "고정 · HLX · 오일서비스");
     assert.equal(optionLabels.length, 9);
     for (const label of ["과거 연구 샘플", "자동 갱신 아님", "WTI 관계 검정 미실행", "2025-10-14", "332", "소수값", "원단위 표"]) assert.ok(sample.includes(label));
     assert.match(sample, /<svg id="watermelon-research-plot"/);
