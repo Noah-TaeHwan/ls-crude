@@ -97,3 +97,27 @@ These exist in the world but are not free, not historical enough, or not HLX-tap
 Stopping rule used here: remaining series are paid, blocked, or n too small to WF.
 That is not “no data left in the world.” It is “no more *valid free HLX-era tests* we can run without buying a terminal.”
 ALPHA CANDIDATE: still NO.
+
+## I. Same frozen gates on other tickers (2026-09-10)
+
+Question: is the engine Helix-specific, or does it work on OII / TDW / FTI / RIG / SLB / HAL / OSB?
+
+Frozen: G1 2-of-3, G2 OSB/OIH, G3 target 60d minus OSB ≤ −10pp (OSB uses OSB−WTI), 2-day confirm, next session, 10bp. No TP/pyramid. No 5-day drop filter.
+IS = 2012–2019. OOS = 2020–2026-09-01.
+
+| target | IS nav | IS B&H | OOS nav | OOS B&H |
+| --- | ---: | ---: | ---: | ---: |
+| HLX | 1.10 | 0.58 | 2.33 | 1.10 |
+| OII | 0.92 | 0.32 | 1.34 | 3.44 |
+| TDW | 0.28 | 0.01 | 0.79 | 4.98 |
+| FTI | 1.07 | 0.41 | 1.29 | 4.91 |
+| RIG | 1.23 | 0.17 | 1.43 | 0.86 |
+| SLB | 1.01 | 0.57 | 1.00 | 1.42 |
+| HAL | 0.68 | 0.72 | 1.13 | 1.50 |
+| OSB vs WTI lag | 0.98 | 0.39 | 1.25 | 1.40 |
+
+OII/TDW/FTI/SLB/HAL/OSB all lose to buy-and-hold out of sample.
+RIG beats its own B&H because B&H RIG OOS is 0.86 — cash default again, not a new oil alpha.
+HLX 2.33 here is the *looser* book (no 5-day drop). The tighter WF in WALKFORWARD.md still lost. Do not reopen HLX on this table.
+
+Alternative oil/asset engine from this transfer: **KILL**. The rule is “sit out crashes in high-beta oil service names,” not a forecast of WTI or of a single name.
