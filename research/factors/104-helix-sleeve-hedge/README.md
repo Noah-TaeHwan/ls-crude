@@ -11,6 +11,8 @@ Not an alpha book. Operating rule: if you already hold a well-intervention name,
 
 > Helix confirms oil-service comovement. Residual pairs and the cycle-lag engine did not clear frozen return gates. This card uses comovement as a **hedge**, not as a gap-fill entry.
 
+![Strategy](figures/strategy.png)
+
 ## Rule (frozen)
 
 - Long 1 unit HLX whenever the name is in the book.
