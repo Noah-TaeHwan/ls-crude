@@ -74,3 +74,26 @@ Source: Hornbeck 8-K combo deck, Helix Well Intervention active-fleet utilizatio
 | same-quarter util vs HLX | +0.16 | 13 |
 
 FRED drilling IP / oil-gas payrolls: download blocked from this host (HTTP2). Baker Hughes weekly offshore: no clean public CSV ingested. Still not alpha.
+
+## G. Added 2026-09-10 — SEC quarterly revenue
+
+CIK 0000866829 companyfacts. 33 three-month revenue points.
+YoY growth → next-quarter HLX r=+0.20 n=28. Weak. Not a trade.
+
+## H. Wall — what is left that we will not pretend to have
+
+These exist in the world but are not free, not historical enough, or not HLX-tape:
+
+- IHS Petrodata / Westwood marketed utilization and dayrates (weekly, paid)
+- Baker Hughes NAM weekly microdata Excel (site anti-bot from this host)
+- FRED graph csv (HTTP2 reset from this host)
+- HLX listed-option history 2012–2026
+- Full FINRA short-interest 2012–2026
+- BSEE incident / shut-in well-level
+- 13F holder-level time series parsed
+- Insider Form 4 panel
+- Private contract FIDs / Petrobras dayrate awards not in 8-K
+
+Stopping rule used here: remaining series are paid, blocked, or n too small to WF.
+That is not “no data left in the world.” It is “no more *valid free HLX-era tests* we can run without buying a terminal.”
+ALPHA CANDIDATE: still NO.
