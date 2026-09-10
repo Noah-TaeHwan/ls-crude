@@ -1,36 +1,36 @@
-# 097 — Helix / HOS Cycle-Lag Screen
+# 097 — HLX Cycle-Lag Screen
 
 | | |
 | --- | --- |
 | Status | **PARK** / E1 / weight 0.0 |
-| Source repo | [Liam-Son/helix-factor-screen](https://github.com/Liam-Son/helix-factor-screen) (imported 2026-09-09) |
-| Live ticker | **HOS** from 2026-09-02. HLX last print 2026-09-01. **Do not splice.** |
-| Engine | **WAIT** — G3 locked until 60 HOS sessions |
-| Trading | **LOCKED** on HOS. Historical HLX engine is in-sample after 2022. |
+| Universe | **HLX only**, 2012-01-01 → **2026-09-01** last print |
+| Out of scope | HOS from 2026-09-02. New name, new float. Do not study it here. Do not splice. |
+| Source | [Liam-Son/helix-factor-screen](https://github.com/Liam-Son/helix-factor-screen) |
+| Trading | **LOCKED**. 21-trade path is in-sample after 2022. |
 
-This is **not** a revival of the deleted 095 Oil–Helix Dislocation card. That card asked whether WTI or HLX was “wrong.” This card asks a different question:
+Question:
 
-> When oil and oil-service peers are already in a cycle, and HLX/HOS still lags the peer basket, does a two-day confirmed three-gate rule beat buy-and-hold **on HLX only**?
+> On the HLX tape only: when oil and oil-service peers are already in a cycle, and HLX still lags the peer basket, does a two-day confirmed three-gate rule beat buy-and-hold?
 
 Target is the **equity**, not WTI. Same-day energy-chain ICs in `screen/factor_screen.csv` are descriptive. They are not an oil-trading signal.
 
 ## Workflow
 
 ```
-prices (Yahoo) → build_panel() → gates G1 G2 G3
-                 → 2-day confirm → size next session
-                 → WAIT if ticker is HOS and n_HOS < 60
+prices → HLX panel through 2026-09-01 → G1 G2 G3
+                 → 2-day confirm → next session
+                 → stop. No HOS rows.
 ```
 
 | Gate | Meaning | Frozen rule |
 | --- | --- | --- |
 | G1 oil | WTI off 12m low ≥ +20%, **or** off 12m high ≥ −25% crash bounce, **or** UPB 60d log-sum > 0. Need 2 of 3. | `WTI_RALLY=0.20`, `WTI_CRASH=-0.25` |
 | G2 services | OSB 60d log-sum > 0 **or** OIH > 120d low × 1.02 | peers on |
-| G3 lag | HLX (then HOS) 60d log-sum − OSB 60d ≤ **−10pp**, two days | HOS needs 60 sessions first |
+| G3 lag | HLX 60d log-sum − OSB 60d ≤ **−10pp**, two days | HLX tape only |
 
 Exit when any gate drops. VIX above 12m 80th percentile → 0.5x. Code: [`engine/buy_engine.py`](engine/buy_engine.py).
 
-OSB = equal-weight SLB HAL NOV RIG OII. UPB = XOM CVX COP EOG OXY. HLX/HOS never in OSB.
+OSB = equal-weight SLB HAL NOV RIG OII. UPB = XOM CVX COP EOG OXY. HLX not in OSB.
 
 ## What the source repo already showed
 
@@ -57,27 +57,24 @@ Tight “buy the lag after an oil spike” is the **opposite** of a buy rule.
 
 Factor screen (same-day IC vs HLX vs forward 20d) lives in [`screen/factor_screen.csv`](screen/factor_screen.csv). Same-day WTI/Brent ICs are large because they are the energy complex. Forward-20d ICs are small or negative. Do not promote a same-day IC to a forecast.
 
-## Live as of source snapshot
+## Scope cut 2026-09-10
 
-- HLX last $10.60 (2026-09-01). HOS 2026-09-08 $9.08. Combined name, new float.
-- Engine: WAIT. G1 on (oil). G3 locked.
-- Ops context in RESULTS: utilization / dayrates / backlog are **not** yet a coded gate.
+HOS is dropped from this factor. Combined-company tape is a different security. Next work stays inside HLX dates: year-split of the 21 trades, pre-2021 vs 2021–22 vs 2025–26, and whether G2 (peers) is doing all the work.
 
 ## Verdict
 
 ```
-MEASUREMENT VALIDITY: PASS on HLX tape
-HOS TAPE: FORWARD_ONLY, < 60 days
+UNIVERSE: HLX through 2026-09-01
+HOS: OUT
 SPLICE: FORBIDDEN
-CYCLE-LAG vs BUY-HOLD ON HLX: descriptive 2.06x vs 0.69x, IS after 2022
+CYCLE-LAG vs BUY-HOLD ON HLX: 2.06x vs 0.69x, IS after 2022
 OIL-UP STOCK-DOWN BUY RULE: FAIL
 SAME-DAY ENERGY IC → 20D HLX: FAIL as alpha
-INCREMENTAL vs OSB: not shown out of sample
 TRADING GATE: LOCKED
 FINAL: PARK
 ```
 
-Falsify PARK only with a **HOS-only** tape, same frozen gates, after day 60, that beats OSB after costs. Do not retune −10pp / 20% / 2-day confirm on that tape.
+Falsify PARK on **HLX** only: freeze gates, drop 2021–22, see if 2012–20 plus 2025–26 still beat buy-hold after costs. If the edge is only 2021–22, KILL the engine.
 
 Run:
 
@@ -85,4 +82,4 @@ Run:
 python3 research/factors/097-helix-hos-cycle-lag/engine/buy_engine.py
 ```
 
-Needs a local price panel with columns WTI, HLX, HOS, SLB, HAL, NOV, RIG, OII, XOM, CVX, COP, EOG, OXY, OIH, VIX.
+Needs WTI, HLX, SLB, HAL, NOV, RIG, OII, XOM, CVX, COP, EOG, OXY, OIH, VIX. Drop rows after 2026-09-01.
