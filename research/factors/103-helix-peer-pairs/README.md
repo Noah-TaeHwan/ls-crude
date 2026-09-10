@@ -71,3 +71,12 @@ NOT_PROVEN
 ```
 
 Do not promote HOLD HLX–OII +1.08%. Do not retune |Z| or 20d after seeing 2024.
+
+## Use
+
+This line is a **filter**, not a signal.
+
+- Use: if the well-intervention name is already on, hedge with OII (104). Do not splice HOS. Do not drop HLX into a USO–XLE or OFS-equity-alpha notebook as its own residual (105).
+- Do not use: fade a gap with oil, predict WTI, or turn the 2.06× in-sample NAV back on.
+
+A filter does not pay. It stops one more bad book from opening.

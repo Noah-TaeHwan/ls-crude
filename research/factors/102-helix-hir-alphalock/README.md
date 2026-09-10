@@ -66,3 +66,12 @@ See [v22/README.md](v22/README.md). Real DEV did not ADVANCE. HOLD unopened. Sti
 
 ## v23 capped episode
 See [v23/README.md](v23/README.md). DEV n=37, neighbors 6/9. HOLD sealed.
+
+## Use
+
+This line is a **filter**, not a signal.
+
+- Use: if the well-intervention name is already on, hedge with OII (104). Do not splice HOS. Do not drop HLX into a USO–XLE or OFS-equity-alpha notebook as its own residual (105).
+- Do not use: fade a gap with oil, predict WTI, or turn the 2.06× in-sample NAV back on.
+
+A filter does not pay. It stops one more bad book from opening.
