@@ -1,0 +1,19 @@
+test,n,corr,coef,intercept,R2
+lagcorr_sig_cdd_k-3,105,0.0682,,,
+lagcorr_sig_cdd_k-2,106,-0.0099,,,
+lagcorr_sig_cdd_k-1,107,-0.0739,,,
+lagcorr_sig_cdd_k0,107,-0.0515,,,
+lagcorr_sig_cdd_k1,106,-0.1593,,,
+lagcorr_sig_cdd_k2,105,-0.1135,,,
+lagcorr_sig_cdd_k3,104,0.0025,,,
+lagcorr_sig_wm_k-3,34,-0.2226,,,
+lagcorr_sig_wm_k-2,34,-0.1478,,,
+lagcorr_sig_wm_k-1,34,-0.0315,,,
+lagcorr_sig_wm_k0,34,-0.1033,,,
+lagcorr_sig_wm_k1,34,0.1902,,,
+lagcorr_sig_wm_k2,34,0.2382,,,
+lagcorr_sig_wm_k3,33,0.0836,,,
+ols_cdd_fwd1m,107,,[-0.0071],0.01274,0.0027
+ols_wm_fwd1m,34,,[-0.0118],-0.00691,0.0107
+ols_summer_fwd1m,107,,[-0.0128],0.01278,0.0056
+ols_placebo12_fwd1m,31,,"[0.004, 0.0025]",0.00835,0.0035

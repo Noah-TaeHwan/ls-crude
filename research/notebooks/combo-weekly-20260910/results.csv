@@ -1,0 +1,23 @@
+test,n,corr,coef,intercept,R2
+lagcorr_sig_barge_k-4,414,0.0313,,,
+lagcorr_sig_barge_k-3,414,0.0308,,,
+lagcorr_sig_barge_k-2,414,0.0367,,,
+lagcorr_sig_barge_k-1,414,0.0397,,,
+lagcorr_sig_barge_k0,413,0.0854,,,
+lagcorr_sig_barge_k1,412,0.1049,,,
+lagcorr_sig_barge_k2,411,0.1049,,,
+lagcorr_sig_barge_k3,410,0.0847,,,
+lagcorr_sig_barge_k4,409,0.0315,,,
+lagcorr_sig_wm_k-4,127,-0.135,,,
+lagcorr_sig_wm_k-3,127,-0.0658,,,
+lagcorr_sig_wm_k-2,127,0.0161,,,
+lagcorr_sig_wm_k-1,127,0.0578,,,
+lagcorr_sig_wm_k0,127,0.1111,,,
+lagcorr_sig_wm_k1,127,0.161,,,
+lagcorr_sig_wm_k2,127,0.1707,,,
+lagcorr_sig_wm_k3,127,0.1988,,,
+lagcorr_sig_wm_k4,127,0.1978,,,
+ols_barge_fwd4,413,,[0.011],0.01651,0.0073
+ols_wm_fwd4,127,,[0.0108],0.01307,0.0123
+ols_combo_fwd4,109,,"[0.0058, 0.0052]",0.02377,0.0079
+ols_placebo52_fwd4,97,,"[-0.0038, -0.0122]",0.02689,0.0208
