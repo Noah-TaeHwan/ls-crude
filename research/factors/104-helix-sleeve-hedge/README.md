@@ -1,5 +1,7 @@
 # 104 — Helix sleeve hedge
 
+한국어: [README.ko.md](README.ko.md) · [strategy.ko.png](figures/strategy.ko.png)
+
 ## What shipped
 
 A usable risk sleeve. Not a signal.
