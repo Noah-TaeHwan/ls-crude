@@ -72,3 +72,9 @@ The book did the one job it declared: cut oil-service vol on a name you already 
 
 Kill later only if sleeve vol ≥ naked vol on this same rule.
 Sharpe, gap-fill, and Z-entry are not part of this keep.
+
+## Deeper — what to hedge with
+
+Same rule. Only the hedge leg changes.
+
+OSB basket cuts the most vol (DEV 46.9, HOLD 33.8). WTI futures barely cut vol. Default ops stay **single-name OII**. Use OSB if the desk can trade five names. Do not retune the 90d / monthly calendar off this table.
