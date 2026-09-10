@@ -82,6 +82,8 @@ Factor screen (same-day IC vs HLX vs forward 20d) lives in [`screen/factor_scree
 
 HOS is dropped from this factor. Combined-company tape is a different security. Next work stays inside HLX dates: year-split of the 21 trades, pre-2021 vs 2021–22 vs 2025–26, and whether G2 (peers) is doing all the work.
 
+What was tested: [`TEST_INVENTORY.md`](TEST_INVENTORY.md).
+
 ## Deep footprint 2026-09-10
 
 Full panel, five figures, extra batteries: [`../../indexes/097-helix-hos-cycle-lag/20260910T097DEEPZ/`](../../indexes/097-helix-hos-cycle-lag/20260910T097DEEPZ/). Still not alpha. Strongest leftover: OOS gap60 vs OSB → +20d excess r=−0.286 n=78, not a trade rule.
