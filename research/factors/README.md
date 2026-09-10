@@ -309,3 +309,4 @@ Market-neutral strategy (012)
 - [019 Robotaxi Night Traffic](019-robotaxi-night-traffic-archive/README.md): 데이터 수집·백테스트에는 쓰지 않는 보존 아이디어다.
 
 압축 원본 패키지는 번호와 무관하게 그대로 보존한다. 합성 데이터 데모의 상관·적중률은 실증 결과가 아니다.
+| 098 | [US Oil Price Suppression](098-us-oil-price-suppression/README.md) | — | mixed / coin | **KILL as alpha** — 9 valid SPR/jawbone prints, no edge vs placebo. War events go the other way. Catalog only. |
