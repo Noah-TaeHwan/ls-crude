@@ -315,3 +315,4 @@ Market-neutral strategy (012)
 | 100 | [HOS Regime B](100-hos-regime-b/README.md) | — | n=5 | FORWARD_ONLY — 60d not filled |
 | 101 | [EIA inventory consensus](101-eia-inventory-consensus/README.md) | — | n=8 r=−0.11 | PARK / E1 — no free archive |
 | 102 | [Helix HIR Alpha-Lock](102-helix-hir-alphalock/README.md) | DEV −0.60% / HOLD −0.25% | NOT_PROVEN | v19 real tape |
+| 103 | [Helix peer pairs](103-helix-peer-pairs/README.md) | DEV HLX-OII −3.23% / HOLD +1.08% boot lo −1.97% | NOT_PROVEN | residual is white noise |
