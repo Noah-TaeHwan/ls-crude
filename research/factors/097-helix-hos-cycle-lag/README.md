@@ -12,6 +12,27 @@ Question:
 
 > On the HLX tape only: when oil and oil-service peers are already in a cycle, and HLX still lags the peer basket, does a two-day confirmed three-gate rule beat buy-and-hold?
 
+
+## Figures
+
+Levels, correlation, beta, volume, excess, year bars, OOS gap scatter, drawdown.
+
+![levels](figures/fig_levels.png)
+
+![rollcorr](figures/fig_rollcorr.png)
+
+![beta](figures/fig_beta.png)
+
+![volume](figures/fig_volume.png)
+
+![excess](figures/fig_excess.png)
+
+![year excess](figures/fig_year_excess.png)
+
+![OOS gap scatter](figures/fig_gap_scatter_oos.png)
+
+![drawdown](figures/fig_drawdown.png)
+
 Target is the **equity**, not WTI. Same-day energy-chain ICs in `screen/factor_screen.csv` are descriptive. They are not an oil-trading signal.
 
 ## Workflow

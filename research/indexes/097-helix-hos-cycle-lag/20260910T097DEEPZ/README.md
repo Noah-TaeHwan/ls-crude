@@ -1,18 +1,14 @@
 # 20260910T097DEEPZ
 
-Deep HLX-only footprint. Not a new factor. Not a live engine.
+HLX-only footprint. Figures live here and on the factor card.
 
-- Universe: HLX 2012-01-03 → 2026-09-01
-- HOS excluded. No splice
-- Prices: Yahoo daily `panel_daily.csv`
-- Batteries: `DEEP_LOG.md`
-- Figures: levels, rollcorr, beta, volume, excess vs OSB
+![levels](fig_levels.png)
+![rollcorr](fig_rollcorr.png)
+![beta](fig_beta.png)
+![volume](fig_volume.png)
+![excess](fig_excess.png)
+![year](fig_year_excess.png)
+![scatter](fig_gap_scatter_oos.png)
+![dd](fig_drawdown.png)
 
-Strongest leftover number: 60d HLX−OSB gap → next 20d *excess* vs OSB, non-overlap OOS r=−0.286 n=78.
-That is the catch-up sentence again. It is **not** a frozen tradable rule. Volume spikes and −5% bounce die OOS. Same-day HLX is just oil-service beta (OIH 0.79 OOS).
-
-```
-ALPHA CANDIDATE: NO
-LIVE ENGINE: KILL
-HISTORY BOOK: PARK
-```
+ALPHA CANDIDATE: NO. LIVE ENGINE: KILL.
