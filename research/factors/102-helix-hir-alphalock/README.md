@@ -58,3 +58,6 @@ Related: 095 PARK, 097 KILL engine. This card is the residual-catch-up version o
 
 ## v22 two-turn engine
 See [v22/README.md](v22/README.md). Real DEV did not ADVANCE. HOLD unopened. Still NOT_PROVEN.
+
+## v23 capped episode
+See [v23/README.md](v23/README.md). DEV n=37, neighbors 6/9. HOLD sealed.

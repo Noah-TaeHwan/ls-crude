@@ -47,3 +47,5 @@ Selftest must not emit ALPHA_PROVEN. It did not.
 Twin OSB = OII+FTI. [move-D-oii-fti](move-D-oii-fti/README.md).
 DEV mean flipped to −1.04%, neighbors 2/9. Worse than baseline.
 HOLD still sealed.
+
+Next: [v23 cap=10](../v23/README.md) — mean better, ADVANCE still false.
