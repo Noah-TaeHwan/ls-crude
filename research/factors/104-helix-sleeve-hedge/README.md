@@ -60,3 +60,15 @@ This line is a **filter**, not a signal.
 - Do not use: fade a gap with oil, predict WTI, or turn the 2.06× in-sample NAV back on.
 
 A filter does not pay. It stops one more bad book from opening.
+
+## Why KEEP
+
+The book did the one job it declared: cut oil-service vol on a name you already hold.
+
+- DEV vol fell 66.8% → 51.3%.
+- Frozen HOLD vol fell 50.9% → 37.8%. Same rule, no retune.
+- Mean DEV β ≈ 0.83, which matches the comovement already measured.
+- HOLD mean return falling is the hedge selling the 2022–24 service rally. That is the hedge.
+
+Kill later only if sleeve vol ≥ naked vol on this same rule.
+Sharpe, gap-fill, and Z-entry are not part of this keep.
