@@ -314,3 +314,4 @@ Market-neutral strategy (012)
 | 099 | [FOMC MP1 daily proxy](099-fomc-mp1-daily-proxy/README.md) | +0.02 / +0.02 | +5d OOS r=+0.38 wrong sign | PARK — not the 30-min window |
 | 100 | [HOS Regime B](100-hos-regime-b/README.md) | — | n=5 | FORWARD_ONLY — 60d not filled |
 | 101 | [EIA inventory consensus](101-eia-inventory-consensus/README.md) | — | n=8 r=−0.11 | PARK / E1 — no free archive |
+| 102 | [Helix HIR Alpha-Lock](102-helix-hir-alphalock/README.md) | DEV −0.60% / HOLD −0.25% | NOT_PROVEN | v19 real tape |
