@@ -42,3 +42,8 @@ Selftest must not emit ALPHA_PROVEN. It did not.
 - Drop the n=40 floor because 38 is close.
 - Open HOLD after a failed ADVANCE.
 - Call +2.65% DEV mean an alpha. The same book’s bootstrap lower bound is negative.
+## DEV move D (2026-09-10)
+
+Twin OSB = OII+FTI. [move-D-oii-fti](move-D-oii-fti/README.md).
+DEV mean flipped to −1.04%, neighbors 2/9. Worse than baseline.
+HOLD still sealed.
