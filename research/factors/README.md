@@ -143,7 +143,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 094 | [Saharan Hurricane Suppression Index (SHSI)](094-saharan-hurricane-suppression-index/README.md) | — | — | PARK — Dust→Hurricane→Gulf 사슬 카드. Stage 1 전 WTI 직행 금지 |
 | 095 | [Oil–Helix Dislocation (OHD)](095-oil-helix-dislocation/README.md) | 0.174 / 0.305 | lead ≈ 0 | PARK — A 리드 FAIL · B 피어동등 · C 삼각형 ~50%. HOS 접합 금지. 트레이딩 미개방 |
 | 096 | [Oil Market Confirmation Hexagon (OMCH)](096-oil-market-confirmation-hexagon/README.md) | IS γ=+0.011 | OOS γ≈0 | PARK — 20일 1차 H1 FAIL. 육각형이 Brent 단독을 못 이김 |
-| 097 | [HLX Cycle-Lag](097-helix-hos-cycle-lag/README.md) | HLX 2.06× vs BH 0.69× | HOS OUT | PARK — HLX 2012–2026-09-01만. 2021–22 IS. HOS 연구 안 함 |
+| 097 | [HLX Cycle-Lag](097-helix-hos-cycle-lag/README.md) | OOS 0.45× vs BH 1.10× | HOS OUT | KILL engine — WF 20260910. 역사북 PARK |
 
 **현재 통과 수**: 0개. `|r| ≥ 0.10`이면서 IS·OOS 모두 같은 방향인 행만 통과로 인정한다. 따라서 높은 단일 구간 수치(예: 045의 IS `+0.512`, 040의 OOS `-0.455`)도 채택 근거가 아니다.
 
@@ -247,7 +247,7 @@ Orca 워크플로우(1. 아이디어 -> 2. 데이터 탐색 -> 3. 샘플 확보)
 | 094 | [Saharan Hurricane Suppression Index (SHSI)](094-saharan-hurricane-suppression-index/README.md) | MDR 먼지 충격 → 허리케인 억제 → 걸프 차질 프리미엄 | PARK — 재분석·스톰 패널 미수집. 크랙·캘린더가 CL보다 우선 타깃 | 0.0 |
 | 095 | [Oil–Helix Dislocation (OHD)](095-oil-helix-dislocation/README.md) | WTI–HLX 어긋남에서 Brent/OSB가 틀린 쪽을 가리키나 | PARK — 세 배터리 후 NO. 트레이딩 미개방 | 0.0 |
 | 096 | [Oil Market Confirmation Hexagon (OMCH)](096-oil-market-confirmation-hexagon/README.md) | WTI가 나머지 5시장 함의에서 이탈하면 되돌리나 | PARK — 1차 20일 γ 부호 실패. Brent만으로 충분 | 0.0 |
-| 097 | [HLX Cycle-Lag](097-helix-hos-cycle-lag/README.md) | HLX가 OSB 대비 60일 지연일 때만 | PARK — HOS 제외. HLX 테이프만 | 0.0 |
+| 097 | [HLX Cycle-Lag](097-helix-hos-cycle-lag/README.md) | HLX가 OSB 대비 60일 지연일 때만 | KILL engine / PARK book. OOS FAIL | 0.0 |
 
 모든 `0.0`은 실제 백테스트·거래 가중치다. `HOLD`는 아직 필요 데이터·공개시점·정의가 갖춰지지 않았다는 뜻이고, `SKIP`은 현재 설계에서 고유 알파가 없다는 뜻이다.
 
