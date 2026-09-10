@@ -1,0 +1,63 @@
+{
+  "runId": "20260910T091ECHOZ",
+  "label": "Cushing/Payne EPA ECHO air inspections, dated, not busy",
+  "verdict": "frozen",
+  "retrieved": "2026-09-09T19:30:03Z",
+  "sourceName": "EPA ECHO air facility search (air_rest_services, keyless)",
+  "sourceBase": "https://echodata.epa.gov/echo/air_rest_services.get_facilities",
+  "endpoints": [
+    "https://echodata.epa.gov/echo/air_rest_services.get_facilities?p_st=OK&p_zip=74023&output=JSON",
+    "https://echodata.epa.gov/echo/air_rest_services.get_qid?qid=280&output=JSON"
+  ],
+  "queryId": "280",
+  "geography": "Cushing city, Oklahoma (ECHO AIRCity=CUSHING, state OK)",
+  "countyAsFiled": {
+    "Payne": 33,
+    "Lincoln": 11
+  },
+  "rowCount": 44,
+  "datedFce": 29,
+  "dateRange": [
+    "1998-11-19",
+    "2026-05-05"
+  ],
+  "dateRule": "AIRLastFceDate (Full Compliance Evaluation) MM/DD/YYYY normalized to ISO; null stays null, never 0",
+  "fceCountDisclosed": 19,
+  "fceCountSum": 33,
+  "evalDateDisclosed": 29,
+  "evalCountDisclosed": 24,
+  "evalCountSum": 167,
+  "violDateDisclosed": 18,
+  "recentViolationsSum": 0,
+  "statusAsFiled": {
+    "Operating": 34,
+    "Permanently Closed": 10
+  },
+  "classAsFiled": {
+    "Minor Emissions": 18,
+    "Major Emissions": 12,
+    "Synthetic Minor Emissions": 7,
+    "80% Synthetic Minor Emissions": 7
+  },
+  "excludedNonCushingCities": [
+    "CEMENT",
+    "RIPLEY",
+    "AGRA",
+    "CYRIL",
+    "FOX",
+    "HEALDTON"
+  ],
+  "csv": "cushing_echo_air_inspections.csv",
+  "json": "cushing_echo_air_inspections.json",
+  "reader": "app/app/lib/cushing-echo.ts",
+  "test": "app/tests/cushing-echo.test.mjs (3 pass)",
+  "notJoined": [
+    "WTI",
+    "busy score",
+    "TRI pounds",
+    "DEQ VOC tons",
+    "statewide Oklahoma inspections",
+    "throughput",
+    "enforcement-case penalties (no keyless case service; 404)"
+  ]
+}

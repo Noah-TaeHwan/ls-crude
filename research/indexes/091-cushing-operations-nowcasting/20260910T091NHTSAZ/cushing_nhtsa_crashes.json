@@ -1,0 +1,916 @@
+{
+ "runId": "20260910T091NHTSAZ",
+ "geography": "Cushing, Oklahoma (CITY as filed + state=OK)",
+ "source": "aayw-vxb3",
+ "sourceQuery": "state='OK' AND upper(city)='CUSHING' (FMCSA Crash File, USDOT Socrata, keyless)",
+ "retrievedUtc": "2026-09-10",
+ "label": "Cushing filed-city commercial-motor-vehicle crash dates, not busy, not WTI, not FARS fatalities, not AADT",
+ "dateRule": "REPORT_DATE YYYYMMDD date part only; zero empty dates",
+ "dedupRule": "one row per REPORT_NUMBER; 7 multi-vehicle duplicate reports collapsed (136 reports -> 129 crashes)",
+ "unit": "crashes",
+ "rows": [
+  {
+   "crashDate": "1993-01-27",
+   "reportNumber": "OK083606125A",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "1993-11-06",
+   "reportNumber": "OK087613008A",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 2
+  },
+  {
+   "crashDate": "1997-08-12",
+   "reportNumber": "OK093546226A",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "1999-02-25",
+   "reportNumber": "OK094370123A",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2000-01-12",
+   "reportNumber": "OK0095250105",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 9
+  },
+  {
+   "crashDate": "2000-07-26",
+   "reportNumber": "OK0095291483",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 2
+  },
+  {
+   "crashDate": "2001-06-29",
+   "reportNumber": "OK0096273240",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2001-08-08",
+   "reportNumber": "OK0096287981",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2002-03-04",
+   "reportNumber": "OK0097238878",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2003-04-14",
+   "reportNumber": "OK0098036676",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2005-03-29",
+   "reportNumber": "OK0099905443",
+   "countyCode": "119",
+   "fatalities": 2,
+   "injuries": 3
+  },
+  {
+   "crashDate": "2005-08-02",
+   "reportNumber": "OK0099944682",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2005-08-25",
+   "reportNumber": "OK0099944694",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2006-03-09",
+   "reportNumber": "OK0099995673",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 2
+  },
+  {
+   "crashDate": "2007-06-05",
+   "reportNumber": "OK0100875879",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2007-11-30",
+   "reportNumber": "OK0100891082",
+   "countyCode": "131",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2007-12-10",
+   "reportNumber": "OK0100891841",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2008-09-09",
+   "reportNumber": "OK0102343980",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2008-12-29",
+   "reportNumber": "OK0102395753",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 2
+  },
+  {
+   "crashDate": "2009-01-26",
+   "reportNumber": "OK0102392925",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 2
+  },
+  {
+   "crashDate": "2010-09-17",
+   "reportNumber": "OK000MMX6499",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2010-11-01",
+   "reportNumber": "OK00K0089710",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2011-07-22",
+   "reportNumber": "OK00K0058111",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 4
+  },
+  {
+   "crashDate": "2012-03-09",
+   "reportNumber": "OK0020121620",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2012-04-16",
+   "reportNumber": "OK00K0028712",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 2
+  },
+  {
+   "crashDate": "2012-04-19",
+   "reportNumber": "OK0020122718",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2012-05-23",
+   "reportNumber": "OK00K0040012",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2012-07-13",
+   "reportNumber": "OK00K0056412",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2012-08-14",
+   "reportNumber": "OK0020126873",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2012-08-20",
+   "reportNumber": "OK00K0069112",
+   "countyCode": "119",
+   "fatalities": 1,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2012-09-25",
+   "reportNumber": "OK00K0080412",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2012-10-16",
+   "reportNumber": "OK00K0088012",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2013-01-30",
+   "reportNumber": "OK0020130590",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2013-03-13",
+   "reportNumber": "OK0020131459",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-04-12",
+   "reportNumber": "OK00K0033613",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-04-29",
+   "reportNumber": "OK00K0039213",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-04-29",
+   "reportNumber": "OK00K0039313",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-05-29",
+   "reportNumber": "OK00K0048913",
+   "countyCode": "119",
+   "fatalities": 1,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-09-16",
+   "reportNumber": "OK00K0086013",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-09-24",
+   "reportNumber": "OK0020136178",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-09-26",
+   "reportNumber": "OK00K0089713",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-09-30",
+   "reportNumber": "OK00K0091013",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2013-10-03",
+   "reportNumber": "OK00K0092013",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-10-21",
+   "reportNumber": "OK0020136817",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2013-12-05",
+   "reportNumber": "OK0020137781",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-12-09",
+   "reportNumber": "OK00K0111613",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2013-12-13",
+   "reportNumber": "OK0020137922",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2013-12-21",
+   "reportNumber": "OK00K0114813",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2014-01-25",
+   "reportNumber": "OK00K0010114",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2014-01-26",
+   "reportNumber": "OK00K0010714",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2014-01-29",
+   "reportNumber": "OK00K0011514",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2014-01-29",
+   "reportNumber": "OK00K0011614",
+   "countyCode": "119",
+   "fatalities": 1,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2014-01-31",
+   "reportNumber": "OK00K0012214",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 2
+  },
+  {
+   "crashDate": "2014-05-05",
+   "reportNumber": "OK00K0040314",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2014-05-22",
+   "reportNumber": "OK00K0044714",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2014-06-18",
+   "reportNumber": "OK00K0054314",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2014-07-16",
+   "reportNumber": "OK00K0064014",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2014-07-28",
+   "reportNumber": "OK00K0067514",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2014-08-18",
+   "reportNumber": "OK00K0075114",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2014-09-04",
+   "reportNumber": "OK00K0081814",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2014-09-10",
+   "reportNumber": "OK0020145300",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2014-09-30",
+   "reportNumber": "OK00K0090914",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2014-10-29",
+   "reportNumber": "OK00K0103414",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2014-12-02",
+   "reportNumber": "OK0020147115",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 3
+  },
+  {
+   "crashDate": "2014-12-18",
+   "reportNumber": "OK00K0122014",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2015-01-21",
+   "reportNumber": "OK00K0007415",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2015-03-20",
+   "reportNumber": "OK0020151668",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2015-03-30",
+   "reportNumber": "OK00K0032615",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 3
+  },
+  {
+   "crashDate": "2015-04-09",
+   "reportNumber": "OK00K0035915",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2015-08-13",
+   "reportNumber": "OK00K0081815",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2015-10-12",
+   "reportNumber": "OK0015102442",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2015-12-09",
+   "reportNumber": "OK0001506936",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2015-12-29",
+   "reportNumber": "OK0201507011",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2016-01-07",
+   "reportNumber": "OK0201607059",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2016-01-11",
+   "reportNumber": "OK00K0003616",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2016-04-14",
+   "reportNumber": "OK0000167538",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2016-05-11",
+   "reportNumber": "OK00K0043116",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2016-05-16",
+   "reportNumber": "OK00K0045316",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2017-01-18",
+   "reportNumber": "OK00K0006717",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2017-02-07",
+   "reportNumber": "OK0201709026",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2017-02-08",
+   "reportNumber": "OK00K0011617",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2017-02-27",
+   "reportNumber": "OK00K0017617",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2017-06-05",
+   "reportNumber": "OK00K0053617",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2017-12-09",
+   "reportNumber": "OK00K0123717",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2017-12-12",
+   "reportNumber": "OK00K0124317",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2018-07-13",
+   "reportNumber": "OK0201806905",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2018-07-20",
+   "reportNumber": "OK0201806910",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2018-10-29",
+   "reportNumber": "OK00K0100218",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2018-11-27",
+   "reportNumber": "OK00K0110218",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2019-02-13",
+   "reportNumber": "OK0201907009",
+   "countyCode": "000",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2019-02-27",
+   "reportNumber": "OK00K0027419",
+   "countyCode": "000",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2019-08-18",
+   "reportNumber": "OK00K0086719",
+   "countyCode": "000",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2019-09-11",
+   "reportNumber": "OK0201907080",
+   "countyCode": "000",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2019-11-27",
+   "reportNumber": "OK0020197116",
+   "countyCode": "000",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2020-01-10",
+   "reportNumber": "OK0202007135",
+   "countyCode": "000",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2020-02-06",
+   "reportNumber": "OK00K0009720",
+   "countyCode": "000",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2020-04-13",
+   "reportNumber": "OK00K0028820",
+   "countyCode": "000",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2020-10-02",
+   "reportNumber": "OK0202007193",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2020-12-18",
+   "reportNumber": "OK0202007212",
+   "countyCode": "081",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2021-02-22",
+   "reportNumber": "OK0020210010",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2021-03-04",
+   "reportNumber": "OK0021004918",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2021-04-02",
+   "reportNumber": "OK0020210027",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2021-04-30",
+   "reportNumber": "OK0020210036",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2021-05-12",
+   "reportNumber": "OK0021010776",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 3
+  },
+  {
+   "crashDate": "2021-06-22",
+   "reportNumber": "OK0021014418",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2021-07-09",
+   "reportNumber": "OK0021016026",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2021-08-12",
+   "reportNumber": "OK0021018899",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2021-11-19",
+   "reportNumber": "OK0021027033",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2021-12-27",
+   "reportNumber": "OK0021029911",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2022-03-10",
+   "reportNumber": "OK0022004934",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 3
+  },
+  {
+   "crashDate": "2022-04-01",
+   "reportNumber": "OK0022006533",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 2
+  },
+  {
+   "crashDate": "2022-09-07",
+   "reportNumber": "OK0022017825",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 3
+  },
+  {
+   "crashDate": "2022-11-14",
+   "reportNumber": "OK0020220090",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2023-01-24",
+   "reportNumber": "OK0023001592",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2023-07-17",
+   "reportNumber": "OK0020230044",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2023-07-21",
+   "reportNumber": "OK2307002022",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2024-04-11",
+   "reportNumber": "OK2404002714",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2024-05-25",
+   "reportNumber": "OK2406001534",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2024-08-08",
+   "reportNumber": "OK2408001759",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2024-10-02",
+   "reportNumber": "OK2410001140",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2024-10-30",
+   "reportNumber": "OK0020240056",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2025-01-05",
+   "reportNumber": "OK2501002868",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2025-02-11",
+   "reportNumber": "OK2502002137",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 3
+  },
+  {
+   "crashDate": "2025-05-22",
+   "reportNumber": "OK2505004466",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2025-06-05",
+   "reportNumber": "OK0020250035",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2025-07-11",
+   "reportNumber": "OK2507003094",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 2
+  },
+  {
+   "crashDate": "2025-08-10",
+   "reportNumber": "OK2508002203",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 1
+  },
+  {
+   "crashDate": "2025-08-10",
+   "reportNumber": "OK2508002204",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  },
+  {
+   "crashDate": "2025-10-06",
+   "reportNumber": "OK2510004329",
+   "countyCode": "119",
+   "fatalities": 0,
+   "injuries": 0
+  }
+ ]
+}

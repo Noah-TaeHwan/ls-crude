@@ -1,0 +1,78 @@
+{
+ "runId": "20260910T091VOCYZ",
+ "label": "Cushing city terminal-context annual VOC, not AQI, not busy",
+ "geography": "Cushing city (City = Cushing), terminal-like name filter TERMINAL/TANK FARM/CRUDE, Status = Operating",
+ "frequency": "annual, DEQ Year_Emissions_Reported",
+ "unit": "short tons per year, disclosed annual facility totals",
+ "fields": {
+  "year": "Year_Emissions_Reported",
+  "city": "City",
+  "name": "Facility",
+  "status": "Status",
+  "vocTons": "VOC_Total_Tons",
+  "hapTons": "HAP_Tons"
+ },
+ "fieldParity": "identical on layers 5/7/6/1/8; cosmetic-only SIC and PM25_Tons type differences, neither used",
+ "rows": [
+  {
+   "year": 2020,
+   "layerId": 5,
+   "terminalLikeOperatingRows": 17,
+   "vocTons": 1440.861,
+   "hapTons": 21.278
+  },
+  {
+   "year": 2021,
+   "layerId": 7,
+   "terminalLikeOperatingRows": 18,
+   "vocTons": 1399.065,
+   "hapTons": 20.77
+  },
+  {
+   "year": 2022,
+   "layerId": 6,
+   "terminalLikeOperatingRows": 18,
+   "vocTons": 1177.399,
+   "hapTons": 21.819
+  },
+  {
+   "year": 2023,
+   "layerId": 1,
+   "terminalLikeOperatingRows": 18,
+   "vocTons": 1247.22,
+   "hapTons": 22.802
+  },
+  {
+   "year": 2024,
+   "layerId": 8,
+   "terminalLikeOperatingRows": 17,
+   "vocTons": 1206.389,
+   "hapTons": 19.715
+  }
+ ],
+ "sourceUrls": [
+  "https://gis.deq.ok.gov/server/rest/services/AirWeb/MapServer/5",
+  "https://gis.deq.ok.gov/server/rest/services/AirWeb/MapServer/7",
+  "https://gis.deq.ok.gov/server/rest/services/AirWeb/MapServer/6",
+  "https://gis.deq.ok.gov/server/rest/services/AirWeb/MapServer/1",
+  "https://gis.deq.ok.gov/server/rest/services/AirWeb/MapServer/8"
+ ],
+ "sourceRaw": [
+  "research/gathering/raw/VOCYZ-20260910/README.md",
+  "research/gathering/raw/VOCYZ-20260910/layer-5-year-2020-cushing-operating.json",
+  "research/gathering/raw/VOCYZ-20260910/layer-7-year-2021-cushing-operating.json",
+  "research/gathering/raw/VOCYZ-20260910/layer-6-year-2022-cushing-operating.json",
+  "research/gathering/raw/VOCYZ-20260910/layer-1-year-2023-cushing-operating.json",
+  "research/gathering/raw/VOCYZ-20260910/layer-8-year-2024-cushing-operating.json"
+ ],
+ "sourceRun": "20260908T091WENVZ",
+ "retrievedUtc": "2026-09-09T16:14:41Z",
+ "missingYears": [],
+ "notJoined": [
+  "WTI",
+  "busy score",
+  "AQI",
+  "Agra or hub-radius facilities",
+  "Payne County"
+ ]
+}

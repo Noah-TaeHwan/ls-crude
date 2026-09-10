@@ -1,0 +1,24 @@
+pws_id,system_name,violation_id,compliance_begin_date,compliance_end_date,noncompliance_begin_date,noncompliance_end_date,federal_rule,contaminant,category_code,category_desc,status,resolved_date,enforcement_count
+OK2006061,CUSHING,334,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,"1,2,4-Trichlorobenzene",MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,335,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,"cis-1,2-Dichloroethylene",MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,336,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,"Xylenes, Total",MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,337,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,DICHLOROMETHANE,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,338,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,o-Dichlorobenzene,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,339,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,p-Dichlorobenzene,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,340,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,Vinyl chloride,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,341,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,"1,1-Dichloroethylene",MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,342,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,"trans-1,2-Dichloroethylene",MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,343,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,"1,2-Dichloroethane",MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,344,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,"1,1,1-Trichloroethane",MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,345,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,Carbon tetrachloride,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,346,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,"1,2-Dichloropropane",MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,347,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,Trichloroethylene,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,348,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,"1,1,2-Trichloroethane",MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,349,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,Tetrachloroethylene,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,350,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,CHLOROBENZENE,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,351,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,Benzene,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,352,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,Toluene,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,353,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,Ethylbenzene,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,354,2017-01-01,2022-12-31,2017-01-01,2022-12-31,Volatile Organic Chemicals,Styrene,MR,Monitoring and Reporting,Archived,2022-12-31,0
+OK2006061,CUSHING,357,2024-10-17,,2024-10-17,2025-07-15,Lead and Copper Rule Revisions,LEAD AND COPPER RULE REVISIONS,TT,Treatment Technique Violation,Resolved,2025-07-15,2
+OK2006061,CUSHING,358,2024-10-17,,2024-10-17,2025-07-15,Lead and Copper Rule Revisions,LEAD AND COPPER RULE REVISIONS,RPT,Reporting Violation,Resolved,2025-07-15,2

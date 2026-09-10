@@ -1,0 +1,566 @@
+{
+  "runId": "20260910T091LAUFZ",
+  "areaFips": "40119",
+  "geography": "Payne County, Oklahoma",
+  "frequency": "monthly LAUS civilian labor force",
+  "seriesId": "LAUCN401190000000006",
+  "label": "Payne County civilian labor force, monthly LAUS (county labor-market count, not unemployment rate, not employed persons, not Cushing city, not busy, not WTI)",
+  "rows": [
+    {
+      "period": "2015-01",
+      "labor_force": 37394
+    },
+    {
+      "period": "2015-02",
+      "labor_force": 37693
+    },
+    {
+      "period": "2015-03",
+      "labor_force": 37921
+    },
+    {
+      "period": "2015-04",
+      "labor_force": 38273
+    },
+    {
+      "period": "2015-05",
+      "labor_force": 38742
+    },
+    {
+      "period": "2015-06",
+      "labor_force": 38382
+    },
+    {
+      "period": "2015-07",
+      "labor_force": 38326
+    },
+    {
+      "period": "2015-08",
+      "labor_force": 38415
+    },
+    {
+      "period": "2015-09",
+      "labor_force": 38734
+    },
+    {
+      "period": "2015-10",
+      "labor_force": 38605
+    },
+    {
+      "period": "2015-11",
+      "labor_force": 38485
+    },
+    {
+      "period": "2015-12",
+      "labor_force": 38006
+    },
+    {
+      "period": "2016-01",
+      "labor_force": 37632
+    },
+    {
+      "period": "2016-02",
+      "labor_force": 37722
+    },
+    {
+      "period": "2016-03",
+      "labor_force": 37794
+    },
+    {
+      "period": "2016-04",
+      "labor_force": 37880
+    },
+    {
+      "period": "2016-05",
+      "labor_force": 37757
+    },
+    {
+      "period": "2016-06",
+      "labor_force": 37942
+    },
+    {
+      "period": "2016-07",
+      "labor_force": 37940
+    },
+    {
+      "period": "2016-08",
+      "labor_force": 38376
+    },
+    {
+      "period": "2016-09",
+      "labor_force": 38488
+    },
+    {
+      "period": "2016-10",
+      "labor_force": 38498
+    },
+    {
+      "period": "2016-11",
+      "labor_force": 38459
+    },
+    {
+      "period": "2016-12",
+      "labor_force": 37680
+    },
+    {
+      "period": "2017-01",
+      "labor_force": 38580
+    },
+    {
+      "period": "2017-02",
+      "labor_force": 38153
+    },
+    {
+      "period": "2017-03",
+      "labor_force": 38160
+    },
+    {
+      "period": "2017-04",
+      "labor_force": 38105
+    },
+    {
+      "period": "2017-05",
+      "labor_force": 38128
+    },
+    {
+      "period": "2017-06",
+      "labor_force": 37095
+    },
+    {
+      "period": "2017-07",
+      "labor_force": 37328
+    },
+    {
+      "period": "2017-08",
+      "labor_force": 37544
+    },
+    {
+      "period": "2017-09",
+      "labor_force": 37714
+    },
+    {
+      "period": "2017-10",
+      "labor_force": 38439
+    },
+    {
+      "period": "2017-11",
+      "labor_force": 38400
+    },
+    {
+      "period": "2017-12",
+      "labor_force": 38117
+    },
+    {
+      "period": "2018-01",
+      "labor_force": 37839
+    },
+    {
+      "period": "2018-02",
+      "labor_force": 38699
+    },
+    {
+      "period": "2018-03",
+      "labor_force": 38732
+    },
+    {
+      "period": "2018-04",
+      "labor_force": 38212
+    },
+    {
+      "period": "2018-05",
+      "labor_force": 38294
+    },
+    {
+      "period": "2018-06",
+      "labor_force": 36963
+    },
+    {
+      "period": "2018-07",
+      "labor_force": 37019
+    },
+    {
+      "period": "2018-08",
+      "labor_force": 37165
+    },
+    {
+      "period": "2018-09",
+      "labor_force": 37709
+    },
+    {
+      "period": "2018-10",
+      "labor_force": 37774
+    },
+    {
+      "period": "2018-11",
+      "labor_force": 37770
+    },
+    {
+      "period": "2018-12",
+      "labor_force": 37386
+    },
+    {
+      "period": "2019-01",
+      "labor_force": 36839
+    },
+    {
+      "period": "2019-02",
+      "labor_force": 37515
+    },
+    {
+      "period": "2019-03",
+      "labor_force": 37750
+    },
+    {
+      "period": "2019-04",
+      "labor_force": 37335
+    },
+    {
+      "period": "2019-05",
+      "labor_force": 37419
+    },
+    {
+      "period": "2019-06",
+      "labor_force": 37098
+    },
+    {
+      "period": "2019-07",
+      "labor_force": 37272
+    },
+    {
+      "period": "2019-08",
+      "labor_force": 36703
+    },
+    {
+      "period": "2019-09",
+      "labor_force": 37011
+    },
+    {
+      "period": "2019-10",
+      "labor_force": 37915
+    },
+    {
+      "period": "2019-11",
+      "labor_force": 37698
+    },
+    {
+      "period": "2019-12",
+      "labor_force": 37028
+    },
+    {
+      "period": "2020-01",
+      "labor_force": 36921
+    },
+    {
+      "period": "2020-02",
+      "labor_force": 37220
+    },
+    {
+      "period": "2020-03",
+      "labor_force": 36870
+    },
+    {
+      "period": "2020-04",
+      "labor_force": 35407
+    },
+    {
+      "period": "2020-05",
+      "labor_force": 36216
+    },
+    {
+      "period": "2020-06",
+      "labor_force": 37057
+    },
+    {
+      "period": "2020-07",
+      "labor_force": 36945
+    },
+    {
+      "period": "2020-08",
+      "labor_force": 36795
+    },
+    {
+      "period": "2020-09",
+      "labor_force": 36846
+    },
+    {
+      "period": "2020-10",
+      "labor_force": 37756
+    },
+    {
+      "period": "2020-11",
+      "labor_force": 37638
+    },
+    {
+      "period": "2020-12",
+      "labor_force": 37023
+    },
+    {
+      "period": "2021-01",
+      "labor_force": 37055
+    },
+    {
+      "period": "2021-02",
+      "labor_force": 37439
+    },
+    {
+      "period": "2021-03",
+      "labor_force": 36925
+    },
+    {
+      "period": "2021-04",
+      "labor_force": 37653
+    },
+    {
+      "period": "2021-05",
+      "labor_force": 37438
+    },
+    {
+      "period": "2021-06",
+      "labor_force": 36743
+    },
+    {
+      "period": "2021-07",
+      "labor_force": 37454
+    },
+    {
+      "period": "2021-08",
+      "labor_force": 37046
+    },
+    {
+      "period": "2021-09",
+      "labor_force": 37917
+    },
+    {
+      "period": "2021-10",
+      "labor_force": 37819
+    },
+    {
+      "period": "2021-11",
+      "labor_force": 38075
+    },
+    {
+      "period": "2021-12",
+      "labor_force": 37641
+    },
+    {
+      "period": "2022-01",
+      "labor_force": 37988
+    },
+    {
+      "period": "2022-02",
+      "labor_force": 38515
+    },
+    {
+      "period": "2022-03",
+      "labor_force": 38758
+    },
+    {
+      "period": "2022-04",
+      "labor_force": 38386
+    },
+    {
+      "period": "2022-05",
+      "labor_force": 38048
+    },
+    {
+      "period": "2022-06",
+      "labor_force": 38173
+    },
+    {
+      "period": "2022-07",
+      "labor_force": 38212
+    },
+    {
+      "period": "2022-08",
+      "labor_force": 39003
+    },
+    {
+      "period": "2022-09",
+      "labor_force": 39084
+    },
+    {
+      "period": "2022-10",
+      "labor_force": 39188
+    },
+    {
+      "period": "2022-11",
+      "labor_force": 39083
+    },
+    {
+      "period": "2022-12",
+      "labor_force": 38651
+    },
+    {
+      "period": "2023-01",
+      "labor_force": 38969
+    },
+    {
+      "period": "2023-02",
+      "labor_force": 39700
+    },
+    {
+      "period": "2023-03",
+      "labor_force": 39889
+    },
+    {
+      "period": "2023-04",
+      "labor_force": 40091
+    },
+    {
+      "period": "2023-05",
+      "labor_force": 39929
+    },
+    {
+      "period": "2023-06",
+      "labor_force": 39833
+    },
+    {
+      "period": "2023-07",
+      "labor_force": 39650
+    },
+    {
+      "period": "2023-08",
+      "labor_force": 40403
+    },
+    {
+      "period": "2023-09",
+      "labor_force": 40784
+    },
+    {
+      "period": "2023-10",
+      "labor_force": 40605
+    },
+    {
+      "period": "2023-11",
+      "labor_force": 40630
+    },
+    {
+      "period": "2023-12",
+      "labor_force": 39889
+    },
+    {
+      "period": "2024-01",
+      "labor_force": 40093
+    },
+    {
+      "period": "2024-02",
+      "labor_force": 40842
+    },
+    {
+      "period": "2024-03",
+      "labor_force": 41211
+    },
+    {
+      "period": "2024-04",
+      "labor_force": 41042
+    },
+    {
+      "period": "2024-05",
+      "labor_force": 40672
+    },
+    {
+      "period": "2024-06",
+      "labor_force": 40763
+    },
+    {
+      "period": "2024-07",
+      "labor_force": 40961
+    },
+    {
+      "period": "2024-08",
+      "labor_force": 41546
+    },
+    {
+      "period": "2024-09",
+      "labor_force": 41328
+    },
+    {
+      "period": "2024-10",
+      "labor_force": 41160
+    },
+    {
+      "period": "2024-11",
+      "labor_force": 41137
+    },
+    {
+      "period": "2024-12",
+      "labor_force": 40815
+    },
+    {
+      "period": "2025-01",
+      "labor_force": 40655
+    },
+    {
+      "period": "2025-02",
+      "labor_force": 41133
+    },
+    {
+      "period": "2025-03",
+      "labor_force": 41353
+    },
+    {
+      "period": "2025-04",
+      "labor_force": 41737
+    },
+    {
+      "period": "2025-05",
+      "labor_force": 41023
+    },
+    {
+      "period": "2025-06",
+      "labor_force": 41065
+    },
+    {
+      "period": "2025-07",
+      "labor_force": 41068
+    },
+    {
+      "period": "2025-08",
+      "labor_force": 41646
+    },
+    {
+      "period": "2025-09",
+      "labor_force": 41758
+    },
+    {
+      "period": "2025-10",
+      "labor_force": null
+    },
+    {
+      "period": "2025-11",
+      "labor_force": 40757
+    },
+    {
+      "period": "2025-12",
+      "labor_force": 40235
+    },
+    {
+      "period": "2026-01",
+      "labor_force": 40118
+    },
+    {
+      "period": "2026-02",
+      "labor_force": 41154
+    },
+    {
+      "period": "2026-03",
+      "labor_force": 40880
+    },
+    {
+      "period": "2026-04",
+      "labor_force": 40912
+    },
+    {
+      "period": "2026-05",
+      "labor_force": 41082
+    },
+    {
+      "period": "2026-06",
+      "labor_force": 40517
+    },
+    {
+      "period": "2026-07",
+      "labor_force": 40352
+    }
+  ]
+}

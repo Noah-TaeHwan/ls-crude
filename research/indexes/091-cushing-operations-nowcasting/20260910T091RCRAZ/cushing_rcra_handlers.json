@@ -1,0 +1,1793 @@
+{
+  "runId": "20260910T091RCRAZ",
+  "geography": "Cushing city, Oklahoma (ECHO RCRACity=CUSHING, state OK)",
+  "windowStart": "2021-09-05",
+  "windowEnd": "2026-09-30",
+  "rows": [
+    {
+      "facilityName": "CUSHING RAIL CAR INC",
+      "sourceId": "OKD065436784",
+      "registryId": "110007730492",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": "1985-08-28",
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "FORMER EVANS CUSHING INC.",
+      "sourceId": "OKD987071768",
+      "registryId": "110000454614",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": "1994-07-27",
+      "lastIeaDate": "1994-09-09",
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "HUDSON REFNG CO INC",
+      "sourceId": "OKD082471988",
+      "registryId": "110009305616",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": "1994-12-19",
+      "lastIeaDate": "1989-02-01",
+      "lastFeaDate": "1987-09-30",
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "PLAINS TERMINAL & TRANSFER",
+      "sourceId": "OKD987098605",
+      "registryId": "110007735139",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": "2001-10-11",
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "ENBRIDGE STORAGE (CUSHING), L.L.C.",
+      "sourceId": "OKD980812721",
+      "registryId": "110007161588",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "SQG",
+      "lastInspectionDate": "2005-03-03",
+      "lastIeaDate": "2008-09-17",
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": "200",
+          "y2024": "442",
+          "y2025": "966",
+          "y2026": "8,051"
+        },
+        "acute": {
+          "y2023": "0",
+          "y2024": "0",
+          "y2025": "0",
+          "y2026": "0"
+        },
+        "pharma": {
+          "y2023": "0",
+          "y2024": "0",
+          "y2025": "0",
+          "y2026": "0"
+        }
+      }
+    },
+    {
+      "facilityName": "VICTORY ENERGY",
+      "sourceId": "OKR000023135",
+      "registryId": "110032658158",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": "2008-10-17",
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "LEGACY CLEANERS",
+      "sourceId": "OKR000001859",
+      "registryId": "110031514644",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "Other",
+      "lastInspectionDate": "2010-05-19",
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "MAGELLAN TERMINALS HOLDINGS, LP CUSHING SHINN PENCE",
+      "sourceId": "OKD987071875",
+      "registryId": "110007733943",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": "2010-09-14",
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": "68",
+          "y2024": "1,724",
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": "0",
+          "y2024": "0",
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": "0",
+          "y2024": "0",
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "SUBMERSIBLE PUMPS INC",
+      "sourceId": "OKD987083193",
+      "registryId": "110004763051",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": "2011-02-28",
+      "lastIeaDate": "2011-03-22",
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "SOUTH BOW (USA) LP - CUSHING FACILITY",
+      "sourceId": "OKR000026922",
+      "registryId": "110044922108",
+      "city": "CUSHING",
+      "county": "LINCOLN",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": "2013-04-23",
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": "181",
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": "0",
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": "0",
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "MAGELLAN TERMINALS HOLDINGS, LP CUSHING SOUTH TERMINAL",
+      "sourceId": "OKR000026674",
+      "registryId": "110044989787",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": "2013-06-05",
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "FORMER TOWN & COUNTY DRY CLEANERS",
+      "sourceId": "OKD987083987",
+      "registryId": "110004763435",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": "2013-12-17",
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "MAGELLAN TERMINALS HOLDINGS, LP CUSHING CENTRAL TERMINAL",
+      "sourceId": "OKD077338473",
+      "registryId": "110007730839",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": "2014-12-03",
+      "lastIeaDate": "2008-10-28",
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": "36",
+          "y2024": "119",
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": "0",
+          "y2024": "0",
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": "0",
+          "y2024": "0",
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "INTERTEK USA INC",
+      "sourceId": "OKR000026393",
+      "registryId": "110043553650",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "SQG",
+      "lastInspectionDate": "2017-02-17",
+      "lastIeaDate": "2017-02-17",
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": "1,928",
+          "y2024": "680",
+          "y2025": "1,157",
+          "y2026": "408"
+        },
+        "acute": {
+          "y2023": "0",
+          "y2024": "0",
+          "y2025": "0",
+          "y2026": "0"
+        },
+        "pharma": {
+          "y2023": "0",
+          "y2024": "0",
+          "y2025": "0",
+          "y2026": "0"
+        }
+      }
+    },
+    {
+      "facilityName": "O'REILLY AUTO PARTS STORE 246",
+      "sourceId": "OKR000031955",
+      "registryId": "110071192774",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": "2017-02-17",
+      "lastIeaDate": "2017-03-02",
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "AMERAPEX SERVICE GROUP",
+      "sourceId": "OKR000032847",
+      "registryId": "110069636264",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": "2017-02-17",
+      "lastIeaDate": "2017-03-17",
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "AXIOS INDUSTRIAL MAINTENANCE CONTRACTORS, INC.",
+      "sourceId": "OKR000027912",
+      "registryId": "110054858472",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": "2021-07-15",
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "RETHERFORD CONSTRUCTION INC",
+      "sourceId": "OK0000888628",
+      "registryId": "110004743537",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "SUN OIL CO WHEELER",
+      "sourceId": "OKD000733360",
+      "registryId": "110007724454",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "BJ TITAN SVCS CUSHING",
+      "sourceId": "OKD000757906",
+      "registryId": "110007725729",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "FORMER KERR-MCGEE REFINERY SITE, CUSHING, OK",
+      "sourceId": "OKD000757989",
+      "registryId": "110007725774",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "SQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": "7",
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": "0",
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": "0",
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "ATCHISON-TOPK- & -SANTA FE-RY/FORMER LSE",
+      "sourceId": "OKD000758631",
+      "registryId": "110007726283",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "TEPPCO CRUDE CUSHING STATION",
+      "sourceId": "OKD000758797",
+      "registryId": "110007726416",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "SUN PIPELINE CO LITTLE FARM STATION",
+      "sourceId": "OKD000764407",
+      "registryId": "110022404423",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "TOTAL PIPELINE CORP CUSHING STATION",
+      "sourceId": "OKD000764712",
+      "registryId": "110007727512",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "TEXOMA PIPE LINE CUSHING STATION",
+      "sourceId": "OKD000789883",
+      "registryId": "110007729002",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "PHILLIPS 66 PIPELINE BUXTON",
+      "sourceId": "OKD000829481",
+      "registryId": "110007729217",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "ESECO",
+      "sourceId": "OKD007192289",
+      "registryId": "110004745642",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "INDUSTRIAL SVCS CO INC",
+      "sourceId": "OKD007780240",
+      "registryId": "110004746446",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "SEAWAY PIPELINE CUSHING TERMINAL",
+      "sourceId": "OKD020730776",
+      "registryId": "110004746801",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "LAKO MFG CO",
+      "sourceId": "OKD042550772",
+      "registryId": "110007729805",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "REPETRO INC",
+      "sourceId": "OKD074288168",
+      "registryId": "110004750591",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "RESOURCE RECOVERY & MANAGEMENT",
+      "sourceId": "OKD980864060",
+      "registryId": "110007732329",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "FORMER BP PIPELINES - LEWIS TANK FARM",
+      "sourceId": "OKD987071883",
+      "registryId": "110007733952",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "TTTI CENTRAL DIVISION - OK",
+      "sourceId": "OKD987073772",
+      "registryId": "110004761428",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "HOLLY ENERGY PARTNERS - SKULL CREEK",
+      "sourceId": "OKP000040428",
+      "registryId": "110071381018",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": "2,259",
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": "0",
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": "0",
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "GFL ENVIRONMENTAL SERVICES USA, LLC - CUSHING",
+      "sourceId": "OKP000044404",
+      "registryId": "110072053870",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": "3,972",
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": "0",
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": "0",
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "MAGELLAN TERMINALS HOLDINGS, LP CUSHING CENTRAL",
+      "sourceId": "OKP410179821",
+      "registryId": "110067677071",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "CUSHING PUMP STATION",
+      "sourceId": "OKR000004093",
+      "registryId": "110007388683",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "FORMER WAL-MART STORE # 360",
+      "sourceId": "OKR000016121",
+      "registryId": "110012275830",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "EOTT PIPELINE (CUSHING)",
+      "sourceId": "OKR000016501",
+      "registryId": "110012276198",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "EOTT PIPELINE (YALE)",
+      "sourceId": "OKR000016519",
+      "registryId": "110012276205",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "PHILLIPS 66 PIPELINE CUSHING",
+      "sourceId": "OKR000019612",
+      "registryId": "110007385935",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "WALMART SUPERCENTER #360",
+      "sourceId": "OKR000023333",
+      "registryId": "110033156484",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "VSQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": "161 - 167",
+          "y2024": "191 - 194",
+          "y2025": "0 - 3",
+          "y2026": null
+        },
+        "acute": {
+          "y2023": "0",
+          "y2024": "0 - 1",
+          "y2025": "0",
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": "0 - 7",
+          "y2024": "0 - 3",
+          "y2025": "0 - 3",
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "REACTION ENVIRONMENTAL LLC",
+      "sourceId": "OKR000025544",
+      "registryId": "110039592170",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "Transporter",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "BP PIPELINES CUSHING METER STATION",
+      "sourceId": "OKR000026690",
+      "registryId": "110043859740",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "SQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "AHS CUSHING HOSPITAL, LLC - DBA HILLCREST HOSPITAL CUSHING",
+      "sourceId": "OKR000038547",
+      "registryId": "110071139715",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "SQG",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": "0 - 227",
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": "0 - 227",
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": "0 - 227",
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "GFL ENVIRONMENTAL SERVICES USA, LLC - CUSHING FACILITY",
+      "sourceId": "OKR000038745",
+      "registryId": "110071139726",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Active (H    )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "ET CRUDE TERMINALS, LLC - CUSHING NORTH TANK FARM",
+      "sourceId": "OKR000039883",
+      "registryId": "110071307856",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": "183,161",
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": "0",
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": "0",
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "WALGREENS #15808",
+      "sourceId": "OKR000042895",
+      "registryId": "110071843293",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    },
+    {
+      "facilityName": "M-I DRILLING FLUIDS CO-CUSHING",
+      "sourceId": "OKT410010680",
+      "registryId": "110004772238",
+      "city": "CUSHING",
+      "county": "PAYNE",
+      "status": "Inactive (     )",
+      "universe": "Other",
+      "lastInspectionDate": null,
+      "lastIeaDate": null,
+      "lastFeaDate": null,
+      "inspectionCount": 0,
+      "formalActions": 0,
+      "totalPenalties": "$0",
+      "waste": {
+        "hazardous": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "acute": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        },
+        "pharma": {
+          "y2023": null,
+          "y2024": null,
+          "y2025": null,
+          "y2026": null
+        }
+      }
+    }
+  ]
+}

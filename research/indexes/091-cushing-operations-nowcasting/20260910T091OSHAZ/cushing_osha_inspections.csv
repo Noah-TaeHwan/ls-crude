@@ -1,0 +1,163 @@
+inspection_date,activity_id,report_id,inspection_type,scope,sic,naics,violations,establishment_name
+1973-04-25,17066754,0637200,Accident,Complete,1389,,,J R Chemical Co
+1973-10-24,17069725,0637200,Accident,Complete,1520,,,Don Love Inc
+1974-10-02,17052838,0637200,Planned,Partial,3321,,2,Daiton Precision
+1974-11-29,17053000,0637200,Planned,Partial,3321,,,Dalton Precision
+1975-07-09,17007386,0637200,Planned,Complete,4213,,8,Bray Lines Inc
+1975-07-09,17007394,0637200,Planned,Complete,5141,,8,Cushing Wholesale Grocery
+1975-09-25,17018300,0637200,Planned,Partial,3321,,6,Dalton Precision
+1975-09-25,17018318,0637200,Planned,Complete,3732,,14,Hi-Performance Marine Inc
+1975-09-25,17054024,0637200,FollowUp,Partial,3321,,,Dalton Precision
+1975-10-07,17018326,0637200,Planned,Complete,5211,,6,Cushing Lumber Co
+1975-10-29,17018458,0637200,FollowUp,Complete,3732,,,Hi-Performance Marine Inc
+1975-10-29,17018466,0637200,Planned,Partial,4213,,14,Cherokee Lines Inc
+1975-11-04,17018508,0637200,FollowUp,Complete,5211,,,Cushing Lumber Co
+1975-11-11,17018516,0637200,Planned,Partial,1520,,,Cooper Brothers Inc
+1975-11-11,17018524,0637200,Planned,Complete,5030,,,Chandler Materials Co
+1975-11-11,17018532,0637200,Planned,Complete,1799,,,Polite Caulking & Water Proo
+1975-11-11,17018540,0637200,Planned,Partial,3273,,,Continental Contrete Co
+1975-11-11,17018557,0637200,Planned,Partial,1731,,,Otto Krueger Electric Co
+1975-11-18,17008061,0637200,Planned,Complete,5170,,8,Gibble Oil Co
+1975-11-19,17008095,0637200,Planned,Complete,5912,,4,City Drug Of Cushing
+1975-11-19,17008103,0637200,Planned,Complete,5014,,11,Gibble Oil Co
+1975-12-02,17018680,0637200,Planned,Partial,1623,,,Seaway Pipeline Inc
+1975-12-02,17018698,0637200,Planned,Partial,1799,,9,General American Tank Erection
+1975-12-02,17018706,0637200,Planned,Complete,8734,,,Non-Destructive
+1975-12-02,17018714,0637200,Planned,Partial,1799,,,Miller'S Welding & Roustabout
+1975-12-02,17018722,0637200,Planned,Partial,1721,,,Brens Painting Co
+1975-12-02,17018730,0637200,Planned,Complete,1611,,,Ark City Warehouse Co
+1976-01-08,17008350,0637200,FollowUp,Complete,4213,,2,Cherokee Lines Inc
+1976-01-13,17038142,0637200,Planned,Complete,1389,,5,Lease Service Inc Unit #46
+1976-01-13,17038167,0637200,Planned,Complete,1389,,4,Lease Service Inc
+1976-01-14,17030198,0637200,FollowUp,Complete,3732,,4,Hi Performance Marine Inc
+1976-03-12,17030297,0637200,FollowUp,Partial,3732,,,Hi-Performance Marine Inc
+1976-04-15,17052713,0637200,FollowUp,Complete,3732,,4,Hi-Performance Marine Inc
+1976-05-27,17018946,0637200,FollowUp,Partial,3732,,,Hi-Performance Marine Inc
+1976-07-12,17019043,0637200,FollowUp,Partial,3732,,,Hi-Performance Marine Inc
+1977-04-19,17012071,0637200,Complaint,Partial,3321,,,Dalton Precision
+1979-02-21,17083866,0637200,Complaint,Complete,4789,,,Cushing Rail Car Inc
+1979-02-26,17011271,0637200,Complaint,Complete,4789,,51,Cushing Rail Car Inc
+1979-03-15,17047622,0637200,Complaint,Partial,5812,,7,Ollie'S Restaurant
+1979-03-27,17011313,0637200,Complaint,Partial,1389,,1,Western Crude Terminals Inc
+1979-03-27,17011321,0637200,FollowUp,Complete,4789,,,Cushing Rail Car Inc
+1979-05-04,17041757,0637200,FollowUp,Complete,5812,,,Ollie'S Restaurant
+1980-04-24,17031907,0637200,Planned,Complete,1381,,4,Big C'S Drilling Inc
+1980-07-10,17035262,0637200,Planned,Partial,3089,,2,Robb Container Corp
+1980-09-11,17080979,0637200,Complaint,Complete,1389,,4,Petroleum Contructors
+1980-12-17,17022401,0637200,Planned,Complete,1381,,1,Oklahoma Drilling Co
+1981-04-20,17077348,0637200,Planned,Complete,3089,,3,Bobb Container Corp
+1981-11-04,17024241,0637200,Planned,Records,3321,,,Dalton Precision Inc
+1981-11-30,17081340,0637200,Complaint,Complete,3089,,,Robb Container Corp
+1982-12-16,16879694,0627700,Planned,Complete,1381,,1,Venture Drilling Co
+1982-12-17,16879702,0627700,Planned,Complete,1381,,7,Keno Oil & Gas Inc
+1983-11-03,16917536,0627700,Planned,Complete,1542,,1,Guy E Ray Contractor
+1983-11-03,16917544,0627700,Planned,Complete,1731,,2,Wilson Control Systems Inc
+1983-11-04,16917551,0627700,Planned,Complete,1542,,2,Smbc Total Contractor Inc
+1983-11-04,16917569,0627700,Planned,Complete,1794,,,Quapaw Co
+1983-11-10,16926883,0627700,Planned,Complete,1542,,1,B H Todd Sons Co
+1983-11-10,16926891,0627700,Planned,Complete,1742,,3,Mcconn Masonry
+1983-11-10,16926909,0627700,Planned,Complete,1731,,1,Brown & Sons Electric
+1983-11-10,16926917,0627700,Planned,Complete,1791,,2,Stoldt Stotts Inc
+1983-11-10,16926925,0627700,Planned,Complete,1711,,1,White Mechanical Servs
+1983-11-10,16926933,0627700,Planned,Complete,1761,,1,Harry Coates Roofing Co Inc
+1985-11-04,101802759,0627700,Accident,Partial,1389,,1,Blandco Services Inc
+1985-11-26,101802668,0627700,Planned,Records,2021,,,Burkey Creamery
+1986-12-05,103642914,0627700,Prog Other,Complete,2711,,,"Cushing Daily Citizen, Inc."
+1987-03-24,101801496,0627700,Planned,Complete,2021,,8,"Burkey Creamery, Inc."
+1987-08-19,102246220,0627700,Planned,No Insp/Process Inactive,1542,,,Unknown
+1987-10-08,100699784,0627700,Planned,Complete,1796,,3,"Evans Cushing, Inc."
+1987-11-17,102417425,0627700,Planned,Complete,1542,,3,Oklahoma State Development Inc
+1987-11-17,102417433,0627700,Planned,Complete,1742,,4,Baker Drywall Inc
+1987-12-10,100787845,0627700,Planned,No Insp/Other,1542,,,Elks Lodge
+1988-10-20,100583020,0627700,Planned,Complete,2048,,14,"Ahrberg Milling Of Cushing, Inc."
+1989-06-06,102310117,0627700,Complaint,Partial,3443,,,Air Management Industries
+1989-08-24,102252954,0627700,Planned,Complete,3412,,1,"Evans Cushing, Inc."
+1989-09-13,106644610,0627700,Referral,Complete,3412,,2,"Evans Cushing, Inc."
+1990-01-08,102254885,0627700,Planned,Complete,1542,,2,"Golden Eagle Construction Company, Inc."
+1990-01-08,102423969,0627700,Planned,Complete,1721,,3,"Phoenix Painting, Inc."
+1990-01-08,102423985,0627700,Planned,Complete,1752,,1,Joe Rollins Hardwood Floors
+1990-05-08,106652761,0627700,Planned,No Insp/Exempt Voluntary,3443,,,Air Management Industries
+1990-08-23,107503872,0627700,Planned,Complete,1731,,5,Starks Electric
+1990-08-23,107503880,0627700,Planned,Complete,1542,,1,"Reardon Construction Co., Inc."
+1990-08-23,107503898,0627700,Planned,Complete,1711,,5,Denico Mechanical
+1990-08-24,107503914,0627700,Planned,Complete,1741,,8,H & H Masonry
+1990-08-24,107503922,0627700,Planned,Complete,1731,,6,Trek Electric
+1990-09-12,107504144,0627700,FollowUp,Partial,3412,,1,"Evans Cushing, Inc."
+1991-05-22,107498453,0627700,Planned,Complete,1771,,,"Continental Concrete Company, Inc."
+1991-06-14,107498784,0627700,Planned,No Insp/Other,3732,,,Taylor Jet Boats
+1992-01-15,107523466,0627700,Planned,No Insp/Out of Business,3443,,,Air Management Industries
+1992-01-15,107523474,0627700,Planned,No Insp/NonExempt Consult,3412,,,"Evans Cushing, Inc."
+1992-01-15,107523482,0627700,Planned,No Insp/Out of Business,2439,,,"S & W Realty Developers, Inc."
+1992-05-28,108743923,0627700,Planned,No Insp/Exempt Voluntary,3412,,,"Evans Cushing, Inc."
+1992-08-13,107529265,0627700,Planned,Complete,2048,,3,"Ahrberg Milling Of Cushing, Inc."
+1993-03-10,102247822,0627700,Planned,Complete,1799,,3,"Continental Concrete & Construction, Inc."
+1993-03-10,109058792,0627700,Planned,No Insp/Process Inactive,1542,,,Cushing Hospital
+1993-08-17,108737990,0627700,Planned,Complete,1791,,,"Metrix Services, Inc."
+1993-08-17,108738048,0627700,Planned,Complete,1711,,1,"Pipe Tech, Inc."
+1993-08-17,108738055,0627700,Planned,Complete,1791,,1,"Horner Coating Services, Inc."
+1993-08-20,109059428,0627700,Complaint,Partial,1791,,2,Horner Coating Services
+1994-04-14,109063545,0627700,Planned,Complete,3412,,2,"Evans Cushing, Inc."
+1996-09-06,300471356,0627700,Planned,Partial,1541,,,"Flintco, Inc."
+1996-12-04,109064576,0627700,Complaint,Partial,1799,,3,Murphy & Hibbs Sealant & Waterproofing Co. Inc.
+1997-02-12,300473394,0627700,Planned,Partial,1541,,,"Flintco, Inc."
+1997-09-25,301870911,0627700,Planned,Partial,1629,,1,"Lamar Industries, Inc."
+1997-09-26,301870887,0627700,Planned,Complete,1794,,1,"Bjp Enterprises, Inc."
+1998-02-24,301875423,0627700,Planned,Complete,1542,,3,"Lamar Industries, Inc."
+1998-06-02,301876827,0627700,Planned,Complete,1542,,4,Hale & Sons
+1998-06-02,301876835,0627700,Planned,Complete,1711,,,Jim Morrow Plumbing & Mechanical
+1998-06-02,301876843,0627700,Planned,Complete,1542,,4,Bank Of Cushing & Trust Company
+1998-08-05,301878161,0627700,Planned,Partial,1629,,,"Lamar Industries, Inc."
+2000-11-18,303639298,0627700,Other,Records,8051,,1,Rest Haven Nursing Home
+2002-07-24,304964299,0627700,Planned,Complete,3443,,9,"B & W Steel And Refractory, Inc."
+2002-11-21,304966450,0627700,Referral,Partial,3443,,1,"B & W Steel And Refractory, Inc."
+2003-05-15,304969678,0627700,Complaint,Partial,7299,541990,1,Valley Hope Association
+2003-07-02,306638131,0627700,Complaint,Partial,3443,332313,1,"B & W Steel And Refractory, Inc."
+2003-07-02,306638412,0627700,Complaint,Partial,3443,332313,,"B & W Steel And Refractory, Inc."
+2003-09-11,306641804,0627700,Planned,No Insp/Out of Business,4612,486110,,"Equilon Pipe Line Company, Llc"
+2003-11-17,306640996,0627700,Complaint,Partial,8051,623110,3,Linwood Village
+2004-02-03,306642463,0627700,Planned,Records,8062,622110,,Cushing Regional Hospital
+2004-08-18,306646662,0627700,Planned,Complete,1542,236220,1,Larry Snyder & Co.
+2004-08-18,306646670,0627700,Planned,Complete,1771,238110,,Continental Concrete Company
+2004-08-18,306646688,0627700,Planned,Complete,1711,238220,1,Danran Mechanical Inc.
+2004-08-18,306646696,0627700,Planned,Complete,1751,238130,3,J & M Construction
+2004-08-18,306646704,0627700,Planned,Complete,1799,238990,,Professional Services Industries
+2005-05-11,308063478,0627700,Planned,Complete,1721,238320,1,J & J Painting
+2005-05-11,308063486,0627700,Planned,Complete,1741,238140,2,Juan Almagur
+2005-05-11,308063494,0627700,Planned,Complete,1751,238130,1,T & M Framework
+2005-05-11,308063551,0627700,Prog Related,Complete,4923,221210,,"Centerpoint Energy, Inc."
+2006-06-30,309786663,0627700,Complaint,Partial,7211,812320,3,Town & Country Cleaners
+2008-08-27,312376908,0627700,Accident,Partial,1389,213112,4,J & C Casing Pullers & Plugging Llc
+2008-11-20,312379761,0627700,Planned,Partial,1542,236220,,Lambert Construction Company
+2008-11-20,312379779,0627700,Planned,Partial,1742,238310,,Quality Concepts Inc.
+2008-11-20,312379787,0627700,Planned,Partial,1711,238220,,Mechanical Insulation Inc.
+2008-12-05,312379969,0627700,Planned,No Insp/Other,1542,236220,,Flintco Inc
+2009-04-15,312383300,0627700,Planned,No Insp/Other,3441,332312,,"T & D Fabrication, Inc."
+2009-04-16,312383425,0627700,Planned,Partial,1389,213112,4,"Drumright Oilwell Service, Llc"
+2012-04-11,331255.015,0627700,Planned,Partial,,238130,3,D & D Ruiz Construction
+2013-10-30,945251.015,0627700,Planned,Complete,,331111,7,Young Oil Tools Llc
+2013-11-06,948393.015,0627700,Complaint,Partial,,238990,,Matrix Co.
+2014-07-28,987677.015,0627700,Referral,Partial,,213112,,"Crb Construction & Welding, Llc"
+2014-07-28,987703.015,0627700,Planned,Partial,,213112,,Rose Rock Midstream
+2016-11-01,1191387.015,0627700,Referral,Partial,,213112,3,"Spess Oil Company, Inc."
+2017-03-14,1217429.015,0627700,Planned,Partial,,213112,,Southern Plains Energy Services Llc
+2017-03-14,1217434.015,0627700,Prog Related,Complete,,213111,,White Star Petroleum Llc
+2017-03-14,1217441.015,0627700,Prog Related,Partial,,213112,,Summit Esp
+2018-09-05,1342680.015,0627700,Complaint,Partial,,486110,,"Transcanada Usa Services, Inc. - Cushing Regional Offc"
+2019-05-09,1399183.015,0627700,Referral,Partial,,311119,1,"Ahrberg Milling Of Cushing, Inc."
+2019-06-07,1411795.015,0627700,Complaint,Partial,,213112,,Red Mesa Energy Services
+2019-06-20,1409975.015,0627700,Complaint,Partial,,337110,2,Cedarline Woodworks/Dove Properties Llc
+2022-06-21,1603116.015,0627700,Referral,Partial,,213112,,Dt Safety Training
+2022-06-21,1603120.015,0627700,Planned,Complete,,213112,,Dt Safety Training
+2022-06-21,1603123.015,0627700,Planned,Complete,,213112,,"Schroeder Environmental Cleaning Services, Inc."
+2023-07-28,1686664.015,0627700,Referral,Partial,,541690,1,Premier Safety Resources
+2023-08-03,1688704.015,0627700,Planned,Partial,,237110,,Tulsa Civil Contractors Llc
+2024-07-01,1759567.015,0627700,Fat/Cat,Partial,,213112,1,"Allstream Services And Rental, Llc"
+2024-07-01,1760054.015,0627700,Unprog Rel,Partial,,221210,,"Oneok, Inc."
+2024-07-01,1760066.015,0627700,Unprog Rel,Partial,,926150,,"Bws Inspection Services, Llc"
+2024-07-01,1760067.015,0627700,Planned,Partial,,926150,,"Bws Inspection Services, Llc"
+2024-07-01,1761677.015,0627700,Planned,Partial,,213111,,"Allstream Services And Rental, Llc"
+2024-07-02,1760056.015,0627700,Planned,Partial,,221210,,"Oneok, Inc."
+2025-01-22,1799318.015,0627700,Complaint,Partial,,236220,,"Sun Valley Masonry, Inc."
+2025-01-22,1799321.015,0627700,Prog Related,Partial,,236220,,Willowbrook Llc
+2026-08-14,1911485.015,0627700,Fat/Cat,Partial,,213112,,"South Fork Group, Llc"
+2026-08-14,1911490.015,0627700,Unprog Rel,Partial,,486110,,South Bow Corporation

@@ -1,0 +1,5 @@
+period,sales_tax_usd,tax_rate,source_release
+2025-08,558762.94,0.04,STS-Past1-August-2026-prior-year-column
+2025-09,582044.72,0.04,STS-Current-September-2026-prior-year-column
+2026-08,573695.50,0.04,STS-Past1-August-2026-current-column
+2026-09,577814.84,0.04,STS-Current-September-2026-current-column

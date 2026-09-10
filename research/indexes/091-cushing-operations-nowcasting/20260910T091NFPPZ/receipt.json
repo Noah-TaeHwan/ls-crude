@@ -1,0 +1,59 @@
+{
+ "runId": "20260910T091NFPPZ",
+ "verdict": "frozen",
+ "frozenUtc": "2026-09-10",
+ "geography": "Payne County, Oklahoma (state OK, censusGeoid prefix 40119 as filed)",
+ "sourceBase": "https://www.fema.gov/api/open/v3/NfipPolicies",
+ "sourceFilter": "startswith(censusGeoid,'40119') paged by id asc ($top=1000 + id gt cursor; deep $skip 4000+ 503s, never used), $orderby=id",
+ "apiRunDate": "2026-09-09T22:34:24.954Z",
+ "rowAsOfDate": "2026-09-08 (uniform)",
+ "rawRecords": 4039,
+ "duplicateIds": 0,
+ "nullEffectiveDates": 0,
+ "allPropertyStateOK": true,
+ "allCensusGeoid40119": true,
+ "allReportedCityNA": true,
+ "policyCountAllOne": true,
+ "dateRule": "policyEffectiveDate year-month part only (YYYY-MM as filed); months without Payne policy records absent, never 0-filled",
+ "monthRange": [
+  "2009-01",
+  "2026-10"
+ ],
+ "datedMonths": 214,
+ "policySum": 4039,
+ "firstMonth": {
+  "yearMonth": "2009-01",
+  "policies": 12
+ },
+ "lastMonth": {
+  "yearMonth": "2026-10",
+  "policies": 1
+ },
+ "peakMonth": {
+  "yearMonth": "2010-08",
+  "policies": 44
+ },
+ "csv": "cushing_nfip_policies.csv",
+ "json": "cushing_nfip_policies.json",
+ "reader": "app/app/lib/cushing-nfip-policies.ts",
+ "test": "app/tests/cushing-nfip-policies.test.mjs (3 pass)",
+ "label": "Payne County NFIP policy records by effective month, not claims, not busy, not WTI",
+ "notJoined": [
+  "NFIP claims 20260910T091NFIPZ rows never copied",
+  "WTI",
+  "busy score",
+  "FIPS 40109 Oklahoma County",
+  "statewide Oklahoma",
+  "FEMA disaster declarations",
+  "NOAA Storm Events",
+  "Cushing-city-only series (reportedCity NA redacted; 95 CUSHING-community rows stay inside county total)"
+ ],
+ "communityMixAsFiled": {
+  "STILLWATER, CITY OF": 2996,
+  "PAYNE COUNTY*": 797,
+  "PERKINS, CITY OF": 135,
+  "CUSHING, CITY OF": 95,
+  "CREEK COUNTY*": 16
+ },
+ "publicFields": "policyEffectiveDate year-month + policyCount as filed; no amounts frozen"
+}

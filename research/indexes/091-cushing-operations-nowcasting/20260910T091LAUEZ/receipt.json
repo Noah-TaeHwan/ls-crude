@@ -1,0 +1,40 @@
+{
+  "runId": "20260910T091LAUEZ",
+  "label": "Payne County employed persons, monthly LAUS",
+  "seriesId": "LAUCN401190000000005",
+  "areaFips": "40119",
+  "geography": "Payne County, Oklahoma (not Cushing city, not statewide, not field activity)",
+  "frequency": "monthly LAUS employment level",
+  "retrievedUtc": "2026-09-10T03:15:00Z",
+  "sourceApi": "POST https://api.bls.gov/publicAPI/v2/timeseries/data/ (no key)",
+  "rawDir": "research/gathering/raw/091-laus-employed-monthly/",
+  "range": "2015-01..2026-07",
+  "rowCount": 139,
+  "disclosedCount": 138,
+  "disclosedSum": 5154289,
+  "firstPeriod": "2015-01",
+  "firstPeriodEmployed": 36075,
+  "lastPeriod": "2026-07",
+  "lastPeriodEmployed": 38543,
+  "preliminaryMonths": [
+    "2026-07"
+  ],
+  "missingMonths": [
+    "2025-10"
+  ],
+  "gapKeptMissing": "2025-10 published as unavailable (2025 lapse in appropriations), frozen null",
+  "trailingProbe": "2026-08 absent from 2025-2026 payload, stop, no invented points",
+  "notJoined": [
+    "WTI",
+    "busy score",
+    "QCEW employment levels",
+    "statewide Oklahoma",
+    "Cushing city",
+    "unemployment rate series"
+  ],
+  "csv": "payne_laus_employed_monthly.csv",
+  "json": "payne_laus_employed_monthly.json",
+  "reader": "app/app/lib/cushing-laus-employed.ts",
+  "test": "app/tests/cushing-laus-employed.test.mjs",
+  "verdict": "frozen"
+}

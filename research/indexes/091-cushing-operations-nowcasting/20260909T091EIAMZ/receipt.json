@@ -1,0 +1,17 @@
+{
+  "runId": "20260909T091EIAMZ",
+  "series": "MCRST_YCUOK_1",
+  "retrievedUtc": "2026-09-09T14:24:00Z",
+  "htmlUrl": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=MCRST_YCUOK_1&f=M",
+  "xlsUrl": "https://www.eia.gov/dnav/pet/hist_xls/MCRST_YCUOK_1m.xls",
+  "htmlSha256": "fa595e15abcd697500fafc2d5856cf512d325f029c7ec2b70cebd6c98301a71b",
+  "xlsSha256": "3805d6532e0c6e48dfcb86f8e82f41433fc044c3f15828de2b0285cd70024729",
+  "releaseDate": "2026-08-31",
+  "nextReleaseDate": "2026-09-30",
+  "points": 270,
+  "first": { "month": "2004-01", "stockKbbl": 12890 },
+  "last": { "month": "2026-06", "stockKbbl": 19515 },
+  "sum": 9427093,
+  "min": 11294,
+  "max": 69414
+}

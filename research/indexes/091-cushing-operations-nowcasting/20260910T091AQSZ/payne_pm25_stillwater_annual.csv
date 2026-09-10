@@ -1,0 +1,6 @@
+year,annual_mean_ug_m3,obs_count,obs_percent,completeness,certification,max_daily_ug_m3,max_date
+1999,9.464103,39,65,N,Certification not required,23.8,1999-07-11
+2000,10.635185,54,87,N,Uncertified (past due),21.7,2000-02-12
+2001,9.398333,60,98,Y,Uncertified (past due),34.7,2001-09-16
+2002,10.328333,60,98,Y,Certified,33.5,2002-04-20
+2003,6.7,2,3,N,Certified,8.0,2003-01-03

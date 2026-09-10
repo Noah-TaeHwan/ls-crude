@@ -1,0 +1,19 @@
+facility_name,source_id,registry_id,city,county,permit_status,last_inspection_date,last_inspection_type,inspection_count,cwa_status,formal_actions,total_penalties
+GREENFIELD ENVIRONMENTAL MULTISTATE TRUST LLC-CUSHING,OK0043320,110011006570,CUSHING,Payne,Effective,2025-04-10,Base Program - Evaluation,4,No Violation Identified,1,$0
+GREENFIELD ENVIRONMENTAL MULTISTATE TRUST LLC-SKULL CK,OK0044598,110011006570,CUSHING,Payne,Effective,2025-04-10,Base Program - Evaluation,4,No Violation Identified,1,$0
+"STEWART STONE, INC.-CUSHING",OKG950028,110022834110,CUSHING,Payne,Effective,2025-06-05,Base Program - Evaluation,3,No Violation Identified,,
+"CUSHING, CITY OF  - SOUTH STP",OK0026701,110011008765,CUSHING,Payne,Effective,2026-01-06,Base Program - Evaluation,8,No Violation Identified,3,"$35,000"
+"CENTURION PIPELINE, L.P.",OK0044768,110064607233,CUSHING,Payne,Terminated,,,0,Not Applicable,,
+OKLAHOMA OIL WELL CEMENTING,OK0045641,110064646744,CUSHING,Payne,Not Needed,,,0,Not Applicable,,
+PRIVATE PROPERTY,OK0100374,110059807589,CUSHING,Payne,Terminated,,,0,Terminated Permit,,
+CENTURION PIPELINE-CUSHING TERMINAL,OKG270018,110064607233,CUSHING,Payne,Not Needed,,,0,Not Applicable,,
+WILDHORSE TERMINAL,OKG270057,110070825892,CUSHING,Payne,Terminated,,,0,Terminated Permit,,
+LITTLE FARM,OKG340020,110007164638,CUSHING,Payne,Terminated,,,0,Terminated Permit,,
+CUSHING,OKG340050,110020793541,CUSHING,Payne,Terminated,,,0,Terminated Permit,,
+WILDHORSE TERMINAL,OKR05FA05,110070943445,CUSHING,Lincoln,Terminated,,,0,No Violation Identified,,
+ENBRIDGE EXTENSION,OKR10F01J,110070869693,CUSHING,,Terminated,,,0,Terminated Permit,,
+CUSHING LB,OKR10F024,110071437581,CUSHING,,Effective,,,0,No Violation Identified,,
+AE4904 CUSHING 7TH & NOBLE,OKR10F034,110072073355,CUSHING,,Effective,,,0,No Violation Identified,,
+"AE4970 7TH AND NOBLE PH 2, 3, 4, 5 (WO# PENDING)",OKR10F03H,110072229797,CUSHING,,Effective,,,0,No Violation Identified,,
+OSAGE PIPELINE,OKR10I023,110071319745,CUSHING,,Effective,,,0,No Violation Identified,,
+"CIRCLE 9 RESOURCES, LLC (SCHOOL LAND 66)",OKU000852,110069420068,CUSHING,,,,,0,Not Applicable,,

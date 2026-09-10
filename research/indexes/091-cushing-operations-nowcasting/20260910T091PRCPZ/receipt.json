@@ -1,0 +1,46 @@
+{
+  "runId": "20260910T091PRCPZ",
+  "station": "US1OKPY0019",
+  "stationName": "CUSHING 3.2 E, OK (CoCoRaHS volunteer gauge, 35.9705,-96.7057)",
+  "notStation": "not CUH/KCUH airport ASOS (OK_ASOS); nearest dated Cushing-town gauge with complete months",
+  "label": "Cushing CUH precipitation, monthly confounder, not activity",
+  "source": "NOAA NCEI GHCN-Daily PRCP, keyless bulk .dly (tenths of mm)",
+  "sourceUrl": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/all/US1OKPY0019.dly",
+  "stationMeta": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt",
+  "retrievedUtc": "2026-09-09T17:33:30Z",
+  "range": "2017-05..2021-11",
+  "monthCount": 55,
+  "disclosedMonths": 47,
+  "missingMonths": [
+    "2017-05",
+    "2017-08",
+    "2018-06",
+    "2018-08",
+    "2018-12",
+    "2019-03",
+    "2019-07",
+    "2021-11"
+  ],
+  "missingRule": "month disclosed only if every calendar day has a PRCP value (no -9999); partial months stay null, never 0",
+  "unit": "precip_in = round(monthly tenths-of-mm / 254, 3); 0.000 means observed zero, never filled",
+  "tenthsSum": 44838,
+  "thousandthsSum": 176524,
+  "zeroTotalMonths": [
+    "2021-09"
+  ],
+  "traceNote": "42 trace days (mflag T, value 0) inside disclosed months contribute 0 to monthly sums; no coercion issue at monthly granularity",
+  "qflag": "blank on all disclosed daily values (no failed QC)",
+  "csv": "cushing_precip_monthly.csv",
+  "json": "cushing_precip_monthly.json",
+  "reader": "app/app/lib/cushing-precip.ts",
+  "test": "app/tests/cushing-precip.test.mjs",
+  "rawDir": "research/gathering/raw/091-prcp-monthly/",
+  "notJoined": [
+    "WTI",
+    "busy score",
+    "activity",
+    "temperature"
+  ],
+  "iemProbe": "IEM daily.py CUH 2026-08-01..10 precip all None; CUH daily 2015-2026 yields 0 complete months -> IEM path fails monthly, documented in raw README",
+  "verdict": "frozen"
+}

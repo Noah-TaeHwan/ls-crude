@@ -1,0 +1,4 @@
+incident_date,form,report_key,railroad,county,filed_city,highway_user,train_speed_mph,killed,injured
+1976-10-15,57,ATSF24106210197610,ATSF,PAWNEE,CUSHING,Truck,30,0,0
+1980-02-25,57,ATSF140280206198002,ATSF,PAWNEE,CUSHING,Auto,38,0,1
+1982-05-11,57,ATSF140582203198205,ATSF,PAYNE,CUSHING,Truck-trailer,20,0,0

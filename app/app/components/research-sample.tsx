@@ -71,10 +71,12 @@ export function ResearchSample({ records, live }: {live:{visibility:VisibilityVi
       <div className="flex flex-wrap items-center gap-3 text-xs"><span className="status-stamp">과거 연구 샘플 · 자동 갱신 아님</span><span className="card-verdict">{record ? DECISIONS[record.fields.decision]+" · "+record.fields.decision : "현재 판정 확인 필요"}</span><span className="text-muted-foreground">{kind === "helix" ? "WTI 관계 검정 기록 있음 · 트레이딩 미개방" : "이 샘플의 WTI 관계 검정 미실행"}</span></div>
       <h3 className="mt-5 text-xl font-medium sm:text-2xl">{info.title}</h3>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2"><div><dt className="text-muted-foreground">관측 기간</dt><dd className="mt-1 font-mono">{info.start} ~ {info.end}</dd></div><div><dt className="text-muted-foreground">자료를 수집한 시각</dt><dd className="mt-1 font-mono">{info.collected}</dd></div></dl>
-      {!record ? <div role="status" className="empty-state mt-5">해당 후보 정본을 확인하지 못했습니다. 다른 사례 또는 연구 원문을 확인하세요.</div> : <>
-        {kind === "helix" ? <HelixCase /> : kind === "watermelon" ? <WatermelonCase /> : kind === "jeju" ? <JejuCase /> : kind === "degree-days" ? <DegreeDaysCase /> : kind === "empties" ? <EmptiesCase /> : <RailCase />}
+      {kind === "helix" ? <HelixCase /> : kind === "watermelon" ? <WatermelonCase /> : kind === "jeju" ? <JejuCase /> : kind === "degree-days" ? <DegreeDaysCase /> : kind === "empties" ? <EmptiesCase /> : <RailCase />}
+      {record ? (
         <div className="evidence-note mt-6"><h4 className="text-sm font-medium">다음 확인 · {record.fields.owner}</h4><p className="mt-2 text-sm leading-7">{record.fields.next_action}</p><p className="mt-2 text-xs text-muted-foreground">재검토 예정 {record.fields.next_review_date} · 사람 배정 제안</p></div>
-      </>}
+      ) : (
+        <div role="status" className="evidence-note mt-6 text-sm leading-7">접수 원장의 판정 스탬프는 이 화면에서 읽지 못했습니다. 위 시계열과 깃허브 연구 기록은 고정 런입니다.</div>
+      )}
       <footer className="mt-5 flex flex-wrap gap-5 border-t border-border pt-4 text-sm">{info.png && <a className="source-link" href={info.png} download>연구 그림 다운로드</a>}{record && <a className="source-link" href={record.sourceHref}>가설·판정 원문</a>}<a className="source-link" href={evidence}>재현 코드·영수증</a><a className="source-link" href={info.source}>제공기관 자료 정의</a></footer>
     </article>}
   </section>;

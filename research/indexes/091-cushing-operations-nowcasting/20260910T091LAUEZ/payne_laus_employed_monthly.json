@@ -1,0 +1,566 @@
+{
+  "runId": "20260910T091LAUEZ",
+  "areaFips": "40119",
+  "geography": "Payne County, Oklahoma",
+  "frequency": "monthly LAUS employment level",
+  "seriesId": "LAUCN401190000000005",
+  "label": "Payne County employed persons, monthly LAUS (county labor-market count, not unemployment rate, not Cushing city, not busy, not WTI)",
+  "rows": [
+    {
+      "period": "2015-01",
+      "employed": 36075
+    },
+    {
+      "period": "2015-02",
+      "employed": 36366
+    },
+    {
+      "period": "2015-03",
+      "employed": 36669
+    },
+    {
+      "period": "2015-04",
+      "employed": 37058
+    },
+    {
+      "period": "2015-05",
+      "employed": 37261
+    },
+    {
+      "period": "2015-06",
+      "employed": 36761
+    },
+    {
+      "period": "2015-07",
+      "employed": 36913
+    },
+    {
+      "period": "2015-08",
+      "employed": 37075
+    },
+    {
+      "period": "2015-09",
+      "employed": 37498
+    },
+    {
+      "period": "2015-10",
+      "employed": 37380
+    },
+    {
+      "period": "2015-11",
+      "employed": 37315
+    },
+    {
+      "period": "2015-12",
+      "employed": 36841
+    },
+    {
+      "period": "2016-01",
+      "employed": 36244
+    },
+    {
+      "period": "2016-02",
+      "employed": 36223
+    },
+    {
+      "period": "2016-03",
+      "employed": 36396
+    },
+    {
+      "period": "2016-04",
+      "employed": 36637
+    },
+    {
+      "period": "2016-05",
+      "employed": 36401
+    },
+    {
+      "period": "2016-06",
+      "employed": 36254
+    },
+    {
+      "period": "2016-07",
+      "employed": 36428
+    },
+    {
+      "period": "2016-08",
+      "employed": 36981
+    },
+    {
+      "period": "2016-09",
+      "employed": 37092
+    },
+    {
+      "period": "2016-10",
+      "employed": 37214
+    },
+    {
+      "period": "2016-11",
+      "employed": 37222
+    },
+    {
+      "period": "2016-12",
+      "employed": 36438
+    },
+    {
+      "period": "2017-01",
+      "employed": 37130
+    },
+    {
+      "period": "2017-02",
+      "employed": 36690
+    },
+    {
+      "period": "2017-03",
+      "employed": 36881
+    },
+    {
+      "period": "2017-04",
+      "employed": 36987
+    },
+    {
+      "period": "2017-05",
+      "employed": 36814
+    },
+    {
+      "period": "2017-06",
+      "employed": 35495
+    },
+    {
+      "period": "2017-07",
+      "employed": 35920
+    },
+    {
+      "period": "2017-08",
+      "employed": 36158
+    },
+    {
+      "period": "2017-09",
+      "employed": 36390
+    },
+    {
+      "period": "2017-10",
+      "employed": 37354
+    },
+    {
+      "period": "2017-11",
+      "employed": 37232
+    },
+    {
+      "period": "2017-12",
+      "employed": 37010
+    },
+    {
+      "period": "2018-01",
+      "employed": 36509
+    },
+    {
+      "period": "2018-02",
+      "employed": 37400
+    },
+    {
+      "period": "2018-03",
+      "employed": 37568
+    },
+    {
+      "period": "2018-04",
+      "employed": 37172
+    },
+    {
+      "period": "2018-05",
+      "employed": 37191
+    },
+    {
+      "period": "2018-06",
+      "employed": 35657
+    },
+    {
+      "period": "2018-07",
+      "employed": 35882
+    },
+    {
+      "period": "2018-08",
+      "employed": 36135
+    },
+    {
+      "period": "2018-09",
+      "employed": 36739
+    },
+    {
+      "period": "2018-10",
+      "employed": 36910
+    },
+    {
+      "period": "2018-11",
+      "employed": 36909
+    },
+    {
+      "period": "2018-12",
+      "employed": 36418
+    },
+    {
+      "period": "2019-01",
+      "employed": 35582
+    },
+    {
+      "period": "2019-02",
+      "employed": 36341
+    },
+    {
+      "period": "2019-03",
+      "employed": 36669
+    },
+    {
+      "period": "2019-04",
+      "employed": 36483
+    },
+    {
+      "period": "2019-05",
+      "employed": 36328
+    },
+    {
+      "period": "2019-06",
+      "employed": 35856
+    },
+    {
+      "period": "2019-07",
+      "employed": 36146
+    },
+    {
+      "period": "2019-08",
+      "employed": 35672
+    },
+    {
+      "period": "2019-09",
+      "employed": 36039
+    },
+    {
+      "period": "2019-10",
+      "employed": 37056
+    },
+    {
+      "period": "2019-11",
+      "employed": 36778
+    },
+    {
+      "period": "2019-12",
+      "employed": 36190
+    },
+    {
+      "period": "2020-01",
+      "employed": 35844
+    },
+    {
+      "period": "2020-02",
+      "employed": 36185
+    },
+    {
+      "period": "2020-03",
+      "employed": 35706
+    },
+    {
+      "period": "2020-04",
+      "employed": 31507
+    },
+    {
+      "period": "2020-05",
+      "employed": 32866
+    },
+    {
+      "period": "2020-06",
+      "employed": 33970
+    },
+    {
+      "period": "2020-07",
+      "employed": 34542
+    },
+    {
+      "period": "2020-08",
+      "employed": 35002
+    },
+    {
+      "period": "2020-09",
+      "employed": 35134
+    },
+    {
+      "period": "2020-10",
+      "employed": 36242
+    },
+    {
+      "period": "2020-11",
+      "employed": 36101
+    },
+    {
+      "period": "2020-12",
+      "employed": 35450
+    },
+    {
+      "period": "2021-01",
+      "employed": 35331
+    },
+    {
+      "period": "2021-02",
+      "employed": 35691
+    },
+    {
+      "period": "2021-03",
+      "employed": 35480
+    },
+    {
+      "period": "2021-04",
+      "employed": 36238
+    },
+    {
+      "period": "2021-05",
+      "employed": 36070
+    },
+    {
+      "period": "2021-06",
+      "employed": 35144
+    },
+    {
+      "period": "2021-07",
+      "employed": 36144
+    },
+    {
+      "period": "2021-08",
+      "employed": 35832
+    },
+    {
+      "period": "2021-09",
+      "employed": 36935
+    },
+    {
+      "period": "2021-10",
+      "employed": 36876
+    },
+    {
+      "period": "2021-11",
+      "employed": 37182
+    },
+    {
+      "period": "2021-12",
+      "employed": 36826
+    },
+    {
+      "period": "2022-01",
+      "employed": 36860
+    },
+    {
+      "period": "2022-02",
+      "employed": 37332
+    },
+    {
+      "period": "2022-03",
+      "employed": 37774
+    },
+    {
+      "period": "2022-04",
+      "employed": 37520
+    },
+    {
+      "period": "2022-05",
+      "employed": 37062
+    },
+    {
+      "period": "2022-06",
+      "employed": 36890
+    },
+    {
+      "period": "2022-07",
+      "employed": 37017
+    },
+    {
+      "period": "2022-08",
+      "employed": 37663
+    },
+    {
+      "period": "2022-09",
+      "employed": 37987
+    },
+    {
+      "period": "2022-10",
+      "employed": 38099
+    },
+    {
+      "period": "2022-11",
+      "employed": 38059
+    },
+    {
+      "period": "2022-12",
+      "employed": 37727
+    },
+    {
+      "period": "2023-01",
+      "employed": 37697
+    },
+    {
+      "period": "2023-02",
+      "employed": 38352
+    },
+    {
+      "period": "2023-03",
+      "employed": 38770
+    },
+    {
+      "period": "2023-04",
+      "employed": 39212
+    },
+    {
+      "period": "2023-05",
+      "employed": 38853
+    },
+    {
+      "period": "2023-06",
+      "employed": 38516
+    },
+    {
+      "period": "2023-07",
+      "employed": 38423
+    },
+    {
+      "period": "2023-08",
+      "employed": 39013
+    },
+    {
+      "period": "2023-09",
+      "employed": 39569
+    },
+    {
+      "period": "2023-10",
+      "employed": 39367
+    },
+    {
+      "period": "2023-11",
+      "employed": 39490
+    },
+    {
+      "period": "2023-12",
+      "employed": 38841
+    },
+    {
+      "period": "2024-01",
+      "employed": 38700
+    },
+    {
+      "period": "2024-02",
+      "employed": 39348
+    },
+    {
+      "period": "2024-03",
+      "employed": 40012
+    },
+    {
+      "period": "2024-04",
+      "employed": 39969
+    },
+    {
+      "period": "2024-05",
+      "employed": 39512
+    },
+    {
+      "period": "2024-06",
+      "employed": 39264
+    },
+    {
+      "period": "2024-07",
+      "employed": 39502
+    },
+    {
+      "period": "2024-08",
+      "employed": 40213
+    },
+    {
+      "period": "2024-09",
+      "employed": 40184
+    },
+    {
+      "period": "2024-10",
+      "employed": 40064
+    },
+    {
+      "period": "2024-11",
+      "employed": 39992
+    },
+    {
+      "period": "2024-12",
+      "employed": 39670
+    },
+    {
+      "period": "2025-01",
+      "employed": 39348
+    },
+    {
+      "period": "2025-02",
+      "employed": 39793
+    },
+    {
+      "period": "2025-03",
+      "employed": 40239
+    },
+    {
+      "period": "2025-04",
+      "employed": 40756
+    },
+    {
+      "period": "2025-05",
+      "employed": 39769
+    },
+    {
+      "period": "2025-06",
+      "employed": 39599
+    },
+    {
+      "period": "2025-07",
+      "employed": 39644
+    },
+    {
+      "period": "2025-08",
+      "employed": 40217
+    },
+    {
+      "period": "2025-09",
+      "employed": 40387
+    },
+    {
+      "period": "2025-10",
+      "employed": null
+    },
+    {
+      "period": "2025-11",
+      "employed": 39209
+    },
+    {
+      "period": "2025-12",
+      "employed": 38759
+    },
+    {
+      "period": "2026-01",
+      "employed": 38394
+    },
+    {
+      "period": "2026-02",
+      "employed": 39451
+    },
+    {
+      "period": "2026-03",
+      "employed": 39582
+    },
+    {
+      "period": "2026-04",
+      "employed": 39430
+    },
+    {
+      "period": "2026-05",
+      "employed": 39282
+    },
+    {
+      "period": "2026-06",
+      "employed": 38633
+    },
+    {
+      "period": "2026-07",
+      "employed": 38543
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+ "runId": "20260910T091GHGZ",
+ "geography": "Cushing city, Oklahoma",
+ "frequency": "annual reporting year",
+ "unit": "metric tons CO2e (IPCC AR4 GWP)",
+ "rows": [
+  {
+   "year": 2016,
+   "co2e_metric_tons": 44337.004,
+   "facility_count": 1
+  },
+  {
+   "year": 2017,
+   "co2e_metric_tons": 46316.15,
+   "facility_count": 1
+  },
+  {
+   "year": 2018,
+   "co2e_metric_tons": 38251.638,
+   "facility_count": 1
+  },
+  {
+   "year": 2019,
+   "co2e_metric_tons": 36271.846,
+   "facility_count": 1
+  }
+ ]
+}

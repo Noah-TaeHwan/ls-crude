@@ -1,0 +1,61 @@
+{
+ "runId": "20260910T091WQPZ",
+ "label": "Cushing/Payne-area WQP ambient pH samples, dated, not busy",
+ "verdict": "frozen",
+ "retrieved": "2026-09-10T09:34:00Z",
+ "sourceName": "Water Quality Portal Result + Station search (keyless HTTPS)",
+ "sourceBase": "https://www.waterqualitydata.us/data/Result/search",
+ "endpoints": [
+  "https://www.waterqualitydata.us/data/Station/search?countrycode=US&statecode=US:40&countycode=US:40:119&mimeType=csv&zip=no (404 rows incl header; complete)",
+  "https://www.waterqualitydata.us/data/Result/search?lat=35.9849&long=-96.7645&within=12.5&mimeType=csv&zip=no&sorted=no (complete, http 200, 62839 rows)"
+ ],
+ "siteId": "IOWATROK_WQX-SND1",
+ "stationName": "Sand1",
+ "organization": "IOWATROK_WQX (Iowa Tribe of Oklahoma)",
+ "county": "Payne (119)",
+ "latitude": 35.9565236,
+ "longitude": -96.9468458,
+ "distanceKm": 16.71,
+ "characteristic": "pH",
+ "unit": "None (as filed)",
+ "rowCount": 366,
+ "distinctDates": 283,
+ "dateRange": [
+  "2005-09-01",
+  "2021-09-17"
+ ],
+ "dateRule": "WQP ActivityStartDate as filed; ActivityStartTime empty stays null; no fill",
+ "valueRule": "ResultMeasureValue as filed, including one 0.0 on 2009-05-05 kept with note, never edited or dropped",
+ "hundredthsSum": 297220,
+ "activityTypes": {
+  "Field Msr/Obs": 352,
+  "Quality Control Field Replicate Msr/Obs": 14
+ },
+ "allFinal": true,
+ "duplicateFilingNote": "some dates repeat one field value under two activity-id conventions (kept, never deduped); 13 dates carry 2-3 replicate values under a single activity id (kept as filed, ordered by value)",
+ "losers": {
+  "HQ2 pH": "280 dates (shorter)",
+  "SND1 Dissolved oxygen (DO)": "277 dates (shorter)",
+  "Cimarron SH33 Ripley pH": "150 dates (shorter)",
+  "local Nitrate": "shorter multi-site panels (Nitrate-N name matched zero local rows; local name is Nitrate)"
+ },
+ "failedProbes": [
+  "siteids=USGS-07161450 ignored by service (returned national ARS rows; discarded)",
+  "unconstrained site download truncated at 160MB/1700s (discarded)",
+  "characteristicName=Nitrate-N + geo returned 0 local rows (naming)"
+ ],
+ "csv": "cushing_wqp_ph.csv",
+ "json": "cushing_wqp_ph.json",
+ "reader": "app/app/lib/cushing-wqp.ts",
+ "test": "app/tests/cushing-wqp.test.mjs (3 pass)",
+ "notJoined": [
+  "WTI",
+  "busy score",
+  "USGS discharge cfs (07161450 flow not copied)",
+  "well depth-to-water",
+  "CWA last-inspection counts",
+  "DMR quantities",
+  "statewide Oklahoma relabel",
+  "enforcement cases"
+ ]
+}

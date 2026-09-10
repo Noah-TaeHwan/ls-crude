@@ -1,0 +1,2949 @@
+{
+ "runId": "20260910T091WQPZ",
+ "siteId": "IOWATROK_WQX-SND1",
+ "stationName": "Sand1",
+ "organization": "IOWATROK_WQX",
+ "organizationName": "Iowa Tribe of Oklahoma",
+ "county": "Payne",
+ "countyCode": "119",
+ "latitude": 35.9565236,
+ "longitude": -96.9468458,
+ "distanceKm": 16.71,
+ "cushingCenter": [
+  35.9849,
+  -96.7645
+ ],
+ "characteristic": "pH",
+ "unit": "None",
+ "label": "Cushing/Payne-area WQP water-quality samples, dated, not busy, not streamflow, not DMR",
+ "rows": [
+  {
+   "date": "2005-09-01",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W090105F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.07,
+   "status": "Final"
+  },
+  {
+   "date": "2005-09-01",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_09/01/2005_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.07,
+   "status": "Final"
+  },
+  {
+   "date": "2005-12-20",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W122005F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.84,
+   "status": "Final"
+  },
+  {
+   "date": "2005-12-20",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_12/20/2005_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.84,
+   "status": "Final"
+  },
+  {
+   "date": "2006-07-05",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W070506F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.14,
+   "status": "Final"
+  },
+  {
+   "date": "2006-07-05",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_07/05/2006_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.14,
+   "status": "Final"
+  },
+  {
+   "date": "2007-04-02",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W040207F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.42,
+   "status": "Final"
+  },
+  {
+   "date": "2007-04-02",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_04/02/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.42,
+   "status": "Final"
+  },
+  {
+   "date": "2007-04-09",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W040907F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.93,
+   "status": "Final"
+  },
+  {
+   "date": "2007-04-09",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_04/09/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.93,
+   "status": "Final"
+  },
+  {
+   "date": "2007-04-16",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W041607F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.58,
+   "status": "Final"
+  },
+  {
+   "date": "2007-04-16",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_04/16/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.58,
+   "status": "Final"
+  },
+  {
+   "date": "2007-04-19",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W041907F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.74,
+   "status": "Final"
+  },
+  {
+   "date": "2007-04-19",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_04/19/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.74,
+   "status": "Final"
+  },
+  {
+   "date": "2007-04-23",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W042307F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.92,
+   "status": "Final"
+  },
+  {
+   "date": "2007-04-23",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_04/23/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.92,
+   "status": "Final"
+  },
+  {
+   "date": "2007-05-14",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W051407F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.68,
+   "status": "Final"
+  },
+  {
+   "date": "2007-05-14",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_05/14/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.68,
+   "status": "Final"
+  },
+  {
+   "date": "2007-05-17",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W051707F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.67,
+   "status": "Final"
+  },
+  {
+   "date": "2007-05-17",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_05/17/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.67,
+   "status": "Final"
+  },
+  {
+   "date": "2007-05-21",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W052107F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.88,
+   "status": "Final"
+  },
+  {
+   "date": "2007-05-21",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_05/21/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.88,
+   "status": "Final"
+  },
+  {
+   "date": "2007-06-04",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W060407F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.59,
+   "status": "Final"
+  },
+  {
+   "date": "2007-06-04",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_06/04/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.59,
+   "status": "Final"
+  },
+  {
+   "date": "2007-06-07",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W060707F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.72,
+   "status": "Final"
+  },
+  {
+   "date": "2007-06-07",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_06/07/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.72,
+   "status": "Final"
+  },
+  {
+   "date": "2007-06-11",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W061107F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.73,
+   "status": "Final"
+  },
+  {
+   "date": "2007-06-11",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_06/11/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.73,
+   "status": "Final"
+  },
+  {
+   "date": "2007-06-18",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W061807F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.41,
+   "status": "Final"
+  },
+  {
+   "date": "2007-06-18",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_06/18/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.41,
+   "status": "Final"
+  },
+  {
+   "date": "2007-07-02",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W070207F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.38,
+   "status": "Final"
+  },
+  {
+   "date": "2007-07-02",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_07/02/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.38,
+   "status": "Final"
+  },
+  {
+   "date": "2007-07-09",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W070907F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.69,
+   "status": "Final"
+  },
+  {
+   "date": "2007-07-09",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_07/09/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.69,
+   "status": "Final"
+  },
+  {
+   "date": "2007-07-11",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W071107F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.46,
+   "status": "Final"
+  },
+  {
+   "date": "2007-07-11",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_07/11/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.46,
+   "status": "Final"
+  },
+  {
+   "date": "2007-08-29",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W082907F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.77,
+   "status": "Final"
+  },
+  {
+   "date": "2007-08-29",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_08/29/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.77,
+   "status": "Final"
+  },
+  {
+   "date": "2007-09-06",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W090607F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.84,
+   "status": "Final"
+  },
+  {
+   "date": "2007-09-06",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_09/06/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.84,
+   "status": "Final"
+  },
+  {
+   "date": "2007-09-11",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W091107F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.84,
+   "status": "Final"
+  },
+  {
+   "date": "2007-09-11",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_09/11/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.84,
+   "status": "Final"
+  },
+  {
+   "date": "2007-09-17",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W091707F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.65,
+   "status": "Final"
+  },
+  {
+   "date": "2007-09-17",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_09/17/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.65,
+   "status": "Final"
+  },
+  {
+   "date": "2007-09-20",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W092007F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.25,
+   "status": "Final"
+  },
+  {
+   "date": "2007-09-20",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_09/20/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.25,
+   "status": "Final"
+  },
+  {
+   "date": "2007-09-24",
+   "time": "00:00:00",
+   "activityId": "IOWATROK_WQX-SND1W092407F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.46,
+   "status": "Final"
+  },
+  {
+   "date": "2007-09-24",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1_09/24/2007_F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.46,
+   "status": "Final"
+  },
+  {
+   "date": "2009-01-21",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SndW012109F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.13,
+   "status": "Final"
+  },
+  {
+   "date": "2009-02-03",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W020309F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.02,
+   "status": "Final"
+  },
+  {
+   "date": "2009-02-05",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W020509F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.22,
+   "status": "Final"
+  },
+  {
+   "date": "2009-02-16",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W021609F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.33,
+   "status": "Final"
+  },
+  {
+   "date": "2009-02-18",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W021809F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.35,
+   "status": "Final"
+  },
+  {
+   "date": "2009-03-11",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W031109F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.32,
+   "status": "Final"
+  },
+  {
+   "date": "2009-03-17",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W031709F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.51,
+   "status": "Final"
+  },
+  {
+   "date": "2009-03-24",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W032409F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2009-03-24",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W032409F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.11,
+   "status": "Final"
+  },
+  {
+   "date": "2009-03-24",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W032409F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.12,
+   "status": "Final"
+  },
+  {
+   "date": "2009-03-26",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W032609F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.29,
+   "status": "Final"
+  },
+  {
+   "date": "2009-03-30",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W033009F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.11,
+   "status": "Final"
+  },
+  {
+   "date": "2009-04-23",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W042309F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.48,
+   "status": "Final"
+  },
+  {
+   "date": "2009-05-05",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Sand1W050509F",
+   "activityType": "Field Msr/Obs",
+   "ph": 0.0,
+   "status": "Final"
+  },
+  {
+   "date": "2009-05-26",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W052609F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.56,
+   "status": "Final"
+  },
+  {
+   "date": "2009-05-26",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W052609F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.56,
+   "status": "Final"
+  },
+  {
+   "date": "2009-05-26",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W052609F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.57,
+   "status": "Final"
+  },
+  {
+   "date": "2009-05-28",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W052809F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.71,
+   "status": "Final"
+  },
+  {
+   "date": "2009-06-01",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W060109F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.6,
+   "status": "Final"
+  },
+  {
+   "date": "2009-06-03",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W060309F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.52,
+   "status": "Final"
+  },
+  {
+   "date": "2009-06-08",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W060809F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.61,
+   "status": "Final"
+  },
+  {
+   "date": "2009-06-17",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W061709F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.61,
+   "status": "Final"
+  },
+  {
+   "date": "2009-06-22",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W062209F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.71,
+   "status": "Final"
+  },
+  {
+   "date": "2009-06-22",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W062209F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.72,
+   "status": "Final"
+  },
+  {
+   "date": "2009-06-22",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W062209F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.72,
+   "status": "Final"
+  },
+  {
+   "date": "2009-06-25",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W062509F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.85,
+   "status": "Final"
+  },
+  {
+   "date": "2009-06-29",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W062909F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.77,
+   "status": "Final"
+  },
+  {
+   "date": "2009-07-01",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W070109F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.84,
+   "status": "Final"
+  },
+  {
+   "date": "2009-07-09",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W070909F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.76,
+   "status": "Final"
+  },
+  {
+   "date": "2009-07-14",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W071409F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.9,
+   "status": "Final"
+  },
+  {
+   "date": "2009-07-21",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W072109F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.48,
+   "status": "Final"
+  },
+  {
+   "date": "2009-07-28",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W072809F",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.08,
+   "status": "Final"
+  },
+  {
+   "date": "2009-08-04",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W080409F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.73,
+   "status": "Final"
+  },
+  {
+   "date": "2009-08-06",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W080609F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.41,
+   "status": "Final"
+  },
+  {
+   "date": "2009-08-18",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W081809F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.72,
+   "status": "Final"
+  },
+  {
+   "date": "2009-08-18",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W081809F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.72,
+   "status": "Final"
+  },
+  {
+   "date": "2009-08-18",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W081809F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.72,
+   "status": "Final"
+  },
+  {
+   "date": "2009-08-25",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W082509F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.8,
+   "status": "Final"
+  },
+  {
+   "date": "2009-08-27",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W082709F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.69,
+   "status": "Final"
+  },
+  {
+   "date": "2009-09-01",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W090109F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.54,
+   "status": "Final"
+  },
+  {
+   "date": "2009-09-08",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W090809F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.32,
+   "status": "Final"
+  },
+  {
+   "date": "2009-09-15",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W091509F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.3,
+   "status": "Final"
+  },
+  {
+   "date": "2009-09-15",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W091509F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.32,
+   "status": "Final"
+  },
+  {
+   "date": "2009-09-15",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W091509F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.33,
+   "status": "Final"
+  },
+  {
+   "date": "2009-09-22",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W092209F",
+   "activityType": "Field Msr/Obs",
+   "ph": 0.832,
+   "status": "Final"
+  },
+  {
+   "date": "2009-09-29",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W092909F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.48,
+   "status": "Final"
+  },
+  {
+   "date": "2009-10-01",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W100109F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.52,
+   "status": "Final"
+  },
+  {
+   "date": "2010-02-04",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W020410F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.09,
+   "status": "Final"
+  },
+  {
+   "date": "2010-02-11",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W021110F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.07,
+   "status": "Final"
+  },
+  {
+   "date": "2010-02-16",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W021610F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.99,
+   "status": "Final"
+  },
+  {
+   "date": "2010-02-16",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W021610F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.99,
+   "status": "Final"
+  },
+  {
+   "date": "2010-02-16",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W021610F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.99,
+   "status": "Final"
+  },
+  {
+   "date": "2010-02-18",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W021810F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.35,
+   "status": "Final"
+  },
+  {
+   "date": "2010-02-25",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W022510F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.0,
+   "status": "Final"
+  },
+  {
+   "date": "2010-03-02",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W030210F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.0,
+   "status": "Final"
+  },
+  {
+   "date": "2010-03-10",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W031010F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.15,
+   "status": "Final"
+  },
+  {
+   "date": "2010-03-22",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W032210F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.61,
+   "status": "Final"
+  },
+  {
+   "date": "2010-03-29",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W032910F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.26,
+   "status": "Final"
+  },
+  {
+   "date": "2010-03-29",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W032910F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.26,
+   "status": "Final"
+  },
+  {
+   "date": "2010-03-29",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W032910F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.26,
+   "status": "Final"
+  },
+  {
+   "date": "2010-03-31",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W033110F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.65,
+   "status": "Final"
+  },
+  {
+   "date": "2010-04-08",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W040810F",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.86,
+   "status": "Final"
+  },
+  {
+   "date": "2010-04-14",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W041410F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.42,
+   "status": "Final"
+  },
+  {
+   "date": "2010-04-20",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W042010F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.35,
+   "status": "Final"
+  },
+  {
+   "date": "2010-04-26",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W042610F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2010-04-29",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W042910F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2010-05-03",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W050310F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2010-05-03",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W050310F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2010-05-03",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W050310F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.29,
+   "status": "Final"
+  },
+  {
+   "date": "2010-05-07",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W050710F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.56,
+   "status": "Final"
+  },
+  {
+   "date": "2010-05-17",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W051710F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.58,
+   "status": "Final"
+  },
+  {
+   "date": "2010-05-25",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W052510F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.62,
+   "status": "Final"
+  },
+  {
+   "date": "2010-05-27",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W052710F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.62,
+   "status": "Final"
+  },
+  {
+   "date": "2010-06-10",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W061010F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2010-06-16",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W061610F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2010-06-22",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W062210F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.62,
+   "status": "Final"
+  },
+  {
+   "date": "2010-06-29",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W062910F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.62,
+   "status": "Final"
+  },
+  {
+   "date": "2010-07-07",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W070710F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2010-07-13",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W071310F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.61,
+   "status": "Final"
+  },
+  {
+   "date": "2010-07-13",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W071310F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.62,
+   "status": "Final"
+  },
+  {
+   "date": "2010-07-13",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W071310F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.62,
+   "status": "Final"
+  },
+  {
+   "date": "2010-07-15",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W071510F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.62,
+   "status": "Final"
+  },
+  {
+   "date": "2010-07-19",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W071910F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.58,
+   "status": "Final"
+  },
+  {
+   "date": "2010-07-29",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W072910F",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.14,
+   "status": "Final"
+  },
+  {
+   "date": "2010-08-02",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W080210F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2010-08-04",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W080410F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.45,
+   "status": "Final"
+  },
+  {
+   "date": "2010-08-09",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W080910F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.68,
+   "status": "Final"
+  },
+  {
+   "date": "2010-08-12",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W081210F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.72,
+   "status": "Final"
+  },
+  {
+   "date": "2010-08-19",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W081910F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.45,
+   "status": "Final"
+  },
+  {
+   "date": "2010-08-25",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W082510F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.7,
+   "status": "Final"
+  },
+  {
+   "date": "2010-09-02",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W090210F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.6,
+   "status": "Final"
+  },
+  {
+   "date": "2010-09-02",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W090210F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.61,
+   "status": "Final"
+  },
+  {
+   "date": "2010-09-02",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W090210F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.61,
+   "status": "Final"
+  },
+  {
+   "date": "2010-09-14",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W091410F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.46,
+   "status": "Final"
+  },
+  {
+   "date": "2010-09-16",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W091610F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.45,
+   "status": "Final"
+  },
+  {
+   "date": "2010-09-23",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W092310F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.46,
+   "status": "Final"
+  },
+  {
+   "date": "2010-09-23",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W092310F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.46,
+   "status": "Final"
+  },
+  {
+   "date": "2010-09-23",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W092310F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.47,
+   "status": "Final"
+  },
+  {
+   "date": "2010-09-28",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W092810F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.06,
+   "status": "Final"
+  },
+  {
+   "date": "2010-10-05",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W100510F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.3,
+   "status": "Final"
+  },
+  {
+   "date": "2010-10-07",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W100710F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.23,
+   "status": "Final"
+  },
+  {
+   "date": "2010-10-07",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W100710F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.23,
+   "status": "Final"
+  },
+  {
+   "date": "2010-10-07",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W100710F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.3,
+   "status": "Final"
+  },
+  {
+   "date": "2010-10-12",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W101210F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.37,
+   "status": "Final"
+  },
+  {
+   "date": "2010-10-21",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W102110F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.01,
+   "status": "Final"
+  },
+  {
+   "date": "2010-10-26",
+   "time": null,
+   "activityId": "IOWATROK_WQX-Snd1W102610F",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.52,
+   "status": "Final"
+  },
+  {
+   "date": "2011-01-10",
+   "time": "12:20:00",
+   "activityId": "IOWATROK_WQX-SND1 1/10/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.81,
+   "status": "Final"
+  },
+  {
+   "date": "2011-01-18",
+   "time": "14:45:00",
+   "activityId": "IOWATROK_WQX-SND1 1/18/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.49,
+   "status": "Final"
+  },
+  {
+   "date": "2011-01-27",
+   "time": "12:10:00",
+   "activityId": "IOWATROK_WQX-SND1 1/27/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2011-01-27",
+   "time": "12:10:00",
+   "activityId": "IOWATROK_WQX-SND1 1/27/11 FQC1",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 8.29,
+   "status": "Final"
+  },
+  {
+   "date": "2011-01-27",
+   "time": "12:10:00",
+   "activityId": "IOWATROK_WQX-SND1 1/27/11 FQC2",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 8.29,
+   "status": "Final"
+  },
+  {
+   "date": "2011-01-31",
+   "time": "23:00:00",
+   "activityId": "IOWATROK_WQX-SND1 1/31/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.05,
+   "status": "Final"
+  },
+  {
+   "date": "2011-02-02",
+   "time": "22:45:00",
+   "activityId": "IOWATROK_WQX-SND1 2/2/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.37,
+   "status": "Final"
+  },
+  {
+   "date": "2011-03-09",
+   "time": "23:30:00",
+   "activityId": "IOWATROK_WQX-SND1 3/9/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.35,
+   "status": "Final"
+  },
+  {
+   "date": "2011-03-15",
+   "time": "23:00:00",
+   "activityId": "IOWATROK_WQX-SND1 3/15/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.53,
+   "status": "Final"
+  },
+  {
+   "date": "2011-03-24",
+   "time": "23:45:00",
+   "activityId": "IOWATROK_WQX-SND1 3/24/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.47,
+   "status": "Final"
+  },
+  {
+   "date": "2011-03-28",
+   "time": "23:45:00",
+   "activityId": "IOWATROK_WQX-SND1 3/28/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.4,
+   "status": "Final"
+  },
+  {
+   "date": "2011-03-31",
+   "time": "22:35:00",
+   "activityId": "IOWATROK_WQX-SND1 3/31/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.08,
+   "status": "Final"
+  },
+  {
+   "date": "2011-04-11",
+   "time": "22:45:00",
+   "activityId": "IOWATROK_WQX-SND1 4/11/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.07,
+   "status": "Final"
+  },
+  {
+   "date": "2011-04-14",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/14/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.15,
+   "status": "Final"
+  },
+  {
+   "date": "2011-04-19",
+   "time": "12:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/19/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.12,
+   "status": "Final"
+  },
+  {
+   "date": "2011-04-19",
+   "time": "12:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/19/11 FQC1",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 8.12,
+   "status": "Final"
+  },
+  {
+   "date": "2011-04-19",
+   "time": "12:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/19/11 FQC2",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 8.11,
+   "status": "Final"
+  },
+  {
+   "date": "2011-04-25",
+   "time": "23:30:00",
+   "activityId": "IOWATROK_WQX-SND1 4/25/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.46,
+   "status": "Final"
+  },
+  {
+   "date": "2011-04-28",
+   "time": "23:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/28/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.45,
+   "status": "Final"
+  },
+  {
+   "date": "2011-04-28",
+   "time": "23:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/28/11 FQC2",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 8.45,
+   "status": "Final"
+  },
+  {
+   "date": "2011-04-28",
+   "time": "23:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/28/11FQC1",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 8.45,
+   "status": "Final"
+  },
+  {
+   "date": "2011-05-09",
+   "time": "23:10:00",
+   "activityId": "IOWATROK_WQX-SND1 5/9/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.36,
+   "status": "Final"
+  },
+  {
+   "date": "2011-05-11",
+   "time": "23:20:00",
+   "activityId": "IOWATROK_WQX-SND1 5/11/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.35,
+   "status": "Final"
+  },
+  {
+   "date": "2011-05-23",
+   "time": "12:15:00",
+   "activityId": "IOWATROK_WQX-SND1 5/23/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.76,
+   "status": "Final"
+  },
+  {
+   "date": "2011-05-25",
+   "time": "22:30:00",
+   "activityId": "IOWATROK_WQX-SND1 5/25/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.7,
+   "status": "Final"
+  },
+  {
+   "date": "2011-05-31",
+   "time": "22:45:00",
+   "activityId": "IOWATROK_WQX-SND1 5/31/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.7,
+   "status": "Final"
+  },
+  {
+   "date": "2011-06-02",
+   "time": "22:45:00",
+   "activityId": "IOWATROK_WQX-SND1 6/2/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.2,
+   "status": "Final"
+  },
+  {
+   "date": "2011-06-06",
+   "time": "23:00:00",
+   "activityId": "IOWATROK_WQX-SND1 6/6/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.17,
+   "status": "Final"
+  },
+  {
+   "date": "2011-06-08",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 6/8/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.17,
+   "status": "Final"
+  },
+  {
+   "date": "2011-06-13",
+   "time": "21:45:00",
+   "activityId": "IOWATROK_WQX-SND1 6/13/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.16,
+   "status": "Final"
+  },
+  {
+   "date": "2011-06-23",
+   "time": "13:05:00",
+   "activityId": "IOWATROK_WQX-SND1 6/23/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.45,
+   "status": "Final"
+  },
+  {
+   "date": "2011-07-11",
+   "time": "23:00:00",
+   "activityId": "IOWATROK_WQX-SND1 7/11/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.89,
+   "status": "Final"
+  },
+  {
+   "date": "2011-07-13",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 7/13/11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.48,
+   "status": "Final"
+  },
+  {
+   "date": "2012-01-10",
+   "time": "23:15:00",
+   "activityId": "IOWATROK_WQX-SND1 1/10/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.12,
+   "status": "Final"
+  },
+  {
+   "date": "2012-01-19",
+   "time": "23:30:00",
+   "activityId": "IOWATROK_WQX-SND1 1/19/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.26,
+   "status": "Final"
+  },
+  {
+   "date": "2012-01-24",
+   "time": "23:30:00",
+   "activityId": "IOWATROK_WQX-SND1 1/24/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.16,
+   "status": "Final"
+  },
+  {
+   "date": "2012-01-26",
+   "time": "14:15:00",
+   "activityId": "IOWATROK_WQX-SND1 1/26/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.15,
+   "status": "Final"
+  },
+  {
+   "date": "2012-01-31",
+   "time": "23:30:00",
+   "activityId": "IOWATROK_WQX-SND1 1/31/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2012-01-31",
+   "time": "23:30:00",
+   "activityId": "IOWATROK_WQX-SND1 1/31/12 FQC1",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2012-01-31",
+   "time": "23:30:00",
+   "activityId": "IOWATROK_WQX-SND1 1/31/12 FQC2",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.28,
+   "status": "Final"
+  },
+  {
+   "date": "2012-03-07",
+   "time": "23:30:00",
+   "activityId": "IOWATROK_WQX-SND1 3/7/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.25,
+   "status": "Final"
+  },
+  {
+   "date": "2012-03-15",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 3/15/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.05,
+   "status": "Final"
+  },
+  {
+   "date": "2012-03-21",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 3/21/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.07,
+   "status": "Final"
+  },
+  {
+   "date": "2012-03-29",
+   "time": "23:45:00",
+   "activityId": "IOWATROK_WQX-SND1 3/29/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.24,
+   "status": "Final"
+  },
+  {
+   "date": "2012-04-04",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/4/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.94,
+   "status": "Final"
+  },
+  {
+   "date": "2012-04-04",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/4/12FQC1",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 7.94,
+   "status": "Final"
+  },
+  {
+   "date": "2012-04-04",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/4/12FQC2",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 7.94,
+   "status": "Final"
+  },
+  {
+   "date": "2012-04-10",
+   "time": "14:30:00",
+   "activityId": "IOWATROK_WQX-SND1 4/10/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.92,
+   "status": "Final"
+  },
+  {
+   "date": "2012-04-17",
+   "time": "12:10:00",
+   "activityId": "IOWATROK_WQX-SND1 4/17/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.91,
+   "status": "Final"
+  },
+  {
+   "date": "2012-04-19",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/19/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.9,
+   "status": "Final"
+  },
+  {
+   "date": "2012-04-23",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 4/23/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.9,
+   "status": "Final"
+  },
+  {
+   "date": "2012-05-09",
+   "time": "22:30:00",
+   "activityId": "IOWATROK_WQX-SND1 5/9/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2012-05-15",
+   "time": "22:30:00",
+   "activityId": "IOWATROK_WQX-SND1 5/15/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2012-05-17",
+   "time": "22:45:00",
+   "activityId": "IOWATROK_WQX-SND1 5/17/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.11,
+   "status": "Final"
+  },
+  {
+   "date": "2012-05-24",
+   "time": "12:00:00",
+   "activityId": "IOWATROK_WQX-SND1 5/24/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2012-05-31",
+   "time": "23:15:00",
+   "activityId": "IOWATROK_WQX-SND1 5/31/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2012-06-05",
+   "time": "22:45:00",
+   "activityId": "IOWATROK_WQX-SND1 6/5/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2012-06-18",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 6/18/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.11,
+   "status": "Final"
+  },
+  {
+   "date": "2012-06-21",
+   "time": "22:00:00",
+   "activityId": "IOWATROK_WQX-SND1 6/21/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2012-06-21",
+   "time": "22:00:00",
+   "activityId": "IOWATROK_WQX-SND1 6/21/12 FQC2",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2012-06-21",
+   "time": "22:00:00",
+   "activityId": "IOWATROK_WQX-SND1 6/21/12FQC1",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2012-06-25",
+   "time": "22:45:00",
+   "activityId": "IOWATROK_WQX-SND1 6/25/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.4,
+   "status": "Final"
+  },
+  {
+   "date": "2012-06-28",
+   "time": "22:52:00",
+   "activityId": "IOWATROK_WQX-SND1 6/28/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.84,
+   "status": "Final"
+  },
+  {
+   "date": "2012-07-10",
+   "time": "22:15:00",
+   "activityId": "IOWATROK_WQX-SND1 7/10/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.94,
+   "status": "Final"
+  },
+  {
+   "date": "2012-07-17",
+   "time": "22:30:00",
+   "activityId": "IOWATROK_WQX-SND1 7/17/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.84,
+   "status": "Final"
+  },
+  {
+   "date": "2012-07-17",
+   "time": "22:30:00",
+   "activityId": "IOWATROK_WQX-SND1 7/17/12 FQC1",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 7.88,
+   "status": "Final"
+  },
+  {
+   "date": "2012-07-17",
+   "time": "22:30:00",
+   "activityId": "IOWATROK_WQX-SND1 7/17/12 FQC2",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 7.88,
+   "status": "Final"
+  },
+  {
+   "date": "2012-07-24",
+   "time": "22:45:00",
+   "activityId": "IOWATROK_WQX-SND1 7/24/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.98,
+   "status": "Final"
+  },
+  {
+   "date": "2012-07-26",
+   "time": "13:19:00",
+   "activityId": "IOWATROK_WQX-SND1 7/26/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.99,
+   "status": "Final"
+  },
+  {
+   "date": "2012-07-26",
+   "time": "13:19:00",
+   "activityId": "IOWATROK_WQX-SND1 7/26/12 FQC2",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.97,
+   "status": "Final"
+  },
+  {
+   "date": "2012-07-26",
+   "time": "13:19:00",
+   "activityId": "IOWATROK_WQX-SND1 7/26/15 FQC1",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.98,
+   "status": "Final"
+  },
+  {
+   "date": "2012-07-31",
+   "time": "22:30:00",
+   "activityId": "IOWATROK_WQX-SND1 7/31/12",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.99,
+   "status": "Final"
+  },
+  {
+   "date": "2013-01-08",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 1-8",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.86,
+   "status": "Final"
+  },
+  {
+   "date": "2013-01-17",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 1-17",
+   "activityType": "Field Msr/Obs",
+   "ph": 11.83,
+   "status": "Final"
+  },
+  {
+   "date": "2013-01-24",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 1-24",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.55,
+   "status": "Final"
+  },
+  {
+   "date": "2013-01-28",
+   "time": null,
+   "activityId": "IOWATROK_WQX-S1QC 1-28",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 9.87,
+   "status": "Final"
+  },
+  {
+   "date": "2013-01-28",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 1-28",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.87,
+   "status": "Final"
+  },
+  {
+   "date": "2013-03-04",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 3-4",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.16,
+   "status": "Final"
+  },
+  {
+   "date": "2013-03-12",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 3-12",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.13,
+   "status": "Final"
+  },
+  {
+   "date": "2013-03-19",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 3-19",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.54,
+   "status": "Final"
+  },
+  {
+   "date": "2013-03-25",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 3-25",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.2,
+   "status": "Final"
+  },
+  {
+   "date": "2013-04-17",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 4-17",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.55,
+   "status": "Final"
+  },
+  {
+   "date": "2013-04-17",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 4-17",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.62,
+   "status": "Final"
+  },
+  {
+   "date": "2013-05-28",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 5-28",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.26,
+   "status": "Final"
+  },
+  {
+   "date": "2013-06-11",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 7-11",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.35,
+   "status": "Final"
+  },
+  {
+   "date": "2013-06-22",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 7-22",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.32,
+   "status": "Final"
+  },
+  {
+   "date": "2013-09-12",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 9-12",
+   "activityType": "Field Msr/Obs",
+   "ph": 9.98,
+   "status": "Final"
+  },
+  {
+   "date": "2013-09-12",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1QC 9-12",
+   "activityType": "Quality Control Field Replicate Msr/Obs",
+   "ph": 9.98,
+   "status": "Final"
+  },
+  {
+   "date": "2013-09-19",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 9-19",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.12,
+   "status": "Final"
+  },
+  {
+   "date": "2013-09-25",
+   "time": null,
+   "activityId": "IOWATROK_WQX-SND1 9-25",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.41,
+   "status": "Final"
+  },
+  {
+   "date": "2014-03-11",
+   "time": "14:17:00",
+   "activityId": "IOWATROK_WQX-SND1 03/11/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.37,
+   "status": "Final"
+  },
+  {
+   "date": "2014-03-13",
+   "time": "10:05:00",
+   "activityId": "IOWATROK_WQX-SND1 03/13/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.07,
+   "status": "Final"
+  },
+  {
+   "date": "2014-03-27",
+   "time": "10:03:00",
+   "activityId": "IOWATROK_WQX-SND1 03/27/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.25,
+   "status": "Final"
+  },
+  {
+   "date": "2014-03-31",
+   "time": "11:01:00",
+   "activityId": "IOWATROK_WQX-SND1 03/31/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.14,
+   "status": "Final"
+  },
+  {
+   "date": "2014-04-02",
+   "time": "13:16:00",
+   "activityId": "IOWATROK_WQX-SND1 04/02/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.45,
+   "status": "Final"
+  },
+  {
+   "date": "2014-04-09",
+   "time": "10:22:00",
+   "activityId": "IOWATROK_WQX-SND1 04/09/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.4,
+   "status": "Final"
+  },
+  {
+   "date": "2014-04-23",
+   "time": "10:33:00",
+   "activityId": "IOWATROK_WQX-SND1 04/23/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.37,
+   "status": "Final"
+  },
+  {
+   "date": "2014-04-29",
+   "time": "11:19:00",
+   "activityId": "IOWATROK_WQX-SND1 04/29/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.51,
+   "status": "Final"
+  },
+  {
+   "date": "2014-05-07",
+   "time": "10:19:00",
+   "activityId": "IOWATROK_WQX-SND1 05/07/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.86,
+   "status": "Final"
+  },
+  {
+   "date": "2014-05-13",
+   "time": "12:21:00",
+   "activityId": "IOWATROK_WQX-SND1 05/13/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.27,
+   "status": "Final"
+  },
+  {
+   "date": "2014-05-13",
+   "time": "12:21:00",
+   "activityId": "IOWATROK_WQX-SND1QC 05/13/14",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.29,
+   "status": "Final"
+  },
+  {
+   "date": "2017-03-28",
+   "time": "08:43:00",
+   "activityId": "IOWATROK_WQX-SND1:201703280843:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.98,
+   "status": "Final"
+  },
+  {
+   "date": "2017-03-30",
+   "time": "08:40:00",
+   "activityId": "IOWATROK_WQX-SND1:201703300840:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.28,
+   "status": "Final"
+  },
+  {
+   "date": "2017-04-04",
+   "time": "08:56:00",
+   "activityId": "IOWATROK_WQX-SND1:201704040856:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.8,
+   "status": "Final"
+  },
+  {
+   "date": "2017-05-02",
+   "time": "08:35:45",
+   "activityId": "IOWATROK_WQX-SND1:201705020835:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.77,
+   "status": "Final"
+  },
+  {
+   "date": "2017-05-02",
+   "time": "09:35:00",
+   "activityId": "IOWATROK_WQX-SND1:201705020935:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.77,
+   "status": "Final"
+  },
+  {
+   "date": "2017-05-09",
+   "time": "08:34:53",
+   "activityId": "IOWATROK_WQX-SND1:201705090834:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.92,
+   "status": "Final"
+  },
+  {
+   "date": "2017-05-09",
+   "time": "09:30:00",
+   "activityId": "IOWATROK_WQX-SND1:201705090930:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.92,
+   "status": "Final"
+  },
+  {
+   "date": "2017-05-16",
+   "time": "08:32:59",
+   "activityId": "IOWATROK_WQX-SND1:201705160832:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.99,
+   "status": "Final"
+  },
+  {
+   "date": "2017-05-16",
+   "time": "09:24:00",
+   "activityId": "IOWATROK_WQX-SND1:201705160924:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.33,
+   "status": "Final"
+  },
+  {
+   "date": "2017-05-23",
+   "time": "08:25:46",
+   "activityId": "IOWATROK_WQX-SND1:201705230825:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.93,
+   "status": "Final"
+  },
+  {
+   "date": "2017-05-23",
+   "time": "08:52:00",
+   "activityId": "IOWATROK_WQX-SND1:201705230852:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.93,
+   "status": "Final"
+  },
+  {
+   "date": "2017-05-30",
+   "time": "08:01:51",
+   "activityId": "IOWATROK_WQX-SND1:201705300801:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.88,
+   "status": "Final"
+  },
+  {
+   "date": "2017-05-30",
+   "time": "08:52:00",
+   "activityId": "IOWATROK_WQX-SND1:201705300852:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.88,
+   "status": "Final"
+  },
+  {
+   "date": "2017-06-06",
+   "time": "08:38:56",
+   "activityId": "IOWATROK_WQX-SND1:201706060838:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.88,
+   "status": "Final"
+  },
+  {
+   "date": "2017-06-06",
+   "time": "09:34:00",
+   "activityId": "IOWATROK_WQX-SND1:201706060934:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.88,
+   "status": "Final"
+  },
+  {
+   "date": "2017-06-13",
+   "time": "07:46:31",
+   "activityId": "IOWATROK_WQX-SND1:201706130746:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.97,
+   "status": "Final"
+  },
+  {
+   "date": "2017-06-13",
+   "time": "08:38:00",
+   "activityId": "IOWATROK_WQX-SND1:201706130838:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.97,
+   "status": "Final"
+  },
+  {
+   "date": "2017-06-20",
+   "time": "07:38:46",
+   "activityId": "IOWATROK_WQX-SND1:201706200738:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.0,
+   "status": "Final"
+  },
+  {
+   "date": "2017-06-20",
+   "time": "08:30:00",
+   "activityId": "IOWATROK_WQX-SND1:201706200830:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.0,
+   "status": "Final"
+  },
+  {
+   "date": "2017-06-27",
+   "time": "07:56:30",
+   "activityId": "IOWATROK_WQX-SND1:201706270756:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.06,
+   "status": "Final"
+  },
+  {
+   "date": "2017-06-27",
+   "time": "08:48:00",
+   "activityId": "IOWATROK_WQX-SND1:201706270848:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.06,
+   "status": "Final"
+  },
+  {
+   "date": "2017-06-30",
+   "time": "08:34:03",
+   "activityId": "IOWATROK_WQX-SND1:201706300834:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.1,
+   "status": "Final"
+  },
+  {
+   "date": "2017-07-05",
+   "time": "08:03:28",
+   "activityId": "IOWATROK_WQX-SND1:201707050803:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.88,
+   "status": "Final"
+  },
+  {
+   "date": "2017-07-17",
+   "time": "09:42:59",
+   "activityId": "IOWATROK_WQX-SND1:201707170942:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.19,
+   "status": "Final"
+  },
+  {
+   "date": "2017-07-20",
+   "time": "07:50:47",
+   "activityId": "IOWATROK_WQX-SND1:201707200750:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 5.08,
+   "status": "Final"
+  },
+  {
+   "date": "2017-07-24",
+   "time": "07:39:14",
+   "activityId": "IOWATROK_WQX-SND1:201707240739:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.11,
+   "status": "Final"
+  },
+  {
+   "date": "2017-07-31",
+   "time": "07:42:33",
+   "activityId": "IOWATROK_WQX-SND1:201707310742:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.12,
+   "status": "Final"
+  },
+  {
+   "date": "2017-08-02",
+   "time": "07:56:36",
+   "activityId": "IOWATROK_WQX-SND1:201708020756:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.19,
+   "status": "Final"
+  },
+  {
+   "date": "2017-08-21",
+   "time": "07:43:28",
+   "activityId": "IOWATROK_WQX-SND1:201708210743:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.07,
+   "status": "Final"
+  },
+  {
+   "date": "2017-08-23",
+   "time": "08:18:29",
+   "activityId": "IOWATROK_WQX-SND1:201708230818:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.17,
+   "status": "Final"
+  },
+  {
+   "date": "2017-08-30",
+   "time": "08:00:55",
+   "activityId": "IOWATROK_WQX-SND1:201708300800:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.14,
+   "status": "Final"
+  },
+  {
+   "date": "2017-09-05",
+   "time": "08:23:12",
+   "activityId": "IOWATROK_WQX-SND1:201709050823:FM:0.23",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.15,
+   "status": "Final"
+  },
+  {
+   "date": "2017-09-07",
+   "time": "08:13:16",
+   "activityId": "IOWATROK_WQX-SND1:201709070813:FM:0.21",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.22,
+   "status": "Final"
+  },
+  {
+   "date": "2017-09-19",
+   "time": "08:44:53",
+   "activityId": "IOWATROK_WQX-SND1:201709190844:FM:0.13",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.05,
+   "status": "Final"
+  },
+  {
+   "date": "2017-09-26",
+   "time": "14:06:04",
+   "activityId": "IOWATROK_WQX-SND1:201709261406:FM:0.20",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.32,
+   "status": "Final"
+  },
+  {
+   "date": "2017-09-28",
+   "time": "15:26:28",
+   "activityId": "IOWATROK_WQX-SND1:201709281526:FM:0.22",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.21,
+   "status": "Final"
+  },
+  {
+   "date": "2017-10-12",
+   "time": "11:12:01",
+   "activityId": "IOWATROK_WQX-SND1:201710121112:FM:0.24",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.33,
+   "status": "Final"
+  },
+  {
+   "date": "2017-11-02",
+   "time": "08:40:25",
+   "activityId": "IOWATROK_WQX-SND1:201711020840:FM:0.01",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.04,
+   "status": "Final"
+  },
+  {
+   "date": "2017-11-08",
+   "time": "09:32:02",
+   "activityId": "IOWATROK_WQX-SND1:201711080932:FM:0.22",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.05,
+   "status": "Final"
+  },
+  {
+   "date": "2018-01-17",
+   "time": "12:03:32",
+   "activityId": "IOWATROK_WQX-SND1:201801171203:FM:0.13",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.37,
+   "status": "Final"
+  },
+  {
+   "date": "2018-01-30",
+   "time": "11:32:41",
+   "activityId": "IOWATROK_WQX-SND1:201801301132:FM:0.10",
+   "activityType": "Field Msr/Obs",
+   "ph": 10.85,
+   "status": "Final"
+  },
+  {
+   "date": "2018-02-13",
+   "time": "11:14:10",
+   "activityId": "IOWATROK_WQX-SND1:201802131114:FM:0.15",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.99,
+   "status": "Final"
+  },
+  {
+   "date": "2018-03-14",
+   "time": "09:13:10",
+   "activityId": "IOWATROK_WQX-SND1:201803140913:FM:0.55",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.69,
+   "status": "Final"
+  },
+  {
+   "date": "2018-06-12",
+   "time": "14:28:13",
+   "activityId": "IOWATROK_WQX-SND1:201806121428:FM:75.1",
+   "activityType": "Field Msr/Obs",
+   "ph": 6.8,
+   "status": "Final"
+  },
+  {
+   "date": "2018-06-13",
+   "time": "09:22:30",
+   "activityId": "IOWATROK_WQX-SND1:201806130922:FM:80.5",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.37,
+   "status": "Final"
+  },
+  {
+   "date": "2018-06-19",
+   "time": "09:46:14",
+   "activityId": "IOWATROK_WQX-SND1:201806190946:FM:88.8",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.33,
+   "status": "Final"
+  },
+  {
+   "date": "2018-06-25",
+   "time": "12:02:44",
+   "activityId": "IOWATROK_WQX-SND1:201806251202:FM:83.7",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.13,
+   "status": "Final"
+  },
+  {
+   "date": "2018-06-27",
+   "time": "15:53:38",
+   "activityId": "IOWATROK_WQX-SND1:201806271553:FM:77.5",
+   "activityType": "Field Msr/Obs",
+   "ph": 6.52,
+   "status": "Final"
+  },
+  {
+   "date": "2018-06-28",
+   "time": "13:38:31",
+   "activityId": "IOWATROK_WQX-SND1:201806281338:FM:73.4",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.49,
+   "status": "Final"
+  },
+  {
+   "date": "2018-07-09",
+   "time": "10:58:39",
+   "activityId": "IOWATROK_WQX-SND1:201807091058:FM:85.3",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.06,
+   "status": "Final"
+  },
+  {
+   "date": "2018-07-12",
+   "time": "09:34:35",
+   "activityId": "IOWATROK_WQX-SND1:201807120934:FM:72.0",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.55,
+   "status": "Final"
+  },
+  {
+   "date": "2018-07-17",
+   "time": "10:13:00",
+   "activityId": "IOWATROK_WQX-SND1:201807171013:FM:89.6",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.33,
+   "status": "Final"
+  },
+  {
+   "date": "2018-07-30",
+   "time": "11:06:36",
+   "activityId": "IOWATROK_WQX-SND1:201807301106:FM:83.6",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.01,
+   "status": "Final"
+  },
+  {
+   "date": "2018-07-31",
+   "time": "09:51:55",
+   "activityId": "IOWATROK_WQX-SND1:201807310951:FM:82.7",
+   "activityType": "Field Msr/Obs",
+   "ph": 6.67,
+   "status": "Final"
+  },
+  {
+   "date": "2018-08-06",
+   "time": "11:27:38",
+   "activityId": "IOWATROK_WQX-SND1:201808061127:FM:79.0",
+   "activityType": "Field Msr/Obs",
+   "ph": 6.91,
+   "status": "Final"
+  },
+  {
+   "date": "2018-08-08",
+   "time": "12:43:12",
+   "activityId": "IOWATROK_WQX-SND1:201808081243:FM:81.7",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.19,
+   "status": "Final"
+  },
+  {
+   "date": "2018-08-14",
+   "time": "10:46:35",
+   "activityId": "IOWATROK_WQX-SND1:201808141046:FM:86.2",
+   "activityType": "Field Msr/Obs",
+   "ph": 6.69,
+   "status": "Final"
+  },
+  {
+   "date": "2018-08-22",
+   "time": "10:20:51",
+   "activityId": "IOWATROK_WQX-SND1:201808221020:FM:85.9",
+   "activityType": "Field Msr/Obs",
+   "ph": 6.78,
+   "status": "Final"
+  },
+  {
+   "date": "2018-08-27",
+   "time": "10:24:02",
+   "activityId": "IOWATROK_WQX-SND1:201808271024:FM:84.1",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.03,
+   "status": "Final"
+  },
+  {
+   "date": "2018-08-30",
+   "time": "10:41:34",
+   "activityId": "IOWATROK_WQX-SND1:201808301041:FM:85.4",
+   "activityType": "Field Msr/Obs",
+   "ph": 6.53,
+   "status": "Final"
+  },
+  {
+   "date": "2018-09-06",
+   "time": "11:26:45",
+   "activityId": "IOWATROK_WQX-SND1:201809061126:FM:82.7",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.19,
+   "status": "Final"
+  },
+  {
+   "date": "2018-09-10",
+   "time": "09:38:16",
+   "activityId": "IOWATROK_WQX-SND1:201809100938:FM:85.5",
+   "activityType": "Field Msr/Obs",
+   "ph": 6.92,
+   "status": "Final"
+  },
+  {
+   "date": "2018-09-13",
+   "time": "12:22:54",
+   "activityId": "IOWATROK_WQX-SND1:201809131222:FM:86.0",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.14,
+   "status": "Final"
+  },
+  {
+   "date": "2018-09-24",
+   "time": "10:06:22",
+   "activityId": "IOWATROK_WQX-SND1:201809241006:FM:92.2",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.39,
+   "status": "Final"
+  },
+  {
+   "date": "2018-09-25",
+   "time": "10:44:39",
+   "activityId": "IOWATROK_WQX-SND1:201809251044:FM:94.5",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.52,
+   "status": "Final"
+  },
+  {
+   "date": "2018-12-06",
+   "time": "12:21:44",
+   "activityId": "IOWATROK_WQX-SND1:201812061221:FM:97.8",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.03,
+   "status": "Final"
+  },
+  {
+   "date": "2019-01-07",
+   "time": "12:42:29",
+   "activityId": "IOWATROK_WQX-SND1:201901071242:FM:101.7",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.9,
+   "status": "Final"
+  },
+  {
+   "date": "2019-02-13",
+   "time": "12:34:10",
+   "activityId": "IOWATROK_WQX-SND1:201902131234:FM:105.3",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.06,
+   "status": "Final"
+  },
+  {
+   "date": "2019-03-25",
+   "time": "11:44:44",
+   "activityId": "IOWATROK_WQX-SND1:201903251144:FM:105.6",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.01,
+   "status": "Final"
+  },
+  {
+   "date": "2019-04-29",
+   "time": "10:56:14",
+   "activityId": "IOWATROK_WQX-SND1:201904291056:FM:101.0",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.07,
+   "status": "Final"
+  },
+  {
+   "date": "2019-05-14",
+   "time": "11:06:10",
+   "activityId": "IOWATROK_WQX-SND1:201905141106:FM:98.0",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.66,
+   "status": "Final"
+  },
+  {
+   "date": "2019-05-15",
+   "time": "11:05:03",
+   "activityId": "IOWATROK_WQX-SND1:201905151105:FM:99.7",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.8,
+   "status": "Final"
+  },
+  {
+   "date": "2019-06-05",
+   "time": "11:28:04",
+   "activityId": "IOWATROK_WQX-SND1:201906051128:FM:95.6",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.96,
+   "status": "Final"
+  },
+  {
+   "date": "2019-06-10",
+   "time": "12:39:48",
+   "activityId": "IOWATROK_WQX-SND1:201906101239:FM:98.0",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.01,
+   "status": "Final"
+  },
+  {
+   "date": "2019-06-11",
+   "time": "10:22:22",
+   "activityId": "IOWATROK_WQX-SND1:201906111022:FM:96.6",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.97,
+   "status": "Final"
+  },
+  {
+   "date": "2019-06-13",
+   "time": "10:31:42",
+   "activityId": "IOWATROK_WQX-SND1:201906131031:FM:99.1",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.03,
+   "status": "Final"
+  },
+  {
+   "date": "2019-06-18",
+   "time": "10:12:13",
+   "activityId": "IOWATROK_WQX-SND1:201906181012:FM:94.4",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.94,
+   "status": "Final"
+  },
+  {
+   "date": "2019-07-31",
+   "time": "13:36:00",
+   "activityId": "IOWATROK_WQX-SND1:201907311336:FM:132.1",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.21,
+   "status": "Final"
+  },
+  {
+   "date": "2019-07-31",
+   "time": "13:36:50",
+   "activityId": "IOWATROK_WQX-SND1:201907311336:FM:123.8",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.21,
+   "status": "Final"
+  },
+  {
+   "date": "2019-08-27",
+   "time": "15:49:12",
+   "activityId": "IOWATROK_WQX-SND1:201908271549:FM:99.5",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.99,
+   "status": "Final"
+  },
+  {
+   "date": "2019-09-24",
+   "time": "12:26:37",
+   "activityId": "IOWATROK_WQX-SND1:201909241226:FM:93.9",
+   "activityType": "Field Msr/Obs",
+   "ph": 7.94,
+   "status": "Final"
+  },
+  {
+   "date": "2020-12-19",
+   "time": "15:00:00",
+   "activityId": "IOWATROK_WQX-SND1:202012191500:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.54,
+   "status": "Final"
+  },
+  {
+   "date": "2021-01-16",
+   "time": "16:06:00",
+   "activityId": "IOWATROK_WQX-SND1:202101161606:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.4,
+   "status": "Final"
+  },
+  {
+   "date": "2021-02-06",
+   "time": "14:42:00",
+   "activityId": "IOWATROK_WQX-SND1:202102061442:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.38,
+   "status": "Final"
+  },
+  {
+   "date": "2021-03-05",
+   "time": "15:03:00",
+   "activityId": "IOWATROK_WQX-SND1:202103051503:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.38,
+   "status": "Final"
+  },
+  {
+   "date": "2021-04-23",
+   "time": "12:25:00",
+   "activityId": "IOWATROK_WQX-SND1:202104231225:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.53,
+   "status": "Final"
+  },
+  {
+   "date": "2021-05-07",
+   "time": "14:33:00",
+   "activityId": "IOWATROK_WQX-SND1:202105071433:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.4,
+   "status": "Final"
+  },
+  {
+   "date": "2021-05-24",
+   "time": "11:20:00",
+   "activityId": "IOWATROK_WQX-SND1:202105241120:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.26,
+   "status": "Final"
+  },
+  {
+   "date": "2021-05-24",
+   "time": "14:50:00",
+   "activityId": "IOWATROK_WQX-SND1:202105241450:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.48,
+   "status": "Final"
+  },
+  {
+   "date": "2021-06-16",
+   "time": "14:30:00",
+   "activityId": "IOWATROK_WQX-SND1:202106161430:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.47,
+   "status": "Final"
+  },
+  {
+   "date": "2021-06-16",
+   "time": "14:33:00",
+   "activityId": "IOWATROK_WQX-SND1:202106161433:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.4,
+   "status": "Final"
+  },
+  {
+   "date": "2021-06-17",
+   "time": "12:14:00",
+   "activityId": "IOWATROK_WQX-SND1:202106171214:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.57,
+   "status": "Final"
+  },
+  {
+   "date": "2021-06-17",
+   "time": "14:50:00",
+   "activityId": "IOWATROK_WQX-SND1:202106171450:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.48,
+   "status": "Final"
+  },
+  {
+   "date": "2021-06-21",
+   "time": "14:30:00",
+   "activityId": "IOWATROK_WQX-SND1:202106211430:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.47,
+   "status": "Final"
+  },
+  {
+   "date": "2021-06-22",
+   "time": "12:14:00",
+   "activityId": "IOWATROK_WQX-SND1:202106221214:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.57,
+   "status": "Final"
+  },
+  {
+   "date": "2021-07-15",
+   "time": "11:20:00",
+   "activityId": "IOWATROK_WQX-SND1:202107151120:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.26,
+   "status": "Final"
+  },
+  {
+   "date": "2021-07-15",
+   "time": "12:30:00",
+   "activityId": "IOWATROK_WQX-SND1:202107151230:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.15,
+   "status": "Final"
+  },
+  {
+   "date": "2021-07-16",
+   "time": "12:09:00",
+   "activityId": "IOWATROK_WQX-SND1:202107161209:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.34,
+   "status": "Final"
+  },
+  {
+   "date": "2021-07-16",
+   "time": "12:30:00",
+   "activityId": "IOWATROK_WQX-SND1:202107161230:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.15,
+   "status": "Final"
+  },
+  {
+   "date": "2021-08-02",
+   "time": "10:07:00",
+   "activityId": "IOWATROK_WQX-SND1:202108021007:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.27,
+   "status": "Final"
+  },
+  {
+   "date": "2021-08-03",
+   "time": "10:09:00",
+   "activityId": "IOWATROK_WQX-SND1:202108031009:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.25,
+   "status": "Final"
+  },
+  {
+   "date": "2021-08-04",
+   "time": "11:22:00",
+   "activityId": "IOWATROK_WQX-SND1:202108041122:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.32,
+   "status": "Final"
+  },
+  {
+   "date": "2021-08-05",
+   "time": "11:20:00",
+   "activityId": "IOWATROK_WQX-SND1:202108051120:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.3,
+   "status": "Final"
+  },
+  {
+   "date": "2021-08-09",
+   "time": "11:23:00",
+   "activityId": "IOWATROK_WQX-SND1:202108091123:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.21,
+   "status": "Final"
+  },
+  {
+   "date": "2021-08-11",
+   "time": "10:15:00",
+   "activityId": "IOWATROK_WQX-SND1:202108111015:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.26,
+   "status": "Final"
+  },
+  {
+   "date": "2021-09-02",
+   "time": "11:07:00",
+   "activityId": "IOWATROK_WQX-SND1:202109021107:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.41,
+   "status": "Final"
+  },
+  {
+   "date": "2021-09-08",
+   "time": "11:40:00",
+   "activityId": "IOWATROK_WQX-SND1:202109081140:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.46,
+   "status": "Final"
+  },
+  {
+   "date": "2021-09-10",
+   "time": "09:51:00",
+   "activityId": "IOWATROK_WQX-SND1:202109100951:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.44,
+   "status": "Final"
+  },
+  {
+   "date": "2021-09-13",
+   "time": "11:32:00",
+   "activityId": "IOWATROK_WQX-SND1:202109131132:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.32,
+   "status": "Final"
+  },
+  {
+   "date": "2021-09-15",
+   "time": "11:02:00",
+   "activityId": "IOWATROK_WQX-SND1:202109151102:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.39,
+   "status": "Final"
+  },
+  {
+   "date": "2021-09-17",
+   "time": "11:46:00",
+   "activityId": "IOWATROK_WQX-SND1:202109171146:FM",
+   "activityType": "Field Msr/Obs",
+   "ph": 8.41,
+   "status": "Final"
+  }
+ ]
+}

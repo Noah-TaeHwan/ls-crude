@@ -1,0 +1,8 @@
+own_code,industry_code,industry_label,month1_2025_01,month2_2025_02,month3_2025_03,disclosed
+0,10,Total covered,34644,35341,35418,true
+5,21,"Mining, quarrying, and oil and gas extraction",399,390,402,true
+5,211,Oil and gas extraction,,,,false
+5,212,Mining (except oil and gas),,,,false
+5,213,Support activities for mining,278,269,282,true
+5,213112,Support activities for oil and gas operations,230,227,231,true
+5,721,Accommodation,446,424,450,true
