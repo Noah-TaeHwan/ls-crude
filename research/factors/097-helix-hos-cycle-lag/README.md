@@ -2,7 +2,7 @@
 
 | | |
 | --- | --- |
-| Status | **PARK** / E1 / weight 0.0 |
+| Status | **KILL engine / PARK history book** / E1 / weight 0.0 |
 | Universe | **HLX only**, 2012-01-01 → **2026-09-01** last print |
 | Out of scope | HOS from 2026-09-02. New name, new float. Do not study it here. Do not splice. |
 | Source | [Liam-Son/helix-factor-screen](https://github.com/Liam-Son/helix-factor-screen) |
