@@ -56,16 +56,16 @@ export function ResearchSample({ records, live }: {live:{visibility:VisibilityVi
   const kind = requested && requested in CASES ? requested as keyof typeof CASES : "watermelon";
   const selectedCase = liveKind ?? kind;
   const options = [
-    {key:"cushing-busy",label:"쿠싱 · 현장 바쁨"},
-    ...Object.entries(CASES).filter(([key]) => key !== "petroleum-rail").map(([key,value])=>({key,label:value.label})),
-    {key:"petroleum-rail",label:CASES["petroleum-rail"].label},
-    {key:"visibility",label:"갤버스턴 · 시정"},
-    {key:"tankers",label:"싱가포르 · 탱커 입항"},
+    {key:"cushing-busy",label:"보드 · 쿠싱 현장 바쁨"},
+    ...Object.entries(CASES).filter(([key]) => key !== "petroleum-rail").map(([key,value])=>({key,label:"고정 · "+value.label})),
+    {key:"petroleum-rail",label:"고정 · "+CASES["petroleum-rail"].label},
+    {key:"visibility",label:"갱신 · 갤버스턴 시정"},
+    {key:"tankers",label:"갱신 · 싱가포르 탱커 입항"},
   ];
   const info = CASES[kind], record = records[kind];
   const evidence = liveKind === "cushing-busy" ? "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/programs/cushing-busy/PROGRAM.md" : liveKind ? "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/candidates/"+(liveKind==="visibility"?"ALT-20260908-16":"ALT-20260907-26")+".md" : "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/indexes/"+info.path+"/README.md";
   return <section id="research-sample" className="border-t border-border py-10 sm:py-12" aria-labelledby="sample-title">
-    <div className="section-heading"><div><p className="section-kicker">RESEARCH IN PRACTICE / 자료 탐색</p><h2 id="sample-title">아이디어를 실제 자료로 열어보면.</h2></div><a className="source-link" href={evidence}>자료·연구 기록 →</a></div>
+    <div className="section-heading"><div><p className="section-kicker">RESEARCH IN PRACTICE / 자료 탐색</p><h2 id="sample-title">확보한 자료를 직접 열어보면.</h2></div><a className="source-link" href={evidence}>자료·연구 기록 →</a></div>
     <div role="group" aria-label="연구 사례 선택" className="sample-options mt-5 grid auto-rows-fr grid-cols-2 gap-3 md:grid-cols-3">{options.map(({key,label})=><button key={key} type="button" className="filter-button min-w-0 w-full" aria-pressed={selectedCase===key} aria-controls="sample-case" onClick={()=>{const next=new URLSearchParams(params);next.set("sample",key);navigate("?"+next.toString()+"#research-sample",{preventScrollReset:true});}}>{label}</button>)}</div>
     {liveKind ? <div id="sample-case" className="sample-panel mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7"><p className="status-stamp mb-5">{liveKind === "cushing-busy" ? "고정 연구 보드 · 자료별 관측 시각 확인" : "갱신 관측 · 자료별 기준 시각과 주기 확인"}</p>{liveKind === "cushing-busy" ? <CushingBusyCase weather={live.weather} /> : liveKind === "visibility" ? <VisibilityObservation view={live.visibility} checkedAt={live.checkedAt} compact /> : <TankerObservation view={live.tankers} checkedAt={live.checkedAt} />}</div> : <article id="sample-case" className="mt-5 min-w-0 rounded-sm border border-border bg-card p-5 sm:p-7">
       <div className="flex flex-wrap items-center gap-3 text-xs"><span className="status-stamp">과거 연구 샘플 · 자동 갱신 아님</span><span className="card-verdict">{record ? DECISIONS[record.fields.decision]+" · "+record.fields.decision : "현재 판정 확인 필요"}</span><span className="text-muted-foreground">{kind === "helix" ? "WTI 관계 검정 기록 있음 · 트레이딩 미개방" : "이 샘플의 WTI 관계 검정 미실행"}</span></div>
