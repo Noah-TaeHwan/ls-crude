@@ -40,4 +40,24 @@ PASS on synthetic data. Cannot emit ALPHA_PROVEN.
 NOT_PROVEN — DEV move documented, HOLD still sealed
 ```
 
+
+## Signal path, not decay of a constant alpha
+
+Same 37 DEV entries. Mean HLX−OSB path, no cost. HOLD not used.
+
+![Event-time path](figures/v23_signal_decay.png)
+
+| h | mean daily | mean CAR |
+| ---: | ---: | ---: |
+| 1–4 | +0.43 to +0.74 | rises to +2.3% |
+| 5–9 | mostly minus | sinks to +0.3% |
+| 15 | −0.57 | +0.90% |
+| 16–19 | mixed, large plus days | +4.06% at 19 |
+| 20 | −0.66 | +3.40% |
+| 25 | −0.56 | +2.67% |
+
+This is not exponential alpha decay. The 15-day neighbor is a mid-path trough. The 20-day frozen cell sits after a second wave. That is why a 3×3 grid that includes 15 days cannot clear 7/9 even when the primary cell is plus.
+
+Do not move the holding period to 19 because 19 looks tall on this plot.
+
 Next allowed move, later sitting: open-to-open fills on this same rule. Not another cap. Not HOLD.
