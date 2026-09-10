@@ -13,6 +13,15 @@ Question:
 > On the HLX tape only: when oil and oil-service peers are already in a cycle, and HLX still lags the peer basket, does a two-day confirmed three-gate rule beat buy-and-hold?
 
 
+
+## Wrap-up figure
+
+The discovery book that looked best lives on the public screen repo, not as a live engine:
+
+https://github.com/Liam-Son/helix-factor-screen#main-figure--year-end-nav
+
+Year-end NAV 2.06× vs B&H 0.69×. Pattern. Walk-forward below still FAIL.
+
 ## Figures
 
 Levels, correlation, beta, volume, excess, year bars, OOS gap scatter, drawdown.
