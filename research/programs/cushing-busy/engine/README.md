@@ -50,3 +50,5 @@ City open jobs count, weight 0.05. [../meme/091m/README.md](../meme/091m/README.
 Industrial job count, weight 0.10. [../meme/091u/README.md](../meme/091u/README.md).
 ## 091-W pinch
 AQI if printed, weight 0.05. [../meme/091w/README.md](../meme/091w/README.md).
+## 091-V pinch
+Permit flags, weight 0.10. [../meme/091v/README.md](../meme/091v/README.md).
