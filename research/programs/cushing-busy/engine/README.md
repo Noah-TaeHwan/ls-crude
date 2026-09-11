@@ -55,3 +55,5 @@ Permit flags, weight 0.10. [../meme/091v/README.md](../meme/091v/README.md).
 
 ## 091-X / 091-Y pinch
 Weight 0.01 each when the pair prints.
+## 091-Z pinch
+Headline count, weight 0.05. [../meme/091z/README.md](../meme/091z/README.md).
