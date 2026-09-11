@@ -12,6 +12,15 @@ Weight is **0.15**. Auto legs (wiki + EIA move + EIA tightness) split the other 
 
 PARK / KILL tracks are not in the average. Missing legs are dropped, not filled with 0.
 
+## Record a QSR pinch
+
+```bash
+python research/programs/cushing-busy/engine/record_qsr.py
+python research/programs/cushing-busy/engine/cfam_meme_engine.py --once
+```
+
+Type only the label on the Maps card. Then the 5-minute loop picks it up at weight 0.15.
+
 ## Run
 
 ```bash
