@@ -1,3 +1,5 @@
+**실시간 아님. ML/DL은 가중치 설명만, WTI 예측 아님.**
+
 # CFAM meme nowcast (not alpha)
 
 Free public series only. Not a trade. Not 091-B night lights. Not a 0–100 that predicts WTI.

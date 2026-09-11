@@ -1,3 +1,5 @@
+**실시간 아님. ML/DL은 가중치 설명만, WTI 예측 아님.**
+
 # CFAM meme engine
 
 Not alpha. Does not reopen 091-B. Does not scrape Google.
