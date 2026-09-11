@@ -27,6 +27,8 @@
 
 091-B 보기판(점수 없음): [meme/091b](../../programs/cushing-busy/meme/091b/README.md). Worldview로 눈을 빌려 준다. 해상도는 모텔/탱크를 나누지 못한다.
 
+091-D 보기판(충전량 숫자 없음): [meme/091d](../../programs/cushing-busy/meme/091d/README.md). Sentinel-2 5일. 사람이 지붕을 볼 수는 있다. 엔진은 안 읽는다.
+
 쿠싱이 바쁜가 **대시 프로그램**은 팩터 카드가 아니다: [programs/cushing-busy](../../programs/cushing-busy/PROGRAM.md). 화면 경로 `/observations/cushing-busy`.
 
 ## 읽는 순서

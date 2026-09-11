@@ -442,3 +442,7 @@ Google Maps의 `Popular times`는 집계 방문 기반의 상대 프로필이라
 - 동결 야간광 IS 영수증: [`20260908T110000Z`](../../indexes/091-cushing-operations-nowcasting/20260908T110000Z/README.md)
 
 원본 CSV·JSON 및 재생성 패널은 `raw/`·`processed/`에 gitignored로 보존한다. 공개 문서는 관측 범위, 해시/수집 영수증, 코드와 결과만 기록한다.
+
+## 보기판
+- 091-B: `research/programs/cushing-busy/meme/091b/` Worldview, 점수 없음
+- 091-D: `research/programs/cushing-busy/meme/091d/` Sentinel-2, 충전량 숫자 없음
