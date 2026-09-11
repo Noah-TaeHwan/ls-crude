@@ -8,8 +8,10 @@ import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
 import { CaiGauge } from "~/components/cai/cai-gauge";
 import { CaiForecast } from "~/components/cai/cai-forecast";
 import { CaiAbout } from "~/components/cai/cai-about";
+import { ExperimentResults } from "~/components/cai/experiment-results";
 import { emptyCaiView } from "~/lib/cai-view";
 import { readCaiPublicView } from "~/lib/cai-view.server";
+import { readExperimentSummary } from "~/lib/experiment-summary.server";
 import { readWtiDaily } from "~/lib/wti-daily.server";
 import type { WtiDailyView } from "~/lib/wti-daily";
 import { readWtiMarketSnapshot } from "~/lib/market-snapshot.server";
@@ -45,7 +47,7 @@ export async function loader({ request }: Route.LoaderArgs) {
     readWtiDaily(),
     readCaiPublicView().catch(() => emptyCaiView()),
   ]);
-  return { daily, market: readWtiMarketSnapshot(), cai, unsupportedSample: unsupportedSampleNotice(url.searchParams.get("sample")) };
+  return { daily, market: readWtiMarketSnapshot(), cai, experiments: readExperimentSummary(), unsupportedSample: unsupportedSampleNotice(url.searchParams.get("sample")) };
 }
 
 /** @returns 공개 화면의 읽기 전용 응답. */
@@ -59,7 +61,7 @@ export function action({}: Route.ActionArgs) {
  * @param props 라우트 데이터.
  * @returns 쿠싱 액티비티 인덱스 홈.
  */
-export default function Home({ loaderData: { market, daily, cai, unsupportedSample } }: Route.ComponentProps) {
+export default function Home({ loaderData: { market, daily, cai, experiments, unsupportedSample } }: Route.ComponentProps) {
   const revalidator = useRevalidator();
   const location = useLocation();
   const navigate = useNavigate();
@@ -91,6 +93,7 @@ export default function Home({ loaderData: { market, daily, cai, unsupportedSamp
         <section className="border-t border-border py-4" aria-label="다음 기간 WTI 방향">
           <CaiForecast forecast={cai.forecast} validation={cai.validation} />
         </section>
+        <ExperimentResults mode="compact" summary={experiments} />
         <MarketContext market={market} daily={daily} />
         <p className="border-t border-border py-5 text-sm text-muted-foreground">확보한 자료와 판정 기록은 <Link className="source-link" to="/research#research-sample">연구 기록</Link>에서 이어서 확인합니다.</p>
       </main>

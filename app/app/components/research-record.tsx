@@ -4,11 +4,13 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
 import { CaiResearch } from "~/components/cai/cai-research";
+import { ExperimentResults } from "~/components/cai/experiment-results";
 import { DecisionTimeline, HistoryLedger } from "~/components/cai/history-ledger";
 import { ResearchIntake } from "~/components/research-intake";
 import { ResearchSample } from "~/components/research-sample";
 import { legacyHashRedirect } from "~/lib/cai-legacy-routing";
 import type { CaiPublicView } from "~/lib/cai-view";
+import type { ExperimentSummary } from "~/lib/experiment-summary";
 import type { IntakeRecord } from "~/lib/research-intake";
 import type { ResearchRecord as LedgerRecord } from "~/lib/research-ledger";
 import type { VisibilityView } from "~/lib/visibility";
@@ -28,6 +30,7 @@ const METHOD_STEPS = [
 /** 통합 연구 기록 화면의 데이터. 두 라우트가 같은 loader 결과를 넘긴다. */
 interface ResearchRecordProps {
   cai: CaiPublicView;
+  experiments: ExperimentSummary | null;
   intake: { records: IntakeRecord[]; error: string | null };
   ledger: { records: LedgerRecord[]; passCount: number | null; error: string | null };
   initialQuery: string;
@@ -47,6 +50,7 @@ interface ResearchRecordProps {
  */
 export function ResearchRecord({
   cai,
+  experiments,
   intake,
   ledger,
   initialQuery,
@@ -111,6 +115,7 @@ export function ResearchRecord({
           <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">진행 중인 자료 연결·지수 산출 상태와 실험 후보를 봅니다. 실행하지 않은 학습·검증은 완료로 표시하지 않습니다.</p>
           <CaiResearch view={cai} />
           <ResearchIntake {...intake} />
+          <ExperimentResults mode="full" summary={experiments} />
 
           <details id="method" className="border-t border-border py-6"><summary className="cursor-pointer py-4 text-lg font-medium">판정 방법과 검증의 한계</summary><div aria-labelledby="method-title"><div className="section-heading"><div><p className="section-kicker">03 / METHOD & LIMITS</p><h2 id="method-title">관계가 남는지, 순서대로 묻습니다.</h2></div></div><ol className="method-grid mt-6" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 180px), 1fr))" }}>{METHOD_STEPS.map(([title, body], index) => <li key={title} className="method-step"><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></li>)}</ol><div className="evidence-note mt-6"><h3 className="text-base font-medium">이미 본 구간은 새로운 검증이 아닙니다.</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">2024–2026 구간은 이미 확인에 사용했습니다. 진행 후보는 규칙을 동결한 뒤 새로 쌓이는 미래 자료에서 확인합니다. 높은 단일 구간 상관이나 등록 후보 수를 성과로 세지 않습니다.</p></div><details className="mt-5 border-y border-border py-2"><summary className="min-h-11 cursor-pointer py-3 text-sm">가격·뉴스·시간차 비교의 경계</summary><div className="space-y-2 pb-4 text-sm leading-7 text-muted-foreground"><p>가격은 Yahoo Finance CL=F 일봉, 뉴스 정본은 Investing.com CSV입니다. 관측 시각과 실제 공개 시각을 구분하고, 그때 알 수 없었던 정보를 과거 자료에 섞지 않습니다.</p><p>대부분의 후보는 공개 이후 다음 5거래일 WTI 실현변동성을 묻습니다. 월간·연간 입력과 정제품·개별 주식 후보의 다른 타깃은 각 원문에 분리합니다.</p><p>겹침·시간차 비교는 공개 시각에 맞춘 실제 후보 시계열이 확보된 뒤에 가능합니다. 메인의 WTI 관측만으로 후보의 관계를 확인할 수는 없습니다.</p></div></details></div></details>
         </section>

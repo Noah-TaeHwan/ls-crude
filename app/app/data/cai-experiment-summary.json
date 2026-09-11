@@ -1,0 +1,389 @@
+{
+  "schema": "cai-retrospective-experiment-summary/v1",
+  "kind": "retrospective_experiment_summary",
+  "generated_at_utc": "2026-09-11T14:01:41Z",
+  "code_fingerprint": "79aff9062f62",
+  "disclosure": "2023년 회고 평가 요약입니다. 실시간 예측·운영 지수·공식 CAI 채택이 아니며, 독립 재현과 외부 게시는 아직 완료되지 않았습니다.",
+  "review_status": {
+    "self_check": true,
+    "independent_reproduction": "pending"
+  },
+  "experiments": [
+    {
+      "id": "pilot_traffic",
+      "label": "교통 단독 파일럿",
+      "run_id": "20260911T130235Z",
+      "mode": "RETROSPECTIVE_RESEARCH",
+      "eval": {
+        "n": 245,
+        "start": "2023-01-03",
+        "end": "2023-12-21"
+      },
+      "components": [
+        "TMAS AVC040 일별"
+      ],
+      "models": [
+        {
+          "id": "baseline",
+          "label": "기준선(학습기간 상승률)",
+          "status": "done",
+          "train_rows": 905,
+          "accuracy": 0.47346938775510206,
+          "log_loss": 0.693724330127433,
+          "brier": 0.2502885648627754,
+          "weights": null
+        },
+        {
+          "id": "market",
+          "label": "시장정보만",
+          "status": "done",
+          "train_rows": 905,
+          "accuracy": 0.5102040816326531,
+          "log_loss": 0.6969967228822215,
+          "brier": 0.25191512339405014,
+          "weights": null
+        },
+        {
+          "id": "cai_equal",
+          "label": "CAI 동일가중 단독",
+          "status": "done",
+          "train_rows": 905,
+          "accuracy": 0.47346938775510206,
+          "log_loss": 0.6938535274210139,
+          "brier": 0.25035317890641434,
+          "weights": [
+            1.0
+          ]
+        },
+        {
+          "id": "market_cai_equal",
+          "label": "시장정보+동일가중 CAI",
+          "status": "done",
+          "train_rows": 905,
+          "accuracy": 0.5102040816326531,
+          "log_loss": 0.6970188482671704,
+          "brier": 0.2519262074767555,
+          "weights": [
+            1.0
+          ]
+        }
+      ],
+      "delta_log_loss_vs_market": {
+        "market_cai_equal": 2.212538494894556e-05
+      }
+    },
+    {
+      "id": "pilot_traffic_dmr",
+      "label": "교통+DMR 파일럿",
+      "run_id": "20260911T130219Z",
+      "mode": "RETROSPECTIVE_RESEARCH",
+      "eval": {
+        "n": 245,
+        "start": "2023-01-03",
+        "end": "2023-12-21"
+      },
+      "components": [
+        "TMAS AVC040 일별",
+        "DMR South STP MGD(월별)"
+      ],
+      "models": [
+        {
+          "id": "baseline",
+          "label": "기준선(학습기간 상승률)",
+          "status": "done",
+          "train_rows": 507,
+          "accuracy": 0.47346938775510206,
+          "log_loss": 0.6945340100710645,
+          "brier": 0.25069329670409063,
+          "weights": null
+        },
+        {
+          "id": "market",
+          "label": "시장정보만",
+          "status": "done",
+          "train_rows": 507,
+          "accuracy": 0.5183673469387755,
+          "log_loss": 0.6970943802832908,
+          "brier": 0.25187195101013893,
+          "weights": null
+        },
+        {
+          "id": "cai_equal",
+          "label": "CAI 동일가중 단독",
+          "status": "done",
+          "train_rows": 507,
+          "accuracy": 0.4857142857142857,
+          "log_loss": 0.6998172529380917,
+          "brier": 0.2532500773379694,
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "cai_learned",
+          "label": "CAI 학습가중 단독",
+          "status": "done",
+          "train_rows": 507,
+          "accuracy": 0.46530612244897956,
+          "log_loss": 0.710975836724578,
+          "brier": 0.2586697862331553,
+          "weights": [
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "id": "market_cai_equal",
+          "label": "시장정보+동일가중 CAI",
+          "status": "done",
+          "train_rows": 507,
+          "accuracy": 0.5142857142857142,
+          "log_loss": 0.7027625002545578,
+          "brier": 0.25455160717984426,
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "market_cai_learned",
+          "label": "시장정보+학습가중 CAI",
+          "status": "done",
+          "train_rows": 507,
+          "accuracy": 0.4897959183673469,
+          "log_loss": 0.7108861866365735,
+          "brier": 0.25836133024332186,
+          "weights": [
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "delta_log_loss_vs_market": {
+        "market_cai_equal": 0.005668119971266927,
+        "market_cai_learned": 0.013791806353282698
+      }
+    }
+  ],
+  "sensitivity": {
+    "preregistration_kind": "기존 결과를 보고 설계한 후속 회고 민감도 분석(독립 사전등록 아님)",
+    "changed": "DMR validity_days만 62/31/0으로 변경",
+    "A_62": {
+      "train_rows": 507,
+      "val_rows": 245,
+      "observations": {
+        "train": 47,
+        "val": 37
+      },
+      "elapsed_days": {
+        "min": 0,
+        "median": 14.0,
+        "p90": 28.0,
+        "max": 56
+      },
+      "models": [
+        {
+          "id": "baseline",
+          "label": "기준선(학습기간 상승률)",
+          "status": "done",
+          "train_rows": 507,
+          "accuracy": 0.47346938775510206,
+          "log_loss": 0.6945340100710645,
+          "brier": 0.25069329670409063,
+          "weights": null
+        },
+        {
+          "id": "market",
+          "label": "시장정보만",
+          "status": "done",
+          "train_rows": 507,
+          "accuracy": 0.5183673469387755,
+          "log_loss": 0.6970943802832908,
+          "brier": 0.25187195101013893,
+          "weights": null
+        },
+        {
+          "id": "market_cai_equal",
+          "label": "시장정보+동일가중 CAI",
+          "status": "done",
+          "train_rows": 507,
+          "accuracy": 0.5142857142857142,
+          "log_loss": 0.7027625002545578,
+          "brier": 0.25455160717984426,
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "market_cai_learned",
+          "label": "시장정보+학습가중 CAI",
+          "status": "done",
+          "train_rows": 507,
+          "accuracy": 0.4897959183673469,
+          "log_loss": 0.7108861866365735,
+          "brier": 0.25836133024332186,
+          "weights": [
+            0.0,
+            1.0
+          ]
+        }
+      ]
+    },
+    "B_31": {
+      "train_rows": 476,
+      "val_rows": 232,
+      "observations": {
+        "train": 47,
+        "val": 36
+      },
+      "elapsed_days": {
+        "min": 0,
+        "median": 14.0,
+        "p90": 26.700000000000045,
+        "max": 31
+      },
+      "models": [
+        {
+          "id": "baseline",
+          "label": "기준선(학습기간 상승률)",
+          "status": "done",
+          "train_rows": 476,
+          "accuracy": 0.47413793103448276,
+          "log_loss": 0.6954517135366368,
+          "brier": 0.2511517791700859,
+          "weights": null
+        },
+        {
+          "id": "market",
+          "label": "시장정보만",
+          "status": "done",
+          "train_rows": 476,
+          "accuracy": 0.5474137931034483,
+          "log_loss": 0.6961622513226636,
+          "brier": 0.25137450479003287,
+          "weights": null
+        },
+        {
+          "id": "market_cai_equal",
+          "label": "시장정보+동일가중 CAI",
+          "status": "done",
+          "train_rows": 476,
+          "accuracy": 0.5431034482758621,
+          "log_loss": 0.7016595007150698,
+          "brier": 0.25396764003948197,
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "market_cai_learned",
+          "label": "시장정보+학습가중 CAI",
+          "status": "done",
+          "train_rows": 476,
+          "accuracy": 0.5129310344827587,
+          "log_loss": 0.7110635266705917,
+          "brier": 0.2583733121488765,
+          "weights": [
+            1.3877787807814454e-16,
+            0.9999999999999998
+          ]
+        }
+      ]
+    },
+    "common_232": {
+      "n": 232,
+      "dates": {
+        "start": "2023-01-03",
+        "end": "2023-12-21"
+      },
+      "models": [
+        {
+          "id": "baseline",
+          "label": "기준선(학습기간 상승률)",
+          "a": {
+            "accuracy": 0.47413793103448276,
+            "log_loss": 0.6945049957503343,
+            "brier": 0.2506787918203171
+          },
+          "b": {
+            "accuracy": 0.47413793103448276,
+            "log_loss": 0.6954517135366368,
+            "brier": 0.2511517791700859
+          },
+          "delta_log_loss_b_minus_a": 0.0009467177863025089
+        },
+        {
+          "id": "market",
+          "label": "시장정보만",
+          "a": {
+            "accuracy": 0.5301724137931034,
+            "log_loss": 0.6948875149898044,
+            "brier": 0.25077469186406975
+          },
+          "b": {
+            "accuracy": 0.5474137931034483,
+            "log_loss": 0.6961622513226636,
+            "brier": 0.25137450479003287
+          },
+          "delta_log_loss_b_minus_a": 0.0012747363328592387
+        },
+        {
+          "id": "market_cai_equal",
+          "label": "시장정보+동일가중 CAI",
+          "a": {
+            "accuracy": 0.5301724137931034,
+            "log_loss": 0.7006357086381921,
+            "brier": 0.2534820650718784
+          },
+          "b": {
+            "accuracy": 0.5431034482758621,
+            "log_loss": 0.7016595007150698,
+            "brier": 0.25396764003948197
+          },
+          "delta_log_loss_b_minus_a": 0.0010237920768776387
+        },
+        {
+          "id": "market_cai_learned",
+          "label": "시장정보+학습가중 CAI",
+          "a": {
+            "accuracy": 0.5,
+            "log_loss": 0.7101246893672805,
+            "brier": 0.2579536480993051
+          },
+          "b": {
+            "accuracy": 0.5129310344827587,
+            "log_loss": 0.7110635266705917,
+            "brier": 0.2583733121488765
+          },
+          "delta_log_loss_b_minus_a": 0.0009388373033112352
+        }
+      ],
+      "dmr_value_diffs": 0
+    },
+    "C_0": {
+      "status": "skipped",
+      "reason": "사전 고정 기준(train>=100, val>=50) 미달로 학습하지 않음",
+      "train_rows": 24,
+      "val_rows": 12,
+      "observations": {
+        "train": 46,
+        "val": 36
+      }
+    }
+  },
+  "limitations": [
+    "2023년 한 해 회고 평가이며 최종 OOS는 열지 않았습니다.",
+    "DMR은 ECHO 접수일 기준이며 외부 공개일은 확인되지 않았습니다.",
+    "표본이 작고(train 507/905, val 245) DMR 원관측은 월별 85건입니다.",
+    "재사용 기간 비교(62/31일)는 공통 날짜의 DMR 값이 동일해 학습 표본 차이만 반영합니다.",
+    "CAI 추가는 두 실험 모두 확률오차(log loss)를 개선하지 못했습니다."
+  ],
+  "data_access": {
+    "traffic": "FHWA TMAS AVC040 (공식 원출처에서 직접 취득 필요)",
+    "dmr": "EPA ECHO effluent chart (공식 원출처에서 직접 취득 필요)",
+    "redistribution": "미확인 — 원자료는 이 요약에 포함되지 않음"
+  }
+}

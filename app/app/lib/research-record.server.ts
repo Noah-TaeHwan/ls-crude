@@ -1,5 +1,6 @@
 import { emptyCaiView } from "./cai-view";
 import { readCaiPublicView } from "./cai-view.server";
+import { readExperimentSummary } from "./experiment-summary.server";
 import { readResearchIntake } from "./research-intake.server";
 import { readResearchLedger } from "./research-ledger.server";
 import { readTankerArrivals } from "./tanker-arrivals.server";
@@ -24,6 +25,7 @@ export async function readResearchRecord() {
     weather,
     checkedAt: new Date().toISOString(),
     cai,
+    experiments: readExperimentSummary(),
     intake: readResearchIntake(),
     ledger: readResearchLedger(),
   };
