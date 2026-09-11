@@ -31,3 +31,26 @@ Do not feed this into a WTI model. If 091 later gets truck/hotel panels, replace
 
 5-minute loop: [../engine/README.md](../engine/README.md).
 QSR pinch weight **0.15**, observer file only. Google is not scraped.
+
+## WTI check (not a model)
+
+Oil tape: Yahoo `CL=F`. Split matches the desk freeze, not a new hunt.
+
+- IS 2016-01-01 .. 2021-12-31 (n=314 weeks)
+- OOS 2022-01-03 .. 2026-04-21 (n=224)
+
+Score at EIA week → next 1-week and 4-week WTI return.
+Linear fit on IS only. Tiny 1-hidden MLP fit on IS only. No QSR in the history (no observer tape).
+
+| | 1w IS | 1w OOS | 4w IS | 4w OOS |
+| --- | ---: | ---: | ---: | ---: |
+| r | 0.007 | 0.037 | 0.050 | −0.020 |
+| lin R² | 0.000 | −0.003 | 0.003 | −0.063 |
+| MLP R² | 0.000 | −0.003 | 0.003 | −0.062 |
+
+OOS 4w |r| permutation p ≈ 0.76.
+
+091 already forbids feeding CFAM into WTI ML. This page is the reason: the net does not beat a flat line out of sample.
+
+![scatter](cfam_wti_scatter.png)
+![ml](cfam_wti_ml.png)
