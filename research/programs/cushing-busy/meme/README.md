@@ -63,3 +63,5 @@ Lodging packet + AVC40 annual. [091a/README.md](091a/README.md). Not daily. Weig
 Travel-search meme pinch 0.05. [091h/README.md](091h/README.md).
 ## 091-M
 City jobs pinch 0.05. [091m/README.md](091m/README.md).
+## 091-U
+Industry jobs pinch 0.10. [091u/README.md](091u/README.md).
