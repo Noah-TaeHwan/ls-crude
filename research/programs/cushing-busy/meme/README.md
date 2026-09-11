@@ -72,3 +72,5 @@ Permit pinch 0.10. [091v/README.md](091v/README.md).
 
 ## 091-X / 091-Y
 Price-gap pinches 0.01 each. [091x](091x/README.md) [091y](091y/README.md).
+## 091-Z
+News pinch 0.05. [091z/README.md](091z/README.md).
