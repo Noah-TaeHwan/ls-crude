@@ -46,3 +46,5 @@ Hotel tax 12-month city packet + AVC40 2018 AADT=6336. See [../meme/091a/README.
 `how to get to cushing` monthly Trends, weight 0.05, zeros kept. See [../meme/091h/README.md](../meme/091h/README.md).
 ## 091-M pinch
 City open jobs count, weight 0.05. [../meme/091m/README.md](../meme/091m/README.md).
+## 091-U pinch
+Industrial job count, weight 0.10. [../meme/091u/README.md](../meme/091u/README.md).
