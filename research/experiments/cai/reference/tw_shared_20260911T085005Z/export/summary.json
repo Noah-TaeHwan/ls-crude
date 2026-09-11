@@ -1,0 +1,97 @@
+{
+  "run_id": "20260911T085005Z",
+  "generated_at": "2026-09-11T08:50:05Z",
+  "candidate_id": "091-cai-exp-shared",
+  "mode": "RETROSPECTIVE_RESEARCH",
+  "program_version": "cai-exp/0.1.0",
+  "spec_hash": "1e89aa740a69e9c692d2ef7dd89e4ae9c568ea60ab91cd20446f020cd0446563",
+  "code_combined": "9093475797218446ceae3f6243607a76fc13f710bd256968d710d511a1285b57",
+  "env": {
+    "python": "3.13.15",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.0",
+    "scipy": "1.18.1"
+  },
+  "periods": {
+    "is": [
+      "2015-01-01",
+      "2023-12-31"
+    ],
+    "train_end": "2020-12-31",
+    "val": [
+      "2021-01-01",
+      "2023-12-31"
+    ],
+    "horizon_safe_train": "labels crossing the validation boundary excluded from training"
+  },
+  "target": {
+    "kind": "next_n_trading_days_up",
+    "horizon_days": 5
+  },
+  "component_order": [],
+  "component_shas": {},
+  "price_sha": "ea70f9340b17081a037fa3f4cd0ed12810a67cea781e5779127eb651afd56171",
+  "eval": {
+    "primary": "log_loss (secondary: accuracy, brier)",
+    "common_eval": {
+      "n": 748,
+      "start": "2021-01-04",
+      "end": "2023-12-21"
+    },
+    "note": "model comparison uses identical eval dates/target/inputs; probability output is not a reliability claim"
+  },
+  "models": [
+    {
+      "id": "baseline_up_rate",
+      "model": "baseline_up_rate",
+      "status": "done",
+      "seed": 7,
+      "metrics": {
+        "n": 748,
+        "accuracy": 0.5628342245989305,
+        "up_rate_true": 0.5628342245989305,
+        "up_rate_pred": 0.5313751668891856,
+        "log_loss": 0.6872237571828794,
+        "brier": 0.24704153253103625
+      },
+      "weights": null,
+      "notes": "constant train-period up rate",
+      "reason": null,
+      "cached": false
+    },
+    {
+      "id": "market_only_logit",
+      "model": "market_only_logit",
+      "status": "done",
+      "seed": 7,
+      "metrics": {
+        "n": 748,
+        "accuracy": 0.5053475935828877,
+        "up_rate_true": 0.5628342245989305,
+        "up_rate_pred": 0.5396164013431609,
+        "log_loss": 0.6894143866436113,
+        "brier": 0.2481443585617499
+      },
+      "weights": null,
+      "notes": "features=['rsi14', 'ret_5d']",
+      "reason": null,
+      "cached": false
+    }
+  ],
+  "baseline_reference": {
+    "metrics": {
+      "n": 748,
+      "accuracy": 0.5628342245989305,
+      "up_rate_true": 0.5628342245989305,
+      "up_rate_pred": 0.5313751668891856,
+      "log_loss": 0.6872237571828794,
+      "brier": 0.24704153253103625
+    },
+    "status": "done"
+  },
+  "failures_visible": true,
+  "internal_artifacts": "run_state.json, provenance.json, predictions_*.csv (internal/ only)",
+  "final_oos": "locked and not executed by this program"
+}

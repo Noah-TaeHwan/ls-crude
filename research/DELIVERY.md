@@ -62,3 +62,16 @@ cd research
 ```bash
 .venv-share/bin/python -m pytest tests/test_experiments.py -q   # 12 passed
 ```
+
+## 참조 run (재현 대조용, 집계만 포함)
+
+공유 브랜치의 `research/experiments/cai/reference/` 안에 태환 측 shared run 2건의
+`export/summary.json`(집계·해시만, 예측 CSV 없음)이 있습니다. 성찬님 실행 후:
+
+```bash
+cd research
+.venv-share/bin/python -m ls_crude.experiment.cli compare \
+  --left  experiments/cai/reference/tw_shared_20260911T085005Z \
+  --right data/processed/091-cai-exp-sc/<your_run_id>
+# MATCH 여야 합니다. (spec_hash 1e89aa740a69e9c6…, price_sha ea70f934…)
+```
