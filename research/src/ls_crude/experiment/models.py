@@ -24,32 +24,54 @@ from sklearn.metrics import log_loss
 from sklearn.preprocessing import StandardScaler
 
 from .data import DataError, Prepared
-from .spec import Spec
+from .spec import COMPONENT_MODELS, Spec
 
 
 @dataclass
 class ModelFit:
-    """One fitted model's validation probabilities plus weight provenance."""
+    """One fitted model's validation probabilities plus weight/equation provenance."""
 
     model: str
     probs: pd.Series
     weights: list[float] | None = None
     notes: str = ""
+    coefficients: dict[str, Any] | None = None
+    n_train: int = 0
 
 
-def fit_predict_logit(X_train: np.ndarray, y_train: np.ndarray, X_eval: np.ndarray, seed: int) -> np.ndarray:
-    """Standardize on the training rows only, then fit/predict logistic regression."""
+def fit_predict_logit(
+    X_train: np.ndarray,
+    y_train: np.ndarray,
+    X_eval: np.ndarray,
+    seed: int,
+    feature_names: list[str] | None = None,
+) -> tuple[np.ndarray, dict[str, Any]]:
+    """Standardize on the training rows only, then fit/predict logistic regression.
+
+    Returns probabilities plus the fitted equation (scaled coefficients, intercept) and
+    preprocessing statistics, so a trained model is never left unsaved.
+    """
     if len(np.unique(y_train)) < 2:
         raise DataError("training labels are single-class; cannot fit a classifier")
     scaler = StandardScaler().fit(X_train)
     model = LogisticRegression(max_iter=2000, random_state=seed)
     model.fit(scaler.transform(X_train), y_train)
-    return model.predict_proba(scaler.transform(X_eval))[:, 1]
+    probs = model.predict_proba(scaler.transform(X_eval))[:, 1]
+    names = list(feature_names) if feature_names else [f"x{index}" for index in range(X_train.shape[1])]
+    info = {
+        "features": names,
+        "coefficients": [float(value) for value in model.coef_[0]],
+        "intercept": float(model.intercept_[0]),
+        "scaler_mean": [float(value) for value in scaler.mean_],
+        "scaler_scale": [float(value) for value in scaler.scale_],
+        "note": "coefficients apply to scaled inputs (x - mean) / scale",
+    }
+    return probs, info
 
 
 def _weights_log_loss(X: np.ndarray, y: np.ndarray, weights: np.ndarray, seed: int) -> float:
     cai = X @ weights
-    probs = fit_predict_logit(cai.reshape(-1, 1), y, cai.reshape(-1, 1), seed)
+    probs, _ = fit_predict_logit(cai.reshape(-1, 1), y, cai.reshape(-1, 1), seed)
     return float(log_loss(y, probs, labels=[0, 1]))
 
 
@@ -114,49 +136,130 @@ def _grid_weights(X: np.ndarray, y: np.ndarray, n: int, seed: int) -> list[float
 
 
 def run_model(spec: Spec, prepared: Prepared, config: dict[str, Any], seed: int, eval_index: pd.DatetimeIndex) -> ModelFit:
-    """Fit one configured model and return validation probabilities on ``eval_index``."""
+    """Fit one configured model and return validation probabilities on ``eval_index``.
+
+    Model families: market-only, CAI-only, market+CAI (equal or learned CAI weights).
+    CAI weights live on the simplex; the classifier's own coefficients are stored separately.
+    """
     model = str(config["model"])
     if model == "baseline_up_rate":
         train_valid = prepared.train_mask & prepared.target.notna()
+        if config.get("match_components"):
+            if prepared.components is not None:
+                train_valid = train_valid & prepared.components.notna().all(axis=1)
+            train_valid = train_valid & prepared.market.notna().all(axis=1)
         rate = float(prepared.target.loc[train_valid].mean())
-        return ModelFit(model=model, probs=pd.Series(rate, index=eval_index), notes="constant train-period up rate")
+        return ModelFit(
+            model=model,
+            probs=pd.Series(rate, index=eval_index),
+            notes="constant train-period up rate",
+            n_train=int(train_valid.sum()),
+        )
 
     features = tuple(config.get("features", spec.market_features))
+    needs_cai = model in COMPONENT_MODELS
+    if needs_cai and (prepared.components is None or prepared.component_scores is None or not prepared.component_names):
+        raise DataError("no components available for CAI models")
+
+    cai_all: pd.Series | None = None
+    weights: list[float] | None = None
+    note = ""
+    if needs_cai:
+        n = len(prepared.component_names)
+        if model in ("cai_learned_logit", "market_cai_learned_logit"):
+            if n == 1:
+                weights = [1.0]
+                note = "single component; weight learning not forced — fixed at 1.0"
+            else:
+                train_rows_cai = (
+                    prepared.train_mask & prepared.target.notna() & prepared.components.notna().all(axis=1)
+                )
+                weights = learn_weights(
+                    prepared.component_scores.loc[train_rows_cai],
+                    prepared.target.loc[train_rows_cai],
+                    seed,
+                )
+                note = "simplex weights (w>=0, sum=1) learned on the training segment"
+        else:
+            weights = [1.0 / n] * n
+            if n == 1:
+                note = "single component; equal weight is degenerate (1.0)"
+        cai_all = pd.Series(
+            prepared.component_scores.to_numpy(dtype=float) @ np.asarray(weights),
+            index=prepared.dates,
+            name="cai",
+        )
+
     if model == "market_only_logit":
         train_rows = prepared.train_mask & prepared.target.notna() & prepared.market.notna().all(axis=1)
-        X_train = prepared.market.loc[train_rows, list(features)].to_numpy(dtype=float)
-        y_train = prepared.target.loc[train_rows].to_numpy(dtype=float)
-        X_eval = prepared.market.loc[eval_index, list(features)].to_numpy(dtype=float)
-        probs = fit_predict_logit(X_train, y_train, X_eval, seed)
-        return ModelFit(model=model, probs=pd.Series(probs, index=eval_index), notes=f"features={list(features)}")
+        if config.get("match_components") and prepared.components is not None:
+            train_rows = train_rows & prepared.components.notna().all(axis=1)
+        probs, info = fit_predict_logit(
+            prepared.market.loc[train_rows, list(features)].to_numpy(dtype=float),
+            prepared.target.loc[train_rows].to_numpy(dtype=float),
+            prepared.market.loc[eval_index, list(features)].to_numpy(dtype=float),
+            seed,
+            feature_names=list(features),
+        )
+        return ModelFit(
+            model=model,
+            probs=pd.Series(probs, index=eval_index),
+            notes=f"features={list(features)}",
+            coefficients=info,
+            n_train=int(train_rows.sum()),
+        )
 
-    if prepared.components is None or prepared.component_scores is None or not prepared.component_names:
-        raise DataError("no components available for CAI models")
-    scores = prepared.component_scores
-    train_rows = (
-        prepared.train_mask
-        & prepared.target.notna()
-        & prepared.components.notna().all(axis=1)
-    )
-    note = ""
-    if model == "cai_equal_logit":
-        n = len(prepared.component_names)
-        weights = [1.0 / n] * n
-        if n == 1:
-            note = "single component; equal weight is degenerate (1.0)"
-    elif model == "cai_learned_logit":
-        n = len(prepared.component_names)
-        if n == 1:
-            weights = [1.0]
-            note = "single component; weight learning not forced — fixed at 1.0"
-        else:
-            weights = learn_weights(scores.loc[train_rows], prepared.target.loc[train_rows], seed)
-            note = "simplex weights (w>=0, sum=1) learned on the training segment"
-    else:
-        raise DataError(f"unsupported model: {model}")
+    if model in ("cai_equal_logit", "cai_learned_logit"):
+        train_rows = prepared.train_mask & prepared.target.notna() & prepared.components.notna().all(axis=1)
+        if config.get("match_components"):
+            train_rows = train_rows & prepared.market.notna().all(axis=1)
+        probs, info = fit_predict_logit(
+            cai_all.loc[train_rows].to_numpy(dtype=float).reshape(-1, 1),
+            prepared.target.loc[train_rows].to_numpy(dtype=float),
+            cai_all.loc[eval_index].to_numpy(dtype=float).reshape(-1, 1),
+            seed,
+            feature_names=["cai"],
+        )
+        return ModelFit(
+            model=model,
+            probs=pd.Series(probs, index=eval_index),
+            weights=weights,
+            notes=note,
+            coefficients=info,
+            n_train=int(train_rows.sum()),
+        )
 
-    cai_train = scores.loc[train_rows].to_numpy(dtype=float) @ np.asarray(weights)
-    cai_eval = scores.loc[eval_index].to_numpy(dtype=float) @ np.asarray(weights)
-    probs = fit_predict_logit(cai_train.reshape(-1, 1), prepared.target.loc[train_rows].to_numpy(dtype=float),
-                              cai_eval.reshape(-1, 1), seed)
-    return ModelFit(model=model, probs=pd.Series(probs, index=eval_index), weights=weights, notes=note)
+    if model in ("market_cai_equal_logit", "market_cai_learned_logit"):
+        train_rows = (
+            prepared.train_mask
+            & prepared.target.notna()
+            & prepared.market.notna().all(axis=1)
+            & prepared.components.notna().all(axis=1)
+        )
+        names = list(features) + ["cai"]
+        X_train = np.column_stack([
+            prepared.market.loc[train_rows, list(features)].to_numpy(dtype=float),
+            cai_all.loc[train_rows].to_numpy(dtype=float),
+        ])
+        X_eval = np.column_stack([
+            prepared.market.loc[eval_index, list(features)].to_numpy(dtype=float),
+            cai_all.loc[eval_index].to_numpy(dtype=float),
+        ])
+        probs, info = fit_predict_logit(
+            X_train,
+            prepared.target.loc[train_rows].to_numpy(dtype=float),
+            X_eval,
+            seed,
+            feature_names=names,
+        )
+        market_note = f"market features {list(features)} + CAI" + (f"; {note}" if note else "")
+        return ModelFit(
+            model=model,
+            probs=pd.Series(probs, index=eval_index),
+            weights=weights,
+            notes=market_note,
+            coefficients=info,
+            n_train=int(train_rows.sum()),
+        )
+
+    raise DataError(f"unsupported model: {model}")

@@ -75,3 +75,13 @@ cd research
   --right data/processed/091-cai-exp-sc/<your_run_id>
 # MATCH 여야 합니다. (spec_hash 1e89aa740a69e9c6…, price_sha ea70f934…)
 ```
+
+## 갱신 (2026-09-11 배치 F)
+
+- `align_availability()`: 가용일 정렬을 행 shift → **달력 가용일**로 수정(가용일 열 우선,
+  `validity_days` 제한 내 재사용, 역방향/무제한 채움 없음). 상태 라벨:
+  CONFIRMED_RECEIVED_DATE / ASSUMED_LAG_DAYS / RECORDED_OBSERVATION_DATE.
+- 시장+CAI 모델(`market_cai_equal_logit`, `market_cai_learned_logit`) 추가,
+  계수·절편·전처리 통계·train_rows 저장.
+- 파일럿 config 2종: `pilot_retro_traffic`, `pilot_retro_traffic_dmr` (입력 CSV는
+  재배포 조건 미확인으로 이 묶음에 미포함 — 데이터 접근 결정 후 별도 공유).

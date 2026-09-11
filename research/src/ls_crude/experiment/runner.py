@@ -30,7 +30,7 @@ from .data import (
     prepare,
 )
 from .models import run_model
-from .spec import CAI_MODELS, REPO_ROOT, Spec, build_configs, canonical_hash, sha256_file, validate_inputs
+from .spec import COMPONENT_MODELS, REPO_ROOT, Spec, build_configs, canonical_hash, sha256_file, validate_inputs
 
 RUN_STATUSES = ("pending", "running", "done", "failed", "blocked")
 DEFAULT_BASE_DIR = str(REPO_ROOT / "research" / "data" / "processed" / "091-cai-exp")
@@ -72,11 +72,9 @@ def env_fingerprint() -> dict[str, Any]:
 def common_eval_index(prepared: Prepared, spec: Spec) -> pd.DatetimeIndex:
     """Single evaluation index shared by every model (same dates/target/inputs)."""
     valid = prepared.val_mask & prepared.target.notna() & prepared.market.notna().all(axis=1)
-    if any(model in CAI_MODELS for model in spec.models) or spec.configs:
-        if prepared.components is not None:
-            models = [str(config.get("model", "")) for config in spec.configs] or list(spec.models)
-            if any(model in CAI_MODELS for model in models):
-                valid = valid & prepared.components.notna().all(axis=1)
+    models = [str(config.get("model", "")) for config in spec.configs] or list(spec.models)
+    if any(model in COMPONENT_MODELS for model in models) and prepared.components is not None:
+        valid = valid & prepared.components.notna().all(axis=1)
     return prepared.dates[valid]
 
 
@@ -179,12 +177,20 @@ def _write_prediction_csv(run_dir: Path, config_id: str, fit, y: pd.Series) -> N
 def _execute_config(spec: Spec, prepared: Prepared, config: dict[str, Any], seed: int,
                     eval_index: pd.DatetimeIndex) -> dict[str, Any]:
     model = str(config["model"])
-    if model in CAI_MODELS and (prepared.components is None or not prepared.component_names):
+    if model in COMPONENT_MODELS and (prepared.components is None or not prepared.component_names):
         raise BlockedError("no eligible components: CAI models blocked until a component with usage/availability basis is provided")
     fit = run_model(spec, prepared, config, seed, eval_index)
     y = prepared.target.loc[eval_index]
     metrics = compute_metrics(y, fit.probs)
-    return {"metrics": metrics, "weights": fit.weights, "notes": fit.notes, "fit": fit, "y": y}
+    return {
+        "metrics": metrics,
+        "train_rows": fit.n_train,
+        "weights": fit.weights,
+        "notes": fit.notes,
+        "coefficients": fit.coefficients,
+        "fit": fit,
+        "y": y,
+    }
 
 
 def run(
@@ -359,7 +365,9 @@ def run(
                 "status": entry["status"],
                 "seed": entry.get("seed"),
                 "metrics": entry.get("metrics"),
+                "train_rows": entry.get("train_rows"),
                 "weights": entry.get("weights"),
+                "coefficients": entry.get("coefficients"),
                 "notes": entry.get("notes"),
                 "reason": entry.get("reason"),
                 "cached": entry.get("cached"),

@@ -21,8 +21,17 @@ MODEL_KINDS = (
     "market_only_logit",
     "cai_equal_logit",
     "cai_learned_logit",
+    "market_cai_equal_logit",
+    "market_cai_learned_logit",
 )
 CAI_MODELS = ("cai_equal_logit", "cai_learned_logit")
+COMPONENT_MODELS = (
+    "cai_equal_logit",
+    "cai_learned_logit",
+    "market_cai_equal_logit",
+    "market_cai_learned_logit",
+)
+MARKET_CAI_MODELS = ("market_cai_equal_logit", "market_cai_learned_logit")
 MARKET_FEATURES = ("rsi14", "ret_5d")
 MAX_CONFIGS_LIMIT = 12
 MAX_WORKERS_LIMIT = 2
@@ -62,6 +71,8 @@ class InputSpec:
     date_column: str = "date"
     value_column: str = "value"
     availability_lag_days: int = 0
+    validity_days: int = 0
+    available_at_column: str = ""
     availability_basis: str = ""
 
     @property
@@ -110,6 +121,8 @@ def _parse_input(raw: dict[str, Any], kind: str) -> InputSpec:
         date_column=str(raw.get("date_column", "date")),
         value_column=str(raw.get("value_column", "value")),
         availability_lag_days=int(raw.get("availability_lag_days", 0)),
+        validity_days=int(raw.get("validity_days", 0)),
+        available_at_column=str(raw.get("available_at_column", "")).strip(),
         availability_basis=str(raw.get("availability_basis", "")).strip(),
     )
 
@@ -140,6 +153,8 @@ def load_spec(path: str | Path) -> Spec:
     _require(val_end <= is_end, "val_end must not exceed IS end")
 
     models = tuple(str(model) for model in raw.get("models", []))
+    if not models:
+        models = tuple(str(config.get("model")) for config in raw.get("configs", []) if isinstance(config, dict))
     _require(models, "at least one model is required")
     unknown = [model for model in models if model not in MODEL_KINDS]
     _require(not unknown, f"unknown models: {unknown}")

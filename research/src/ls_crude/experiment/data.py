@@ -88,19 +88,97 @@ def load_price_frame(
     return pd.DataFrame({"close": close, "invalid_close": invalid})
 
 
-def load_component_frame(input_spec, *, start: str, end: str) -> pd.Series:
-    """Load one component series (date/value) inside the IS window."""
+def load_component_frame(input_spec, *, start: str, end: str) -> pd.DataFrame:
+    """Load one component's observations.
+
+    Returns a frame indexed by observation date with columns:
+    ``value`` and ``available_at`` (NaT unless an available_at column is configured).
+    """
     path = resolve_path(input_spec.path)
     frame = pd.read_csv(path)
-    frame = frame[[input_spec.date_column, input_spec.value_column]].copy()
+    columns = [input_spec.date_column, input_spec.value_column]
+    if input_spec.available_at_column:
+        if input_spec.available_at_column not in frame.columns:
+            raise DataError(
+                f"component {input_spec.name} missing available_at column '{input_spec.available_at_column}'"
+            )
+        columns.append(input_spec.available_at_column)
+    frame = frame[columns].copy()
     frame[input_spec.date_column] = pd.to_datetime(frame[input_spec.date_column], errors="raise").dt.normalize()
     frame = frame.sort_values(input_spec.date_column)
     if frame[input_spec.date_column].duplicated().any():
         raise DataError(f"component {input_spec.name} has duplicate dates")
-    series = pd.to_numeric(frame[input_spec.value_column], errors="raise").astype(float)
-    series.index = pd.DatetimeIndex(frame[input_spec.date_column])
-    series = series.loc[(series.index >= pd.Timestamp(start)) & (series.index <= pd.Timestamp(IN_SAMPLE_END))]
-    return series.rename(input_spec.name)
+    value = pd.to_numeric(frame[input_spec.value_column], errors="raise").astype(float)
+    out = pd.DataFrame({"value": value.to_numpy()}, index=pd.DatetimeIndex(frame[input_spec.date_column]))
+    if input_spec.available_at_column:
+        out["available_at"] = pd.to_datetime(
+            frame[input_spec.available_at_column], errors="coerce"
+        ).dt.normalize().to_numpy()
+    else:
+        out["available_at"] = pd.NaT
+    out = out.loc[(out.index >= pd.Timestamp(start)) & (out.index <= pd.Timestamp(IN_SAMPLE_END))]
+    return out
+
+
+def align_availability(
+    observations: pd.DataFrame | pd.Series,
+    dates: pd.DatetimeIndex,
+    input_spec,
+    mode: str,
+) -> tuple[pd.Series, dict[str, Any]]:
+    """Align observations to decision dates by AVAILABILITY DATE, not by row position.
+
+    Relationship enforced here:
+    observation date --(available_at column, else + lag calendar days)--> availability date
+    --(used only on decision dates >= availability date, never before)--> decision date.
+
+    Availability source precedence:
+    - ``available_at`` column present -> CONFIRMED_RECEIVED_DATE (a recorded receipt date).
+    - else assumed calendar-day lag -> ASSUMED_LAG_DAYS; in RETROSPECTIVE mode with lag 0 the
+      observation date itself is the recorded alignment (RECORDED_OBSERVATION_DATE).
+
+    Value reuse: ``validity_days == 0`` allows an exact availability-date match only;
+    ``validity_days > 0`` carries a value forward at most that many calendar days.
+    There is never a backward fill and never an unbounded forward fill; stale values drop to NaN.
+    """
+    if isinstance(observations, pd.Series):
+        observations = observations.rename("value").to_frame()
+    value = pd.to_numeric(observations["value"], errors="coerce")
+    has_receipt = (
+        bool(input_spec.available_at_column)
+        and "available_at" in observations.columns
+        and observations["available_at"].notna().any()
+    )
+    if has_receipt:
+        available = pd.DatetimeIndex(observations["available_at"])
+        status = "CONFIRMED_RECEIVED_DATE"
+        source = input_spec.available_at_column
+    else:
+        available = pd.DatetimeIndex(observations.index) + pd.Timedelta(days=int(input_spec.availability_lag_days))
+        if mode == "RETROSPECTIVE_RESEARCH" and int(input_spec.availability_lag_days) == 0:
+            status, source = "RECORDED_OBSERVATION_DATE", "observation_date"
+        else:
+            status, source = "ASSUMED_LAG_DAYS", f"observation_date+{int(input_spec.availability_lag_days)}d"
+    obs = pd.DataFrame({"available": available, "value": value.to_numpy()}).dropna(subset=["value", "available"])
+    obs = obs.sort_values("available").drop_duplicates(subset="available", keep="last")
+    available_series = pd.Series(obs["value"].to_numpy(), index=pd.DatetimeIndex(obs["available"]))
+    if int(input_spec.validity_days) > 0:
+        aligned = available_series.reindex(
+            dates, method="ffill", tolerance=pd.Timedelta(days=int(input_spec.validity_days))
+        )
+    else:
+        aligned = available_series.reindex(dates)
+    record = {
+        "component": input_spec.name,
+        "status": status,
+        "source": source,
+        "lag_days": int(input_spec.availability_lag_days),
+        "validity_days": int(input_spec.validity_days),
+        "raw_observations": int(len(value)),
+        "distinct_available_observations": int(len(available_series)),
+        "decision_rows_with_value": int(aligned.notna().sum()),
+    }
+    return aligned.rename(input_spec.name), record
 
 
 def build_target(close: pd.Series, horizon: int, invalid: pd.Series | None = None) -> pd.Series:
@@ -178,12 +256,15 @@ def prepare(spec: Spec, frames: dict[str, Any]) -> Prepared:
     market = build_market_features(close, spec.market_features)
 
     components: pd.DataFrame | None = None
+    availability_records: list[dict[str, Any]] = []
     if spec.components:
         aligned = {}
         for input_spec in spec.components:
-            series = frames["components"][input_spec.name]
-            shifted = series.shift(input_spec.availability_lag_days)
-            aligned[input_spec.name] = shifted.reindex(dates)
+            series, record = align_availability(
+                frames["components"][input_spec.name], dates, input_spec, spec.mode
+            )
+            aligned[input_spec.name] = series
+            availability_records.append(record)
         components = pd.DataFrame(aligned, index=dates)
 
     train_mask = horizon_safe_train_mask(dates, spec.train_end, spec.horizon_days)
@@ -201,6 +282,8 @@ def prepare(spec: Spec, frames: dict[str, Any]) -> Prepared:
         "missing_close": int(close.isna().sum()),
         "missing_market_cells": int(market.isna().sum().sum()),
         "missing_component_cells": int(components.isna().sum().sum()) if components is not None else 0,
+        "component_observations": {r["component"]: r["raw_observations"] for r in availability_records},
+        "component_decision_rows": {r["component"]: r["decision_rows_with_value"] for r in availability_records},
         "target_nan_rows": int(target.isna().sum()),
         "invalid_close_rows": int(invalid.sum()),
         "label_rows_dropped_by_invalid_close": int((invalid.astype(float).rolling(
@@ -220,6 +303,11 @@ def prepare(spec: Spec, frames: dict[str, Any]) -> Prepared:
         "invalid_close_policy": (
             "Close<=0 excluded as missing observation; labels whose forward window includes one are dropped; never filled"
         ) if bool(invalid.any()) else "no invalid closes",
+        "availability": availability_records,
+        "availability_note": (
+            "observation date -> availability date -> decision date; confirmed receipt dates kept separate from assumed lags; "
+            "no backward fill, bounded forward reuse only"
+        ),
         "component_order": list(components.columns) if components is not None else [],
         "component_lags": {input_spec.name: input_spec.availability_lag_days for input_spec in spec.components},
         "horizon_days": spec.horizon_days,
