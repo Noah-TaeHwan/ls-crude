@@ -65,3 +65,5 @@ Travel-search meme pinch 0.05. [091h/README.md](091h/README.md).
 City jobs pinch 0.05. [091m/README.md](091m/README.md).
 ## 091-U
 Industry jobs pinch 0.10. [091u/README.md](091u/README.md).
+## 091-W
+Air pinch 0.05 when AQI exists. [091w/README.md](091w/README.md).
