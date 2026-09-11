@@ -60,8 +60,7 @@ cd research
 - `traffic_avc040_daily.csv` (`date,value`): FHWA TMAS 월별 zip →
   `https://www.fhwa.dot.gov/policyinformation/tables/tmasdata/<YYYY>/<mon>_<YYYY>_ccs_data.zip` →
   `OK_*` 추출 → AVC040 파싱 → 일별 합(시간 결측 0인 날만). 기대 sha `98d5761d…`.
-  ※ TMAS 다운로더·파서 스크립트(`notebooks/091-tmas/`)는 **아직 공유본에 없습니다**(다음 동기화 후보).
-  수동 절차로도 재현 가능하도록 위 규칙을 명시합니다.
+  ※ TMAS 다운로더·파서·집계 도구는 아래 '도구와 전체 체인'에 정리되어 **공유본에 포함**됩니다.
 - `dmr_ok0026701_001_mgd.csv` (`date,value,available_at`): EPA ECHO
   `eff_rest_services.get_effluent_chart?p_id=OK0026701` → outfall 001·unit MGD·basis DAILY MX·수치만,
   `available_at`=ValueReceivedDate. 기대 sha `251aa9e6…`.
@@ -70,3 +69,53 @@ cd research
 
 입력 확보 전에는 **코드·설정·방법 검토**가 가능하고, 확보 후에 **수치 재현(run/compare)**이 가능합니다.
 원출처가 개정되어 해시가 달라지면 억지로 맞추지 말고 빈티지 차이로 보고해 주세요.
+
+
+## 도구와 전체 체인 (공유본 포함, 표준 라이브러리만)
+
+| 도구 | 경로 | 역할 |
+|---|---|---|
+| TMAS 다운로더 | `research/notebooks/091-tmas/download.py` | URL 1건 다운로드, manifest로 중복 방지·누적 상한 |
+| TMAS .VOL 파서 | `research/notebooks/091-tmas/parse_volume.py` | legacy fixed-width/pipe 2형식, AVC040 필터, 일/시간/품질 출력 |
+| 역 메타 파서 | `research/notebooks/091-tmas/parse_stations.py` | 관측소 스크린(AVC040 선택 근거 재현용) |
+| 월별 품질 | `research/notebooks/091-tmas/monthly_quality.py` | 결측·중복·단위 점검(README/품질표 생성에 사용) |
+| 일별 패널 빌더 | `research/notebooks/091-tmas/build_window_index.py` | 61개월 일별 패널 → `avc040_daily_all.csv` |
+| DMR 시리즈 빌더 | `research/notebooks/091-candidates/dmr_series_build.py` | 로컬 ECHO JSON → `dmr_series_rows.csv` |
+| 파일럿 입력 생성 | `research/scripts/build_pilot_inputs.py` | 두 최종 CSV 생성(집계·필터 규칙 고정) |
+
+### 교통 (raw zip → 최종 CSV)
+
+```bash
+# 1) 월별 zip 다운로드(예시 1건; 목록: 2015–2018 48개월 + 2020-03 + 2023 12개월, URL 패턴은 위 참조)
+python3 research/notebooks/091-tmas/download.py "<URL>" --out <raw>/zips --manifest <raw>/download_manifest.json
+# 2) OK .VOL 추출(각 zip)
+unzip -o -j <zip> "*OK_*.VOL" -d <raw>/vol
+# 3) 월별 파싱(AVC040)
+python3 research/notebooks/091-tmas/parse_volume.py --vol <VOL> --year <YYYY> --station AVC040 \
+  --out-hourly <index>/avc040_<mon><yyyy>_hourly.csv --out-daily <index>/avc040_<mon><yyyy>_daily.csv \
+  --out-quality <index>/avc040_<mon><yyyy>_quality.json
+# 4) 일별 패널(61개월; 모두 같은 <index>를 넘겨도 됨)
+python3 research/notebooks/091-tmas/build_window_index.py daily \
+  --run-dir <index> --prior-0757 <index> --prior-0825 <index> --out <index>/avc040_daily_all.csv
+# 5) 최종 입력
+python3 research/scripts/build_pilot_inputs.py traffic --daily-panel <index>/avc040_daily_all.csv --out <out>/traffic_avc040_daily.csv
+```
+
+### DMR (raw JSON → 최종 CSV)
+
+```bash
+# 1) ECHO JSON 취득: eff_rest_services.get_effluent_chart?p_id=OK0026701 → <raw>/091-cushing-dmr/dmr_*.json
+#    (입력 CSV에는 OK0026701만 필요. 18개 permit은 감사용)
+# 2) 시리즈 빌드(로컬 raw JSON; TMAS 파일이 없어도 동작)
+python3 research/notebooks/091-candidates/dmr_series_build.py <outdir>
+# 3) 최종 입력
+python3 research/scripts/build_pilot_inputs.py dmr --series <outdir>/dmr_series_rows.csv --out <out>/dmr_ok0026701_001_mgd.csv
+```
+
+## 생성 확인 수준 (2026-09-11, 배치 L)
+
+- **로컬 원자료 → 최종 CSV 재생성: 확인.** 기존 로컬 원자료만 사용해 두 CSV를 임시 폴더에서
+  재생성했고 기존 입력과 **byte-identical**(traffic `98d5761d…`, dmr `251aa9e6…`). 새 다운로드 없음.
+- **외부 원출처 신규 취득: 미실행.** **성찬님 독립 재현: 대기.**
+- 원출처 이용 조건(FHWA/EPA 재배포·분석 문구)은 여전히 **미확인**이며, 직접 취득 경로가 권한 문제를
+  자동 해결하지 않습니다.
