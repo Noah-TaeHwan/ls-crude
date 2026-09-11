@@ -44,3 +44,5 @@ promotion of S/U/Y into a WTI input.
 Hotel tax 12-month city packet + AVC40 2018 AADT=6336. See [../meme/091a/README.md](../meme/091a/README.md). Weight 0.05 on lodging percentile only. AVC waits for a second year.
 ## 091-H pinch
 `how to get to cushing` monthly Trends, weight 0.05, zeros kept. See [../meme/091h/README.md](../meme/091h/README.md).
+## 091-M pinch
+City open jobs count, weight 0.05. [../meme/091m/README.md](../meme/091m/README.md).
