@@ -48,3 +48,5 @@ Hotel tax 12-month city packet + AVC40 2018 AADT=6336. See [../meme/091a/README.
 City open jobs count, weight 0.05. [../meme/091m/README.md](../meme/091m/README.md).
 ## 091-U pinch
 Industrial job count, weight 0.10. [../meme/091u/README.md](../meme/091u/README.md).
+## 091-W pinch
+AQI if printed, weight 0.05. [../meme/091w/README.md](../meme/091w/README.md).
