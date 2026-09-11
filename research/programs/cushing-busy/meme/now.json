@@ -1,0 +1,15 @@
+{
+  "asof": "2026-09-11",
+  "wiki_asof": "2026-09-09",
+  "wiki_7d": 66.0,
+  "attn_pctile": 11.8,
+  "eia_week": "2026-09-04",
+  "eia_kbbl": 21824,
+  "eia_abs_chg": 684,
+  "move_pctile_52w": 38.5,
+  "tight_pctile_5y": 87.0,
+  "score": 37.5,
+  "label": "quiet",
+  "formula": "0.4*wiki7d_pctile + 0.4*|\u0394stocks|_52w_pctile + 0.2*(100-stock_5y_pctile)",
+  "not_alpha": true
+}
