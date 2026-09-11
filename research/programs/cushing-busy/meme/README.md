@@ -67,3 +67,5 @@ City jobs pinch 0.05. [091m/README.md](091m/README.md).
 Industry jobs pinch 0.10. [091u/README.md](091u/README.md).
 ## 091-W
 Air pinch 0.05 when AQI exists. [091w/README.md](091w/README.md).
+## 091-V
+Permit pinch 0.10. [091v/README.md](091v/README.md).
