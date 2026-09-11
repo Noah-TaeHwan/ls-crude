@@ -59,3 +59,5 @@ OOS 4w |r| permutation p ≈ 0.76.
 
 ## 091-A
 Lodging packet + AVC40 annual. [091a/README.md](091a/README.md). Not daily. Weight 0.05 lodging only.
+## 091-H
+Travel-search meme pinch 0.05. [091h/README.md](091h/README.md).
