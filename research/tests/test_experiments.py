@@ -250,6 +250,26 @@ def test_weekend_observation_available_next_weekday():
     assert pd.isna(aligned.loc["2023-02-06"])  # beyond Jan 28 + 7 days
 
 
+def test_dmr_reuse_policy_semantics_same_day_and_31_days():
+    observations = pd.DataFrame({"value": [10.0]}, index=pd.DatetimeIndex(["2023-01-31"]))
+    observations["available_at"] = pd.Timestamp("2023-02-01")
+    dates = pd.date_range("2023-02-01", "2023-03-10", freq="D")
+
+    exact, _ = align_availability(
+        observations, dates, _component_spec(available_at_column="available_at", validity_days=0),
+        "RETROSPECTIVE_RESEARCH",
+    )
+    assert exact.loc["2023-02-01"] == 10.0
+    assert pd.isna(exact.loc["2023-02-02"])  # validity_days=0 is same-day only
+
+    window31, _ = align_availability(
+        observations, dates, _component_spec(available_at_column="available_at", validity_days=31),
+        "RETROSPECTIVE_RESEARCH",
+    )
+    assert window31.loc["2023-03-04"] == 10.0  # availability + 31 days is included
+    assert pd.isna(window31.loc["2023-03-05"])  # day 32 is expired, not filled
+
+
 def test_prepare_records_availability_status_and_reuse_counts():
     prepared = prepare(synthetic_spec(), synthetic_frames(seed=11))
     records = prepared.checks["availability"]

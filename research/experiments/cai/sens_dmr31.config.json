@@ -1,0 +1,81 @@
+{
+  "spec_version": 1,
+  "mode": "RETROSPECTIVE_RESEARCH",
+  "sensitivity_note": "기존 결과(2023 회고)를 보고 설계한 후속 회고 민감도 분석. 독립 사전등록/OOS 아님. DMR 재사용 기간만 변경(입력·성분 순서·타깃·분할·시장정보·전처리·가중치 학습·seed 동일).",
+  "target": {
+    "kind": "next_n_trading_days_up",
+    "horizon_days": 5,
+    "flat_counts_as": "down"
+  },
+  "price": {
+    "kind": "price",
+    "path": "research/data/clf-daily-2015-2026.csv",
+    "sha256": "ea70f9340b17081a037fa3f4cd0ed12810a67cea781e5779127eb651afd56171",
+    "date_column": "date",
+    "value_column": "Close"
+  },
+  "components": [
+    {
+      "kind": "component",
+      "path": "research/data/processed/091-cai-exp-pilot/inputs/traffic_avc040_daily.csv",
+      "sha256": "98d5761ddd9eae80f81abe2f27933fe9b4d600a92672ad4cec2dbb4920ff6ab6",
+      "date_column": "date",
+      "value_column": "value",
+      "availability_lag_days": 0,
+      "validity_days": 0
+    },
+    {
+      "kind": "component",
+      "path": "research/data/processed/091-cai-exp-pilot/inputs/dmr_ok0026701_001_mgd.csv",
+      "sha256": "251aa9e6e60a2d7c16c9330776c6662117156230a48cbe004a9640907ead61be",
+      "date_column": "date",
+      "value_column": "value",
+      "available_at_column": "available_at",
+      "validity_days": 31,
+      "availability_basis": "EPA ECHO ValueReceivedDate (receipt date; not verified public release)"
+    }
+  ],
+  "is": {
+    "start": "2015-01-01",
+    "end": "2023-12-31"
+  },
+  "split": {
+    "train_end": "2020-12-31",
+    "val_start": "2021-01-01",
+    "val_end": "2023-12-31"
+  },
+  "market_features": [
+    "rsi14",
+    "ret_5d"
+  ],
+  "limits": {
+    "max_configs": 12,
+    "max_workers": 2,
+    "max_seconds": 7200
+  },
+  "seeds": [
+    7
+  ],
+  "configs": [
+    {
+      "id": "baseline",
+      "model": "baseline_up_rate",
+      "match_components": true
+    },
+    {
+      "id": "market",
+      "model": "market_only_logit",
+      "match_components": true
+    },
+    {
+      "id": "market_cai_equal",
+      "model": "market_cai_equal_logit"
+    },
+    {
+      "id": "market_cai_learned",
+      "model": "market_cai_learned_logit"
+    }
+  ],
+  "candidate_id": "091-cai-sens_dmr31",
+  "validity_days": 31
+}
