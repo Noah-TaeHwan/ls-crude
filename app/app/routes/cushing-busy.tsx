@@ -42,7 +42,7 @@ export default function CushingBusy({ loaderData }: Route.ComponentProps) {
     <>
       <DeskHeader source="091 CFAM / cushing-busy" ticker="Cushing, OK" contextLabel="현장 활동 보드 · 점수 없음" />
       <main id="main-content" tabIndex={-1} className="desk-shell">
-        <Link className="secondary-link mt-7 inline-flex min-h-11 items-center" to="/?sample=cushing-busy#research-sample">
+        <Link className="secondary-link mt-7 inline-flex min-h-11 items-center" to="/history?sample=cushing-busy#research-sample">
           ← 관측 데스크
         </Link>
         <section className="mt-8 max-w-4xl" aria-labelledby="cushing-title">

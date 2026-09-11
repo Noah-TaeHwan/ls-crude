@@ -1,20 +1,18 @@
-import { ResearchSample } from "~/components/research-sample";
-export { sampleShouldRevalidate as shouldRevalidate } from "~/lib/research-charts";
 import { useEffect } from "react";
-import { readTankerArrivals } from "~/lib/tanker-arrivals.server";
-import { readVisibility } from "~/lib/visibility.server";
-import { readCushingWeather } from "~/lib/cushing-weather.server";
 import { WtiDailyChart } from "~/components/wti-daily-chart";
-import { readResearchIntake } from "~/lib/research-intake.server";
-import { data, Link, useRevalidator } from "react-router";
-import { ArrowRight, ArrowUpRight, Search, ArrowDown } from "lucide-react";
+import { data, Link, redirect, useLocation, useNavigate, useRevalidator } from "react-router";
+import { legacyHashRedirect, legacySampleRedirect, unsupportedSampleNotice } from "~/lib/cai-legacy-routing";
 
 import type { Route } from "./+types/home";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
+import { CaiGauge } from "~/components/cai/cai-gauge";
+import { CaiForecast } from "~/components/cai/cai-forecast";
+import { CaiAbout } from "~/components/cai/cai-about";
+import { emptyCaiView } from "~/lib/cai-view";
+import { readCaiPublicView } from "~/lib/cai-view.server";
 import { readWtiDaily } from "~/lib/wti-daily.server";
 import type { WtiDailyView } from "~/lib/wti-daily";
 import { readWtiMarketSnapshot } from "~/lib/market-snapshot.server";
-import { readResearchLedger } from "~/lib/research-ledger.server";
 import type { ActionResult, WtiMarketView } from "~/lib/types";
 
 /**
@@ -28,15 +26,26 @@ function number(value: number | null | undefined, digits = 2, suffix = ""): stri
   return value == null || !Number.isFinite(value) ? "—" : `${value.toFixed(digits)}${suffix}`;
 }
 
-/** @returns 연구 데스크의 검색 설명. */
+/** @returns 쿠싱 액티비티 인덱스 홈의 검색 설명. */
 export function meta({}: Route.MetaArgs) {
-  return [{ title: "LS CRUDE — 공개 신호를 찾는 연구 데스크" }, { name: "description", content: "공개 대안 데이터와 WTI 변동성의 관계를 탐색합니다. 확보한 자료, 기각 근거와 아직 열린 질문을 함께 기록합니다." }];
+  return [{ title: "쿠싱 액티비티 인덱스 — LS CRUDE" }, { name: "description", content: "쿠싱의 활동 신호로 만든 0–100 점수와 다음 기간 WTI 방향, 가격 흐름을 함께 봅니다. 승인된 산출물이 없으면 점수는 —, 예측은 미실행입니다." }];
 }
 
-/** @returns 실제 시장 관측과 현재 연구 정본. */
-export async function loader({}: Route.LoaderArgs) {
-  const [daily, visibility, tankers, weather] = await Promise.all([readWtiDaily(), readVisibility(), readTankerArrivals(), readCushingWeather()]);
-  return { daily, visibility, tankers, weather, checkedAt: new Date().toISOString(), market: readWtiMarketSnapshot(), ledger: readResearchLedger(), intake: readResearchIntake() };
+/**
+ * 홈에 필요한 CAI 공개 adapter와 WTI 관측만 읽는다.
+ * 구 sample 주소는 무거운 시장 조회 전에 history로 보낸다.
+ * @returns CAI 공개 객체와 WTI 일봉·시장 스냅샷.
+ */
+export async function loader({ request }: Route.LoaderArgs) {
+  const url = new URL(request.url);
+  const legacy = legacySampleRedirect(url.pathname, url.searchParams);
+  if (legacy) return redirect(legacy, 308);
+  // 한 영역의 실패가 다른 영역을 비우지 않도록 각각 독립적으로 읽는다.
+  const [daily, cai] = await Promise.all([
+    readWtiDaily(),
+    readCaiPublicView().catch(() => emptyCaiView()),
+  ]);
+  return { daily, market: readWtiMarketSnapshot(), cai, unsupportedSample: unsupportedSampleNotice(url.searchParams.get("sample")) };
 }
 
 /** @returns 공개 화면의 읽기 전용 응답. */
@@ -45,12 +54,20 @@ export function action({}: Route.ActionArgs) {
 }
 
 /**
- * 연구 질문, 실제 사례의 연결 가설과 WTI 관측을 한 흐름으로 보여준다.
+ * CAI 계기판·방향·설명과 WTI 가격 흐름을 보여준다.
+ * 미연결 상태는 지어내지 않고 산출 대기·예측 미실행으로 표시한다.
  * @param props 라우트 데이터.
- * @returns 공개 연구 데스크.
+ * @returns 쿠싱 액티비티 인덱스 홈.
  */
-export default function Home({ loaderData: { market, ledger, intake, daily, visibility, tankers, weather, checkedAt } }: Route.ComponentProps) {
+export default function Home({ loaderData: { market, daily, cai, unsupportedSample } }: Route.ComponentProps) {
   const revalidator = useRevalidator();
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    // hash-only 구주소는 서버가 볼 수 없으므로 클라이언트에서 replace한다.
+    const target = legacyHashRedirect(location.pathname, location.hash);
+    if (target) void navigate(target, { replace: true });
+  }, [location.pathname, location.hash, navigate]);
   useEffect(() => {
     const timer = window.setInterval(() => {
       if (document.visibilityState === "visible" && revalidator.state === "idle") void revalidator.revalidate();
@@ -59,35 +76,23 @@ export default function Home({ loaderData: { market, ledger, intake, daily, visi
   }, [revalidator]);
   return (
     <>
-      <DeskHeader source="Yahoo Finance" ticker="CL=F" />
+      <DeskHeader source="Yahoo Finance" ticker="CL=F" contextLabel="쿠싱 액티비티 인덱스 · WTI 일봉" />
       <main id="main-content" tabIndex={-1} className="desk-shell">
-        <section className="research-hero" aria-labelledby="research-title">
-          <div>
-            <p className="eyebrow">EAST CAMP AI QUANT 4기 <span aria-hidden="true">/</span> 오태환 × 손성찬</p>
-            <h1 id="research-title" className="hero-title">공개 자료가 WTI를 설명하는지<br />검증 중인 <em className="not-italic text-primary">연구 데스크</em>입니다.</h1>
-            <p className="hero-copy">피자 주문처럼 작은 현실의 흔적에서 출발합니다. 확보한 자료의 실제 관측값을 먼저 보여주고, 적격 자료만 WTI와 비교합니다. 아직 채택한 신호는 없고, 보류와 기각의 이유도 함께 기록합니다.</p>
-            <div className="mt-7 flex flex-wrap items-center gap-4">
-              <Link className="action-link" to="/#research-sample">실제 수집 사례 보기 <ArrowRight size={17} aria-hidden="true" /></Link>
-              <a className="secondary-link" href="#market">WTI 관측 보기 <ArrowDown size={15} aria-hidden="true" /></a>
-            </div>
-          </div>
-          <aside className="research-status" aria-label="연구 현황">
-            <p className="status-stamp"><Search size={14} aria-hidden="true" /> 탐색 중</p>
-            <dl>
-              <div><dt>보관 기록</dt><dd>{ledger.error ? "—" : ledger.records.length}<small>개</small></dd></div>
-              <div><dt>진행 후보</dt><dd>{intake.error ? "—" : intake.records.length}<small>개</small></dd></div>
-              <div><dt>기준 통과</dt><dd>{ledger.passCount ?? "—"}<small>개</small></dd></div>
-            </dl>
-            <p className="mt-5 text-base font-medium">{ledger.error ? "연구 장부 확인이 필요합니다." : "아직 채택할 신호가 없습니다."}</p>
-            <p className="mt-2 text-sm leading-7 text-muted-foreground">{ledger.error ?? "진행 후보와 보관 기록은 겹치므로 더하지 않습니다. 데이터 적격성, 공개 시점, 독립적인 관계를 확인하고 있습니다."}</p>
-            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2"><Link className="source-link" to="/research#intake">진행 후보 보기 <ArrowUpRight size={14} aria-hidden="true" /></Link><Link className="source-link" to="/research#method">어떤 기준으로 판단하나요? <ArrowUpRight size={14} aria-hidden="true" /></Link></div>
-          </aside>
+        <header className="border-b border-border py-8 sm:py-10">
+          <p className="eyebrow">쿠싱 액티비티 인덱스 <span aria-hidden="true">/</span> LS CRUDE · 오태환 × 손성찬</p>
+          <h1 id="cai-home-title" className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">쿠싱 액티비티 인덱스</h1>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">CAI, 다음 기간 WTI 방향, WTI 가격을 봅니다. 승인된 산출물이 없으면 점수는 —, 예측은 미실행입니다.</p>
+          {unsupportedSample ? <p role="status" className="mt-4 text-sm text-muted-foreground">{unsupportedSample} <Link className="source-link" to="/research#research-sample">연구 기록에서 사례 보기</Link></p> : null}
+        </header>
+        <section className="border-t border-border py-4" aria-label="CAI 계기판과 설명">
+          <CaiGauge index={cai.index} />
+          <CaiAbout view={cai} />
         </section>
-
+        <section className="border-t border-border py-4" aria-label="다음 기간 WTI 방향">
+          <CaiForecast forecast={cai.forecast} validation={cai.validation} />
+        </section>
         <MarketContext market={market} daily={daily} />
-        <div id="observations">
-        <ResearchSample live={{visibility,tankers,weather,checkedAt}} records={{ helix: intake.records.find((item) => item.fields.candidate_id === "ALT-20260909-02"), watermelon: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-36"), jeju: intake.records.find((item) => item.fields.candidate_id === "ALT-20260908-20"), "degree-days": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-45"), empties: intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-02"), "petroleum-rail": intake.records.find((item) => item.fields.candidate_id === "ALT-20260907-43") }} />
-        </div>
+        <p className="border-t border-border py-5 text-sm text-muted-foreground">확보한 자료와 판정 기록은 <Link className="source-link" to="/research#research-sample">연구 기록</Link>에서 이어서 확인합니다.</p>
       </main>
       <DeskFooter />
     </>
@@ -103,7 +108,7 @@ function MarketContext({ market, daily }: { market: WtiMarketView; daily: WtiDai
   const snapshot = market.snapshot;
   const checkedAtKst = snapshot ? new Date(Date.parse(snapshot.checkedAt) + 9 * 3600000).toISOString().slice(0,16).replace("T", " ") : "—";
   return <section id="market" className="market-section" aria-labelledby="market-title">
-    <div className="section-heading"><div><p className="section-kicker">01 / WTI DAILY</p><h2 id="market-title">WTI 원유 가격</h2></div></div>
+    <div className="section-heading"><div><p className="section-kicker">WTI DAILY</p><h2 id="market-title">WTI 원유 가격</h2></div></div>
     <WtiDailyChart view={daily} />
     <details className="mt-6 border-t border-border py-2"><summary className="min-h-11 cursor-pointer py-3 text-sm">실현변동성과 연구 기준 보기</summary>
       <div className="space-y-3 pb-4 text-sm leading-7 text-muted-foreground">

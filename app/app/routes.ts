@@ -7,5 +7,6 @@ export default [
   route("observations/visibility", "routes/visibility.tsx"),
   route("observations/cushing-busy", "routes/cushing-busy.tsx"),
   route("research", "routes/research.tsx"),
+  route("history", "routes/history.tsx"),
   route("backtest", "routes/backtest.tsx"),
 ] satisfies RouteConfig;

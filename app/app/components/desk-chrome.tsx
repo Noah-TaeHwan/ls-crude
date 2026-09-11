@@ -36,13 +36,13 @@ export function DeskHeader({ source, ticker, freshness, contextLabel }: DeskHead
         className="desk-header"
       >
         <div className="desk-shell desk-header-inner">
-          <Link to="/" className="desk-brand" aria-label="LS CRUDE 연구 데스크">
+          <Link to="/" className="desk-brand" aria-label="쿠싱 액티비티 인덱스 홈">
             <span className="desk-brand-mark" aria-hidden="true">LS</span>
-            <span>LS CRUDE<span className="desk-brand-caption">ALTERNATIVE DATA RESEARCH</span></span>
+            <span>LS CRUDE</span>
           </Link>
           <nav aria-label="주요 화면" className="desk-nav">
-            <DeskNavLink to="/" end>메인</DeskNavLink>
-            <DeskNavLink to="/research">리서치</DeskNavLink>
+            <DeskNavLink to="/" end>대시보드</DeskNavLink>
+            <DeskNavLink to="/research">연구 기록</DeskNavLink>
           </nav>
           <p className="desk-source" title={`${source} · ${contextLabel ?? `${ticker} · 일봉`}`}>
             <span>{contextLabel ?? `${ticker} · 일봉 관측`}</span>
