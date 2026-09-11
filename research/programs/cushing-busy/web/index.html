@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CFAM 밈</title>
+<style>
+  :root { font-family: ui-sans-serif, system-ui, sans-serif; background:#0f1419; color:#e8e4d9; }
+  body { max-width: 520px; margin: 32px auto; padding: 0 16px; }
+  h1 { font-size: 18px; font-weight: 600; margin: 0 0 4px; }
+  .sub { color:#9aa3ad; font-size: 12px; margin-bottom: 20px; }
+  .hero { background:#1b3a4b; border-radius: 16px; padding: 28px 20px; text-align:center; }
+  .n { font-size: 72px; line-height:1; font-variant-numeric: tabular-nums; }
+  .lab { margin-top: 8px; letter-spacing: .12em; text-transform: uppercase; font-size: 12px; color:#c4a35a; }
+  table { width:100%; border-collapse: collapse; margin-top: 22px; font-size: 13px; }
+  th { text-align:left; color:#9aa3ad; font-weight:500; padding: 6px 0; }
+  td { padding: 7px 0; border-top: 1px solid #2a333c; }
+  td.r { text-align:right; font-variant-numeric: tabular-nums; }
+  .drop { color:#6b7380; font-size:12px; margin-top:18px; }
+  .bar { height:6px; background:#2a333c; border-radius:99px; overflow:hidden; margin-top:14px; }
+  .bar > i { display:block; height:100%; background:#c4a35a; }
+</style>
+</head>
+<body>
+  <h1>쿠싱 바쁨 밈</h1>
+  <p class="sub">0–100 · 5분 캐시 · 알파 아님</p>
+  <div class="hero">
+    <div class="n" id="score">–</div>
+    <div class="lab" id="label"></div>
+    <div class="bar"><i id="bar"></i></div>
+  </div>
+  <table>
+    <thead><tr><th>다리</th><th class="r">가중</th><th class="r">점수</th><th class="r">기여</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="drop" id="drop"></p>
+  <p class="sub" id="meta"></p>
+<script>
+async function tick(){
+  const d = await fetch('now.json?t='+Date.now()).then(r=>r.json());
+  document.getElementById('score').textContent = d.score;
+  document.getElementById('label').textContent = d.label;
+  document.getElementById('bar').style.width = d.score+'%';
+  document.getElementById('rows').innerHTML = d.legs.map(l =>
+    `<tr><td>${l.name}<div class="sub">${l.note||''}</div></td>
+     <td class="r">${(l.w*100).toFixed(1)}%</td>
+     <td class="r">${Math.round(l.score)}</td>
+     <td class="r">${l.contrib.toFixed(1)}</td></tr>`
+  ).join('');
+  document.getElementById('drop').textContent =
+    '빠진 다리: ' + (d.dropped||[]).map(x=>x.name).join(', ') || '없음';
+  document.getElementById('meta').textContent =
+    d.ts_utc + ' · cache ' + (d.cache_age_sec||0) + 's · ' + (d.note||'');
+}
+tick();
+setInterval(tick, 300000);
+</script>
+</body>
+</html>
