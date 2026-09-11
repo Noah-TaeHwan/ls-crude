@@ -26,3 +26,8 @@ Tanks look somewhat light. Field-attention and weekly pipe move do not. The old 
 ![inputs](inputs.png)
 
 Do not feed this into a WTI model. If 091 later gets truck/hotel panels, replace the wiki leg.
+
+## Engine
+
+5-minute loop: [../engine/README.md](../engine/README.md).
+QSR pinch weight **0.15**, observer file only. Google is not scraped.

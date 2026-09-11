@@ -1,0 +1,12 @@
+{
+  "asof": "2026-09-11T18:30:00-05:00",
+  "protocol": "091-S frozen six venues, visible Maps label only",
+  "venues": [
+    {"name": "Wendy's", "label": "not busy"},
+    {"name": "Taco Bell", "label": "somewhat busy"},
+    {"name": "Sonic Drive-In", "label": "not busy"},
+    {"name": "Golden Chick", "label": "not busy"},
+    {"name": "Pizza Hut", "label": "somewhat busy"},
+    {"name": "Boomarang Diner", "label": "not busy"}
+  ]
+}

@@ -1,0 +1,29 @@
+# CFAM meme engine
+
+Not alpha. Does not reopen 091-B. Does not scrape Google.
+
+## Why QSR is in here at all
+
+Pentagon-pizza joke: field crews eat. 091-S already froze six Main St names.
+Popular Times is **not** a public API we poll. The engine only reads
+`qsr_observer.json` if a human typed the label they saw.
+
+Weight is **0.15**. Auto legs (wiki + EIA move + EIA tightness) split the other 0.85 by 1/n.
+
+PARK / KILL tracks are not in the average. Missing legs are dropped, not filled with 0.
+
+## Run
+
+```bash
+python research/programs/cushing-busy/engine/cfam_meme_engine.py --once
+python research/programs/cushing-busy/engine/cfam_meme_engine.py --interval 300
+```
+
+Copy the example observer file to `qsr_observer.json` to pinch the score.
+Without that file the loop still updates every five minutes; wiki and EIA
+just will not change until Wikimedia or Wednesday EIA does.
+
+## 091 check
+
+Same table as the factor card. This engine is a **meme overlay**, not a
+promotion of S/U/Y into a WTI input.
