@@ -1,14 +1,8 @@
-# CFAM meme board
+# CFAM web
 
-Windows: `run.bat` 더블클릭
-Mac: `run.command` 더블클릭 (처음엔 우클릭 → 열기)
-또는
+적용 트랙이 맨 위, 가중치 포함. 알파 아님. 실시간 원천 아님.
 
-```
-python serve.py
-```
+- `cfam.html` — 엔진+화면 한 파일
+- `index.html` + `score.py` + `serve.py` — 로컬 보드
 
-뜨는 주소로 브라우저. 보통 http://127.0.0.1:8765
-
-`index.html`만 열면 now.json을 못 읽습니다. 반드시 serve.py.
-Python 3 필요. https://www.python.org/downloads/
+적용: WIKI ~26.7 · EIA abs-Δ ~26.7 · EIA 타이트 ~26.7 · 091-U 10 · 091-A 5 · 091-M 5
