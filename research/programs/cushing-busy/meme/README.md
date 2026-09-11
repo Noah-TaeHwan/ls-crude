@@ -69,3 +69,6 @@ Industry jobs pinch 0.10. [091u/README.md](091u/README.md).
 Air pinch 0.05 when AQI exists. [091w/README.md](091w/README.md).
 ## 091-V
 Permit pinch 0.10. [091v/README.md](091v/README.md).
+
+## 091-X / 091-Y
+Price-gap pinches 0.01 each. [091x](091x/README.md) [091y](091y/README.md).
