@@ -25,6 +25,8 @@
 
 상세 가설·영수증·그림은 [workflow.md](workflow.md)가 정본이다. 이 카드는 **현재 지도**다.
 
+091-B 보기판(점수 없음): [meme/091b](../../programs/cushing-busy/meme/091b/README.md). Worldview로 눈을 빌려 준다. 해상도는 모텔/탱크를 나누지 못한다.
+
 쿠싱이 바쁜가 **대시 프로그램**은 팩터 카드가 아니다: [programs/cushing-busy](../../programs/cushing-busy/PROGRAM.md). 화면 경로 `/observations/cushing-busy`.
 
 ## 읽는 순서
