@@ -54,3 +54,6 @@ OOS 4w |r| permutation p ≈ 0.76.
 
 ![scatter](cfam_wti_scatter.png)
 ![ml](cfam_wti_ml.png)
+
+## 091-A
+Lodging packet + AVC40 annual. [091a/README.md](091a/README.md). Not daily. Weight 0.05 lodging only.

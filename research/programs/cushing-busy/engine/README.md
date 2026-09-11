@@ -36,3 +36,7 @@ just will not change until Wikimedia or Wednesday EIA does.
 
 Same table as the factor card. This engine is a **meme overlay**, not a
 promotion of S/U/Y into a WTI input.
+
+## 091-A pinch
+
+Hotel tax 12-month city packet + AVC40 2018 AADT=6336. See [../meme/091a/README.md](../meme/091a/README.md). Weight 0.05 on lodging percentile only. AVC waits for a second year.
