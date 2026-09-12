@@ -1,0 +1,177 @@
+{
+  "reference_run": "20260912T013423Z",
+  "run_id": "20260912T233055Z",
+  "env": {
+    "python": "3.13.15",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.0",
+    "scipy": "1.18.1"
+  },
+  "traffic_zip_count": 73,
+  "downloads": 0,
+  "final_oos_executed": false,
+  "input_checks": {
+    "traffic_avc040_daily_2019plus.csv": true,
+    "dmr_ok0026701_001_mgd.csv": true
+  },
+  "checks": {
+    "candidate_id": true,
+    "mode": true,
+    "program_version": true,
+    "spec_hash": true,
+    "code_combined": true,
+    "periods": true,
+    "target": true,
+    "component_order": true,
+    "component_shas": true,
+    "price_sha": true,
+    "eval": true,
+    "models": true,
+    "baseline_reference": true,
+    "failures_visible": true,
+    "internal_artifacts": true,
+    "final_oos": true,
+    "summary_keys": true,
+    "all_done": true,
+    "library_versions": true,
+    "prediction_files": true,
+    "predictions_baseline.csv": true,
+    "predictions_baseline.csv:dates_targets": true,
+    "predictions_baseline.csv:is_only": true,
+    "predictions_cai_equal.csv": true,
+    "predictions_cai_equal.csv:dates_targets": true,
+    "predictions_cai_equal.csv:is_only": true,
+    "predictions_cai_learned.csv": true,
+    "predictions_cai_learned.csv:dates_targets": true,
+    "predictions_cai_learned.csv:is_only": true,
+    "predictions_market.csv": true,
+    "predictions_market.csv:dates_targets": true,
+    "predictions_market.csv:is_only": true,
+    "predictions_market_cai_equal.csv": true,
+    "predictions_market_cai_equal.csv:dates_targets": true,
+    "predictions_market_cai_equal.csv:is_only": true,
+    "predictions_market_cai_learned.csv": true,
+    "predictions_market_cai_learned.csv:dates_targets": true,
+    "predictions_market_cai_learned.csv:is_only": true
+  },
+  "match": true,
+  "spec_hash": "5a3d717f679f25247c398b981e974e7cc6d0028374308ff9902c93c241189dd1",
+  "code_combined": "79aff9062f62025bd58dbecd6979ca1745dd16d253293f6af86660452a12a67a",
+  "models": [
+    {
+      "id": "baseline",
+      "status": "done",
+      "train_rows": 753,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.5265306122448979,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5272244355909695,
+        "log_loss": 0.6917397380550647,
+        "brier": 0.24929660800474635
+      },
+      "weights": null
+    },
+    {
+      "id": "market",
+      "status": "done",
+      "train_rows": 753,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.49795918367346936,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5299538092381091,
+        "log_loss": 0.6942044930647336,
+        "brier": 0.25056289770352086
+      },
+      "weights": null
+    },
+    {
+      "id": "cai_equal",
+      "status": "done",
+      "train_rows": 753,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.5265306122448979,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5397266953043411,
+        "log_loss": 0.6940970733423146,
+        "brier": 0.25045178748803515
+      },
+      "weights": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "cai_learned",
+      "status": "done",
+      "train_rows": 753,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.4897959183673469,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5395618370620626,
+        "log_loss": 0.6964364252260622,
+        "brier": 0.2516384402921688
+      },
+      "weights": [
+        1.7347234759768074e-17,
+        1.0
+      ]
+    },
+    {
+      "id": "market_cai_equal",
+      "status": "done",
+      "train_rows": 753,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.4897959183673469,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5437023147201182,
+        "log_loss": 0.6966057553168867,
+        "brier": 0.25172567010500824
+      },
+      "weights": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "market_cai_learned",
+      "status": "done",
+      "train_rows": 753,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.4775510204081633,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5421704591877512,
+        "log_loss": 0.6983817099211151,
+        "brier": 0.2526057346667137
+      },
+      "weights": [
+        1.7347234759768074e-17,
+        1.0
+      ]
+    }
+  ],
+  "pilot_eval_dates_targets_match": {
+    "predictions_baseline.csv": true,
+    "predictions_cai_equal.csv": true,
+    "predictions_cai_learned.csv": true,
+    "predictions_market.csv": true,
+    "predictions_market_cai_equal.csv": true,
+    "predictions_market_cai_learned.csv": true
+  },
+  "pilot_train_rows": {
+    "baseline": 507,
+    "market": 507,
+    "cai_equal": 507,
+    "cai_learned": 507,
+    "market_cai_equal": 507,
+    "market_cai_learned": 507
+  },
+  "self_check": "genuine match; corrupted status/metrics/weights rejected"
+}

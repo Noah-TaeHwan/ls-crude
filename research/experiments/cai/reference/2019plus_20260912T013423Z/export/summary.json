@@ -1,0 +1,287 @@
+{
+  "run_id": "20260912T013423Z",
+  "generated_at": "2026-09-12T01:34:23Z",
+  "candidate_id": "091-cai-pilot-traffic-dmr-2019",
+  "mode": "RETROSPECTIVE_RESEARCH",
+  "program_version": "cai-exp/0.1.0",
+  "spec_hash": "5a3d717f679f25247c398b981e974e7cc6d0028374308ff9902c93c241189dd1",
+  "code_combined": "79aff9062f62025bd58dbecd6979ca1745dd16d253293f6af86660452a12a67a",
+  "env": {
+    "python": "3.13.15",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.0",
+    "scipy": "1.18.1"
+  },
+  "periods": {
+    "is": [
+      "2015-01-01",
+      "2023-12-31"
+    ],
+    "train_end": "2020-12-31",
+    "val": [
+      "2021-01-01",
+      "2023-12-31"
+    ],
+    "horizon_safe_train": "labels crossing the validation boundary excluded from training"
+  },
+  "target": {
+    "kind": "next_n_trading_days_up",
+    "horizon_days": 5
+  },
+  "component_order": [
+    "traffic_avc040_daily_2019plus",
+    "dmr_ok0026701_001_mgd"
+  ],
+  "component_shas": {
+    "traffic_avc040_daily_2019plus": "c9522c2335b128cff711d3fced52832db9f92e2abc56694ea5f0a57d9c756302",
+    "dmr_ok0026701_001_mgd": "251aa9e6e60a2d7c16c9330776c6662117156230a48cbe004a9640907ead61be"
+  },
+  "price_sha": "ea70f9340b17081a037fa3f4cd0ed12810a67cea781e5779127eb651afd56171",
+  "eval": {
+    "primary": "log_loss (secondary: accuracy, brier)",
+    "common_eval": {
+      "n": 245,
+      "start": "2023-01-03",
+      "end": "2023-12-21"
+    },
+    "note": "model comparison uses identical eval dates/target/inputs; probability output is not a reliability claim"
+  },
+  "models": [
+    {
+      "id": "baseline",
+      "model": "baseline_up_rate",
+      "status": "done",
+      "seed": 7,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.5265306122448979,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5272244355909695,
+        "log_loss": 0.6917397380550647,
+        "brier": 0.24929660800474635
+      },
+      "train_rows": 753,
+      "weights": null,
+      "coefficients": null,
+      "notes": "constant train-period up rate",
+      "reason": null,
+      "cached": false
+    },
+    {
+      "id": "market",
+      "model": "market_only_logit",
+      "status": "done",
+      "seed": 7,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.49795918367346936,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5299538092381091,
+        "log_loss": 0.6942044930647336,
+        "brier": 0.25056289770352086
+      },
+      "train_rows": 753,
+      "weights": null,
+      "coefficients": {
+        "features": [
+          "rsi14",
+          "ret_5d"
+        ],
+        "coefficients": [
+          -0.017610978717804503,
+          0.2297436205625456
+        ],
+        "intercept": 0.10866382715696672,
+        "scaler_mean": [
+          50.74989490653107,
+          -0.003299806018775476
+        ],
+        "scaler_scale": [
+          12.933717364402439,
+          0.05261282700535567
+        ],
+        "note": "coefficients apply to scaled inputs (x - mean) / scale"
+      },
+      "notes": "features=['rsi14', 'ret_5d']",
+      "reason": null,
+      "cached": false
+    },
+    {
+      "id": "cai_equal",
+      "model": "cai_equal_logit",
+      "status": "done",
+      "seed": 7,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.5265306122448979,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5397266953043411,
+        "log_loss": 0.6940970733423146,
+        "brier": 0.25045178748803515
+      },
+      "train_rows": 753,
+      "weights": [
+        0.5,
+        0.5
+      ],
+      "coefficients": {
+        "features": [
+          "cai"
+        ],
+        "coefficients": [
+          -0.12300992276910236
+        ],
+        "intercept": 0.10939682848845657,
+        "scaler_mean": [
+          52.33369964185634
+        ],
+        "scaler_scale": [
+          9.879765026834454
+        ],
+        "note": "coefficients apply to scaled inputs (x - mean) / scale"
+      },
+      "notes": "",
+      "reason": null,
+      "cached": false
+    },
+    {
+      "id": "cai_learned",
+      "model": "cai_learned_logit",
+      "status": "done",
+      "seed": 7,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.4897959183673469,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5395618370620626,
+        "log_loss": 0.6964364252260622,
+        "brier": 0.2516384402921688
+      },
+      "train_rows": 753,
+      "weights": [
+        1.7347234759768074e-17,
+        1.0
+      ],
+      "coefficients": {
+        "features": [
+          "cai"
+        ],
+        "coefficients": [
+          -0.14491432667292967
+        ],
+        "intercept": 0.10943614961968409,
+        "scaler_mean": [
+          50.930870021078356
+        ],
+        "scaler_scale": [
+          15.817051125950867
+        ],
+        "note": "coefficients apply to scaled inputs (x - mean) / scale"
+      },
+      "notes": "simplex weights (w>=0, sum=1) learned on the training segment",
+      "reason": null,
+      "cached": false
+    },
+    {
+      "id": "market_cai_equal",
+      "model": "market_cai_equal_logit",
+      "status": "done",
+      "seed": 7,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.4897959183673469,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5437023147201182,
+        "log_loss": 0.6966057553168867,
+        "brier": 0.25172567010500824
+      },
+      "train_rows": 753,
+      "weights": [
+        0.5,
+        0.5
+      ],
+      "coefficients": {
+        "features": [
+          "rsi14",
+          "ret_5d",
+          "cai"
+        ],
+        "coefficients": [
+          -0.02771263278297695,
+          0.24241541109379836,
+          -0.13381061446084322
+        ],
+        "intercept": 0.10941814531053301,
+        "scaler_mean": [
+          50.74989490653107,
+          -0.003299806018775476,
+          52.33369964185634
+        ],
+        "scaler_scale": [
+          12.933717364402439,
+          0.05261282700535567,
+          9.879765026834454
+        ],
+        "note": "coefficients apply to scaled inputs (x - mean) / scale"
+      },
+      "notes": "market features ['rsi14', 'ret_5d'] + CAI",
+      "reason": null,
+      "cached": false
+    },
+    {
+      "id": "market_cai_learned",
+      "model": "market_cai_learned_logit",
+      "status": "done",
+      "seed": 7,
+      "metrics": {
+        "n": 245,
+        "accuracy": 0.4775510204081633,
+        "up_rate_true": 0.5265306122448979,
+        "up_rate_pred": 0.5421704591877512,
+        "log_loss": 0.6983817099211151,
+        "brier": 0.2526057346667137
+      },
+      "train_rows": 753,
+      "weights": [
+        1.7347234759768074e-17,
+        1.0
+      ],
+      "coefficients": {
+        "features": [
+          "rsi14",
+          "ret_5d",
+          "cai"
+        ],
+        "coefficients": [
+          -0.03050587134264933,
+          0.23677524175515594,
+          -0.14336654086364445
+        ],
+        "intercept": 0.10902446370821056,
+        "scaler_mean": [
+          50.74989490653107,
+          -0.003299806018775476,
+          50.930870021078356
+        ],
+        "scaler_scale": [
+          12.933717364402439,
+          0.05261282700535567,
+          15.817051125950867
+        ],
+        "note": "coefficients apply to scaled inputs (x - mean) / scale"
+      },
+      "notes": "market features ['rsi14', 'ret_5d'] + CAI; simplex weights (w>=0, sum=1) learned on the training segment",
+      "reason": null,
+      "cached": false
+    }
+  ],
+  "baseline_reference": {
+    "metrics": null,
+    "status": null
+  },
+  "failures_visible": true,
+  "internal_artifacts": "run_state.json, provenance.json, predictions_*.csv (internal/ only)",
+  "final_oos": "locked and not executed by this program"
+}

@@ -1,0 +1,78 @@
+[
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0026701.json",
+    "sha256": "c525965d2c9fa0f93964091531c1e274379e8ca47c31bbaa1c6aae80c3ed75c0"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0043320.json",
+    "sha256": "567fbe8f153633cd6f6c9c0c0685b1cae89db8c27a46315d5663cbae43696150"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0044598.json",
+    "sha256": "36a296f30abaa1b178ee2d93faf71bf6e47c27a545ca0e0224048850d9f1fdfb"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0044768.json",
+    "sha256": "e293a8f7ec608cd2875d5a6899db4fbf4df1586fa3d0d0d2efa0780db17f08ee"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0045641.json",
+    "sha256": "48e1436667025817a3785d4dff623e90ec3293fd1d9484ed62fa2f580e1f7ced"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0100374.json",
+    "sha256": "f2278b9172d6d3db303dd1eeb4e1a058cf159998d331e9bb35c8173057eead9d"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKG270018.json",
+    "sha256": "1c25131db1299e851a25bf4c3ca4870687a9d114fdd5c097bf55aa2cc9a6eccd"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKG270057.json",
+    "sha256": "4ffc4a429a0664acc7988b60e3ad41e605004ce55f3c6f18a7e67b9c458cc1f2"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKG340020.json",
+    "sha256": "8564605ceadf268dff14e755b8c27d6fd99d3c269041eaf4570e9dd7ad25b0f3"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKG340050.json",
+    "sha256": "c9ef9065500191312a6c27174d6b9d4467e8a34f29ceacc50da6d7572d19bcc6"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKG950028.json",
+    "sha256": "6412affa0ba39f04f5a652c09378d0deb1ed6c22b192a10179b59ee097a85cca"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR05FA05.json",
+    "sha256": "fbd0e7a61aca56d65cb4df55806916e4adb390232b24f5fba23a176631f2ec1c"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR10F01J.json",
+    "sha256": "3c0d5a20afb71ac33cf956260966f09473c8a1dd3c55d38eae19ddec4e5820ab"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR10F024.json",
+    "sha256": "4df5ab7e3722b687d9c70d11f86acc245c48a4345f69a89da1acefa0980bab1e"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR10F034.json",
+    "sha256": "ec145f7932e8abd50c9f60ce5ef697fdde4f2140ee6c33cdb587961d9ef6c8ee"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR10F03H.json",
+    "sha256": "66ee12ad44f588c7fec88b77a848182cee8e7165353c701d594194a8a8ba8512"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR10I023.json",
+    "sha256": "10a5c99dda3685caf180a9b28cddc9372829d645a4df62174b808ab8014296a5"
+  },
+  {
+    "path": "research/gathering/raw/091-cushing-dmr/dmr_OKU000852.json",
+    "sha256": "d6f4ce224955339a6e6c50606997f6aabc7ef04cc0ea4d61d57d98bf6b1d3d6c"
+  },
+  {
+    "path": "research/gathering/raw/WTI-CLF-IS/20260907T064937Z/CLF_daily_2015-2023.csv",
+    "sha256": "89c3a04c994d374131dac431561511a196cc19c4029f5f7a9103ba29d2c85d7f"
+  }
+]

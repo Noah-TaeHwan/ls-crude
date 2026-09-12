@@ -1,7 +1,7 @@
 import { useMemo, useState, type ReactNode } from "react";
 
 import { ExperimentResults } from "~/components/cai/experiment-results";
-import { deltaLogLossVsMarket, type ExperimentSummary } from "~/lib/experiment-summary";
+import { deltaLogLossVsMarket, type ExperimentSummary, type SampleExpansion } from "~/lib/experiment-summary";
 import bundledWorkflowJson from "../../data/research-workflow.json";
 
 /** 후보 수집 가능성 분류. 정본 JSON category와 같다. */
@@ -367,6 +367,10 @@ function easyExperimentName(label: string): string {
  * @returns 두 조합과 평가 일수 설명.
  */
 function comparisonCopy(summary: ExperimentSummary): { result: string } {
+  const representative = summary.sample_expansion;
+  if (representative?.models?.length) {
+    return { result: `대표 사례는 2019년 교통자료를 보강한 교통+유량 실험입니다. 학습 ${representative.after_train_rows}행과 평가 ${representative.eval.n}행을 사용했습니다.` };
+  }
   const first = summary.experiments[0];
   const evalN = first?.eval.n;
   const year = first?.eval.start.slice(0, 4);
@@ -391,6 +395,33 @@ function comparisonCopy(summary: ExperimentSummary): { result: string } {
 }
 
 /**
+ * 기존 요약의 보강 실험에서 시장정보에 CAI를 추가한 비교만 앞에 보여준다.
+ * @param props 이미 공개된 표본 보강 요약.
+ * @returns 대표 결과표. 모든 수치는 기존 모델 지표에서 계산한다.
+ */
+function RepresentativeComparison({ block }: { block: SampleExpansion }) {
+  const market = block.models.find((model) => model.id === "market");
+  if (!market || !Number.isFinite(market.after.log_loss)) return null;
+  const ids = ["baseline", "market", "market_cai_equal", "market_cai_learned"];
+  const rows = ids.flatMap((id) => block.models.filter((model) => model.id === id));
+  return <div data-representative-comparison className="mt-4">
+    <p className="text-sm leading-7 text-muted-foreground">{block.eval.start}–{block.eval.end}의 같은 평가 표본입니다. 가장 최근 완료한 입력 보강을 대표로 설명하며, 좋은 성과를 골라낸 것이 아닙니다.</p>
+    <div className="mt-3 overflow-x-auto" role="region" aria-label="대표 실험 결과, 작은 화면에서는 가로로 스크롤" tabIndex={0}>
+      <table className="w-full min-w-[30rem] border-collapse text-sm">
+        <caption className="sr-only">교통+유량 2019 보강 대표 비교</caption>
+        <thead><tr className="border-b border-border text-left text-xs text-muted-foreground"><th scope="col" className="py-3 pr-4">모델</th><th scope="col" className="py-3 pr-4">확률오차 · log loss ↓</th><th scope="col" className="py-3">CAI 추가 차이</th></tr></thead>
+        <tbody>{rows.map((row) => {
+          const valid = Number.isFinite(row.after.log_loss);
+          const delta = row.after.log_loss - market.after.log_loss;
+          return <tr key={row.id} data-representative-model={row.id} className="border-b border-border/60"><th scope="row" className="py-3 pr-4 text-left font-normal">{row.label}</th><td className="py-3 pr-4 font-mono">{valid ? row.after.log_loss.toFixed(6) : "—"}</td><td className="py-3 font-mono">{valid && row.id.startsWith("market_cai") ? `${delta >= 0 ? "+" : ""}${delta.toFixed(6)}` : "—"}</td></tr>;
+        })}</tbody>
+      </table>
+    </div>
+    <p className="mt-3 text-xs leading-6 text-muted-foreground">확률오차는 낮을수록 좋습니다. 추가 차이 = 시장정보+CAI − 시장정보만. 양수는 악화입니다. 단순 상승률 기준선과도 함께 비교합니다.</p>
+  </div>;
+}
+
+/**
  * 단계 6의 공유 문장. 재현 상태와 표본은 요약 값만 쓴다.
  * @param summary 실험 요약.
  * @param improved 파일럿 조합에서 시장 대비 개선이 있었는지.
@@ -406,7 +437,13 @@ function shareCopy(
   const trainAfter = summary.sample_expansion?.after_train_rows;
   const trainBefore = summary.sample_expansion?.before_train_rows;
   const evalBit = evalN === undefined ? "평가 일수는 미확인입니다." : `평가 ${evalN}일입니다.`;
-  const pilotBit = improved
+  const expansion = summary.sample_expansion;
+  const expansionMarket = expansion?.models?.find((row) => row.id === "market");
+  const additions = expansion?.models?.filter((row) => row.id === "market_cai_equal" || row.id === "market_cai_learned");
+  const representativeImproved = expansionMarket && additions?.length === 2
+    ? additions.some((row) => row.after.log_loss < expansionMarket.after.log_loss)
+    : improved;
+  const pilotBit = representativeImproved
     ? "이번 조합에서 CAI를 추가했을 때 확률오차가 줄어든 비교가 있습니다."
     : "이번 조합에서는 CAI를 추가해도 확률오차가 줄지 않았습니다.";
   const expansionBit =
@@ -417,7 +454,7 @@ function shareCopy(
     ? " 성찬님의 독립 재현은 아직 확인되지 않았습니다."
     : ` 독립 재현 상태는 ${reproduction}입니다.`;
   return {
-      result: `${pilotBit}${reproBit}`,
+    result: `${pilotBit}${reproBit}`,
     detail: `${evalBit}${expansionBit} 공식 CAI와 미래 예측은 성분·산식·검증을 마친 뒤 연결합니다.`,
   };
 }
@@ -576,6 +613,7 @@ export function ResearchWorkflow({
           <details className="mt-4 border-y border-border py-2">
             <summary className="min-h-11 cursor-pointer py-3 text-sm">실험 입력 보기</summary>
             <div className="space-y-2 pb-4 text-sm leading-7 text-muted-foreground">
+              <p>교통은 쿠싱 인근 도로의 전체 차량 수이며 원유 트럭만 센 값이 아닙니다. 유량은 South STP 한 시설의 월별 신고값이며 원유 펌핑량이나 도시 전체 용수 사용량이 아닙니다.</p>
               <p>최초 교통 단독 실험은 공유된 교통량 입력을 썼고, 그다음 2019년분 교통량을 추가해 다시 비교했습니다. 두 입력은 별도로 보관합니다.</p>
               <p>
                 하수처리장 신고 유량의 이용 가능일은 접수일을 기준으로 가정한 값입니다. 접수일을 실제 최초 공개일로 볼 수는 없습니다. 실제 공개일은 확인되지 않았습니다.
@@ -610,8 +648,15 @@ export function ResearchWorkflow({
             </p>
           ) : (
             <div>
+            {experiments.sample_expansion?.models?.length ? <RepresentativeComparison block={experiments.sample_expansion} /> : null}
             <details className="mt-4 border-y border-border py-2">
               <summary className="min-h-11 cursor-pointer py-3 text-sm">비교 방법 보기</summary>
+              <div className="space-y-2 pb-4 text-sm leading-7 text-muted-foreground">
+                <p>성분 점수는 학습 구간의 평균·표준편차로 표준화하고 ±3 범위를 0–100으로 옮긴 상대값입니다. 시설 가동률이나 유가 상승 확률이 아닙니다.</p>
+                <p>동일가중 CAI는 교통·유량 점수의 평균입니다. 학습가중 CAI는 학습 구간의 WTI 정답을 사용한 조합이며, 실제 활동을 더 정확히 측정한다는 보증이 아닙니다.</p>
+                <p>실제 고정 설정은 2020년까지 학습, 2021–2023년 평가 후보입니다. 자료와 정답이 함께 있는 공통 평가 표본은 2023년에 남았습니다. 시장정보는 RSI14·5일 수익률입니다.</p>
+                <p>학습가중치는 CAI 단독 목적함수로 구합니다. 시장정보와 공동으로 최적화한 가중치는 아닙니다. 5거래일 정답 창이 겹치므로 평가 행은 독립 시행 수가 아닙니다.</p>
+              </div>
               <ul className="list-disc space-y-1 pb-4 pl-5 text-sm leading-7 text-muted-foreground">
                 {experiments.experiments.map((experiment) => (
                   <li key={experiment.id} data-workflow-pilot={experiment.id}>
@@ -624,13 +669,14 @@ export function ResearchWorkflow({
             <details id="team-work" className="mt-3 border-y border-border py-2">
               <summary className="min-h-11 cursor-pointer py-3 text-sm">공동 작업·재현 안내</summary>
               <div className="space-y-5 pb-5 text-sm leading-7">
-                <p>같은 입력으로 기준 결과를 맞춘 뒤 맡은 비교를 진행합니다. 다음 분담은 성찬님과 공유할 작업안입니다.</p>
+                <p>대표 보강 실험의 입력 생성부터 지표·가중치·예측 대조까지 안내를 연결했습니다. 같은 환경의 재현과 성찬님의 독립 재현은 구분합니다. 다음 분담은 성찬님과 공유할 작업안입니다.</p>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div><h3 className="font-semibold">태환 · 입력과 기준선</h3><p className="mt-2 text-muted-foreground">자료 수집·전처리·입력 버전을 정리하고 시장정보와 동일 가중치 기준 결과를 준비합니다. 결과를 화면에 연결합니다.</p></div>
                   <div><h3 className="font-semibold">성찬 · 재현과 모델 비교</h3><p className="mt-2 text-muted-foreground">같은 입력으로 결과를 재현합니다. 측정 의미와 시점을 검토하고 학습 가중치·모델 비교에서 바꿀 조건을 함께 정합니다.</p></div>
                 </div>
                 <p className="text-muted-foreground">33개 모두 수집 준비가 끝난 것은 아닙니다. 새 후보는 자료의 지역·기간·접근 조건부터 확인합니다.</p>
                 <a className="source-link" href="/cai-team-workflow.md" download>성찬님 공유용 작업 가이드 받기</a>
+                <a className="source-link sm:ml-5" href="/cai-research-brief.html" download>연구 요약 받기 · 오프라인</a>
               </div>
             </details>
             </div>
@@ -650,6 +696,7 @@ export function ResearchWorkflow({
             <summary className="min-h-11 cursor-pointer py-3 text-sm">실험 결과 자세히 보기</summary>
             <div className="pb-2">
               {share ? <p className="mb-3 text-sm leading-7 text-muted-foreground">{share.detail}</p> : null}
+              <p className="mb-4 text-sm leading-7 text-muted-foreground">이 결론은 현재 교통·신고 유량 조합을 시장정보에 추가한 회고 비교에 한정됩니다. 모든 대안 데이터가 쓸모없다는 뜻은 아닙니다. 다음 판단은 측정 대표성·당시 공개시점·독립 재현부터입니다.</p>
               <p className="mb-4 text-sm leading-7 text-muted-foreground">성분·산식·최신 입력과 검증이 준비되면 공식 CAI를 대시보드에 연결합니다. <a className="source-link" href="/">대시보드 보기</a></p>
               {experiments === null ? (
                 <p className="text-sm text-muted-foreground">실험 표를 표시할 요약이 없습니다.</p>

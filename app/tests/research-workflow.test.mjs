@@ -297,6 +297,27 @@ describe("ResearchWorkflow 렌더", () => {
   });
 
 describe("정본 research-workflow.json", () => {
+  it("대표 실험의 실제 지표와 추가 비교를 표시하고 새 결과에서 결론을 갱신한다", () => {
+    const experiments = JSON.parse(readFileSync(join(appDir, "data", "cai-experiment-summary.json"), "utf8"));
+    const html = render({ workflow: workflow(), experiments });
+    const block = experiments.sample_expansion;
+    const byId = Object.fromEntries(block.models.map((row) => [row.id, row]));
+    assert.match(html, /data-representative-comparison/);
+    assert.match(html, new RegExp(`학습 ${block.after_train_rows}행과 평가 ${block.eval.n}행`));
+    for (const id of ["baseline", "market", "market_cai_equal", "market_cai_learned"]) {
+      assert.ok(html.includes(`data-representative-model="${id}"`));
+      assert.ok(html.includes(byId[id].after.log_loss.toFixed(6)));
+    }
+    assert.ok(html.includes((byId.market_cai_equal.after.log_loss - byId.market.after.log_loss).toFixed(6)));
+    assert.match(html, /cai-research-brief\.html/);
+    assert.match(html, /원유 트럭만 센 값이 아닙니다/);
+    assert.match(html, /독립 시행 수가 아닙니다/);
+    byId.market_cai_equal.after.log_loss = byId.market.after.log_loss - 0.01;
+    const improved = render({ workflow: workflow(), experiments });
+    assert.match(improved, /확률오차가 줄어든 비교가 있습니다/);
+    assert.doesNotMatch(improved, /이번 조합에서는 CAI를 추가해도 확률오차가 줄지 않았습니다/);
+  });
+
   it("정본 배열 길이로 106·33과 분류를 그린다", () => {
     assert.equal(existsSync(jsonPath), true, "research-workflow.json must exist");
     const parsed = parseResearchWorkflow(JSON.parse(readFileSync(jsonPath, "utf8")));
