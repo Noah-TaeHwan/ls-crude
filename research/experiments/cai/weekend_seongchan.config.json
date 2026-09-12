@@ -1,0 +1,63 @@
+{
+  "spec_version": 1,
+  "candidate_id": "091-cai-exp-sc",
+  "preregistered_at": "2026-09-11T18:00:00+09:00",
+  "preregistration_note": "Seongchan bundle: learned-weight CAI + equal-weight comparison (blocked until an eligible component exists; single component => weight learning not forced).",
+  "target": {
+    "kind": "next_n_trading_days_up",
+    "horizon_days": 5,
+    "flat_counts_as": "down",
+    "definition": "label = 1 when Close[t+5] > Close[t], else 0; trading days are the confirmed CL=F daily array inside the in-sample window"
+  },
+  "price": {
+    "kind": "price",
+    "path": "research/data/clf-daily-2015-2026.csv",
+    "sha256": "ea70f9340b17081a037fa3f4cd0ed12810a67cea781e5779127eb651afd56171",
+    "date_column": "date",
+    "value_column": "Close"
+  },
+  "components": [],
+  "components_note": "No eligible CAI component yet: LAUE (BLS terms page 403, publication timing unverified) and TMAS (2 monthly samples only) are not modeling inputs. CAI models must stay blocked until a component with a usage/availability basis is pinned here.",
+  "is": {
+    "start": "2015-01-01",
+    "end": "2023-12-31"
+  },
+  "split": {
+    "train_end": "2020-12-31",
+    "val_start": "2021-01-01",
+    "val_end": "2023-12-31"
+  },
+  "market_features": [
+    "rsi14",
+    "ret_5d"
+  ],
+  "models": [
+    "baseline_up_rate",
+    "cai_equal_logit",
+    "cai_learned_logit"
+  ],
+  "limits": {
+    "max_configs": 12,
+    "max_workers": 2,
+    "max_seconds": 7200
+  },
+  "seeds": [
+    7
+  ],
+  "quality": {
+    "nonpositive_close": "exclude_as_missing",
+    "note": "Added 2026-09-11 before any model result was produced (validation caught the 2020-04-20 negative WTI settlement). Non-positive closes are excluded as missing observations; labels whose forward window includes one are dropped; never filled or floored."
+  },
+  "decision_rules": {
+    "primary_metric": "log_loss on the shared validation index (2021-01-01..2023-12-31)",
+    "secondary_metrics": [
+      "accuracy",
+      "brier"
+    ],
+    "comparison": "same eval dates, same target, same common inputs; deltas vs baseline_up_rate",
+    "selection": "no model is selected for production from this dev run; final OOS stays locked",
+    "single_component_rule": "learned CAI weights are not forced when only one component exists; that case is reported as a single-component baseline, never as a synthetic CAI"
+  },
+  "notes": "Real inputs only: WTI CL=F daily from the repo's fixed price source. Out-of-sample 2024+ is never read by the runner.",
+  "mode": "RETROSPECTIVE_RESEARCH"
+}
