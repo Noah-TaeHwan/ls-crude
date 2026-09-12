@@ -3,7 +3,7 @@
   "kind": "retrospective_experiment_summary",
   "generated_at_utc": "2026-09-12T01:35:35Z",
   "code_fingerprint": "79aff9062f62",
-  "disclosure": "2023년 회고 평가 요약입니다. 실시간 예측·운영 지수·공식 CAI 채택이 아니며, 독립 재현과 외부 게시는 아직 완료되지 않았습니다.",
+  "disclosure": "2023년 회고 평가 요약입니다. 실시간 예측·운영 지수·공식 CAI 채택이 아니며, 공식 현재 지수·미래 확률·독립 재현은 아직 완료되지 않았습니다.",
   "review_status": {
     "self_check": true,
     "independent_reproduction": "pending"
@@ -545,7 +545,7 @@
   "limitations": [
     "2023년 한 해 회고 평가이며 최종 OOS는 열지 않았습니다.",
     "DMR은 ECHO 접수일 기준이며 외부 공개일은 확인되지 않았습니다.",
-    "표본이 작고(train 507/905, val 245) DMR 원관측은 월별 85건입니다.",
+    "초기 파일럿 학습은 507/905행, 2019 보강은 753행, 평가는 245행입니다. DMR 원관측은 월별 85건이며 반복 사용한 행과 구분합니다.",
     "재사용 기간 비교(62/31일)는 공통 날짜의 DMR 값이 동일해 학습 표본 차이만 반영합니다.",
     "CAI 추가는 두 실험 모두 확률오차(log loss)를 개선하지 못했습니다."
   ],

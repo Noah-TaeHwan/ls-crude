@@ -4,6 +4,16 @@
 `execution/catalog.json`, 제품 요구는 `WEBSITE_PLAN.md`, 구현 인터페이스는
 `execution/contracts/PUBLIC_VIEW.md`. 진행 상태를 이 파일에 복제하지 않는다.
 
+## 현재 — 연구 기준·대표 재현·설명 연결 (2026-09-13)
+
+- 재개 입구: [연구 브리프](RESEARCH_BRIEF.md) → [2019 보강 재현](../../research/experiments/cai/REPRODUCE_2019.md) → 작업 원장 REP-02.
+- 대표 기존 run `20260912T013423Z`; 이번 같은 환경 재현 `20260912T233055Z`. 입력2종·모델6종 전체 결과·내부 예측 exact match, 학습753/평가245. 원출처 재취득·성찬님 독립 재현은 미실행.
+- 원래 기획의 2021년 학습 종료와 실제 고정 config의 2020년 종료 차이를 표시했다. 이전 기획 일정만으로 최종 OOS를 실행하지 않는다.
+- DATA-01은 성분 채택·대표성·공개 적격성만 REVIEW. 완료된 TMAS 보강·DMR 문서 조사를 다음 행동에서 제거했다. OPS-01은 읽기 진단 DONE이며 CI 결제 복구와 별개다. UI-06 현재 지수·미래 확률은 TODO 유지.
+- 개발서버: `/Users/noah/orca/ls-crude/app`, http://127.0.0.1:5173/ — 사용자 확인용 **유지 대상**. 새 원본/모델 실험·메시지 발송 없음.
+- 오프라인 요약은 `python3 research/scripts/build_cai_research_brief.py`로 공개 요약·고정 config에서 재생성하고 `--check`로 대조한다.
+- 아래 “현재” 절들은 제목의 날짜·배치 당시 역사다. 최신 next_action으로 재실행하지 않는다.
+
 ## 현재 — 배치 P/Q: 2019 보강 실험 + 로컬 현황 화면 (2026-09-12)
 
 - **2019 보강(로컬)**: TMAS AVC040 2019 12개월 335,158,128B → 누적 1,670,449,699B(2GiB). 2019 결측 7일

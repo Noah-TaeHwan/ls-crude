@@ -42,16 +42,17 @@
 
 ## 5단계: 성찬님이 먼저 재현할 실험
 
-처음에는 이미 끝낸 **교통+DMR 파일럿 한 건**을 같은 조건으로 맞춥니다. 다른 결과를 억지로 기존 숫자에 맞추지 않습니다. 입력이나 원출처 버전이 다르면 그 차이를 먼저 남깁니다.
+처음에는 이미 끝낸 **2019년 교통자료 보강 교통+DMR 실험 한 건**을 같은 조건으로 맞춥니다. 다른 결과를 억지로 기존 숫자에 맞추지 않습니다. 입력이나 원출처 버전이 다르면 그 차이를 먼저 남깁니다.
 
 - 저장소: https://github.com/Noah-TaeHwan/ls-crude 의 현재 `main`
-- 연구 기준 코드: `f450cdd`에 통합된 실험 프로그램(이후 웹 개편과 구분)
-- 환경·입력 생성 설명: `research/DELIVERY.md`, `research/experiments/cai/REPRODUCE_PILOT.md`, `REPRODUCE_SENS.md`
-- 설정: `research/experiments/cai/pilot_retro_traffic_dmr.config.json`
-- 참조: `research/experiments/cai/reference/pilot_20260911T130219Z/export/summary.json`
+- 연구 기준 코드: `f450cdd`에 통합된 실험 프로그램(이후 웹 개편과 구분). 실행 코드 fingerprint는 재현 안내와 대조합니다.
+- 대표 연구 설명: `docs/cai/RESEARCH_BRIEF.md` 또는 웹의 오프라인 연구 요약.
+- 환경·입력 생성·완전 대조: `research/DELIVERY.md`, `research/experiments/cai/REPRODUCE_2019.md`. 초기 파일럿·민감도는 `REPRODUCE_PILOT.md`·`REPRODUCE_SENS.md`에 보존합니다.
+- 설정: `research/experiments/cai/pilot_retro_traffic_dmr_2019.config.json`
+- 참조: `research/experiments/cai/reference/2019plus_20260912T013423Z/export/summary.json`
 - 모델: 학습기간 상승률 기준선, 시장정보만, CAI 동일 가중치, CAI 학습 가중치, 시장정보+동일 CAI, 시장정보+학습 CAI
 - 정답: 이후 **5거래일 WTI 상승 여부**. 보합은 하락과 함께 분류합니다.
-- 실제 파일럿 학습 507행·평가 245행. 설정의 평가 범위는 2021–2023이지만 공통 유효 평가 표본은 2023년입니다.
+- 대표 보강 실험 학습 753행·평가 245행. 실제 설정은 2020년까지 학습합니다. 설정의 평가 범위는 2021–2023이지만 공통 유효 평가 표본은 2023년입니다.
 
 기존 공유 문서의 `share/cai-exp-0.1.0`은 과거 브랜치명입니다. 현재는 `main`에 통합되어 있습니다. 작업 중인 코드가 있다면 보존하고 별도 깨끗한 체크아웃에서 재현하세요.
 
@@ -75,27 +76,27 @@ py -3 -m venv .venv-share
 
 프로젝트는 Python 3.11 이상을 요구하며, 태환 쪽 현재 확인 환경은 Python 3.13.15입니다. 재현 보고에 Python·라이브러리 버전과 운영체제도 남겨 주세요.
 
-허용된 원출처에서 입력을 준비하는 전체 체인은 `REPRODUCE_SENS.md`의 ‘도구와 전체 체인’을 따릅니다. 최종 입력 두 개는 다음 위치·해시와 맞아야 합니다.
+허용된 원출처에서 입력을 준비하는 전체 체인은 `REPRODUCE_2019.md`의 ‘로컬 원자료에서 입력 재생성까지’을 따릅니다. 최종 입력 두 개는 다음 위치·해시와 맞아야 합니다.
 
-- `research/data/processed/091-cai-exp-pilot/inputs/traffic_avc040_daily.csv`
-  - SHA-256: `98d5761ddd9eae80f81abe2f27933fe9b4d600a92672ad4cec2dbb4920ff6ab6`
+- `research/data/processed/091-cai-exp-pilot/inputs/traffic_avc040_daily_2019plus.csv`
+  - SHA-256: `c9522c2335b128cff711d3fced52832db9f92e2abc56694ea5f0a57d9c756302`
 - `research/data/processed/091-cai-exp-pilot/inputs/dmr_ok0026701_001_mgd.csv`
   - SHA-256: `251aa9e6e60a2d7c16c9330776c6662117156230a48cbe004a9640907ead61be`
 
 `research` 디렉터리에서 입력을 검증한 다음 실행합니다. `validate`가 실패하면 입력·설정 차이를 먼저 해결합니다.
 
 ```bash
-.venv-share/bin/python -m ls_crude.experiment.cli validate --config experiments/cai/pilot_retro_traffic_dmr.config.json
-.venv-share/bin/python -m ls_crude.experiment.cli run --config experiments/cai/pilot_retro_traffic_dmr.config.json --base-dir data/processed/cai-seongchan
+.venv-share/bin/python -m ls_crude.experiment.cli validate --config experiments/cai/pilot_retro_traffic_dmr_2019.config.json
+.venv-share/bin/python -m ls_crude.experiment.cli run --config experiments/cai/pilot_retro_traffic_dmr_2019.config.json --base-dir data/processed/cai-seongchan --no-cache
 ```
 
 실행 로그의 `run_dir`를 확인하고, 아래 오른쪽 경로의 `실행결과의_run_id`를 실제 값으로 바꿉니다.
 
 ```bash
-.venv-share/bin/python -m ls_crude.experiment.cli compare --left experiments/cai/reference/pilot_20260911T130219Z --right "data/processed/cai-seongchan/실행결과의_run_id"
+.venv-share/bin/python -m ls_crude.experiment.cli compare --left experiments/cai/reference/2019plus_20260912T013423Z --right "data/processed/cai-seongchan/실행결과의_run_id"
 ```
 
-`compare`는 입력·설정·정답·평가 범위·지표를 대조합니다. 가중치·계수와 예측 배열은 각 결과에서 별도로 확인합니다. 이 실행을 마쳐도 곧바로 공식 CAI 채택이나 독립 미래 검증 완료가 되는 것은 아닙니다.
+`compare`의 전체 match는 입력·설정·타깃 정의·평가 범위·모드 일치만 합산합니다. 지표·상태 비교 출력까지 자동으로 합쳐 성공 판정하지 않으므로, `REPRODUCE_2019.md`의 검증 helper로 지표·가중치·계수·내부 예측 해시까지 대조합니다. 이 실행을 마쳐도 곧바로 공식 CAI 채택이나 독립 미래 검증 완료가 되는 것은 아닙니다.
 
 ### 재현이 맞은 다음
 
@@ -109,7 +110,7 @@ py -3 -m venv .venv-share
 
 교통 2019년분을 추가해 학습 표본이 507→753행으로 늘었고 평가 245행은 같습니다. 시장정보 대비 CAI의 확률오차 차이는 동일 가중치 +0.002401, 학습 가중치 +0.004177로 여전히 악화했습니다. 더 좋아졌다고 발표하지 않습니다.
 
-이 보강 실험의 설정은 `pilot_retro_traffic_dmr_2019.config.json`입니다. 초기 파일럿을 재현한 다음 보강 입력의 별도 해시와 생성 경로를 함께 맞춥니다. 기존 입력 파일을 덮어쓰지 않습니다. 2019 보강의 원출처 취득부터 기대 결과까지 이어지는 전용 재현 안내는 아직 마감되지 않았습니다.
+이 보강 실험의 설정은 `pilot_retro_traffic_dmr_2019.config.json`입니다. 보강 입력의 별도 해시와 생성 경로를 `REPRODUCE_2019.md`에 정리했습니다. 기존 입력 파일을 덮어쓰지 않습니다. 같은 로컬 원자료에서 입력 두 개를 재생성하고 6개 모델의 지표·가중치·계수·내부 예측이 원래 run과 일치함을 확인했습니다. 새 원출처 취득과 성찬님 독립 재현은 여전히 미검증입니다.
 
 ## 6단계와 대시보드의 관계
 

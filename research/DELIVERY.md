@@ -6,7 +6,7 @@
 ## 받는 방법 (택1)
 
 1. 기존 private 저장소의 현재 `main`을 사용합니다. 예전 `share/cai-exp-0.1.0`은 main에 통합된 뒤 삭제됐습니다.
-   최신 작업 순서·분담은 `app/public/cai-team-workflow.md`를 먼저 읽어 주세요.
+   최신 작업 순서·분담은 `app/public/cai-team-workflow.md`를 먼저 읽어 주세요. 대표 실험의 전체 재현은 [REPRODUCE_2019.md](experiments/cai/REPRODUCE_2019.md)입니다.
 2. 전달 tarball(같은 내용): `research/dist/cai-exp-0.1.0.tar.gz`
 
 ## 설치 (프로젝트 루트 기준)
@@ -63,9 +63,9 @@ cd research
 .venv-share/bin/python -m pytest tests/test_experiments.py -q   # 결과의 실제 통과 수를 확인
 ```
 
-## 참조 run (재현 대조용, 집계만 포함)
+## 참조 run (재현 대조용, 행별 예측 제외)
 
-공유 브랜치의 `research/experiments/cai/reference/` 안에 태환 측 shared run 2건의
+현재 main의 `research/experiments/cai/reference/` 안에 태환 측 shared run 2건의
 `export/summary.json`(집계·해시만, 예측 CSV 없음)이 있습니다. 성찬님 실행 후:
 
 ```bash

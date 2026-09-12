@@ -1,10 +1,12 @@
-# 최신 재현 기준 — `share/cai-exp-0.1.0 @ 55ab480`
+# 파일럿·DMR 민감도 역사 재현 — 코드 기준 `55ab480`
 
-성찬님 실행용. 프로젝트 상대경로만 사용합니다. 이 문서는 **공유 저장소에 포함**되어 있으며,
+현재 대표 재현 안내는 [REPRODUCE_2019.md](REPRODUCE_2019.md)입니다. 아래 공유 브랜치 설명은 당시 전달 이력이며 현재 브랜치 존재·배포 상태를 보증하지 않습니다.
+
+성찬님 검토용. 프로젝트 상대경로만 사용합니다. 이 문서는 저장소에 포함되어 있으며,
 `55ab480`의 코드 버전(실행 코드 fingerprint `79aff9062f62`)과 이 문서 자체의 갱신 커밋은 구분됩니다.
 과거 `c9fbba3`은 파일럿·weekend 참조가 공유된 시점의 코드 기준으로 보존합니다(최신 안내의 기준 아님).
 
-## 공유본에 포함된 것 (원격 확인 완료)
+## 당시 공유본 구성 (현재 파일 경로 확인용)
 
 | 구분 | 경로 |
 |---|---|
@@ -48,8 +50,9 @@ cd research
 
 ## compare 범위
 
-- 비교함: spec_hash(config·입력 SHA 포함), price_sha, target, eval 창, mode, 설정별 상태·metrics 원수치.
-- 수동 확인: 가중치·계수·예측 배열(각 run의 `export/summary.json`에 저장되어 있음).
+- 최종 `MATCH` 판정: spec_hash(config·입력 SHA 포함), price_sha, target, 공통 eval 창, mode.
+- 별도 표시: 설정별 상태·metrics 원수치와 `metrics_match`. 상태·metrics 불일치는 현재 compare 종료코드에 포함되지 않으므로 `MATCH`만으로 수치 재현을 판정하지 않습니다.
+- 별도 확인: 가중치·계수는 `export/summary.json`, 행별 예측·정답은 비공개 `internal/predictions_*.csv`에 있습니다. 2019 대표 실험의 전체 일치 검사 명령은 새 안내에 있습니다.
 - 고정 라이브러리(pandas 3.0.5·sklearn 1.9.0·scipy 1.18.1)에서 exact equality를 기대하며,
   불일치는 은폐 없이 보고합니다.
 

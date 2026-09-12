@@ -1,0 +1,35 @@
+{
+  "source_run": "20260912T013423Z",
+  "predictions": {
+    "predictions_baseline.csv": {
+      "sha256": "edef19b05df943b9519907a88cefd2e6f8ce9013fb26d0bcd6522b25fe271c60",
+      "rows": 245,
+      "dates_targets_sha256": "30bff54f99f809625d0678faa29b162b597f61e058dad8b97d32fead442a2a12"
+    },
+    "predictions_cai_equal.csv": {
+      "sha256": "da6864b46f789c3a3eeaccd83108f2452c6765f0d5a94b77f5fb8ce9c7670a1b",
+      "rows": 245,
+      "dates_targets_sha256": "30bff54f99f809625d0678faa29b162b597f61e058dad8b97d32fead442a2a12"
+    },
+    "predictions_cai_learned.csv": {
+      "sha256": "f74a9cb888cd3746ee8db499f34c8191e9f8b3b1d66cbfdf2b3e37f55d1cb8ce",
+      "rows": 245,
+      "dates_targets_sha256": "30bff54f99f809625d0678faa29b162b597f61e058dad8b97d32fead442a2a12"
+    },
+    "predictions_market.csv": {
+      "sha256": "ff34382449a6662b148ee5c1026134dc2b7c2b0dcfcdc676dd552c9f78256ba4",
+      "rows": 245,
+      "dates_targets_sha256": "30bff54f99f809625d0678faa29b162b597f61e058dad8b97d32fead442a2a12"
+    },
+    "predictions_market_cai_equal.csv": {
+      "sha256": "e355cc05689331c08545652dceecedcbe3c0ec6cbec058cf8f072a01b26cf08c",
+      "rows": 245,
+      "dates_targets_sha256": "30bff54f99f809625d0678faa29b162b597f61e058dad8b97d32fead442a2a12"
+    },
+    "predictions_market_cai_learned.csv": {
+      "sha256": "7fb6ec8c9af462b248fcbf90c049e23c19940b53a8936220e8a214a6f370dddd",
+      "rows": 245,
+      "dates_targets_sha256": "30bff54f99f809625d0678faa29b162b597f61e058dad8b97d32fead442a2a12"
+    }
+  }
+}
