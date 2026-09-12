@@ -57,7 +57,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
+    message = error.status === 404 ? "404" : "오류";
     details =
       error.status === 404
         ? "페이지를 찾을 수 없습니다."
@@ -71,7 +71,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     <main className="mx-auto max-w-3xl p-6">
       <h1 className="text-xl font-semibold">{message}</h1>
       <p className="mt-2 text-muted-foreground">{details}</p>
-      <Link className="action-link mt-6" to="/">연구 데스크로 돌아가기</Link>
+      <Link className="action-link mt-6" to="/">대시보드로 돌아가기</Link>
       {stack ? (
         <pre className="mt-4 overflow-x-auto rounded-lg bg-zinc-900 p-4 text-xs">
           <code>{stack}</code>

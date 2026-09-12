@@ -155,7 +155,7 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.match(body, /href="\/research"[^>]*>연구 기록</);
     assert.doesNotMatch(body, /href="\/history"[^>]*>히스토리/);
     assert.match(text, /5일 실현변동성 백분위/);
-    assert.match(text, /후보 비교선은 아직 없습니다/);
+    assert.match(text, /후보 데이터와의 비교는 연구 기록에서/);
     assert.ok(text.includes(String(livePercentile)), "RV5 percentile must come from the actual snapshot");
     assert.match(text, /WTI 원유 가격/);
     for (const label of ["5년", "3년", "1년", "6개월", "3개월", "1개월", "1주일"]) assert.ok(text.includes(label));
@@ -166,6 +166,15 @@ test("serves the public evidence brief routes from the repository root", async (
       .toISOString().slice(0, 16).replace("T", " ");
     assert.ok(text.includes(expectedCheckedAt), "SSR timestamp is explicitly KST");
     assert.doesNotMatch(body, /<form\b/i, "public home must not expose news CRUD forms");
+    assert.doesNotMatch(body, /data-local-status=/, "production home hides the developer monitor");
+    const researchPage = await fetch(`${baseUrl}/research`);
+    const researchHtml = await researchPage.text();
+    assert.equal(researchPage.status, 200);
+    assert.doesNotMatch(researchHtml, /data-local-status=|개발 작업 현황/, "production research hides the developer monitor");
+    assert.equal((await fetch(`${baseUrl}/api/local-status`)).status, 404);
+    const teamGuide = await fetch(`${baseUrl}/cai-team-workflow.md`);
+    assert.equal(teamGuide.status, 200);
+    assert.match(await teamGuide.text(), /33개 전부 수집 가능한 것으로 확인된 것은 아닙니다/);
 
     assert.ok(body.indexOf("data-cai-score") < body.indexOf('id="market"'), "CAI dashboard precedes the WTI market section");
     assert.doesNotMatch(body, /id="visibility-observation"/, "default home shows observations only after case selection");
@@ -184,7 +193,7 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.doesNotMatch(body, /id="tanker-observation"/);
     assert.doesNotMatch(body, /02 \/ FIELD NOTES/);
     assert.doesNotMatch(body, /id="intake"/);
-    assert.match(body, /href="\/research#research-sample"/);
+    assert.match(body, /href="\/research"/);
     assert.doesNotMatch(body, /id="research-sample"/, "home no longer embeds the sample explorer");
     assert.doesNotMatch(body, /aria-label="연구 사례 선택"/);
     assert.match(body, /data-cai-score="none"/);

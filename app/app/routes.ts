@@ -10,4 +10,5 @@ export default [
   route("history", "routes/history.tsx"),
   route("backtest", "routes/backtest.tsx"),
   route("api/local-status", "routes/api.local-status.ts"),
+  route("cai-team-workflow.md", "routes/team-workflow.ts"),
 ] satisfies RouteConfig;

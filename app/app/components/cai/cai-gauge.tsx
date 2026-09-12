@@ -101,7 +101,7 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
           <span className="text-sm text-muted-foreground">
             {asOf === null ? "기준일 확인 중" : `기준일 ${asOf}`}
           </span>
-          <span className="text-xs text-muted-foreground">산출 대기 · 단위 0–100</span>
+          <span className="text-xs text-muted-foreground">0–100점 · 산출 대기</span>
         </div>
       ) : (
         <>
@@ -200,7 +200,7 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
       )}
       <p className="mx-auto mt-2 max-w-2xl text-xs leading-6 text-muted-foreground">
         {compact
-          ? "승인된 산출물이 없어 점수는 —, 바늘은 숨김입니다. 점수는 활동 신호의 수준이며 유가 상승 확률이나 매매 신호가 아닙니다."
+          ? "공식 지수는 준비 중입니다. 점수는 활동 수준을 나타내며 유가 상승 확률이나 매매 신호가 아닙니다."
           : "점수는 활동 신호의 수준이며 유가 상승 확률이나 매매 신호가 아닙니다. 결측이면 —로 표시하고 바늘을 숨깁니다."}
       </p>
     </section>

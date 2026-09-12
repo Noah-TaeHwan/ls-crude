@@ -69,8 +69,13 @@ export default function Home({ loaderData: { market, daily, cai, experiments, un
   useEffect(() => {
     // hash-only 구주소는 서버가 볼 수 없으므로 클라이언트에서 replace한다.
     const target = legacyHashRedirect(location.pathname, location.hash);
-    if (target) void navigate(target, { replace: true });
-  }, [location.pathname, location.hash, navigate]);
+    if (target) {
+      void navigate(target, { replace: true });
+    } else if (!location.hash) {
+      document.querySelectorAll<HTMLDetailsElement>("#main-content details[open]").forEach((item) => { item.open = false; });
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash, location.key, navigate]);
   useEffect(() => {
     const timer = window.setInterval(() => {
       if (document.visibilityState === "visible" && revalidator.state === "idle") void revalidator.revalidate();
@@ -84,7 +89,7 @@ export default function Home({ loaderData: { market, daily, cai, experiments, un
         <header className="border-b border-border py-8 sm:py-10">
           <p className="eyebrow">쿠싱 액티비티 인덱스 <span aria-hidden="true">/</span> LS CRUDE · 오태환 × 손성찬</p>
           <h1 id="cai-home-title" className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">쿠싱 액티비티 인덱스</h1>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">CAI, 다음 기간 WTI 방향, WTI 가격을 봅니다. 승인된 산출물이 없으면 점수는 —, 예측은 미실행입니다.</p>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">쿠싱의 활동에서 유가 움직임의 단서를 찾는 연구입니다. WTI 가격과 지금까지의 실험 결과를 함께 봅니다.</p>
           {unsupportedSample ? <p role="status" className="mt-4 text-sm text-muted-foreground">{unsupportedSample} <Link className="source-link" to="/research#research-sample">연구 기록에서 사례 보기</Link></p> : null}
         </header>
         <section className="border-t border-border py-4" aria-label="CAI 계기판과 설명">
@@ -96,8 +101,8 @@ export default function Home({ loaderData: { market, daily, cai, experiments, un
         </section>
         <ExperimentResults mode="compact" summary={experiments} />
         <MarketContext market={market} daily={daily} />
-        <LocalStatus mode="compact" />
-        <p className="border-t border-border py-5 text-sm text-muted-foreground">확보한 자료와 판정 기록은 <Link className="source-link" to="/research#research-sample">연구 기록</Link>에서 이어서 확인합니다.</p>
+        {import.meta.env.DEV ? <LocalStatus mode="compact" /> : null}
+        <p className="border-t border-border py-5 text-sm text-muted-foreground">아이디어부터 실험 결과까지의 과정은 <Link className="source-link" to="/research">연구 기록</Link>에서 이어서 확인합니다.</p>
       </main>
       <DeskFooter />
     </>
@@ -115,12 +120,12 @@ function MarketContext({ market, daily }: { market: WtiMarketView; daily: WtiDai
   return <section id="market" className="market-section" aria-labelledby="market-title">
     <div className="section-heading"><div><p className="section-kicker">WTI DAILY</p><h2 id="market-title">WTI 원유 가격</h2></div></div>
     <WtiDailyChart view={daily} />
-    <details className="mt-6 border-t border-border py-2"><summary className="min-h-11 cursor-pointer py-3 text-sm">실현변동성과 연구 기준 보기</summary>
+    <details className="mt-6 border-t border-border py-2"><summary className="min-h-11 cursor-pointer py-3 text-sm">변동성과 계산 기준 보기</summary>
       <div className="space-y-3 pb-4 text-sm leading-7 text-muted-foreground">
-        <p>변동성은 별도 완료 일봉 스냅샷 기준입니다. 위 가격 그래프의 변경 가능한 마지막 일봉을 계산에 섞지 않습니다.</p>
+        <p>변동성은 마감이 확인된 일봉으로 계산합니다. 아직 바뀔 수 있는 마지막 일봉은 제외합니다.</p>
         {snapshot ? <><p>기준일 {snapshot.asOf} · 확인 {checkedAtKst} KST</p><dl className="grid grid-cols-1 gap-4 sm:grid-cols-3"><div><dt>5일 실현변동성 · 연환산</dt><dd>{number(snapshot.volatility.rv5AnnualizedPct,1)}%</dd></div><div><dt>20일 실현변동성 · 연환산</dt><dd>{number(snapshot.volatility.rv20AnnualizedPct,1)}%</dd></div><div><dt>5일 실현변동성 백분위</dt><dd>{number(snapshot.volatility.rv5ReferencePercentile,0)} / 100</dd></div></dl><p>산식 {snapshot.volatility.formula} · 기준 분포 {snapshot.volatility.referenceStart}–{snapshot.volatility.referenceEnd}. 미래 예측 확률이 아닙니다.</p></> : <p>완료 일봉 변동성 자료를 표시하지 못했습니다.</p>}
         {market.freshnessReasons.length>0 && <p>{market.freshnessReasons.join(" ")}</p>}
-        <p>후보 비교선은 아직 없습니다. 공개 시각에 맞춘 후보 시계열이 확보되어야 비교할 수 있고, 위 그래프만으로 어떤 후보의 관계도 확인할 수 없습니다.</p>
+        <p>후보 데이터와의 비교는 연구 기록에서 확인할 수 있습니다. 이 가격 그래프만으로 후보의 예측력을 판단하지 않습니다.</p>
       </div>
     </details>
   </section>;

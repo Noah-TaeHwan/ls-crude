@@ -72,8 +72,10 @@ export function WtiDailyChart({ view }: { view: WtiDailyView }) {
       <dl className="mt-2 grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">{[["시가",selected.open],["고가",selected.high],["저가",selected.low],["종가",selected.close]].map(([label,value])=><div key={label}><dt className="text-muted-foreground">{label}</dt><dd className="font-mono">{Number(value).toFixed(2)}</dd></div>)}</dl>
       <p id="daily-summary" className="mt-4 text-xs leading-6 text-muted-foreground">{LABELS[range]} · {bars.length}개 일봉 · 최저 {low.toFixed(2)} / 최고 {high.toFixed(2)} USD. 기간을 바꿔도 상단 가격과 마지막 일봉은 동일합니다. 휴장일·누락값은 임의로 채우지 않습니다.</p>
     </> : <div className="empty-state mt-5"><h3>일봉을 표시할 자료가 없습니다.</h3><p>자료가 확보되면 같은 화면에서 가격과 기간별 일봉을 표시합니다.</p></div>}
+    <details className="mt-4 border-t border-border py-2"><summary className="min-h-11 cursor-pointer py-2 text-sm">가격 출처와 표시 기준</summary>
     {data?.excludedTail && <p className="mt-3 text-xs leading-6 text-muted-foreground">제외한 추가 시세 시각 {kst(data.excludedTail.sourceAt)} KST · 뉴욕 달력일 {data.excludedTail.calendarDate}. 기존 일봉과 합산하거나 다음 날짜로 옮기지 않았습니다.</p>}
     {data && <p className="mt-4 text-xs leading-6 text-muted-foreground">표시 일봉 원천 시각 {kst(data.observedAt)} KST · 조회 {kst(data.fetchedAt)} KST</p>}
     <p className="mt-2 text-xs leading-6 text-muted-foreground">Yahoo Finance CL=F 일봉 · 날짜는 원천 시각의 뉴욕 날짜입니다. 마지막 일봉은 장중에 바뀔 수 있고 제공자 지연이 있습니다. 페이지를 열 때와 보이는 화면에서 5분마다 확인합니다. 공식 정산가가 아니며 만기 교체에 따른 가격 차이가 포함될 수 있습니다.</p>
+    </details>
   </div>;
 }

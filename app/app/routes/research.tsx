@@ -8,7 +8,7 @@ import type { ActionResult } from "~/lib/types";
 
 /** @returns 통합 연구 기록의 검색 설명. */
 export function meta({}: Route.MetaArgs) {
-  return [{ title: "LS CRUDE — 연구 기록", name: "description", content: "현재 자료·실험과 과거 기록을 한 페이지에서 봅니다. 보류와 기각의 이유, 검정 기록과 원문을 탐색합니다." }];
+  return [{ title: "LS CRUDE — 연구 기록", name: "description", content: "연구는 이렇게 진행하고 있습니다. 여섯 단계의 결과와 이전 조사·보관 기록을 한 페이지에서 봅니다." }];
 }
 
 /**
@@ -44,7 +44,7 @@ export function action({}: Route.ActionArgs) {
 }
 
 /**
- * 현재 자료·실험과 과거 기록을 두 섹션으로 보여준다.
+ * 여섯 단계 결과와 이전 조사 기록을 한 화면으로 보여준다.
  * @param props 통합 연구 기록 데이터.
  * @returns 연구 기록 화면.
  */

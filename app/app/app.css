@@ -443,3 +443,45 @@
 .sample-panel > section > .flex-1 { padding: 0; border: 0; border-radius: 0; background: transparent; }
 .sample-panel .section-heading { margin-bottom: 24px; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
 .sample-panel .section-heading h3 { font-size: 24px; line-height: 1.35; }
+
+/* 연구 과정은 읽기 폭을 좁히고 현재 단계에만 무게를 둔다. */
+.research-shell { width: min(100%, 1200px); }
+.research-shell h1, .research-shell h2 { text-wrap: balance; }
+.research-shell p { text-wrap: pretty; }
+[data-workflow-stage] { scroll-margin-top: 112px; }
+
+.research-shell details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  list-style: none;
+  transition: color 160ms ease;
+}
+.research-shell details > summary::-webkit-details-marker { display: none; }
+.research-shell details > summary::after {
+  content: "+";
+  flex-shrink: 0;
+  color: var(--primary);
+  font-size: 20px;
+  font-weight: 400;
+  transition: transform 180ms ease;
+}
+.research-shell details[open] > summary::after { transform: rotate(45deg); }
+.research-shell details > summary:hover { color: var(--primary); }
+[data-research-workflow] nav a {
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+  transition: color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+[data-research-workflow] nav a:hover { transform: translateY(-2px); border-color: var(--border); }
+@keyframes disclosure-in {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .research-shell details[open] > div { animation: disclosure-in 180ms ease-out; }
+}
+@media (max-width: 639px) {
+  [data-workflow-stage] { scroll-margin-top: 120px; }
+}
