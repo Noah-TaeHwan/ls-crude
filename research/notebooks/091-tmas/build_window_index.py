@@ -136,6 +136,9 @@ def cmd_daily(args) -> int:
     sources.append((2020, 3, args.prior_0825))
     for mi in range(1, 13):
         sources.append((2023, mi, args.prior_0825))
+    for year in [int(x) for x in (getattr(args, "extra_years", "") or "").split(",") if x.strip()]:
+        for mi in range(1, 13):
+            sources.append((year, mi, args.run_dir))
 
     groups, covered, missing = {}, [], []
     for y, mi, d in sources:
@@ -419,6 +422,7 @@ def main() -> int:
     d.add_argument("--prior-0757", default=PRIOR_0757)
     d.add_argument("--prior-0825", default=PRIOR_0825)
     d.add_argument("--out", default=os.path.join(IDX_DIR, "avc040_daily_all.csv"))
+    d.add_argument("--extra-years", default="")
     d.set_defaults(fn=cmd_daily)
 
     r = sub.add_parser("receipts")
