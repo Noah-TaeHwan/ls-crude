@@ -286,15 +286,21 @@ test("serves /research with the CAI current view and preserved legacy anchors", 
     const body = await response.text();
     const text = body.split("<script")[0].replace(/<[^>]*>/g, "");
     assert.match(body, /data-cai-research/);
-    assert.match(text, /현재 자료·실험/);
-    assert.match(text, /과거 기록/);
+    assert.match(body, /data-research-workflow/);
+    assert.match(text, /쿠싱의 활동에서 유가의 단서 찾기/);
+    assert.match(text, /이전 조사와 상세 기록/);
     assert.match(text, /현재 CAI 연구·검증/);
+    assert.equal((body.match(/data-idea="/g) ?? []).length, 106, "renders 106 idea folders");
+    assert.equal((body.match(/data-candidate="/g) ?? []).length, 33, "renders 33 candidates once");
+    assert.match(body, /id="workflow-candidates"/);
+    assert.match(text, /traffic_avc040_daily_2019plus/);
+    assert.match(text, /dmr_ok0026701_001_mgd/);
     assert.match(text, /현재 채택한 성분이 없습니다/);
     assert.match(body, /data-model-comparison/);
     assert.match(text, /미평가/);
     const caiSection = body.slice(body.indexOf("data-cai-research"), body.indexOf('id="intake"'));
     assert.ok(!caiSection.includes("0%"), "no zero-percent metrics in the CAI section");
-    // 통합 연구 기록: 현재 자료·실험과 과거 기록이 한 페이지에 있다.
+    // 통합 연구 기록: 여섯 단계와 이전 조사가 한 페이지에 있다.
     assert.match(body, /id="current"/);
     assert.match(body, /id="past"/);
     assert.match(body, /id="intake"/);

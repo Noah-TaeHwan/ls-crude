@@ -12,7 +12,7 @@ export function meta({}: Route.MetaArgs) {
     { title: "LS CRUDE — 연구 기록 · 과거 기록" },
     {
       name: "description",
-      content: "현재 자료·실험과 과거 기록을 한 페이지에서 엽니다. 보관 기록과 결정 타임라인은 접기와 검색으로 확인합니다.",
+      content: "연구는 이렇게 진행하고 있습니다. 여섯 단계 결과와 이전 조사·보관 기록을 한 페이지에서 엽니다.",
     },
   ];
 }
@@ -44,7 +44,7 @@ export function action({}: Route.ActionArgs) {
 
 /**
  * /history 고정 주소로 직접 들어와도 통합 연구 기록을 그린다.
- * 보관 기록(#ledger)과 결정 타임라인(#history), 사례(#research-sample)가 같은 페이지에 있다.
+ * 보관 기록(#ledger)과 결정 타임라인(#history), 사례(#research-sample)는 이전 기록 접기 안에 있다.
  * @param props 통합 연구 기록 데이터.
  * @returns 연구 기록 화면.
  */

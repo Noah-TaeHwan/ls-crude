@@ -86,3 +86,6 @@ _workspace/
 .trae/
 .qoder/
 .opencode/
+
+# 개발 서버에서 생성하는 로컬 작업 현황
+/app/app/data/local-work-status.json

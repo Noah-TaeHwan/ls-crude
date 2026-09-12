@@ -156,7 +156,7 @@ test("serves compact experiment results on home and the full section on research
     assert.match(homeBody, /data-experiment-results="compact"/);
     assert.match(
       homeText,
-      /교통·시설 유량을 활용한 2023년 회고 평가에서, 이번 비교의 예측 개선을 확인하지 못했습니다\./,
+      /교통·시설 유량을 쓴 2023년 첫 실험에서 CAI를 추가해도 확률오차가 줄지 않았습니다\./,
     );
     assert.match(homeText, /평가 기간 2023-01-03–2023-12-21/);
     assert.match(homeText, /확률오차 개선 없음/);
@@ -211,12 +211,12 @@ test("serves compact experiment results on home and the full section on research
     assert.match(researchBody, /data-sensitivity="B_31"/);
     assert.match(researchBody, /data-sensitivity="C_0"/);
     assert.match(researchBody, /data-common-232/);
-    assert.match(researchText, /common_232/);
-    assert.match(researchText, /n=232/);
+    assert.match(researchText, /같은 날짜로 비교/);
+    assert.match(researchText, /232개 표본/);
     assert.match(researchText, /표본 미달로 학습 안 함/);
     assert.match(researchText, /24/);
     assert.match(researchText, /12/);
-    assert.match(researchText, /SELF_CHECK/);
+    assert.match(researchText, /자체 검수 완료/);
     assert.match(researchText, /독립 재현 대기/);
     assert.match(researchBody, /data-review-status/);
     assert.match(researchBody, /data-limitations/);

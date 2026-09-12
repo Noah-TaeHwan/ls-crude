@@ -130,8 +130,8 @@ test("serves the read-only history route with every supported sample", async () 
     const body = await history.text();
     const text = body.split("<script")[0].replace(/<[^>]*>/g, "");
     // /history 직접 진입도 통합 연구 기록을 그린다.
-    assert.match(text, /현재 자료·실험/);
-    assert.match(text, /과거 기록/);
+    assert.match(text, /쿠싱의 활동에서 유가의 단서 찾기/);
+    assert.match(text, /이전 조사와 상세 기록/);
     assert.match(body, /id="research-sample"/);
     assert.match(body, /id="ledger"/);
     assert.match(body, /data-decision-timeline/);
@@ -179,7 +179,7 @@ test("serves the read-only history route with every supported sample", async () 
     assert.equal(home.status, 200);
     const homeBody = await home.text();
     assert.match(homeBody, /id="wti-daily-chart"/);
-    assert.match(homeBody, /href="\/research#research-sample"/);
+    assert.match(homeBody, /href="\/research"/);
     assert.doesNotMatch(homeBody, /id="research-sample"/);
   } finally {
     await stop(child);
@@ -250,8 +250,8 @@ test("research와 history 모두 통합 연구 기록을 그리고 history 직�
       assert.equal(response.status, 200, `${route} direct render`);
       assert.equal(response.headers.get("location"), null, `${route} stays put`);
       const body = await response.text();
-      assert.match(body, /현재 자료·실험/, `${route} current section`);
-      assert.match(body, /과거 기록/, `${route} past section`);
+      assert.match(body, /쿠싱의 활동에서 유가의 단서 찾기/, `${route} workflow title`);
+      assert.match(body, /이전 조사와 상세 기록/, `${route} archive section`);
       assert.match(body, /id="current"/);
       assert.match(body, /id="past"/);
       assert.match(body, /id="research-sample"/);
@@ -285,8 +285,14 @@ test("sample/candidate query와 #ledger·#history 규칙이 보존되고 researc
     assert.equal(candidate.status, 200);
     assert.equal(candidate.headers.get("location"), null);
     const candidateBody = await candidate.text();
+    assert.match(candidateBody, /<details id="past" open/);
     assert.match(candidateBody, /<details id="ledger" open/);
     assert.match(candidateBody, /018-refinery-thermal-flare\/README\.md/);
+    const sampleOpen = await fetch(`${base}/history?sample=jeju`, { redirect: "manual" });
+    assert.equal(sampleOpen.status, 200);
+    const sampleOpenBody = await sampleOpen.text();
+    assert.match(sampleOpenBody, /<details id="past" open/);
+    assert.match(sampleOpenBody, /id="jeju-generation-plot"/);
     // hash 규칙: research → history 한 번, history에서는 종료.
     assert.equal(legacyHashRedirect("/research", "#ledger"), "/history#ledger");
     assert.equal(legacyHashRedirect("/history", "#ledger"), null);

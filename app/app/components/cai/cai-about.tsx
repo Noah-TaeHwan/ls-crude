@@ -33,7 +33,7 @@ function validationLabel(status: CaiValidationView["status"]): string {
  */
 function weightingNote(method: CaiPublicView["index"]["weighting_method"]): string {
   if (method === "equal-weight") {
-    return "동일 가중치 1/n은 사람이 정한 기준선이며 머신러닝 학습 결과가 아닙니다.";
+    return "동일 가중치 1/n은 각 자료를 같은 비중으로 넣는 기준선입니다. 머신러닝이 정한 비중은 아닙니다.";
   }
   if (method === "learned-weight") {
     return "학습 가중치는 개발 구간에서 추정하며 검증 결과와 함께 공개합니다.";
@@ -57,13 +57,13 @@ export function CaiAbout({ view }: { view: CaiPublicView }) {
       <div className="pb-4 text-sm leading-7 text-muted-foreground">
         <p>
           <strong className="text-foreground">
-            CAI는 쿠싱의 활동 신호를 0–100점으로 합성한 제안 지수입니다.
+            CAI는 쿠싱의 활동 신호를 모아 0–100점으로 나타내려는 지수입니다.
           </strong>{" "}
           점수는 활동 신호의 수준이며, 유가 상승 확률이 아닙니다.
         </p>
         <h3 className="mt-4 font-medium text-foreground">어떤 활동을 관측하나요?</h3>
         {view.constituents.length === 0 ? (
-          <p className="mt-1">구성 후보가 아직 공개되지 않았습니다.</p>
+          <p className="mt-1">공식 지수에 넣을 성분은 아직 확정하지 않았습니다. 조사 중인 후보는 연구 기록에서 볼 수 있습니다.</p>
         ) : (
           <ul className="mt-1 space-y-2">
             {view.constituents.map((item) => (
@@ -90,8 +90,7 @@ export function CaiAbout({ view }: { view: CaiPublicView }) {
         </p>
         {view.validation.status === "INDEPENDENT_TESTED" ? null : (
           <p className="mt-1 text-xs">
-            이 화면의 예측력은 검증하지 않았습니다. 실제 자료 연결·가중치 학습·독립 평가와 화면
-            구현은 별개입니다.
+            회고 실험 결과와 공식 지수의 검증은 구분합니다. 공식 예측력은 아직 검증하지 않았습니다.
           </p>
         )}
         <h3 className="mt-4 font-medium text-foreground">근거</h3>

@@ -130,7 +130,7 @@ describe("CaiGauge", () => {
     assert.ok(html.includes('data-cai-gauge="compact"'));
     assert.ok(!html.includes("volatility-gauge"));
     assert.ok(html.includes("/ 100"));
-    assert.ok(html.includes("단위 0–100"));
+    assert.ok(html.includes("0–100점"));
   });
 
   it("점수가 있으면 기존 full 계기판을 유지한다", () => {

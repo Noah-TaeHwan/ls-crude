@@ -142,7 +142,7 @@ test("serves the CAI-first home with empty states and preserved WTI", async () =
     assert.doesNotMatch(text, /아직 채택할 신호가 없습니다/);
     assert.doesNotMatch(body, /id="research-sample"/);
     assert.doesNotMatch(body, /aria-label="연구 사례 선택"/);
-    assert.match(body, /href="\/research#research-sample"/);
+    assert.match(body, /href="\/research"/);
     assert.doesNotMatch(body, /href="\/history/, "dashboard does not link to the legacy history URL");
 
     // CAI란?과 변동성 설명은 기본 접힘.

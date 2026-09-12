@@ -256,7 +256,7 @@ function CompactSummary({ summary }: { summary: ExperimentSummary }) {
       <div className="border border-border p-4 sm:p-5">
         <h2 id="home-experiments-title" className="text-sm font-medium text-foreground">실험 결과 · 회고</h2>
         <p className="mt-2 max-w-3xl text-sm leading-7 text-muted-foreground">
-          교통·시설 유량을 활용한 {year}년 회고 평가에서, 이번 비교의 예측 개선을 확인하지 못했습니다.
+          교통·시설 유량을 쓴 {year}년 첫 실험에서 {improvement ? "CAI를 추가했을 때 확률오차가 줄어든 비교가 있습니다." : "CAI를 추가해도 확률오차가 줄지 않았습니다."}
         </p>
         <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 font-mono text-xs text-muted-foreground">
           <li>평가 기간 {first.eval.start}–{first.eval.end}</li>
@@ -290,7 +290,7 @@ function FullResults({ summary }: { summary: ExperimentSummary }) {
       <p data-disclosure className="max-w-3xl text-sm leading-7 text-muted-foreground">{summary.disclosure}</p>
 
       <h3 className="mt-8 text-base font-medium text-foreground">실험 두 건</h3>
-      <p className="mt-2 text-sm text-muted-foreground">두 실험은 학습·평가 표본이 달라 순위로 합치지 않고 각각 표시합니다.</p>
+      <p className="mt-2 text-sm text-muted-foreground">각 실험의 조건과 표본을 확인하고, 같은 실험 안에서 시장정보만 쓴 결과와 비교합니다.</p>
       {summary.experiments.map((experiment) => <ExperimentBlock key={experiment.id} experiment={experiment} />)}
 
       {summary.sample_expansion === undefined ? null : <SampleExpansionBlock block={summary.sample_expansion} />}
@@ -300,7 +300,7 @@ function FullResults({ summary }: { summary: ExperimentSummary }) {
       <SensitivityBlock name="A_62" block={summary.sensitivity.A_62} />
       <SensitivityBlock name="B_31" block={summary.sensitivity.B_31} />
 
-      <h3 className="mt-8 text-base font-medium text-foreground">common_232 — 공통 표본 n={common.n}</h3>
+      <h3 className="mt-8 text-base font-medium text-foreground">같은 날짜로 비교 · {common.n}개 표본</h3>
       <p className="mt-2 text-sm text-muted-foreground">A와 B가 공유하는 {common.n}개 날짜({common.dates.start}–{common.dates.end})에서만 비교합니다.</p>
       <CommonTable block={common} />
       <p className="mt-2 text-xs text-muted-foreground">DMR 값 차이 {common.dmr_value_diffs}건 · 학습 표본 차이만 반영합니다.</p>
@@ -308,7 +308,7 @@ function FullResults({ summary }: { summary: ExperimentSummary }) {
       <SkippedBlock block={summary.sensitivity.C_0} />
 
       <p data-review-status className="mt-8 border-t border-border pt-4 text-sm text-muted-foreground">
-        검토 상태: {summary.review_status.self_check ? "SELF_CHECK 완료" : "SELF_CHECK 미완료"} · {pending ? "독립 재현 대기" : `독립 재현 ${summary.review_status.independent_reproduction}`}
+        검토 상태: {summary.review_status.self_check ? "자체 검수 완료" : "자체 검수 미완료"} · {pending ? "독립 재현 대기" : `독립 재현 ${summary.review_status.independent_reproduction}`}
       </p>
 
       <h3 className="mt-6 text-base font-medium text-foreground">한계</h3>

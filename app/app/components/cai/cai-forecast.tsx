@@ -127,14 +127,13 @@ export function CaiForecast({
             </p>
           </div>
           <p className="mt-3 text-xs leading-6 text-muted-foreground">
-            확률은 공개 승인된 모델 산출물입니다. 기준·대상 날짜는 원천 필드를 그대로 표시하며
-            미래 거래일을 임의로 만들지 않습니다.
+            확률은 공개가 승인된 모델의 결과입니다. 기준일과 예측 기간은 해당 결과에 기록된 날짜입니다.
           </p>
         </div>
       ) : (
         <div className="empty-state mt-4">
           <h3>아직 예측하지 않습니다.</h3>
-          <p>실데이터 연결과 학습·검증이 끝나면 상승 / 하락·보합 확률을 공개합니다.</p>
+          <p>실제 데이터로 학습하고 검증한 뒤 상승할 확률과 하락·보합일 확률을 공개합니다.</p>
         </div>
       )}
     </section>

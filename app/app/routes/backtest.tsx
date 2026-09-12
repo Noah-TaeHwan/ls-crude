@@ -6,7 +6,7 @@ import type { ActionResult } from "~/lib/types";
 
 /** 더는 공개 기능이 아닌 이전 백테스트 주소의 검색 결과 설명. */
 export function meta({}: Route.MetaArgs) {
-  return [{ title: "LS CRUDE — 연구 장부로 이동" }];
+  return [{ title: "LS CRUDE — 연구 기록으로 이동" }];
 }
 
 /**
@@ -25,7 +25,7 @@ export function action({}: Route.ActionArgs) {
   throw data(
     {
       ok: false,
-      message: "이 웹사이트에서는 백테스트를 실행할 수 없습니다. 현재 검증 기록은 연구 장부에서 확인해 주세요.",
+      message: "이 웹사이트에서는 백테스트를 실행할 수 없습니다. 현재 검증 기록은 연구 기록에서 확인해 주세요.",
     } satisfies ActionResult,
     { status: 400 },
   );

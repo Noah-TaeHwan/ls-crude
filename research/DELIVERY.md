@@ -5,8 +5,8 @@
 
 ## 받는 방법 (택1)
 
-1. 기존 private 저장소의 `share/cai-exp-0.1.0` 브랜치:
-   `git fetch origin share/cai-exp-0.1.0 && git checkout -b share/cai-exp-0.1.0 origin/share/cai-exp-0.1.0`
+1. 기존 private 저장소의 현재 `main`을 사용합니다. 예전 `share/cai-exp-0.1.0`은 main에 통합된 뒤 삭제됐습니다.
+   최신 작업 순서·분담은 `app/public/cai-team-workflow.md`를 먼저 읽어 주세요.
 2. 전달 tarball(같은 내용): `research/dist/cai-exp-0.1.0.tar.gz`
 
 ## 설치 (프로젝트 루트 기준)
@@ -23,7 +23,7 @@ python3 -m venv .venv-share           # 성찬님 환경의 별도 가상환경
 - 가격: `research/data/clf-daily-2015-2026.csv` (저장소 포함, SHA-256
   `ea70f9340b17081a037fa3f4cd0ed12810a67cea781e5779127eb651afd56171`, Yahoo CL=F,
   config가 이 해시를 pin). 실험은 2023-12-31 이하만 읽습니다.
-- 교통·DMR 등 추가 성분은 아직 config에 pin되어 있지 않습니다(적격성 게이트).
+- 교통·DMR은 `pilot_retro_traffic_dmr.config.json`에 입력 경로와 해시가 고정되어 있습니다. 입력 CSV는 재배포 조건 미확인으로 공유본에 포함하지 않았습니다. 생성 체인은 `experiments/cai/REPRODUCE_SENS.md`를 참고하세요.
 
 ## 실행 (단일 CLI)
 
@@ -37,7 +37,7 @@ cd research
 ```
 
 - config 역할: `weekend_shared`=양쪽 공통 재현(2설정), `weekend_taehwan`=태환 묶음,
-  `weekend_seongchan`=학습가중치·비교 묶음(현재 CAI는 컴포넌트 부재로 blocked가 정상).
+  `weekend_seongchan`=학습가중치·비교 묶음(이 오래된 기준 설정에서는 CAI 컴포넌트 부재로 blocked가 정상이며, 실제 교통·DMR 파일럿 설정과 구분).
 - 출력: `data/processed/<owner>/<run_id>/{export,internal}`. export=집계, internal=예측 CSV.
 - 캐시: `<base-dir>/cache` — 입력/config/코드가 같을 때만 재사용.
 
@@ -60,7 +60,7 @@ cd research
 ## 테스트
 
 ```bash
-.venv-share/bin/python -m pytest tests/test_experiments.py -q   # 12 passed
+.venv-share/bin/python -m pytest tests/test_experiments.py -q   # 결과의 실제 통과 수를 확인
 ```
 
 ## 참조 run (재현 대조용, 집계만 포함)

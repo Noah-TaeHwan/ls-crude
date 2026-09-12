@@ -1,0 +1,1043 @@
+{
+  "schema": "cai-research-workflow/v1",
+  "snapshotDate": "2026-09-12",
+  "sourceRef": "cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef",
+  "sourceSha256": "edc41bd6cfcd00db39b27606d243248e4613615be81de596a233ca2acd1c0c5e",
+  "ideas": [
+    {
+      "id": "001",
+      "title": "중동 민간 배달 활동",
+      "path": "research/factors/001-pentagon-ubereats",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/001-pentagon-ubereats/README.md"
+    },
+    {
+      "id": "002",
+      "title": "가상자산 유동성 스트레스",
+      "path": "research/factors/002-whale-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/002-whale-index/README.md"
+    },
+    {
+      "id": "003",
+      "title": "공개 발언과 석유 정책",
+      "path": "research/factors/003-truth-social",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/003-truth-social/README.md"
+    },
+    {
+      "id": "004",
+      "title": "교통 전동화",
+      "path": "research/factors/004-renewable-displacement",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/004-renewable-displacement/README.md"
+    },
+    {
+      "id": "005",
+      "title": "기업 재무와 수요",
+      "path": "research/factors/005-financial-demand",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/005-financial-demand/README.md"
+    },
+    {
+      "id": "006",
+      "title": "도매·물류 활동",
+      "path": "research/factors/006-wholesale-logistics",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/006-wholesale-logistics/README.md"
+    },
+    {
+      "id": "007",
+      "title": "중동 이동 활동",
+      "path": "research/factors/007-doomsday-bunker-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/007-doomsday-bunker-index/README.md"
+    },
+    {
+      "id": "008",
+      "title": "하이퍼리퀴드 자금 흐름",
+      "path": "research/factors/008-hyperliquid-capital-flow",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/008-hyperliquid-capital-flow/README.md"
+    },
+    {
+      "id": "009",
+      "title": "이란 환율 스트레스",
+      "path": "research/factors/009-iran-middleeast-premium",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/009-iran-middleeast-premium/README.md"
+    },
+    {
+      "id": "010",
+      "title": "공식 석유 재고·공급 정책",
+      "path": "research/factors/010-official-petroleum-buffer",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/010-official-petroleum-buffer/README.md"
+    },
+    {
+      "id": "011",
+      "title": "에너지 산업 고용",
+      "path": "research/factors/011-energy-workforce-momentum",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/011-energy-workforce-momentum/README.md"
+    },
+    {
+      "id": "012",
+      "title": "에너지 선물 페어 전략",
+      "path": "research/factors/012-energy-futures-pairs-statarb",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/012-energy-futures-pairs-statarb/README.md"
+    },
+    {
+      "id": "013",
+      "title": "공개 기관 발언 시점",
+      "path": "research/factors/013-public-institutional-message-timing",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/013-public-institutional-message-timing/README.md"
+    },
+    {
+      "id": "014",
+      "title": "파이프라인 소음",
+      "path": "research/factors/014-pipeline-noise-signal",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/014-pipeline-noise-signal/README.md"
+    },
+    {
+      "id": "015",
+      "title": "고급 내연차 도로 수요",
+      "path": "research/factors/015-luxury-ice-road-appetite",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/015-luxury-ice-road-appetite/README.md"
+    },
+    {
+      "id": "016",
+      "title": "사막 운영·기상 스트레스",
+      "path": "research/factors/016-desert-operational-stress",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/016-desert-operational-stress/README.md"
+    },
+    {
+      "id": "017",
+      "title": "해상 공급 활동",
+      "path": "research/factors/017-maritime-supply-activity",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/017-maritime-supply-activity/README.md"
+    },
+    {
+      "id": "018",
+      "title": "정유시설 열·플레어",
+      "path": "research/factors/018-refinery-thermal-flare",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/018-refinery-thermal-flare/README.md"
+    },
+    {
+      "id": "019",
+      "title": "로보택시 야간 교통",
+      "path": "research/factors/019-robotaxi-night-traffic-archive",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/019-robotaxi-night-traffic-archive/README.md"
+    },
+    {
+      "id": "020",
+      "title": "걸프 냉방·전력",
+      "path": "research/factors/020-gulf-ac-panic",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/020-gulf-ac-panic/README.md"
+    },
+    {
+      "id": "021",
+      "title": "김치·식탁 물가와 기후",
+      "path": "research/factors/021-kimchi-heat-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/021-kimchi-heat-index/README.md"
+    },
+    {
+      "id": "022",
+      "title": "한미 연료가격 전가",
+      "path": "research/factors/022-korea-us-fuel-transmission-spread",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/022-korea-us-fuel-transmission-spread/README.md"
+    },
+    {
+      "id": "023",
+      "title": "제주 해협 관측",
+      "path": "research/factors/023-jeju-strait-watch",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/023-jeju-strait-watch/README.md"
+    },
+    {
+      "id": "024",
+      "title": "추석 이동·계절성",
+      "path": "research/factors/024-chuseok-effect",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/024-chuseok-effect/README.md"
+    },
+    {
+      "id": "025",
+      "title": "한국 정유 마진",
+      "path": "research/factors/025-korean-refinery-margin-watch",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/025-korean-refinery-margin-watch/README.md"
+    },
+    {
+      "id": "026",
+      "title": "개인 외환 흐름",
+      "path": "research/factors/026-retail-fx-surge-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/026-retail-fx-surge-index/README.md"
+    },
+    {
+      "id": "027",
+      "title": "인천 항공 이동",
+      "path": "research/factors/027-incheon-transit-surge",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/027-incheon-transit-surge/README.md"
+    },
+    {
+      "id": "028",
+      "title": "포항 정유소 유휴 가설",
+      "path": "research/factors/028-pohang-refinery-idle-watch",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/028-pohang-refinery-idle-watch/README.md"
+    },
+    {
+      "id": "029",
+      "title": "면세 소비·경유 수요",
+      "path": "research/factors/029-duty-free-diesel-dash",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/029-duty-free-diesel-dash/README.md"
+    },
+    {
+      "id": "030",
+      "title": "라면 수출·소비",
+      "path": "research/factors/030-instant-noodle-panic-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/030-instant-noodle-panic-index/README.md"
+    },
+    {
+      "id": "031",
+      "title": "라이브커머스·물류",
+      "path": "research/factors/031-live-commerce-burn-rate",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/031-live-commerce-burn-rate/README.md"
+    },
+    {
+      "id": "032",
+      "title": "한국 기상·교통 차질",
+      "path": "research/factors/032-korea-weather-transport-disruption",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/032-korea-weather-transport-disruption/README.md"
+    },
+    {
+      "id": "033",
+      "title": "기지 주변 이발소",
+      "path": "research/factors/033-base-area-barbershop-activity",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/033-base-area-barbershop-activity/README.md"
+    },
+    {
+      "id": "034",
+      "title": "기지 주변 머리 스타일",
+      "path": "research/factors/034-base-area-buzzcut-mix",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/034-base-area-buzzcut-mix/README.md"
+    },
+    {
+      "id": "035",
+      "title": "기지 주변 외식",
+      "path": "research/factors/035-base-area-fine-dining-activity",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/035-base-area-fine-dining-activity/README.md"
+    },
+    {
+      "id": "036",
+      "title": "공식 군 모집 문맥",
+      "path": "research/factors/036-public-military-recruiting-context",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/036-public-military-recruiting-context/README.md"
+    },
+    {
+      "id": "037",
+      "title": "주한미군 공식 문맥",
+      "path": "research/factors/037-usfk-public-context",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/037-usfk-public-context/README.md"
+    },
+    {
+      "id": "038",
+      "title": "쿠싱 원유 재고 변화",
+      "path": "research/factors/038-cushing-draw-surprise",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/038-cushing-draw-surprise/README.md"
+    },
+    {
+      "id": "039",
+      "title": "미국 휘발유 수요",
+      "path": "research/factors/039-us-gasoline-demand-surprise",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/039-us-gasoline-demand-surprise/README.md"
+    },
+    {
+      "id": "040",
+      "title": "전략비축유 매입·주입",
+      "path": "research/factors/040-spr-injection-watch",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/040-spr-injection-watch/README.md"
+    },
+    {
+      "id": "041",
+      "title": "정유 가동률",
+      "path": "research/factors/041-refinery-utilization-proxy",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/041-refinery-utilization-proxy/README.md"
+    },
+    {
+      "id": "042",
+      "title": "아시아 금융허브 소비",
+      "path": "research/factors/042-asia-financial-hub-pulse",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/042-asia-financial-hub-pulse/README.md"
+    },
+    {
+      "id": "043",
+      "title": "야근·커피·에너지음료",
+      "path": "research/factors/043-overtime-latte-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/043-overtime-latte-index/README.md"
+    },
+    {
+      "id": "044",
+      "title": "AI 데이터센터 건설",
+      "path": "research/factors/044-ai-burn-rate-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/044-ai-burn-rate-index/README.md"
+    },
+    {
+      "id": "045",
+      "title": "카페 소비·도심 환경",
+      "path": "research/factors/045-iced-americano-heat-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/045-iced-americano-heat-index/README.md"
+    },
+    {
+      "id": "046",
+      "title": "도시 이동 리듬",
+      "path": "research/factors/046-urban-mobility-tempo",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/046-urban-mobility-tempo/README.md"
+    },
+    {
+      "id": "047",
+      "title": "고가·실속 아웃도어 소비",
+      "path": "research/factors/047-conscience-compression-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/047-conscience-compression-index/README.md"
+    },
+    {
+      "id": "048",
+      "title": "공개 미디어의 복장·형식",
+      "path": "research/factors/048-all-in-tie-day-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/048-all-in-tie-day-index/README.md"
+    },
+    {
+      "id": "049",
+      "title": "지정학 뉴스 관심",
+      "path": "research/factors/049-geopolitical-news-attention-shock",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/049-geopolitical-news-attention-shock/README.md"
+    },
+    {
+      "id": "050",
+      "title": "대미 지정학 긴장",
+      "path": "research/factors/050-anti-usa-tension-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/050-anti-usa-tension-index/README.md"
+    },
+    {
+      "id": "051",
+      "title": "이상 징후와 공개 확인 시차",
+      "path": "research/factors/051-public-confirmation-lag-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/051-public-confirmation-lag-index/README.md"
+    },
+    {
+      "id": "052",
+      "title": "생활비 관련 검색",
+      "path": "research/factors/052-search-desperation-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/052-search-desperation-index/README.md"
+    },
+    {
+      "id": "053",
+      "title": "연료 비용 불만 집계",
+      "path": "research/factors/053-voice-of-customer-fuel-frustration",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/053-voice-of-customer-fuel-frustration/README.md"
+    },
+    {
+      "id": "054",
+      "title": "UAP 관심",
+      "path": "research/factors/054-uap-attention-shock",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/054-uap-attention-shock/README.md"
+    },
+    {
+      "id": "055",
+      "title": "기업 공시 문구 변화",
+      "path": "research/factors/055-filing-delta-drift",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/055-filing-delta-drift/README.md"
+    },
+    {
+      "id": "056",
+      "title": "중공업·정비·중장비",
+      "path": "research/factors/056-heavy-industrial-maritime-infrastructure",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/056-heavy-industrial-maritime-infrastructure/README.md"
+    },
+    {
+      "id": "057",
+      "title": "미국 중공업 공개 대리변수",
+      "path": "research/factors/057-global-heavy-industrial-maritime-infrastructure",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/057-global-heavy-industrial-maritime-infrastructure/README.md"
+    },
+    {
+      "id": "058",
+      "title": "원유 헤드라인 반복",
+      "path": "research/factors/058-headline-boredom-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/058-headline-boredom-index/README.md"
+    },
+    {
+      "id": "059",
+      "title": "산업 주문·재고 속도",
+      "path": "research/factors/059-himi-iivf",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/059-himi-iivf/README.md"
+    },
+    {
+      "id": "060",
+      "title": "신용과 원유의 괴리",
+      "path": "research/factors/060-credit-oil-dynamic-cointegration",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/060-credit-oil-dynamic-cointegration/README.md"
+    },
+    {
+      "id": "061",
+      "title": "정유·신용 스트레스 결합",
+      "path": "research/factors/061-refinery-credit-stress-gate",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/061-refinery-credit-stress-gate/README.md"
+    },
+    {
+      "id": "062",
+      "title": "산업 신용·재고 레짐",
+      "path": "research/factors/062-industrial-credit-inventory-regime",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/062-industrial-credit-inventory-regime/README.md"
+    },
+    {
+      "id": "063",
+      "title": "음모론 관심",
+      "path": "research/factors/063-conspiracy-attention-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/063-conspiracy-attention-index/README.md"
+    },
+    {
+      "id": "064",
+      "title": "에너지 도시 스테이크하우스",
+      "path": "research/factors/064-oilman-steakhouse-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/064-oilman-steakhouse-index/README.md"
+    },
+    {
+      "id": "065",
+      "title": "에너지 지구 심야 커피",
+      "path": "research/factors/065-war-room-coffee-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/065-war-room-coffee-index/README.md"
+    },
+    {
+      "id": "066",
+      "title": "교대 인력의 항공·호텔",
+      "path": "research/factors/066-crew-change-rush-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/066-crew-change-rush-index/README.md"
+    },
+    {
+      "id": "067",
+      "title": "현장 도시 이발소",
+      "path": "research/factors/067-oilman-haircut-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/067-oilman-haircut-index/README.md"
+    },
+    {
+      "id": "068",
+      "title": "에너지 도시 야간광",
+      "path": "research/factors/068-energy-corridor-midnight-lights",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/068-energy-corridor-midnight-lights/README.md"
+    },
+    {
+      "id": "069",
+      "title": "울산 야식 배달",
+      "path": "research/factors/069-ulsan-late-delivery-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/069-ulsan-late-delivery-index/README.md"
+    },
+    {
+      "id": "070",
+      "title": "화물기사 라면·휴게소",
+      "path": "research/factors/070-highway-ramyeon-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/070-highway-ramyeon-index/README.md"
+    },
+    {
+      "id": "071",
+      "title": "제주 렌터카·주유",
+      "path": "research/factors/071-jeju-full-tank-return-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/071-jeju-full-tank-return-index/README.md"
+    },
+    {
+      "id": "072",
+      "title": "여수 정비·도시락",
+      "path": "research/factors/072-yeosu-turnaround-lunchbox-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/072-yeosu-turnaround-lunchbox-index/README.md"
+    },
+    {
+      "id": "073",
+      "title": "인천 면세·화물",
+      "path": "research/factors/073-incheon-dawn-restock-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/073-incheon-dawn-restock-index/README.md"
+    },
+    {
+      "id": "074",
+      "title": "정유 다중지표 결합",
+      "path": "research/factors/074-refinery-multiblock-composite",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/074-refinery-multiblock-composite/README.md"
+    },
+    {
+      "id": "075",
+      "title": "학사·금융 휴식 달력",
+      "path": "research/factors/075-academic-liquidity-calendar",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/075-academic-liquidity-calendar/README.md"
+    },
+    {
+      "id": "076",
+      "title": "소비기업 탄화수소 노출",
+      "path": "research/factors/076-hidden-hydrocarbon-exposure-screen",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/076-hidden-hydrocarbon-exposure-screen/README.md"
+    },
+    {
+      "id": "077",
+      "title": "한국 주유소 전가·가격 동결",
+      "path": "research/factors/077-korea-pump-pass-through-station-freeze",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/077-korea-pump-pass-through-station-freeze/README.md"
+    },
+    {
+      "id": "078",
+      "title": "한국 화물·항만 연료",
+      "path": "research/factors/078-korea-freight-port-fuel-pulse",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/078-korea-freight-port-fuel-pulse/README.md"
+    },
+    {
+      "id": "079",
+      "title": "한국 나프타 수출",
+      "path": "research/factors/079-korea-naphtha-export-thermometer",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/079-korea-naphtha-export-thermometer/README.md"
+    },
+    {
+      "id": "080",
+      "title": "한국 발전 연료 전환",
+      "path": "research/factors/080-korea-fuel-switch-dispatch-alert",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/080-korea-fuel-switch-dispatch-alert/README.md"
+    },
+    {
+      "id": "081",
+      "title": "한국 LPG 대체",
+      "path": "research/factors/081-korea-lpg-substitution-pulse",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/081-korea-lpg-substitution-pulse/README.md"
+    },
+    {
+      "id": "082",
+      "title": "한국 식용유·팜유와 WTI",
+      "path": "research/factors/082-korea-kitchen-oil-stress",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/082-korea-kitchen-oil-stress/README.md"
+    },
+    {
+      "id": "083",
+      "title": "외식 커피 가격 전가",
+      "path": "research/factors/083-iced-americano-pass-through",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/083-iced-americano-pass-through/README.md"
+    },
+    {
+      "id": "084",
+      "title": "국립공원 방문·휘발유",
+      "path": "research/factors/084-trailhead-tailgate-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/084-trailhead-tailgate-index/README.md"
+    },
+    {
+      "id": "085",
+      "title": "수박 출하·냉장트럭",
+      "path": "research/factors/085-watermelon-reefer-squeeze-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/085-watermelon-reefer-squeeze-index/README.md"
+    },
+    {
+      "id": "086",
+      "title": "수확 진도·경유",
+      "path": "research/factors/086-harvest-combine-diesel-pulse",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/086-harvest-combine-diesel-pulse/README.md"
+    },
+    {
+      "id": "087",
+      "title": "닭고기 냉장 유통",
+      "path": "research/factors/087-chicken-wing-cold-chain-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/087-chicken-wing-cold-chain-index/README.md"
+    },
+    {
+      "id": "088",
+      "title": "국경 트럭·경유",
+      "path": "research/factors/088-borderline-diesel-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/088-borderline-diesel-index/README.md"
+    },
+    {
+      "id": "089",
+      "title": "항공수요·금요일 이동",
+      "path": "research/factors/089-friday-escape-velocity",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/089-friday-escape-velocity/README.md"
+    },
+    {
+      "id": "090",
+      "title": "오대호 결빙",
+      "path": "research/factors/090-great-lakes-ice-constraint-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/090-great-lakes-ice-constraint-index/README.md"
+    },
+    {
+      "id": "091",
+      "title": "쿠싱 현장 활동 관측",
+      "path": "research/factors/091-cushing-motel-lights-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+    },
+    {
+      "id": "092",
+      "title": "쿠싱 라스트마일·091-LM 연결",
+      "path": "research/factors/092-cushing-last-mile-logistics-feasibility",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/092-cushing-last-mile-logistics-feasibility/README.md"
+    },
+    {
+      "id": "093",
+      "title": "이란 식품 스트레스와 쿠싱 타이트니스",
+      "path": "research/factors/093-iran-egg-cushing-tightness-gate",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/093-iran-egg-cushing-tightness-gate/README.md"
+    },
+    {
+      "id": "094",
+      "title": "사하라 먼지·허리케인",
+      "path": "research/factors/094-saharan-hurricane-suppression-index",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/094-saharan-hurricane-suppression-index/README.md"
+    },
+    {
+      "id": "095",
+      "title": "에너지 임원 공식 노출",
+      "path": "research/factors/095-energy-executive-public-visibility",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/095-energy-executive-public-visibility/README.md"
+    },
+    {
+      "id": "095",
+      "title": "WTI–Helix 괴리",
+      "path": "research/factors/095-oil-helix-dislocation",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/095-oil-helix-dislocation/README.md"
+    },
+    {
+      "id": "096",
+      "title": "원유와 다른 시장의 교차 확인",
+      "path": "research/factors/096-oil-market-confirmation-hexagon",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/096-oil-market-confirmation-hexagon/README.md"
+    },
+    {
+      "id": "097",
+      "title": "Helix 업황 시차",
+      "path": "research/factors/097-helix-hos-cycle-lag",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/097-helix-hos-cycle-lag/README.md"
+    },
+    {
+      "id": "098",
+      "title": "미국 유가 억제",
+      "path": "research/factors/098-us-oil-price-suppression",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/098-us-oil-price-suppression/README.md"
+    },
+    {
+      "id": "099",
+      "title": "FOMC MP1 일별 대리변수",
+      "path": "research/factors/099-fomc-mp1-daily-proxy",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/099-fomc-mp1-daily-proxy/README.md"
+    },
+    {
+      "id": "100",
+      "title": "HOS 레짐 B",
+      "path": "research/factors/100-hos-regime-b",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/100-hos-regime-b/README.md"
+    },
+    {
+      "id": "101",
+      "title": "EIA 재고 컨센서스",
+      "path": "research/factors/101-eia-inventory-consensus",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/101-eia-inventory-consensus/README.md"
+    },
+    {
+      "id": "102",
+      "title": "Helix HIR 알파 잠금",
+      "path": "research/factors/102-helix-hir-alphalock",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/102-helix-hir-alphalock/README.md"
+    },
+    {
+      "id": "103",
+      "title": "Helix 동종기업 페어",
+      "path": "research/factors/103-helix-peer-pairs",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/103-helix-peer-pairs/README.md"
+    },
+    {
+      "id": "104",
+      "title": "Helix 슬리브 헤지",
+      "path": "research/factors/104-helix-sleeve-hedge",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/104-helix-sleeve-hedge/README.md"
+    },
+    {
+      "id": "105",
+      "title": "외부 오버레이",
+      "path": "research/factors/105-external-overlays",
+      "url": "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/105-external-overlays/README.md"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "TMAS_AVC040",
+      "name": "도로 교통량",
+      "role": "Payne 근처 도로를 지나가는 차량 수를 세는 입력",
+      "category": "used",
+      "summary": "2019년 보강까지 회고 실험에 사용했습니다. 전체 차량 수를 센 것으로, 원유 운송 차량만 구분한 자료는 아닙니다.",
+      "period": "공유분은 2015–2018, 2020년 3월, 2023년입니다. 2019년은 기존 자료로 보강했습니다. 빠진 달이 있으며 시간값은 일별로 합칩니다.",
+      "nextAction": "기존 입력 정의만 검토하고 다시 수집하지 않습니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/311f8baa55f99b6f3fcd9764f804c849f2608700/research/experiments/cai/REPRODUCE_SENS.md",
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/311f8baa55f99b6f3fcd9764f804c849f2608700/research/experiments/cai/pilot_retro_traffic_dmr.config.json",
+        "https://www.fhwa.dot.gov/policyinformation/tables/tmasdata/"
+      ]
+    },
+    {
+      "id": "SPP_LOCAL / 091-GC",
+      "name": "전력 혼잡·지역 전력",
+      "role": "권역의 전력 혼잡으로 현장이 얼마나 바쁜지 짐작하는 후보입니다. 혼잡은 펌핑량이 아닙니다.",
+      "category": "route",
+      "summary": "수집 코드는 있지만 지역 노드와 과거 자료는 확인되지 않았습니다. 접속 실패는 9월 11일 기록입니다.",
+      "period": "연속 과거 기간은 확인되지 않았습니다.",
+      "nextAction": "지역 노드의 의미와 실제 표본부터 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
+        "https://www.spp.org"
+      ]
+    },
+    {
+      "id": "CHHMI",
+      "name": "숙박 가격·가용성 압력",
+      "role": "같은 숙박일의 호텔 견적으로 숙박 압력을 보는 후보",
+      "category": "forward",
+      "summary": "호텔 견적 엔진만 있고 과거 실험 자료는 아직 확보하지 않았습니다. 숙박세(091-A)와는 다른 측정입니다.",
+      "period": "장기 공통 기간이 없습니다.",
+      "nextAction": "같은 숙박일의 견적을 반복해서 남길 수 있는 적법한 경로를 확인합니다.",
+      "sourceUrls": []
+    },
+    {
+      "id": "CCEDI",
+      "name": "카페인·교대 시간대 관측",
+      "role": "공개 메뉴·가용성으로 교대 시간대 카페인 소비를 짐작하는 후보",
+      "category": "forward",
+      "summary": "카페인 관측 코드만 있고 일별 자료는 아직 확보하지 않았습니다. 판매량을 추정해 채우지 않습니다.",
+      "period": "학습용 공통 기간이 아직 없습니다.",
+      "nextAction": "실제 기록이 있는지 살펴보고 관측 정의와 접근 허용 범위를 확인합니다.",
+      "sourceUrls": []
+    },
+    {
+      "id": "CAAI / 091-O",
+      "name": "공항 활동",
+      "role": "Cushing 공항의 연료·주기장·응급비행 활동 후보",
+      "category": "sample",
+      "summary": "공항 월보 4건만 있고 연속 과거 자료는 아직 확보하지 않았습니다. 지금 ADS-B 평균을 지난달 값으로 쓰지 않습니다.",
+      "period": "월보 4건입니다. 연속 이력은 아직 없습니다.",
+      "nextAction": "월보의 지표와 기간을 확인하고 장기 자료를 구할 수 있는지 살펴봅니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
+        "https://www.cityofcushing.com/cushing-municipal-airport"
+      ]
+    },
+    {
+      "id": "CEPI",
+      "name": "굴착·허가 활동",
+      "role": "굴착·허가 기록으로 현장 착공을 짐작하는 후보",
+      "category": "route",
+      "summary": "굴착·허가 코드만 있고 실측 자료는 아직 확보하지 않았습니다. 허가 상태 변화(091-V)와는 다른 값입니다.",
+      "period": "기간이 확인되지 않았습니다.",
+      "nextAction": "실제 허가·굴착 값과 출처부터 확인합니다.",
+      "sourceUrls": []
+    },
+    {
+      "id": "CERSI",
+      "name": "장비 임대 가용성",
+      "role": "장비 임대 목록의 시점별 품절을 보는 후보",
+      "category": "forward",
+      "summary": "장비 목록만 있고 품절 이력은 아직 확보하지 않았습니다. 목록은 대여 건수가 아닙니다.",
+      "period": "목록만 있고 과거 품절 기록은 없습니다.",
+      "nextAction": "반복 관측 기록과 약관을 확인하고 같은 장비를 비교하는지 살펴봅니다.",
+      "sourceUrls": []
+    },
+    {
+      "id": "HSCI",
+      "name": "작업복·안전모 관련 활동",
+      "role": "작업복·안전모 관련 공개 집계로 현장 인원을 짐작하는 후보",
+      "category": "route",
+      "summary": "작업복·안전모 집계 코드만 있고 자료는 아직 확보하지 않았습니다. 개인 외모·위치는 추적하지 않습니다.",
+      "period": "기간이 확인되지 않았습니다.",
+      "nextAction": "공개 집계 가능성만 확인하고 개인은 추적하지 않습니다.",
+      "sourceUrls": []
+    },
+    {
+      "id": "CHAI",
+      "name": "상하수·시설 유량 엔진",
+      "role": "상하수·시설 유량을 다루는 분석 코드 후보",
+      "category": "route",
+      "summary": "실측 자료가 연결되지 않은 유량 분석 코드입니다. DMR 입력과 구분합니다.",
+      "period": "이 코드의 실측 자료는 아직 확보하지 않았습니다.",
+      "nextAction": "DMR 입력과 의미·단위가 맞는지 검토합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/311f8baa55f99b6f3fcd9764f804c849f2608700/research/experiments/cai/REPRODUCE_SENS.md"
+      ]
+    },
+    {
+      "id": "091-DMR / OK0026701-001",
+      "name": "South STP 신고 유량",
+      "role": "쿠싱 South STP가 신고한 방류유량의 대리 입력",
+      "category": "used",
+      "summary": "접수일 기준으로 정리해 회고 실험에 사용했습니다. 과거 최초 공개시점은 확인되지 않았습니다.",
+      "period": "월별 신고값을 접수일 기준 유효 구간에서 다시 씁니다. 범위는 2015–2023입니다.",
+      "nextAction": "측정 의미와 원입력을 확인하고 회고 전용을 유지합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md",
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/311f8baa55f99b6f3fcd9764f804c849f2608700/research/experiments/cai/REPRODUCE_SENS.md",
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/311f8baa55f99b6f3fcd9764f804c849f2608700/research/experiments/cai/pilot_retro_traffic_dmr.config.json",
+        "https://echo.epa.gov/tools/data-downloads/icis-npdes-dmr-summary",
+        "https://echo.epa.gov/help/reports/effluent-charts-help"
+      ]
+    },
+    {
+      "id": "091-A",
+      "name": "숙박세",
+      "role": "도시 숙박세로 외부 인력·숙박을 짐작하는 후보",
+      "category": "sample",
+      "summary": "숙박세 표본만 있고 장기 자료는 아직 확보하지 않았습니다. 호텔 견적(CHHMI)과는 별개입니다.",
+      "period": "원문에서 요구하는 60개월 이력은 아직 없습니다.",
+      "nextAction": "세금월·수령일·게시일을 확인하고 장기 기록이 있는지 살펴봅니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-B",
+      "name": "도시권 야간광",
+      "role": "도시권 야간광으로 활동을 측정하려던 후보",
+      "category": "hold",
+      "summary": "야간광은 활동 입력에서 빼 둔 상태입니다. 위성 기록은 있으나 현장 활동인지는 확인되지 않았습니다.",
+      "period": "기존 과거 자료는 있습니다. 이번 회고 입력은 아닙니다.",
+      "nextAction": "새 채택 없이 활동 입력으로 다시 넣지 않습니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-D",
+      "name": "탱크 지붕·위성영상",
+      "role": "탱크 지붕 위성영상으로 재고 상태를 읽으려는 후보",
+      "category": "route",
+      "summary": "Sentinel-2 경로만 있고 탱크 재고 자료는 아직 확보하지 않았습니다. 영상이 있다고 재고가 검증된 것은 아닙니다.",
+      "period": "반복 정량 이력은 확인되지 않았습니다.",
+      "nextAction": "탱크별 판독과 반복 관측부터 검증합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-E",
+      "name": "파이프라인 배정·감축 공지",
+      "role": "파이프라인 배정·감축 공지로 운영 부담을 짐작하는 후보",
+      "category": "route",
+      "summary": "운영 절차 문서만 있고 감축 사건 자료는 아직 확보하지 않았습니다. 절차 설명을 실제 감축으로 세지 않습니다.",
+      "period": "필요한 월별 이력은 아직 없습니다.",
+      "nextAction": "공개 공지의 실제 이력과 단위를 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-E2",
+      "name": "파이프라인 EBB",
+      "role": "파이프라인 EBB의 용량·유량 공시 후보",
+      "category": "route",
+      "summary": "공시 파서만 있고 용량·유량 자료는 아직 확보하지 않았습니다. 공개 절차만으로 실제 배관 흐름을 알 수는 없습니다.",
+      "period": "일별 이력은 확인되지 않았습니다.",
+      "nextAction": "실제 용량·유량 파일 접근과 정의를 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-F / 091-STAX",
+      "name": "도시 sales/use tax",
+      "role": "도시 판매·사용세로 소비·반입을 짐작하는 후보",
+      "category": "sample",
+      "summary": "월별 세금 분배 표본만 있고 장기 자료는 아직 확보하지 않았습니다. 숙박세와 서로 대체하지 않습니다.",
+      "period": "기록된 표본은 4개월입니다.",
+      "nextAction": "분배월과 세목을 구분하고 과거 자료를 보충할 수 있는지 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
+      ]
+    },
+    {
+      "id": "091-U",
+      "name": "산업 채용 공고",
+      "role": "산업 채용 공고로 현장 인력 수요를 짐작하는 후보",
+      "category": "forward",
+      "summary": "채용 검색 스냅샷만 있고 과거 자료는 아직 확보하지 않았습니다. 검색 건수는 근무자 수가 아닙니다.",
+      "period": "장기 공통 패널이 없습니다.",
+      "nextAction": "게시·마감·중복 기준을 지켜 앞으로의 기록만 검토합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-V / V2",
+      "name": "산업 허가 상태 전이",
+      "role": "DEQ 산업허가의 상태 변화로 착공 흔적을 보는 후보",
+      "category": "forward",
+      "summary": "사람이 본 허가 로그만 있고 과거 실험 자료는 아직 확보하지 않았습니다. 허가는 공사량·가동이 아닙니다.",
+      "period": "앞으로 쌓는 상태 변화 기록입니다. 과거 실험 자료가 아닙니다.",
+      "nextAction": "같은 허가 사건이 중복됐는지, 실제 날짜는 언제인지 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-LM / 092",
+      "name": "라스트마일 물류",
+      "role": "라스트마일 배송량으로 현장 물류를 짐작하는 후보",
+      "category": "route",
+      "summary": "배송 허가·링크만 있고 일별 집계는 아직 확보하지 않았습니다. 092는 같은 후보의 옛 링크이며 구인을 배송량으로 쓰지 않습니다.",
+      "period": "연속 일별 집계가 없습니다.",
+      "nextAction": "서비스 권역과 허용된 일별 집계부터 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/092-cushing-last-mile-logistics-feasibility/README.md"
+      ]
+    },
+    {
+      "id": "091-M",
+      "name": "시청 채용 공고",
+      "role": "시청 채용 공고로 공공 인력 수요를 보는 후보",
+      "category": "sample",
+      "summary": "시청 공고 표본만 있고 장기 자료는 아직 확보하지 않았습니다. 산업 채용(091-U)과는 별개입니다.",
+      "period": "게시·마감 아카이브가 필요합니다. 아직 없습니다.",
+      "nextAction": "같은 공고의 시점·중복·장기 보관을 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-N",
+      "name": "시청 월별 문서",
+      "role": "시청 월별 문서로 행정 활동을 보려는 후보",
+      "category": "route",
+      "summary": "문서 페이지 4개만 있고 월별 기록은 아직 확보하지 않았습니다. 문서 수를 활동량으로 바꾸지 않습니다.",
+      "period": "장기 월별 기록은 아직 없습니다.",
+      "nextAction": "문서에 어떤 실측값이 담겼는지부터 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-RAIL",
+      "name": "철도 탱크차",
+      "role": "철도 탱크차로 쿠싱 연결 물류를 짐작하는 후보",
+      "category": "route",
+      "summary": "Stroud 관련 설명만 있고 탱크차 자료는 아직 확보하지 않았습니다. 전국 석유 철도 자료를 쿠싱 교통으로 부르지 않습니다.",
+      "period": "과거 자료가 없습니다.",
+      "nextAction": "쿠싱 연결과 실제 집계 이력부터 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-WASTE",
+      "name": "산업 폐기물",
+      "role": "시설별 산업 폐기물 반입량 후보",
+      "category": "route",
+      "summary": "DEQ 양식만 있고 반입량 자료는 아직 확보하지 않았습니다. 양식은 반입량이 아닙니다.",
+      "period": "실측 톤수 이력이 없습니다.",
+      "nextAction": "양식이 아닌 실제 제출 자료를 확보할 수 있는지 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-S",
+      "name": "고정 QSR 상대 혼잡",
+      "role": "고정 식당의 상대 혼잡 라벨로 지역 바쁨을 보는 후보",
+      "category": "forward",
+      "summary": "고정 6개 식당의 관측 방법만 있고 과거 자료는 아직 확보하지 않았습니다. 버거·피자 주문 건수가 아닙니다.",
+      "period": "장기 학습 이력이 없습니다.",
+      "nextAction": "허용된 관측 범위만 유지하고 새 수집은 따로 승인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-G",
+      "name": "공공안전 요청량",
+      "role": "익명 월 집계로 공공안전 요청량을 보는 후보",
+      "category": "sample",
+      "summary": "월별 집계 표본만 있고 장기 자료는 아직 확보하지 않았습니다. 사람이나 세밀한 위치 정보는 수집하지 않습니다.",
+      "period": "반복 가능한 장기 이력이 필요합니다. 아직 없습니다.",
+      "nextAction": "개인 사건이나 신원은 제외하고 집계 정의와 시점만 확인합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+      ]
+    },
+    {
+      "id": "091-EIA / 038",
+      "name": "쿠싱 원유 재고",
+      "role": "쿠싱 원유 재고의 시장 문맥",
+      "category": "context",
+      "summary": "주간·월간 재고 기록이 있습니다. 활동 입력이 아니라 시장 배경이며 EIA 다른 화면을 새 출처로 세지 않습니다.",
+      "period": "주간·월간 공개 집계입니다.",
+      "nextAction": "시장 배경으로만 따로 두고 활동 입력에 넣지 않습니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md",
+        "https://www.eia.gov/petroleum/supply/weekly/"
+      ]
+    },
+    {
+      "id": "Weather / 091-Q",
+      "name": "기상",
+      "role": "교통·유량을 흔들 수 있는 기상 통제",
+      "category": "context",
+      "summary": "일별 기상 기록이 있습니다. 활동 입력이 아니라 교통·유량 통제이며 기상은 작업량이 아닙니다.",
+      "period": "2015년 이후 일별 기록이 있습니다.",
+      "nextAction": "교통·유량 설명용으로만 쓰고 활동 입력과 분리합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
+      ]
+    },
+    {
+      "id": "Library",
+      "name": "도서관·지역 행사",
+      "role": "도서관·지역 행사로 지역이 바쁜 이유를 가려내는 통제",
+      "category": "context",
+      "summary": "2026 일정만 있고 2015–2023 실험 자료는 아닙니다. 활동 입력이 아니며 방문객 수를 만들지 않습니다.",
+      "period": "2026 일정입니다. 2015–2023 실험 자료가 아닙니다.",
+      "nextAction": "해당 시점에 맞는 통제 사례로 보존합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
+      ]
+    },
+    {
+      "id": "Community parking",
+      "name": "일반 커뮤니티 주차",
+      "role": "일반 커뮤니티 주차로 산업 활동과 지역 행사를 가려내는 통제",
+      "category": "context",
+      "summary": "주차 관측 코드만 있고 장기 실측은 아직 확보하지 않았습니다. 활동 입력이 아니며 개인 차량은 추적하지 않습니다.",
+      "period": "기간이 확인되지 않았습니다.",
+      "nextAction": "산업 활동과 일반 행사를 가르는 통제로만 검토합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
+      ]
+    },
+    {
+      "id": "091-KUSH / 091-Z",
+      "name": "KUSH 뉴스·관심",
+      "role": "지역 에너지 뉴스 관심의 문맥 신호",
+      "category": "context",
+      "summary": "월별 뉴스 관심 기록이 있습니다. 활동 입력이 아니라 관심 신호이며 기사 수는 생산량·근로자 수가 아닙니다.",
+      "period": "장기 월별 관심 기록과 앞으로의 뉴스 목록이 있습니다.",
+      "nextAction": "뉴스 관심 신호라는 이름과 별도 역할을 유지합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
+      ]
+    },
+    {
+      "id": "091-LAUE / QCEW",
+      "name": "지역 고용",
+      "role": "Payne 카운티 고용의 경제 문맥",
+      "category": "context",
+      "summary": "Payne 카운티 고용 자료가 있습니다. 쿠싱 시 고용도 활동 입력도 아니며 월간·분기 자료를 하나로 세지 않습니다.",
+      "period": "LAUE는 2015–2026 월간, QCEW는 분기입니다.",
+      "nextAction": "비교·통제로만 두고 활동 입력으로 올리지 않습니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
+      ]
+    },
+    {
+      "id": "091-Y / YD / X",
+      "name": "소매 연료가격·스프레드",
+      "role": "주유소 표시가·스프레드의 가격 문맥",
+      "category": "context",
+      "summary": "주유소 표시가 경로가 있습니다. 활동 입력이 아니라 가격 배경이며 표시가는 판매량·트럭 수가 아닙니다.",
+      "period": "앞으로 쌓는 값과 일별·월별이 섞여 있습니다.",
+      "nextAction": "별도 시장정보로만 검토합니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
+      ]
+    },
+    {
+      "id": "091-USGS / GW",
+      "name": "하천·지하수",
+      "role": "하천·지하수로 유량 해석을 돕는 수문 통제",
+      "category": "context",
+      "summary": "Ripley 하천·Payne 우물 기록이 있습니다. 하수처리장(DMR) 방류량이 아니며 활동 입력도 아닙니다.",
+      "period": "하천은 1987년 이후 일별, 우물은 2017–2018입니다.",
+      "nextAction": "날씨와 유량을 해석할 때 보조 자료로만 씁니다.",
+      "sourceUrls": [
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
+      ]
+    }
+  ]
+}

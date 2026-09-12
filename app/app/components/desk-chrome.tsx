@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigation } from "react-router";
+import { Link, NavLink, useLocation, useNavigation } from "react-router";
 
 import { cn } from "~/lib/cn";
 
@@ -22,7 +22,7 @@ export function DeskHeader({ source, ticker, freshness, contextLabel }: DeskHead
     ? freshness === "fresh"
       ? "정상"
       : freshness === "stale"
-        ? "최신성 확인"
+        ? "업데이트 확인 필요"
         : "데이터 없음"
     : null;
 
@@ -62,7 +62,7 @@ export function DeskHeader({ source, ticker, freshness, contextLabel }: DeskHead
           </p>
         </div>
         <p role="status" aria-live="polite" className={pending ? "desk-loading" : "sr-only"}>
-          {pending ? "연구 화면을 불러오는 중입니다." : ""}
+          {pending ? "화면을 불러오는 중입니다." : ""}
         </p>
       </header>
     </>
@@ -104,6 +104,10 @@ function DeskNavLink({
   end?: boolean;
   children: string;
 }) {
+  const { pathname } = useLocation();
+  if (to === "/research" && (pathname === "/history" || pathname.startsWith("/observations/"))) {
+    return <Link to={to} aria-current="page" className="desk-nav-link text-primary">{children}</Link>;
+  }
   return (
     <NavLink
       to={to}
