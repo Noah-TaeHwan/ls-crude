@@ -64,13 +64,13 @@ python3 -m venv .venv-share
 .venv-share/bin/python -m pip install -e . --no-deps
 ```
 
-Windows PowerShell에서는 다음처럼 가상환경의 Python을 직접 실행합니다. 뒤의 실행 명령도 `.venv-share/bin/python` 대신 `.\venv-share\Scripts\python.exe`를 사용하면 됩니다.
+Windows PowerShell에서는 다음처럼 가상환경의 Python을 직접 실행합니다. 뒤의 실행 명령도 `.venv-share/bin/python` 대신 `.\.venv-share\Scripts\python.exe`를 사용하면 됩니다.
 
 ```powershell
 cd research
 py -3 -m venv .venv-share
-.\venv-share\Scripts\python.exe -m pip install -r requirements-exp.txt
-.\venv-share\Scripts\python.exe -m pip install -e . --no-deps
+.\.venv-share\Scripts\python.exe -m pip install -r requirements-exp.txt
+.\.venv-share\Scripts\python.exe -m pip install -e . --no-deps
 ```
 
 프로젝트는 Python 3.11 이상을 요구하며, 태환 쪽 현재 확인 환경은 Python 3.13.15입니다. 재현 보고에 Python·라이브러리 버전과 운영체제도 남겨 주세요.

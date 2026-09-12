@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { WtiDailyChart } from "~/components/wti-daily-chart";
 import { data, Link, redirect, useLocation, useNavigate, useRevalidator } from "react-router";
 import { legacyHashRedirect, legacySampleRedirect, unsupportedSampleNotice } from "~/lib/cai-legacy-routing";
+import { useDisclosureHistory } from "~/lib/use-disclosure-history";
 
 import type { Route } from "./+types/home";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
@@ -66,16 +67,17 @@ export default function Home({ loaderData: { market, daily, cai, experiments, un
   const revalidator = useRevalidator();
   const location = useLocation();
   const navigate = useNavigate();
+  const restoringHistory = useDisclosureHistory();
   useEffect(() => {
     // hash-only 구주소는 서버가 볼 수 없으므로 클라이언트에서 replace한다.
     const target = legacyHashRedirect(location.pathname, location.hash);
     if (target) {
       void navigate(target, { replace: true });
-    } else if (!location.hash) {
+    } else if (!location.hash && !restoringHistory) {
       document.querySelectorAll<HTMLDetailsElement>("#main-content details[open]").forEach((item) => { item.open = false; });
       window.scrollTo(0, 0);
     }
-  }, [location.pathname, location.hash, location.key, navigate]);
+  }, [location.pathname, location.hash, location.key, navigate, restoringHistory]);
   useEffect(() => {
     const timer = window.setInterval(() => {
       if (document.visibilityState === "visible" && revalidator.state === "idle") void revalidator.revalidate();

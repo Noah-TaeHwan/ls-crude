@@ -10,6 +10,7 @@ import { ResearchWorkflow } from "~/components/cai/research-workflow";
 import { ResearchIntake } from "~/components/research-intake";
 import { ResearchSample } from "~/components/research-sample";
 import { legacyHashRedirect } from "~/lib/cai-legacy-routing";
+import { useDisclosureHistory } from "~/lib/use-disclosure-history";
 import type { CaiPublicView } from "~/lib/cai-view";
 import type { ExperimentSummary } from "~/lib/experiment-summary";
 import type { IntakeRecord } from "~/lib/research-intake";
@@ -89,6 +90,7 @@ export function ResearchRecord({
   const { hash, pathname, key } = useLocation();
   const [params] = useSearchParams();
   const navigate = useNavigate();
+  const restoringHistory = useDisclosureHistory();
   const sampleQuery = params.get("sample");
   const archiveOpen = initialQuery.length > 0 || (sampleQuery !== null && sampleQuery.length > 0);
   useEffect(() => {
@@ -98,6 +100,7 @@ export function ResearchRecord({
       void navigate(target, { replace: true });
       return;
     }
+    if (restoringHistory) return;
     const targetHash = hash || (initialQuery ? "#ledger" : sampleQuery ? "#research-sample" : "");
     if (targetHash) {
       revealHashTarget(targetHash);
@@ -105,7 +108,7 @@ export function ResearchRecord({
       document.querySelectorAll<HTMLDetailsElement>("#main-content details[open]").forEach((item) => { item.open = false; });
       window.scrollTo(0, 0);
     }
-  }, [hash, pathname, key, initialQuery, sampleQuery, navigate]);
+  }, [hash, pathname, key, initialQuery, sampleQuery, navigate, restoringHistory]);
   /**
    * 같은 주소의 링크를 다시 눌러도 해당 상세를 펼친다.
    * @param event 본문에서 발생한 클릭.
