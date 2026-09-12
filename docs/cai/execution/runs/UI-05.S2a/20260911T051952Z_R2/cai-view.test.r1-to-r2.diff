@@ -1,0 +1,126 @@
+--- /tmp/s2a-r1-handoff/app/tests/cai-view.test.mjs	2026-09-11 14:02:40
++++ app/tests/cai-view.test.mjs	2026-09-11 14:21:12
+@@ -518,5 +518,123 @@
+       }),
+     );
+     assert.equal(displayedProbabilities(out.forecast), null);
++  });
++});
++
++describe("R2-F3: DEMO 비공개는 score 상태와 독립", () => {
++  const demoHistory = [
++    { date: "2026-09-04", score: 40, definition_version: "wk-2026-W37" },
++    { date: "2026-09-11", score: 50, definition_version: "wk-2026-W37" },
++  ];
++
++  function demoSnapshot(index) {
++    return validSnapshot({
++      index: validIndex({ data_origin: "DEMO", previous_score: 40, history: demoHistory, ...index }),
++    });
++  }
++
++  function assertUnpublished(index) {
++    const out = parseCaiPublicView(demoSnapshot(index));
++    assert.equal(out.index.data_origin, "DEMO");
++    assert.equal(out.index.score, null);
++    assert.equal(out.index.previous_score, null);
++    assert.deepEqual(out.index.history, []);
++  }
++
++  it("DEMO + score null이어도 previous 40이 남지 않음", () => {
++    assertUnpublished({ score: null });
++  });
++
++  it("DEMO + score 필드 삭제여도 previous 40이 남지 않음", () => {
++    const { score: _omitted, ...withoutScore } = validIndex({ data_origin: "DEMO", previous_score: 40, history: demoHistory });
++    const out = parseCaiPublicView(validSnapshot({ index: withoutScore }));
++    assert.equal(out.index.data_origin, "DEMO");
++    assert.equal(out.index.score, null);
++    assert.equal(out.index.previous_score, null);
++    assert.deepEqual(out.index.history, []);
++  });
++
++  it("DEMO + score 101이어도 previous 40이 남지 않음", () => {
++    assertUnpublished({ score: 101 });
++  });
++
++  it("DEMO + score NaN이어도 previous 40이 남지 않음", () => {
++    assertUnpublished({ score: Number.NaN });
++  });
++
++  it("DEMO 점수 0·50·100 모두 동일하게 비워짐", () => {
++    for (const score of [0, 50, 100]) {
++      assertUnpublished({ score });
++    }
++  });
++
++  it("DEMO index 처리 후에도 정상 forecast 확률은 유지", () => {
++    const out = parseCaiPublicView(demoSnapshot({ score: 50 }));
++    assert.deepEqual(displayedProbabilities(out.forecast), { up: 0.642, not_up: 0.358 });
++  });
++
++  it("정상 OBSERVED 이전값·추이와 history 중간 null은 보존 (대조)", () => {
++    const observed = parseCaiPublicView(validSnapshot());
++    assert.equal(observed.index.previous_score, 60.0);
++    assert.equal(observed.index.history.length, 2);
++    const withNull = parseCaiPublicView(
++      validSnapshot({
++        index: validIndex({
++          history: [
++            { date: "2026-09-04", score: 60.0, definition_version: "wk-2026-W37" },
++            { date: "2026-09-05", score: null, definition_version: "wk-2026-W37" },
++            { date: "2026-09-11", score: 62.5, definition_version: "wk-2026-W37" },
++          ],
++        }),
++      }),
++    );
++    assert.equal(withNull.index.history[1].score, null);
++    assert.equal(withNull.index.history.length, 3);
+   });
+ });
++
++describe("R2-F2: URL 구조·인증정보 일관 검사", () => {
++  const cases = [
++    ["TAB 위장 scheme", "java\t" + "script:alert(1)"],
++    ["LF 위장 scheme", "java\n" + "script:alert(1)"],
++    ["역슬래시 두 개 scheme-relative", "\\".repeat(2) + "outside.example.org/file"],
++    ["X-Amz 서명 query", "https://data.example.org/file?X-Amz-Signature=R06_DUMMY_SIGNATURE"],
++    ["X-Goog 서명 query", "https://data.example.org/file?X-Goog-Signature=R06_DUMMY_SIGNATURE"],
++    ["fragment 인증값", "https://data.example.org/report#access_token=R06_DUMMY_SIGNATURE"],
++  ];
++
++  for (const [label, url] of cases) {
++    it(`${label}는 공개되지 않고 원문이 경고에 남지 않음`, () => {
++      const out = parseCaiPublicView(
++        validSnapshot({ evidence: [{ id: "review", title: "safe label", access: "public", url }] }),
++      );
++      const serialized = JSON.stringify(out);
++      assert.equal(out.evidence.length, 0);
++      assert.ok(!serialized.includes("R06_DUMMY_SIGNATURE"));
++      assert.ok(!serialized.includes("alert(1)"));
++      assert.ok(!serialized.includes("outside.example.org"));
++      assert.ok(!JSON.stringify(out.warnings).includes("R06_DUMMY_SIGNATURE"));
++      // 정상 index·forecast는 유지된다.
++      assert.equal(out.index.score, 62.5);
++      assert.deepEqual(displayedProbabilities(out.forecast), { up: 0.642, not_up: 0.358 });
++    });
++  }
++
++  it("team_only 내부 주소 비공개 처리는 유지 (대조)", () => {
++    const out = parseCaiPublicView(
++      validSnapshot({
++        evidence: [
++          {
++            id: "e5",
++            title: "internal report",
++            url: "https://internal.example.org/private/report",
++            access: "team_only",
++          },
++        ],
++      }),
++    );
++    assert.equal(out.evidence.length, 1);
++    assert.equal(out.evidence[0].url, null);
++    assert.equal(out.evidence[0].access, "team_only");
++  });
++});

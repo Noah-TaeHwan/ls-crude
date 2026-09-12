@@ -1,0 +1,103 @@
+TAP version 13
+# Subtest: CaiGauge
+    # Subtest: null 점수는 바늘 없이 — 와 산출 대기, 등급 표현 없음
+    ok 1 - null 점수는 바늘 없이 — 와 산출 대기, 등급 표현 없음
+      ---
+      duration_ms: 8.4305
+      type: 'test'
+      ...
+    # Subtest: 0·50·100은 수치·각도·aria가 서로 맞고 0에도 바늘이 있다
+    ok 2 - 0·50·100은 수치·각도·aria가 서로 맞고 0에도 바늘이 있다
+      ---
+      duration_ms: 2.133542
+      type: 'test'
+      ...
+    # Subtest: 범위 밖·NaN 점수는 null과 같은 비게시 상태
+    ok 3 - 범위 밖·NaN 점수는 null과 같은 비게시 상태
+      ---
+      duration_ms: 0.891584
+      type: 'test'
+      ...
+    # Subtest: DEMO는 비게시 라벨을 숨기지 않고 STALE은 갱신 지연을 표시
+    ok 4 - DEMO는 비게시 라벨을 숨기지 않고 STALE은 갱신 지연을 표시
+      ---
+      duration_ms: 1.412833
+      type: 'test'
+      ...
+    # Subtest: 기준일·가중치·전기 대비 변화를 표시
+    ok 5 - 기준일·가중치·전기 대비 변화를 표시
+      ---
+      duration_ms: 0.626083
+      type: 'test'
+      ...
+    1..5
+ok 1 - CaiGauge
+  ---
+  duration_ms: 14.150959
+  type: 'suite'
+  ...
+# Subtest: CaiForecast
+    # Subtest: 빈 상태는 예시 확률로 보충하지 않음
+    ok 1 - 빈 상태는 예시 확률로 보충하지 않음
+      ---
+      duration_ms: 0.997334
+      type: 'test'
+      ...
+    # Subtest: 미승인 forecast도 확률을 표시하지 않음
+    ok 2 - 미승인 forecast도 확률을 표시하지 않음
+      ---
+      duration_ms: 0.62075
+      type: 'test'
+      ...
+    # Subtest: 승인된 표본은 반올림 규칙·날짜·주차·모델·검증 상태를 표시
+    ok 3 - 승인된 표본은 반올림 규칙·날짜·주차·모델·검증 상태를 표시
+      ---
+      duration_ms: 0.772625
+      type: 'test'
+      ...
+    # Subtest: 하락·보합은 100에서 뺀 값으로 반올림
+    ok 4 - 하락·보합은 100에서 뺀 값으로 반올림
+      ---
+      duration_ms: 0.704916
+      type: 'test'
+      ...
+    # Subtest: DEMO forecast는 비게시 라벨을 유지
+    ok 5 - DEMO forecast는 비게시 라벨을 유지
+      ---
+      duration_ms: 0.369667
+      type: 'test'
+      ...
+    1..5
+ok 2 - CaiForecast
+  ---
+  duration_ms: 3.673917
+  type: 'suite'
+  ...
+# Subtest: CaiAbout
+    # Subtest: 기본 접힘 details이고 구성·검증·근거가 안에 있음
+    ok 1 - 기본 접힘 details이고 구성·검증·근거가 안에 있음
+      ---
+      duration_ms: 0.905125
+      type: 'test'
+      ...
+    # Subtest: 빈 구성·근거는 지어내지 않고 대기 문구를 표시
+    ok 2 - 빈 구성·근거는 지어내지 않고 대기 문구를 표시
+      ---
+      duration_ms: 0.278458
+      type: 'test'
+      ...
+    1..2
+ok 3 - CaiAbout
+  ---
+  duration_ms: 1.23875
+  type: 'suite'
+  ...
+1..3
+# tests 12
+# suites 3
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 437.017375

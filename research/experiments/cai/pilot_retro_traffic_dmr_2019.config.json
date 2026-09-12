@@ -1,0 +1,90 @@
+{
+  "spec_version": 1,
+  "mode": "RETROSPECTIVE_RESEARCH",
+  "preregistered_at": "2026-09-11T22:05:00+09:00",
+  "preregistration_note": "2019 교통 학습 자료 보강 후속 회고 실험(독립 검증/OOS 아님). 변경: traffic 입력에 2019만 추가. 타깃·분할·시장정보·전처리·DMR 62일 정책·seed·가중치 제약 동일.",
+  "target": {
+    "kind": "next_n_trading_days_up",
+    "horizon_days": 5,
+    "flat_counts_as": "down",
+    "definition": "label = 1 when Close[t+5] > Close[t]; trading days from the CL=F daily array in IS"
+  },
+  "price": {
+    "kind": "price",
+    "path": "research/data/clf-daily-2015-2026.csv",
+    "sha256": "ea70f9340b17081a037fa3f4cd0ed12810a67cea781e5779127eb651afd56171",
+    "date_column": "date",
+    "value_column": "Close"
+  },
+  "is": {
+    "start": "2015-01-01",
+    "end": "2023-12-31"
+  },
+  "split": {
+    "train_end": "2020-12-31",
+    "val_start": "2021-01-01",
+    "val_end": "2023-12-31"
+  },
+  "market_features": [
+    "rsi14",
+    "ret_5d"
+  ],
+  "limits": {
+    "max_configs": 12,
+    "max_workers": 2,
+    "max_seconds": 7200
+  },
+  "seeds": [
+    7
+  ],
+  "candidate_id": "091-cai-pilot-traffic-dmr-2019",
+  "components": [
+    {
+      "kind": "component",
+      "path": "research/data/processed/091-cai-exp-pilot/inputs/traffic_avc040_daily_2019plus.csv",
+      "sha256": "c9522c2335b128cff711d3fced52832db9f92e2abc56694ea5f0a57d9c756302",
+      "date_column": "date",
+      "value_column": "value",
+      "availability_lag_days": 0,
+      "validity_days": 0
+    },
+    {
+      "kind": "component",
+      "path": "research/data/processed/091-cai-exp-pilot/inputs/dmr_ok0026701_001_mgd.csv",
+      "sha256": "251aa9e6e60a2d7c16c9330776c6662117156230a48cbe004a9640907ead61be",
+      "date_column": "date",
+      "value_column": "value",
+      "available_at_column": "available_at",
+      "validity_days": 62,
+      "availability_basis": "EPA ECHO ValueReceivedDate (receipt date)"
+    }
+  ],
+  "configs": [
+    {
+      "id": "baseline",
+      "model": "baseline_up_rate",
+      "match_components": true
+    },
+    {
+      "id": "market",
+      "model": "market_only_logit",
+      "match_components": true
+    },
+    {
+      "id": "cai_equal",
+      "model": "cai_equal_logit"
+    },
+    {
+      "id": "cai_learned",
+      "model": "cai_learned_logit"
+    },
+    {
+      "id": "market_cai_equal",
+      "model": "market_cai_equal_logit"
+    },
+    {
+      "id": "market_cai_learned",
+      "model": "market_cai_learned_logit"
+    }
+  ]
+}

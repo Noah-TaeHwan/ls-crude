@@ -1,0 +1,184 @@
+TAP version 13
+# Subtest: parseCaiPublicView: 루트 검증
+    # Subtest: null 입력은 빈 객체 계약 + INVALID_SNAPSHOT
+    ok 1 - null 입력은 빈 객체 계약 + INVALID_SNAPSHOT
+      ---
+      duration_ms: 0.445875
+      type: 'test'
+      ...
+    # Subtest: 빈 객체와 schema 불일치는 빈 객체 계약 + INVALID_SNAPSHOT
+    ok 2 - 빈 객체와 schema 불일치는 빈 객체 계약 + INVALID_SNAPSHOT
+      ---
+      duration_ms: 0.082708
+      type: 'test'
+      ...
+    # Subtest: 알 수 없는 raw/weights/token 필드는 출력에 남지 않음
+    ok 3 - 알 수 없는 raw/weights/token 필드는 출력에 남지 않음
+      ---
+      duration_ms: 0.810958
+      type: 'test'
+      ...
+    1..3
+ok 1 - parseCaiPublicView: 루트 검증
+  ---
+  duration_ms: 2.339833
+  type: 'suite'
+  ...
+# Subtest: parseCaiPublicView: index 영역
+    # Subtest: score 0은 보존되고 gaugeAngle(0)은 -90
+    ok 1 - score 0은 보존되고 gaugeAngle(0)은 -90
+      ---
+      duration_ms: 0.2535
+      type: 'test'
+      ...
+    # Subtest: score null은 null 유지, 0으로 변환 금지
+    ok 2 - score null은 null 유지, 0으로 변환 금지
+      ---
+      duration_ms: 0.092583
+      type: 'test'
+      ...
+    # Subtest: score 101/-1/NaN은 index만 비우고 경고
+    ok 3 - score 101/-1/NaN은 index만 비우고 경고
+      ---
+      duration_ms: 0.59275
+      type: 'test'
+      ...
+    # Subtest: STALE 유효 index는 원래 observed_at을 유지
+    ok 4 - STALE 유효 index는 원래 observed_at을 유지
+      ---
+      duration_ms: 0.261292
+      type: 'test'
+      ...
+    # Subtest: 존재하지 않는 날짜(2026-02-30)는 history를 비우고 경고
+    ok 5 - 존재하지 않는 날짜(2026-02-30)는 history를 비우고 경고
+      ---
+      duration_ms: 0.2665
+      type: 'test'
+      ...
+    # Subtest: history 중간 null은 보존되고 보간되지 않음
+    ok 6 - history 중간 null은 보존되고 보간되지 않음
+      ---
+      duration_ms: 0.403667
+      type: 'test'
+      ...
+    # Subtest: 다른 definition_version 항목은 선에서 제외
+    ok 7 - 다른 definition_version 항목은 선에서 제외
+      ---
+      duration_ms: 0.246542
+      type: 'test'
+      ...
+    # Subtest: DEMO 숫자 점수는 미게시 값으로 취급하고 DEMO를 유지
+    ok 8 - DEMO 숫자 점수는 미게시 값으로 취급하고 DEMO를 유지
+      ---
+      duration_ms: 0.070167
+      type: 'test'
+      ...
+    1..8
+ok 2 - parseCaiPublicView: index 영역
+  ---
+  duration_ms: 2.457208
+  type: 'suite'
+  ...
+# Subtest: parseCaiPublicView: forecast 영역
+    # Subtest: 정상 index + 미승인 forecast는 index 유지·확률 표시 없음
+    ok 1 - 정상 index + 미승인 forecast는 index 유지·확률 표시 없음
+      ---
+      duration_ms: 0.109458
+      type: 'test'
+      ...
+    # Subtest: 메타·승인 유효 시 확률 반환, 표시 규칙은 64.2/35.8
+    ok 2 - 메타·승인 유효 시 확률 반환, 표시 규칙은 64.2/35.8
+      ---
+      duration_ms: 0.064959
+      type: 'test'
+      ...
+    # Subtest: 확률 합계 1.1은 표시 없음
+    ok 3 - 확률 합계 1.1은 표시 없음
+      ---
+      duration_ms: 0.049292
+      type: 'test'
+      ...
+    # Subtest: 시간대 누락·순서 오류는 표시 없음
+    ok 4 - 시간대 누락·순서 오류는 표시 없음
+      ---
+      duration_ms: 0.076375
+      type: 'test'
+      ...
+    # Subtest: 같은 시각의 다른 표기도 같은 기준으로 비교
+    ok 5 - 같은 시각의 다른 표기도 같은 기준으로 비교
+      ---
+      duration_ms: 0.046333
+      type: 'test'
+      ...
+    1..5
+ok 3 - parseCaiPublicView: forecast 영역
+  ---
+  duration_ms: 0.411709
+  type: 'suite'
+  ...
+# Subtest: gaugeAngle
+    # Subtest: 0→-90, 50→0, 100→90
+    ok 1 - 0→-90, 50→0, 100→90
+      ---
+      duration_ms: 0.043334
+      type: 'test'
+      ...
+    # Subtest: null·NaN·범위 밖·무한대는 null
+    ok 2 - null·NaN·범위 밖·무한대는 null
+      ---
+      duration_ms: 0.035709
+      type: 'test'
+      ...
+    1..2
+ok 4 - gaugeAngle
+  ---
+  duration_ms: 0.109792
+  type: 'suite'
+  ...
+# Subtest: validation 영역
+    # Subtest: 독립 검증 정보 누락 시 INDEPENDENT_TESTED로 게시하지 않음
+    ok 1 - 독립 검증 정보 누락 시 INDEPENDENT_TESTED로 게시하지 않음
+      ---
+      duration_ms: 0.077708
+      type: 'test'
+      ...
+    # Subtest: n·표본·UNSEEN·동결·검토가 있으면 INDEPENDENT_TESTED 유지
+    ok 2 - n·표본·UNSEEN·동결·검토가 있으면 INDEPENDENT_TESTED 유지
+      ---
+      duration_ms: 0.055084
+      type: 'test'
+      ...
+    1..2
+ok 5 - validation 영역
+  ---
+  duration_ms: 0.211917
+  type: 'suite'
+  ...
+# Subtest: emptyCaiView와 서버 리더
+    # Subtest: emptyCaiView는 빈 상태 계약을 만족
+    ok 1 - emptyCaiView는 빈 상태 계약을 만족
+      ---
+      duration_ms: 0.116542
+      type: 'test'
+      ...
+    # Subtest: 빈 서버 리더에 임의 점수·확률·외부 호출이 없음
+    ok 2 - 빈 서버 리더에 임의 점수·확률·외부 호출이 없음
+      ---
+      duration_ms: 0.108666
+      type: 'test'
+      ...
+    1..2
+ok 6 - emptyCaiView와 서버 리더
+  ---
+  duration_ms: 0.264833
+  type: 'suite'
+  ...
+1..6
+# tests 22
+# suites 6
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 100.285292

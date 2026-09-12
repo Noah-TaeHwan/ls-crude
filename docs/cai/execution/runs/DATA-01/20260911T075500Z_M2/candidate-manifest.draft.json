@@ -1,0 +1,327 @@
+{
+  "schema": "cai.candidate-manifest.draft.v0",
+  "run_id": "20260911T075500Z_M2",
+  "generated_utc": "2026-09-11T07:58:00Z",
+  "base_sha": "cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef",
+  "status": "DRAFT_NOT_CONNECTED_TO_APP_OR_ENGINE",
+  "decision": "NEED_SCOPE_DECISION",
+  "decision_reason": "로컬에 실측·연속·장기 이력을 가진 월간 '활동' 계열은 사실상 Payne County 고용(LAUE) 1계열뿐이다. 소비(STAX)는 4개월, 분기 QCEW는 같은 노동 구성의 중복, KUSH는 관심, DMR은 규제 로그(활동 아님)로 역할이 다르다. '쿠싱 활동'이라는 의도와 자료의 측정 대상(카운티 고용)이 어긋나 범위·명칭·주기 결정이 선행되어야 한다.",
+  "recommended_default": {
+    "option": "A_SCOPE_NARROW_TO_LABOR",
+    "name_ko": "Payne County 고용 활동 기준선 v0 (월간, 단일지표)",
+    "why": "기존 파일로 즉시 계산 가능하고 결측·품질이 문서화되어 있다. 합성 CAI가 아니므로 그렇게 부르지 않는다.",
+    "not_included": [
+      "KUSH(관심)",
+      "DMR(규제 로그)",
+      "QCEW(노동 중복·분기)",
+      "STAX(4개월)"
+    ]
+  },
+  "candidates": [
+    {
+      "candidate_id": "LAUE",
+      "name": "Payne County 월간 취업자 수",
+      "measure": "employed persons (BLS LAUS employment level)",
+      "role": "활동 대리변수 가설 (노동)",
+      "geography": "Payne County, OK (Cushing 시가 아님)",
+      "frequency": "monthly",
+      "file": "research/indexes/091-cushing-operations-nowcasting/20260910T091LAUEZ/payne_laus_employed_monthly.json",
+      "receipt": "research/indexes/091-cushing-operations-nowcasting/20260910T091LAUEZ/receipt.json",
+      "series_id": "LAUCN401190000000005",
+      "period": "2015-01..2026-07",
+      "rows": 139,
+      "quality": "연속 139개월, 결측 1개월(2025-10, 예산 lapse로 unavailable — null 유지·0 대체 없음), 예비치 1개월(2026-07)",
+      "dates": {
+        "observed": "월간",
+        "publication_verified": false,
+        "revision_policy_verified": false,
+        "retrieved": "2026-09-10T03:15:00Z"
+      },
+      "rights": {
+        "access": "keyless public (BLS)",
+        "reuse_verified": false,
+        "note": "BLS 공식 페이지 403 차단으로 확인 미완"
+      },
+      "stages": {
+        "A_file": "확인",
+        "B_local_analysis": "조건부(이용 조건 미확인)",
+        "C_historical_validation": "미확인(공개·가용시점·개정 이력)",
+        "D_public_release": "미확인(재사용·재배포 조건)"
+      },
+      "hypothesis": "카운티 고용 수준이 쿠싱 권역의 실물 활동 수준과 같은 방향으로 움직인다는 가설.",
+      "rival_explanations": [
+        "카운티 전체 경제 요인(대학·기타 산업)이 쿠싱 활동과 무관하게 지배할 수 있음",
+        "계절성·인구 변화",
+        "석유·가스 사이클에 따른 교란"
+      ],
+      "falsification": "쿠싱 인근 시설·이동 자료와 상관이 없거나, 고용이 쿠싱 특정 활동과 반대로 움직이는 구간이 확인되면 가설 기각.",
+      "eligibility": "기준선 v0의 단일 성분 후보(합성 아님). 다음 실행 승인 시 사용.",
+      "adopted": false
+    },
+    {
+      "candidate_id": "STAX",
+      "name": "Cushing 시 월간 판매세 분배액",
+      "measure": "OTC STS printed city sales-tax distribution (USD, 4% 세율 표기)",
+      "role": "지역 소비 (활동 대리 가설)",
+      "geography": "Cushing city, OK",
+      "frequency": "monthly releases (sparse printed months)",
+      "file": "research/indexes/091-cushing-operations-nowcasting/20260910T091STAXZ/cushing_city_sales_tax_monthly.json",
+      "receipt": "research/indexes/091-cushing-operations-nowcasting/20260910T091STAXZ/receipt.json",
+      "period": "2025-08..2026-09 (4 points)",
+      "rows": 4,
+      "quality": "4개월만 확보. 2025-10..2026-07 결측(10개월)이며 월별 인쇄분만 존재. PDF 스캔 OCR 파이프라인(SHA-256 기록).",
+      "dates": {
+        "observed": "월별 분배(9월분은 주로 7월 사업분 — 문서화됨)",
+        "publication_verified": "부분(릴리스 PDF 존재)",
+        "revision_policy_verified": false,
+        "retrieved": "2026-09-10T02:38:00Z"
+      },
+      "rights": {
+        "access": "공개 PDF(무료)",
+        "reuse_verified": false
+      },
+      "stages": {
+        "A_file": "확인",
+        "B_local_analysis": "부적격(기준선) — 4개월로 분포·percentile 계산 불가",
+        "C_historical_validation": "미확인",
+        "D_public_release": "미확인"
+      },
+      "hypothesis": "지역 소비(판매세)가 쿠싱 활동 수준과 같은 방향으로 움직인다.",
+      "rival_explanations": [
+        "판매세는 소비·면세 항목·배분 시차·구역 경계를 반영",
+        "릴리스별 개정/OCR 오차"
+      ],
+      "falsification": "인쇄 개월 간 값이 활동 대리와 정합하지 않거나 OCR 재현이 실패하면 제외.",
+      "eligibility": "보류 — 전방 수집 후보(신규 수집은 승인 필요). 과거 백필은 OCR 비용·신뢰 문제.",
+      "adopted": false
+    },
+    {
+      "candidate_id": "QCEWQ",
+      "name": "Payne County 분기 총피고용",
+      "measure": "QCEW total covered employment (분기, 월별 3값)",
+      "role": "활동 대리변수 가설 (노동) — LAUS와 동일 구성",
+      "geography": "Payne County, OK",
+      "frequency": "quarterly",
+      "file": "research/indexes/091-cushing-operations-nowcasting/20260909T091QCEWQZ/payne_qcew_quarterly.json",
+      "receipt": "research/indexes/091-cushing-operations-nowcasting/20260909T091QCEWQZ/receipt.json",
+      "period": "2015-Q1..2026-Q1",
+      "rows": 45,
+      "quality": "45분기 연속, 결측 0, suppression은 missing 처리.",
+      "dates": {
+        "observed": "분기",
+        "publication_verified": false,
+        "revision_policy_verified": false,
+        "retrieved": "2026-09-09T15:15:26Z"
+      },
+      "rights": {
+        "access": "keyless public (BLS QCEW API)",
+        "reuse_verified": false
+      },
+      "stages": {
+        "A_file": "확인",
+        "B_local_analysis": "조건부(분기·이용 조건 미확인)",
+        "C_historical_validation": "미확인",
+        "D_public_release": "미확인"
+      },
+      "hypothesis": "고용 수준 추세 검증용. 월간 LAUE와 같은 구성이므로 독립 성분으로 세지 않는다.",
+      "rival_explanations": [
+        "LAUS와 중복",
+        "분기 집계 시점 차이"
+      ],
+      "falsification": "LAUE와 방향이 구조적으로 어긋나면 데이터 이슈 점검.",
+      "eligibility": "문맥·검증용(점수 성분 제외)",
+      "adopted": false
+    },
+    {
+      "candidate_id": "KUSH",
+      "name": "쿠싱 운영 관심(라디오 공개 제목 월별 집계)",
+      "measure": "matching public titles per calendar month (0은 관측된 0)",
+      "role": "관심 (활동 아님 — label 'not activity' 명시)",
+      "geography": "KUSH Radio 1600 AM 공개 제목",
+      "frequency": "monthly",
+      "file": "research/indexes/091-cushing-operations-nowcasting/20260910T091KUSHZ/kush_operational_attention_monthly.json",
+      "receipt": "research/indexes/091-cushing-operations-nowcasting/20260910T091KUSHZ/receipt.json",
+      "period": "2008-02..2026-06",
+      "rows": 221,
+      "quality": "221개월 연속, 합 101, 0인 달 144(관측된 0). WTI·바쁨 점수와 미결합.",
+      "dates": {
+        "observed": "월간(제목 게시일 기준)",
+        "publication_verified": false,
+        "retrieved": null,
+        "retrieved_note": "receipt에 retrieved 미기재 — sourceCsv(20260908 run) 기반, 추정 금지"
+      },
+      "rights": {
+        "access": "공개 WordPress 제목(무료 추정)",
+        "reuse_verified": false
+      },
+      "stages": {
+        "A_file": "확인",
+        "B_local_analysis": "조건부(집계 확인·이용 조건 미확인)",
+        "C_historical_validation": "미확인",
+        "D_public_release": "미확인"
+      },
+      "hypothesis": "관심(커버리지)이며 활동 수준의 직접 측정이 아니다. 점수에 넣지 않는다.",
+      "rival_explanations": [
+        "언론 커버리지 변동",
+        "검색어 사전 변경"
+      ],
+      "falsification": "제목 집계가 활동과 동행한다는 근거가 나오면 별도 관심 지표로만 검토.",
+      "eligibility": "부적격(활동 성분) — 별도 관심 표시 유지",
+      "adopted": false
+    },
+    {
+      "candidate_id": "DMR",
+      "name": "쿠싱 시설 방류 유량 신고(EPA ECHO DMR)",
+      "measure": "Flow, in conduit or thru treatment plant (parameter 50050)",
+      "role": "규제 로그(수질) — 활동·바쁨 측정 아님",
+      "geography": "Cushing city",
+      "frequency": "월간 신고(행 단위, 시설별)",
+      "file": "research/indexes/091-cushing-operations-nowcasting/20260910T091DMRZ/cushing_echo_dmr_flow.json",
+      "receipt": "research/indexes/091-cushing-operations-nowcasting/20260910T091DMRZ/receipt.json",
+      "period": "2015-01-31..2026-07-31",
+      "rows": 1722,
+      "quality": "값 null 842/1722. 단위 혼합 MGD 488·gal/d 230·null 1004(유값 중 162행 단위 null). 통계기준 MO AVG 861 / DAILY MX 861 혼합. 시설 6개. receipt permitsWithFlow 5 vs 파일 6 불일치(미확인).",
+      "dates": {
+        "observed": "월별 신고(모니터링 기간 종료일)",
+        "publication_verified": false,
+        "revision_policy_verified": false,
+        "retrieved": "2026-09-10T00:00:00Z"
+      },
+      "rights": {
+        "access": "EPA ECHO 공개(무료)",
+        "reuse_verified": false
+      },
+      "stages": {
+        "A_file": "확인",
+        "B_local_analysis": "조건부(단일 단위·단일 통계기준·시설 범위 규칙 없이는 합산 금지)",
+        "C_historical_validation": "미확인",
+        "D_public_release": "미확인"
+      },
+      "hypothesis": "시설별 방류량이 시설 가동 수준의 대리일 수 있다는 별도 가설(현재 역할 밖).",
+      "rival_explanations": [
+        "강수·유입수(inflow/infiltration) 영향",
+        "신고 관행·면제(NODI)",
+        "시설별 단위·기준 상이"
+      ],
+      "falsification": "단일 시설·단일 단위·단일 기준으로 정리했을 때도 계열이 성기거나 결측 편향이 크면 제외.",
+      "eligibility": "부적격(현 역할) — 역할 변경 가설은 별도 연구 승인 필요",
+      "adopted": false
+    }
+  ],
+  "excluded_or_control": [
+    {
+      "id": "091-OPS/KCUH",
+      "why": "비관제 공항 — 월별 운영 행 0건(원자료 README 확인). 자료 없음."
+    },
+    {
+      "id": "091-AADT",
+      "why": "연간 1점(2018). percentile 불가."
+    },
+    {
+      "id": "091-EastMain AADT",
+      "why": "원본 JSON은 BOARDZ에 존재(source ArcGIS URL·retrievedUtc 기록)하나 receipt.json 부재·연간 1점 → 월간 불가."
+    },
+    {
+      "id": "091-EMPTIES/rail/tankers",
+      "why": "쿠싱 지역 활동이 아님(LA항·미국 철도·싱가포르)."
+    },
+    {
+      "id": "091-PENR/SOIZ",
+      "why": "연간(5~7점) — 월간 기준선 범위 밖. 문맥용."
+    },
+    {
+      "id": "091-USGS/PRCP/메소넷",
+      "why": "환경·기상 통제 변수. 활동 아님."
+    },
+    {
+      "id": "091-QSR",
+      "why": "실측 0행. 전방 사람 관측이 필요(이번 배치 금지)."
+    }
+  ],
+  "next_run_if_approved": {
+    "branch": "A_SCOPE_NARROW_TO_LABOR",
+    "unit": "IDX-01-baseline-v0 (로컬 탐색용, 앱 미연결)",
+    "inputs": [
+      "payne_laus_employed_monthly.json(139개월)"
+    ],
+    "period": "2015-01..2026-07",
+    "reference_window": "2015-01..2023-12",
+    "transform": "employed → 0–100 percentile (경험적 분포, 최소 60개월 요구)",
+    "weighting": "단일 성분(합성 가중치 없음)",
+    "missing_rule": "2025-10 null 유지(보간·0 대체 금지). 2026-07 예비치는 값 유지 + preliminary 플래그(참조 구간 2015-01..2023-12 밖이라 통계 영향 없음).",
+    "seen_rule": "2024-01 이후는 이미 앱에 표시된 SEEN 구간 — 탐색 결과로만 표기, 독립 검증 주장 금지",
+    "outputs": [
+      "baseline_v0.json(값·백분위·기간)",
+      "receipt.json(입력 해시·규칙)",
+      "quality note(결측·예비치)"
+    ],
+    "validation": [
+      "행수 139·기간·결측 1 재현",
+      "백분위 단조성·범위 0~100 검사",
+      "앱·CAI adapter 연결 금지"
+    ],
+    "stop_conditions": [
+      "입력 SHA-256(a3d78e93…) 불일치 — run 시작·종료 시 재검증",
+      "결측·예비치 규칙 위반",
+      "참조 구간 60개월 미만"
+    ],
+    "alternative_if_scope_kept": "물리 활동 정의 유지 시: STAX 전방 월간 수집(4→forward) + DMR 단일 시설·단일 단위 집계 규칙 확정 + QSR 관측은 별도 승인. 3개월 내 성분 2개 미달이면 범위 재검토.",
+    "input_sha256": "a3d78e93ec88e885f87bca180a4f8aade6beb9711ec6fdd0660bc8182bc974f9"
+  },
+  "approvals_needed": [
+    "범위·명칭·주기 결정(옵션 A 채택 또는 물리 활동 정의 유지)",
+    "성찬님 역할·연구 방향 수락",
+    "BLS·OTC 이용·재사용 조건 확인(공개 전)"
+  ],
+  "decision_followup": {
+    "ts": "2026-09-11T07:25:00Z",
+    "decision": "NEED_TARGETED_DATA",
+    "was": "NEED_SCOPE_DECISION",
+    "reason": "성찬님 ZIP 인수(동일 버전 확인)로 물리 활동의 첫 공식 획득 경로(FHWA TMAS)가 구체화됨. 합성·스캐폴드뿐이라 GO 근거는 아니고, 획득 대상이 특정됨.",
+    "first_real_task": {
+      "name": "TMAS 교통량 획득·파싱 run (로컬, 앱 미연결)",
+      "target": "쿠싱 반경 내(예: ≤40km) TMAS 연속교통 관측소 최소 1곳, 2015–2025 월/일 교통량",
+      "source": "FHWA TMAS 공식 ZIP URL (crbi-v5/FHWA_TMAS_2011_2025_manifest.csv, fhwa.dot.gov)",
+      "outputs": [
+        "정제 일/월 시계열",
+        "수집·파싱 receipt",
+        "결측·단위·관측소 메타 노트"
+      ],
+      "stop_conditions": [
+        "공식 URL 비공개·약관 불명",
+        "반경 내 유효 관측소 0곳",
+        "2015+ 연속성 미달"
+      ],
+      "companion_no_download": "CHAI v3 ↔ 기존 DMR 입력 계약 감사(단위·통계기준·시설 매핑 표)"
+    }
+  },
+  "incoming_intake": [
+    {
+      "received": "2026-09-11",
+      "zip": "/Users/noah/Downloads/cai-webapp-all-in-one.zip",
+      "sha256": "68d0175af3106a53e8612025544271acb5de3ac88cab801c018e38215d77a64e",
+      "identity": "기존 /Users/noah/Downloads/cai-webapp 디렉터리와 바이트 동일(diff 0), 236 files",
+      "extracted_to": "/tmp/cai-webapp-intake-68d0175a (미실행·미수정)",
+      "audit": "incoming-seongchan-cai-webapp-zip-audit.md",
+      "reuse_now": [
+        "TMAS 매니페스트+파서 설계(스펙 참고)",
+        "CHAI↔DMR 입력 매핑 개념"
+      ],
+      "reuse_after_fix": [
+        "eiaWeekly 5년 상한",
+        "history 날짜키",
+        "ADS-B 창/라벨 분리"
+      ],
+      "demo_only": [
+        "CFAM 라이브 보드",
+        "parking/waste/childcare/lodging 스캐폴드"
+      ],
+      "never_for_screen": [
+        "echo/seed 상수",
+        "oneShotWti",
+        "alt-proxy 0-채움",
+        "synthetic benchmark 수치"
+      ]
+    }
+  ]
+}

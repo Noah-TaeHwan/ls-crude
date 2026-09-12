@@ -1,0 +1,102 @@
+{
+  "format": "fixed_legacy",
+  "file": {
+    "path": "research/gathering/raw/091-tmas/20260911T123706Z/extracted/OK_JAN_2016 (TMAS).VOL",
+    "bytes": 1447690,
+    "sha256": "b55243b1f3de6877f395abed7c7bc6fc499a132f51593a78d032ae3caa5c8cf3"
+  },
+  "file_level": {
+    "total_records": 10195,
+    "unique_stations": 88,
+    "record_prefix_types": {
+      "AVC": 7945,
+      "WIM": 2250
+    },
+    "lane_distribution": {
+      "1": 5325,
+      "2": 3778,
+      "3": 974,
+      "4": 118
+    },
+    "f_system_distribution": {
+      "3R": 2804,
+      "2U": 1930,
+      "1U": 1559,
+      "1R": 1476,
+      "5R": 858,
+      "4R": 646,
+      "3U": 492,
+      "4U": 430
+    },
+    "observation_date_min": "2016-01-01",
+    "observation_date_max": "2016-01-31",
+    "duplicate_station_day_dir_lane_keys": 0,
+    "lane0_and_laneN_coexist_groups": 0
+  },
+  "station": {
+    "station_id": "AVC040",
+    "records": 42,
+    "f_system_values": [
+      "4R"
+    ],
+    "directions": [
+      "3",
+      "7"
+    ],
+    "lanes": [
+      "1"
+    ],
+    "hours_total_cells": 1008,
+    "hours_missing_cells": 0,
+    "hours_zero_cells": 0,
+    "days_by_direction": {
+      "3": {
+        "days_present": 21,
+        "first": 11,
+        "last": 31,
+        "missing_days": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "7": {
+        "days_present": 21,
+        "first": 11,
+        "last": 31,
+        "missing_days": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    "day_of_week_map": {
+      "1": "Sun",
+      "2": "Mon",
+      "3": "Tue",
+      "4": "Wed",
+      "5": "Thu",
+      "6": "Fri",
+      "7": "Sat"
+    }
+  },
+  "units": "vehicles per hour (파일 hour 필드 그대로; 환산 없음)",
+  "timing": {
+    "observation_dates": "2016-01-11..2016-01-31"
+  }
+}

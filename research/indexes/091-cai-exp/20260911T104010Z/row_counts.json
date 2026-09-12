@@ -1,0 +1,22 @@
+{
+  "traffic_source": "FHWA TMAS AVC040 (station total, directions 3+7, lane 1 each)",
+  "asof_note": "lag 1 trading day is an ASSUMED conservative rule; publication timing is unconfirmed (not POINT_IN_TIME_VERIFIED)",
+  "periods": {
+    "train_le_2020": {
+      "calendar_days_present": 59,
+      "wti_trading_days_overlap": 43,
+      "after_lag1_asof": 43,
+      "after_5day_label_validity": 43
+    },
+    "val_2021_2023": {
+      "calendar_days_present": 363,
+      "wti_trading_days_overlap": 250,
+      "after_lag1_asof": 249,
+      "after_5day_label_validity": 245
+    },
+    "dev_config_reference": {
+      "train_rows": 1483,
+      "val_rows": 748
+    }
+  }
+}

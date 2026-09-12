@@ -1,0 +1,12 @@
+ M .github/workflows/ci.yml
+ M app/app/routes.ts
+?? app/app/components/cai/
+?? app/app/lib/cai-view.server.ts
+?? app/app/lib/cai-view.ts
+?? app/app/routes/history.tsx
+?? app/tests/cai-components.test.mjs
+?? app/tests/cai-history.test.mjs
+?? app/tests/cai-view.test.mjs
+      97 app/app/routes/history.tsx
+     189 app/tests/cai-history.test.mjs
+     286 total

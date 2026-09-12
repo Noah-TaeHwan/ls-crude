@@ -1,0 +1,21 @@
+ M .github/workflows/ci.yml
+ M app/app/components/desk-chrome.tsx
+ M app/app/routes.ts
+ M app/app/routes/cushing-busy.tsx
+ M app/app/routes/empties.tsx
+ M app/app/routes/home.tsx
+ M app/app/routes/research.tsx
+ M app/app/routes/tankers.tsx
+ M app/app/routes/visibility.tsx
+ M app/tests/deployment-cwd.test.mjs
+?? app/app/components/cai/
+?? app/app/lib/cai-legacy-routing.ts
+?? app/app/lib/cai-view.server.ts
+?? app/app/lib/cai-view.ts
+?? app/app/routes/history.tsx
+?? app/tests/cai-components.test.mjs
+?? app/tests/cai-history.test.mjs
+?? app/tests/cai-home.test.mjs
+?? app/tests/cai-legacy-links.test.mjs
+?? app/tests/cai-research.test.mjs
+?? app/tests/cai-view.test.mjs

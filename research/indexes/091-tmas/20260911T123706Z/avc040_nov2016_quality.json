@@ -1,0 +1,60 @@
+{
+  "format": "fixed_legacy",
+  "file": {
+    "path": "research/gathering/raw/091-tmas/20260911T123706Z/extracted/OK_NOV_2016 (TMAS).VOL",
+    "bytes": 1470836,
+    "sha256": "5136c44786c84e0fc5395db77bc0de55511ecb404f91cd1ded109f76fc33e5bb"
+  },
+  "file_level": {
+    "total_records": 10358,
+    "unique_stations": 89,
+    "record_prefix_types": {
+      "AVC": 7846,
+      "WIM": 2512
+    },
+    "lane_distribution": {
+      "1": 5290,
+      "2": 3820,
+      "3": 1128,
+      "4": 120
+    },
+    "f_system_distribution": {
+      "3R": 2620,
+      "1U": 2196,
+      "2U": 1908,
+      "1R": 1196,
+      "5R": 826,
+      "4R": 592,
+      "3U": 540,
+      "4U": 480
+    },
+    "observation_date_min": "2016-11-01",
+    "observation_date_max": "2016-11-30",
+    "duplicate_station_day_dir_lane_keys": 0,
+    "lane0_and_laneN_coexist_groups": 0
+  },
+  "station": {
+    "station_id": "AVC040",
+    "records": 0,
+    "f_system_values": [],
+    "directions": [],
+    "lanes": [],
+    "hours_total_cells": 0,
+    "hours_missing_cells": 0,
+    "hours_zero_cells": 0,
+    "days_by_direction": {},
+    "day_of_week_map": {
+      "1": "Sun",
+      "2": "Mon",
+      "3": "Tue",
+      "4": "Wed",
+      "5": "Thu",
+      "6": "Fri",
+      "7": "Sat"
+    }
+  },
+  "units": "vehicles per hour (파일 hour 필드 그대로; 환산 없음)",
+  "timing": {
+    "observation_dates": "none"
+  }
+}

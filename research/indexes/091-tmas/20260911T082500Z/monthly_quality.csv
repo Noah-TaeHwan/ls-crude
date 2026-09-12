@@ -1,0 +1,15 @@
+month,format,days_present,days_by_dir,missing_dates,records,directions,lanes,units,dup_keys_file,dup_keys_station,lane0_coexist_groups_file,station_lane0_rows,zero_hours,min_hourly_veh,max_hourly_veh,dst_date,dst_overlap,source_quality
+2016-03,fixed_legacy,29,3:29;7:29,2016-03-13;2016-03-28,58,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,2,412,2016-03-13,True,research/indexes/091-tmas/20260911T075705Z/avc040_mar2016_quality.json
+2020-03,fixed_legacy,30,3:30;7:30,2020-03-08,60,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),20,0,0,0,0,3,362,2020-03-08,True,research/indexes/091-tmas/20260911T082500Z/avc040_mar2020_quality.json
+2023-01,pipe_2023,31,3:31;7:31,,62,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,2,352,,False,research/indexes/091-tmas/20260911T082500Z/avc040_jan2023_quality.json
+2023-02,pipe_2023,28,3:28;7:28,,56,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,1,359,,False,research/indexes/091-tmas/20260911T082500Z/avc040_feb2023_quality.json
+2023-03,pipe_2023,30,3:30;7:30,2023-03-12,60,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,1,328,2023-03-12,True,research/indexes/091-tmas/20260911T082500Z/avc040_mar2023_quality.json
+2023-04,pipe_2023,30,3:30;7:30,,60,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,3,364,,False,research/indexes/091-tmas/20260911T082500Z/avc040_apr2023_quality.json
+2023-05,pipe_2023,31,3:31;7:31,,62,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,3,338,,False,research/indexes/091-tmas/20260911T082500Z/avc040_may2023_quality.json
+2023-06,pipe_2023,30,3:30;7:30,,60,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,4,351,,False,research/indexes/091-tmas/20260911T082500Z/avc040_jun2023_quality.json
+2023-07,pipe_2023,31,3:31;7:31,,62,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,3,322,,False,research/indexes/091-tmas/20260911T082500Z/avc040_jul2023_quality.json
+2023-08,pipe_2023,31,3:31;7:31,,62,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,1,329,,False,research/indexes/091-tmas/20260911T082500Z/avc040_aug2023_quality.json
+2023-09,pipe_2023,30,3:30;7:30,,60,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,1,397,,False,research/indexes/091-tmas/20260911T082500Z/avc040_sep2023_quality.json
+2023-10,pipe_2023,31,3:31;7:31,,62,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,2,360,,False,research/indexes/091-tmas/20260911T082500Z/avc040_oct2023_quality.json
+2023-11,pipe_2023,29,3:29;7:29,2023-11-05,58,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,2,362,2023-11-05,True,research/indexes/091-tmas/20260911T082500Z/avc040_nov2023_quality.json
+2023-12,pipe_2023,31,3:31;7:31,,62,3;7,1,vehicles per hour (파일 hour 필드 그대로; 환산 없음),0,0,0,0,0,1,389,,False,research/indexes/091-tmas/20260911T082500Z/avc040_dec2023_quality.json

@@ -1,0 +1,21 @@
+test_absolute_path (__main__.PacketTests.test_absolute_path) ... ok
+test_all_packets (__main__.PacketTests.test_all_packets) ... ok
+test_boot_scoped (__main__.PacketTests.test_boot_scoped) ... ok
+test_check (__main__.PacketTests.test_check) ... ok
+test_contract_included (__main__.PacketTests.test_contract_included) ... ok
+test_cycle (__main__.PacketTests.test_cycle) ... ok
+test_dangling_dependency (__main__.PacketTests.test_dangling_dependency) ... ok
+test_duplicate (__main__.PacketTests.test_duplicate) ... ok
+test_escape (__main__.PacketTests.test_escape) ... ok
+test_list (__main__.PacketTests.test_list) ... ok
+test_missing_card (__main__.PacketTests.test_missing_card) ... ok
+test_needs_option (__main__.PacketTests.test_needs_option) ... ok
+test_readonly (__main__.PacketTests.test_readonly) ... ok
+test_section_missing (__main__.PacketTests.test_section_missing) ... ok
+test_source_hash (__main__.PacketTests.test_source_hash) ... ok
+test_unknown_task (__main__.PacketTests.test_unknown_task) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 3.542s
+
+OK
