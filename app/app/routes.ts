@@ -9,4 +9,5 @@ export default [
   route("research", "routes/research.tsx"),
   route("history", "routes/history.tsx"),
   route("backtest", "routes/backtest.tsx"),
+  route("api/local-status", "routes/api.local-status.ts"),
 ] satisfies RouteConfig;

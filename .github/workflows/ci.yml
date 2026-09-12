@@ -48,4 +48,4 @@ jobs:
       - name: Build
         run: npm run build
       - name: Test
-        run: node --test tests/defcon-sample.test.mjs tests/deployment-cwd.test.mjs tests/visibility.test.mjs tests/tanker-arrivals.test.mjs tests/wti-chart-axis.test.mjs tests/research-charts.test.mjs tests/empties.test.mjs tests/cushing-context.test.mjs tests/cai-view.test.mjs tests/cai-components.test.mjs tests/cai-history.test.mjs tests/cai-legacy-links.test.mjs tests/cai-home.test.mjs tests/cai-research.test.mjs tests/cai-history-ledger.test.mjs tests/cai-experiments.test.mjs
+        run: node --test tests/defcon-sample.test.mjs tests/deployment-cwd.test.mjs tests/visibility.test.mjs tests/tanker-arrivals.test.mjs tests/wti-chart-axis.test.mjs tests/research-charts.test.mjs tests/empties.test.mjs tests/cushing-context.test.mjs tests/cai-view.test.mjs tests/cai-components.test.mjs tests/cai-history.test.mjs tests/cai-legacy-links.test.mjs tests/cai-home.test.mjs tests/cai-research.test.mjs tests/cai-history-ledger.test.mjs tests/cai-experiments.test.mjs tests/cai-local-status.test.mjs

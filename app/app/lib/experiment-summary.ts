@@ -83,6 +83,41 @@ export interface ExperimentSensitivity {
   C_0: SkippedRun;
 }
 
+/** 표본 확장 전후 한쪽의 지표 묶음. */
+export interface ExpansionMetrics {
+  train_rows: number;
+  accuracy: number;
+  log_loss: number;
+  brier: number;
+  weights: number[] | null;
+}
+
+/** 표본 확장 전후 비교의 모델 한 행. 시장 대비 차이는 해당 모델에만 있다. */
+export interface ExpansionModel {
+  id: string;
+  label: string;
+  before: ExpansionMetrics;
+  after: ExpansionMetrics;
+  delta_log_loss_after_minus_before: number;
+  before_delta_vs_market: number | null;
+  after_delta_vs_market: number | null;
+}
+
+/** 2019년 학습 자료 보강 전후 비교. 없으면 화면은 아무것도 그리지 않는다. */
+export interface SampleExpansion {
+  kind: string;
+  changed: string;
+  preregistration_kind?: string;
+  before_run: string;
+  after_run: string;
+  before_train_rows: number;
+  after_train_rows: number;
+  eval: { n: number; start: string; end: string };
+  eval_identical: boolean;
+  models: ExpansionModel[];
+  note: string;
+}
+
 /** 회고 실험 요약 전체. */
 export interface ExperimentSummary {
   schema: string;
@@ -90,6 +125,7 @@ export interface ExperimentSummary {
   disclosure: string;
   review_status: { self_check: boolean; independent_reproduction: string };
   experiments: ExperimentRun[];
+  sample_expansion?: SampleExpansion;
   sensitivity: ExperimentSensitivity;
   limitations: string[];
 }

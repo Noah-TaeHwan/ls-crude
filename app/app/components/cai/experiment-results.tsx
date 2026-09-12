@@ -6,6 +6,7 @@ import {
   type ExperimentModel,
   type ExperimentRun,
   type ExperimentSummary,
+  type SampleExpansion,
   type SensitivityRun,
   type SkippedRun,
 } from "~/lib/experiment-summary";
@@ -178,6 +179,65 @@ function SkippedBlock({ block }: { block: SkippedRun }) {
 }
 
 /**
+ * 표본 확장 전후 모델별 표. 시장 대비 차이는 두 market_cai 행에만 값이 있다.
+ * @param props 모델 행들.
+ * @returns 이전/이후 지표와 차이를 담은 표.
+ */
+function ExpansionTable({ models }: { models: SampleExpansion["models"] }) {
+  return (
+    <div className="mt-3 overflow-x-auto">
+      <table data-expansion-table className="w-full min-w-[52rem] border-collapse text-sm">
+        <caption className="sr-only">2019년 학습 자료 보강 전후 모델별 지표</caption>
+        <thead>
+          <tr className="border-b border-border text-left text-xs text-muted-foreground">
+            <th scope="col" className="py-2 pr-3">모델</th>
+            <th scope="col" className="py-2 pr-3">이전 · log loss / accuracy / brier</th>
+            <th scope="col" className="py-2 pr-3">이후 · log loss / accuracy / brier</th>
+            <th scope="col" className="py-2 pr-3">Δ log loss (이후−이전)</th>
+            <th scope="col" className="py-2 pr-3">시장 대비 Δll (이전 → 이후)</th>
+            <th scope="col" className="py-2">가중치</th>
+          </tr>
+        </thead>
+        <tbody>
+          {models.map((model) => (
+            <tr key={model.id} data-expansion-model={model.id} className="border-b border-border/60">
+              <td className="py-2 pr-3">{model.label} <span className="font-mono text-xs text-muted-foreground">{model.id}</span></td>
+              <td className="py-2 pr-3 font-mono text-xs">{metric(model.before.log_loss)} / {metric(model.before.accuracy)} / {metric(model.before.brier)}</td>
+              <td className="py-2 pr-3 font-mono text-xs">{metric(model.after.log_loss)} / {metric(model.after.accuracy)} / {metric(model.after.brier)}</td>
+              <td className="py-2 pr-3 font-mono text-xs">{signed(model.delta_log_loss_after_minus_before)}</td>
+              <td className="py-2 pr-3 font-mono text-xs">{signed(model.before_delta_vs_market)} → {signed(model.after_delta_vs_market)}</td>
+              <td className="py-2 font-mono text-xs">{weightsText(model.after.weights)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/**
+ * 2019년 학습 자료 보강 전후 비교 블록.
+ * @param props 표본 확장 블록.
+ * @returns 전후 실행·학습 행·평가 조건과 모델 표, 주의 문장.
+ */
+function SampleExpansionBlock({ block }: { block: SampleExpansion }) {
+  return (
+    <article data-sample-expansion className="mt-8 border border-border p-5 sm:p-6">
+      <h3 className="text-base font-medium text-foreground">2019년 학습 자료 보강 전후</h3>
+      <p className="mt-1 text-sm text-muted-foreground">{block.changed}{block.preregistration_kind === undefined ? "" : ` · ${block.preregistration_kind}`}</p>
+      <dl className="mt-3 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+        <div><dt className="text-muted-foreground">이전 실행</dt><dd className="mt-1 font-mono">{block.before_run}</dd></div>
+        <div><dt className="text-muted-foreground">이후 실행</dt><dd className="mt-1 font-mono">{block.after_run}</dd></div>
+        <div><dt className="text-muted-foreground">학습 행</dt><dd className="mt-1 font-mono">{block.before_train_rows} → {block.after_train_rows}</dd></div>
+        <div><dt className="text-muted-foreground">평가 조건</dt><dd className="mt-1">{block.eval_identical ? "평가 날짜 동일" : "평가 날짜 조건이 다름"} · {block.eval.start}–{block.eval.end} · n={block.eval.n}</dd></div>
+      </dl>
+      <ExpansionTable models={block.models} />
+      <p className="mt-3 text-sm leading-7 text-muted-foreground">{block.note}</p>
+    </article>
+  );
+}
+
+/**
  * 홈용 한 줄 요약 카드. 표와 긴 문장을 두지 않는다.
  * @param props 검증된 요약.
  * @returns 작은 테두리 카드.
@@ -232,6 +292,8 @@ function FullResults({ summary }: { summary: ExperimentSummary }) {
       <h3 className="mt-8 text-base font-medium text-foreground">실험 두 건</h3>
       <p className="mt-2 text-sm text-muted-foreground">두 실험은 학습·평가 표본이 달라 순위로 합치지 않고 각각 표시합니다.</p>
       {summary.experiments.map((experiment) => <ExperimentBlock key={experiment.id} experiment={experiment} />)}
+
+      {summary.sample_expansion === undefined ? null : <SampleExpansionBlock block={summary.sample_expansion} />}
 
       <h3 className="mt-8 text-base font-medium text-foreground">민감도 분석</h3>
       <p className="mt-2 text-sm leading-7 text-muted-foreground">{summary.sensitivity.preregistration_kind} · {summary.sensitivity.changed}</p>

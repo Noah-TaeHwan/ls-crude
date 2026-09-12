@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
 import { CaiResearch } from "~/components/cai/cai-research";
 import { ExperimentResults } from "~/components/cai/experiment-results";
+import { LocalStatus } from "~/components/cai/local-status";
 import { DecisionTimeline, HistoryLedger } from "~/components/cai/history-ledger";
 import { ResearchIntake } from "~/components/research-intake";
 import { ResearchSample } from "~/components/research-sample";
@@ -101,6 +102,8 @@ export function ResearchRecord({
             <a className="source-link" href="#method" onClick={revealMethod}>판정 기준 확인</a>
           </div>
         </header>
+
+        <LocalStatus mode="full" />
 
         {unsupportedSample ? <p role="status" className="pt-5 text-sm text-muted-foreground">{unsupportedSample} <a className="source-link" href="#research-sample">과거 기록에서 사례 보기</a></p> : null}
         {unsupportedCandidate ? <p role="status" className="pt-5 text-sm text-muted-foreground">{unsupportedCandidate} <a className="source-link" href="#ledger">보관 기록 검색</a></p> : null}

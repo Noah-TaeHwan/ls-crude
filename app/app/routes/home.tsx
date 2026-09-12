@@ -9,6 +9,7 @@ import { CaiGauge } from "~/components/cai/cai-gauge";
 import { CaiForecast } from "~/components/cai/cai-forecast";
 import { CaiAbout } from "~/components/cai/cai-about";
 import { ExperimentResults } from "~/components/cai/experiment-results";
+import { LocalStatus } from "~/components/cai/local-status";
 import { emptyCaiView } from "~/lib/cai-view";
 import { readCaiPublicView } from "~/lib/cai-view.server";
 import { readExperimentSummary } from "~/lib/experiment-summary.server";
@@ -95,6 +96,7 @@ export default function Home({ loaderData: { market, daily, cai, experiments, un
         </section>
         <ExperimentResults mode="compact" summary={experiments} />
         <MarketContext market={market} daily={daily} />
+        <LocalStatus mode="compact" />
         <p className="border-t border-border py-5 text-sm text-muted-foreground">확보한 자료와 판정 기록은 <Link className="source-link" to="/research#research-sample">연구 기록</Link>에서 이어서 확인합니다.</p>
       </main>
       <DeskFooter />

@@ -190,6 +190,22 @@ test("serves compact experiment results on home and the full section on research
     assert.match(dmrBlock, /0\.7109/, "dmr learned CAI log loss to 4 decimals");
     assert.match(researchBody, /data-delta-vs-market/);
 
+    // 2019년 학습 자료 보강 전후: 정본 JSON의 전/후 수치와 시장 대비 차이를 그대로 보여준다.
+    assert.match(researchBody, /data-sample-expansion/);
+    assert.match(researchText, /2019년 학습 자료 보강 전후/);
+    const expansionStart = researchBody.indexOf("data-sample-expansion");
+    const expansionEnd = researchBody.indexOf('data-sensitivity="A_62"', expansionStart);
+    assert.ok(expansionStart > 0 && expansionEnd > expansionStart, "sample expansion sits between experiments and sensitivity");
+    const expansionHtml = researchBody.slice(expansionStart, expansionEnd);
+    const expansion = visibleText(expansionHtml);
+    assert.match(expansion, /753/, "after train rows from the real JSON");
+    assert.match(expansion, /507 → 753/, "train rows before → after");
+    assert.match(expansion, /평가 날짜 동일/);
+    assert.match(expansionHtml, /data-expansion-model="market_cai_learned"/, "per-model rows exist");
+    assert.match(expansion, /market_cai_learned/);
+    assert.match(expansion, /\+0\.0138 → \+0\.0042/, "learned CAI delta vs market before → after");
+    assert.match(expansion, /-0\.0125/, "learned CAI log loss delta");
+
     // 민감도: A/B 블록, common_232 n, C_0 건너뜀.
     assert.match(researchBody, /data-sensitivity="A_62"/);
     assert.match(researchBody, /data-sensitivity="B_31"/);

@@ -1,7 +1,7 @@
 {
   "schema": "cai-retrospective-experiment-summary/v1",
   "kind": "retrospective_experiment_summary",
-  "generated_at_utc": "2026-09-11T14:01:41Z",
+  "generated_at_utc": "2026-09-12T01:35:35Z",
   "code_fingerprint": "79aff9062f62",
   "disclosure": "2023년 회고 평가 요약입니다. 실시간 예측·운영 지수·공식 CAI 채택이 아니며, 독립 재현과 외부 게시는 아직 완료되지 않았습니다.",
   "review_status": {
@@ -166,6 +166,174 @@
       }
     }
   ],
+  "sample_expansion": {
+    "kind": "sample_expansion",
+    "changed": "교통 입력에 2019년 12개월만 추가 (그 외 조건 동일)",
+    "preregistration_kind": "기존 2023 결과를 본 뒤 설계한 후속 회고 실험(독립 검증/OOS 아님)",
+    "before_run": "20260911T130219Z",
+    "after_run": "20260912T013423Z",
+    "before_train_rows": 507,
+    "after_train_rows": 753,
+    "eval": {
+      "n": 245,
+      "start": "2023-01-03",
+      "end": "2023-12-21"
+    },
+    "eval_identical": true,
+    "models": [
+      {
+        "id": "baseline",
+        "label": "기준선(학습기간 상승률)",
+        "before": {
+          "train_rows": 507,
+          "accuracy": 0.47346938775510206,
+          "log_loss": 0.6945340100710645,
+          "brier": 0.25069329670409063,
+          "weights": null
+        },
+        "after": {
+          "train_rows": 753,
+          "accuracy": 0.5265306122448979,
+          "log_loss": 0.6917397380550647,
+          "brier": 0.24929660800474635,
+          "weights": null
+        },
+        "delta_log_loss_after_minus_before": -0.002794272015999799,
+        "before_delta_vs_market": null,
+        "after_delta_vs_market": null
+      },
+      {
+        "id": "market",
+        "label": "시장정보만",
+        "before": {
+          "train_rows": 507,
+          "accuracy": 0.5183673469387755,
+          "log_loss": 0.6970943802832908,
+          "brier": 0.25187195101013893,
+          "weights": null
+        },
+        "after": {
+          "train_rows": 753,
+          "accuracy": 0.49795918367346936,
+          "log_loss": 0.6942044930647336,
+          "brier": 0.25056289770352086,
+          "weights": null
+        },
+        "delta_log_loss_after_minus_before": -0.0028898872185572078,
+        "before_delta_vs_market": null,
+        "after_delta_vs_market": null
+      },
+      {
+        "id": "cai_equal",
+        "label": "CAI 동일가중 단독",
+        "before": {
+          "train_rows": 507,
+          "accuracy": 0.4857142857142857,
+          "log_loss": 0.6998172529380917,
+          "brier": 0.2532500773379694,
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        "after": {
+          "train_rows": 753,
+          "accuracy": 0.5265306122448979,
+          "log_loss": 0.6940970733423146,
+          "brier": 0.25045178748803515,
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        "delta_log_loss_after_minus_before": -0.005720179595777086,
+        "before_delta_vs_market": null,
+        "after_delta_vs_market": null
+      },
+      {
+        "id": "cai_learned",
+        "label": "CAI 학습가중 단독",
+        "before": {
+          "train_rows": 507,
+          "accuracy": 0.46530612244897956,
+          "log_loss": 0.710975836724578,
+          "brier": 0.2586697862331553,
+          "weights": [
+            0.0,
+            1.0
+          ]
+        },
+        "after": {
+          "train_rows": 753,
+          "accuracy": 0.4897959183673469,
+          "log_loss": 0.6964364252260622,
+          "brier": 0.2516384402921688,
+          "weights": [
+            1.7347234759768074e-17,
+            1.0
+          ]
+        },
+        "delta_log_loss_after_minus_before": -0.014539411498515786,
+        "before_delta_vs_market": null,
+        "after_delta_vs_market": null
+      },
+      {
+        "id": "market_cai_equal",
+        "label": "시장정보+동일가중 CAI",
+        "before": {
+          "train_rows": 507,
+          "accuracy": 0.5142857142857142,
+          "log_loss": 0.7027625002545578,
+          "brier": 0.25455160717984426,
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        "after": {
+          "train_rows": 753,
+          "accuracy": 0.4897959183673469,
+          "log_loss": 0.6966057553168867,
+          "brier": 0.25172567010500824,
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        "delta_log_loss_after_minus_before": -0.006156744937671044,
+        "before_delta_vs_market": 0.005668119971266927,
+        "after_delta_vs_market": 0.0024012622521530913
+      },
+      {
+        "id": "market_cai_learned",
+        "label": "시장정보+학습가중 CAI",
+        "before": {
+          "train_rows": 507,
+          "accuracy": 0.4897959183673469,
+          "log_loss": 0.7108861866365735,
+          "brier": 0.25836133024332186,
+          "weights": [
+            0.0,
+            1.0
+          ]
+        },
+        "after": {
+          "train_rows": 753,
+          "accuracy": 0.4775510204081633,
+          "log_loss": 0.6983817099211151,
+          "brier": 0.2526057346667137,
+          "weights": [
+            1.7347234759768074e-17,
+            1.0
+          ]
+        },
+        "delta_log_loss_after_minus_before": -0.012504476715458401,
+        "before_delta_vs_market": 0.013791806353282698,
+        "after_delta_vs_market": 0.004177216856381505
+      }
+    ],
+    "note": "평가 날짜(2023)와 모델 6종은 동일하지만 학습 표본이 달라 직접 인과로 해석하지 않습니다. CAI 추가 효과는 두 버전 모두에서 확인되지 않았습니다."
+  },
   "sensitivity": {
     "preregistration_kind": "기존 결과를 보고 설계한 후속 회고 민감도 분석(독립 사전등록 아님)",
     "changed": "DMR validity_days만 62/31/0으로 변경",
