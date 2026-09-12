@@ -1,0 +1,400 @@
+TAP version 13
+# Subtest: parseCaiPublicView: 루트 검증
+    # Subtest: null 입력은 빈 객체 계약 + INVALID_SNAPSHOT
+    ok 1 - null 입력은 빈 객체 계약 + INVALID_SNAPSHOT
+      ---
+      duration_ms: 0.531125
+      type: 'test'
+      ...
+    # Subtest: 빈 객체와 schema 불일치는 빈 객체 계약 + INVALID_SNAPSHOT
+    ok 2 - 빈 객체와 schema 불일치는 빈 객체 계약 + INVALID_SNAPSHOT
+      ---
+      duration_ms: 0.11425
+      type: 'test'
+      ...
+    # Subtest: 알 수 없는 raw/weights/token 필드는 출력에 남지 않음
+    ok 3 - 알 수 없는 raw/weights/token 필드는 출력에 남지 않음
+      ---
+      duration_ms: 0.777375
+      type: 'test'
+      ...
+    1..3
+ok 1 - parseCaiPublicView: 루트 검증
+  ---
+  duration_ms: 1.902083
+  type: 'suite'
+  ...
+# Subtest: parseCaiPublicView: index 영역
+    # Subtest: score 0은 보존되고 gaugeAngle(0)은 -90
+    ok 1 - score 0은 보존되고 gaugeAngle(0)은 -90
+      ---
+      duration_ms: 0.316583
+      type: 'test'
+      ...
+    # Subtest: score null은 null 유지, 0으로 변환 금지
+    ok 2 - score null은 null 유지, 0으로 변환 금지
+      ---
+      duration_ms: 0.10025
+      type: 'test'
+      ...
+    # Subtest: score 101/-1/NaN은 index만 비우고 경고
+    ok 3 - score 101/-1/NaN은 index만 비우고 경고
+      ---
+      duration_ms: 0.601042
+      type: 'test'
+      ...
+    # Subtest: STALE 유효 index는 원래 observed_at을 유지
+    ok 4 - STALE 유효 index는 원래 observed_at을 유지
+      ---
+      duration_ms: 0.249542
+      type: 'test'
+      ...
+    # Subtest: 존재하지 않는 날짜(2026-02-30)는 history를 비우고 경고
+    ok 5 - 존재하지 않는 날짜(2026-02-30)는 history를 비우고 경고
+      ---
+      duration_ms: 0.260042
+      type: 'test'
+      ...
+    # Subtest: history 중간 null은 보존되고 보간되지 않음
+    ok 6 - history 중간 null은 보존되고 보간되지 않음
+      ---
+      duration_ms: 0.429
+      type: 'test'
+      ...
+    # Subtest: 다른 definition_version 항목은 선에서 제외
+    ok 7 - 다른 definition_version 항목은 선에서 제외
+      ---
+      duration_ms: 0.243208
+      type: 'test'
+      ...
+    # Subtest: DEMO 숫자 점수는 미게시 값으로 취급하고 DEMO를 유지
+    ok 8 - DEMO 숫자 점수는 미게시 값으로 취급하고 DEMO를 유지
+      ---
+      duration_ms: 0.076125
+      type: 'test'
+      ...
+    1..8
+ok 2 - parseCaiPublicView: index 영역
+  ---
+  duration_ms: 2.520125
+  type: 'suite'
+  ...
+# Subtest: parseCaiPublicView: forecast 영역
+    # Subtest: 정상 index + 미승인 forecast는 index 유지·확률 표시 없음
+    ok 1 - 정상 index + 미승인 forecast는 index 유지·확률 표시 없음
+      ---
+      duration_ms: 0.118875
+      type: 'test'
+      ...
+    # Subtest: 메타·승인 유효 시 확률 반환, 표시 규칙은 64.2/35.8
+    ok 2 - 메타·승인 유효 시 확률 반환, 표시 규칙은 64.2/35.8
+      ---
+      duration_ms: 0.067
+      type: 'test'
+      ...
+    # Subtest: 확률 합계 1.1은 표시 없음
+    ok 3 - 확률 합계 1.1은 표시 없음
+      ---
+      duration_ms: 0.053041
+      type: 'test'
+      ...
+    # Subtest: 시간대 누락·순서 오류는 표시 없음
+    ok 4 - 시간대 누락·순서 오류는 표시 없음
+      ---
+      duration_ms: 0.763333
+      type: 'test'
+      ...
+    # Subtest: 같은 시각의 다른 표기도 같은 기준으로 비교
+    ok 5 - 같은 시각의 다른 표기도 같은 기준으로 비교
+      ---
+      duration_ms: 0.126916
+      type: 'test'
+      ...
+    1..5
+ok 3 - parseCaiPublicView: forecast 영역
+  ---
+  duration_ms: 1.240916
+  type: 'suite'
+  ...
+# Subtest: gaugeAngle
+    # Subtest: 0→-90, 50→0, 100→90
+    ok 1 - 0→-90, 50→0, 100→90
+      ---
+      duration_ms: 0.0635
+      type: 'test'
+      ...
+    # Subtest: null·NaN·범위 밖·무한대는 null
+    ok 2 - null·NaN·범위 밖·무한대는 null
+      ---
+      duration_ms: 0.050667
+      type: 'test'
+      ...
+    1..2
+ok 4 - gaugeAngle
+  ---
+  duration_ms: 0.158291
+  type: 'suite'
+  ...
+# Subtest: validation 영역
+    # Subtest: 독립 검증 정보 누락 시 INDEPENDENT_TESTED로 게시하지 않음
+    ok 1 - 독립 검증 정보 누락 시 INDEPENDENT_TESTED로 게시하지 않음
+      ---
+      duration_ms: 0.104041
+      type: 'test'
+      ...
+    # Subtest: n·표본·UNSEEN·동결·검토가 있으면 INDEPENDENT_TESTED 유지
+    ok 2 - n·표본·UNSEEN·동결·검토가 있으면 INDEPENDENT_TESTED 유지
+      ---
+      duration_ms: 0.063458
+      type: 'test'
+      ...
+    1..2
+ok 5 - validation 영역
+  ---
+  duration_ms: 0.290167
+  type: 'suite'
+  ...
+# Subtest: emptyCaiView와 서버 리더
+    # Subtest: emptyCaiView는 빈 상태 계약을 만족
+    ok 1 - emptyCaiView는 빈 상태 계약을 만족
+      ---
+      duration_ms: 0.110917
+      type: 'test'
+      ...
+    # Subtest: 빈 서버 리더에 임의 점수·확률·외부 호출이 없음
+    ok 2 - 빈 서버 리더에 임의 점수·확률·외부 호출이 없음
+      ---
+      duration_ms: 0.087167
+      type: 'test'
+      ...
+    1..2
+ok 6 - emptyCaiView와 서버 리더
+  ---
+  duration_ms: 0.230291
+  type: 'suite'
+  ...
+# Subtest: R1-F1: 실제 달력 날짜 검증
+    # Subtest: 존재하지 않는 날짜의 generated_at은 확률 null, index 유지
+    ok 1 - 존재하지 않는 날짜의 generated_at은 확률 null, index 유지
+      ---
+      duration_ms: 0.112125
+      type: 'test'
+      ...
+    # Subtest: 존재하지 않는 날짜의 available_at은 score null + 경고
+    ok 2 - 존재하지 않는 날짜의 available_at은 score null + 경고
+      ---
+      duration_ms: 0.057584
+      type: 'test'
+      ...
+    # Subtest: 정상 윤일 2024-02-29T01:00:00+09:00은 거부하지 않음
+    ok 3 - 정상 윤일 2024-02-29T01:00:00+09:00은 거부하지 않음
+      ---
+      duration_ms: 0.061
+      type: 'test'
+      ...
+    1..3
+ok 7 - R1-F1: 실제 달력 날짜 검증
+  ---
+  duration_ms: 0.274
+  type: 'suite'
+  ...
+# Subtest: R1-F2: 근거 URL 공개 경계
+    # Subtest: 토큰 query URL은 제외되고 경고에 비밀 없음
+    ok 1 - 토큰 query URL은 제외되고 경고에 비밀 없음
+      ---
+      duration_ms: 0.320834
+      type: 'test'
+      ...
+    # Subtest: userinfo 포함 URL은 제외
+    ok 2 - userinfo 포함 URL은 제외
+      ---
+      duration_ms: 0.105208
+      type: 'test'
+      ...
+    # Subtest: scheme-relative 주소는 제외
+    ok 3 - scheme-relative 주소는 제외
+      ---
+      duration_ms: 0.048875
+      type: 'test'
+      ...
+    # Subtest: 앞 공백 위장 scheme은 제외
+    ok 4 - 앞 공백 위장 scheme은 제외
+      ---
+      duration_ms: 0.172459
+      type: 'test'
+      ...
+    # Subtest: team_only 내부 주소는 url null로, 제목·접근 유지
+    ok 5 - team_only 내부 주소는 url null로, 제목·접근 유지
+      ---
+      duration_ms: 0.179125
+      type: 'test'
+      ...
+    # Subtest: 정상 로컬 링크 유지 (대조)
+    ok 6 - 정상 로컬 링크 유지 (대조)
+      ---
+      duration_ms: 0.1095
+      type: 'test'
+      ...
+    # Subtest: 정상 원출처 query 유지 (대조)
+    ok 7 - 정상 원출처 query 유지 (대조)
+      ---
+      duration_ms: 0.101041
+      type: 'test'
+      ...
+    1..7
+ok 8 - R1-F2: 근거 URL 공개 경계
+  ---
+  duration_ms: 1.13
+  type: 'suite'
+  ...
+# Subtest: R1-F3: DEMO 이전값·추이 비게시
+    # Subtest: DEMO score/previous/history 숫자는 남지 않고 DEMO 유지
+    ok 1 - DEMO score/previous/history 숫자는 남지 않고 DEMO 유지
+      ---
+      duration_ms: 0.079875
+      type: 'test'
+      ...
+    # Subtest: 정상 OBSERVED 이전값·추이는 보존 (대조)
+    ok 2 - 정상 OBSERVED 이전값·추이는 보존 (대조)
+      ---
+      duration_ms: 0.045083
+      type: 'test'
+      ...
+    1..2
+ok 9 - R1-F3: DEMO 이전값·추이 비게시
+  ---
+  duration_ms: 0.160291
+  type: 'suite'
+  ...
+# Subtest: R1-F4: 표본 기간·공백 필수값
+    # Subtest: 표본 시작일이 종료일보다 늦으면 INDEPENDENT 아님
+    ok 1 - 표본 시작일이 종료일보다 늦으면 INDEPENDENT 아님
+      ---
+      duration_ms: 0.171708
+      type: 'test'
+      ...
+    # Subtest: 공백 freeze/review 참조면 INDEPENDENT 아님
+    ok 2 - 공백 freeze/review 참조면 INDEPENDENT 아님
+      ---
+      duration_ms: 0.055709
+      type: 'test'
+      ...
+    # Subtest: 공백 모델 식별자면 확률 null
+    ok 3 - 공백 모델 식별자면 확률 null
+      ---
+      duration_ms: 0.052708
+      type: 'test'
+      ...
+    1..3
+ok 10 - R1-F4: 표본 기간·공백 필수값
+  ---
+  duration_ms: 0.339875
+  type: 'suite'
+  ...
+# Subtest: R2-F3: DEMO 비공개는 score 상태와 독립
+    # Subtest: DEMO + score null이어도 previous 40이 남지 않음
+    ok 1 - DEMO + score null이어도 previous 40이 남지 않음
+      ---
+      duration_ms: 0.106208
+      type: 'test'
+      ...
+    # Subtest: DEMO + score 필드 삭제여도 previous 40이 남지 않음
+    ok 2 - DEMO + score 필드 삭제여도 previous 40이 남지 않음
+      ---
+      duration_ms: 0.072125
+      type: 'test'
+      ...
+    # Subtest: DEMO + score 101이어도 previous 40이 남지 않음
+    ok 3 - DEMO + score 101이어도 previous 40이 남지 않음
+      ---
+      duration_ms: 0.047125
+      type: 'test'
+      ...
+    # Subtest: DEMO + score NaN이어도 previous 40이 남지 않음
+    ok 4 - DEMO + score NaN이어도 previous 40이 남지 않음
+      ---
+      duration_ms: 0.046292
+      type: 'test'
+      ...
+    # Subtest: DEMO 점수 0·50·100 모두 동일하게 비워짐
+    ok 5 - DEMO 점수 0·50·100 모두 동일하게 비워짐
+      ---
+      duration_ms: 0.071417
+      type: 'test'
+      ...
+    # Subtest: DEMO index 처리 후에도 정상 forecast 확률은 유지
+    ok 6 - DEMO index 처리 후에도 정상 forecast 확률은 유지
+      ---
+      duration_ms: 0.052417
+      type: 'test'
+      ...
+    # Subtest: 정상 OBSERVED 이전값·추이와 history 중간 null은 보존 (대조)
+    ok 7 - 정상 OBSERVED 이전값·추이와 history 중간 null은 보존 (대조)
+      ---
+      duration_ms: 0.068333
+      type: 'test'
+      ...
+    1..7
+ok 11 - R2-F3: DEMO 비공개는 score 상태와 독립
+  ---
+  duration_ms: 0.568625
+  type: 'suite'
+  ...
+# Subtest: R2-F2: URL 구조·인증정보 일관 검사
+    # Subtest: TAB 위장 scheme는 공개되지 않고 원문이 경고에 남지 않음
+    ok 1 - TAB 위장 scheme는 공개되지 않고 원문이 경고에 남지 않음
+      ---
+      duration_ms: 0.108666
+      type: 'test'
+      ...
+    # Subtest: LF 위장 scheme는 공개되지 않고 원문이 경고에 남지 않음
+    ok 2 - LF 위장 scheme는 공개되지 않고 원문이 경고에 남지 않음
+      ---
+      duration_ms: 0.054083
+      type: 'test'
+      ...
+    # Subtest: 역슬래시 두 개 scheme-relative는 공개되지 않고 원문이 경고에 남지 않음
+    ok 3 - 역슬래시 두 개 scheme-relative는 공개되지 않고 원문이 경고에 남지 않음
+      ---
+      duration_ms: 0.048458
+      type: 'test'
+      ...
+    # Subtest: X-Amz 서명 query는 공개되지 않고 원문이 경고에 남지 않음
+    ok 4 - X-Amz 서명 query는 공개되지 않고 원문이 경고에 남지 않음
+      ---
+      duration_ms: 0.10275
+      type: 'test'
+      ...
+    # Subtest: X-Goog 서명 query는 공개되지 않고 원문이 경고에 남지 않음
+    ok 5 - X-Goog 서명 query는 공개되지 않고 원문이 경고에 남지 않음
+      ---
+      duration_ms: 0.087708
+      type: 'test'
+      ...
+    # Subtest: fragment 인증값는 공개되지 않고 원문이 경고에 남지 않음
+    ok 6 - fragment 인증값는 공개되지 않고 원문이 경고에 남지 않음
+      ---
+      duration_ms: 0.109333
+      type: 'test'
+      ...
+    # Subtest: team_only 내부 주소 비공개 처리는 유지 (대조)
+    ok 7 - team_only 내부 주소 비공개 처리는 유지 (대조)
+      ---
+      duration_ms: 0.068792
+      type: 'test'
+      ...
+    1..7
+ok 12 - R2-F2: URL 구조·인증정보 일관 검사
+  ---
+  duration_ms: 0.652958
+  type: 'suite'
+  ...
+1..12
+# tests 51
+# suites 12
+# pass 51
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 114.011959

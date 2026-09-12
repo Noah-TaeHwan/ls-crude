@@ -1,0 +1,31 @@
+[LAUE] file=20260910T091LAUEZ/payne_laus_employed_monthly.json
+  rows=139 declared=None
+  range=2015-01..2026-07 sorted_ok=True unique=139
+  month_gaps=[]
+  value_nulls=1
+
+[QCEWQ] file=20260909T091QCEWQZ/payne_qcew_quarterly.json
+  rows=45 declared=None
+  value_nulls=0
+  quarters=2015-Q1..2026-Q1 count=45
+
+[STAX] file=20260910T091STAXZ/cushing_city_sales_tax_monthly.json
+  rows=4 declared=None
+  range=2025-08..2026-09 sorted_ok=True unique=4
+  month_gaps=['2025-10', '2025-11', '2025-12', '2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', '2026-07']
+  value_nulls=0
+
+[KUSH] file=20260910T091KUSHZ/kush_operational_attention_monthly.json
+  rows=221 declared=221
+  range=2008-02-01..2026-06-01 sorted_ok=True unique=221
+  month_gaps=[]
+  value_nulls=0
+
+[DMR] file=20260910T091DMRZ/cushing_echo_dmr_flow.json
+  rows=1722 declared=1722
+  range=2015-01-31..2026-07-31 sorted_ok=True unique=139
+  value_nulls=842
+  nulls=842 units={None: 1004, 'gal/d': 230, 'MGD': 488}
+  statisticalBases={'MO AVG': 861, 'DAILY MX': 861} permits=6
+
+QUALITY_CHECK_DONE

@@ -1,0 +1,2 @@
+PASS: 14 units; package paths, spec hash, sections and dependency DAG checked.
+NOT TESTED: model behavior, repo code, permissions, app tests, CI, deployment.

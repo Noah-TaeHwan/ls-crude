@@ -1,0 +1,177 @@
+{
+  "run_id": "20260911T075705Z",
+  "generated_at_utc": "2026-09-11T08:06:40Z",
+  "limits_observed": {
+    "concurrency": 1,
+    "max_attempts_per_url": 3,
+    "retry_after_honored_on_429": true,
+    "stop_on_403": true,
+    "max_total_bytes": 2147483648,
+    "total_downloaded_bytes": 47350742,
+    "reuse_by_manifest_hash": true,
+    "no_2024_plus": true,
+    "pip_installs": 0,
+    "sudo": false,
+    "git_commit_push": false
+  },
+  "downloads": [
+    {
+      "url": "https://www.fhwa.dot.gov/policyinformation/tables/tmasdata/",
+      "http_status": 200,
+      "bytes": 33254,
+      "sha256": "7322cf3e8c50b898367637d2d79ad0d8b8e58db7597fac3d525759b35ee093c3",
+      "last_modified": null,
+      "etag": null,
+      "date_header": "Fri, 11 Sep 2026 07:57:24 GMT",
+      "downloaded_at_utc": "2026-09-11T07:57:24Z",
+      "local_path": "research/gathering/raw/091-tmas/20260911T075705Z/rights/tmasdata_index.html"
+    },
+    {
+      "url": "https://www.fhwa.dot.gov/webpolicies/",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_modified": null,
+      "etag": null,
+      "date_header": "Fri, 11 Sep 2026 07:57:41 GMT",
+      "downloaded_at_utc": "2026-09-11T07:57:42Z",
+      "local_path": "research/gathering/raw/091-tmas/20260911T075705Z/rights/fhwa_webpolicies.html"
+    },
+    {
+      "url": "https://www.fhwa.dot.gov/webpolicies/publishschedule.cfm",
+      "http_status": 200,
+      "bytes": 19725,
+      "sha256": "1d645146c07d9abcda21f4036e0dddffc9c67eea1fd180f75abe2e305a01d48e",
+      "last_modified": null,
+      "etag": null,
+      "date_header": "Fri, 11 Sep 2026 07:58:16 GMT",
+      "downloaded_at_utc": "2026-09-11T07:58:17Z",
+      "local_path": "research/gathering/raw/091-tmas/20260911T075705Z/rights/fhwa_webpolicies_footer_target.html"
+    },
+    {
+      "url": "https://www.fhwa.dot.gov/policyinformation/tables/tmasdata/2023/2023_station_data.zip",
+      "http_status": 200,
+      "bytes": 835077,
+      "sha256": "cff460a00e43134723b357737ba372f68bfc581dbb95d8a96298c2ef58501cda",
+      "last_modified": "Tue, 02 Jul 2024 20:19:20 GMT",
+      "etag": "\"014e41ebdccda1:0\"",
+      "date_header": "Fri, 11 Sep 2026 07:58:52 GMT",
+      "downloaded_at_utc": "2026-09-11T07:58:54Z",
+      "local_path": "research/gathering/raw/091-tmas/20260911T075705Z/zips/2023_station_data.zip"
+    },
+    {
+      "url": "https://www.fhwa.dot.gov/policyinformation/tables/tmasdata/2016/mar_2016_ccs_data.zip",
+      "http_status": 200,
+      "bytes": 19946970,
+      "sha256": "a601c66f7c3e30b620c300ca0889a36f1953406e1ef50e4398448734b714e19e",
+      "last_modified": "Wed, 20 Mar 2019 14:01:21 GMT",
+      "etag": "\"aba8a6525dfd41:0\"",
+      "date_header": "Fri, 11 Sep 2026 08:01:10 GMT",
+      "downloaded_at_utc": "2026-09-11T08:01:14Z",
+      "local_path": "research/gathering/raw/091-tmas/20260911T075705Z/zips/mar_2016_ccs_data.zip"
+    },
+    {
+      "url": "https://www.fhwa.dot.gov/policyinformation/tables/tmasdata/2023/mar_2023_ccs_data.zip",
+      "http_status": 200,
+      "bytes": 26515716,
+      "sha256": "017de6550a69674dbbc4030edcaf6231a32b70a2b572778b0b99f1fd7d6ce827",
+      "last_modified": "Wed, 03 Jul 2024 15:37:35 GMT",
+      "etag": "\"7e39b6ed5ecdda1:0\"",
+      "date_header": "Fri, 11 Sep 2026 08:01:21 GMT",
+      "downloaded_at_utc": "2026-09-11T08:01:37Z",
+      "local_path": "research/gathering/raw/091-tmas/20260911T075705Z/zips/mar_2023_ccs_data.zip"
+    }
+  ],
+  "blocked_paths": [
+    {
+      "url": "https://www.transportation.gov/web-policies",
+      "http_status": 403,
+      "receipt_path": "research/gathering/raw/091-tmas/20260911T075705Z/rights/dot_web_policies.html.error.txt",
+      "action": "stopped, no retry, no bypass"
+    },
+    {
+      "url": "https://highways.dot.gov/about/policies-notices",
+      "http_status": 403,
+      "receipt_path": "research/gathering/raw/091-tmas/20260911T075705Z/rights/fhwa_highways_policies_notices.html.error.txt",
+      "action": "stopped, no retry, no bypass"
+    }
+  ],
+  "extracted_inputs": [
+    {
+      "path": "research/gathering/raw/091-tmas/20260911T075705Z/extracted/2023_station/OK_2023 (TMAS).STA",
+      "bytes": 98369,
+      "sha256": "9e6b394077f840d25a135b121c37fc8cd9b76291e9e64fe75d1e8d9a342d2532"
+    },
+    {
+      "path": "research/gathering/raw/091-tmas/20260911T075705Z/extracted/mar_2016/OK_MAR_2016 (TMAS).VOL",
+      "bytes": 1431716,
+      "sha256": "d55444cf924034ac4caeec487967be4d601fcf9f51b23c215d1ae0413a8c41ab"
+    },
+    {
+      "path": "research/gathering/raw/091-tmas/20260911T075705Z/extracted/mar_2023/OK_MAR_2023 (TMAS).VOL",
+      "bytes": 1065987,
+      "sha256": "269373638d5b069ca2f411cc966e8196bf2733f1eb404b0df82380ce170d06b4"
+    }
+  ],
+  "code": [
+    {
+      "path": "research/notebooks/091-tmas/download.py",
+      "sha256": "db318ebecbd9be38266a0f59e3436605fe3f02cb44b1d936563d6921dc4ece1c"
+    },
+    {
+      "path": "research/notebooks/091-tmas/parse_stations.py",
+      "sha256": "e3d7511d376036179732e5ebecbfbe145f3b769d6efe1911ee84cbe8af21c9da"
+    },
+    {
+      "path": "research/notebooks/091-tmas/parse_volume.py",
+      "sha256": "4dc62c9350f30cc5b910c7073e45a1f0b53f6fd377c652b2c68f1b209f65e1ea"
+    }
+  ],
+  "index_outputs": [
+    {
+      "path": "research/indexes/091-tmas/20260911T075705Z/README.md",
+      "bytes": 4502,
+      "sha256": "137ab94ed4217a860aecd7ffd3f3bdac69de73819b12ad6ae03f942c59e0df87"
+    },
+    {
+      "path": "research/indexes/091-tmas/20260911T075705Z/avc040_mar2016_daily.csv",
+      "bytes": 2116,
+      "sha256": "1975a5a944b066ec0eba9e37b09612564cae49a042aa705952cb2bcdbb0e6013"
+    },
+    {
+      "path": "research/indexes/091-tmas/20260911T075705Z/avc040_mar2016_hourly.csv",
+      "bytes": 40588,
+      "sha256": "8f29a5244ad2aa541cf679f580837641089d0944cfc39d730737b239be83db2a"
+    },
+    {
+      "path": "research/indexes/091-tmas/20260911T075705Z/avc040_mar2016_quality.json",
+      "bytes": 1773,
+      "sha256": "c821621f2fea44f2bde0daa6502545b576180d54b18cee30c44519683e7f7ced"
+    },
+    {
+      "path": "research/indexes/091-tmas/20260911T075705Z/avc040_mar2023_daily.csv",
+      "bytes": 2186,
+      "sha256": "a3091dfaac47cd57ee71a16c08b225d4f1423cc4f51f87a826b6693d5a7190e7"
+    },
+    {
+      "path": "research/indexes/091-tmas/20260911T075705Z/avc040_mar2023_hourly.csv",
+      "bytes": 41936,
+      "sha256": "1ca48b95aeb6e791c8414e810b31c5f554f34da5f1b7cbe6286bcff32ee63cc1"
+    },
+    {
+      "path": "research/indexes/091-tmas/20260911T075705Z/avc040_mar2023_quality.json",
+      "bytes": 1797,
+      "sha256": "aeb5aba7d01be45e639a83e20546a544d004a73ebd0e328a6bb64a48539ce673"
+    },
+    {
+      "path": "research/indexes/091-tmas/20260911T075705Z/station_screen_all.csv",
+      "bytes": 12494,
+      "sha256": "86d2f44948c02a3047b7b3042a2d92e53b18fe7c0420743f284048de8d603b41"
+    },
+    {
+      "path": "research/indexes/091-tmas/20260911T075705Z/station_screen_within40km.csv",
+      "bytes": 433,
+      "sha256": "2b2ad311502f0974f597bf8683a597d062b51cf33efb569fafd6d6658a138329"
+    }
+  ]
+}

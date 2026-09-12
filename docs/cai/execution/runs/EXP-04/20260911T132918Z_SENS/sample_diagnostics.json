@@ -1,0 +1,358 @@
+{
+  "A_62": {
+    "validity_days": 62,
+    "availability_day_included": true,
+    "last_allowed_day_included": true,
+    "weekend_behavior": "availability date must fall on a decision (WTI trading) date; no shift",
+    "source_is_receipt_date_not_publication": true,
+    "component_rows_with_value": 1758,
+    "aligned_mapping_rows": 1758,
+    "model_train_rows": 507,
+    "model_val_rows": 245,
+    "model_train_span": [
+      "2017-01-05",
+      "2020-03-31"
+    ],
+    "model_val_span": [
+      "2023-01-03",
+      "2023-12-21"
+    ],
+    "distinct_dmr_observations_used": {
+      "train": 47,
+      "val": 37
+    },
+    "reuse": {
+      "train": {
+        "observations": 47,
+        "row_uses": 1000,
+        "max_uses_per_obs": 39,
+        "median_uses": 21.0
+      },
+      "val": {
+        "observations": 37,
+        "row_uses": 753,
+        "max_uses_per_obs": 26,
+        "median_uses": 20.0
+      }
+    },
+    "elapsed_days": {
+      "min": 0,
+      "median": 14.0,
+      "p90": 28.0,
+      "max": 56
+    },
+    "diagnostic_train_dates_present": [
+      "2017-01-05",
+      "2017-02-06",
+      "2017-03-02",
+      "2017-04-05",
+      "2017-05-03",
+      "2017-06-07",
+      "2017-07-06",
+      "2017-08-02",
+      "2017-09-07",
+      "2017-10-05",
+      "2017-11-06",
+      "2017-12-07",
+      "2018-01-05",
+      "2018-02-07",
+      "2018-04-05",
+      "2018-05-02",
+      "2018-06-08",
+      "2018-07-06",
+      "2018-08-07",
+      "2018-09-07",
+      "2018-10-03",
+      "2018-11-08",
+      "2018-12-07",
+      "2019-01-07",
+      "2019-02-05",
+      "2019-03-07",
+      "2019-04-08",
+      "2019-05-02",
+      "2019-06-10",
+      "2019-07-10",
+      "2019-08-09",
+      "2019-09-06",
+      "2019-10-14",
+      "2019-11-10",
+      "2019-12-11",
+      "2020-01-03",
+      "2020-02-05",
+      "2020-03-03",
+      "2020-04-02",
+      "2020-05-06",
+      "2020-06-05",
+      "2020-07-06",
+      "2020-08-05",
+      "2020-09-09",
+      "2020-10-09",
+      "2020-11-09",
+      "2020-12-03"
+    ],
+    "classes": {
+      "train_up_rate": 0.4891518737672584,
+      "train_classes": [
+        0.0,
+        1.0
+      ],
+      "val_classes": [
+        0.0,
+        1.0
+      ]
+    },
+    "criteria": {
+      "min_train_rows": 100,
+      "min_val_rows": 50,
+      "both_classes_train": true,
+      "both_classes_val": true
+    },
+    "record": {
+      "component": "dmr_ok0026701_001_mgd",
+      "status": "CONFIRMED_RECEIVED_DATE",
+      "source": "available_at",
+      "lag_days": 0,
+      "validity_days": 62,
+      "raw_observations": 116,
+      "distinct_available_observations": 115,
+      "decision_rows_with_value": 1758
+    }
+  },
+  "B_31": {
+    "validity_days": 31,
+    "availability_day_included": true,
+    "last_allowed_day_included": true,
+    "weekend_behavior": "availability date must fall on a decision (WTI trading) date; no shift",
+    "source_is_receipt_date_not_publication": true,
+    "component_rows_with_value": 1684,
+    "aligned_mapping_rows": 1684,
+    "model_train_rows": 476,
+    "model_val_rows": 232,
+    "model_train_span": [
+      "2017-01-05",
+      "2020-03-31"
+    ],
+    "model_val_span": [
+      "2023-01-03",
+      "2023-12-21"
+    ],
+    "distinct_dmr_observations_used": {
+      "train": 47,
+      "val": 36
+    },
+    "reuse": {
+      "train": {
+        "observations": 47,
+        "row_uses": 956,
+        "max_uses_per_obs": 23,
+        "median_uses": 21.0
+      },
+      "val": {
+        "observations": 36,
+        "row_uses": 723,
+        "max_uses_per_obs": 24,
+        "median_uses": 20.0
+      }
+    },
+    "elapsed_days": {
+      "min": 0,
+      "median": 14.0,
+      "p90": 26.700000000000045,
+      "max": 31
+    },
+    "diagnostic_train_dates_present": [
+      "2017-01-05",
+      "2017-02-06",
+      "2017-03-02",
+      "2017-04-05",
+      "2017-05-03",
+      "2017-06-07",
+      "2017-07-06",
+      "2017-08-02",
+      "2017-09-07",
+      "2017-10-05",
+      "2017-11-06",
+      "2017-12-07",
+      "2018-01-05",
+      "2018-02-07",
+      "2018-04-05",
+      "2018-05-02",
+      "2018-06-08",
+      "2018-07-06",
+      "2018-08-07",
+      "2018-09-07",
+      "2018-10-03",
+      "2018-11-08",
+      "2018-12-07",
+      "2019-01-07",
+      "2019-02-05",
+      "2019-03-07",
+      "2019-04-08",
+      "2019-05-02",
+      "2019-06-10",
+      "2019-07-10",
+      "2019-08-09",
+      "2019-09-06",
+      "2019-10-14",
+      "2019-11-10",
+      "2019-12-11",
+      "2020-01-03",
+      "2020-02-05",
+      "2020-03-03",
+      "2020-04-02",
+      "2020-05-06",
+      "2020-06-05",
+      "2020-07-06",
+      "2020-08-05",
+      "2020-09-09",
+      "2020-10-09",
+      "2020-11-09",
+      "2020-12-03"
+    ],
+    "classes": {
+      "train_up_rate": 0.4831932773109244,
+      "train_classes": [
+        0.0,
+        1.0
+      ],
+      "val_classes": [
+        0.0,
+        1.0
+      ]
+    },
+    "criteria": {
+      "min_train_rows": 100,
+      "min_val_rows": 50,
+      "both_classes_train": true,
+      "both_classes_val": true
+    },
+    "record": {
+      "component": "dmr_ok0026701_001_mgd",
+      "status": "CONFIRMED_RECEIVED_DATE",
+      "source": "available_at",
+      "lag_days": 0,
+      "validity_days": 31,
+      "raw_observations": 116,
+      "distinct_available_observations": 115,
+      "decision_rows_with_value": 1684
+    }
+  },
+  "C_0": {
+    "validity_days": 0,
+    "availability_day_included": true,
+    "last_allowed_day_included": false,
+    "weekend_behavior": "availability date must fall on a decision (WTI trading) date; no shift",
+    "source_is_receipt_date_not_publication": true,
+    "component_rows_with_value": 82,
+    "aligned_mapping_rows": 82,
+    "model_train_rows": 24,
+    "model_val_rows": 12,
+    "model_train_span": [
+      "2017-01-05",
+      "2020-03-03"
+    ],
+    "model_val_span": [
+      "2023-01-05",
+      "2023-12-11"
+    ],
+    "distinct_dmr_observations_used": {
+      "train": 46,
+      "val": 36
+    },
+    "reuse": {
+      "train": {
+        "observations": 46,
+        "row_uses": 46,
+        "max_uses_per_obs": 1,
+        "median_uses": 1.0
+      },
+      "val": {
+        "observations": 36,
+        "row_uses": 36,
+        "max_uses_per_obs": 1,
+        "median_uses": 1.0
+      }
+    },
+    "elapsed_days": {
+      "min": 0,
+      "median": 0.0,
+      "p90": 0.0,
+      "max": 0
+    },
+    "diagnostic_train_dates_present": [
+      "2017-01-05",
+      "2017-02-06",
+      "2017-03-02",
+      "2017-04-05",
+      "2017-05-03",
+      "2017-06-07",
+      "2017-07-06",
+      "2017-08-02",
+      "2017-09-07",
+      "2017-10-05",
+      "2017-11-06",
+      "2017-12-07",
+      "2018-01-05",
+      "2018-02-07",
+      "2018-04-05",
+      "2018-05-02",
+      "2018-06-08",
+      "2018-07-06",
+      "2018-08-07",
+      "2018-09-07",
+      "2018-10-03",
+      "2018-11-08",
+      "2018-12-07",
+      "2019-01-07",
+      "2019-02-05",
+      "2019-03-07",
+      "2019-04-08",
+      "2019-05-02",
+      "2019-06-10",
+      "2019-07-10",
+      "2019-08-09",
+      "2019-09-06",
+      "2019-10-14",
+      "2019-12-11",
+      "2020-01-03",
+      "2020-02-05",
+      "2020-03-03",
+      "2020-04-02",
+      "2020-05-06",
+      "2020-06-05",
+      "2020-07-06",
+      "2020-08-05",
+      "2020-09-09",
+      "2020-10-09",
+      "2020-11-09",
+      "2020-12-03"
+    ],
+    "classes": {
+      "train_up_rate": 0.3333333333333333,
+      "train_classes": [
+        0.0,
+        1.0
+      ],
+      "val_classes": [
+        0.0,
+        1.0
+      ]
+    },
+    "criteria": {
+      "min_train_rows": 100,
+      "min_val_rows": 50,
+      "both_classes_train": true,
+      "both_classes_val": true
+    },
+    "record": {
+      "component": "dmr_ok0026701_001_mgd",
+      "status": "CONFIRMED_RECEIVED_DATE",
+      "source": "available_at",
+      "lag_days": 0,
+      "validity_days": 0,
+      "raw_observations": 116,
+      "distinct_available_observations": 115,
+      "decision_rows_with_value": 82
+    }
+  }
+}

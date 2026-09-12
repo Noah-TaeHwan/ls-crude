@@ -1,0 +1,91 @@
+{
+  "station_id": "AVC040",
+  "y2020": {
+    "source": "research/gathering/raw/091-tmas/20260911T082500Z/extracted/Station_Data_Extract_Pipe_Delimited_CleanData_2020.txt",
+    "records": 2,
+    "state_code": [
+      "40"
+    ],
+    "f_system": [
+      "4R"
+    ],
+    "directions": [
+      "3",
+      "7"
+    ],
+    "lanes": [
+      "1"
+    ],
+    "num_lanes": [
+      "1"
+    ],
+    "lat_deg": [
+      35.985914
+    ],
+    "lon_deg": [
+      -96.868845
+    ],
+    "county_code": [
+      "060"
+    ],
+    "location": [
+      "0.5 E of the junction SH-18/SH"
+    ]
+  },
+  "y2023": {
+    "source": "research/indexes/091-tmas/20260911T075705Z/station_screen_within40km.csv",
+    "lat_deg": 35.985914,
+    "lon_deg": -96.868845,
+    "distance_km_from_center": 9.164,
+    "f_systems": "4R",
+    "directions": "3;7",
+    "lanes": "1"
+  },
+  "y2016": {
+    "source": "research/gathering/raw/091-tmas/20260911T075705Z/extracted/mar_2016/OK_MAR_2016 (TMAS).VOL",
+    "records": 58,
+    "dir_lane_counts": {
+      "dir=3,lane=1": 29,
+      "dir=7,lane=1": 29
+    },
+    "observation_date_tokens": [
+      "160301",
+      "160302",
+      "160303",
+      "160304",
+      "160305",
+      "160306",
+      "160307",
+      "160308",
+      "160309",
+      "160310",
+      "160311",
+      "160312",
+      "160314",
+      "160315",
+      "160316",
+      "160317",
+      "160318",
+      "160319",
+      "160320",
+      "160321",
+      "160322",
+      "160323",
+      "160324",
+      "160325",
+      "160326",
+      "160327",
+      "160329",
+      "160330",
+      "160331"
+    ],
+    "note": ".VOL fixed-width layout has no coordinate field; ID presence only."
+  },
+  "match_2020_2023": {
+    "lat_equal": true,
+    "lon_equal": true,
+    "f_system_equal": true,
+    "directions_equal": true,
+    "lanes_equal": true
+  }
+}

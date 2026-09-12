@@ -1,0 +1,11 @@
+ M .github/workflows/ci.yml
+?? app/app/components/cai/
+?? app/app/lib/cai-view.server.ts
+?? app/app/lib/cai-view.ts
+?? app/tests/cai-components.test.mjs
+?? app/tests/cai-view.test.mjs
+     126 app/app/components/cai/cai-about.tsx
+     142 app/app/components/cai/cai-forecast.tsx
+     179 app/app/components/cai/cai-gauge.tsx
+     277 app/tests/cai-components.test.mjs
+     724 total

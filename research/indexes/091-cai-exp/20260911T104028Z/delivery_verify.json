@@ -1,0 +1,36 @@
+{
+  "verified_at_utc": "2026-09-11T10:43:56Z",
+  "method": "clean venv + shallow clone (origin main) + share branch, project-relative paths only",
+  "python": "3.13.15",
+  "packages": {
+    "pandas": "3.0.5",
+    "numpy": "2.5.2",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.1",
+    "pytest": "9.1.1",
+    "yfinance": "1.7.0"
+  },
+  "steps": [
+    "python3 -m venv /tmp/cai-exp-verify-venv",
+    "pip install -r requirements-exp.txt (pinned)",
+    "pip install -e . --no-deps"
+  ],
+  "results": {
+    "validate": "SPEC VALID",
+    "tests": "12 passed",
+    "demo": "4 configs done (synthetic only)"
+  },
+  "share_branch": "share/cai-exp-0.1.0 @ c9fbba329bc809fb493f16da3bbe118a14f7abf8",
+  "tarball": {
+    "path": "research/dist/cai-exp-0.1.0.tar.gz",
+    "sha256": "202a2cff5a283dfdc2f0f67b9a0894ef5e9915a4ce6e6d6b0b39f065f00950b7"
+  },
+  "limits": "Local clean-env reproduction only; NOT a run on Seongchan's machine, and Seongchan's experiments were not executed.",
+  "reference_runs": [
+    "experiments/cai/reference/tw_shared_20260911T085005Z",
+    "experiments/cai/reference/tw_shared_20260911T085023Z",
+    "experiments/cai/reference/pilot_20260911T130235Z",
+    "experiments/cai/reference/pilot_20260911T130219Z"
+  ],
+  "note_addendum": "share 브랜치에 참조 shared run 집계(compare 입력) 추가; 타르볼 재생성. 배치 F: 정렬 수정·시장+CAI·파일럿 config 포함 갱신; 파일럿 입력 CSV는 재배포 조건 미확인으로 미포함. 배치 G: 파일럿 재현 안내(REPRODUCE_PILOT.md)+참조 결과 2건 포함."
+}

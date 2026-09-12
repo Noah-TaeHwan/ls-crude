@@ -1,0 +1,72 @@
+format=fixed_legacy records=11294 unique_stations=91
+station=AVC040 records=60 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1440 zero_hour_cells=0
+  dir=3 days=30 missing_days=[31]
+  dir=7 days=30 missing_days=[31]
+file dup keys=208 lane0+laneN coexist groups=0
+format=fixed_legacy records=10166 unique_stations=91
+station=AVC040 records=56 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1344 zero_hour_cells=0
+  dir=3 days=28 missing_days=[]
+  dir=7 days=28 missing_days=[]
+file dup keys=188 lane0+laneN coexist groups=0
+format=fixed_legacy records=10886 unique_stations=91
+station=AVC040 records=60 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1440 zero_hour_cells=0
+  dir=3 days=30 missing_days=[10]
+  dir=7 days=30 missing_days=[10]
+file dup keys=230 lane0+laneN coexist groups=0
+format=fixed_legacy records=7291 unique_stations=90
+station=AVC040 records=52 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1248 zero_hour_cells=0
+  dir=3 days=26 missing_days=[8, 9, 10, 11]
+  dir=7 days=26 missing_days=[8, 9, 10, 11]
+file dup keys=11 lane0+laneN coexist groups=0
+format=fixed_legacy records=10885 unique_stations=90
+station=AVC040 records=62 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1488 zero_hour_cells=0
+  dir=3 days=31 missing_days=[]
+  dir=7 days=31 missing_days=[]
+file dup keys=17 lane0+laneN coexist groups=0
+format=fixed_legacy records=10539 unique_stations=90
+station=AVC040 records=60 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1440 zero_hour_cells=0
+  dir=3 days=30 missing_days=[]
+  dir=7 days=30 missing_days=[]
+file dup keys=31 lane0+laneN coexist groups=0
+format=fixed_legacy records=10962 unique_stations=90
+station=AVC040 records=60 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1440 zero_hour_cells=0
+  dir=3 days=30 missing_days=[30]
+  dir=7 days=30 missing_days=[30]
+file dup keys=28 lane0+laneN coexist groups=0
+format=fixed_legacy records=10926 unique_stations=90
+station=AVC040 records=62 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1488 zero_hour_cells=0
+  dir=3 days=31 missing_days=[]
+  dir=7 days=31 missing_days=[]
+file dup keys=32 lane0+laneN coexist groups=0
+format=fixed_legacy records=10554 unique_stations=90
+station=AVC040 records=60 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1440 zero_hour_cells=0
+  dir=3 days=30 missing_days=[]
+  dir=7 days=30 missing_days=[]
+file dup keys=26 lane0+laneN coexist groups=0
+format=fixed_legacy records=10939 unique_stations=90
+station=AVC040 records=62 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1488 zero_hour_cells=0
+  dir=3 days=31 missing_days=[]
+  dir=7 days=31 missing_days=[]
+file dup keys=37 lane0+laneN coexist groups=0
+format=fixed_legacy records=10561 unique_stations=90
+station=AVC040 records=60 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1440 zero_hour_cells=0
+  dir=3 days=30 missing_days=[]
+  dir=7 days=30 missing_days=[]
+file dup keys=23 lane0+laneN coexist groups=0
+format=fixed_legacy records=10980 unique_stations=90
+station=AVC040 records=62 dirs=['3', '7'] lanes=['1']
+missing_hour_cells=0/1488 zero_hour_cells=0
+  dir=3 days=31 missing_days=[]
+  dir=7 days=31 missing_days=[]
+file dup keys=18 lane0+laneN coexist groups=0

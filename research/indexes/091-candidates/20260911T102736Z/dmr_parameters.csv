@@ -1,0 +1,635 @@
+permit_id,outfall,parameter_code,parameter_desc,monitoring_location,unit,rows
+OK0026701,001,00300,"Oxygen, dissolved [DO]",Effluent Gross,,23
+OK0026701,001,00300,"Oxygen, dissolved [DO]",Effluent Gross,mg/L,116
+OK0026701,001,00310,"BOD, 5-day, 20 deg. C",Effluent Gross,,69
+OK0026701,001,00310,"BOD, 5-day, 20 deg. C",Effluent Gross,lb/d,116
+OK0026701,001,00310,"BOD, 5-day, 20 deg. C",Effluent Gross,mg/L,232
+OK0026701,001,00400,pH,Effluent Gross,,46
+OK0026701,001,00400,pH,Effluent Gross,SU,232
+OK0026701,001,00530,"Solids, total suspended",Effluent Gross,,69
+OK0026701,001,00530,"Solids, total suspended",Effluent Gross,lb/d,116
+OK0026701,001,00530,"Solids, total suspended",Effluent Gross,mg/L,232
+OK0026701,001,00610,"Nitrogen, ammonia total [as N]",Effluent Gross,,69
+OK0026701,001,00610,"Nitrogen, ammonia total [as N]",Effluent Gross,lb/d,116
+OK0026701,001,00610,"Nitrogen, ammonia total [as N]",Effluent Gross,mg/L,232
+OK0026701,001,01027,"Cadmium, total [as Cd]",Effluent Gross,,33
+OK0026701,001,01027,"Cadmium, total [as Cd]",Effluent Gross,lb/d,25
+OK0026701,001,01027,"Cadmium, total [as Cd]",Effluent Gross,ug/L,50
+OK0026701,001,01042,"Copper, total [as Cu]",Effluent Gross,mg/L,36
+OK0026701,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,,46
+OK0026701,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,MGD,232
+OK0026701,001,51040,E. coli,Effluent Gross,CFU/100mL,134
+OK0026701,001,74055,"Coliform, fecal general",Effluent Gross,,46
+OK0026701,001,74055,"Coliform, fecal general",Effluent Gross,#/100mL,98
+OK0026701,999,00900,"Hardness, total [as CaCO3]",Effluent Gross,,24
+OK0026701,SLD,39516,Polychlorinated biphenyls [PCBs],Sludge,,1
+OK0026701,SLD,39516,Polychlorinated biphenyls [PCBs],Sludge,mg/kg,5
+OK0026701,SLD,46390,Toxicity characteristic leaching procedure,Sludge,,6
+OK0026701,SLD,46390,Toxicity characteristic leaching procedure,Sludge,pass=0;fail=1,5
+OK0026701,SLD,49017,Ann. amt sludge disposed by other method,See Comments,,1
+OK0026701,SLD,49017,Ann. amt sludge disposed by other method,See Comments,metric t/yr,10
+OK0026701,SLD,49018,Annual amt of sludge incinerated,Sludge,,1
+OK0026701,SLD,49018,Annual amt of sludge incinerated,Sludge,metric t/yr,10
+OK0026701,SLD,49019,"Annual sludge production, total",Sludge,,1
+OK0026701,SLD,49019,"Annual sludge production, total",Sludge,metric t/yr,10
+OK0026701,SLD,49020,Annual amount of sludge land applied,Sludge,,1
+OK0026701,SLD,49020,Annual amount of sludge land applied,Sludge,metric t/yr,10
+OK0026701,SLD,49021,Annual amt. sludge disposed surface unit,Sludge,,1
+OK0026701,SLD,49021,Annual amt. sludge disposed surface unit,Sludge,metric t/yr,10
+OK0026701,SLD,49022,Annual amt sludge disposed in landfill,Sludge,,1
+OK0026701,SLD,49022,Annual amt sludge disposed in landfill,Sludge,metric t/yr,10
+OK0026701,SLD,49023,Annual amt sludge transported interstate,Sludge,,1
+OK0026701,SLD,49023,Annual amt sludge transported interstate,Sludge,metric t/yr,10
+OK0026701,SLD,49030,Compliance w/part 258 sludge requirement,Sludge,,10
+OK0026701,SLD,49030,Compliance w/part 258 sludge requirement,Sludge,N=0;Y=1,1
+OK0026701,SLL,01003,"Arsenic, dry weight",See Comments,,3
+OK0026701,SLL,01003,"Arsenic, dry weight",See Comments,kg/ha,10
+OK0026701,SLL,01003,"Arsenic, dry weight",See Comments,mg/kg,20
+OK0026701,SLL,01148,"Selenium, dry weight",See Comments,,3
+OK0026701,SLL,01148,"Selenium, dry weight",See Comments,kg/ha,10
+OK0026701,SLL,01148,"Selenium, dry weight",See Comments,mg/kg,20
+OK0026701,SLL,39516,Polychlorinated biphenyls [PCBs],Sludge,mg/kg,5
+OK0026701,SLL,46394,"Copper, dry weight",See Comments,,3
+OK0026701,SLL,46394,"Copper, dry weight",See Comments,kg/ha,10
+OK0026701,SLL,46394,"Copper, dry weight",See Comments,mg/kg,20
+OK0026701,SLL,46395,"Cadmium, dry weight",See Comments,,3
+OK0026701,SLL,46395,"Cadmium, dry weight",See Comments,kg/ha,10
+OK0026701,SLL,46395,"Cadmium, dry weight",See Comments,mg/kg,20
+OK0026701,SLL,49016,Annual whole sludge application rate,See Comments,,1
+OK0026701,SLL,49016,Annual whole sludge application rate,See Comments,met t/ha/yr,10
+OK0026701,SLL,78465,"Molybdenum, sludge, total, dry weight [as Mo]",See Comments,,3
+OK0026701,SLL,78465,"Molybdenum, sludge, total, dry weight [as Mo]",See Comments,kg/ha,10
+OK0026701,SLL,78465,"Molybdenum, sludge, total, dry weight [as Mo]",See Comments,mg/kg,20
+OK0026701,SLL,78467,"Zinc, sludge, total, dry weight [as Zn]",See Comments,,3
+OK0026701,SLL,78467,"Zinc, sludge, total, dry weight [as Zn]",See Comments,kg/ha,10
+OK0026701,SLL,78467,"Zinc, sludge, total, dry weight [as Zn]",See Comments,mg/kg,20
+OK0026701,SLL,78468,"Lead, sludge, total, dry weight [as Pb]",See Comments,,3
+OK0026701,SLL,78468,"Lead, sludge, total, dry weight [as Pb]",See Comments,kg/ha,10
+OK0026701,SLL,78468,"Lead, sludge, total, dry weight [as Pb]",See Comments,mg/kg,20
+OK0026701,SLL,78469,"Nickel, sludge, total, dry weight [as Ni]",See Comments,,3
+OK0026701,SLL,78469,"Nickel, sludge, total, dry weight [as Ni]",See Comments,kg/ha,10
+OK0026701,SLL,78469,"Nickel, sludge, total, dry weight [as Ni]",See Comments,mg/kg,20
+OK0026701,SLL,78471,"Mercury, sludge, total, dry weight [as Hg]",See Comments,,3
+OK0026701,SLL,78471,"Mercury, sludge, total, dry weight [as Hg]",See Comments,kg/ha,10
+OK0026701,SLL,78471,"Mercury, sludge, total, dry weight [as Hg]",See Comments,mg/kg,20
+OK0026701,SLL,84367,Pollutant table from 503.13,See Comments,,1
+OK0026701,SLL,84367,Pollutant table from 503.13,See Comments,table #,10
+OK0026701,SLL,84368,Level of pathogen requirements achieved,See Comments,,1
+OK0026701,SLL,84368,Level of pathogen requirements achieved,See Comments,state class,10
+OK0026701,SLL,84369,Description of pathogen option used,Sludge,,1
+OK0026701,SLL,84369,Description of pathogen option used,Sludge,alt #,10
+OK0026701,SLL,84370,Vector attraction reduction alternative used,Sludge,,1
+OK0026701,SLL,84370,Vector attraction reduction alternative used,Sludge,alt #,10
+OK0026701,SLS,01003,"Arsenic, dry weight",Sludge,,22
+OK0026701,SLS,49028,Unit w/liner/leachate collection system,Sludge,,11
+OK0026701,SLS,49029,Unit boundary to property line distance,Sludge,,11
+OK0026701,SLS,78469,"Nickel, sludge, total, dry weight [as Ni]",Sludge,,22
+OK0026701,SLS,78473,"Chromium, sludge, total, dry weight [as Cr]",Sludge,,22
+OK0026701,SLS,84368,Level of pathogen requirements achieved,See Comments,,11
+OK0026701,SLS,84369,Description of pathogen option used,Sludge,,11
+OK0026701,SLS,84370,Vector attraction reduction alternative used,Sludge,,11
+OK0026701,TX1,00400,pH,Effluent Gross,,18
+OK0026701,TX1,00400,pH,Effluent Gross,SU,74
+OK0026701,TX1,00610,"Nitrogen, ammonia total [as N]",Effluent Gross,,27
+OK0026701,TX1,00610,"Nitrogen, ammonia total [as N]",Effluent Gross,mg/L,111
+OK0026701,TX1,22414,Whole effluent toxicity,Effluent Gross,,8
+OK0026701,TX1,22414,Whole effluent toxicity,Effluent Gross,%,16
+OK0026701,TX1,51710,Whole Effluent Toxicity [WET] - C. dubia,Effluent Gross,,29
+OK0026701,TX1,51710,Whole Effluent Toxicity [WET] - C. dubia,Effluent Gross,%,24
+OK0026701,TX1,51714,Whole Effluent Toxicity [WET] - P. promelas,Effluent Gross,%,21
+OK0026701,TX1,TGP3B,Pass/Fail Static Renewal 7 Day Chronic Ceriodaphnia dubia,Effluent Gross,,38
+OK0026701,TX1,TGP3B,Pass/Fail Static Renewal 7 Day Chronic Ceriodaphnia dubia,Effluent Gross,pass=0;fail=1,40
+OK0026701,TX1,TGP6C,Pass/Fail Static Renewal 7Day Chronic Pimephales promelas,Effluent Gross,,9
+OK0026701,TX1,TGP6C,Pass/Fail Static Renewal 7Day Chronic Pimephales promelas,Effluent Gross,pass=0;fail=1,37
+OK0026701,TX1,TJP3B,%Mortality 7Day Chronic Ceriodaphnia dubia,Effluent Gross,,38
+OK0026701,TX1,TJP3B,%Mortality 7Day Chronic Ceriodaphnia dubia,Effluent Gross,%,40
+OK0026701,TX1,TJP6C,%Mortality Static Renewal 7Day Chronic Pimephales Promelas,Effluent Gross,,9
+OK0026701,TX1,TJP6C,%Mortality Static Renewal 7Day Chronic Pimephales Promelas,Effluent Gross,%,37
+OK0026701,TX1,TLP3B,Low Flow Pass/Fail Survival Test Static Renewal 7 Day Chronic Ceriodaphnia dubia,Effluent Gross,,38
+OK0026701,TX1,TLP3B,Low Flow Pass/Fail Survival Test Static Renewal 7 Day Chronic Ceriodaphnia dubia,Effluent Gross,pass=0;fail=1,40
+OK0026701,TX1,TLP6C,Low Flow Pass/Fail Survival Test Static Renewal 7 Day Chronic Pimephales promelas,Effluent Gross,,9
+OK0026701,TX1,TLP6C,Low Flow Pass/Fail Survival Test Static Renewal 7 Day Chronic Pimephales promelas,Effluent Gross,pass=0;fail=1,37
+OK0026701,TX1,TOP3B,NOEC Lethal Static Renewal 7 Day Chronic Ceriodaphnia dubia,Effluent Gross,,38
+OK0026701,TX1,TOP3B,NOEC Lethal Static Renewal 7 Day Chronic Ceriodaphnia dubia,Effluent Gross,%,40
+OK0026701,TX1,TOP6C,NOEC Lethal Static Renewal 7 Day Chronic Pimephales promelas,Effluent Gross,,9
+OK0026701,TX1,TOP6C,NOEC Lethal Static Renewal 7 Day Chronic Pimephales promelas,Effluent Gross,%,37
+OK0026701,TX1,TPP3B,NOEC Sub-Lethal Static Renewal 7 Day Chronic Ceriodaphnia dubia,Effluent Gross,,39
+OK0026701,TX1,TPP3B,NOEC Sub-Lethal Static Renewal 7 Day Chronic Ceriodaphnia dubia,Effluent Gross,%,39
+OK0026701,TX1,TPP6C,NOEC Sub-Lethal Static Renewal 7 Day Chronic Pimephales promelas,Effluent Gross,,9
+OK0026701,TX1,TPP6C,NOEC Sub-Lethal Static Renewal 7 Day Chronic Pimephales promelas,Effluent Gross,%,37
+OK0026701,TX1,TQP3B,Coef Of Var Static Renewal 7Day Chronic Ceriodaphnia dubia,Effluent Gross,,39
+OK0026701,TX1,TQP3B,Coef Of Var Static Renewal 7Day Chronic Ceriodaphnia dubia,Effluent Gross,%,39
+OK0026701,TX1,TQP6C,Coef Of Var Static Renewal 7Day Chronic Pimephales promelas,Effluent Gross,,9
+OK0026701,TX1,TQP6C,Coef Of Var Static Renewal 7Day Chronic Pimephales promelas,Effluent Gross,%,37
+OK0043320,001,00340,"Oxygen demand, chem. [high level] [COD]",Effluent Gross,,536
+OK0043320,001,00340,"Oxygen demand, chem. [high level] [COD]",Effluent Gross,lb/d,10
+OK0043320,001,00340,"Oxygen demand, chem. [high level] [COD]",Effluent Gross,mg/L,10
+OK0043320,001,00400,pH,Effluent Gross,,268
+OK0043320,001,00400,pH,Effluent Gross,SU,10
+OK0043320,001,00530,"Solids, total suspended",Effluent Gross,,264
+OK0043320,001,00530,"Solids, total suspended",Effluent Gross,lb/d,8
+OK0043320,001,00530,"Solids, total suspended",Effluent Gross,mg/L,8
+OK0043320,001,00556,Oil & Grease,Effluent Gross,,536
+OK0043320,001,00556,Oil & Grease,Effluent Gross,lb/d,10
+OK0043320,001,00556,Oil & Grease,Effluent Gross,mg/L,10
+OK0043320,001,00680,"Carbon, tot organic [TOC]",Effluent Gross,,264
+OK0043320,001,00680,"Carbon, tot organic [TOC]",Effluent Gross,lb/d,8
+OK0043320,001,00680,"Carbon, tot organic [TOC]",Effluent Gross,mg/L,8
+OK0043320,001,00945,"Sulfate, total [as SO4]",Effluent Gross,,536
+OK0043320,001,00945,"Sulfate, total [as SO4]",Effluent Gross,lb/d,10
+OK0043320,001,00945,"Sulfate, total [as SO4]",Effluent Gross,mg/L,10
+OK0043320,001,01051,"Lead, total [as Pb]",Effluent Gross,,59
+OK0043320,001,01051,"Lead, total [as Pb]",Effluent Gross,ug/L,3
+OK0043320,001,01147,"Selenium, total [as Se]",Effluent Gross,,536
+OK0043320,001,01147,"Selenium, total [as Se]",Effluent Gross,lb/d,10
+OK0043320,001,01147,"Selenium, total [as Se]",Effluent Gross,ug/L,10
+OK0043320,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,,268
+OK0043320,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,MGD,10
+OK0043320,001,50060,"Chlorine, total residual","Disinfection, Process Complete",,74
+OK0043320,001,50060,"Chlorine, total residual","Disinfection, Process Complete",mg/L,3
+OK0043320,001,50060,"Chlorine, total residual",Effluent Gross,,60
+OK0043320,001,50060,"Chlorine, total residual",Effluent Gross,mg/L,2
+OK0043320,007,00340,"Oxygen demand, chem. [high level] [COD]",Effluent Gross,,336
+OK0043320,007,00340,"Oxygen demand, chem. [high level] [COD]",Effluent Gross,lb/d,110
+OK0043320,007,00340,"Oxygen demand, chem. [high level] [COD]",Effluent Gross,mg/L,110
+OK0043320,007,00400,pH,Effluent Gross,,168
+OK0043320,007,00400,pH,Effluent Gross,SU,110
+OK0043320,007,00530,"Solids, total suspended",Effluent Gross,,104
+OK0043320,007,00530,"Solids, total suspended",Effluent Gross,lb/d,88
+OK0043320,007,00530,"Solids, total suspended",Effluent Gross,mg/L,88
+OK0043320,007,00556,Oil & Grease,Effluent Gross,,336
+OK0043320,007,00556,Oil & Grease,Effluent Gross,lb/d,110
+OK0043320,007,00556,Oil & Grease,Effluent Gross,mg/L,110
+OK0043320,007,00680,"Carbon, tot organic [TOC]",Effluent Gross,,104
+OK0043320,007,00680,"Carbon, tot organic [TOC]",Effluent Gross,lb/d,88
+OK0043320,007,00680,"Carbon, tot organic [TOC]",Effluent Gross,mg/L,88
+OK0043320,007,00945,"Sulfate, total [as SO4]",Effluent Gross,,344
+OK0043320,007,00945,"Sulfate, total [as SO4]",Effluent Gross,lb/d,106
+OK0043320,007,00945,"Sulfate, total [as SO4]",Effluent Gross,mg/L,106
+OK0043320,007,01051,"Lead, total [as Pb]",Effluent Gross,,35
+OK0043320,007,01051,"Lead, total [as Pb]",Effluent Gross,ug/L,27
+OK0043320,007,01147,"Selenium, total [as Se]",Effluent Gross,,336
+OK0043320,007,01147,"Selenium, total [as Se]",Effluent Gross,lb/d,110
+OK0043320,007,01147,"Selenium, total [as Se]",Effluent Gross,ug/L,110
+OK0043320,007,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,,168
+OK0043320,007,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,MGD,110
+OK0043320,007,50060,"Chlorine, total residual","Disinfection, Process Complete",,50
+OK0043320,007,50060,"Chlorine, total residual","Disinfection, Process Complete",mg/L,27
+OK0043320,007,50060,"Chlorine, total residual",Effluent Gross,,34
+OK0043320,007,50060,"Chlorine, total residual",Effluent Gross,mg/L,28
+OK0043320,008,00340,"Oxygen demand, chem. [high level] [COD]",Effluent Gross,,336
+OK0043320,008,00340,"Oxygen demand, chem. [high level] [COD]",Effluent Gross,lb/d,110
+OK0043320,008,00340,"Oxygen demand, chem. [high level] [COD]",Effluent Gross,mg/L,110
+OK0043320,008,00400,pH,Effluent Gross,,168
+OK0043320,008,00400,pH,Effluent Gross,SU,110
+OK0043320,008,00530,"Solids, total suspended",Effluent Gross,,104
+OK0043320,008,00530,"Solids, total suspended",Effluent Gross,lb/d,88
+OK0043320,008,00530,"Solids, total suspended",Effluent Gross,mg/L,88
+OK0043320,008,00556,Oil & Grease,Effluent Gross,,336
+OK0043320,008,00556,Oil & Grease,Effluent Gross,lb/d,110
+OK0043320,008,00556,Oil & Grease,Effluent Gross,mg/L,110
+OK0043320,008,00680,"Carbon, tot organic [TOC]",Effluent Gross,,104
+OK0043320,008,00680,"Carbon, tot organic [TOC]",Effluent Gross,lb/d,88
+OK0043320,008,00680,"Carbon, tot organic [TOC]",Effluent Gross,mg/L,88
+OK0043320,008,00945,"Sulfate, total [as SO4]",Effluent Gross,,344
+OK0043320,008,00945,"Sulfate, total [as SO4]",Effluent Gross,lb/d,106
+OK0043320,008,00945,"Sulfate, total [as SO4]",Effluent Gross,mg/L,106
+OK0043320,008,01051,"Lead, total [as Pb]",Effluent Gross,,35
+OK0043320,008,01051,"Lead, total [as Pb]",Effluent Gross,ug/L,27
+OK0043320,008,01147,"Selenium, total [as Se]",Effluent Gross,,336
+OK0043320,008,01147,"Selenium, total [as Se]",Effluent Gross,lb/d,110
+OK0043320,008,01147,"Selenium, total [as Se]",Effluent Gross,ug/L,110
+OK0043320,008,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,,168
+OK0043320,008,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,MGD,110
+OK0043320,008,50060,"Chlorine, total residual","Disinfection, Process Complete",,50
+OK0043320,008,50060,"Chlorine, total residual","Disinfection, Process Complete",mg/L,27
+OK0043320,008,50060,"Chlorine, total residual",Effluent Gross,,34
+OK0043320,008,50060,"Chlorine, total residual",Effluent Gross,mg/L,28
+OK0044598,001,00400,pH,Effluent Gross,,48
+OK0044598,001,00400,pH,Effluent Gross,SU,230
+OK0044598,001,00530,"Solids, total suspended",Effluent Gross,,48
+OK0044598,001,00530,"Solids, total suspended",Effluent Gross,mg/L,230
+OK0044598,001,00552,"Oil and grease, hexane extr method",Effluent Gross,,48
+OK0044598,001,00552,"Oil and grease, hexane extr method",Effluent Gross,mg/L,230
+OK0044598,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,,48
+OK0044598,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,gal/d,230
+OK0044598,001,82295,"Chloride, dissolved [as Cl]",Effluent Gross,,1
+OK0044598,001,82295,"Chloride, dissolved [as Cl]",Effluent Gross,mg/L,14
+OK0100374,001,00400,pH,Effluent Gross,,20
+OK0100374,001,00530,"Solids, total suspended",Effluent Gross,,20
+OK0100374,001,00556,Oil & Grease,Effluent Gross,,20
+OK0100374,001,34030,Benzene,Effluent Gross,,20
+OK0100374,001,46000,Phenols,Effluent Gross,,20
+OK0100374,001,49491,BTEX,Effluent Gross,,20
+OK0100374,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,,20
+OK0100374,001,52290,Total Petroleum Hydrocarbons - Diesel,Effluent Gross,,20
+OK0100374,001,52300,Total Petroleum Hydrocarbons - Gasoline,Effluent Gross,,20
+OK0100374,002,00400,pH,Effluent Gross,,20
+OK0100374,002,00530,"Solids, total suspended",Effluent Gross,,20
+OK0100374,002,00556,Oil & Grease,Effluent Gross,,20
+OK0100374,002,34030,Benzene,Effluent Gross,,20
+OK0100374,002,46000,Phenols,Effluent Gross,,20
+OK0100374,002,49491,BTEX,Effluent Gross,,20
+OK0100374,002,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,,20
+OK0100374,002,52290,Total Petroleum Hydrocarbons - Diesel,Effluent Gross,,20
+OK0100374,002,52300,Total Petroleum Hydrocarbons - Gasoline,Effluent Gross,,20
+OKG270057,001,00400,pH,Effluent Gross,,10
+OKG270057,001,00400,pH,Effluent Gross,SU,4
+OKG270057,001,00530,"Solids, total suspended",Effluent Gross,,5
+OKG270057,001,00530,"Solids, total suspended",Effluent Gross,mg/L,2
+OKG270057,001,00556,Oil & Grease,Effluent Gross,,5
+OKG270057,001,00556,Oil & Grease,Effluent Gross,mg/L,2
+OKG270057,001,34030,Benzene,Effluent Gross,,7
+OKG270057,001,49491,BTEX,Effluent Gross,,7
+OKG270057,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,,10
+OKG270057,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,MGD,4
+OKG270057,001,52290,Total Petroleum Hydrocarbons - Diesel,Effluent Gross,,7
+OKG270057,001,52300,Total Petroleum Hydrocarbons - Gasoline,Effluent Gross,,7
+OKG340020,101,84066,Oil and grease visual,Effluent Gross,,8
+OKG340050,101,84066,Oil and grease visual,Effluent Gross,,2
+OKG950028,001,00400,pH,Effluent Gross,,256
+OKG950028,001,00400,pH,Effluent Gross,SU,22
+OKG950028,001,00530,"Solids, total suspended",Effluent Gross,,169
+OKG950028,001,00530,"Solids, total suspended",Effluent Gross,mg/L,13
+OKG950028,001,00556,Oil & Grease,Effluent Gross,,82
+OKG950028,001,00556,Oil & Grease,Effluent Gross,mg/L,4
+OKG950028,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,,256
+OKG950028,001,50050,"Flow, in conduit or thru treatment plant",Effluent Gross,MGD,22
+OKR05FA05,001,00400,pH,Effluent Gross,,8
+OKR05FA05,001,00400,pH,Effluent Gross,SU,28
+OKR05FA05,001,00530,"Solids, total suspended",Effluent Gross,,4
+OKR05FA05,001,00530,"Solids, total suspended",Effluent Gross,mg/L,14
+OKR05FA05,001,34200,Acenaphthylene,Effluent Gross,,1
+OKR05FA05,001,34200,Acenaphthylene,Effluent Gross,mg/L,1
+OKR05FA05,001,34200,Acenaphthylene,Effluent Gross,ug/L,2
+OKR05FA05,001,34205,Acenaphthene,Effluent Gross,,1
+OKR05FA05,001,34205,Acenaphthene,Effluent Gross,mg/L,1
+OKR05FA05,001,34205,Acenaphthene,Effluent Gross,ug/L,2
+OKR05FA05,001,34220,Anthracene,Effluent Gross,,1
+OKR05FA05,001,34220,Anthracene,Effluent Gross,mg/L,1
+OKR05FA05,001,34220,Anthracene,Effluent Gross,ug/L,2
+OKR05FA05,001,34230,Benzo[b]fluoranthene,Effluent Gross,,1
+OKR05FA05,001,34230,Benzo[b]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,001,34230,Benzo[b]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,001,34242,Benzo[k]fluoranthene,Effluent Gross,,1
+OKR05FA05,001,34242,Benzo[k]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,001,34242,Benzo[k]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,001,34247,Benzo[a]pyrene,Effluent Gross,,1
+OKR05FA05,001,34247,Benzo[a]pyrene,Effluent Gross,mg/L,1
+OKR05FA05,001,34247,Benzo[a]pyrene,Effluent Gross,ug/L,2
+OKR05FA05,001,34320,Chrysene,Effluent Gross,,1
+OKR05FA05,001,34320,Chrysene,Effluent Gross,mg/L,1
+OKR05FA05,001,34320,Chrysene,Effluent Gross,ug/L,2
+OKR05FA05,001,34376,Fluoranthene,Effluent Gross,,1
+OKR05FA05,001,34376,Fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,001,34376,Fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,001,34381,Fluorene,Effluent Gross,,1
+OKR05FA05,001,34381,Fluorene,Effluent Gross,mg/L,1
+OKR05FA05,001,34381,Fluorene,Effluent Gross,ug/L,2
+OKR05FA05,001,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,,1
+OKR05FA05,001,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,mg/L,1
+OKR05FA05,001,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,ug/L,2
+OKR05FA05,001,34461,Phenanthrene,Effluent Gross,,1
+OKR05FA05,001,34461,Phenanthrene,Effluent Gross,mg/L,1
+OKR05FA05,001,34461,Phenanthrene,Effluent Gross,ug/L,2
+OKR05FA05,001,34469,Pyrene,Effluent Gross,,1
+OKR05FA05,001,34469,Pyrene,Effluent Gross,mg/L,1
+OKR05FA05,001,34469,Pyrene,Effluent Gross,ug/L,2
+OKR05FA05,001,34521,Benzo[ghi]perylene,Effluent Gross,,1
+OKR05FA05,001,34521,Benzo[ghi]perylene,Effluent Gross,mg/L,1
+OKR05FA05,001,34521,Benzo[ghi]perylene,Effluent Gross,ug/L,2
+OKR05FA05,001,34526,Benzo[a]anthracene,Effluent Gross,,1
+OKR05FA05,001,34526,Benzo[a]anthracene,Effluent Gross,mg/L,1
+OKR05FA05,001,34526,Benzo[a]anthracene,Effluent Gross,ug/L,2
+OKR05FA05,001,34556,"Dibenz[a,h]anthracene",Effluent Gross,,1
+OKR05FA05,001,34556,"Dibenz[a,h]anthracene",Effluent Gross,mg/L,1
+OKR05FA05,001,34556,"Dibenz[a,h]anthracene",Effluent Gross,ug/L,2
+OKR05FA05,001,34696,Naphthalene,Effluent Gross,,1
+OKR05FA05,001,34696,Naphthalene,Effluent Gross,mg/L,1
+OKR05FA05,001,34696,Naphthalene,Effluent Gross,ug/L,2
+OKR05FA05,001,81017,Chemical Oxygen Demand [COD],Effluent Gross,,4
+OKR05FA05,001,81017,Chemical Oxygen Demand [COD],Effluent Gross,mg/L,14
+OKR05FA05,002,00400,pH,Effluent Gross,,8
+OKR05FA05,002,00400,pH,Effluent Gross,SU,28
+OKR05FA05,002,00530,"Solids, total suspended",Effluent Gross,,4
+OKR05FA05,002,00530,"Solids, total suspended",Effluent Gross,mg/L,14
+OKR05FA05,002,34200,Acenaphthylene,Effluent Gross,,1
+OKR05FA05,002,34200,Acenaphthylene,Effluent Gross,mg/L,1
+OKR05FA05,002,34200,Acenaphthylene,Effluent Gross,ug/L,2
+OKR05FA05,002,34205,Acenaphthene,Effluent Gross,,1
+OKR05FA05,002,34205,Acenaphthene,Effluent Gross,mg/L,1
+OKR05FA05,002,34205,Acenaphthene,Effluent Gross,ug/L,2
+OKR05FA05,002,34220,Anthracene,Effluent Gross,,1
+OKR05FA05,002,34220,Anthracene,Effluent Gross,mg/L,1
+OKR05FA05,002,34220,Anthracene,Effluent Gross,ug/L,2
+OKR05FA05,002,34230,Benzo[b]fluoranthene,Effluent Gross,,1
+OKR05FA05,002,34230,Benzo[b]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,002,34230,Benzo[b]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,002,34242,Benzo[k]fluoranthene,Effluent Gross,,1
+OKR05FA05,002,34242,Benzo[k]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,002,34242,Benzo[k]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,002,34247,Benzo[a]pyrene,Effluent Gross,,1
+OKR05FA05,002,34247,Benzo[a]pyrene,Effluent Gross,mg/L,1
+OKR05FA05,002,34247,Benzo[a]pyrene,Effluent Gross,ug/L,2
+OKR05FA05,002,34320,Chrysene,Effluent Gross,,1
+OKR05FA05,002,34320,Chrysene,Effluent Gross,mg/L,1
+OKR05FA05,002,34320,Chrysene,Effluent Gross,ug/L,2
+OKR05FA05,002,34376,Fluoranthene,Effluent Gross,,1
+OKR05FA05,002,34376,Fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,002,34376,Fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,002,34381,Fluorene,Effluent Gross,,1
+OKR05FA05,002,34381,Fluorene,Effluent Gross,mg/L,1
+OKR05FA05,002,34381,Fluorene,Effluent Gross,ug/L,2
+OKR05FA05,002,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,,1
+OKR05FA05,002,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,mg/L,1
+OKR05FA05,002,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,ug/L,2
+OKR05FA05,002,34461,Phenanthrene,Effluent Gross,,1
+OKR05FA05,002,34461,Phenanthrene,Effluent Gross,mg/L,1
+OKR05FA05,002,34461,Phenanthrene,Effluent Gross,ug/L,2
+OKR05FA05,002,34469,Pyrene,Effluent Gross,,1
+OKR05FA05,002,34469,Pyrene,Effluent Gross,mg/L,1
+OKR05FA05,002,34469,Pyrene,Effluent Gross,ug/L,2
+OKR05FA05,002,34521,Benzo[ghi]perylene,Effluent Gross,,1
+OKR05FA05,002,34521,Benzo[ghi]perylene,Effluent Gross,mg/L,1
+OKR05FA05,002,34521,Benzo[ghi]perylene,Effluent Gross,ug/L,2
+OKR05FA05,002,34526,Benzo[a]anthracene,Effluent Gross,,1
+OKR05FA05,002,34526,Benzo[a]anthracene,Effluent Gross,mg/L,1
+OKR05FA05,002,34526,Benzo[a]anthracene,Effluent Gross,ug/L,2
+OKR05FA05,002,34556,"Dibenz[a,h]anthracene",Effluent Gross,,1
+OKR05FA05,002,34556,"Dibenz[a,h]anthracene",Effluent Gross,mg/L,1
+OKR05FA05,002,34556,"Dibenz[a,h]anthracene",Effluent Gross,ug/L,2
+OKR05FA05,002,34696,Naphthalene,Effluent Gross,,1
+OKR05FA05,002,34696,Naphthalene,Effluent Gross,mg/L,1
+OKR05FA05,002,34696,Naphthalene,Effluent Gross,ug/L,2
+OKR05FA05,002,81017,Chemical Oxygen Demand [COD],Effluent Gross,,4
+OKR05FA05,002,81017,Chemical Oxygen Demand [COD],Effluent Gross,mg/L,14
+OKR05FA05,003,00400,pH,Effluent Gross,,8
+OKR05FA05,003,00400,pH,Effluent Gross,SU,28
+OKR05FA05,003,00530,"Solids, total suspended",Effluent Gross,,4
+OKR05FA05,003,00530,"Solids, total suspended",Effluent Gross,mg/L,14
+OKR05FA05,003,34200,Acenaphthylene,Effluent Gross,,1
+OKR05FA05,003,34200,Acenaphthylene,Effluent Gross,mg/L,1
+OKR05FA05,003,34200,Acenaphthylene,Effluent Gross,ug/L,2
+OKR05FA05,003,34205,Acenaphthene,Effluent Gross,,1
+OKR05FA05,003,34205,Acenaphthene,Effluent Gross,mg/L,1
+OKR05FA05,003,34205,Acenaphthene,Effluent Gross,ug/L,2
+OKR05FA05,003,34220,Anthracene,Effluent Gross,,1
+OKR05FA05,003,34220,Anthracene,Effluent Gross,mg/L,1
+OKR05FA05,003,34220,Anthracene,Effluent Gross,ug/L,2
+OKR05FA05,003,34230,Benzo[b]fluoranthene,Effluent Gross,,1
+OKR05FA05,003,34230,Benzo[b]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,003,34230,Benzo[b]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,003,34242,Benzo[k]fluoranthene,Effluent Gross,,1
+OKR05FA05,003,34242,Benzo[k]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,003,34242,Benzo[k]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,003,34247,Benzo[a]pyrene,Effluent Gross,,1
+OKR05FA05,003,34247,Benzo[a]pyrene,Effluent Gross,mg/L,1
+OKR05FA05,003,34247,Benzo[a]pyrene,Effluent Gross,ug/L,2
+OKR05FA05,003,34320,Chrysene,Effluent Gross,,1
+OKR05FA05,003,34320,Chrysene,Effluent Gross,mg/L,1
+OKR05FA05,003,34320,Chrysene,Effluent Gross,ug/L,2
+OKR05FA05,003,34376,Fluoranthene,Effluent Gross,,1
+OKR05FA05,003,34376,Fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,003,34376,Fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,003,34381,Fluorene,Effluent Gross,,1
+OKR05FA05,003,34381,Fluorene,Effluent Gross,mg/L,1
+OKR05FA05,003,34381,Fluorene,Effluent Gross,ug/L,2
+OKR05FA05,003,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,,1
+OKR05FA05,003,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,mg/L,1
+OKR05FA05,003,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,ug/L,2
+OKR05FA05,003,34461,Phenanthrene,Effluent Gross,,1
+OKR05FA05,003,34461,Phenanthrene,Effluent Gross,mg/L,1
+OKR05FA05,003,34461,Phenanthrene,Effluent Gross,ug/L,2
+OKR05FA05,003,34469,Pyrene,Effluent Gross,,1
+OKR05FA05,003,34469,Pyrene,Effluent Gross,mg/L,1
+OKR05FA05,003,34469,Pyrene,Effluent Gross,ug/L,2
+OKR05FA05,003,34521,Benzo[ghi]perylene,Effluent Gross,,1
+OKR05FA05,003,34521,Benzo[ghi]perylene,Effluent Gross,mg/L,1
+OKR05FA05,003,34521,Benzo[ghi]perylene,Effluent Gross,ug/L,2
+OKR05FA05,003,34526,Benzo[a]anthracene,Effluent Gross,,1
+OKR05FA05,003,34526,Benzo[a]anthracene,Effluent Gross,mg/L,1
+OKR05FA05,003,34526,Benzo[a]anthracene,Effluent Gross,ug/L,2
+OKR05FA05,003,34556,"Dibenz[a,h]anthracene",Effluent Gross,,1
+OKR05FA05,003,34556,"Dibenz[a,h]anthracene",Effluent Gross,mg/L,1
+OKR05FA05,003,34556,"Dibenz[a,h]anthracene",Effluent Gross,ug/L,2
+OKR05FA05,003,34696,Naphthalene,Effluent Gross,,1
+OKR05FA05,003,34696,Naphthalene,Effluent Gross,mg/L,1
+OKR05FA05,003,34696,Naphthalene,Effluent Gross,ug/L,2
+OKR05FA05,003,81017,Chemical Oxygen Demand [COD],Effluent Gross,,4
+OKR05FA05,003,81017,Chemical Oxygen Demand [COD],Effluent Gross,mg/L,14
+OKR05FA05,005,00400,pH,Effluent Gross,,8
+OKR05FA05,005,00400,pH,Effluent Gross,SU,28
+OKR05FA05,005,00530,"Solids, total suspended",Effluent Gross,,4
+OKR05FA05,005,00530,"Solids, total suspended",Effluent Gross,mg/L,14
+OKR05FA05,005,34200,Acenaphthylene,Effluent Gross,,1
+OKR05FA05,005,34200,Acenaphthylene,Effluent Gross,mg/L,1
+OKR05FA05,005,34200,Acenaphthylene,Effluent Gross,ug/L,2
+OKR05FA05,005,34205,Acenaphthene,Effluent Gross,,1
+OKR05FA05,005,34205,Acenaphthene,Effluent Gross,mg/L,1
+OKR05FA05,005,34205,Acenaphthene,Effluent Gross,ug/L,2
+OKR05FA05,005,34220,Anthracene,Effluent Gross,,1
+OKR05FA05,005,34220,Anthracene,Effluent Gross,mg/L,1
+OKR05FA05,005,34220,Anthracene,Effluent Gross,ug/L,2
+OKR05FA05,005,34230,Benzo[b]fluoranthene,Effluent Gross,,1
+OKR05FA05,005,34230,Benzo[b]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,005,34230,Benzo[b]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,005,34242,Benzo[k]fluoranthene,Effluent Gross,,1
+OKR05FA05,005,34242,Benzo[k]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,005,34242,Benzo[k]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,005,34247,Benzo[a]pyrene,Effluent Gross,,1
+OKR05FA05,005,34247,Benzo[a]pyrene,Effluent Gross,mg/L,1
+OKR05FA05,005,34247,Benzo[a]pyrene,Effluent Gross,ug/L,2
+OKR05FA05,005,34320,Chrysene,Effluent Gross,,1
+OKR05FA05,005,34320,Chrysene,Effluent Gross,mg/L,1
+OKR05FA05,005,34320,Chrysene,Effluent Gross,ug/L,2
+OKR05FA05,005,34376,Fluoranthene,Effluent Gross,,1
+OKR05FA05,005,34376,Fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,005,34376,Fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,005,34381,Fluorene,Effluent Gross,,1
+OKR05FA05,005,34381,Fluorene,Effluent Gross,mg/L,1
+OKR05FA05,005,34381,Fluorene,Effluent Gross,ug/L,2
+OKR05FA05,005,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,,1
+OKR05FA05,005,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,mg/L,1
+OKR05FA05,005,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,ug/L,2
+OKR05FA05,005,34461,Phenanthrene,Effluent Gross,,1
+OKR05FA05,005,34461,Phenanthrene,Effluent Gross,mg/L,1
+OKR05FA05,005,34461,Phenanthrene,Effluent Gross,ug/L,2
+OKR05FA05,005,34469,Pyrene,Effluent Gross,,1
+OKR05FA05,005,34469,Pyrene,Effluent Gross,mg/L,1
+OKR05FA05,005,34469,Pyrene,Effluent Gross,ug/L,2
+OKR05FA05,005,34521,Benzo[ghi]perylene,Effluent Gross,,1
+OKR05FA05,005,34521,Benzo[ghi]perylene,Effluent Gross,mg/L,1
+OKR05FA05,005,34521,Benzo[ghi]perylene,Effluent Gross,ug/L,2
+OKR05FA05,005,34526,Benzo[a]anthracene,Effluent Gross,,1
+OKR05FA05,005,34526,Benzo[a]anthracene,Effluent Gross,mg/L,1
+OKR05FA05,005,34526,Benzo[a]anthracene,Effluent Gross,ug/L,2
+OKR05FA05,005,34556,"Dibenz[a,h]anthracene",Effluent Gross,,1
+OKR05FA05,005,34556,"Dibenz[a,h]anthracene",Effluent Gross,mg/L,1
+OKR05FA05,005,34556,"Dibenz[a,h]anthracene",Effluent Gross,ug/L,2
+OKR05FA05,005,34696,Naphthalene,Effluent Gross,,1
+OKR05FA05,005,34696,Naphthalene,Effluent Gross,mg/L,1
+OKR05FA05,005,34696,Naphthalene,Effluent Gross,ug/L,2
+OKR05FA05,005,81017,Chemical Oxygen Demand [COD],Effluent Gross,,4
+OKR05FA05,005,81017,Chemical Oxygen Demand [COD],Effluent Gross,mg/L,14
+OKR05FA05,006,00400,pH,Effluent Gross,,8
+OKR05FA05,006,00400,pH,Effluent Gross,SU,28
+OKR05FA05,006,00530,"Solids, total suspended",Effluent Gross,,4
+OKR05FA05,006,00530,"Solids, total suspended",Effluent Gross,mg/L,14
+OKR05FA05,006,34200,Acenaphthylene,Effluent Gross,,1
+OKR05FA05,006,34200,Acenaphthylene,Effluent Gross,mg/L,1
+OKR05FA05,006,34200,Acenaphthylene,Effluent Gross,ug/L,2
+OKR05FA05,006,34205,Acenaphthene,Effluent Gross,,1
+OKR05FA05,006,34205,Acenaphthene,Effluent Gross,mg/L,1
+OKR05FA05,006,34205,Acenaphthene,Effluent Gross,ug/L,2
+OKR05FA05,006,34220,Anthracene,Effluent Gross,,1
+OKR05FA05,006,34220,Anthracene,Effluent Gross,mg/L,1
+OKR05FA05,006,34220,Anthracene,Effluent Gross,ug/L,2
+OKR05FA05,006,34230,Benzo[b]fluoranthene,Effluent Gross,,1
+OKR05FA05,006,34230,Benzo[b]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,006,34230,Benzo[b]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,006,34242,Benzo[k]fluoranthene,Effluent Gross,,1
+OKR05FA05,006,34242,Benzo[k]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,006,34242,Benzo[k]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,006,34247,Benzo[a]pyrene,Effluent Gross,,1
+OKR05FA05,006,34247,Benzo[a]pyrene,Effluent Gross,mg/L,1
+OKR05FA05,006,34247,Benzo[a]pyrene,Effluent Gross,ug/L,2
+OKR05FA05,006,34320,Chrysene,Effluent Gross,,1
+OKR05FA05,006,34320,Chrysene,Effluent Gross,mg/L,1
+OKR05FA05,006,34320,Chrysene,Effluent Gross,ug/L,2
+OKR05FA05,006,34376,Fluoranthene,Effluent Gross,,1
+OKR05FA05,006,34376,Fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,006,34376,Fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,006,34381,Fluorene,Effluent Gross,,1
+OKR05FA05,006,34381,Fluorene,Effluent Gross,mg/L,1
+OKR05FA05,006,34381,Fluorene,Effluent Gross,ug/L,2
+OKR05FA05,006,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,,1
+OKR05FA05,006,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,mg/L,1
+OKR05FA05,006,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,ug/L,2
+OKR05FA05,006,34461,Phenanthrene,Effluent Gross,,1
+OKR05FA05,006,34461,Phenanthrene,Effluent Gross,mg/L,1
+OKR05FA05,006,34461,Phenanthrene,Effluent Gross,ug/L,2
+OKR05FA05,006,34469,Pyrene,Effluent Gross,,1
+OKR05FA05,006,34469,Pyrene,Effluent Gross,mg/L,1
+OKR05FA05,006,34469,Pyrene,Effluent Gross,ug/L,2
+OKR05FA05,006,34521,Benzo[ghi]perylene,Effluent Gross,,1
+OKR05FA05,006,34521,Benzo[ghi]perylene,Effluent Gross,mg/L,1
+OKR05FA05,006,34521,Benzo[ghi]perylene,Effluent Gross,ug/L,2
+OKR05FA05,006,34526,Benzo[a]anthracene,Effluent Gross,,1
+OKR05FA05,006,34526,Benzo[a]anthracene,Effluent Gross,mg/L,1
+OKR05FA05,006,34526,Benzo[a]anthracene,Effluent Gross,ug/L,2
+OKR05FA05,006,34556,"Dibenz[a,h]anthracene",Effluent Gross,,1
+OKR05FA05,006,34556,"Dibenz[a,h]anthracene",Effluent Gross,mg/L,1
+OKR05FA05,006,34556,"Dibenz[a,h]anthracene",Effluent Gross,ug/L,2
+OKR05FA05,006,34696,Naphthalene,Effluent Gross,,1
+OKR05FA05,006,34696,Naphthalene,Effluent Gross,mg/L,1
+OKR05FA05,006,34696,Naphthalene,Effluent Gross,ug/L,2
+OKR05FA05,006,81017,Chemical Oxygen Demand [COD],Effluent Gross,,4
+OKR05FA05,006,81017,Chemical Oxygen Demand [COD],Effluent Gross,mg/L,14
+OKR05FA05,007,00400,pH,Effluent Gross,,8
+OKR05FA05,007,00400,pH,Effluent Gross,SU,28
+OKR05FA05,007,00530,"Solids, total suspended",Effluent Gross,,4
+OKR05FA05,007,00530,"Solids, total suspended",Effluent Gross,mg/L,14
+OKR05FA05,007,34200,Acenaphthylene,Effluent Gross,,1
+OKR05FA05,007,34200,Acenaphthylene,Effluent Gross,mg/L,1
+OKR05FA05,007,34200,Acenaphthylene,Effluent Gross,ug/L,2
+OKR05FA05,007,34205,Acenaphthene,Effluent Gross,,1
+OKR05FA05,007,34205,Acenaphthene,Effluent Gross,mg/L,1
+OKR05FA05,007,34205,Acenaphthene,Effluent Gross,ug/L,2
+OKR05FA05,007,34220,Anthracene,Effluent Gross,,1
+OKR05FA05,007,34220,Anthracene,Effluent Gross,mg/L,1
+OKR05FA05,007,34220,Anthracene,Effluent Gross,ug/L,2
+OKR05FA05,007,34230,Benzo[b]fluoranthene,Effluent Gross,,1
+OKR05FA05,007,34230,Benzo[b]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,007,34230,Benzo[b]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,007,34242,Benzo[k]fluoranthene,Effluent Gross,,1
+OKR05FA05,007,34242,Benzo[k]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,007,34242,Benzo[k]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,007,34247,Benzo[a]pyrene,Effluent Gross,,1
+OKR05FA05,007,34247,Benzo[a]pyrene,Effluent Gross,mg/L,1
+OKR05FA05,007,34247,Benzo[a]pyrene,Effluent Gross,ug/L,2
+OKR05FA05,007,34320,Chrysene,Effluent Gross,,1
+OKR05FA05,007,34320,Chrysene,Effluent Gross,mg/L,1
+OKR05FA05,007,34320,Chrysene,Effluent Gross,ug/L,2
+OKR05FA05,007,34376,Fluoranthene,Effluent Gross,,1
+OKR05FA05,007,34376,Fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,007,34376,Fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,007,34381,Fluorene,Effluent Gross,,1
+OKR05FA05,007,34381,Fluorene,Effluent Gross,mg/L,1
+OKR05FA05,007,34381,Fluorene,Effluent Gross,ug/L,2
+OKR05FA05,007,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,,1
+OKR05FA05,007,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,mg/L,1
+OKR05FA05,007,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,ug/L,2
+OKR05FA05,007,34461,Phenanthrene,Effluent Gross,,1
+OKR05FA05,007,34461,Phenanthrene,Effluent Gross,mg/L,1
+OKR05FA05,007,34461,Phenanthrene,Effluent Gross,ug/L,2
+OKR05FA05,007,34469,Pyrene,Effluent Gross,,1
+OKR05FA05,007,34469,Pyrene,Effluent Gross,mg/L,1
+OKR05FA05,007,34469,Pyrene,Effluent Gross,ug/L,2
+OKR05FA05,007,34521,Benzo[ghi]perylene,Effluent Gross,,1
+OKR05FA05,007,34521,Benzo[ghi]perylene,Effluent Gross,mg/L,1
+OKR05FA05,007,34521,Benzo[ghi]perylene,Effluent Gross,ug/L,2
+OKR05FA05,007,34526,Benzo[a]anthracene,Effluent Gross,,1
+OKR05FA05,007,34526,Benzo[a]anthracene,Effluent Gross,mg/L,1
+OKR05FA05,007,34526,Benzo[a]anthracene,Effluent Gross,ug/L,2
+OKR05FA05,007,34556,"Dibenz[a,h]anthracene",Effluent Gross,,1
+OKR05FA05,007,34556,"Dibenz[a,h]anthracene",Effluent Gross,mg/L,1
+OKR05FA05,007,34556,"Dibenz[a,h]anthracene",Effluent Gross,ug/L,2
+OKR05FA05,007,34696,Naphthalene,Effluent Gross,,1
+OKR05FA05,007,34696,Naphthalene,Effluent Gross,mg/L,1
+OKR05FA05,007,34696,Naphthalene,Effluent Gross,ug/L,2
+OKR05FA05,007,81017,Chemical Oxygen Demand [COD],Effluent Gross,,4
+OKR05FA05,007,81017,Chemical Oxygen Demand [COD],Effluent Gross,mg/L,14
+OKR05FA05,008,00400,pH,Effluent Gross,,10
+OKR05FA05,008,00400,pH,Effluent Gross,SU,26
+OKR05FA05,008,00530,"Solids, total suspended",Effluent Gross,,5
+OKR05FA05,008,00530,"Solids, total suspended",Effluent Gross,mg/L,13
+OKR05FA05,008,34200,Acenaphthylene,Effluent Gross,,1
+OKR05FA05,008,34200,Acenaphthylene,Effluent Gross,mg/L,1
+OKR05FA05,008,34200,Acenaphthylene,Effluent Gross,ug/L,2
+OKR05FA05,008,34205,Acenaphthene,Effluent Gross,,1
+OKR05FA05,008,34205,Acenaphthene,Effluent Gross,mg/L,1
+OKR05FA05,008,34205,Acenaphthene,Effluent Gross,ug/L,2
+OKR05FA05,008,34220,Anthracene,Effluent Gross,,1
+OKR05FA05,008,34220,Anthracene,Effluent Gross,mg/L,1
+OKR05FA05,008,34220,Anthracene,Effluent Gross,ug/L,2
+OKR05FA05,008,34230,Benzo[b]fluoranthene,Effluent Gross,,1
+OKR05FA05,008,34230,Benzo[b]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,008,34230,Benzo[b]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,008,34242,Benzo[k]fluoranthene,Effluent Gross,,1
+OKR05FA05,008,34242,Benzo[k]fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,008,34242,Benzo[k]fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,008,34247,Benzo[a]pyrene,Effluent Gross,,1
+OKR05FA05,008,34247,Benzo[a]pyrene,Effluent Gross,mg/L,1
+OKR05FA05,008,34247,Benzo[a]pyrene,Effluent Gross,ug/L,2
+OKR05FA05,008,34320,Chrysene,Effluent Gross,,1
+OKR05FA05,008,34320,Chrysene,Effluent Gross,mg/L,1
+OKR05FA05,008,34320,Chrysene,Effluent Gross,ug/L,2
+OKR05FA05,008,34376,Fluoranthene,Effluent Gross,,1
+OKR05FA05,008,34376,Fluoranthene,Effluent Gross,mg/L,1
+OKR05FA05,008,34376,Fluoranthene,Effluent Gross,ug/L,2
+OKR05FA05,008,34381,Fluorene,Effluent Gross,,1
+OKR05FA05,008,34381,Fluorene,Effluent Gross,mg/L,1
+OKR05FA05,008,34381,Fluorene,Effluent Gross,ug/L,2
+OKR05FA05,008,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,,1
+OKR05FA05,008,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,mg/L,1
+OKR05FA05,008,34403,"Indeno[1,2,3-cd]pyrene",Effluent Gross,ug/L,2
+OKR05FA05,008,34461,Phenanthrene,Effluent Gross,,1
+OKR05FA05,008,34461,Phenanthrene,Effluent Gross,mg/L,1
+OKR05FA05,008,34461,Phenanthrene,Effluent Gross,ug/L,2
+OKR05FA05,008,34469,Pyrene,Effluent Gross,,1
+OKR05FA05,008,34469,Pyrene,Effluent Gross,mg/L,1
+OKR05FA05,008,34469,Pyrene,Effluent Gross,ug/L,2
+OKR05FA05,008,34521,Benzo[ghi]perylene,Effluent Gross,,1
+OKR05FA05,008,34521,Benzo[ghi]perylene,Effluent Gross,mg/L,1
+OKR05FA05,008,34521,Benzo[ghi]perylene,Effluent Gross,ug/L,2
+OKR05FA05,008,34526,Benzo[a]anthracene,Effluent Gross,,1
+OKR05FA05,008,34526,Benzo[a]anthracene,Effluent Gross,mg/L,1
+OKR05FA05,008,34526,Benzo[a]anthracene,Effluent Gross,ug/L,2
+OKR05FA05,008,34556,"Dibenz[a,h]anthracene",Effluent Gross,,1
+OKR05FA05,008,34556,"Dibenz[a,h]anthracene",Effluent Gross,mg/L,1
+OKR05FA05,008,34556,"Dibenz[a,h]anthracene",Effluent Gross,ug/L,2
+OKR05FA05,008,34696,Naphthalene,Effluent Gross,,1
+OKR05FA05,008,34696,Naphthalene,Effluent Gross,mg/L,1
+OKR05FA05,008,34696,Naphthalene,Effluent Gross,ug/L,2
+OKR05FA05,008,81017,Chemical Oxygen Demand [COD],Effluent Gross,,5
+OKR05FA05,008,81017,Chemical Oxygen Demand [COD],Effluent Gross,mg/L,13

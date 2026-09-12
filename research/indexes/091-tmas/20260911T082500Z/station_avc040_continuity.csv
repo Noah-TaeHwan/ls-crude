@@ -1,0 +1,4 @@
+station_id,year,records,lat_deg,lon_deg,f_system,directions,lanes,match_2020_2023,source
+AVC040,2020,2,35.985914,-96.868845,4R,3;7,1,"{""lat_equal"": true, ""lon_equal"": true, ""f_system_equal"": true, ""directions_equal"": true, ""lanes_equal"": true}",research/gathering/raw/091-tmas/20260911T082500Z/extracted/Station_Data_Extract_Pipe_Delimited_CleanData_2020.txt
+AVC040,2023,,35.985914,-96.868845,4R,3;7,1,,research/indexes/091-tmas/20260911T075705Z/station_screen_within40km.csv
+AVC040,2016,58,,,,3;7,1,,research/gathering/raw/091-tmas/20260911T075705Z/extracted/mar_2016/OK_MAR_2016 (TMAS).VOL

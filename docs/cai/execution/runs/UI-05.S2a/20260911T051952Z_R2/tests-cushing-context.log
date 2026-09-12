@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: cushing board context keeps stocks, annual traffic and housing units without filling gaps
+ok 1 - cushing board context keeps stocks, annual traffic and housing units without filling gaps
+  ---
+  duration_ms: 8.103042
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps enrollment gap and kush zeros without inventing values
+ok 2 - cushing board context keeps enrollment gap and kush zeros without inventing values
+  ---
+  duration_ms: 0.401792
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps phmsa annual incident counts without filling gaps
+ok 3 - cushing board context keeps phmsa annual incident counts without filling gaps
+  ---
+  duration_ms: 0.647292
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps fra annual incident counts without filling gaps
+ok 4 - cushing board context keeps fra annual incident counts without filling gaps
+  ---
+  duration_ms: 0.154
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps nhtsa annual crash counts without filling gaps
+ok 5 - cushing board context keeps nhtsa annual crash counts without filling gaps
+  ---
+  duration_ms: 0.352333
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps osha annual inspection counts without filling gaps
+ok 6 - cushing board context keeps osha annual inspection counts without filling gaps
+  ---
+  duration_ms: 0.364084
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps echo last-fce annual counts without filling gaps
+ok 7 - cushing board context keeps echo last-fce annual counts without filling gaps
+  ---
+  duration_ms: 0.366083
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps echo cwa last-inspection annual counts without filling gaps
+ok 8 - cushing board context keeps echo cwa last-inspection annual counts without filling gaps
+  ---
+  duration_ms: 0.292666
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps rcra last-inspection annual counts without filling gaps
+ok 9 - cushing board context keeps rcra last-inspection annual counts without filling gaps
+  ---
+  duration_ms: 0.81175
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps sdwis annual violation counts without filling gaps
+ok 10 - cushing board context keeps sdwis annual violation counts without filling gaps
+  ---
+  duration_ms: 0.6225
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps payne county storm monthly counts without filling gaps
+ok 11 - cushing board context keeps payne county storm monthly counts without filling gaps
+  ---
+  duration_ms: 0.648625
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps payne county fema annual designation counts without filling gaps
+ok 12 - cushing board context keeps payne county fema annual designation counts without filling gaps
+  ---
+  duration_ms: 0.302833
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps payne stillwater annual pm2.5 without filling gaps
+ok 13 - cushing board context keeps payne stillwater annual pm2.5 without filling gaps
+  ---
+  duration_ms: 0.754
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps zip 74023 irs soi annual tax stats without filling gaps
+ok 14 - cushing board context keeps zip 74023 irs soi annual tax stats without filling gaps
+  ---
+  duration_ms: 0.345167
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps payne county nbi annual inspection counts without filling gaps
+ok 15 - cushing board context keeps payne county nbi annual inspection counts without filling gaps
+  ---
+  duration_ms: 1.004541
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps payne county lodes annual workplace jobs without filling gaps
+ok 16 - cushing board context keeps payne county lodes annual workplace jobs without filling gaps
+  ---
+  duration_ms: 0.388125
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps payne county drought weekly d0 area without filling gaps
+ok 17 - cushing board context keeps payne county drought weekly d0 area without filling gaps
+  ---
+  duration_ms: 4.392791
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps wqp sand1 ph samples as filed without filling gaps
+ok 18 - cushing board context keeps wqp sand1 ph samples as filed without filling gaps
+  ---
+  duration_ms: 1.044875
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps kcuh daily temperature gaps without filling
+ok 19 - cushing board context keeps kcuh daily temperature gaps without filling
+  ---
+  duration_ms: 15.576459
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps mesonet oilt daily max temperature gaps without filling
+ok 20 - cushing board context keeps mesonet oilt daily max temperature gaps without filling
+  ---
+  duration_ms: 10.971959
+  type: 'test'
+  ...
+# Subtest: cushing board context keeps mesonet oilt daily soil temperature gaps without filling
+ok 21 - cushing board context keeps mesonet oilt daily soil temperature gaps without filling
+  ---
+  duration_ms: 34.765
+  type: 'test'
+  ...
+# Subtest: cushing board context fails closed on swapped rows or invented dates
+ok 22 - cushing board context fails closed on swapped rows or invented dates
+  ---
+  duration_ms: 2.225042
+  type: 'test'
+  ...
+# Subtest: cushing weather keeps latest KCUH report and rejects other stations
+ok 23 - cushing weather keeps latest KCUH report and rejects other stations
+  ---
+  duration_ms: 1.5885
+  type: 'test'
+  ...
+# Subtest: cushing weather server has no fabricated fallback and preserves last-good
+ok 24 - cushing weather server has no fabricated fallback and preserves last-good
+  ---
+  duration_ms: 33.215583
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 284.351

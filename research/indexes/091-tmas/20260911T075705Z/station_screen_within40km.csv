@@ -1,0 +1,4 @@
+station_id,distance_km,lat,lon,counties,routes,f_systems,directions,lanes,num_lanes,class_types,year_est,rows,location
+AVC040,9.164,35.985914,-96.868845,119,SH-18,4R,3;7,1,1,H,00,2,"H-33, 0.50 miles E of SH-18, W of Cus"
+AVC047,31.271,35.709769,-96.837691,081,SH-66,5R,3;7,1,1,H,06,2,"H-66, 2.40 miles E of SH-18N, E of Ch"
+AVC032,36.960,36.115898,-97.144951,119,SH-51,4U,3;7,1;2,2,H,00,4,"H-51, 3.50 miles E of SH-51C, W of St"

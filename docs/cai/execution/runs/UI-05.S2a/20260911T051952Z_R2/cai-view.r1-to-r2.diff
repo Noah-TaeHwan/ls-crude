@@ -1,0 +1,127 @@
+--- /tmp/s2a-r1-handoff/app/app/lib/cai-view.ts	2026-09-11 14:04:07
++++ app/app/lib/cai-view.ts	2026-09-11 14:21:39
+@@ -430,13 +430,7 @@
+     warnings.push("SCORE_WITHOUT_OBSERVATION");
+   } else if (out.data_origin === "DEMO") {
+     // production 읽기에서 DEMO 점수는 미게시 값으로 취급한다.
+-    // 현재 점수뿐 아니라 이전값·추이 숫자도 남기지 않는다.
+     out.score = null;
+-    warnings.push("DEMO_SCORE_UNPUBLISHED");
+-    if (out.previous_score !== null) {
+-      out.previous_score = null;
+-      warnings.push("DEMO_PREVIOUS_UNPUBLISHED");
+-    }
+   } else if (
+     out.run_id === null ||
+     out.definition_version === null ||
+@@ -450,6 +444,13 @@
+     warnings.push("INCOMPLETE_OBSERVED_INDEX");
+   } else {
+     out.score = score;
++  }
++  if (out.data_origin === "DEMO") {
++    // DEMO 비공개는 현재 score 검증 결과와 독립적으로 적용한다.
++    // 현재 점수뿐 아니라 이전값도 어떤 분기로 빠지든 남기지 않는다.
++    out.score = null;
++    out.previous_score = null;
++    warnings.push("DEMO_SCORE_UNPUBLISHED");
+   }
+   out.history = parseHistory(value["history"], out.definition_version, warnings);
+   if (out.data_origin === "DEMO" && out.history.length > 0) {
+@@ -651,31 +652,87 @@
+   "sess",
+   "signed",
+ ]);
++
++/** 로컬 경로 해석 기준 origin. 실제 네트워크 요청에 사용하지 않는다. */
++const URL_BASE = "https://local.invalid";
++/** 위 기준 origin 문자열. 로컬 경로가 밖으로 해석되는지 비교한다. */
++const URL_BASE_ORIGIN = new URL(URL_BASE).origin;
++
++/**
++ * 키 이름이 민감한 인증정보를 가리키는지 검사한다.
++ * 대소문자·구분자·percent 인코딩을 정규화하고, malformed 인코딩은
++ * 보수적으로 차단한다. X-Amz-/X-Goog- 계열 서명·인증 키도 포함한다.
++ * @param name query 또는 fragment의 키 이름.
++ * @returns 민감하면 true.
++ */
++function isSensitiveParamName(name: string): boolean {
++  let decoded = name;
++  try {
++    decoded = decodeURIComponent(name);
++  } catch {
++    return true;
++  }
++  const lower = decoded.trim().toLowerCase();
++  if (lower.length === 0) return false;
++  if (SENSITIVE_QUERY_KEYS.has(lower)) return true;
++  if (SENSITIVE_QUERY_KEYS.has(lower.replace(/[-_.]/g, ""))) return true;
++  if (lower.startsWith("x-amz-") || lower.startsWith("x-goog-")) {
++    return /signature|credential|token|security|auth|key|sig/.test(lower);
++  }
++  return false;
++}
+ 
+ /**
++ * fragment 안의 key=value 인증정보를 검사한다.
++ * @param hash URL fragment("#...").
++ * @returns 민감한 키가 있으면 true.
++ */
++function hasSensitiveFragment(hash: string): boolean {
++  if (!hash.startsWith("#") || hash.length <= 1) return false;
++  for (const pair of hash.slice(1).split("&")) {
++    if (pair.length === 0) continue;
++    const eq = pair.indexOf("=");
++    const name = eq === -1 ? pair : pair.slice(0, eq);
++    if (name.length > 0 && isSensitiveParamName(name)) return true;
++  }
++  return false;
++}
++
++/**
+  * 근거 URL을 공개 결과에 둬도 되는지 검사한다. 문자열 접두어가 아니라
+- * URL 구조로 본다. 허용: https 절대 URL(민감 query·userinfo 없음)과
+- * 로컬 상대 경로. 차단: http 등 비-https scheme, scheme-relative,
+- * 위장 scheme, userinfo, 민감 query. 판정만 하고 외부 요청을 보내지 않는다.
++ * URL 구조로 본다. 허용: https 절대 URL(민감 query·fragment·userinfo 없음)과
++ * 기준 origin을 벗어나지 않는 로컬 경로. 차단: 제어문자·역슬래시,
++ * scheme-relative, 비-https scheme(파싱 후 항상 검사), userinfo,
++ * 민감 query, fragment 인증값. 판정만 하고 외부 요청을 보내지 않으며,
++ * 이 형식 검사는 자료의 이용·재배포 권한이나 임의의 모든 비밀정보를
++ * 검증하지 않는다.
+  * @param raw 검사할 URL 문자열.
+  * @returns 공개해도 되면 true.
+  */
+ function isSafePublicUrl(raw: string): boolean {
+   const text = raw.trim();
+-  if (text.length === 0 || text.startsWith("//")) return false;
++  if (text.length === 0) return false;
++  // 제어문자와 역슬래시는 파싱 과정에서 URL 의미를 바꿀 수 있다.
++  if (/[\u0000-\u001F\u007F\\]/.test(text)) return false;
++  if (text.startsWith("//")) return false;
+   let parsed: URL;
+   try {
+-    parsed = new URL(text, "https://local.invalid");
++    parsed = new URL(text, URL_BASE);
+   } catch {
+     return false;
+   }
+-  if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(text) && parsed.protocol !== "https:") {
+-    return false;
+-  }
++  // 원문 scheme 정규식 성공 여부와 무관하게 항상 protocol을 검사한다.
++  if (parsed.protocol !== "https:") return false;
++  const isAbsoluteHttps = /^https:\/\//i.test(text);
++  const isLocalPath = text.startsWith("/");
++  if (!isAbsoluteHttps && !isLocalPath) return false;
++  // 로컬로 분류한 주소가 기준 origin 밖으로 해석되면 거부한다.
++  if (isLocalPath && parsed.origin !== URL_BASE_ORIGIN) return false;
+   if (parsed.username !== "" || parsed.password !== "") return false;
+   for (const name of parsed.searchParams.keys()) {
+-    if (SENSITIVE_QUERY_KEYS.has(name.toLowerCase())) return false;
++    if (isSensitiveParamName(name)) return false;
+   }
++  if (hasSensitiveFragment(parsed.hash)) return false;
+   return true;
+ }
+ 

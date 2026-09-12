@@ -1,0 +1,418 @@
+{
+  "schema_version": "cai.execution.catalog.v1",
+  "package_version": "0.6",
+  "catalog_kind": "WORK_INSTRUCTIONS_NOT_LIVE_TASK_LEDGER",
+  "spec": "SPEC_REFERENCE_v05.md",
+  "spec_sha256": "ca75093805a72faca2b9c0e482202356db93040f7d4781638eb6beb873ccf956",
+  "live_ledger": "docs/cai/tasks.json or team-approved single system; discover first",
+  "default_mode": "BOOTSTRAP_READ_ONLY",
+  "units": [
+    {
+      "id": "BOOT-01",
+      "parent_id": "CHK-01",
+      "title": "현재 작업 환경과 다음 실행 단위 확인",
+      "kind": "read-only",
+      "depends_on": [],
+      "spec_sections": [
+        "13"
+      ],
+      "read_files": [
+        "AGENTS.md",
+        "README.md",
+        "docs/cai/tasks.json",
+        "app/package.json",
+        ".github/workflows/ci.yml"
+      ],
+      "write_allowlist": [],
+      "required_approvals": [
+        "문서 설치·읽기 점검 승인; 앱 수정 없음"
+      ],
+      "contracts": [],
+      "card": "cards/BOOT-01.md"
+    },
+    {
+      "id": "OPS-01",
+      "parent_id": "OPS-01",
+      "title": "운영 버전과 배포 차단 원인 읽기 점검",
+      "kind": "read-only",
+      "depends_on": [
+        "BOOT-01"
+      ],
+      "spec_sections": [
+        "02",
+        "12"
+      ],
+      "read_files": [
+        ".github/workflows/ci.yml",
+        "app/app/components/desk-chrome.tsx"
+      ],
+      "write_allowlist": [],
+      "required_approvals": [
+        "운영·로그 읽기 권한; 설정 수정/재배포 금지"
+      ],
+      "contracts": [],
+      "card": "cards/OPS-01.md"
+    },
+    {
+      "id": "DATA-01",
+      "parent_id": "DATA-01",
+      "title": "기존 자료의 CAI 편입 가능성 판정표 작성",
+      "kind": "read-only",
+      "depends_on": [
+        "BOOT-01"
+      ],
+      "spec_sections": [
+        "06",
+        "09"
+      ],
+      "read_files": [
+        "research/INTAKE.md",
+        "research/candidates/ledger.csv",
+        "research/programs/cushing-busy/PROGRAM.md",
+        "research/factors/091-cushing-motel-lights-index/workflow.md",
+        "docs/testing-protocol.md"
+      ],
+      "write_allowlist": [],
+      "required_approvals": [
+        "기존 자료 읽기만; 신규 수집·학습·OOS 재열람 금지"
+      ],
+      "contracts": [],
+      "card": "cards/DATA-01.md"
+    },
+    {
+      "id": "REP-01",
+      "parent_id": "REP-01",
+      "title": "현행 기획·실행 문서 진입점 연결",
+      "kind": "implementation",
+      "depends_on": [
+        "BOOT-01"
+      ],
+      "spec_sections": [
+        "13"
+      ],
+      "read_files": [
+        "README.md",
+        "AGENTS.md",
+        "docs/cai/PRD.md",
+        "docs/cai/DECISIONS_AND_HISTORY.md",
+        "docs/cai/tasks.json"
+      ],
+      "write_allowlist": [
+        "README.md",
+        "AGENTS.md",
+        "docs/cai/WEBSITE_PLAN.md",
+        "docs/cai/DECISIONS_AND_HISTORY.md"
+      ],
+      "required_approvals": [
+        "DEC-01/DOC-02 범위의 실제 승인 확인; 기존 연구 규약 변경 금지"
+      ],
+      "contracts": [],
+      "card": "cards/REP-01.md"
+    },
+    {
+      "id": "UI-05.S1a",
+      "parent_id": "UI-05.S1",
+      "title": "히스토리 라우트를 추가해 기존 사례 열기",
+      "kind": "implementation",
+      "depends_on": [
+        "REP-01"
+      ],
+      "spec_sections": [
+        "07"
+      ],
+      "read_files": [
+        "app/app/routes.ts",
+        "app/app/routes/home.tsx",
+        "app/app/routes/research.tsx",
+        "app/app/components/research-sample.tsx",
+        "app/app/lib/research-charts.ts"
+      ],
+      "write_allowlist": [
+        "app/app/routes/history.tsx",
+        "app/app/routes.ts",
+        "app/tests/cai-history.test.mjs",
+        ".github/workflows/ci.yml"
+      ],
+      "required_approvals": [
+        "DEC-02의 IA·로컬 구현 승인; history는 추가만"
+      ],
+      "contracts": [],
+      "card": "cards/UI-05.S1a.md"
+    },
+    {
+      "id": "UI-05.S2a",
+      "parent_id": "UI-05.S2",
+      "title": "CAI 공개 객체·검증·빈 상태 함수 구현",
+      "kind": "implementation",
+      "depends_on": [
+        "REP-01"
+      ],
+      "spec_sections": [
+        "08"
+      ],
+      "read_files": [
+        "app/app/lib/wti-daily.server.ts",
+        "app/package.json",
+        ".github/workflows/ci.yml",
+        "app/tests/cushing-context.test.mjs"
+      ],
+      "write_allowlist": [
+        "app/app/lib/cai-view.ts",
+        "app/app/lib/cai-view.server.ts",
+        "app/tests/cai-view.test.mjs",
+        ".github/workflows/ci.yml"
+      ],
+      "required_approvals": [
+        "공개 필드 계약 검토/로컬 구현 승인"
+      ],
+      "contracts": [
+        "contracts/PUBLIC_VIEW.md"
+      ],
+      "card": "cards/UI-05.S2a.md"
+    },
+    {
+      "id": "UI-05.S1b",
+      "parent_id": "UI-05.S1",
+      "title": "구주소와 anchor를 히스토리에 호환 연결",
+      "kind": "implementation",
+      "depends_on": [
+        "UI-05.S1a",
+        "UI-05.S2a"
+      ],
+      "spec_sections": [
+        "07"
+      ],
+      "read_files": [
+        "app/app/routes/home.tsx",
+        "app/app/routes/research.tsx",
+        "app/app/routes/history.tsx",
+        "app/app/lib/research-charts.ts",
+        "app/app/lib/cai-view.server.ts"
+      ],
+      "write_allowlist": [
+        "app/app/routes/home.tsx",
+        "app/app/routes/research.tsx",
+        "app/app/routes/history.tsx",
+        "app/app/lib/research-charts.ts",
+        "app/app/lib/cai-legacy-routing.ts",
+        "app/tests/cai-legacy-links.test.mjs",
+        ".github/workflows/ci.yml"
+      ],
+      "required_approvals": [
+        "구주소 호환·현재 manifest 판정 방식의 로컬 승인"
+      ],
+      "contracts": [
+        "contracts/URL_COMPAT.md",
+        "contracts/PUBLIC_VIEW.md"
+      ],
+      "card": "cards/UI-05.S1b.md"
+    },
+    {
+      "id": "UI-05.S2b",
+      "parent_id": "UI-05.S2",
+      "title": "CAI 계기판·예측·설명 컴포넌트 구현",
+      "kind": "implementation",
+      "depends_on": [
+        "UI-05.S2a"
+      ],
+      "spec_sections": [
+        "05"
+      ],
+      "read_files": [
+        "app/app/lib/cai-view.ts",
+        "app/app/components/wti-daily-chart.tsx",
+        "app/app/app.css",
+        "docs/cai/execution/references/cai_v4_preview.png"
+      ],
+      "write_allowlist": [
+        "app/app/components/cai/cai-gauge.tsx",
+        "app/app/components/cai/cai-forecast.tsx",
+        "app/app/components/cai/cai-about.tsx",
+        "app/tests/cai-components.test.mjs",
+        ".github/workflows/ci.yml"
+      ],
+      "required_approvals": [
+        "컴포넌트 계약·UI 로컬 구현 승인"
+      ],
+      "contracts": [
+        "contracts/PUBLIC_VIEW.md"
+      ],
+      "card": "cards/UI-05.S2b.md"
+    },
+    {
+      "id": "UI-05.S2c",
+      "parent_id": "UI-05.S2",
+      "title": "홈과 세 메뉴를 새 CAI 구조로 연결",
+      "kind": "implementation",
+      "depends_on": [
+        "UI-05.S1b",
+        "UI-05.S2b"
+      ],
+      "spec_sections": [
+        "04",
+        "05"
+      ],
+      "read_files": [
+        "app/app/routes/home.tsx",
+        "app/app/components/desk-chrome.tsx",
+        "app/app/lib/wti-daily.server.ts",
+        "app/app/lib/cai-view.server.ts"
+      ],
+      "write_allowlist": [
+        "app/app/routes/home.tsx",
+        "app/app/components/desk-chrome.tsx",
+        "app/tests/cai-home.test.mjs",
+        ".github/workflows/ci.yml"
+      ],
+      "required_approvals": [
+        "홈 전환·IA 로컬 구현 승인"
+      ],
+      "contracts": [
+        "contracts/PUBLIC_VIEW.md"
+      ],
+      "card": "cards/UI-05.S2c.md"
+    },
+    {
+      "id": "UI-05.S3a",
+      "parent_id": "UI-05.S3",
+      "title": "현재 CAI 연구·검증 화면 분리",
+      "kind": "implementation",
+      "depends_on": [
+        "UI-05.S2c"
+      ],
+      "spec_sections": [
+        "06"
+      ],
+      "read_files": [
+        "app/app/routes/research.tsx",
+        "app/app/components/research-intake.tsx",
+        "app/app/lib/cai-view.server.ts",
+        "docs/testing-protocol.md"
+      ],
+      "write_allowlist": [
+        "app/app/routes/research.tsx",
+        "app/app/components/cai/cai-research.tsx",
+        "app/tests/cai-research.test.mjs",
+        ".github/workflows/ci.yml"
+      ],
+      "required_approvals": [
+        "현재 연구 뷰·공개 요약 승인"
+      ],
+      "contracts": [
+        "contracts/PUBLIC_VIEW.md"
+      ],
+      "card": "cards/UI-05.S3a.md"
+    },
+    {
+      "id": "UI-05.S3b",
+      "parent_id": "UI-05.S3",
+      "title": "과거 장부·결정 이력을 히스토리에 연결",
+      "kind": "implementation",
+      "depends_on": [
+        "UI-05.S3a"
+      ],
+      "spec_sections": [
+        "07"
+      ],
+      "read_files": [
+        "app/app/routes/history.tsx",
+        "app/app/routes/research.tsx",
+        "app/app/lib/research-ledger.server.ts",
+        "docs/cai/DECISIONS_AND_HISTORY.md"
+      ],
+      "write_allowlist": [
+        "app/app/routes/history.tsx",
+        "app/app/routes/research.tsx",
+        "app/app/components/cai/history-ledger.tsx",
+        "app/tests/cai-history-ledger.test.mjs",
+        ".github/workflows/ci.yml"
+      ],
+      "required_approvals": [
+        "히스토리 공개 요약·코드 수정 승인"
+      ],
+      "contracts": [],
+      "card": "cards/UI-05.S3b.md"
+    },
+    {
+      "id": "UI-06",
+      "parent_id": "UI-06",
+      "title": "승인된 실제 run을 공개 화면에 연결",
+      "kind": "implementation",
+      "depends_on": [
+        "UI-05.S3b"
+      ],
+      "spec_sections": [
+        "08",
+        "09"
+      ],
+      "read_files": [
+        "research/INTAKE.md",
+        "docs/testing-protocol.md",
+        "app/app/lib/cai-view.server.ts",
+        "승인된 run의 manifest/공개 export — 원장에서 실제 경로 확인"
+      ],
+      "write_allowlist": [
+        "app/app/lib/cai-view.server.ts",
+        "app/tests/cai-live-export.test.mjs",
+        ".github/workflows/ci.yml"
+      ],
+      "required_approvals": [
+        "IDX-01 산출물·원자료 권한·실측 지수 게시 승인; 확률에는 학습/게시 승인 별도"
+      ],
+      "contracts": [
+        "contracts/PUBLIC_VIEW.md"
+      ],
+      "card": "cards/UI-06.md"
+    },
+    {
+      "id": "QA-02",
+      "parent_id": "QA-02",
+      "title": "전환 결과의 회귀·화면·근거 검수",
+      "kind": "review",
+      "depends_on": [
+        "UI-06"
+      ],
+      "spec_sections": [
+        "12"
+      ],
+      "read_files": [
+        "app/package.json",
+        ".github/workflows/ci.yml",
+        "docs/cai/execution/TASK_MAP.md"
+      ],
+      "write_allowlist": [],
+      "required_approvals": [
+        "UI-06 완료 또는 명시적 빈 상태 release 승인 + UI-05.S3b 완료"
+      ],
+      "contracts": [
+        "contracts/URL_COMPAT.md",
+        "contracts/PUBLIC_VIEW.md"
+      ],
+      "card": "cards/QA-02.md"
+    },
+    {
+      "id": "REL-01",
+      "parent_id": "REL-01",
+      "title": "승인 후 프리뷰·운영 전환 및 복구 확인",
+      "kind": "release",
+      "depends_on": [
+        "QA-02",
+        "OPS-01"
+      ],
+      "spec_sections": [
+        "12"
+      ],
+      "read_files": [
+        ".github/workflows/ci.yml",
+        "app/app/components/desk-chrome.tsx",
+        "실제 배포 대상 SHA와 마지막 정상 배포 기록"
+      ],
+      "write_allowlist": [],
+      "required_approvals": [
+        "원격 배포/alias 변경 명시 승인 + QA 검수 PASS + OPS 복구 근거"
+      ],
+      "contracts": [],
+      "card": "cards/REL-01.md"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+ "run": "20260911T102736Z",
+ "checked_date_utc": "2026-09-11",
+ "candidate": "SPP RTBM LMP-by-bus (regional power proxy)",
+ "dns": {
+  "portal.spp.org": [
+   "portal.ha.spp.org",
+   "198.22.156.62"
+  ]
+ },
+ "attempts": [
+  {
+   "ts_utc": "2026-09-11T10:30:39Z",
+   "method": "GET",
+   "url": "https://portal.spp.org/",
+   "options": "--max-time 30",
+   "result": "curl exit 28, connection timed out",
+   "http_code": 0,
+   "bytes": 0
+  },
+  {
+   "ts_utc": "2026-09-11T10:31:42Z",
+   "method": "GET",
+   "url": "https://portal.spp.org/",
+   "options": "-4 --max-time 25",
+   "result": "curl exit 28, connection timed out",
+   "http_code": 0,
+   "bytes": 0
+  },
+  {
+   "ts_utc": "2026-09-11T10:32:03Z",
+   "method": "GET",
+   "url": "http://portal.spp.org/",
+   "options": "-4 --max-time 15",
+   "result": "curl exit 28, connection timed out",
+   "http_code": 0,
+   "bytes": 0
+  },
+  {
+   "ts_utc": "2026-09-11T10:33:00Z",
+   "method": "HEAD",
+   "url": "https://portal.spp.org/file-browser-api/download/rtbm-lmp-by-bus?path=%2FRTBM-LMP-B-latestInterval.csv",
+   "options": "-4 --max-time 25 -I",
+   "result": "curl exit 28, connection timed out",
+   "http_code": 0,
+   "bytes": 0
+  },
+  {
+   "ts_utc": "2026-09-11T10:34:04Z",
+   "method": "GET",
+   "url": "https://portal.spp.org/file-browser-api/download/rtbm-lmp-by-bus?path=%2FRTBM-LMP-B-latestInterval.csv",
+   "options": "-4 --max-time 20 --range 0-2047",
+   "result": "curl exit 28, connection timed out",
+   "http_code": 0,
+   "bytes": 0
+  }
+ ],
+ "blocker": "portal.spp.org (CNAME portal.ha.spp.org -> 198.22.156.62) TCP unreachable from this environment: HTTPS and HTTP, IPv4-forced, 5 bounded attempts across 2026-09-11T10:30Z..10:34Z, all curl exit 28 timeouts, 0 bytes. www.spp.org reachable (200). No bypass attempted (no mirrors, no alternate hosts).",
+ "terms_pages": [
+  {
+   "url": "https://www.spp.org/terms-conditions/",
+   "http": 200,
+   "bytes": 68249,
+   "local": "/tmp/spp_04e8faf91b5cf5e8db1ab564b0a5b4ee.html",
+   "sha256": "667900b6509eff79658e2c59fc8cd6c974537ff2482c5a870f5600a83709d15b"
+  },
+  {
+   "url": "https://www.spp.org/markets-operations/spp-portal/",
+   "http": 200,
+   "bytes": 71338,
+   "local": "/tmp/spp_0a0437d1c7cb26c3dcd2d36154d82258.html",
+   "sha256": "abfaf3b7aa5919d3f3dafebd2fede793d0380154c835814dc4babdbe0fd47953"
+  },
+  {
+   "url": "https://www.spp.org/stakeholder-center/user-guides-apis-integrations/",
+   "http": 200,
+   "bytes": 70403,
+   "local": "/tmp/spp_d7719ab13edd731b4096314e5801423c.html",
+   "sha256": "1144d08b74f199f90e1491892af94d5fc783ca6a1b722b7a9a45d18c60b12045"
+  },
+  {
+   "url": "https://www.spp.org/Documents/22819/SPP_External_Systems_Acceptable_Use_Policy%20Final%20Approved.pdf (301 -> https://www.spp.org/documents/22819/spp_external_systems_acceptable_use_policy%20final%20approved.pdf)",
+   "http": 200,
+   "bytes": 175296,
+   "local": "/tmp/spp_aup.pdf",
+   "sha256": "641ba7ffd4b28af264b37e675ac417b993f4d41b7a5833fbc5d608b33c9a2658"
+  }
+ ],
+ "terms_summary": {
+  "analysis": "www.spp.org/terms-conditions (2026-09-11): copying/distributing posted materials is implicitly permitted for non-commercial use with appropriate citation; access/use binds the user to hold-harmless/indemnify; no warranty of accuracy/timeliness. External Systems Acceptable Use Policy (linked, v3.0 rev 2014-06-27; fetched 2026-09-11) governs UI/API/public data access: use must not negatively impact system availability; polling at a frequency higher than necessary for basic reconciliation requires PRIOR SPP approval; FERC Standards of Conduct / Tariff / Market Protocols dissemination requirements apply; access may be revoked. Account/registration exists on the portal for some areas (Create Account/Login); whether the file-browser-api download endpoint needs an account was NOT verifiable because the portal host is unreachable.",
+  "redistribution": "www.spp.org/terms-conditions: any commercial use/publication (use of materials in a commercial publication, or quoting SPP in commercial materials) requires prior express written authorization from the author(s) or a duly authorized officer of SPP. Copyright reserved ('All rights reserved'). Non-commercial copy/distribute permitted with citation. Therefore public/commercial redistribution of any SPP sample is NOT cleared; research-internal non-commercial analysis with citation is the only posture supported by the fetched pages."
+ },
+ "sample_fetched": false,
+ "sample_bytes": 0,
+ "sample_sha256": null,
+ "market_data_bytes_this_run": 0,
+ "terms_doc_bytes_fetched": 385286,
+ "cumulative": {
+  "tmas_total_bytes": 370845364,
+  "this_run_market_data_bytes": 0,
+  "cumulative_market_data_bytes": 370845364,
+  "joint_cap_bytes": 2147483648
+ },
+ "notes": "Terms/website pages fetched from www.spp.org are documents, not market data; recorded separately from the market-data byte cap. Page copies kept in /tmp only (not committed, not redistributed); hashes above pin the exact copies that were read."
+}

@@ -1,0 +1,37 @@
+{
+  "run": "20260911T104028Z",
+  "station": "AVC040",
+  "present_days_total": 422,
+  "present_days_2023": 363,
+  "row_counts": {
+    "train_le_2020": {
+      "calendar_days_present": 59,
+      "wti_trading_days_overlap": 43,
+      "after_lag1_asof": 43,
+      "after_5day_label_validity": 43
+    },
+    "val_2021_2023": {
+      "calendar_days_present": 363,
+      "wti_trading_days_overlap": 250,
+      "after_lag1_asof": 249,
+      "after_5day_label_validity": 245
+    },
+    "dev_config_reference": {
+      "train_rows": 1483,
+      "val_rows": 748
+    }
+  },
+  "missing_dates": {
+    "2016-03": 2,
+    "2020-03": 1,
+    "2023-03": 1,
+    "2023-11": 1
+  },
+  "charts": [
+    "avc040_2023_daily_by_direction.png",
+    "avc040_2023_hour_profile.png",
+    "avc040_2023_weekday_profile.png"
+  ],
+  "data_source": "research/indexes/091-tmas/{20260911T075705Z,20260911T082500Z}",
+  "note": "Observation-only artifacts; no CAI score, no WTI test, not wired to the app."
+}

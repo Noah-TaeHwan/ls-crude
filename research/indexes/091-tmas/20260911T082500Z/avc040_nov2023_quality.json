@@ -1,0 +1,86 @@
+{
+  "format": "pipe_2023",
+  "file": {
+    "path": "research/gathering/raw/091-tmas/20260911T082500Z/extracted/OK_NOV_2023 (TMAS).VOL",
+    "bytes": 1046031,
+    "sha256": "9d52717353047fb42e5e23abde3e0758c695a104e9a373f82e6d54603185aacc",
+    "header_fields": 35,
+    "trailing_empty_dropped": 0
+  },
+  "file_level": {
+    "total_records": 8761,
+    "unique_stations": 80,
+    "record_prefix_types": {
+      "AVC": 8761
+    },
+    "lane_distribution": {
+      "1": 4454,
+      "2": 3039,
+      "3": 1007,
+      "4": 232,
+      "5": 29
+    },
+    "f_system_distribution": {
+      "1U": 2030,
+      "3R": 1823,
+      "2U": 1309,
+      "1R": 1217,
+      "3U": 1108,
+      "5R": 694,
+      "4R": 464,
+      "4U": 116
+    },
+    "observation_date_min": "2023-11-01",
+    "observation_date_max": "2023-11-30",
+    "duplicate_station_day_dir_lane_keys": 0,
+    "lane0_and_laneN_coexist_groups": 0
+  },
+  "station": {
+    "station_id": "AVC040",
+    "records": 58,
+    "f_system_values": [
+      "4R"
+    ],
+    "directions": [
+      "3",
+      "7"
+    ],
+    "lanes": [
+      "1"
+    ],
+    "hours_total_cells": 1392,
+    "hours_missing_cells": 0,
+    "hours_zero_cells": 0,
+    "days_by_direction": {
+      "3": {
+        "days_present": 29,
+        "first": 1,
+        "last": 30,
+        "missing_days": [
+          5
+        ]
+      },
+      "7": {
+        "days_present": 29,
+        "first": 1,
+        "last": 30,
+        "missing_days": [
+          5
+        ]
+      }
+    },
+    "day_of_week_map": {
+      "1": "Sun",
+      "2": "Mon",
+      "3": "Tue",
+      "4": "Wed",
+      "5": "Thu",
+      "6": "Fri",
+      "7": "Sat"
+    }
+  },
+  "units": "vehicles per hour (파일 hour 필드 그대로; 환산 없음)",
+  "timing": {
+    "observation_dates": "2023-11-01..2023-11-30"
+  }
+}

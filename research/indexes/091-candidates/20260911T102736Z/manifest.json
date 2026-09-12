@@ -1,0 +1,168 @@
+{
+ "script": "research/notebooks/091-candidates/dmr_series_build.py",
+ "script_sha256": "e37d4f8fffb9851d7800663046b02b9aa4167b45d72b00c7a8b7ce6de0e6ccda",
+ "inputs": [
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0026701.json",
+   "sha256": "c525965d2c9fa0f93964091531c1e274379e8ca47c31bbaa1c6aae80c3ed75c0"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0043320.json",
+   "sha256": "567fbe8f153633cd6f6c9c0c0685b1cae89db8c27a46315d5663cbae43696150"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0044598.json",
+   "sha256": "36a296f30abaa1b178ee2d93faf71bf6e47c27a545ca0e0224048850d9f1fdfb"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0044768.json",
+   "sha256": "e293a8f7ec608cd2875d5a6899db4fbf4df1586fa3d0d0d2efa0780db17f08ee"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0045641.json",
+   "sha256": "48e1436667025817a3785d4dff623e90ec3293fd1d9484ed62fa2f580e1f7ced"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OK0100374.json",
+   "sha256": "f2278b9172d6d3db303dd1eeb4e1a058cf159998d331e9bb35c8173057eead9d"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKG270018.json",
+   "sha256": "1c25131db1299e851a25bf4c3ca4870687a9d114fdd5c097bf55aa2cc9a6eccd"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKG270057.json",
+   "sha256": "4ffc4a429a0664acc7988b60e3ad41e605004ce55f3c6f18a7e67b9c458cc1f2"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKG340020.json",
+   "sha256": "8564605ceadf268dff14e755b8c27d6fd99d3c269041eaf4570e9dd7ad25b0f3"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKG340050.json",
+   "sha256": "c9ef9065500191312a6c27174d6b9d4467e8a34f29ceacc50da6d7572d19bcc6"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKG950028.json",
+   "sha256": "6412affa0ba39f04f5a652c09378d0deb1ed6c22b192a10179b59ee097a85cca"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR05FA05.json",
+   "sha256": "fbd0e7a61aca56d65cb4df55806916e4adb390232b24f5fba23a176631f2ec1c"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR10F01J.json",
+   "sha256": "3c0d5a20afb71ac33cf956260966f09473c8a1dd3c55d38eae19ddec4e5820ab"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR10F024.json",
+   "sha256": "4df5ab7e3722b687d9c70d11f86acc245c48a4345f69a89da1acefa0980bab1e"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR10F034.json",
+   "sha256": "ec145f7932e8abd50c9f60ce5ef697fdde4f2140ee6c33cdb587961d9ef6c8ee"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR10F03H.json",
+   "sha256": "66ee12ad44f588c7fec88b77a848182cee8e7165353c701d594194a8a8ba8512"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKR10I023.json",
+   "sha256": "10a5c99dda3685caf180a9b28cddc9372829d645a4df62174b808ab8014296a5"
+  },
+  {
+   "path": "research/gathering/raw/091-cushing-dmr/dmr_OKU000852.json",
+   "sha256": "d6f4ce224955339a6e6c50606997f6aabc7ef04cc0ea4d61d57d98bf6b1d3d6c"
+  },
+  {
+   "path": "research/gathering/raw/WTI-CLF-IS/20260907T064937Z/CLF_daily_2015-2023.csv",
+   "sha256": "89c3a04c994d374131dac431561511a196cc19c4029f5f7a9103ba29d2c85d7f"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_apr2023_daily.csv",
+   "sha256": "51ea577e136f434fd06ac7d2e4e90aea471e032581d46e5ffff355853e2d3293"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_aug2023_daily.csv",
+   "sha256": "8962e2f360ef3e83cfc4aea679d7568b4ba238cb46be33ed07e991efe5edf768"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_dec2023_daily.csv",
+   "sha256": "ca4314c12653f603e8309bdb9cdb2ffc45d7940855d84c07311f986ed65faf2c"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_feb2023_daily.csv",
+   "sha256": "473034663ed04497dd452cfa2243bea94b4c6cdacd03d162c11b52ae59dc0f7f"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_jan2023_daily.csv",
+   "sha256": "d45efd0beff0d678b4a94de1c65c38efc64821964cfc1f82d3ef90a00be20b3c"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_jul2023_daily.csv",
+   "sha256": "b63ec2f5b14f7fd12c577124424e25a2ba5f5d2c0fa3577f2b3ac6d9148861f4"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_jun2023_daily.csv",
+   "sha256": "c7136d2d546bde5fa3931e74113b40cff1fdc740cd713229c8b87576eea02613"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_mar2020_daily.csv",
+   "sha256": "ccb360d03b5b0128fee7239c7c51eaea4b3db52deef45e23769299f339a01710"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_mar2023_daily.csv",
+   "sha256": "a3091dfaac47cd57ee71a16c08b225d4f1423cc4f51f87a826b6693d5a7190e7"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_may2023_daily.csv",
+   "sha256": "125c5d2468bbc04db1dabe91bdd8a579265f3dcda03f8a3215bac60027f08934"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_nov2023_daily.csv",
+   "sha256": "4b799d0f29ffe364836c232c55bc3ccbc2e7223b2f2916b0143f5bb615a262c4"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_oct2023_daily.csv",
+   "sha256": "e394c09b44b4ecdfef78596c76559eccdab7ea3fb302ded72e01d8a5f91bc58c"
+  },
+  {
+   "path": "research/indexes/091-tmas/20260911T082500Z/avc040_sep2023_daily.csv",
+   "sha256": "5720ab5657ca9be0dce6b3e0fbeec8c505d89dbaf45b172483c3f8c1be8872ff"
+  }
+ ],
+ "outputs": [
+  {
+   "path": "dmr_facilities.csv",
+   "sha256": "0bf14c8895e6d5beb78db41dbf41a425ea9fe78ae6fb8072e69f6f57c241d094"
+  },
+  {
+   "path": "dmr_facilities.json",
+   "sha256": "42f9b4cbf2c676d6a2065d255567431f1fbe5a3da710334277dd82fd3b14f5cf"
+  },
+  {
+   "path": "dmr_parameters.csv",
+   "sha256": "711e814193262ee1f800f5f756ed4e4e1b9d50a5a0139f1e4ebb9194985b46b5"
+  },
+  {
+   "path": "dmr_series_rows.csv",
+   "sha256": "a78450401624d63c3346264088831a8aea6dc29876e1e6e802340860142ebb0a"
+  },
+  {
+   "path": "dmr_series_summary.csv",
+   "sha256": "2f0242e085a35c0080b228b2ce6093560c75f3d095a56222a29beeef2adb877b"
+  },
+  {
+   "path": "dmr_series_window_counts.csv",
+   "sha256": "75221274ebf00920b8d49e819d92c040b04ce91c3608f08b55820a879f1b1f03"
+  },
+  {
+   "path": "dmr_tmas2023_common.csv",
+   "sha256": "9f30bae50d85053999698ab1463d4959b35e07e845275c3d9d4d70872175177f"
+  },
+  {
+   "path": "dmr_quality.json",
+   "sha256": "4aa7f444c7229c779cb973d1dfd8bace6dac94a919e82891035caab0f8e6a051"
+  }
+ ]
+}

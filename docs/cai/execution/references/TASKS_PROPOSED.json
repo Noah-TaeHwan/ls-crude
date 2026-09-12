@@ -1,0 +1,130 @@
+{
+  "schema_version": "0.5-proposal",
+  "base_ledger": "v04/docs/cai/tasks.json",
+  "authority": "NOT_AUTHORITATIVE_MERGE_PROPOSAL",
+  "remote_sync": false,
+  "base_sha": "cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef",
+  "no_statuses_changed": true,
+  "tasks": [
+    {
+      "id": "OPS-01",
+      "title": "실제 운영 버전과 차단 원인 확정",
+      "status_proposal": "READY",
+      "depends_on": [],
+      "done_when": "운영 alias의 build SHA, 마지막 정상 배포, CI 실패 로그와 Vercel 원인, 복구/롤백 경로가 기록됨",
+      "evidence_now": [
+        "R12: Vercel blocked",
+        "R13: CI #591 failure"
+      ],
+      "note": "기존 작업 확장. 점검 일부만 완료; 복구 완료 아님"
+    },
+    {
+      "id": "DEC-01",
+      "title": "CAI·CFAM 관계와 공개/역할 합의",
+      "status_proposal": "REVIEW",
+      "depends_on": [
+        "DOC-01"
+      ],
+      "done_when": "합의자·시각·범위·실제 가용 시간 기록",
+      "evidence_now": [],
+      "note": "기존 결정 작업 유지"
+    },
+    {
+      "id": "DATA-01",
+      "title": "현재 데이터의 CAI 편입 적격성 판정",
+      "status_proposal": "READY",
+      "depends_on": [
+        "CHK-01"
+      ],
+      "done_when": "실제 파일/측정값/주기/기간/권한/공개시각/판정별 근거",
+      "evidence_now": [],
+      "note": "이번 답변은 후보 원본 전수 감사를 수행하지 않음"
+    },
+    {
+      "id": "REP-01",
+      "title": "현행 제품 문서와 README/AGENTS 연결",
+      "status_proposal": "BLOCKED",
+      "depends_on": [
+        "DEC-01",
+        "DOC-02"
+      ],
+      "done_when": "문서 PR에서 현행/과거/검정/수집/AI 책임과 충돌 해결 명시",
+      "evidence_now": [],
+      "note": "본 파일들은 로컬 제안이며 repo에 자동 반영하지 않음"
+    },
+    {
+      "id": "UI-05.S1",
+      "parent": "UI-05",
+      "title": "history 이전과 기존 URL 호환",
+      "status_proposal": "BLOCKED",
+      "depends_on": [
+        "DEC-02",
+        "REP-01"
+      ],
+      "done_when": "history 라우트·9개 sample 링크·research redirect·anchor·뒤로가기 검증",
+      "evidence_now": [],
+      "note": "기존 UI-05 분해 제안"
+    },
+    {
+      "id": "UI-05.S2",
+      "parent": "UI-05",
+      "title": "CAI snapshot 계약과 핵심 화면 이식",
+      "status_proposal": "BLOCKED",
+      "depends_on": [
+        "DEC-02",
+        "REP-01"
+      ],
+      "done_when": "게이지/예측/WTI·NO_DATA/DEMO/STALE 계약·반응형 테스트",
+      "evidence_now": [],
+      "note": "UI shell은 연구 완료와 분리 가능"
+    },
+    {
+      "id": "UI-05.S3",
+      "parent": "UI-05",
+      "title": "현재 연구와 과거 근거 뷰",
+      "status_proposal": "BLOCKED",
+      "depends_on": [
+        "UI-05.S1",
+        "UI-05.S2"
+      ],
+      "done_when": "CAI manifest 기반 후보 구분·검증 표·공개 근거·타임라인",
+      "evidence_now": [],
+      "note": "현재/과거 중복 원장 금지"
+    },
+    {
+      "id": "UI-06",
+      "title": "실제 run·거래일·새로움/오류 상태 연결",
+      "status_proposal": "BLOCKED",
+      "depends_on": [
+        "IDX-01",
+        "UI-05.S3"
+      ],
+      "done_when": "원자료/run/화면 대사·예측은 별도 trained run과 게시 승인·가상 값 유입 없음",
+      "evidence_now": [],
+      "note": "기존 UI-06 확장"
+    },
+    {
+      "id": "QA-02",
+      "title": "앱 통합·근거·접근성 검수",
+      "status_proposal": "BLOCKED",
+      "depends_on": [
+        "UI-06"
+      ],
+      "done_when": "지정 CI 검사+새 CAI 테스트+ego 화면+로그아웃 근거 링크 확인",
+      "evidence_now": [],
+      "note": "명시적 빈 상태 release에서는 UI-06 의존성 대체를 승인 기록으로 남김"
+    },
+    {
+      "id": "REL-01",
+      "title": "프리뷰→운영 전환과 발표 백업",
+      "status_proposal": "BLOCKED",
+      "depends_on": [
+        "QA-02",
+        "OPS-01"
+      ],
+      "done_when": "승인·CI·preview·production 동일 SHA, rollback 및 오프라인 백업",
+      "evidence_now": [],
+      "note": "별도 배포 승인 필요"
+    }
+  ]
+}

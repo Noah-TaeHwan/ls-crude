@@ -1,0 +1,116 @@
+{
+  "format": "fixed_legacy",
+  "file": {
+    "path": "research/gathering/raw/091-tmas/20260911T123706Z/extracted/OK_OCT_2017 (TMAS).VOL",
+    "bytes": 781568,
+    "sha256": "149b6ce48e813c17445f18fa2ea31b1e617f022bee47df8f146e520805946d4f"
+  },
+  "file_level": {
+    "total_records": 5504,
+    "unique_stations": 88,
+    "record_prefix_types": {
+      "AVC": 4152,
+      "WIM": 1352
+    },
+    "lane_distribution": {
+      "1": 2984,
+      "2": 2046,
+      "3": 356,
+      "4": 118
+    },
+    "f_system_distribution": {
+      "3R": 1674,
+      "2U": 1144,
+      "1R": 678,
+      "5R": 644,
+      "1U": 520,
+      "4R": 352,
+      "3U": 252,
+      "4U": 240
+    },
+    "observation_date_min": "2017-10-01",
+    "observation_date_max": "2017-10-31",
+    "duplicate_station_day_dir_lane_keys": 0,
+    "lane0_and_laneN_coexist_groups": 0
+  },
+  "station": {
+    "station_id": "AVC040",
+    "records": 28,
+    "f_system_values": [
+      "4R"
+    ],
+    "directions": [
+      "3",
+      "7"
+    ],
+    "lanes": [
+      "1"
+    ],
+    "hours_total_cells": 672,
+    "hours_missing_cells": 0,
+    "hours_zero_cells": 0,
+    "days_by_direction": {
+      "3": {
+        "days_present": 14,
+        "first": 1,
+        "last": 14,
+        "missing_days": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ]
+      },
+      "7": {
+        "days_present": 14,
+        "first": 1,
+        "last": 14,
+        "missing_days": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ]
+      }
+    },
+    "day_of_week_map": {
+      "1": "Sun",
+      "2": "Mon",
+      "3": "Tue",
+      "4": "Wed",
+      "5": "Thu",
+      "6": "Fri",
+      "7": "Sat"
+    }
+  },
+  "units": "vehicles per hour (파일 hour 필드 그대로; 환산 없음)",
+  "timing": {
+    "observation_dates": "2017-10-01..2017-10-14"
+  }
+}
