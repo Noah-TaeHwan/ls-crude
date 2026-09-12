@@ -1,0 +1,146 @@
+{
+  "schema": "cai-local-work-status/v1",
+  "kind": "local_work_status",
+  "generated_at_utc": "2026-09-12T01:48:05Z",
+  "source": "로컬 파일(manifest·run_state·inputs)",
+  "current": {
+    "task": "TMAS 2019 교통자료 보강 → 파일럿 재실행 → 대시보드 반영",
+    "owner": "태환",
+    "stage": "완료",
+    "started_at": "2026-09-12T01:28:00Z",
+    "last_activity_at": "2026-09-12T01:47:00Z",
+    "throughput": "2019 12개월 335,158,128B 추가 · 학습 6/6 모델 done (train 753)",
+    "blocker": null,
+    "result": "run 20260912T013423Z · eval 245행(기존과 동일) · CAI 추가 이득 없음 유지(+0.0024/+0.0042)",
+    "screen_reflected": "표시 요약·로컬 화면 반영 확인됨(2026-09-12 10:47 KST)",
+    "seongchan": {
+      "last_report": "2026-09-11 주말 결과 2건(문서·엔진) 수신, 해시 일치",
+      "status": "미확인 — 새 보고 없음(현재 실행 감시 안 함)"
+    }
+  },
+  "downloads": [
+    {
+      "label": "TMAS 20260911",
+      "files": 3,
+      "bytes": 47297763,
+      "latest_activity_utc": "2026-09-11T08:01:37Z",
+      "complete": null
+    },
+    {
+      "label": "TMAS 20260911",
+      "files": 13,
+      "bytes": 323494622,
+      "latest_activity_utc": "2026-09-11T08:40:28Z",
+      "complete": null
+    },
+    {
+      "label": "TMAS 20260911",
+      "files": 47,
+      "bytes": 964499186,
+      "latest_activity_utc": "2026-09-11T12:47:50Z",
+      "complete": null
+    },
+    {
+      "label": "TMAS 20260912",
+      "files": 12,
+      "bytes": 335158128,
+      "latest_activity_utc": "2026-09-12T01:31:14Z",
+      "complete": null
+    },
+    {
+      "label": "TMAS 누적",
+      "files": 75,
+      "bytes": 1670449699,
+      "latest_activity_utc": "2026-09-12T01:31:14Z",
+      "complete": null
+    }
+  ],
+  "runs": [
+    {
+      "id": "20260912T013423Z",
+      "base": "091-cai-exp-2019",
+      "started_utc": "2026-09-12T01:34:23Z",
+      "finished_utc": "2026-09-12T01:34:23Z",
+      "models": {
+        "done": 6,
+        "blocked": 0,
+        "failed": 0,
+        "pending": 0,
+        "running": 0
+      },
+      "train_rows": 753,
+      "cached": false
+    },
+    {
+      "id": "20260911T150404Z",
+      "base": "091-cai-exp-noah-terminal",
+      "started_utc": "2026-09-11T15:04:04Z",
+      "finished_utc": "2026-09-11T15:04:04Z",
+      "models": {
+        "done": 6,
+        "blocked": 0,
+        "failed": 0,
+        "pending": 0,
+        "running": 0
+      },
+      "train_rows": 507,
+      "cached": false
+    },
+    {
+      "id": "20260911T132951Z",
+      "base": "091-cai-exp-sens",
+      "started_utc": "2026-09-11T13:29:51Z",
+      "finished_utc": "2026-09-11T13:29:51Z",
+      "models": {
+        "done": 4,
+        "blocked": 0,
+        "failed": 0,
+        "pending": 0,
+        "running": 0
+      },
+      "train_rows": 476,
+      "cached": false
+    },
+    {
+      "id": "20260911T130235Z",
+      "base": "091-cai-exp-pilot",
+      "started_utc": "2026-09-11T13:02:35Z",
+      "finished_utc": "2026-09-11T13:02:35Z",
+      "models": {
+        "done": 4,
+        "blocked": 0,
+        "failed": 0,
+        "pending": 0,
+        "running": 0
+      },
+      "train_rows": 905,
+      "cached": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "dmr_ok0026701_001_mgd.csv",
+      "bytes": 3239,
+      "modified_utc": "2026-09-11T13:00:24Z"
+    },
+    {
+      "name": "traffic_avc040_daily.csv",
+      "bytes": 26959,
+      "modified_utc": "2026-09-11T13:00:24Z"
+    },
+    {
+      "name": "traffic_avc040_daily_2019plus.csv",
+      "bytes": 32687,
+      "modified_utc": "2026-09-12T01:33:40Z"
+    }
+  ],
+  "seongchan": {
+    "last_report": "2026-09-11 주말 결과 2건(문서·엔진) 수신, 해시 일치",
+    "status": "미확인 — 새 보고 없음(현재 실행 감시 안 함)"
+  },
+  "notes": [
+    "진행률 분모가 없으면 %를 만들지 않습니다.",
+    "프로세스 종료 결과가 없으면 '실행 상태 확인 필요'로 표시합니다.",
+    "캐시 재사용과 실제 재학습을 구분합니다."
+  ]
+}

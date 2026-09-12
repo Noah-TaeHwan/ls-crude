@@ -22,5 +22,5 @@ export default function Tankers({ loaderData }: Route.ComponentProps) {
     const timer = window.setInterval(() => { if (document.visibilityState === "visible" && revalidator.state === "idle") void revalidator.revalidate(); }, 5 * 60000);
     return () => window.clearInterval(timer);
   }, [revalidator]);
-  return <><DeskHeader source="MPA / data.gov.sg" ticker="Singapore" contextLabel="MPA · 월간 입항" /><main id="main-content" tabIndex={-1} className="desk-shell"><Link className="secondary-link mt-7 inline-flex min-h-11 items-center" to="/?sample=tankers#research-sample">← 관측 데스크</Link><TankerObservation view={loaderData.tankers} checkedAt={loaderData.checkedAt} detail /></main><DeskFooter /></>;
+  return <><DeskHeader source="MPA / data.gov.sg" ticker="Singapore" contextLabel="MPA · 월간 입항" /><main id="main-content" tabIndex={-1} className="desk-shell"><Link className="secondary-link mt-7 inline-flex min-h-11 items-center" to="/history?sample=tankers#research-sample">← 관측 데스크</Link><TankerObservation view={loaderData.tankers} checkedAt={loaderData.checkedAt} detail /></main><DeskFooter /></>;
 }

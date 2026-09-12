@@ -22,5 +22,5 @@ export default function Visibility({ loaderData }: Route.ComponentProps) {
     const timer = window.setInterval(() => { if (document.visibilityState === "visible" && revalidator.state === "idle") void revalidator.revalidate(); }, 5 * 60000);
     return () => window.clearInterval(timer);
   }, [revalidator]);
-  return <><DeskHeader source="NOAA/NWS AWC" ticker="KGLS" contextLabel="KGLS · 시정 관측" /><main id="main-content" tabIndex={-1} className="desk-shell"><Link className="secondary-link mt-7 inline-flex min-h-11 items-center" to="/?sample=visibility#research-sample">← 관측 데스크</Link><VisibilityObservation view={loaderData.visibility} checkedAt={loaderData.checkedAt} detail /></main><DeskFooter /></>;
+  return <><DeskHeader source="NOAA/NWS AWC" ticker="KGLS" contextLabel="KGLS · 시정 관측" /><main id="main-content" tabIndex={-1} className="desk-shell"><Link className="secondary-link mt-7 inline-flex min-h-11 items-center" to="/history?sample=visibility#research-sample">← 관측 데스크</Link><VisibilityObservation view={loaderData.visibility} checkedAt={loaderData.checkedAt} detail /></main><DeskFooter /></>;
 }

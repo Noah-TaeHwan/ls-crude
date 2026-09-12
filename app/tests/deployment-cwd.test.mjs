@@ -146,10 +146,14 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.equal(response.status, 200, output.join(""));
     const body = await response.text();
     assert.match(body, /data-source="Yahoo Finance"/);
+    assert.doesNotMatch(body, /ALTERNATIVE DATA RESEARCH/);
     const text = body.split("<script")[0].replace(/<[^>]*>/g, "");
-    assert.match(text, /아직 채택할 신호가 없습니다/);
+    assert.match(text, /쿠싱 액티비티 인덱스/);
+    assert.match(text, /산출 대기/);
+    assert.match(text, /아직 예측하지 않습니다/);
     assert.doesNotMatch(text,/RESEARCH INTAKE|THE SIGNAL HUNT|WHAT REMAINS OPEN/);
-    assert.match(body, /href="\/research"[^>]*>리서치/);
+    assert.match(body, /href="\/research"[^>]*>연구 기록</);
+    assert.doesNotMatch(body, /href="\/history"[^>]*>히스토리/);
     assert.match(text, /5일 실현변동성 백분위/);
     assert.match(text, /후보 비교선은 아직 없습니다/);
     assert.ok(text.includes(String(livePercentile)), "RV5 percentile must come from the actual snapshot");
@@ -163,7 +167,7 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.ok(text.includes(expectedCheckedAt), "SSR timestamp is explicitly KST");
     assert.doesNotMatch(body, /<form\b/i, "public home must not expose news CRUD forms");
 
-    assert.ok(body.indexOf('id="market"') < body.indexOf('id="observations"'), "observation follows the single daily chart");
+    assert.ok(body.indexOf("data-cai-score") < body.indexOf('id="market"'), "CAI dashboard precedes the WTI market section");
     assert.doesNotMatch(body, /id="visibility-observation"/, "default home shows observations only after case selection");
     const visibility = await fetch(`${baseUrl}/observations/visibility`);
     assert.equal(visibility.status, 200);
@@ -180,19 +184,13 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.doesNotMatch(body, /id="tanker-observation"/);
     assert.doesNotMatch(body, /02 \/ FIELD NOTES/);
     assert.doesNotMatch(body, /id="intake"/);
-    assert.match(body, /href="\/#research-sample"/);
-    const sample = body.slice(body.indexOf('id="research-sample"'), body.indexOf("</main>"));
-    const optionGroup = sample.match(/aria-label="연구 사례 선택"[^>]*>([\s\S]*?)<\/div>/);
-    assert.ok(optionGroup, "sample option group present");
-    const optionLabels = [...optionGroup[1].matchAll(/>([^<]+)<\/button>/g)].map((match) => match[1].trim());
-    assert.equal(optionLabels[0], "보드 · 쿠싱 현장 바쁨");
-    assert.equal(optionLabels[1], "고정 · HLX · 오일서비스");
-    assert.equal(optionLabels.length, 9);
-    for (const label of ["과거 연구 샘플", "자동 갱신 아님", "WTI 관계 검정 미실행", "2025-10-14", "332", "소수값", "원단위 표"]) assert.ok(sample.includes(label));
-    assert.match(sample, /<svg id="watermelon-research-plot"/);
-    assert.doesNotMatch(sample, /해당 후보 정본을 확인하지 못했습니다/);
-    assert.doesNotMatch(sample, /<img/);
-    assert.match(sample, /href="\/research\/watermelon-20260908.png"/);
+    assert.match(body, /href="\/research#research-sample"/);
+    assert.doesNotMatch(body, /id="research-sample"/, "home no longer embeds the sample explorer");
+    assert.doesNotMatch(body, /aria-label="연구 사례 선택"/);
+    assert.match(body, /data-cai-score="none"/);
+    assert.match(body, /data-forecast-state="pending"/);
+    assert.doesNotMatch(body, /data-up="/, "empty CAI home must not carry example probabilities");
+    assert.doesNotMatch(body, /<details[^>]*\sopen/, "CAI란 and volatility fold start collapsed");
     const helixHome = await fetch(`${baseUrl}/?sample=helix`);
     assert.equal(helixHome.status, 200);
     const helixBody = await helixHome.text();
@@ -505,8 +503,10 @@ test("serves the public evidence brief routes from the repository root", async (
     const researchBody = await research.text();
     const researchText = researchBody.split("<script")[0].replace(/<[^>]*>/g, "");
     assert.match(researchBody, /id="research-sample"/);
-    assert.doesNotMatch(researchBody, /id="(?:watermelon-research-plot|jeju-generation-plot|degree-days-level-plot|empties-plot|visibility-observation|tanker-observation|wti-daily-chart|helix-index-plot)"/);
-    assert.match(researchBody, /href="\/#research-sample"/);
+    // 기본 통합 화면은 고정 사례 하나만 그린다.
+    assert.match(researchBody, /id="watermelon-research-plot"/);
+    assert.doesNotMatch(researchBody, /id="(?:jeju-generation-plot|degree-days-level-plot|empties-plot|visibility-observation|tanker-observation|wti-daily-chart|helix-index-plot)"/);
+    assert.match(researchBody, /href="\/history#research-sample"/);
     assert.match(researchBody,/작업 상태로 살펴보기/);
     assert.match(researchBody,/원본 확보/);
     assert.match(researchBody,/차단·실패/);
@@ -560,7 +560,7 @@ test("serves the public evidence brief routes from the repository root", async (
     }
     const legacyEmpties=await fetch(`${baseUrl}/observations/empties`,{redirect:"manual"});
     assert.equal(legacyEmpties.status,308);
-    assert.equal(legacyEmpties.headers.get("location"),"/?sample=empties#research-sample");
+    assert.equal(legacyEmpties.headers.get("location"),"/history?sample=empties#research-sample");
     for (const route of ["/", "/research"]) for(const [kind,id,unit] of [["visibility","visibility-observation","SM"],["tankers","tanker-observation","75 GT"]]) {
       const response=await fetch(`${baseUrl}${route}?sample=${kind}`);
       const html=await response.text();assert.equal(response.status,200);
@@ -570,20 +570,35 @@ test("serves the public evidence brief routes from the repository root", async (
       assert.doesNotMatch(html,/id="watermelon-research-plot"|id="empties-plot"|id="petroleum-rail-plot"/);
     }
     const unknownSample = await fetch(`${baseUrl}/research?sample=unknown`);
-    assert.doesNotMatch(await unknownSample.text(), /id="watermelon-research-plot"/);
+    const unknownSampleBody = await unknownSample.text();
+    assert.match(unknownSampleBody, /지원하지 않는 사례 값입니다/);
+    assert.match(unknownSampleBody, /id="watermelon-research-plot"/, "unknown sample falls back to the real default sample");
     for(const kind of ["watermelon","jeju","degree-days","empties","visibility","tankers","petroleum-rail","helix"]) {
       const redirect=await fetch(`${baseUrl}/research?sample=${kind}`,{redirect:"manual"});
-      assert.equal(redirect.status,308);assert.equal(redirect.headers.get("location"),`/?sample=${kind}#research-sample`);
+      assert.equal(redirect.status,308);assert.equal(redirect.headers.get("location"),`/history?sample=${kind}#research-sample`);
     }
     assert.match(researchText, /개별 관측/);
-    const inventory = parseResearchLedger(await readFile(path.join(repositoryRoot, "research/factors/README.md"), "utf8"));
-    assert.ok(researchText.includes(`전체 ${inventory.records.length}개`));
-    assert.ok(researchText.includes(`기준 통과 ${inventory.passCount}개`));
-    assert.match(researchText, /검정 요약과 근거/);
-    assert.match(researchBody, /001-pentagon-ubereats\/README.md/);
+    assert.match(researchBody, /id="current"/);
+    assert.match(researchBody, /id="past"/);
+    assert.match(researchBody, /id="ledger"/);
+    assert.match(researchBody, /href="\/history#ledger"/);
+    assert.doesNotMatch(researchBody, /<details id="ledger"[^>]*open/, "ledger starts collapsed without a candidate query");
     assert.doesNotMatch(researchBody, /<details[^>]* open/, "details start collapsed");
-    const linked = await fetch(`${baseUrl}/research?candidate=018`);
-    const linkedBody=await linked.text();
+    const inventory = parseResearchLedger(await readFile(path.join(repositoryRoot, "research/factors/README.md"), "utf8"));
+    const historyLedger = await fetch(`${baseUrl}/history`);
+    const historyLedgerBody = await historyLedger.text();
+    const historyLedgerText = historyLedgerBody.split("<script")[0].replace(/<[^>]*>/g, "");
+    assert.ok(historyLedgerText.includes(`전체 ${inventory.records.length}개`));
+    assert.ok(historyLedgerText.includes(`기준 통과 ${inventory.passCount}개`));
+    assert.match(historyLedgerBody, /검정 요약과 근거/);
+    assert.match(historyLedgerBody, /001-pentagon-ubereats\/README.md/);
+    assert.match(historyLedgerBody, /data-decision-timeline/);
+    const linked = await fetch(`${baseUrl}/research?candidate=018`, { redirect: "manual" });
+    assert.equal(linked.status, 308);
+    assert.equal(linked.headers.get("location"), "/history?candidate=018#ledger");
+    const linkedFollowed = await fetch(`${baseUrl}/research?candidate=018`);
+    const linkedBody = await linkedFollowed.text();
+    assert.ok(linkedFollowed.url.endsWith("/history?candidate=018"), linkedFollowed.url);
     assert.match(linkedBody, /018-refinery-thermal-flare\/README.md/);
     assert.match(linkedBody, /<details id="ledger" open/);
 
