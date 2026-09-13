@@ -1,0 +1,58 @@
+{
+  "window": [
+    "2023-01-01",
+    "2023-12-31"
+  ],
+  "unit": "MGD",
+  "raw_rows": 24,
+  "stats": {
+    "MO AVG": {
+      "rows": 12,
+      "numeric_rows": 12,
+      "missing_values": 0,
+      "missing_months": [],
+      "min": 0.802,
+      "max": 1.396,
+      "mean": 0.9825833333333334,
+      "receipt_lag_days": {
+        "min": 2,
+        "median": 7.0,
+        "max": 12
+      }
+    },
+    "DAILY MX": {
+      "rows": 12,
+      "numeric_rows": 12,
+      "missing_values": 0,
+      "missing_months": [],
+      "min": 1.145,
+      "max": 2.893,
+      "mean": 1.8955,
+      "receipt_lag_days": {
+        "min": 2,
+        "median": 7.0,
+        "max": 12
+      }
+    }
+  },
+  "comparison": {
+    "common_rows": 12,
+    "changed_value_or_receipt_dates": [],
+    "added_dates": [],
+    "removed_dates": []
+  },
+  "limitations": [
+    "월평균과 월중 일최댓값은 별도 계열이며 서로 평균하지 않음.",
+    "ValueReceivedDate is regulatory receipt, not first public date.",
+    "Retrospective only; no training or OOS; no new CAI component."
+  ],
+  "files": {
+    "research/gathering/raw/091-dmr-refresh/20260913T052949Z/dmr_OK0026701_2023.json": "b09bdeaed9f48831fc05972bed811744b7038353f00028ac10dc4ca50107d4a1",
+    "research/data/processed/091-cai-exp-pilot/inputs/dmr_ok0026701_001_mgd.csv": "251aa9e6e60a2d7c16c9330776c6662117156230a48cbe004a9640907ead61be",
+    "/Users/noah/orca/ls-crude/research/scripts/audit_dmr_refresh.py": "92d4bb8824c5013bfc8302432b282d4d35ec56dcee304813b97f9fecbcfd7852",
+    "/Users/noah/orca/ls-crude/research/scripts/build_pilot_inputs.py": "8bc5258d35495033e5f6347598fca5b5b6e7961cadbd8547802c642be6838202",
+    "research/data/processed/091-dmr-refresh/20260913T052949Z/dmr_daily_max_2023.csv": "30db4aad4af329a812bbb7d93ea4bf7ad1db37f753334c8a93b540254f3d0d2e",
+    "research/data/processed/091-dmr-refresh/20260913T052949Z/dmr_monthly_mean_2023.csv": "82b59ae422162681f235ba123e540e51225ac4128392c14c01041ae0070ec1bf",
+    "research/data/processed/091-dmr-refresh/20260913T052949Z/dmr_series_rows.csv": "7d595e948dee9762014744ff208e6ee4b26acc23cea9f56379ca05a442bc7cc5"
+  }
+}
