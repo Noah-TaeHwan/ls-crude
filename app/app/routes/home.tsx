@@ -7,6 +7,7 @@ import { useDisclosureHistory } from "~/lib/use-disclosure-history";
 import type { Route } from "./+types/home";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
 import { CaiGauge } from "~/components/cai/cai-gauge";
+import { CaiHistory } from "~/components/cai/cai-history";
 import { CaiForecast } from "~/components/cai/cai-forecast";
 import { CaiAbout } from "~/components/cai/cai-about";
 import { ExperimentResults } from "~/components/cai/experiment-results";
@@ -32,7 +33,7 @@ function number(value: number | null | undefined, digits = 2, suffix = ""): stri
 
 /** @returns 쿠싱 액티비티 인덱스 홈의 검색 설명. */
 export function meta({}: Route.MetaArgs) {
-  return [{ title: "쿠싱 액티비티 인덱스 — LS CRUDE" }, { name: "description", content: "쿠싱의 활동 신호로 만든 0–100 점수와 다음 기간 WTI 방향, 가격 흐름을 함께 봅니다. 승인된 산출물이 없으면 점수는 —, 예측은 미실행입니다." }];
+  return [{ title: "쿠싱 액티비티 인덱스 — LS CRUDE" }, { name: "description", content: "교통량과 시설 신고 유량을 결합한 실험용 CAI v0.1. 과거 자료의 기준일·구성·추이를 확인합니다. 현재 활동이나 유가 상승 확률이 아닙니다." }];
 }
 
 /**
@@ -91,11 +92,14 @@ export default function Home({ loaderData: { market, daily, cai, experiments, un
         <header className="border-b border-border py-8 sm:py-10">
           <p className="eyebrow">쿠싱 액티비티 인덱스 <span aria-hidden="true">/</span> LS CRUDE · 오태환 × 손성찬</p>
           <h1 id="cai-home-title" className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">쿠싱 액티비티 인덱스</h1>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">쿠싱의 활동에서 유가 움직임의 단서를 찾는 연구입니다. WTI 가격과 지금까지의 실험 결과를 함께 봅니다.</p>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">교통량·시설 신고 유량을 결합한 실험용 CAI v0.1입니다. 과거 자료의 기준일과 추이를 확인하세요.</p>
           {unsupportedSample ? <p role="status" className="mt-4 text-sm text-muted-foreground">{unsupportedSample} <Link className="source-link" to="/research#research-sample">연구 기록에서 사례 보기</Link></p> : null}
         </header>
         <section className="border-t border-border py-4" aria-label="CAI 계기판과 설명">
-          <CaiGauge index={cai.index} />
+          <div className={cai.index.mode === "RETROSPECTIVE" && cai.index.score !== null && cai.index.history.length > 0 ? "grid items-start gap-4 lg:grid-cols-2" : ""}>
+            <CaiGauge index={cai.index} />
+            <CaiHistory view={cai} />
+          </div>
           <CaiAbout view={cai} />
         </section>
         <section className="border-t border-border py-4" aria-label="다음 기간 WTI 방향">

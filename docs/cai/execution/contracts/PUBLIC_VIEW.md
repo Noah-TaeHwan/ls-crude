@@ -12,6 +12,8 @@ export type Freshness = "FRESH" | "STALE" | "ERROR" | null;
 export type ValidationState = "NOT_RUN" | "EXPLORATORY" | "INDEPENDENT_TESTED";
 export interface CaiIndexView {
   index_id: string; definition_version: string | null;
+  mode: "CURRENT" | "RETROSPECTIVE";
+  reference_period: {start: string; end: string} | null;
   weighting_method: "equal-weight" | "learned-weight" | null;
   score: number | null; previous_score: number | null;
   as_of: string | null; observed_at: string | null; available_at: string | null;
@@ -41,6 +43,8 @@ export interface CaiConstituentView {
   membership: "ADOPTED" | "REVIEW" | "PARKED";
   observed_quantity: string; geography: string; frequency: string;
   status_note: string; evidence_ids: string[];
+  reading?: {score: number; weight: number; observed_on: string; aligned_on: string;
+    alignment_basis: "관측일 정렬" | "규제기관 접수일"};
 }
 export interface CaiEvidenceView {
   id: string; title: string; url: string | null;
@@ -69,7 +73,9 @@ export function displayedProbabilities(
 
 `parseCaiPublicView`는 unknown 입력을 방어적으로 검사하고, 검증한 필드만 새 객체에 복사한다. 객체 전체 spread/cast로 raw/weights/secrets를 전달하지 않는다. 유효하지 않은 루트는 빈 상태 + `INVALID_SNAPSHOT` 경고. index/forecast 한 영역의 실패는 그 영역만 비우고 경고하며 다른 유효 영역과 WTI를 비우지 않는다. 알 수 없는 부가 필드는 전달하지 않는다.
 
-OBSERVED 점수는 유한수 0..100, 유효한 run/version/as_of/관측·가용 시각과 양의 성분 수·0..1 coverage가 있어야 한다. 날짜·시간 문자열은 실제 달력/ISO로 검사한다. NO_DATA 점수는 null. production 읽기에서 DEMO 점수는 미게시 값으로 취급한다. DEMO를 OBSERVED로 바꾸지 않는다. STALE은 기존 관측일을 보존하며 현재 시각을 넣지 않는다.
+CURRENT(생략 시 기본)의 OBSERVED 점수는 유한수 0..100, 유효한 run/version/as_of/관측·가용 시각과 양의 성분 수·0..1 coverage가 있어야 한다. 날짜·시간 문자열은 실제 달력/ISO로 검사한다. NO_DATA 점수는 null. production 읽기에서 DEMO 점수는 미게시 값으로 취급한다. DEMO를 OBSERVED로 바꾸지 않는다. STALE은 기존 관측일을 보존하며 현재 시각을 넣지 않는다.
+
+2026-09-13 실험용 CAI v0.1 확장: `mode=RETROSPECTIVE`는 과거 자료의 소급 산출을 명시한다. 이 모드에서는 정확한 `observed_at`·최초 `available_at` 시각을 모르므로 null을 허용하되, 유효 run/version/as_of·기준 분포·기준일 이후 계산시각을 요구한다. 마지막 유효 이력이 score/as_of와 일치해야 하며, 최신 구성 reading의 날짜 순서·성분 수·양의 가중치 합1·가중 평균 점수도 대조한다(소수 한 자리 반올림 오차 최대0.1). 완전한 구성만 산출하므로 coverage=1이다. 이전 점수가 직전 유효 이력과 다르면 이전 점수만 비운다. CURRENT의 기존 시점 조건은 완화하지 않는다. 실험용·과거 기준일·현재 값이 아님을 화면에서 표시하며, 이를 예측 승인으로 사용하지 않는다.
 
 history는 같은 definition_version, 오름차순 고유 날짜, score=null 또는 0..100. null 날짜의 값을 보간하지 않는다. 소급 계산된 다른 버전은 같은 선에 연결하지 않는다.
 
@@ -85,7 +91,7 @@ INDEPENDENT_TESTED를 표시하려면 n>0, 유효한 sample_start/end, oos_expos
 
 ## D. 서버 경계
 
-`app/app/lib/cai-view.server.ts`는 `readCaiPublicView(): Promise<CaiPublicView>`를 export한다. 승인된 공개 export만 읽으며 미연결 상태에서는 emptyCaiView를 반환한다. 소스 수집·학습·CFAM fallback·실제 mock 내장 금지. 실제 export 경로는 UI-06에서 승인 run을 확인한 뒤 연결한다.
+`app/app/lib/cai-view.server.ts`는 `readCaiPublicView(): Promise<CaiPublicView>`를 export한다. 승인된 `app/app/data/cai-public-view.json`을 빌드에 포함해 parseCaiPublicView로 검증한다. 잘못된 값은 공개 parser의 빈 상태 규칙을 따른다. 소스 수집·학습·CFAM fallback·실제 mock 내장 금지. 사용자 승인된 실험용 v0.1 결과만 연결하며 요청·빌드에서 점수를 재계산하지 않는다.
 
 public Evidence는 로컬 허용 경로 또는 비밀정보가 없는 https 원출처만. team_only는 공개 요약/표시만 제공하고 외부 방문자에게 private URL 접속 성공을 주장하지 않는다. 오류 원문/서명 URL/토큰을 loader payload나 JS에 넣지 않는다.
 
@@ -103,6 +109,9 @@ public Evidence는 로컬 허용 경로 또는 비밀정보가 없는 https 원�
 | 확률 합계 1.1 | 확률 표시 없음 |
 | 임의 raw/weights/token 필드 | 출력 객체에 해당 필드 없음 |
 | history 중간 null | 해당 구간 선 단절 |
+| RETROSPECTIVE + 참조·계산시각·이력·구성 일치 | 공개시각 null을 보존하며 과거 지수 표시 |
+| RETROSPECTIVE + 마지막 이력/가중 평균 불일치 | score null |
+| 같은 과거 자료를 CURRENT로 변경 + 공개시각 없음 | score null |
 | 독립 검증 표본/참조 누락 | INDEPENDENT_TESTED로 게시하지 않음 |
 
 위 숫자는 테스트 전용이다. 앱의 최초 운영 값으로 사용하지 않는다. 타입 검사를 통과했다고 측정값·권한·학습 증거가 증명되는 것은 아니다.

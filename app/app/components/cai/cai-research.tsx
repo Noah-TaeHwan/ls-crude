@@ -77,6 +77,7 @@ export function CaiResearch({ view }: { view: CaiPublicView }) {
   return (
     <section data-cai-research className="border-b border-border py-8 sm:py-10" aria-labelledby="cai-research-title">
       <div className="section-heading"><div><p className="section-kicker">CURRENT CAI / 근거와 검증</p><h2 id="cai-research-title">현재 CAI 연구·검증</h2></div><span className="text-tag">연구 / 현재</span></div>
+      {view.index.mode === "RETROSPECTIVE" ? <p className="mt-3 text-sm text-primary">실험용 CAI v0.1 · 기준일 {view.index.as_of} · 과거 자료의 지수이며 현재 활동 값이 아닙니다.</p> : null}
 
       <h3 className="mt-6 text-base font-medium text-foreground">현재 연구 상태</h3>
       <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

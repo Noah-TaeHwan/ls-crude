@@ -1,0 +1,57 @@
+{
+  "index_id": "cushing-activity-index",
+  "definition_version": "cai-v0.1",
+  "mode": "RETROSPECTIVE",
+  "source_config": "research/experiments/cai/pilot_retro_traffic_dmr_2019.config.json",
+  "source_config_sha256": "42a124792ec838fc5fdc91cbd92fd9663947658b8bb8be10e4692a208b774fe8",
+  "normalization_code": "research/src/ls_crude/experiment/data.py",
+  "normalization_code_sha256": "b8019c637f3bd46ef035d560f308dc1c062c2468f006fef81fce11cfba9bfff0",
+  "calendar": {
+    "source": "Yahoo CL=F daily date column only",
+    "start": "2015-01-01",
+    "end": "2023-12-31"
+  },
+  "reference_period": {
+    "start": "2015-01-02",
+    "end": "2020-12-23"
+  },
+  "reference_mask": {
+    "train_end": "2020-12-31",
+    "boundary_trading_days": 5,
+    "basis": "기존 회고 실험의 horizon_safe_train_mask를 통계 기준에만 재사용. 가격값·정답·예측모델은 계산하지 않음."
+  },
+  "formula": {
+    "component": "100 * (clip((x - mean) / std_population, -3, 3) + 3) / 6",
+    "constant_component_score": 50,
+    "index": "두 유효 성분 점수의 동일가중 평균",
+    "missing_policy": "한 성분이라도 없으면 null. 결측구간 연결·단일성분 재가중 없음.",
+    "public_precision": 1
+  },
+  "components": [
+    {
+      "candidate_id": "TMAS_AVC040",
+      "name": "도로 교통량",
+      "input_name": "traffic_avc040_daily_2019plus",
+      "weight": 0.5,
+      "observed_quantity": "AVC040 전체 차량의 일별 통행량",
+      "geography": "오클라호마 Payne 근처 AVC040 관측소",
+      "frequency": "일별",
+      "alignment_basis": "관측일 정렬",
+      "validity_days": 0,
+      "evidence_id": "fhwa-tmas"
+    },
+    {
+      "candidate_id": "091-DMR / OK0026701-001",
+      "name": "South STP 신고 유량",
+      "input_name": "dmr_ok0026701_001_mgd",
+      "weight": 0.5,
+      "observed_quantity": "South STP 월중 일최대 신고 방류유량(MGD)",
+      "geography": "오클라호마 쿠싱 South STP, OK0026701-001",
+      "frequency": "월별",
+      "alignment_basis": "규제기관 접수일",
+      "validity_days": 62,
+      "evidence_id": "epa-dmr"
+    }
+  ],
+  "scope": "과거 활동 대리자료의 실험 지수. 원유 물동량·실시간 쿠싱 활동·WTI 예측 확률이 아님."
+}

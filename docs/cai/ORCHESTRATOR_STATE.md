@@ -1,5 +1,13 @@
 # ORCHESTRATOR STATE
 
+## 실험용 CAI v0.1 — 결과물 연결
+
+- 사용자 승인(2026-09-13 ㄱㄱ): 기존 교통·DMR와 고정 산식으로 실험용 지수를 대시보드에 표시.
+- 산출: 2023-12-29 43.1, 입력53.0/33.1 각50%, 전체2262일 중1003유효·1259결측. 현재값·WTI확률 아님.
+- 정본: research/indexes/cai-v0.1/README.md, definition.json, manifest.json; 공개 app/app/data/cai-public-view.json.
+- 계산은 기존 정규화·정렬 재사용이며 새 수집·라벨·모델학습·OOS 실행 없음. 기존 일별 모델·성찬 제출 검토 상태 유지.
+
+
 2026-09-11 기준 오케스트레이터 재개용 짧은 상태. 정본은 `tasks.json`, 작업 방법은
 `execution/catalog.json`, 제품 요구는 `WEBSITE_PLAN.md`, 구현 인터페이스는
 `execution/contracts/PUBLIC_VIEW.md`. 진행 상태를 이 파일에 복제하지 않는다.

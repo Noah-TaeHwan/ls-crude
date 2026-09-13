@@ -222,7 +222,7 @@ async function withServer(body) {
   }
 }
 
-test("메뉴는 승인된 두 목적지만 노출하고 빈 대시보드 계기판은 compact다", async () => {
+test("메뉴는 두 목적지를 유지하고 대시보드는 회고 지수를 표시한다", async () => {
   await withServer(async (base, output) => {
     const home = await fetch(`${base}/`);
     assert.equal(home.status, 200, output.join(""));
@@ -233,12 +233,12 @@ test("메뉴는 승인된 두 목적지만 노출하고 빈 대시보드 계기�
     assert.deepEqual(links, [["/", "대시보드"], ["/research", "연구 기록"]], "exactly the two approved destinations");
     assert.doesNotMatch(body, /href="\/history"/, "no third menu destination");
 
-    // 빈 상태: compact 계기판, 지어낸 점수·확률 없음.
-    assert.match(body, /data-cai-gauge="compact"/);
-    assert.doesNotMatch(body, /volatility-gauge/, "empty gauge keeps no large semicircle");
-    assert.match(body, /data-cai-score="none"/);
+    // 실측 입력의 회고 지수를 표시하되 예측 확률은 미게시 상태다.
+    assert.match(body, /data-cai-gauge="full"/);
+    assert.match(body, /현재 값이 아닙니다/);
+    assert.match(body, /data-cai-score="43.1"/);
     assert.match(body, /data-forecast-state="pending"/);
-    assert.doesNotMatch(body, /data-needle/);
+    assert.match(body, /data-needle/);
     assert.doesNotMatch(body, /data-up="/);
   });
 });

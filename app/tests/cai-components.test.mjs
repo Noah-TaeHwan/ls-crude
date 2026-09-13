@@ -37,7 +37,8 @@ function importTsx(fileName) {
     .outputText.replace(/"(~\/lib\/[a-z0-9-]+)(?:\.ts)?"/g, (_, spec) =>
       JSON.stringify(join(appDir, "lib", `${spec.slice("~/lib/".length)}.ts`)),
     )
-    .replace(/"react\/jsx-runtime"/g, JSON.stringify(join(nodeModulesDir, "react", "jsx-runtime.js")));
+    .replace(/"react\/jsx-runtime"/g, JSON.stringify(join(nodeModulesDir, "react", "jsx-runtime.js")))
+    .replace(/"react"/g, JSON.stringify(join(nodeModulesDir, "react", "index.js")));
   const outPath = join(compiledDir, fileName.replace(/\.tsx$/, ".mjs"));
   writeFileSync(outPath, output);
   return import(pathToFileURL(outPath).href);
@@ -46,6 +47,7 @@ function importTsx(fileName) {
 const { CaiGauge } = await importTsx("cai-gauge.tsx");
 const { CaiForecast } = await importTsx("cai-forecast.tsx");
 const { CaiAbout } = await importTsx("cai-about.tsx");
+const { CaiHistory, caiHistoryPlot } = await importTsx("cai-history.tsx");
 
 // 아래 숫자는 테스트 전용이며 운영 코드의 기본값이 아니다.
 function validIndex(overrides = {}) {
@@ -290,5 +292,30 @@ describe("CaiAbout", () => {
     assert.ok(html.includes("아직 공개되지 않았습니다"));
     assert.ok(!html.includes("도로 통행량"));
     assert.ok(!html.includes("73.3"));
+  });
+});
+
+describe("CAI 회고 이력", () => {
+  it("결측 사이를 잇지 않고 실제 0점은 관측점으로 유지한다", () => {
+    const points = [{date:"2020-01-01",score:0},{date:"2021-01-01",score:null},{date:"2023-01-01",score:100}];
+    const plot = caiHistoryPlot(points);
+    assert.equal(plot.segments.length, 2);
+    assert.deepEqual(plot.segments.map((segment) => segment.length), [1,1]);
+    assert.ok(plot.segments[0][0].y > plot.segments[1][0].y);
+    assert.ok(plot.segments[0][0].x < plot.segments[1][0].x);
+  });
+  it("실험용 표시·과거 기준일·날짜 선택·최신 구성 점수를 함께 보여준다", () => {
+    const view = parseCaiPublicView(JSON.parse(readFileSync(join(appDir,"data","cai-public-view.json"),"utf8")));
+    const gauge = render(CaiGauge, {index:view.index});
+    assert.match(gauge,/실험용 v0.1 · 과거 자료/);
+    assert.match(gauge,/현재 값이 아닙니다/);
+    assert.match(gauge,/직전 산출일 대비/);
+    const chart = render(CaiHistory,{view});
+    assert.match(chart,/확인할 지수 기준일/);
+    assert.match(chart,/2023-12-29/);
+    assert.match(chart,/최신 기준일의 구성/);
+    assert.equal((chart.match(/data-cai-input=/g)||[]).length,2);
+    assert.match(chart,/53.0/); assert.match(chart,/33.1/);
+    assert.equal(render(CaiHistory,{view:emptyCaiView()}), "");
   });
 });
