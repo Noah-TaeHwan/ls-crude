@@ -727,20 +727,21 @@
       "name": "공항 활동",
       "role": "Cushing 공항의 연료·주기장·응급비행 활동 후보",
       "category": "sample",
-      "summary": "공항 월보 4건만 있고 연속 과거 자료는 아직 확보하지 않았습니다. 지금 ADS-B 평균을 지난달 값으로 쓰지 않습니다.",
-      "period": "월보 4건입니다. 연속 이력은 아직 없습니다.",
-      "nextAction": "월보의 지표와 기간을 확인하고 장기 자료를 구할 수 있는지 살펴봅니다.",
+      "summary": "성찬님 코드에 2023년 4·5·6·8월 관측 4행이 들어 있습니다. 연속 이력이 짧아 공통 모델에는 사용하지 않습니다.",
+      "period": "수신본 기준 2023-04·05·06·08. 원문 대조 전입니다.",
+      "nextAction": "보고서의 관측월과 항목별 숫자를 원문과 대조합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
-        "https://www.cityofcushing.com/cushing-municipal-airport"
+        "https://www.cityofcushing.com/cushing-municipal-airport",
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/experiments/cai/seongchan/README.md"
       ],
       "work": {
         "owner": "seongchan",
-        "assignment": "proposed",
-        "status": "planned",
-        "collection": "표본 확보",
-        "processing": "pending",
-        "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
+        "assignment": "confirmed",
+        "status": "review",
+        "collection": "공항 활동 4개월 수신 · 원문 대조 전",
+        "processing": "review",
+        "blocker": "수신 데이터 원문 대조·시점 검토 전. 기존 일별 학습 입력으로 승인되지 않음."
       }
     },
     {
@@ -847,19 +848,20 @@
       "name": "숙박세",
       "role": "도시 숙박세로 외부 인력·숙박을 짐작하는 후보",
       "category": "sample",
-      "summary": "숙박세 표본만 있고 장기 자료는 아직 확보하지 않았습니다. 호텔 견적(CHHMI)과는 별개입니다.",
-      "period": "원문에서 요구하는 60개월 이력은 아직 없습니다.",
-      "nextAction": "세금월·수령일·게시일을 확인하고 장기 기록이 있는지 살펴봅니다.",
+      "summary": "성찬님 코드에 숙박세 36개월이 들어 있습니다. 별도 월별 탐색용 제출이며 기존 일별 모델의 학습 기간에는 맞지 않습니다.",
+      "period": "수신본 기준 2022-07–2025-06. 원문·공개시점 대조 전입니다.",
+      "nextAction": "공식 PDF 표·개정 이력을 대조하고 기존 일별 입력과 구분합니다.",
       "sourceUrls": [
-        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/experiments/cai/seongchan/README.md"
       ],
       "work": {
         "owner": "seongchan",
-        "assignment": "proposed",
-        "status": "planned",
-        "collection": "표본 확보",
-        "processing": "pending",
-        "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
+        "assignment": "confirmed",
+        "status": "review",
+        "collection": "숙박세 36개월 수신 · 원문 대조 전",
+        "processing": "review",
+        "blocker": "수신 데이터 원문 대조·시점 검토 전. 기존 일별 학습 입력으로 승인되지 않음."
       }
     },
     {
@@ -947,20 +949,21 @@
       "name": "도시 sales/use tax",
       "role": "도시 판매·사용세로 소비·반입을 짐작하는 후보",
       "category": "sample",
-      "summary": "월별 세금 분배 표본만 있고 장기 자료는 아직 확보하지 않았습니다. 숙박세와 서로 대체하지 않습니다.",
-      "period": "기록된 표본은 4개월입니다.",
-      "nextAction": "분배월과 세목을 구분하고 과거 자료를 보충할 수 있는지 확인합니다.",
+      "summary": "성찬님 코드에 사용세 24개월과 판매세 일부 7행이 들어 있습니다. 판매세 충돌값은 제출자 보고에 따라 기본 모델에서 제외됐습니다.",
+      "period": "수신본 기준 사용세 2023-07–2025-06, 판매세 2023-01–07. 원문 대조 전입니다.",
+      "nextAction": "월별 원표와 충돌한 판매세 행을 대조합니다. 원문 PDF·표 위치·해시가 필요합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
-        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md",
+        "https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/experiments/cai/seongchan/README.md"
       ],
       "work": {
         "owner": "seongchan",
-        "assignment": "proposed",
-        "status": "planned",
-        "collection": "표본 확보",
-        "processing": "pending",
-        "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
+        "assignment": "confirmed",
+        "status": "review",
+        "collection": "사용세 24개월·판매세 7행 수신 · 원문 대조 전",
+        "processing": "review",
+        "blocker": "수신 데이터 원문 대조·시점 검토 전. 기존 일별 학습 입력으로 승인되지 않음."
       }
     },
     {

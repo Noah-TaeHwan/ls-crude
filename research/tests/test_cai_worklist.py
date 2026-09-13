@@ -19,7 +19,8 @@ def test_worklist_matches_source_and_rejects_false_assignment():
     for candidate in data["candidates"]:
         assert candidate["id"] in text and candidate["name"] in text
     proposed = [c for c in data["candidates"] if c["work"]["owner"] == "seongchan"]
-    assert len(proposed) == 3 and all(c["work"]["assignment"] == "proposed" for c in proposed)
+    assert len(proposed) == 3 and all(c["work"]["assignment"] == "confirmed" and c["work"]["status"] == "review" for c in proposed)
+    proposed[0]["work"]["assignment"] = "proposed"
     proposed[0]["work"]["status"] = "in_progress"
     with pytest.raises(ValueError):
         worklist.render(data)

@@ -179,10 +179,11 @@ describe("parseResearchWorkflow", () => {
     const parsed = parseResearchWorkflow(data);
     assert.ok(parsed);
     assert.deepEqual(parsed.candidates.filter((row) => row.work?.owner === "seongchan").map((row) => row.id), ["CAAI / 091-O", "091-A", "091-F / 091-STAX"]);
-    assert.ok(parsed.candidates.filter((row) => row.work?.owner === "seongchan").every((row) => row.work.assignment === "proposed" && row.work.status === "planned"));
+    assert.ok(parsed.candidates.filter((row) => row.work?.owner === "seongchan").every((row) => row.work.assignment === "confirmed" && row.work.status === "review"));
     assert.equal(parsed.candidates.filter((row) => row.work?.status === "done").length, 2);
     assert.equal(parsed.candidates.filter((row) => row.work?.status === "in_progress").length, 0);
     const candidate = data.candidates.find((row) => row.work.owner === "seongchan");
+    candidate.work.assignment = "proposed";
     candidate.work.status = "in_progress";
     assert.equal(parseResearchWorkflow(data), null);
     candidate.work.assignment = "confirmed";
@@ -240,12 +241,13 @@ describe("ResearchWorkflow 렌더", () => {
     const data = parseResearchWorkflow(JSON.parse(readFileSync(jsonPath, "utf8")));
     const experiments = JSON.parse(readFileSync(join(appDir, "data", "cai-experiment-summary.json"), "utf8"));
     const groups = preparationGroups(data.candidates);
-    assert.deepEqual([groups.ready.length, groups.processing.length, groups.pending.length, groups.excluded.length, groups.proposals.length], [2, 0, 22, 9, 3]);
+    assert.deepEqual([groups.ready.length, groups.processing.length, groups.pending.length, groups.excluded.length, groups.proposals.length], [2, 0, 22, 9, 0]);
     let html = render({ workflow: data, experiments });
     assert.match(html, /준비된 입력 2개 보기/);
-    assert.match(html, /후속 제안 3개 보기/);
+    assert.match(html, /검토 중인 제출 3개 보기/);
+    assert.doesNotMatch(html, /후속 제안 0개 보기/);
     assert.equal((html.match(/data-ready-input=/g) ?? []).length, 2);
-    assert.equal((html.match(/data-proposed-input=/g) ?? []).length, 3);
+    assert.equal((html.match(/data-review-input=/g) ?? []).length, 3);
     assert.match(html, /data-training-input-count="true">2/);
     assert.match(html, /공식 지수 준비 중/);
     const finalStage = html.slice(html.indexOf('id="workflow-stage-6"'));
@@ -272,7 +274,8 @@ describe("ResearchWorkflow 렌더", () => {
       assert.ok(html.includes(`href="#workflow-stage-${step}"`));
       assert.ok(html.includes(WORKFLOW_STEP_NAMES[step - 1]));
     }
-    assert.match(html, /성찬 · 제안/);
+    assert.match(html, /성찬님 제출 자료/);
+    assert.match(html, /seongchan\/README/);
     assert.match(html, /자료 분류와 실제 작업 상태는 별개/);
     assert.match(html, /TEAM_START_HERE\.md/);
   });
