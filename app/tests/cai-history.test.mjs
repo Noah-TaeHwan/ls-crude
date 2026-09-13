@@ -131,7 +131,7 @@ test("serves the read-only history route with every supported sample", async () 
     const text = body.split("<script")[0].replace(/<[^>]*>/g, "");
     // /history 직접 진입도 통합 연구 기록을 그린다.
     assert.match(text, /쿠싱의 활동에서 유가의 단서 찾기/);
-    assert.match(text, /이전 조사와 상세 기록/);
+    assert.match(text, /연구·검증 기록 더 보기/);
     assert.match(body, /id="research-sample"/);
     assert.match(body, /id="ledger"/);
     assert.match(body, /data-decision-timeline/);
@@ -251,7 +251,7 @@ test("research와 history 모두 통합 연구 기록을 그리고 history 직�
       assert.equal(response.headers.get("location"), null, `${route} stays put`);
       const body = await response.text();
       assert.match(body, /쿠싱의 활동에서 유가의 단서 찾기/, `${route} workflow title`);
-      assert.match(body, /이전 조사와 상세 기록/, `${route} archive section`);
+      assert.match(body, /연구·검증 기록 더 보기/, `${route} archive section`);
       assert.match(body, /id="current"/);
       assert.match(body, /id="past"/);
       assert.match(body, /id="research-sample"/);

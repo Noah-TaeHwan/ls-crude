@@ -26,13 +26,20 @@ for (const [path, detail, other] of [["/research", "#workflow-candidates", "/"],
   await page.waitForFunction((selector) => document.querySelector(selector)?.open === false && scrollY === 0, detail);
 }
 
-await page.goto(`${base}/research#workflow-candidates`);
-await page.waitForFunction(() => document.getElementById("workflow-candidates")?.open);
+await page.goto(`${base}/research`);
 console.log(await page.snapshot());
-await page.click("loc=css:#workflow-candidates > summary");
-await page.focus('loc=css:a[href="#workflow-candidates"]');
-await page.press('loc=css:a[href="#workflow-candidates"]', "Enter");
-assert.equal(await page.evaluate(() => document.getElementById("workflow-candidates").open), true);
+await page.click("loc=css:#workflow-selection > summary");
+assert.deepEqual(await page.evaluate(() => ({ selection: document.getElementById("workflow-selection").open, collection: document.getElementById("workflow-candidates").open })), { selection: true, collection: false });
+await page.click("loc=css:#workflow-selection > summary");
+assert.equal(await page.evaluate(() => document.getElementById("workflow-selection").open), false);
+
+await page.goto(`${base}/research#past`);
+await page.waitForFunction(() => document.getElementById("past")?.open);
+console.log(await page.snapshot());
+await page.click("loc=css:#past > summary");
+await page.focus('loc=css:a[href="#past"]');
+await page.press('loc=css:a[href="#past"]', "Enter");
+assert.equal(await page.evaluate(() => document.getElementById("past").open), true);
 
 await page.goto(`${base}/history?candidate=001#ledger`);
 await page.waitForFunction(() => document.getElementById("ledger")?.open);
@@ -42,5 +49,5 @@ await page.press('loc=css:a[href="/history#research-sample"]', "Enter");
 await page.waitForFunction(() => location.hash === "#research-sample" && !location.search);
 await page.evaluate(() => history.back());
 await page.waitForFunction(() => location.search.includes("candidate=001") && document.getElementById("past")?.open && document.getElementById("ledger")?.open);
-console.log("PASS: 뒤로가기 복원, 앞으로가기, 메뉴 초기화, hash 재열기, query 이동 후 복원");
+console.log("PASS: 단계별 독립 접기/펼치기, 뒤로가기 복원, 앞으로가기, 메뉴 초기화, hash 재열기, query 이동 후 복원");
 await task.finish({ keep: [] });

@@ -288,7 +288,7 @@ test("serves /research with the CAI current view and preserved legacy anchors", 
     assert.match(body, /data-cai-research/);
     assert.match(body, /data-research-workflow/);
     assert.match(text, /쿠싱의 활동에서 유가의 단서 찾기/);
-    assert.match(text, /이전 조사와 상세 기록/);
+    assert.match(text, /연구·검증 기록 더 보기/);
     assert.match(text, /현재 CAI 연구·검증/);
     assert.equal((body.match(/data-idea="/g) ?? []).length, 106, "renders 106 idea folders");
     assert.equal((body.match(/data-candidate="/g) ?? []).length, 33, "renders 33 candidates once");

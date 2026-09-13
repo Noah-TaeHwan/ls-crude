@@ -8,6 +8,7 @@ import { createElement } from "react";
 import { MemoryRouter } from "react-router";
 import { renderToStaticMarkup } from "react-dom/server";
 import ts from "typescript";
+import { emptyCaiView } from "../app/lib/cai-view.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const appDir = resolve(here, "..", "app");
@@ -60,7 +61,7 @@ function importWorkflow() {
   return import(pathToFileURL(outPath).href);
 }
 
-const { ResearchWorkflow, parseResearchWorkflow, countByCategory, CATEGORY_ORDER, WORKFLOW_STEP_NAMES } = await importWorkflow();
+const { ResearchWorkflow, parseResearchWorkflow, countByCategory, CATEGORY_ORDER, WORKFLOW_STEP_NAMES, preparationGroups } = await importWorkflow();
 
 /**
  * 테스트용 아이디어 한 행.
@@ -223,11 +224,48 @@ describe("parseResearchWorkflow", () => {
 });
 
 describe("ResearchWorkflow 렌더", () => {
+  it("결과물 연결은 실제 지수 0을 보존하고 DEMO나 미확인을 완성 값으로 표시하지 않는다", () => {
+    const index = emptyCaiView().index;
+    index.score = 0; index.data_origin = "OBSERVED"; index.as_of = "2023-12-21";
+    const observed = render({ workflow: workflow(), experiments: null, index });
+    assert.match(observed, /지수 기록 연결/);
+    assert.match(observed, /0\.0 \/ 100/);
+    index.data_origin = "DEMO"; index.score = 73;
+    const demo = render({ workflow: workflow(), experiments: null, index });
+    assert.match(demo, /공식 지수 준비 중/);
+    assert.doesNotMatch(demo, /73\.0 \/ 100/);
+  });
+
+  it("준비된 입력·제안·실제 실험 입력을 분리하고 마지막은 대시보드로 연결한다", () => {
+    const data = parseResearchWorkflow(JSON.parse(readFileSync(jsonPath, "utf8")));
+    const experiments = JSON.parse(readFileSync(join(appDir, "data", "cai-experiment-summary.json"), "utf8"));
+    const groups = preparationGroups(data.candidates);
+    assert.deepEqual([groups.ready.length, groups.processing.length, groups.pending.length, groups.excluded.length, groups.proposals.length], [2, 0, 22, 9, 4]);
+    let html = render({ workflow: data, experiments });
+    assert.match(html, /준비된 입력 2개 보기/);
+    assert.match(html, /후속 제안 4개 보기/);
+    assert.equal((html.match(/data-ready-input=/g) ?? []).length, 2);
+    assert.equal((html.match(/data-proposed-input=/g) ?? []).length, 4);
+    assert.match(html, /data-training-input-count="true">2/);
+    assert.match(html, /공식 지수 준비 중/);
+    const finalStage = html.slice(html.indexOf('id="workflow-stage-6"'));
+    assert.match(finalStage, /href="\/"[^>]*>대시보드에서 CAI 보기/);
+    assert.doesNotMatch(finalStage, /data-representative-model|data-experiment-results/);
+    data.candidates[4].work.processing = "ready";
+    html = render({ workflow: data, experiments });
+    assert.match(html, /준비된 입력 3개 보기/);
+    assert.match(html, /data-training-input-count="true">2/, "new ready data must not change recorded experiment composition");
+    html = render({ workflow: data, experiments: null });
+    assert.match(html, /준비된 입력 3개 보기/, "preparation does not depend on a model result being loaded");
+    assert.doesNotMatch(html, /data-training-input-count/);
+  });
+
   it("6개의 구분된 카드에 제목·현재 결과·다음 행동과 연결된 목차를 제공한다", () => {
     const data = parseResearchWorkflow(JSON.parse(readFileSync(jsonPath, "utf8")));
     const html = render({ workflow: data, experiments: summary() });
     assert.equal((html.match(/class="workflow-card"/g) ?? []).length, 6);
-    assert.equal((html.match(/현재 확인된 결과/g) ?? []).length, 6);
+    assert.equal((html.match(/현재 확인된 결과/g) ?? []).length, 5);
+    assert.match(html, /우리의 결과물/);
     for (let step = 1; step <= 6; step++) {
       assert.ok(html.includes(`aria-labelledby="workflow-heading-${step}"`));
       assert.ok(html.includes(`id="workflow-heading-${step}"`));
@@ -268,23 +306,23 @@ describe("ResearchWorkflow 렌더", () => {
     assert.doesNotMatch(html, /짧은 다음 행동/);
     assert.doesNotMatch(html, /다음 후보/);
     assert.equal((html.match(/id="workflow-candidates"/g) ?? []).length, 1, "one shared candidate table");
-    assert.match(html, /href="#workflow-candidates"/);
+    const stage2 = html.slice(html.indexOf('id="workflow-stage-2"'), html.indexOf('id="workflow-stage-3"'));
+    assert.match(stage2, /<details id="workflow-selection"/);
+    assert.match(stage2, /data-candidate-overview/);
+    assert.doesNotMatch(stage2, /href="#workflow-candidates"/);
+    assert.equal((stage2.match(/<li\b/g) ?? []).length, 33, "stage 2 lists its own candidates");
     assert.match(html, /xl:grid-cols-6/);
     assert.match(html, /전체 아이디어 보기/);
     assert.match(html, /쿠싱 후보 보기/);
     assert.match(html, /수집 상태 보기/);
-    assert.match(html, /실험 입력 보기/);
-    assert.match(html, /비교 방법 보기/);
-    assert.match(html, /실험 결과 자세히 보기/);
+    assert.match(html, /대표 입력 정리 기준 보기/);
+    assert.match(html, /조합·학습 결과 보기/);
+    assert.match(html, /대시보드에서 CAI 보기/);
     assert.doesNotMatch(html, /목록·근거 보기/);
   });
 
   it("두 파일럿과 미완료 공유를 구분한다", () => {
     const html = render({ workflow: workflow(), experiments: summary() });
-    assert.match(html, /data-workflow-pilot="pilot_traffic"/);
-    assert.match(html, /data-workflow-pilot="pilot_traffic_dmr"/);
-    assert.match(html, /교통 단독 파일럿/);
-    assert.match(html, /교통\+DMR 파일럿/);
     assert.match(html, /교통 단독과 교통\+유량 두 조합을/);
     assert.match(html, /2023년의 같은 245일을 기준으로 비교했습니다/);
     const stageFacts = [...html.matchAll(/<span class="workflow-fact">([^<]+)<\/span>/g)].map((match) => match[1]);
@@ -293,7 +331,8 @@ describe("ResearchWorkflow 렌더", () => {
     assert.match(html, /CAI를 추가해도 확률오차가 줄지 않았습니다/);
     assert.match(html, /성찬님의 독립 재현은 아직 확인되지 않았습니다/);
     assert.match(html, /공식 CAI와 미래 예측은 성분·산식·검증을 마친 뒤 연결합니다/);
-    assert.match(html, /data-experiment-results="full"/);
+    assert.doesNotMatch(html, /data-experiment-results="full"/);
+    assert.match(html, /data-workflow-output/);
     assert.doesNotMatch(html, /공식 현재 CAI를 게시했습니다/);
   });
 
@@ -301,7 +340,7 @@ describe("ResearchWorkflow 렌더", () => {
     const html = render({ workflow: workflow(), experiments: summary() });
     assert.doesNotMatch(html, /<details[^>]*\sopen/);
     assert.match(html, /id="workflow-candidates"/);
-    assert.match(html, /id="workflow-experiments"/);
+    assert.match(html, /id="workflow-training"/);
     assert.doesNotMatch(html, /data-workflow-current|현재 위치/);
     assert.match(html, /id="workflow-stage-3"/);
   });
@@ -343,7 +382,7 @@ describe("정본 research-workflow.json", () => {
     const block = experiments.sample_expansion;
     const byId = Object.fromEntries(block.models.map((row) => [row.id, row]));
     assert.match(html, /data-representative-comparison/);
-    assert.match(html, new RegExp(`학습 ${block.after_train_rows}행과 평가 ${block.eval.n}행`));
+    assert.match(html, new RegExp(`2개 입력을 사용해 ${block.models.length}개 모델`));
     for (const id of ["baseline", "market", "market_cai_equal", "market_cai_learned"]) {
       assert.ok(html.includes(`data-representative-model="${id}"`));
       assert.ok(html.includes(byId[id].after.log_loss.toFixed(6)));
@@ -397,7 +436,7 @@ describe("정본 research-workflow.json", () => {
   it("단계 제목·입력 설명·재현 상태를 결과 중심으로 표시한다", () => {
     const html = render({ workflow: workflow(), experiments: summary() });
     assert.match(html, /id="workflow-heading-4" class="workflow-card-title"/);
-    assert.match(html, /교통량과 하수처리장 신고 유량을 실험에 쓸 수 있도록 정리했습니다/);
+    assert.match(html, /입력 준비 상태가 아직 등록되지 않았습니다/);
     assert.match(html, /2019년분/);
     assert.match(html, /접수일/);
     assert.match(html, /실제 공개일/);

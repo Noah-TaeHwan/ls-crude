@@ -465,6 +465,16 @@
 .workflow-next > span { color: var(--primary); flex-shrink: 0; font-weight: 500; }
 .workflow-focus { margin-top: 24px; padding: 14px 18px; border-left: 3px solid var(--primary); background: var(--card); font-size: 14px; line-height: 1.8; }
 .workflow-focus strong { color: var(--primary); font-weight: 500; }
+.workflow-metrics, .workflow-funnel { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+.workflow-metrics > div, .workflow-funnel > div { padding: 14px 12px; border: 1px solid var(--border); border-radius: 8px; }
+.workflow-metrics dt, .workflow-funnel dt { font-size: 12px; color: var(--muted-foreground); }
+.workflow-metrics dd, .workflow-funnel dd { margin-top: 8px; font: 26px/1.2 var(--font-mono); color: var(--primary); }
+.workflow-metrics dd span, .workflow-funnel dd span { margin-left: 5px; font: 12px/1 var(--font-sans); color: var(--muted-foreground); }
+.workflow-funnel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.workflow-takeaway { display: flex; gap: 12px; margin-top: 20px; font-size: 14px; line-height: 1.8; }
+.workflow-takeaway > span { flex-shrink: 0; color: var(--primary); }
+.workflow-output { margin-block: 24px 16px; padding: 24px; border-left: 3px solid var(--primary); background: var(--secondary); }
+.workflow-output h3 { margin-top: 8px; font-size: 24px; font-weight: 600; }
 [data-research-workflow] nav .workflow-step-link { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); font-size: 13px; }
 .workflow-step-link > span { font: 16px/1 var(--font-mono); color: var(--primary); }
 [data-research-workflow] nav .workflow-step-link:hover { border-color: var(--primary); transform: none; }
@@ -509,4 +519,11 @@
   .workflow-card-title { font-size: 20px; }
   .workflow-fact { grid-column: 2; justify-self: start; }
   .workflow-card-body { padding: 20px 16px 8px; }
+  .workflow-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .workflow-funnel { gap: 8px; }
+  .workflow-funnel > div { padding: 12px 8px; }
+  .workflow-output { padding: 20px 16px; }
+  .workflow-output h3 { font-size: 21px; }
+  .workflow-takeaway { display: block; }
+  .workflow-takeaway > span { display: block; margin-bottom: 4px; }
 }

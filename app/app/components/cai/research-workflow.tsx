@@ -1,7 +1,8 @@
 import { useMemo, useState, type ReactNode } from "react";
+import { Link } from "react-router";
 
-import { ExperimentResults } from "~/components/cai/experiment-results";
 import { deltaLogLossVsMarket, type ExperimentSummary, type SampleExpansion } from "~/lib/experiment-summary";
+import type { CaiIndexView } from "~/lib/cai-view";
 import bundledWorkflowJson from "../../data/research-workflow.json";
 
 /** 후보 수집 가능성 분류. 정본 JSON category와 같다. */
@@ -13,7 +14,7 @@ export interface CandidateWork {
   assignment: "unassigned" | "proposed" | "confirmed";
   status: "planned" | "in_progress" | "review" | "done" | "blocked";
   collection: string;
-  processing: string;
+  processing: "ready" | "in_progress" | "pending" | "review" | "excluded";
   blocker: string;
 }
 
@@ -21,6 +22,8 @@ export interface CandidateWork {
 export const WORK_STATUS_LABELS = { planned: "예정", in_progress: "진행 중", review: "검토 요청", done: "완료", blocked: "차단" };
 /** 담당자의 화면 이름. */
 const OWNER_LABELS = { taehwan: "태환", seongchan: "성찬" };
+/** 전처리 상태를 완료·진행·미확인과 역할 제외로 구분한다. */
+export const PROCESSING_LABELS = { ready: "입력 준비 확인", in_progress: "전처리 중", pending: "준비 미완료", review: "검토 대기", excluded: "활동 성분 제외" };
 
 /** 자료 폴더 한 건. 독립 가설 수가 아니다. */
 export interface ResearchWorkflowIdea {
@@ -81,7 +84,7 @@ export const WORKFLOW_STEPS = [
   { name: "수집 가능성 확인·수집", short: "자료 수집", purpose: "실제 수치와 필요한 기간이 있는지 확인하고 원자료를 확보합니다.", next: "확보한 자료는 전처리로 넘기고, 막힌 후보는 이유와 재개 조건을 남깁니다." },
   { name: "전처리·입력 준비", short: "입력 준비", purpose: "날짜·단위·중복·결측을 정리해 프로그램이 읽는 입력을 만듭니다.", next: "입력 검사를 통과한 자료로 공통 설정의 실험을 실행합니다." },
   { name: "지수 구성·학습·평가", short: "학습·평가", purpose: "자료를 조합한 지수를 만들고 시장정보 기준선과 같은 조건으로 비교합니다.", next: "담당자별 결과 묶음을 제출하고 비교 가능한 조건인지 검토합니다." },
-  { name: "결과 확정·대시보드 연결", short: "결과 연결", purpose: "검토한 결과와 한계를 확정하고 같은 버전을 화면에 연결합니다.", next: "검토된 결과만 반영합니다. 현재 지수·미래 확률은 별도 준비 조건을 확인합니다." },
+  { name: "CAI 결과물", short: "CAI 결과물", purpose: "쿠싱 액티비티 인덱스를 대시보드에서 확인합니다.", next: "" },
 ] as const;
 
 /** 목차와 단계 제목이 공유하는 이름. */
@@ -136,9 +139,10 @@ function parseCandidate(value: unknown): ResearchWorkflowCandidate | null {
     if (!isRecord(work) || (work.owner !== null && work.owner !== "taehwan" && work.owner !== "seongchan")) return null;
     if (typeof work.assignment !== "string" || !["unassigned", "proposed", "confirmed"].includes(work.assignment)) return null;
     if (typeof work.status !== "string" || !Object.hasOwn(WORK_STATUS_LABELS, work.status)) return null;
-    if (typeof work.collection !== "string" || typeof work.processing !== "string" || typeof work.blocker !== "string") return null;
+    if (typeof work.collection !== "string" || typeof work.processing !== "string" || !Object.hasOwn(PROCESSING_LABELS, work.processing) || typeof work.blocker !== "string") return null;
     if ((work.owner === null) !== (work.assignment === "unassigned")) return null;
     if (work.status === "in_progress" && work.assignment !== "confirmed") return null;
+    if (work.processing === "in_progress" && work.assignment !== "confirmed") return null;
   }
   return {
     id: value.id,
@@ -257,9 +261,9 @@ function StageBlock({
         <span className="workflow-fact">{status}</span>
       </header>
       <div className="workflow-card-body">
-        <p className="workflow-result-label">현재 확인된 결과</p>
+        <p className="workflow-result-label">{step === 6 ? "우리의 결과물" : "현재 확인된 결과"}</p>
         <p className="mt-2 max-w-3xl text-base leading-7">{result}</p>
-        <p className="workflow-next"><span>다음</span>{definition.next}</p>
+        {definition.next ? <p className="workflow-next"><span>다음</span>{definition.next}</p> : null}
         {evidence}
       </div>
     </article>
@@ -378,7 +382,7 @@ function CandidateTable({ candidates }: { candidates: readonly ResearchWorkflowC
                 </td>
                 <td className="py-2 pr-3"><p>{CATEGORY_LABELS[candidate.category]}</p><details className="mt-2 max-w-xs"><summary className="min-h-11 text-xs">측정·기간 보기<span className="sr-only"> — {candidate.name}</span></summary><p className="mt-2 text-xs leading-6 text-muted-foreground">{candidate.role}</p><p className="mt-2 text-xs leading-6 text-muted-foreground">{candidate.summary}</p><p className="mt-2 text-xs leading-6">{candidate.period}</p></details></td>
                 <td className="py-2 pr-3 whitespace-nowrap"><p>{candidate.work?.owner ? OWNER_LABELS[candidate.work.owner] : "담당 미정"}{candidate.work?.assignment === "proposed" ? " · 제안" : ""}</p><p className="mt-2 text-xs text-muted-foreground">{candidate.work ? WORK_STATUS_LABELS[candidate.work.status] : "작업 상태 미확인"}</p></td>
-                <td className="py-2 pr-3"><p>수집: {candidate.work?.collection ?? "미확인"}</p><p className="mt-2 text-xs text-muted-foreground">전처리: {candidate.work?.processing ?? "미확인"}</p></td>
+                <td className="py-2 pr-3"><p>수집: {candidate.work?.collection ?? "미확인"}</p><p className="mt-2 text-xs text-muted-foreground">전처리: {candidate.work ? PROCESSING_LABELS[candidate.work.processing] : "미확인"}</p></td>
                 <td className="max-w-xs py-2"><p>{candidate.nextAction}</p>{candidate.work?.blocker ? <p className="mt-2 text-xs leading-6 text-muted-foreground">조건: {candidate.work.blocker}</p> : null}</td>
               </tr>
             ))}
@@ -387,6 +391,49 @@ function CandidateTable({ candidates }: { candidates: readonly ResearchWorkflowC
       </div>
     </div>
   );
+}
+
+/**
+ * 준비된 활동 입력과 후속 제안을 원장에서 분리한다. 모델 실행 상태로 추정하지 않는다.
+ * @param candidates 원본 후보 목록.
+ * @returns 준비·진행·미완료·제외·담당 제안 목록.
+ */
+export function preparationGroups(candidates: readonly ResearchWorkflowCandidate[]) {
+  const excluded = candidates.filter((row) => row.category === "context" || row.category === "hold" || row.work?.processing === "excluded");
+  const active = candidates.filter((row) => !excluded.includes(row));
+  const ready = active.filter((row) => row.work?.processing === "ready");
+  const processing = active.filter((row) => row.work?.processing === "in_progress");
+  return { ready, processing, excluded, pending: active.filter((row) => !ready.includes(row) && !processing.includes(row)), proposals: active.filter((row) => row.work?.assignment === "proposed" && row.work.processing !== "ready") };
+}
+
+/**
+ * 4단계의 준비 수와 실제 후보를 같은 카드 안에서 펼쳐 보여준다.
+ * @param props 후보 정본.
+ * @returns 준비 현황·준비된 입력·후속 제안.
+ */
+function PreparationOverview({ candidates }: { candidates: readonly ResearchWorkflowCandidate[] }) {
+  const groups = preparationGroups(candidates);
+  if (!candidates.some((row) => row.work)) return <p className="mt-4 text-sm text-muted-foreground">입력 준비 상태가 아직 등록되지 않았습니다.</p>;
+  return <div data-preparation-overview>
+    <dl className="workflow-metrics">
+      {[["준비 확인", groups.ready.length], ["전처리 중", groups.processing.length], ["미완료·미확인", groups.pending.length], ["활동 성분 제외", groups.excluded.length]].map(([label, count]) => <div key={label}><dt>{label}</dt><dd>{count}<span>개</span></dd></div>)}
+    </dl>
+    <p className="mt-3 text-xs leading-6 text-muted-foreground">{candidates.length}개 목록의 현재 기록 기준입니다. 준비 확인은 회고 실험용 입력 기준이며 최종 CAI 성분 선정과는 다릅니다.</p>
+    <details id="workflow-ready-inputs" className="mt-4 border-y border-border py-2">
+      <summary className="min-h-11 cursor-pointer py-3 text-sm">준비된 입력 {groups.ready.length}개 보기</summary>
+      <ul>{groups.ready.map((row) => <li key={row.id} data-ready-input={row.id} className="border-t border-border py-4">
+        <p className="font-medium"><span className="font-mono text-primary">{candidates.indexOf(row) + 1}.</span> {row.name}</p>
+        <p className="mt-2 text-sm text-muted-foreground">수집: {row.work?.collection} · 전처리: 입력 준비 확인</p>
+        <p className="mt-2 text-sm leading-7">{row.period}</p><p className="mt-2 text-xs leading-6 text-muted-foreground">{row.summary}</p>
+      </li>)}</ul>
+      {groups.ready.length === 0 ? <p className="py-3 text-sm text-muted-foreground">아직 준비가 확인된 입력이 없습니다.</p> : null}
+    </details>
+    <details id="workflow-next-inputs" className="mt-3 border-y border-border py-2">
+      <summary className="min-h-11 cursor-pointer py-3 text-sm">후속 제안 {groups.proposals.length}개 보기</summary>
+      <p className="pb-3 text-xs text-muted-foreground">담당 수락·입력 준비 전의 제안입니다. 아래 후보를 완료나 확정 선정으로 세지 않습니다.</p>
+      <ul>{groups.proposals.map((row) => <li key={row.id} data-proposed-input={row.id} className="border-t border-border py-3"><p className="text-sm"><span className="font-mono text-primary">{candidates.indexOf(row) + 1}.</span> {row.name} · {row.work?.owner ? OWNER_LABELS[row.work.owner] : "미정"} 제안</p><p className="mt-2 text-xs leading-6 text-muted-foreground">{row.work?.collection} · {row.nextAction}</p></li>)}</ul>
+    </details>
+  </div>;
 }
 
 /**
@@ -432,14 +479,14 @@ function comparisonCopy(summary: ExperimentSummary): { result: string } {
 }
 
 /**
- * 기존 요약의 보강 실험에서 시장정보에 CAI를 추가한 비교만 앞에 보여준다.
+ * 기존 보강 실험의 기준선·CAI·시장정보 결합 모델을 같은 표로 보여준다.
  * @param props 이미 공개된 표본 보강 요약.
  * @returns 대표 결과표. 모든 수치는 기존 모델 지표에서 계산한다.
  */
 function RepresentativeComparison({ block }: { block: SampleExpansion }) {
   const market = block.models.find((model) => model.id === "market");
   if (!market || !Number.isFinite(market.after.log_loss)) return null;
-  const ids = ["baseline", "market", "market_cai_equal", "market_cai_learned"];
+  const ids = ["baseline", "market", "cai_equal", "cai_learned", "market_cai_equal", "market_cai_learned"];
   const rows = ids.flatMap((id) => block.models.filter((model) => model.id === id));
   return <div data-representative-comparison className="mt-4">
     <p className="text-sm leading-7 text-muted-foreground">{block.eval.start}–{block.eval.end}의 같은 평가 표본입니다. 가장 최근 완료한 입력 보강을 대표로 설명하며, 좋은 성과를 골라낸 것이 아닙니다.</p>
@@ -459,7 +506,7 @@ function RepresentativeComparison({ block }: { block: SampleExpansion }) {
 }
 
 /**
- * 단계 6의 공유 문장. 재현 상태와 표본은 요약 값만 쓴다.
+ * 단계 5의 결과·재현 설명. 상태와 표본은 요약 값만 쓴다.
  * @param summary 실험 요약.
  * @param improved 파일럿 조합에서 시장 대비 개선이 있었는지.
  * @returns 상태·결과·다음 할 일.
@@ -467,7 +514,7 @@ function RepresentativeComparison({ block }: { block: SampleExpansion }) {
 function shareCopy(
   summary: ExperimentSummary,
   improved: boolean,
-): { result: string; detail: string } {
+): { result: string; detail: string; conclusion: string } {
   const reproduction = summary.review_status.independent_reproduction;
   const pending = reproduction === "pending";
   const evalN = summary.experiments[0]?.eval.n ?? summary.sample_expansion?.eval.n;
@@ -492,6 +539,7 @@ function shareCopy(
     : ` 독립 재현 상태는 ${reproduction}입니다.`;
   return {
     result: `${pilotBit}${reproBit}`,
+    conclusion: pilotBit,
     detail: `${evalBit}${expansionBit} 공식 CAI와 미래 예측은 성분·산식·검증을 마친 뒤 연결합니다.`,
   };
 }
@@ -504,9 +552,11 @@ function shareCopy(
 export function ResearchWorkflow({
   workflow = bundledResearchWorkflow,
   experiments: rawExperiments,
+  index,
 }: {
   workflow?: ResearchWorkflowData | null;
   experiments: ExperimentSummary | null;
+  index?: CaiIndexView;
 }) {
   const experiments = rawExperiments?.experiments.length ? rawExperiments : null;
   const ideaCount = workflow?.ideas.length ?? null;
@@ -516,6 +566,14 @@ export function ResearchWorkflow({
   const improved = experiments === null ? null : caiImprovedOnMarket(experiments);
   const share = experiments === null || improved === null ? null : shareCopy(experiments, improved);
   const firstEval = experiments?.experiments[0]?.eval;
+  const preparation = workflow ? preparationGroups(workflow.candidates) : null;
+  const preparationKnown = workflow?.candidates.some((row) => row.work) ?? false;
+  const representative = experiments?.sample_expansion
+    ? experiments.experiments.find((run) => run.run_id === experiments.sample_expansion?.before_run)
+    : experiments?.experiments[0];
+  const usedComponents = representative?.components;
+  const modelCount = experiments?.sample_expansion?.models?.length ?? representative?.models.length;
+  const indexAvailable = index?.data_origin === "OBSERVED" && index.score !== null && Number.isFinite(index.score);
   const position =
     workflow === null
       ? "자료 목록을 불러오지 못했습니다. 잠시 후 다시 확인해 주세요."
@@ -554,7 +612,7 @@ export function ResearchWorkflow({
         </nav>
         <div className="mt-5 flex flex-wrap gap-5 text-sm">
           <a className="source-link" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/cai/TEAM_START_HERE.md" target="_blank" rel="noreferrer">공동 작업 시작 안내 ↗</a>
-          <a className="source-link" href="#past">이전 조사와 상세 기록 보기</a>
+          <a className="source-link" href="#past">연구·검증 기록 더 보기</a>
           {import.meta.env?.DEV ? <a className="source-link" href="#local-status">개발 작업 현황</a> : null}
         </div>
       </header>
@@ -607,22 +665,23 @@ export function ResearchWorkflow({
               후보 표를 표시할 자료가 없습니다.
             </p>
           ) : (
-            <p className="mt-4 text-sm">
-              <a className="source-link" href="#workflow-candidates">
-                쿠싱 후보 보기
-              </a>
-            </p>
+            <details id="workflow-selection" className="mt-4 border-y border-border py-2">
+              <summary className="min-h-11 cursor-pointer py-3 text-sm">쿠싱 후보 보기</summary>
+              <ol data-candidate-overview className="grid gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
+                {workflow.candidates.map((candidate, index) => <li key={candidate.id} className="border-t border-border py-3 text-sm"><p><span className="font-mono text-primary">{index + 1}.</span> {candidate.name}</p><p className="mt-1 text-xs text-muted-foreground">{candidate.id} · {CATEGORY_LABELS[candidate.category]}</p></li>)}
+              </ol>
+            </details>
           )
         }
       />
 
       <StageBlock
         step={3}
-        status={counts ? `회고 실험 사용 ${counts.used}개` : "자료 미확인"}
+        status={counts ? "수집 상태 정리" : "자료 미확인"}
         result={
           counts === null
             ? "수집 상태를 불러오지 못했습니다."
-            : `실험에 사용한 자료는 ${counts.used}개입니다. 다른 후보는 자료와 과거 이력을 얼마나 확보했는지에 따라 나눴습니다.`
+            : `${candidateCount}개 목록에서 회고 입력 ${counts.used}개와 표본만 확보한 ${counts.sample}개를 구분했습니다. 후보별 수집 상태와 담당 제안을 확인합니다.`
         }
         evidence={
           workflow === null ? (
@@ -642,16 +701,15 @@ export function ResearchWorkflow({
 
       <StageBlock
         step={4}
-        status={counts ? `회고 입력 ${counts.used}개` : "자료 미확인"}
-        result={
-          experiments === null
-            ? "실험 입력 요약을 불러오지 못했습니다."
-            : "교통량과 하수처리장 신고 유량을 실험에 쓸 수 있도록 정리했습니다. 날짜·단위·결측치를 확인한 입력입니다."
-        }
+        status={preparationKnown ? `준비 확인 ${preparation?.ready.length}개` : "준비 미확인"}
+        result={preparationKnown ? `${candidateCount}개 목록 중 ${preparation?.ready.length}개의 회고 입력 준비가 확인됐습니다. 준비된 자료와 후속 제안을 나눠 봅니다.` : "입력 준비 상태가 아직 등록되지 않았습니다."}
         evidence={
+          <>
+          {workflow ? <PreparationOverview candidates={workflow.candidates} /> : null}
           <details className="mt-4 border-y border-border py-2">
-            <summary className="min-h-11 cursor-pointer py-3 text-sm">실험 입력 보기</summary>
+            <summary className="min-h-11 cursor-pointer py-3 text-sm">대표 입력 정리 기준 보기</summary>
             <div className="space-y-2 pb-4 text-sm leading-7 text-muted-foreground">
+              {experiments === null ? <p>실험 입력 요약을 불러오지 못했습니다.</p> : null}
               <p>교통은 쿠싱 인근 도로의 전체 차량 수이며 원유 트럭만 센 값이 아닙니다. 유량은 South STP 한 시설의 월별 신고값이며 원유 펌핑량이나 도시 전체 용수 사용량이 아닙니다.</p>
               <p>최초 교통 단독 실험은 공유된 교통량 입력을 썼고, 그다음 2019년분 교통량을 추가해 다시 비교했습니다. 두 입력은 별도로 보관합니다.</p>
               <p>
@@ -670,16 +728,14 @@ export function ResearchWorkflow({
               )}
             </div>
           </details>
+          </>
         }
       />
 
       <StageBlock
         step={5}
         status={experiments ? "대표 실험 확인" : "결과 미확인"}
-        result={
-          comparison?.result ??
-          "모델 비교 결과를 불러오지 못했습니다."
-        }
+        result={experiments?.sample_expansion && usedComponents ? `${usedComponents.length}개 입력을 사용해 ${modelCount}개 모델을 같은 조건으로 비교했습니다.` : comparison?.result ?? "모델 비교 결과를 불러오지 못했습니다."}
         evidence={
           experiments === null ? (
             <p data-workflow-missing="experiments" className="mt-4 text-sm text-muted-foreground">
@@ -687,28 +743,34 @@ export function ResearchWorkflow({
             </p>
           ) : (
             <div>
-            {experiments.sample_expansion?.models?.length ? <RepresentativeComparison block={experiments.sample_expansion} /> : null}
-            <details className="mt-4 border-y border-border py-2">
-              <summary className="min-h-11 cursor-pointer py-3 text-sm">비교 방법 보기</summary>
+            <dl data-training-funnel className="workflow-funnel">
+              <div><dt>자료 탐색</dt><dd>{ideaCount ?? "—"}<span>개</span></dd></div>
+              <div><dt>쿠싱 후보</dt><dd>{candidateCount ?? "—"}<span>개</span></dd></div>
+              <div><dt>이번 실험 입력</dt><dd data-training-input-count>{usedComponents?.length ?? "—"}<span>개</span></dd></div>
+            </dl>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">실험 입력: {usedComponents?.map((name) => name === "TMAS AVC040 일별" ? "도로 교통량" : name === "DMR South STP MGD(월별)" ? "시설 신고 유량" : name).join(" · ") ?? "미확인"}.</p>
+            {share ? <p className="workflow-takeaway"><span>비교 결과</span>{share.conclusion}</p> : null}
+            <details id="workflow-training" className="mt-4 border-y border-border py-2">
+              <summary className="min-h-11 cursor-pointer py-3 text-sm">조합·학습 결과 보기</summary>
+              <p className="py-3 text-sm leading-7 text-muted-foreground">입력 점수 정리 → 동일가중·학습가중 CAI → 로지스틱 회귀 → 시장정보 기준선과 비교합니다.</p>
+              {experiments.sample_expansion?.models?.length ? <RepresentativeComparison block={experiments.sample_expansion} /> : <p className="text-sm text-muted-foreground">대표 보강 결과는 미확인입니다. 전체 기록에서 기존 실험을 확인할 수 있습니다.</p>}
+              {share ? <p className="py-3 text-xs leading-6 text-muted-foreground">{share.detail} {share.result}</p> : null}
+              <details className="mt-3 border-t border-border py-2">
+                <summary className="min-h-11 cursor-pointer py-3 text-sm">계산식·학습 조건 더 보기</summary>
               <div className="space-y-2 pb-4 text-sm leading-7 text-muted-foreground">
                 <p>성분 점수는 학습 구간의 평균·표준편차로 표준화하고 ±3 범위를 0–100으로 옮긴 상대값입니다. 시설 가동률이나 유가 상승 확률이 아닙니다.</p>
                 <p>동일가중 CAI는 교통·유량 점수의 평균입니다. 학습가중 CAI는 학습 구간의 WTI 정답을 사용한 조합이며, 실제 활동을 더 정확히 측정한다는 보증이 아닙니다.</p>
                 <p>실제 고정 설정은 2020년까지 학습, 2021–2023년 평가 후보입니다. 자료와 정답이 함께 있는 공통 평가 표본은 2023년에 남았습니다. 시장정보는 RSI14·5일 수익률입니다.</p>
                 <p>학습가중치는 CAI 단독 목적함수로 구합니다. 시장정보와 공동으로 최적화한 가중치는 아닙니다. 5거래일 정답 창이 겹치므로 평가 행은 독립 시행 수가 아닙니다.</p>
               </div>
-              <ul className="list-disc space-y-1 pb-4 pl-5 text-sm leading-7 text-muted-foreground">
-                {experiments.experiments.map((experiment) => (
-                  <li key={experiment.id} data-workflow-pilot={experiment.id}>
-                    {experiment.label} · 표본 {experiment.eval.n} · {experiment.eval.start}–{experiment.eval.end} ·{" "}
-                    {experiment.models.map((model) => model.label).join(" · ")}
-                  </li>
-                ))}
-              </ul>
+              </details>
             </details>
             <details id="team-work" className="mt-3 border-y border-border py-2">
-              <summary className="min-h-11 cursor-pointer py-3 text-sm">공동 작업·재현 안내</summary>
+              <summary className="min-h-11 cursor-pointer py-3 text-sm">같은 프로그램으로 실행하기</summary>
               <div className="space-y-5 pb-5 text-sm leading-7">
-                <p>대표 보강 실험의 입력 생성부터 지표·가중치·예측 대조까지 안내를 연결했습니다. 같은 환경의 재현과 성찬님의 독립 재현은 구분합니다. 다음 분담은 성찬님과 공유할 작업안입니다.</p>
+                <p>태환과 성찬은 같은 Python 프로그램과 비교 기준을 사용합니다. 기존 교통·유량 입력으로 먼저 결과를 맞춘 뒤, 새 자료는 별도 설정으로 실행합니다.</p>
+                <ol className="grid gap-3 sm:grid-cols-3"><li>① 입력 검사 <code>check</code></li><li>② 공통 모델 실행 <code>run --no-cache</code></li><li>③ 결과 검증·제출 <code>package</code></li></ol>
+                <a className="source-link" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/cai/TEAM_START_HERE.md" target="_blank" rel="noreferrer">공통 프로그램·실행 명령 열기 ↗</a>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div><h3 className="font-semibold">태환 · 입력과 기준선</h3><p className="mt-2 text-muted-foreground">자료 수집·전처리·입력 버전을 정리하고 시장정보와 동일 가중치 기준 결과를 준비합니다. 결과를 화면에 연결합니다.</p></div>
                   <div><h3 className="font-semibold">성찬 · 재현과 모델 비교</h3><p className="mt-2 text-muted-foreground">같은 입력으로 결과를 재현합니다. 측정 의미와 시점을 검토하고 학습 가중치·모델 비교에서 바꿀 조건을 함께 정합니다.</p></div>
@@ -725,25 +787,15 @@ export function ResearchWorkflow({
 
       <StageBlock
         step={6}
-        status={experiments ? "회고 결과 연결" : "결과 미확인"}
-        result={
-          share?.result ??
-          "회고 실험 결과를 불러오지 못했습니다."
-        }
+        status={indexAvailable ? "지수 기록 연결" : "공식 지수 준비 중"}
+        result="모은 자료와 실험을 쿠싱의 활동을 보여주는 지수로 연결합니다."
         evidence={
-          <details id="workflow-experiments" className="mt-4 border-y border-border py-2">
-            <summary className="min-h-11 cursor-pointer py-3 text-sm">실험 결과 자세히 보기</summary>
-            <div className="pb-2">
-              {share ? <p className="mb-3 text-sm leading-7 text-muted-foreground">{share.detail}</p> : null}
-              <p className="mb-4 text-sm leading-7 text-muted-foreground">이 결론은 현재 교통·신고 유량 조합을 시장정보에 추가한 회고 비교에 한정됩니다. 모든 대안 데이터가 쓸모없다는 뜻은 아닙니다. 다음 판단은 측정 대표성·당시 공개시점·독립 재현부터입니다.</p>
-              <p className="mb-4 text-sm leading-7 text-muted-foreground">성분·산식·최신 입력과 검증이 준비되면 공식 CAI를 대시보드에 연결합니다. <a className="source-link" href="/">대시보드 보기</a></p>
-              {experiments === null ? (
-                <p className="text-sm text-muted-foreground">실험 표를 표시할 요약이 없습니다.</p>
-              ) : (
-                <ExperimentResults mode="full" summary={experiments} />
-              )}
-            </div>
-          </details>
+          <div data-workflow-output className="workflow-output">
+            <p className="workflow-eyebrow">OUR OUTPUT · CAI</p>
+            <h3>쿠싱 액티비티 인덱스</h3>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">{indexAvailable ? `기준일 ${index?.as_of ?? "미확인"} · ${index?.score?.toFixed(1)} / 100. 대시보드에서 지수와 기준일을 함께 확인합니다.` : experiments ? "공식 지수는 준비 중입니다. 현재 대시보드에는 실측 자료로 진행한 회고 실험 결과가 연결돼 있습니다." : "공식 지수는 준비 중입니다. 대시보드에서 현재 공개 상태를 확인합니다."}</p>
+            <Link className="action-link mt-5" to="/">대시보드에서 CAI 보기 →</Link>
+          </div>
         }
       />
     </section>

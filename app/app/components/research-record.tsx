@@ -7,6 +7,7 @@ import { CaiResearch } from "~/components/cai/cai-research";
 import { LocalStatus } from "~/components/cai/local-status";
 import { DecisionTimeline, HistoryLedger } from "~/components/cai/history-ledger";
 import { ResearchWorkflow } from "~/components/cai/research-workflow";
+import { ExperimentResults } from "~/components/cai/experiment-results";
 import { ResearchIntake } from "~/components/research-intake";
 import { ResearchSample } from "~/components/research-sample";
 import { legacyHashRedirect } from "~/lib/cai-legacy-routing";
@@ -154,21 +155,17 @@ export function ResearchRecord({
           </p>
         ) : null}
 
-        <ResearchWorkflow experiments={experiments} />
-
-        {import.meta.env.DEV ? <div className="border-b border-border py-4">
-          <LocalStatus mode="compact" />
-          <details className="mt-1">
-            <summary className="min-h-11 cursor-pointer py-3 text-sm">로컬 다운로드·실행 기록 보기</summary>
-            <LocalStatus mode="full" />
-          </details>
-        </div> : null}
+        <ResearchWorkflow experiments={experiments} index={cai.index} />
 
         <details id="past" {...(archiveOpen ? { open: true } : {})} className="py-6 sm:py-8">
-          <summary className="cursor-pointer py-4 text-lg font-medium">이전 조사와 상세 기록</summary>
+          <summary className="cursor-pointer py-4 text-lg font-medium">연구·검증 기록 더 보기</summary>
           <p id="past-title" className="mt-2 max-w-3xl text-sm leading-7 text-muted-foreground">
-            이전에 조사한 후보와 사례, 판단의 근거를 모았습니다. 필요한 기록을 검색해 볼 수 있습니다.
+            실험 원수치와 검증, 이전 후보·사례를 모았습니다. 필요한 기록만 펼쳐 보고 원문은 GitHub에서 확인합니다.
           </p>
+          <details id="workflow-experiments" className="mt-4 border-y border-border py-2">
+            <summary className="min-h-11 cursor-pointer py-3 text-sm">실험 결과 자세히 보기</summary>
+            {experiments ? <ExperimentResults mode="full" summary={experiments} /> : <p className="py-3 text-sm text-muted-foreground">실험 표를 표시할 요약이 없습니다.</p>}
+          </details>
           <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
             <Link className="source-link" to="/history#research-sample">
               이전 사례 보기 <ArrowRight size={14} aria-hidden="true" />
@@ -266,6 +263,10 @@ export function ResearchRecord({
             </div>
           </details>
         </details>
+        {import.meta.env.DEV ? <details className="border-t border-border py-4">
+          <summary className="min-h-11 cursor-pointer py-3 text-sm">개발 작업 현황 · 로컬</summary>
+          <LocalStatus mode="full" />
+        </details> : null}
       </main>
       <DeskFooter />
     </>
