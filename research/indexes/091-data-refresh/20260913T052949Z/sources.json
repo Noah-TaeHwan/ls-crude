@@ -1,0 +1,56 @@
+{
+  "run": "20260913T052949Z",
+  "dmr": {
+    "url": "https://echodata.epa.gov/echo/eff_rest_services.get_effluent_chart?p_id=OK0026701&start_date=01%2F01%2F2023&end_date=12%2F31%2F2023&output=JSON",
+    "retrieved_at": "2026-09-13T05:31:57.329033+00:00",
+    "response": "200\nhttps://echodata.epa.gov/echo/eff_rest_services.get_effluent_chart?p_id=OK0026701&start_date=01%2F01%2F2023&end_date=12%2F31%2F2023&output=JSON",
+    "exit_code": 0,
+    "error": "",
+    "bytes": 438839,
+    "sha256": "b09bdeaed9f48831fc05972bed811744b7038353f00028ac10dc4ca50107d4a1"
+  },
+  "cushing": {
+    "candidate": "ALT-20260908-07",
+    "run": "20260913T052949Z",
+    "files": [
+      {
+        "filename": "annual_report_2021.response.html",
+        "url": "https://www.cityofcushing.com/sites/g/files/vyhlif4306/f/uploads/annual_report_2021.pdf",
+        "retrieved_at": "2026-09-13T05:29:50.398699+00:00",
+        "http": "200",
+        "exit_code": 0,
+        "error": "",
+        "bytes": 82511,
+        "sha256": "ab4b8070f6de27cdc279f23f401706150239e8d6ace1f453ab59380e6c21364e",
+        "is_pdf": false,
+        "requested_filename": "annual_report_2021.pdf",
+        "validation": "FAILED_NOT_PDF",
+        "response_title": "Cushing, OK | Official Website"
+      },
+      {
+        "filename": "cm_report_september_2023.response.html",
+        "url": "https://www.cityofcushing.com/sites/g/files/vyhlif4306/f/agendas/cm_report_september_23_final_.pdf",
+        "retrieved_at": "2026-09-13T05:29:52.053528+00:00",
+        "http": "200",
+        "exit_code": 0,
+        "error": "",
+        "bytes": 82511,
+        "sha256": "ab4b8070f6de27cdc279f23f401706150239e8d6ace1f453ab59380e6c21364e",
+        "is_pdf": false,
+        "requested_filename": "cm_report_september_2023.pdf",
+        "validation": "FAILED_NOT_PDF",
+        "response_title": "Cushing, OK | Official Website"
+      }
+    ]
+  },
+  "spp": {
+    "url": "https://portal.spp.org/pages/rtbm-lmp-by-bus",
+    "exit_code": 28,
+    "http": 0,
+    "bytes": 0,
+    "connect_timeout_seconds": 12,
+    "error": "Failed to connect to portal.spp.org port 443 after 12005 ms: Timeout was reached",
+    "attempts": 1
+  },
+  "scope": "2023 DMR only; no new training, no OOS, no raw redistribution"
+}

@@ -240,12 +240,12 @@ describe("ResearchWorkflow 렌더", () => {
     const data = parseResearchWorkflow(JSON.parse(readFileSync(jsonPath, "utf8")));
     const experiments = JSON.parse(readFileSync(join(appDir, "data", "cai-experiment-summary.json"), "utf8"));
     const groups = preparationGroups(data.candidates);
-    assert.deepEqual([groups.ready.length, groups.processing.length, groups.pending.length, groups.excluded.length, groups.proposals.length], [2, 0, 22, 9, 4]);
+    assert.deepEqual([groups.ready.length, groups.processing.length, groups.pending.length, groups.excluded.length, groups.proposals.length], [2, 0, 22, 9, 3]);
     let html = render({ workflow: data, experiments });
     assert.match(html, /준비된 입력 2개 보기/);
-    assert.match(html, /후속 제안 4개 보기/);
+    assert.match(html, /후속 제안 3개 보기/);
     assert.equal((html.match(/data-ready-input=/g) ?? []).length, 2);
-    assert.equal((html.match(/data-proposed-input=/g) ?? []).length, 4);
+    assert.equal((html.match(/data-proposed-input=/g) ?? []).length, 3);
     assert.match(html, /data-training-input-count="true">2/);
     assert.match(html, /공식 지수 준비 중/);
     const finalStage = html.slice(html.indexOf('id="workflow-stage-6"'));
