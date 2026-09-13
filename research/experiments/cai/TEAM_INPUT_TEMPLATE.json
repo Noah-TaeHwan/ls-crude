@@ -1,0 +1,84 @@
+{
+  "candidate_id": "EXAMPLE-replace-before-running",
+  "mode": "RETROSPECTIVE_RESEARCH",
+  "preregistration_note": "EXAMPLE 미실행 템플릿. 실제 승인된 active 성분과 해시·기간·단위·가용시점 근거로 교체한 뒤 실험 전 검토한다. 성과를 보고 split을 변경하지 않는다.",
+  "price": {
+    "path": "research/data/EXAMPLE-yahoo-price.csv",
+    "sha256": "REPLACE_WITH_ACTUAL_SHA256",
+    "date_column": "date",
+    "value_column": "Close",
+    "unit": "USD per barrel",
+    "availability_basis": "EXAMPLE: 실제 Yahoo 가격 빈티지와 일별 종가 가용시점 가정으로 교체"
+  },
+  "components": [
+    {
+      "path": "research/data/processed/EXAMPLE-component.csv",
+      "sha256": "REPLACE_WITH_ACTUAL_SHA256",
+      "date_column": "date",
+      "value_column": "value",
+      "unit": "EXAMPLE: 원자료 단위로 교체",
+      "role": "active",
+      "available_at_column": "available_at",
+      "availability_basis": "EXAMPLE: 실제 공개·접수 날짜 열의 근거로 교체; 미확보이면 가정 지연일을 명시하고 회고 전용 유지",
+      "availability_lag_days": 0,
+      "validity_days": 0
+    }
+  ],
+  "is": {
+    "start": "2015-01-01",
+    "end": "2023-12-31"
+  },
+  "split": {
+    "train_end": "2020-12-31",
+    "val_start": "2021-01-01",
+    "val_end": "2023-12-31"
+  },
+  "market_features": [
+    "rsi14",
+    "ret_5d"
+  ],
+  "target": {
+    "kind": "next_n_trading_days_up",
+    "horizon_days": 5
+  },
+  "seeds": [
+    7
+  ],
+  "configs": [
+    {
+      "id": "baseline_up_rate",
+      "model": "baseline_up_rate",
+      "match_components": true
+    },
+    {
+      "id": "market_only_logit",
+      "model": "market_only_logit",
+      "match_components": true
+    },
+    {
+      "id": "cai_equal_logit",
+      "model": "cai_equal_logit",
+      "match_components": true
+    },
+    {
+      "id": "cai_learned_logit",
+      "model": "cai_learned_logit",
+      "match_components": true
+    },
+    {
+      "id": "market_cai_equal_logit",
+      "model": "market_cai_equal_logit",
+      "match_components": true
+    },
+    {
+      "id": "market_cai_learned_logit",
+      "model": "market_cai_learned_logit",
+      "match_components": true
+    }
+  ],
+  "limits": {
+    "max_configs": 12,
+    "max_workers": 2,
+    "max_seconds": 7200
+  }
+}

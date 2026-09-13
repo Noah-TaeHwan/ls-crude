@@ -1,5 +1,7 @@
 # CAI 실험 프로그램 전달 안내 (cai-exp/0.1.0)
 
+팀 공동 작업은 [TEAM_START_HERE.md](../docs/cai/TEAM_START_HERE.md)에서 시작합니다. 새 후보는 `research/scripts/cai_team.py check/package`의 입력·제출 검사를 사용하고, 아래 기존 엔진과 참조 실행은 그대로 재사용합니다.
+
 성찬님 실행용 묶음입니다. 프로젝트 상대경로만 사용하며, 이 컴퓨터의 절대경로·가상환경·
 인증정보는 포함하지 않습니다.
 

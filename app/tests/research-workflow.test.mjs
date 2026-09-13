@@ -60,7 +60,7 @@ function importWorkflow() {
   return import(pathToFileURL(outPath).href);
 }
 
-const { ResearchWorkflow, parseResearchWorkflow, countByCategory, CATEGORY_ORDER } = await importWorkflow();
+const { ResearchWorkflow, parseResearchWorkflow, countByCategory, CATEGORY_ORDER, WORKFLOW_STEP_NAMES } = await importWorkflow();
 
 /**
  * 테스트용 아이디어 한 행.
@@ -173,6 +173,30 @@ function render(props) {
 }
 
 describe("parseResearchWorkflow", () => {
+  it("담당 제안과 착수는 별개이며 중복 후보와 잘못된 작업 metadata를 거부한다", () => {
+    const data = JSON.parse(readFileSync(jsonPath, "utf8"));
+    const parsed = parseResearchWorkflow(data);
+    assert.ok(parsed);
+    assert.deepEqual(parsed.candidates.filter((row) => row.work?.owner === "seongchan").map((row) => row.id), ["CAAI / 091-O", "091-A", "091-F / 091-STAX"]);
+    assert.ok(parsed.candidates.filter((row) => row.work?.owner === "seongchan").every((row) => row.work.assignment === "proposed" && row.work.status === "planned"));
+    assert.equal(parsed.candidates.filter((row) => row.work?.status === "done").length, 2);
+    assert.equal(parsed.candidates.filter((row) => row.work?.status === "in_progress").length, 0);
+    const candidate = data.candidates.find((row) => row.work.owner === "seongchan");
+    candidate.work.status = "in_progress";
+    assert.equal(parseResearchWorkflow(data), null);
+    candidate.work.assignment = "confirmed";
+    assert.ok(parseResearchWorkflow(data));
+    candidate.work.owner = "unknown";
+    assert.equal(parseResearchWorkflow(data), null);
+    candidate.work.owner = "seongchan";
+    candidate.work.assignment = ["proposed"];
+    assert.equal(parseResearchWorkflow(data), null);
+    candidate.work.assignment = "confirmed";
+    candidate.work.status = ["planned"];
+    assert.equal(parseResearchWorkflow(data), null);
+    const duplicate = workflow(); duplicate.candidates.push(duplicate.candidates[0]);
+    assert.equal(parseResearchWorkflow(duplicate), null);
+  });
   it("유효한 스냅샷을 통과하고 분류 건수를 센다", () => {
     const parsed = parseResearchWorkflow(workflow());
     assert.ok(parsed);
@@ -199,6 +223,21 @@ describe("parseResearchWorkflow", () => {
 });
 
 describe("ResearchWorkflow 렌더", () => {
+  it("6개의 구분된 카드에 제목·현재 결과·다음 행동과 연결된 목차를 제공한다", () => {
+    const data = parseResearchWorkflow(JSON.parse(readFileSync(jsonPath, "utf8")));
+    const html = render({ workflow: data, experiments: summary() });
+    assert.equal((html.match(/class="workflow-card"/g) ?? []).length, 6);
+    assert.equal((html.match(/현재 확인된 결과/g) ?? []).length, 6);
+    for (let step = 1; step <= 6; step++) {
+      assert.ok(html.includes(`aria-labelledby="workflow-heading-${step}"`));
+      assert.ok(html.includes(`id="workflow-heading-${step}"`));
+      assert.ok(html.includes(`href="#workflow-stage-${step}"`));
+      assert.ok(html.includes(WORKFLOW_STEP_NAMES[step - 1]));
+    }
+    assert.match(html, /성찬 · 제안/);
+    assert.match(html, /자료 분류와 실제 작업 상태는 별개/);
+    assert.match(html, /TEAM_START_HERE\.md/);
+  });
   it("106개 자료 폴더와 33개 후보를 실제 배열로 그리고 분류한다", () => {
     const data = workflow();
     const html = render({ workflow: data, experiments: summary() });
@@ -248,7 +287,8 @@ describe("ResearchWorkflow 렌더", () => {
     assert.match(html, /교통\+DMR 파일럿/);
     assert.match(html, /교통 단독과 교통\+유량 두 조합을/);
     assert.match(html, /2023년의 같은 245일을 기준으로 비교했습니다/);
-    assert.doesNotMatch(html, /파일럿 완료|정리 완료|진행 중/);
+    const stageFacts = [...html.matchAll(/<span class="workflow-fact">([^<]+)<\/span>/g)].map((match) => match[1]);
+    assert.doesNotMatch(stageFacts.join(" "), /파일럿 완료|정리 완료|진행 중/);
     assert.match(html, /독립 재현은 아직 확인되지 않았습니다/);
     assert.match(html, /CAI를 추가해도 확률오차가 줄지 않았습니다/);
     assert.match(html, /성찬님의 독립 재현은 아직 확인되지 않았습니다/);
@@ -356,14 +396,14 @@ describe("정본 research-workflow.json", () => {
 
   it("단계 제목·입력 설명·재현 상태를 결과 중심으로 표시한다", () => {
     const html = render({ workflow: workflow(), experiments: summary() });
-    assert.match(html, /<h2 class="text-xl font-semibold tracking-tight">/);
+    assert.match(html, /id="workflow-heading-4" class="workflow-card-title"/);
     assert.match(html, /교통량과 하수처리장 신고 유량을 실험에 쓸 수 있도록 정리했습니다/);
     assert.match(html, /2019년분/);
     assert.match(html, /접수일/);
     assert.match(html, /실제 공개일/);
     assert.doesNotMatch(html, /2019년 이후 보강분/);
     const stage4 = html.slice(html.indexOf('id="workflow-stage-4"'), html.indexOf('id="workflow-stage-5"'));
-    const stage4Result = stage4.match(/<p class="mt-3 max-w-3xl text-base leading-7">([^<]+)<\/p>/);
+    const stage4Result = stage4.match(/<p class="mt-2 max-w-3xl text-base leading-7">([^<]+)<\/p>/);
     assert.ok(stage4Result);
     assert.doesNotMatch(stage4Result[1], /traffic_avc040_daily_2019plus/);
     assert.doesNotMatch(stage4Result[1], /dmr_ok0026701_001_mgd/);

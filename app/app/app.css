@@ -450,6 +450,25 @@
 .research-shell p { text-wrap: pretty; }
 [data-workflow-stage] { scroll-margin-top: 112px; }
 
+/* 단계 바깥 경계와 내부 상세의 위계를 분리한다. 긴 표를 위해 한 열을 유지한다. */
+.workflow-card { margin-top: 28px; border: 1px solid var(--input); border-radius: 14px; background: var(--card); overflow: clip; }
+.workflow-card:target { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary); }
+.workflow-card-header { display: flex; align-items: flex-start; gap: 20px; padding: 28px 28px 24px; border-bottom: 1px solid var(--border); background: var(--secondary); }
+.workflow-number { display: grid; place-items: center; flex-shrink: 0; width: 64px; height: 64px; border: 1px solid var(--primary); border-radius: 10px; color: var(--primary); font: 500 28px/1 var(--font-mono); background: var(--background); }
+.workflow-eyebrow { margin-bottom: 5px; color: var(--muted-foreground); font: 12px/1.5 var(--font-mono); letter-spacing: .08em; }
+.workflow-card-title { font-size: 24px; font-weight: 600; line-height: 1.4; letter-spacing: -.025em; }
+.workflow-purpose { margin-top: 9px; color: var(--muted-foreground); font-size: 14px; line-height: 1.7; }
+.workflow-fact { flex-shrink: 0; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; color: var(--foreground); background: var(--background); font-size: 12px; }
+.workflow-card-body { padding: 24px 28px 12px; }
+.workflow-result-label { color: var(--muted-foreground); font-size: 12px; }
+.workflow-next { display: flex; gap: 10px; margin-top: 18px; color: var(--muted-foreground); font-size: 13px; line-height: 1.7; }
+.workflow-next > span { color: var(--primary); flex-shrink: 0; font-weight: 500; }
+.workflow-focus { margin-top: 24px; padding: 14px 18px; border-left: 3px solid var(--primary); background: var(--card); font-size: 14px; line-height: 1.8; }
+.workflow-focus strong { color: var(--primary); font-weight: 500; }
+[data-research-workflow] nav .workflow-step-link { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); font-size: 13px; }
+.workflow-step-link > span { font: 16px/1 var(--font-mono); color: var(--primary); }
+[data-research-workflow] nav .workflow-step-link:hover { border-color: var(--primary); transform: none; }
+
 .research-shell details > summary {
   display: flex;
   align-items: center;
@@ -484,4 +503,10 @@
 }
 @media (max-width: 639px) {
   [data-workflow-stage] { scroll-margin-top: 120px; }
+  .workflow-card { margin-top: 20px; border-radius: 10px; }
+  .workflow-card-header { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 12px; padding: 20px 16px; }
+  .workflow-number { width: 46px; height: 46px; font-size: 22px; border-radius: 8px; }
+  .workflow-card-title { font-size: 20px; }
+  .workflow-fact { grid-column: 2; justify-self: start; }
+  .workflow-card-body { padding: 20px 16px 8px; }
 }
