@@ -1,0 +1,41 @@
+{
+  "received_at_utc": "20260913T122416Z",
+  "author": "Seongchan",
+  "original_files": [
+    {
+      "filename": "SEONGCHAN_CAI_ALL_IN_ONE_FINAL_V2_1.py",
+      "sha256": "f36c2302d367197ba19708f522243a9240476e0fecbb071195bde6da4314c6aa",
+      "bytes": 48531
+    },
+    {
+      "filename": "SEONGCHAN_TO_TAEHWAN_ALL_IN_ONE_FINAL.txt",
+      "sha256": "30bc87a6ac9c948673f8c20390c3d02661709c0cb443b057ca8244e2ace62a62",
+      "bytes": 10670
+    }
+  ],
+  "original_raw_directory": "research/gathering/raw/seongchan-cai/20260913T122416Z",
+  "review_scope": "Source inspection and synthetic checks only. No replay of embedded 2024-2025 experiment.",
+  "source_rows_verified": false,
+  "reported_metrics_reproduced": false,
+  "embedded_data_ast_unchanged": true,
+  "reviewed_code": "research/experiments/cai/seongchan/monthly_engine.py",
+  "main_daily_eligible": false,
+  "reported_monthly_replay_status": "NOT_RUN",
+  "learned_weight_review": "Original default split too short; uniform initialization was mislabeled as learned. Corrected code blocks invalid optimization.",
+  "date_only_inspection": {
+    "common_months": 24,
+    "original_train_rows": 12,
+    "label_complete_train_rows": 11
+  },
+  "reviewed_code_sha256": "c74db1d5cf796ac720f4adc7a89758535be473bde0c04394ba9da2dd018d08bf",
+  "verification": {
+    "python_regression_tests": 6,
+    "worklist_tests": 1,
+    "web_tests": 310,
+    "typecheck": "PASS",
+    "build": "PASS",
+    "independent_review": "PASS_SYNTHETIC_ONLY",
+    "original_arrays": "AST_IDENTICAL",
+    "browser": "Ego15 local: ready2/review3/proposals0; mobile390 overflow0; recorded main inputs2"
+  }
+}

@@ -396,14 +396,14 @@ function CandidateTable({ candidates }: { candidates: readonly ResearchWorkflowC
 /**
  * 준비된 활동 입력과 후속 제안을 원장에서 분리한다. 모델 실행 상태로 추정하지 않는다.
  * @param candidates 원본 후보 목록.
- * @returns 준비·진행·미완료·제외·담당 제안 목록.
+ * @returns 준비·진행·미완료·제외·담당 제안·검토 목록. 검토는 미완료에 포함한다.
  */
 export function preparationGroups(candidates: readonly ResearchWorkflowCandidate[]) {
   const excluded = candidates.filter((row) => row.category === "context" || row.category === "hold" || row.work?.processing === "excluded");
   const active = candidates.filter((row) => !excluded.includes(row));
   const ready = active.filter((row) => row.work?.processing === "ready");
   const processing = active.filter((row) => row.work?.processing === "in_progress");
-  return { ready, processing, excluded, pending: active.filter((row) => !ready.includes(row) && !processing.includes(row)), proposals: active.filter((row) => row.work?.assignment === "proposed" && row.work.processing !== "ready") };
+  return { ready, processing, excluded, pending: active.filter((row) => !ready.includes(row) && !processing.includes(row)), proposals: active.filter((row) => row.work?.assignment === "proposed" && row.work.processing !== "ready"), review: active.filter((row) => row.work?.processing === "review") };
 }
 
 /**
@@ -428,11 +428,16 @@ function PreparationOverview({ candidates }: { candidates: readonly ResearchWork
       </li>)}</ul>
       {groups.ready.length === 0 ? <p className="py-3 text-sm text-muted-foreground">아직 준비가 확인된 입력이 없습니다.</p> : null}
     </details>
-    <details id="workflow-next-inputs" className="mt-3 border-y border-border py-2">
+    {groups.review.length > 0 ? <details id="workflow-review-inputs" className="mt-3 border-y border-border py-2">
+      <summary className="min-h-11 cursor-pointer py-3 text-sm">검토 중인 제출 {groups.review.length}개 보기</summary>
+      <p className="pb-3 text-xs leading-6 text-muted-foreground">자료를 받았으며 원문·시점·공통 입력 적격성을 검토하고 있습니다. 위 미완료·미확인 수에 포함됩니다.</p>
+      <ul>{groups.review.map((row) => <li key={row.id} data-review-input={row.id} className="border-t border-border py-3"><p className="text-sm"><span className="font-mono text-primary">{candidates.indexOf(row) + 1}.</span> {row.name}</p><p className="mt-2 text-xs leading-6 text-muted-foreground">{row.work?.collection} · {row.nextAction}</p></li>)}</ul>
+    </details> : null}
+    {groups.proposals.length > 0 ? <details id="workflow-next-inputs" className="mt-3 border-y border-border py-2">
       <summary className="min-h-11 cursor-pointer py-3 text-sm">후속 제안 {groups.proposals.length}개 보기</summary>
       <p className="pb-3 text-xs text-muted-foreground">담당 수락·입력 준비 전의 제안입니다. 아래 후보를 완료나 확정 선정으로 세지 않습니다.</p>
       <ul>{groups.proposals.map((row) => <li key={row.id} data-proposed-input={row.id} className="border-t border-border py-3"><p className="text-sm"><span className="font-mono text-primary">{candidates.indexOf(row) + 1}.</span> {row.name} · {row.work?.owner ? OWNER_LABELS[row.work.owner] : "미정"} 제안</p><p className="mt-2 text-xs leading-6 text-muted-foreground">{row.work?.collection} · {row.nextAction}</p></li>)}</ul>
-    </details>
+    </details> : null}
   </div>;
 }
 
@@ -702,7 +707,7 @@ export function ResearchWorkflow({
       <StageBlock
         step={4}
         status={preparationKnown ? `준비 확인 ${preparation?.ready.length}개` : "준비 미확인"}
-        result={preparationKnown ? `${candidateCount}개 목록 중 ${preparation?.ready.length}개의 회고 입력 준비가 확인됐습니다. 준비된 자료와 후속 제안을 나눠 봅니다.` : "입력 준비 상태가 아직 등록되지 않았습니다."}
+        result={preparationKnown ? `${candidateCount}개 목록 중 ${preparation?.ready.length}개의 회고 입력 준비가 확인됐습니다. 준비된 자료와 검토·제안 현황을 나눠 봅니다.` : "입력 준비 상태가 아직 등록되지 않았습니다."}
         evidence={
           <>
           {workflow ? <PreparationOverview candidates={workflow.candidates} /> : null}
@@ -765,6 +770,12 @@ export function ResearchWorkflow({
               </div>
               </details>
             </details>
+            {workflow?.candidates.some((row) => row.work?.owner === "seongchan" && row.work.status === "review") ? <details id="seongchan-review" className="mt-3 border-y border-border py-2">
+              <summary className="min-h-11 cursor-pointer py-3 text-sm">성찬님 제출 자료 · 월별 실험 검토</summary>
+              <p className="py-3 text-sm leading-7">5·11·16번 자료와 별도 월별 실험 코드를 받았습니다. 원문 수치와 보고된 성능은 대조 전이며, 위 일별 대표 실험의 입력·성과에는 포함하지 않았습니다.</p>
+              <p className="pb-3 text-sm leading-7 text-muted-foreground">표본이 부족한데 50:50 초기값을 학습 결과로 표시하던 부분을 수정하고 합성 데이터로 검증했습니다. 실측 월별 실험은 재실행하지 않았습니다.</p>
+              <a className="source-link" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/experiments/cai/seongchan/README.md" target="_blank" rel="noreferrer">검수 코드·확인 결과·다음 작업 ↗</a>
+            </details> : null}
             <details id="team-work" className="mt-3 border-y border-border py-2">
               <summary className="min-h-11 cursor-pointer py-3 text-sm">같은 프로그램으로 실행하기</summary>
               <div className="space-y-5 pb-5 text-sm leading-7">
