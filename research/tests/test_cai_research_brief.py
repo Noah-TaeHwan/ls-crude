@@ -17,9 +17,12 @@ def test_public_brief_tracks_metrics_and_rejects_missing_results():
     raw = brief.SUMMARY.read_bytes()
     summary = json.loads(raw)
     config = json.loads(brief.CONFIG.read_text())
-    rendered = brief.render(summary, config, hashlib.sha256(raw).hexdigest())
+    public_view = json.loads(brief.PUBLIC_VIEW.read_text())
+    rendered = brief.render(summary, config, hashlib.sha256(raw).hexdigest(), public_view)
     for path, text in zip(brief.OUTPUTS, rendered):
         assert path.read_text() == text, "정본 요약 변경 후 생성물을 다시 만들어야 한다"
+        assert "43.1 / 100" in text and "2023-12-29" in text
+        assert text.index("완성한 결과물") < text.index("질문과 현재 답")
         assert "시장정보에 CAI를 추가한 두 비교 모두 확률오차가 줄지 않았습니다" in text
         for row in summary["sample_expansion"]["models"]:
             assert f"{row['after']['log_loss']:.6f}" in text
@@ -29,9 +32,14 @@ def test_public_brief_tracks_metrics_and_rejects_missing_results():
     rows = {row["id"]: row for row in changed["sample_expansion"]["models"]}
     rows["market_cai_equal"]["after"]["log_loss"] = rows["market"]["after"]["log_loss"] - 0.01
     rows["market_cai_equal"]["label"] = "<script>alert(1)</script>"
-    md, html = brief.render(changed, config, "test")
+    md, html = brief.render(changed, config, "test", public_view)
     assert "확률오차가 줄어든 비교가 있습니다" in md
     assert "-0.010000" in html and "&lt;script&gt;" in html and "<script>" not in html
     rows["market"]["after"]["log_loss"] = None
     with pytest.raises(ValueError):
-        brief.render(changed, config, "test")
+        brief.render(changed, config, "test", public_view)
+
+    corrupted = copy.deepcopy(public_view)
+    corrupted["index"]["score"] = 99
+    with pytest.raises(ValueError, match="공개 지수"):
+        brief.render(summary, config, "test", corrupted)
