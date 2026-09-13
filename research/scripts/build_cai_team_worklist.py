@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "app/app/data/research-workflow.json"
 OUTPUT = ROOT / "docs/cai/CANDIDATE_WORKLIST.md"
 STATUS = {"planned": "예정", "in_progress": "진행 중", "review": "검토 요청", "done": "완료", "blocked": "차단"}
+PROCESSING = {"ready": "입력 준비 확인", "in_progress": "전처리 중", "pending": "준비 미완료", "review": "검토 대기", "excluded": "활동 성분 제외"}
 OWNERS = {None: "미정", "taehwan": "태환", "seongchan": "성찬"}
 CATEGORY = {"used": "실험에 사용", "sample": "표본만 확보", "route": "경로만 확인", "forward": "앞으로 기록", "context": "배경 자료", "hold": "보류·기각"}
 
@@ -30,8 +31,10 @@ def render(data: dict) -> str:
             raise ValueError(f"담당 상태가 맞지 않습니다: {row['id']}")
         if work["status"] == "in_progress" and work["assignment"] != "confirmed":
             raise ValueError("담당 확인 없이 진행 중으로 표시할 수 없습니다")
+        if work["processing"] == "in_progress" and work["assignment"] != "confirmed":
+            raise ValueError("담당 확인 없이 전처리 중으로 표시할 수 없습니다")
         owner = OWNERS[work["owner"]] + (" · 제안" if work["assignment"] == "proposed" else "")
-        values = [str(n), f"{row['id']} · {row['name']}", CATEGORY[row["category"]], owner, STATUS[work["status"]], work["collection"], work["processing"], row["period"], row["nextAction"] + (" 조건: " + work["blocker"] if work["blocker"] else "")]
+        values = [str(n), f"{row['id']} · {row['name']}", CATEGORY[row["category"]], owner, STATUS[work["status"]], work["collection"], PROCESSING[work["processing"]], row["period"], row["nextAction"] + (" 조건: " + work["blocker"] if work["blocker"] else "")]
         lines.append("| " + " | ".join(value.replace("|", "\\|").replace("\n", " ") for value in values) + " |")
     lines += ["", "## 갱신·근거", "", "- [공동 작업 시작](TEAM_START_HERE.md) · [단계별 AI 프롬프트](TEAM_PROMPTS.md)",
               "- 변경 정본: [research-workflow.json](../../app/app/data/research-workflow.json)의 해당 ID. 이름·번호로 새 후보를 중복 등록하지 않습니다.",

@@ -4,6 +4,13 @@
 `execution/catalog.json`, 제품 요구는 `WEBSITE_PLAN.md`, 구현 인터페이스는
 `execution/contracts/PUBLIC_VIEW.md`. 진행 상태를 이 파일에 복제하지 않는다.
 
+## 현재 — 후보 준비에서 CAI 결과물로 이어지는 UX 보완
+
+- 주 흐름: 106자료→33후보→준비된입력→조합/학습→CAI 대시보드. 2번자체목록,4번준비/제안,5번실제사용입력,6번결과물 CTA를 분리한다.
+- 긴 실험·검증은 아래접기 #past. 기존 #experiments 링크 유지. 공통프로그램과 디스코드문안은 TEAM_START_HERE/MESSAGE_SEONGCHAN이 정본.
+- work.processing은 ready/in_progress/pending/review/excluded. 준비2와후속제안4는 다르며,실험사용2는기존run근거에서읽는다.
+- 검증근거: execution/runs/TEAM-01/20260913/flow-followup.md. 현재공식지수값은준비중이며임의생성하지않는다.
+
 ## 현재 — 공동 작업 패키지와 6단계 카드 (2026-09-13)
 
 - 공동 작업 진입점: [TEAM_START_HERE](TEAM_START_HERE.md) → [33개 작업표](CANDIDATE_WORKLIST.md) → [프롬프트](TEAM_PROMPTS.md). 발송 초안은 [MESSAGE_SEONGCHAN](MESSAGE_SEONGCHAN.md), 미발송.

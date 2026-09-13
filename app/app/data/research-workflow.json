@@ -660,7 +660,7 @@
         "assignment": "confirmed",
         "status": "done",
         "collection": "완료 · 회고용",
-        "processing": "회고 입력 준비 완료",
+        "processing": "ready",
         "blocker": ""
       }
     },
@@ -681,7 +681,7 @@
         "assignment": "proposed",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "9월 11일 접속 실패 이력. 지역 노드·현재 접근 가능성은 재확인 필요."
       }
     },
@@ -699,7 +699,7 @@
         "assignment": "unassigned",
         "status": "blocked",
         "collection": "전향 이력 필요",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
       }
     },
@@ -717,7 +717,7 @@
         "assignment": "unassigned",
         "status": "blocked",
         "collection": "전향 이력 필요",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
       }
     },
@@ -738,7 +738,7 @@
         "assignment": "proposed",
         "status": "planned",
         "collection": "표본 확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
       }
     },
@@ -756,7 +756,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": ""
       }
     },
@@ -774,7 +774,7 @@
         "assignment": "unassigned",
         "status": "blocked",
         "collection": "전향 이력 필요",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
       }
     },
@@ -792,7 +792,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": ""
       }
     },
@@ -812,7 +812,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": ""
       }
     },
@@ -836,7 +836,7 @@
         "assignment": "confirmed",
         "status": "done",
         "collection": "완료 · 회고용",
-        "processing": "회고 입력 준비 완료",
+        "processing": "ready",
         "blocker": ""
       }
     },
@@ -856,7 +856,7 @@
         "assignment": "proposed",
         "status": "planned",
         "collection": "표본 확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
       }
     },
@@ -876,7 +876,7 @@
         "assignment": "unassigned",
         "status": "blocked",
         "collection": "보류·기각",
-        "processing": "이번 조합 제외",
+        "processing": "excluded",
         "blocker": "기존 판정 유지. 새 근거 없이 활동 입력에 재편입하지 않음."
       }
     },
@@ -896,7 +896,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": ""
       }
     },
@@ -916,7 +916,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": ""
       }
     },
@@ -936,7 +936,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": ""
       }
     },
@@ -957,7 +957,7 @@
         "assignment": "proposed",
         "status": "planned",
         "collection": "표본 확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
       }
     },
@@ -977,7 +977,7 @@
         "assignment": "unassigned",
         "status": "blocked",
         "collection": "전향 이력 필요",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
       }
     },
@@ -997,7 +997,7 @@
         "assignment": "unassigned",
         "status": "blocked",
         "collection": "전향 이력 필요",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
       }
     },
@@ -1018,7 +1018,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": ""
       }
     },
@@ -1038,7 +1038,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "표본 확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
       }
     },
@@ -1058,7 +1058,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": ""
       }
     },
@@ -1078,7 +1078,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": ""
       }
     },
@@ -1098,7 +1098,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": ""
       }
     },
@@ -1118,7 +1118,7 @@
         "assignment": "unassigned",
         "status": "blocked",
         "collection": "전향 이력 필요",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
       }
     },
@@ -1138,7 +1138,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "표본 확보",
-        "processing": "미완료",
+        "processing": "pending",
         "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
       }
     },
@@ -1159,7 +1159,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "기록 확보",
-        "processing": "CAI 성분 대상 아님",
+        "processing": "excluded",
         "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
       }
     },
@@ -1179,7 +1179,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "기록 확보",
-        "processing": "CAI 성분 대상 아님",
+        "processing": "excluded",
         "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
       }
     },
@@ -1199,7 +1199,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "2026 일정만 확보",
-        "processing": "CAI 성분 대상 아님",
+        "processing": "excluded",
         "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
       }
     },
@@ -1219,7 +1219,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "실측 시계열 미확보",
-        "processing": "CAI 성분 대상 아님",
+        "processing": "excluded",
         "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
       }
     },
@@ -1239,7 +1239,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "기록 확보",
-        "processing": "CAI 성분 대상 아님",
+        "processing": "excluded",
         "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
       }
     },
@@ -1259,7 +1259,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "기록 확보",
-        "processing": "CAI 성분 대상 아님",
+        "processing": "excluded",
         "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
       }
     },
@@ -1279,7 +1279,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "가격 경로 확인",
-        "processing": "CAI 성분 대상 아님",
+        "processing": "excluded",
         "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
       }
     },
@@ -1299,7 +1299,7 @@
         "assignment": "unassigned",
         "status": "planned",
         "collection": "기록 확보",
-        "processing": "CAI 성분 대상 아님",
+        "processing": "excluded",
         "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
       }
     }
