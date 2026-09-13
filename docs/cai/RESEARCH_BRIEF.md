@@ -1,8 +1,17 @@
-# 쿠싱 활동과 유가 — 실측으로 확인한 첫 비교
+# 쿠싱 액티비티 인덱스 — 결과물과 검증
 
 <!-- 생성: python3 research/scripts/build_cai_research_brief.py ; 직접 편집하지 않음 -->
 
-회고 연구 · 대표 run 20260912T013423Z · 공개 요약 생성시각 2026-09-12T01:35:35Z · 원문 SHA-256 194d043e2fe2f3c2b91f31574e547a9e89e8f5749884131000e3e63ba54948d7
+
+## 완성한 결과물
+
+실험용 쿠싱 액티비티 인덱스(CAI v0.1)를 대시보드에 구현했습니다. 2023-12-29 기준 43.1 / 100이며, 현재 쿠싱 활동 값이나 유가 상승 확률이 아닙니다.
+
+교통량과 South STP 신고 유량을 각각 50% 비중으로 결합했습니다. 과거 거래일 2,262일 중 두 자료가 함께 있는 1,003일에만 지수를 산출합니다. 자료가 없으면 0으로 채우지 않고 공백으로 표시합니다.
+
+대시보드에서 지수·기준일·두 자료의 점수와 비중·날짜별 추이를 확인할 수 있습니다. 연구 기록은 106개 자료 폴더 → 33개 후보·보조자료 → 준비된 입력 2개 → 학습·평가 → CAI 결과물의 흐름으로 연결했습니다.
+
+프로젝트의 결과는 두 가지입니다. 활동 대리 지수를 계산·표시하는 프로그램을 만들었습니다. 별도 WTI 예측 실험에서는 시장정보에 CAI를 추가한 두 비교 모두 확률오차가 줄지 않았습니다. 지수 구현과 활동 측정 타당성·예측력 검증은 구분합니다.
 
 ## 질문과 현재 답
 
@@ -61,22 +70,34 @@ log loss·Brier는 낮을수록, 정확도는 높을수록 좋습니다. Δll은
 
 원자료·입력 CSV는 재배포 조건 미확인으로 공개 묶음에 넣지 않습니다. 원출처가 개정돼 해시가 달라지면 기존 숫자에 억지로 맞추지 말고 빈티지 차이로 중단·보고합니다.
 
-독립 재현·실제 활동 대표성·공개시점·공식 현재 지수·미래 확률은 아직 완료되지 않았습니다. 다음 연구는 대표성 검토와 당시 공개시점 확보부터 진행하고, 새 성분·새 모델 탐색은 그 부족분에 맞춰 별도로 정합니다.
+실험용 과거 지수의 구현·재현은 완료했습니다. 실제 활동 대표성·과거 최초 공개시점·현재 날짜의 지수·독립 예측력 검증은 남아 있습니다. 이들을 현재 결과의 한계로 명시하며 발표 전에 새 실험을 무리하게 추가하지 않습니다.
+
+성찬님 제출 자료는 공항 4개월, 숙박세 36개월, 사용세 24개월, 판매세 일부입니다. 내장 행 수와 원본 해시를 확인하고 코드의 가중치 학습 차단·정답 종료일 처리를 수정했습니다. 원문 대조·실측 성능 재현은 별도이며 현재 CAI v0.1에는 넣지 않았습니다.
 
 ## 5분 설명 순서
 
-0:00–0:40 질문: 현장 활동에서 유가의 단서를 찾을 수 있을까?
+0:00–0:40 결과물부터 시연: 대시보드의 CAI 43.1점과 과거 기준일 2023-12-29를 보여준다. 현재 값이나 상승 확률이 아님을 먼저 밝힌다.
 
-0:40–1:30 자료: 전체 차량과 신고 유량을 실제로 얻었고, 무엇을 대신 재는지 설명한다.
+0:40–1:30 데이터 흐름: 연구 기록의 106 → 33 → 2를 보여주고 실제 사용한 교통량·유량과 제외·검토 자료를 구분한다.
 
-1:30–2:30 방법: 상대 점수→동일/학습가중 조합→시장정보 기준선과 같은 표본 비교.
+1:30–2:30 산식 시연: 성분 점수·50:50 비중·날짜 선택을 보여준다. 전체 기록의 공백을 짚고, 결측을 숨기지 않았다고 설명한다.
 
-2:30–4:00 결과: 대표 표의 시장정보+CAI 두 행과 단순 기준선을 짚고, 개선 미확인의 범위를 설명한다.
+2:30–4:00 검증 결과: 별도의 6개 모델 비교와 실제 평가 245행을 설명한다. 시장정보+CAI의 확률오차 비교 결과를 제시한다.
 
-4:00–5:00 한계와 다음 판단: 회고/공개시점/독립 재현 경계를 밝히고, 실제 활동 대표성을 먼저 검토한다.
+4:00–5:00 마무리: 실행 가능한 지수·대시보드·재현 코드가 결과물이다. 현재화·측정 타당성·성찬 자료 원문 대조는 후속 과제로 분리한다.
+
+## 시연 링크
+
+- [CAI 대시보드](https://ls-crude.vercel.app/)
+- [6단계 연구 기록](https://ls-crude.vercel.app/research)
 
 ## 근거
 
+회고 연구 · 대표 run 20260912T013423Z · 모델 요약 생성시각 2026-09-12T01:35:35Z · 원문 SHA-256 194d043e2fe2f3c2b91f31574e547a9e89e8f5749884131000e3e63ba54948d7
+
+- [research/indexes/cai-v0.1/README.md](https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/indexes/cai-v0.1/README.md)
+- [research/indexes/cai-v0.1/manifest.json](https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/indexes/cai-v0.1/manifest.json)
+- [research/experiments/cai/seongchan/README.md](https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/experiments/cai/seongchan/README.md)
 - [research/experiments/cai/pilot_retro_traffic_dmr_2019.config.json](https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/experiments/cai/pilot_retro_traffic_dmr_2019.config.json)
 - [research/experiments/cai/reference/2019plus_20260912T013423Z/export/summary.json](https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/experiments/cai/reference/2019plus_20260912T013423Z/export/summary.json)
 - [research/experiments/cai/REPRODUCE_2019.md](https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/experiments/cai/REPRODUCE_2019.md)

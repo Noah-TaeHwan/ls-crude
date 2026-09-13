@@ -11,12 +11,21 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SUMMARY = ROOT / "app/app/data/cai-experiment-summary.json"
 CONFIG = ROOT / "research/experiments/cai/pilot_retro_traffic_dmr_2019.config.json"
+PUBLIC_VIEW = ROOT / "app/app/data/cai-public-view.json"
 OUTPUTS = (ROOT / "docs/cai/RESEARCH_BRIEF.md", ROOT / "app/public/cai-research-brief.html")
 REPO = "https://github.com/Noah-TaeHwan/ls-crude/blob/main/"
 
 
-def render(summary: dict, config: dict, source_sha: str) -> tuple[str, str]:
+def render(summary: dict, config: dict, source_sha: str, public_view: dict) -> tuple[str, str]:
     """저장된 대표 실험 수치로 두 문서를 만든다. 필수 결과가 없으면 실패한다."""
+    index = public_view["index"]
+    history = [row for row in index["history"] if row["score"] is not None]
+    if (index.get("mode") != "RETROSPECTIVE" or index.get("definition_version") != "cai-v0.1" or
+        index.get("weighting_method") != "equal-weight" or index.get("constituent_count") != 2 or not history or
+        not isinstance(index.get("score"), (int, float)) or isinstance(index["score"], bool) or
+        not math.isfinite(index["score"]) or not 0 <= index["score"] <= 100 or
+        history[-1]["date"] != index["as_of"] or history[-1]["score"] != index["score"]):
+        raise ValueError("공개 지수의 과거 모드·최신 이력·점수가 일치해야 합니다")
     block = summary["sample_expansion"]
     rows = block["models"]
     by_id = {row["id"]: row for row in rows}
@@ -41,6 +50,12 @@ def render(summary: dict, config: dict, source_sha: str) -> tuple[str, str]:
         table.append([row["label"], f"{m['log_loss']:.6f}", f"{100*m['accuracy']:.2f}%", f"{m['brier']:.6f}", delta, weights])
     headings = ["모델", "log loss ↓", "정확도 ↑", "Brier ↓", "시장정보에 추가한 Δll", "교통 / 유량 가중치"]
     sections = [
+        ("완성한 결과물", [
+            f"실험용 쿠싱 액티비티 인덱스(CAI v0.1)를 대시보드에 구현했습니다. {index['as_of']} 기준 {index['score']:.1f} / 100이며, 현재 쿠싱 활동 값이나 유가 상승 확률이 아닙니다.",
+            f"교통량과 South STP 신고 유량을 각각 50% 비중으로 결합했습니다. 과거 거래일 {len(index['history']):,}일 중 두 자료가 함께 있는 {len(history):,}일에만 지수를 산출합니다. 자료가 없으면 0으로 채우지 않고 공백으로 표시합니다.",
+            "대시보드에서 지수·기준일·두 자료의 점수와 비중·날짜별 추이를 확인할 수 있습니다. 연구 기록은 106개 자료 폴더 → 33개 후보·보조자료 → 준비된 입력 2개 → 학습·평가 → CAI 결과물의 흐름으로 연결했습니다.",
+            f"프로젝트의 결과는 두 가지입니다. 활동 대리 지수를 계산·표시하는 프로그램을 만들었습니다. 별도 WTI 예측 실험에서는 {conclusion} 지수 구현과 활동 측정 타당성·예측력 검증은 구분합니다.",
+        ]),
         ("질문과 현재 답", [
             "쿠싱 인근의 실제 활동 흔적을 결합하면 다음 5거래일 WTI 상승 여부에 정보를 더할 수 있을까요?",
             conclusion + " " + baseline,
@@ -70,19 +85,20 @@ def render(summary: dict, config: dict, source_sha: str) -> tuple[str, str]:
         ("재현과 다음 판단", [
             "재현 안내: research/experiments/cai/REPRODUCE_2019.md. 기존 로컬 원본에서 별도 폴더로 재생성해 입력 해시·고정 설정·모델 지표/가중치/계수·내부 예측을 확인합니다. 같은 환경 재현과 성찬님의 독립 재현은 구분합니다.",
             "원자료·입력 CSV는 재배포 조건 미확인으로 공개 묶음에 넣지 않습니다. 원출처가 개정돼 해시가 달라지면 기존 숫자에 억지로 맞추지 말고 빈티지 차이로 중단·보고합니다.",
-            "독립 재현·실제 활동 대표성·공개시점·공식 현재 지수·미래 확률은 아직 완료되지 않았습니다. 다음 연구는 대표성 검토와 당시 공개시점 확보부터 진행하고, 새 성분·새 모델 탐색은 그 부족분에 맞춰 별도로 정합니다.",
+            "실험용 과거 지수의 구현·재현은 완료했습니다. 실제 활동 대표성·과거 최초 공개시점·현재 날짜의 지수·독립 예측력 검증은 남아 있습니다. 이들을 현재 결과의 한계로 명시하며 발표 전에 새 실험을 무리하게 추가하지 않습니다.",
+            "성찬님 제출 자료는 공항 4개월, 숙박세 36개월, 사용세 24개월, 판매세 일부입니다. 내장 행 수와 원본 해시를 확인하고 코드의 가중치 학습 차단·정답 종료일 처리를 수정했습니다. 원문 대조·실측 성능 재현은 별도이며 현재 CAI v0.1에는 넣지 않았습니다.",
         ]),
         ("5분 설명 순서", [
-            "0:00–0:40 질문: 현장 활동에서 유가의 단서를 찾을 수 있을까?",
-            "0:40–1:30 자료: 전체 차량과 신고 유량을 실제로 얻었고, 무엇을 대신 재는지 설명한다.",
-            "1:30–2:30 방법: 상대 점수→동일/학습가중 조합→시장정보 기준선과 같은 표본 비교.",
-            "2:30–4:00 결과: 대표 표의 시장정보+CAI 두 행과 단순 기준선을 짚고, 개선 미확인의 범위를 설명한다.",
-            "4:00–5:00 한계와 다음 판단: 회고/공개시점/독립 재현 경계를 밝히고, 실제 활동 대표성을 먼저 검토한다.",
+            f"0:00–0:40 결과물부터 시연: 대시보드의 CAI {index['score']:.1f}점과 과거 기준일 {index['as_of']}를 보여준다. 현재 값이나 상승 확률이 아님을 먼저 밝힌다.",
+            "0:40–1:30 데이터 흐름: 연구 기록의 106 → 33 → 2를 보여주고 실제 사용한 교통량·유량과 제외·검토 자료를 구분한다.",
+            "1:30–2:30 산식 시연: 성분 점수·50:50 비중·날짜 선택을 보여준다. 전체 기록의 공백을 짚고, 결측을 숨기지 않았다고 설명한다.",
+            "2:30–4:00 검증 결과: 별도의 6개 모델 비교와 실제 평가 245행을 설명한다. 시장정보+CAI의 확률오차 비교 결과를 제시한다.",
+            "4:00–5:00 마무리: 실행 가능한 지수·대시보드·재현 코드가 결과물이다. 현재화·측정 타당성·성찬 자료 원문 대조는 후속 과제로 분리한다.",
         ]),
     ]
-    title = "쿠싱 활동과 유가 — 실측으로 확인한 첫 비교"
-    provenance = f"회고 연구 · 대표 run {block['after_run']} · 공개 요약 생성시각 {summary['generated_at_utc']} · 원문 SHA-256 {source_sha}"
-    md = f"# {title}\n\n<!-- 생성: python3 research/scripts/build_cai_research_brief.py ; 직접 편집하지 않음 -->\n\n{provenance}\n"
+    title = "쿠싱 액티비티 인덱스 — 결과물과 검증"
+    provenance = f"회고 연구 · 대표 run {block['after_run']} · 모델 요약 생성시각 {summary['generated_at_utc']} · 원문 SHA-256 {source_sha}"
+    md = f"# {title}\n\n<!-- 생성: python3 research/scripts/build_cai_research_brief.py ; 직접 편집하지 않음 -->\n\n"
     bodies = []
     for heading, paragraphs in sections:
         md += f"\n## {heading}\n\n" + "\n\n".join(paragraphs) + "\n"
@@ -93,12 +109,15 @@ def render(summary: dict, config: dict, source_sha: str) -> tuple[str, str]:
             body += '<div class="table-wrap"><table><caption>2019 보강 · 동일 평가 표본의 모델 비교</caption><thead><tr>' + "".join(f'<th scope="col">{escape(h)}</th>' for h in headings) + "</tr></thead><tbody>"
             body += "".join("<tr>" + "".join(f"<td>{escape(c)}</td>" for c in row) + "</tr>" for row in table) + "</tbody></table></div>"
         bodies.append(body + "</section>")
-    paths = ["research/experiments/cai/pilot_retro_traffic_dmr_2019.config.json", "research/experiments/cai/reference/2019plus_20260912T013423Z/export/summary.json", "research/experiments/cai/REPRODUCE_2019.md", "app/app/data/cai-experiment-summary.json"]
-    md += "\n## 근거\n\n" + "\n".join(f"- [{p}]({REPO+p})" for p in paths) + "\n"
+    paths = ["research/indexes/cai-v0.1/README.md", "research/indexes/cai-v0.1/manifest.json", "research/experiments/cai/seongchan/README.md", "research/experiments/cai/pilot_retro_traffic_dmr_2019.config.json", "research/experiments/cai/reference/2019plus_20260912T013423Z/export/summary.json", "research/experiments/cai/REPRODUCE_2019.md", "app/app/data/cai-experiment-summary.json"]
+    md += "\n## 시연 링크\n\n- [CAI 대시보드](https://ls-crude.vercel.app/)\n- [6단계 연구 기록](https://ls-crude.vercel.app/research)\n"
+    md += "\n## 근거\n\n" + provenance + "\n\n" + "\n".join(f"- [{p}]({REPO+p})" for p in paths) + "\n"
     css = "body{margin:0;background:#faf8f2;color:#182c27;font:16px/1.75 system-ui,sans-serif}main{max-width:980px;margin:auto;padding:48px 24px}h1{font-size:30px;line-height:1.4}h2{font-size:20px;border-top:1px solid #ccd1ca;padding-top:22px}p{margin:12px 0}.meta{font-size:12px;overflow-wrap:anywhere;color:#52615a}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:10px;border-bottom:1px solid #ccd1ca;text-align:left}caption{text-align:left;font-weight:600}a{color:#215f45;overflow-wrap:anywhere}@media print{body{background:white}main{padding:0}h2{break-after:avoid}tr{break-inside:avoid}.table-wrap{overflow:visible}table{font-size:10px}}"
     page = '<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-    page += f"<title>{title}</title><style>{css}</style><main><h1>{title}</h1><p class=meta>{escape(provenance)}</p>"
-    page += "".join(bodies) + '<section><h2>근거</h2><p>본문·표는 인터넷 없이 읽을 수 있습니다. 아래 원문 링크만 네트워크가 필요합니다.</p><ul>'
+    page += f"<title>{title}</title><style>{css}</style><main><h1>{title}</h1>"
+    page += '<p><a href="https://ls-crude.vercel.app/">CAI 대시보드</a> · <a href="https://ls-crude.vercel.app/research">6단계 연구 기록</a></p>'
+    page += "".join(bodies) + '<section><h2>근거</h2><p>본문·표는 인터넷 없이 읽을 수 있습니다. 아래 원문 링크만 네트워크가 필요합니다.</p>'
+    page += f'<p class="meta">{escape(provenance)}</p><ul>'
     page += "".join(f'<li><a href="{REPO+p}">{p}</a></li>' for p in paths) + "</ul></section></main></html>\n"
     return md, page
 
@@ -125,7 +144,12 @@ def main() -> int:
         expected.update(train_rows=model["train_rows"], weights=model["weights"])
         if by_id.get(model["id"]) != expected:
             raise SystemExit(f"공개 요약과 참조 모델이 다릅니다: {model['id']}")
-    rendered = render(summary, json.loads(CONFIG.read_text()), hashlib.sha256(raw).hexdigest())
+    public_view = json.loads(PUBLIC_VIEW.read_text())
+    manifest = json.loads((ROOT / "research/indexes/cai-v0.1/manifest.json").read_text())
+    digest = hashlib.sha256(json.dumps(public_view, sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()
+    if digest != manifest["output"]["public_payload_sha256"]:
+        raise SystemExit("공개 지수가 계산 명세의 해시와 다릅니다")
+    rendered = render(summary, json.loads(CONFIG.read_text()), hashlib.sha256(raw).hexdigest(), public_view)
     for path, content in zip(OUTPUTS, rendered):
         if args.check:
             if not path.exists() or path.read_text() != content:
