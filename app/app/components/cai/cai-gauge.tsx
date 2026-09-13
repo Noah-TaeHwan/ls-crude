@@ -19,6 +19,7 @@ function stateLabel(index: CaiIndexView): string | null {
   if (index.freshness === "STALE") return "갱신 지연";
   if (index.freshness === "ERROR") return "갱신 오류";
   if (index.score === null) return "산출 대기";
+  if (index.mode === "RETROSPECTIVE") return `실험용 ${index.definition_version?.replace(/^cai-/, "") ?? "CAI"} · 과거 자료`;
   return null;
 }
 
@@ -86,6 +87,7 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
           </span>
         )}
       </div>
+      {index.mode === "RETROSPECTIVE" && !compact ? <p className="mt-3 text-sm font-medium text-primary" data-cai-historical-date>기준일 {asOf} · 현재 값이 아닙니다</p> : null}
       {compact ? (
         <div
           role="meter"
@@ -145,7 +147,7 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
                       x={label.x}
                       y={label.y + 4}
                       textAnchor="middle"
-                      className="fill-foreground/80 font-mono text-[13px]"
+                      className="fill-foreground/80 font-mono text-[20px] sm:text-[13px]"
                     >
                       {tick}
                     </text>
@@ -161,6 +163,8 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
                 />
               )}
               <circle cx={cx} cy={cy} r="10" className="fill-background stroke-primary" strokeWidth="2" />
+              {/* 바늘이 숫자를 지나가더라도 점수가 선명하게 읽히도록 계기판 창을 둔다. */}
+              <rect x={cx - 105} y={cy - 113} width={235} height={76} rx={8} className="fill-background" />
               <text
                 x={cx}
                 y={cy - 60}
@@ -174,7 +178,7 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
                 x={cx + 70}
                 y={cy - 64}
                 textAnchor="start"
-                className="fill-muted-foreground font-mono text-[12px]"
+                className="fill-muted-foreground font-mono text-[20px] sm:text-[12px]"
               >
                 / 100
               </text>
@@ -192,7 +196,7 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
                   {delta >= 0 ? "+" : ""}
                   {delta.toFixed(1)}점
                 </strong>{" "}
-                이전 기준주 대비
+                {index.mode === "RETROSPECTIVE" ? "직전 산출일 대비" : "이전 기준주 대비"}
               </span>
             )}
           </div>
@@ -201,7 +205,9 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
       <p className="mx-auto mt-2 max-w-2xl text-xs leading-6 text-muted-foreground">
         {compact
           ? "공식 지수는 준비 중입니다. 점수는 활동 수준을 나타내며 유가 상승 확률이나 매매 신호가 아닙니다."
-          : "점수는 활동 신호의 수준이며 유가 상승 확률이나 매매 신호가 아닙니다. 결측이면 —로 표시하고 바늘을 숨깁니다."}
+          : index.mode === "RETROSPECTIVE"
+            ? "교통량·시설 신고 유량을 기준 분포와 비교한 실험 지수입니다. 50은 각 자료의 기준 평균 수준이며, 원유 가동률이나 유가 상승 확률이 아닙니다."
+            : "점수는 활동 신호의 수준이며 유가 상승 확률이나 매매 신호가 아닙니다. 결측이면 —로 표시하고 바늘을 숨깁니다."}
       </p>
     </section>
   );

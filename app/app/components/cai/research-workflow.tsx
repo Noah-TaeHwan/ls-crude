@@ -798,13 +798,13 @@ export function ResearchWorkflow({
 
       <StageBlock
         step={6}
-        status={indexAvailable ? "지수 기록 연결" : "공식 지수 준비 중"}
+        status={indexAvailable ? index?.mode === "RETROSPECTIVE" ? "실험용 CAI v0.1 연결" : "지수 기록 연결" : "공식 지수 준비 중"}
         result="모은 자료와 실험을 쿠싱의 활동을 보여주는 지수로 연결합니다."
         evidence={
           <div data-workflow-output className="workflow-output">
             <p className="workflow-eyebrow">OUR OUTPUT · CAI</p>
             <h3>쿠싱 액티비티 인덱스</h3>
-            <p className="mt-3 text-sm leading-7 text-muted-foreground">{indexAvailable ? `기준일 ${index?.as_of ?? "미확인"} · ${index?.score?.toFixed(1)} / 100. 대시보드에서 지수와 기준일을 함께 확인합니다.` : experiments ? "공식 지수는 준비 중입니다. 현재 대시보드에는 실측 자료로 진행한 회고 실험 결과가 연결돼 있습니다." : "공식 지수는 준비 중입니다. 대시보드에서 현재 공개 상태를 확인합니다."}</p>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">{indexAvailable ? `기준일 ${index?.as_of ?? "미확인"} · ${index?.score?.toFixed(1)} / 100. ${index?.mode === "RETROSPECTIVE" ? "교통·유량의 과거 자료로 만든 실험 지수이며 현재 값이 아닙니다. 날짜별 추이와 구성을 대시보드에서 확인합니다." : "대시보드에서 지수와 기준일을 함께 확인합니다."}` : experiments ? "공식 지수는 준비 중입니다. 현재 대시보드에는 실측 자료로 진행한 회고 실험 결과가 연결돼 있습니다." : "공식 지수는 준비 중입니다. 대시보드에서 현재 공개 상태를 확인합니다."}</p>
             <Link className="action-link mt-5" to="/">대시보드에서 CAI 보기 →</Link>
           </div>
         }

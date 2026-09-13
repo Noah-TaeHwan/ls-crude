@@ -57,7 +57,7 @@ export function CaiAbout({ view }: { view: CaiPublicView }) {
       <div className="pb-4 text-sm leading-7 text-muted-foreground">
         <p>
           <strong className="text-foreground">
-            CAI는 쿠싱의 활동 신호를 모아 0–100점으로 나타내려는 지수입니다.
+            {view.index.mode === "RETROSPECTIVE" ? "CAI v0.1은 선택한 활동 자료를 0–100점으로 나타낸 실험 지수입니다." : "CAI는 쿠싱의 활동 신호를 모아 0–100점으로 나타내려는 지수입니다."}
           </strong>{" "}
           점수는 활동 신호의 수준이며, 유가 상승 확률이 아닙니다.
         </p>
@@ -69,7 +69,7 @@ export function CaiAbout({ view }: { view: CaiPublicView }) {
             {view.constituents.map((item) => (
               <li key={item.candidate_id} data-constituent={item.candidate_id}>
                 <span className="text-foreground">{item.name}</span>{" "}
-                <span className="font-mono text-xs">({membershipLabel(item.membership)})</span>
+                <span className="font-mono text-xs">({view.index.mode === "RETROSPECTIVE" && item.membership === "ADOPTED" ? "실험 구성" : membershipLabel(item.membership)})</span>
                 <span className="block text-xs">
                   관측: {item.observed_quantity} · {item.geography} · {item.frequency}
                   {item.status_note === "" ? "" : ` · ${item.status_note}`}
@@ -80,7 +80,12 @@ export function CaiAbout({ view }: { view: CaiPublicView }) {
         )}
         <h3 className="mt-4 font-medium text-foreground">비중</h3>
         <p className="mt-1">{weightingNote(view.index.weighting_method)}</p>
-        <h3 className="mt-4 font-medium text-foreground">현재 검증 상태</h3>
+        {view.index.reference_period ? <div className="mt-2 space-y-2 text-xs">
+          <p>기준 분포: {view.index.reference_period.start}–{view.index.reference_period.end}. 각 값을 기준 평균·표준편차로 표준화하고 ±3 범위를 0–100점으로 옮겨 평균합니다.</p>
+          <p>교통은 관측일로 정렬하고, 월별 유량은 규제기관 접수일 이후 최대 62일까지 사용합니다. 접수일은 최초 공개일이 아니며, 날짜별 유량 재사용은 독립 관측을 늘리지 않습니다.</p>
+          <p>과거 자료를 지금 다시 계산한 지수입니다. 강수·계절·요일 영향이나 원유 이외 활동도 포함됩니다.</p>
+        </div> : null}
+        <h3 className="mt-4 font-medium text-foreground">{view.index.mode === "RETROSPECTIVE" ? "유가 예측력 검증" : "현재 검증 상태"}</h3>
         <p className="mt-1" data-validation-status={view.validation.status}>
           {validationLabel(view.validation.status)}
           {view.validation.n === null ? "" : ` · 표본 ${view.validation.n}`}

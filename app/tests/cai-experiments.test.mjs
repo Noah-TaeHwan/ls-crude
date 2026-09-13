@@ -152,7 +152,7 @@ test("serves compact experiment results on home and the full section on research
     assert.equal((nav[0].match(/<a /g) ?? []).length, 2, "menu has exactly two items");
     assert.doesNotMatch(homeBody, /href="\/history"/, "no third menu destination");
     assert.match(homeBody, /id="wti-daily-chart"/, "WTI focal chart preserved");
-    assert.match(homeBody, /data-cai-gauge="compact"/, "CAI focal layout preserved");
+    assert.match(homeBody, /data-cai-gauge="full"/, "CAI index remains the focal output");
     assert.match(homeBody, /data-experiment-results="compact"/);
     assert.match(
       homeText,

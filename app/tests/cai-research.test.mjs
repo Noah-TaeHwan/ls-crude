@@ -295,7 +295,9 @@ test("serves /research with the CAI current view and preserved legacy anchors", 
     assert.match(body, /id="workflow-candidates"/);
     assert.match(text, /traffic_avc040_daily_2019plus/);
     assert.match(text, /dmr_ok0026701_001_mgd/);
-    assert.match(text, /현재 채택한 성분이 없습니다/);
+    assert.match(text, /실험용 CAI v0.1 연결/);
+    assert.match(text, /43.1 \/ 100/);
+    assert.match(text, /현재 값이 아닙니다/);
     assert.match(body, /data-model-comparison/);
     assert.match(text, /미평가/);
     const caiSection = body.slice(body.indexOf("data-cai-research"), body.indexOf('id="intake"'));

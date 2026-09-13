@@ -1,0 +1,125 @@
+{
+  "definition_version": "cai-v0.1",
+  "definition_sha256": "05b8db948afd61d5c725064421d3583a7494c73ba8078afd4c180cec5817f4f9",
+  "run_id": "cai-v0.1-05b8db948afd61d5",
+  "computed_at": "2026-09-13T13:19:17.654979+00:00",
+  "source_config_sha256": "42a124792ec838fc5fdc91cbd92fd9663947658b8bb8be10e4692a208b774fe8",
+  "inputs": [
+    {
+      "name": "clf-daily-2015-2026",
+      "path": "research/data/clf-daily-2015-2026.csv",
+      "sha256": "ea70f9340b17081a037fa3f4cd0ed12810a67cea781e5779127eb651afd56171",
+      "use": "date column within 2015–2023 only"
+    },
+    {
+      "name": "traffic_avc040_daily_2019plus",
+      "path": "research/data/processed/091-cai-exp-pilot/inputs/traffic_avc040_daily_2019plus.csv",
+      "sha256": "c9522c2335b128cff711d3fced52832db9f92e2abc56694ea5f0a57d9c756302",
+      "use": "component observations within 2015–2023"
+    },
+    {
+      "name": "dmr_ok0026701_001_mgd",
+      "path": "research/data/processed/091-cai-exp-pilot/inputs/dmr_ok0026701_001_mgd.csv",
+      "sha256": "251aa9e6e60a2d7c16c9330776c6662117156230a48cbe004a9640907ead61be",
+      "use": "component observations within 2015–2023"
+    }
+  ],
+  "code_sha256": {
+    "research/scripts/build_cai_v01.py": "4db910bc8ef64b5c6d014d9e44bd1a64c7dc51cb269e8a998ad738699f1cf781",
+    "research/src/ls_crude/experiment/data.py": "b8019c637f3bd46ef035d560f308dc1c062c2468f006fef81fce11cfba9bfff0",
+    "research/src/ls_crude/experiment/spec.py": "8cac59462cb2c1d22caa7add5b0d4c89bb77b08c7147e97f03fcc4d7cb55b2c7"
+  },
+  "runtime": {
+    "python": "3.13.15",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5"
+  },
+  "reference_period": {
+    "start": "2015-01-02",
+    "end": "2020-12-23"
+  },
+  "calibration": {
+    "traffic_avc040_daily_2019plus": {
+      "n": 1165,
+      "mean": 6681.130472103005,
+      "std_population": 1076.635700246699,
+      "first_date": "2015-01-02",
+      "last_date": "2020-03-31"
+    },
+    "dmr_ok0026701_001_mgd": {
+      "n": 1000,
+      "mean": 2.050207,
+      "std_population": 0.7930275796912741,
+      "first_date": "2017-01-05",
+      "last_date": "2020-12-23"
+    }
+  },
+  "alignment": {
+    "traffic_avc040_daily_2019plus": {
+      "component": "traffic_avc040_daily_2019plus",
+      "status": "RECORDED_OBSERVATION_DATE",
+      "source": "observation_date",
+      "lag_days": 0,
+      "validity_days": 0,
+      "raw_observations": 2047,
+      "distinct_available_observations": 2047,
+      "decision_rows_with_value": 1415
+    },
+    "dmr_ok0026701_001_mgd": {
+      "component": "dmr_ok0026701_001_mgd",
+      "status": "CONFIRMED_RECEIVED_DATE",
+      "source": "available_at",
+      "lag_days": 0,
+      "validity_days": 62,
+      "raw_observations": 85,
+      "distinct_available_observations": 84,
+      "decision_rows_with_value": 1758
+    }
+  },
+  "calendar": {
+    "start": "2015-01-02",
+    "end": "2023-12-29",
+    "rows": 2262
+  },
+  "output": {
+    "valid_rows": 1003,
+    "missing_rows": 1259,
+    "first_valid_date": "2017-01-05",
+    "as_of": "2023-12-29",
+    "valid_rows_by_year": {
+      "2017": 234,
+      "2018": 251,
+      "2019": 246,
+      "2020": 22,
+      "2023": 250
+    },
+    "score": 43.1,
+    "latest_inputs": {
+      "traffic_avc040_daily_2019plus": {
+        "score": 53.0,
+        "weight": 0.5,
+        "observed_on": "2023-12-29",
+        "aligned_on": "2023-12-29",
+        "alignment_basis": "관측일 정렬",
+        "elapsed_days": 0,
+        "validity_days": 0
+      },
+      "dmr_ok0026701_001_mgd": {
+        "score": 33.1,
+        "weight": 0.5,
+        "observed_on": "2023-11-30",
+        "aligned_on": "2023-12-11",
+        "alignment_basis": "규제기관 접수일",
+        "elapsed_days": 18,
+        "validity_days": 62
+      }
+    },
+    "public_payload_sha256": "e1eb17adac8f8f8510414041f3cfdd91a1ca78059a4535bef7e3ade7701ef568"
+  },
+  "execution": {
+    "downloaded": false,
+    "labels_built": false,
+    "model_trained": false,
+    "oos_values_used": false
+  }
+}

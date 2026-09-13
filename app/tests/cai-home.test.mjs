@@ -87,7 +87,7 @@ async function stop(child) {
   if (!(await waitForExit(child, 1_000))) throw new Error("server did not exit");
 }
 
-test("serves the CAI-first home with empty states and preserved WTI", async () => {
+test("serves the retrospective CAI dashboard with unpublished forecasts and preserved WTI", async () => {
   const port = await findFreePort();
   const output = [];
   const child = spawn(
@@ -113,17 +113,18 @@ test("serves the CAI-first home with empty states and preserved WTI", async () =
     assert.match(body, /<h1[^>]*>쿠싱 액티비티 인덱스<\/h1>/);
     assert.match(text, /쿠싱 액티비티 인덱스/);
     assert.match(body, /role="meter"/);
-    assert.match(body, /data-cai-score="none"/);
-    assert.match(body, /산출 대기/);
-    assert.doesNotMatch(body, /data-needle/, "empty gauge has no needle");
-    assert.doesNotMatch(body, /aria-valuenow/, "empty gauge has no value");
-    // 빈 상태는 compact이고 큰 반원 SVG를 그리지 않는다.
-    assert.match(body, /data-cai-gauge="compact"/);
-    assert.doesNotMatch(body, /volatility-gauge/, "empty gauge does not dominate the screen");
+    assert.match(body, /data-cai-score="43.1"/);
+    assert.match(body, /data-needle/);
+    assert.match(body, /aria-valuenow="43.1"/);
+    assert.match(body, /data-cai-gauge="full"/);
+    assert.match(text, /실험용 v0.1 · 과거 자료/);
+    assert.match(text, /2023년 12월 29일/);
+    assert.match(text, /현재 값이 아닙니다/);
+    assert.match(body, /data-cai-history/);
     assert.match(body, /data-forecast-state="pending"/);
     assert.match(text, /아직 예측하지 않습니다/);
     assert.doesNotMatch(body, /data-up="/, "no example probabilities");
-    assert.doesNotMatch(text, /64\.2|35\.8/, "no example probability numbers");
+    assert.doesNotMatch(body, /data-up=|data-not-up=/, "no example probabilities");
     assert.match(body, /id="wti-daily-chart"/);
     assert.match(body, /id="daily-latest-price"/);
     assert.match(text, /WTI 원유 가격/);
@@ -156,7 +157,7 @@ test("serves the CAI-first home with empty states and preserved WTI", async () =
     assert.match(await helix.text(), /id="helix-index-plot"/);
 
     // AC5(보조): 미연결 forecast 기본값 50%가 없다.
-    assert.doesNotMatch(text, /50\s*%/);
+    assert.doesNotMatch(body, /data-up="50"|data-not-up="50"/, "fixed component weights are not forecast probabilities");
   } finally {
     await stop(child);
   }

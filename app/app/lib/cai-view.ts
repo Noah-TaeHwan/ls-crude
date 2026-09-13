@@ -14,6 +14,8 @@ export type ValidationState = "NOT_RUN" | "EXPLORATORY" | "INDEPENDENT_TESTED";
 /** 지수 영역의 공개 화면 값. */
 export interface CaiIndexView {
   index_id: string;
+  mode: "CURRENT" | "RETROSPECTIVE";
+  reference_period: { start: string; end: string } | null;
   definition_version: string | null;
   weighting_method: "equal-weight" | "learned-weight" | null;
   score: number | null;
@@ -68,6 +70,13 @@ export interface CaiConstituentView {
   frequency: string;
   status_note: string;
   evidence_ids: string[];
+  reading?: {
+    score: number;
+    weight: number;
+    observed_on: string;
+    aligned_on: string;
+    alignment_basis: "관측일 정렬" | "규제기관 접수일";
+  };
 }
 
 /** 근거 링크 한 행의 공개 화면 값. */
@@ -248,6 +257,8 @@ function asFreshness(value: unknown): Freshness {
 function emptyIndex(): CaiIndexView {
   return {
     index_id: "cushing-activity-index",
+    mode: "CURRENT",
+    reference_period: null,
     definition_version: null,
     weighting_method: null,
     score: null,
@@ -379,6 +390,13 @@ function parseIndex(value: unknown, warnings: string[]): CaiIndexView {
   }
   const out = emptyIndex();
   out.index_id = asNonEmptyString(value["index_id"]) ?? "cushing-activity-index";
+  out.mode = value["mode"] === "RETROSPECTIVE" ? "RETROSPECTIVE" : "CURRENT";
+  const reference = value["reference_period"];
+  if (isRecord(reference)) {
+    const start = asCalendarDateOrNull(reference["start"]);
+    const end = asCalendarDateOrNull(reference["end"]);
+    if (start !== null && end !== null && start <= end) out.reference_period = { start, end };
+  }
   out.definition_version = asNonEmptyString(value["definition_version"]);
   out.weighting_method =
     value["weighting_method"] === "equal-weight" ||
@@ -435,8 +453,8 @@ function parseIndex(value: unknown, warnings: string[]): CaiIndexView {
     out.run_id === null ||
     out.definition_version === null ||
     out.as_of === null ||
-    out.observed_at === null ||
-    out.available_at === null ||
+    (out.mode === "CURRENT" && (out.observed_at === null || out.available_at === null)) ||
+    (out.mode === "RETROSPECTIVE" && (out.reference_period === null || out.computed_at === null || out.reference_period.end > out.as_of || Date.parse(out.computed_at) < Date.parse(`${out.as_of}T00:00:00Z`))) ||
     out.constituent_count <= 0 ||
     out.coverage === null
   ) {
@@ -453,6 +471,19 @@ function parseIndex(value: unknown, warnings: string[]): CaiIndexView {
     warnings.push("DEMO_SCORE_UNPUBLISHED");
   }
   out.history = parseHistory(value["history"], out.definition_version, warnings);
+  if (out.mode === "RETROSPECTIVE" && out.score !== null) {
+    const validHistory = out.history.filter((point) => point.score !== null);
+    const latest = validHistory.at(-1);
+    if (!latest || latest.date !== out.as_of || latest.score !== out.score || warnings.includes("INVALID_HISTORY_ENTRY")) {
+      out.score = null;
+      out.previous_score = null;
+      warnings.push("INCONSISTENT_RETROSPECTIVE_HISTORY");
+    }
+    if (out.previous_score !== null && out.previous_score !== validHistory.at(-2)?.score) {
+      out.previous_score = null;
+      warnings.push("INCONSISTENT_RETROSPECTIVE_PREVIOUS");
+    }
+  }
   if (out.data_origin === "DEMO" && out.history.length > 0) {
     out.history = [];
     warnings.push("DEMO_HISTORY_UNPUBLISHED");
@@ -607,6 +638,15 @@ function parseConstituents(value: unknown, warnings: string[]): CaiConstituentVi
       Array.isArray(entry["evidence_ids"]) &&
       entry["evidence_ids"].every((id) => typeof id === "string")
     ) {
+      const reading = entry["reading"];
+      let parsedReading: CaiConstituentView["reading"];
+      if (isRecord(reading) && isFiniteNumber(reading.score) && reading.score >= 0 && reading.score <= 100 &&
+        isFiniteNumber(reading.weight) && reading.weight > 0 && reading.weight <= 1 &&
+        typeof reading.observed_on === "string" && isValidCalendarDate(reading.observed_on) &&
+        typeof reading.aligned_on === "string" && isValidCalendarDate(reading.aligned_on) && reading.observed_on <= reading.aligned_on &&
+        (reading.alignment_basis === "관측일 정렬" || reading.alignment_basis === "규제기관 접수일")) {
+        parsedReading = { score: reading.score, weight: reading.weight, observed_on: reading.observed_on, aligned_on: reading.aligned_on, alignment_basis: reading.alignment_basis };
+      } else if (reading !== undefined) warnings.push("INVALID_CONSTITUENT_READING");
       kept.push({
         candidate_id: entry["candidate_id"] as string,
         name: entry["name"] as string,
@@ -616,6 +656,7 @@ function parseConstituents(value: unknown, warnings: string[]): CaiConstituentVi
         frequency: entry["frequency"] as string,
         status_note: entry["status_note"] as string,
         evidence_ids: (entry["evidence_ids"] as string[]).slice(),
+        ...(parsedReading ? { reading: parsedReading } : {}),
       });
     } else {
       dropped = true;
@@ -801,6 +842,19 @@ export function parseCaiPublicView(input: unknown): CaiPublicView {
   const forecast = parseForecast(input["forecast"], warnings);
   const validation = parseValidation(input["validation"], warnings);
   const constituents = parseConstituents(input["constituents"], warnings);
+  if (index.mode === "RETROSPECTIVE" && index.score !== null) {
+    const inputs = constituents.filter((row) => row.membership === "ADOPTED" && row.reading !== undefined);
+    const totalWeight = inputs.reduce((sum, row) => sum + row.reading!.weight, 0);
+    const combined = inputs.reduce((sum, row) => sum + row.reading!.score * row.reading!.weight, 0);
+    // 성분·합성 점수를 각각 소수 한 자리로 공개할 때의 반올림 오차만 허용한다.
+    if (index.coverage !== 1 || inputs.length !== index.constituent_count || new Set(inputs.map((row) => row.candidate_id)).size !== inputs.length ||
+      Math.abs(totalWeight - 1) > PROB_TOLERANCE || Math.abs(combined - index.score) > 0.100001 ||
+      inputs.some((row) => row.reading!.aligned_on > index.as_of!)) {
+      index.score = null;
+      index.previous_score = null;
+      warnings.push("INCONSISTENT_RETROSPECTIVE_INPUTS");
+    }
+  }
   const evidence = parseEvidence(input["evidence"], warnings);
   return {
     schema_version: SCHEMA,

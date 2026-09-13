@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import snapshot from "../app/data/cai-public-view.json" with { type: "json" };
 import { describe, it } from "node:test";
 import {
   displayedProbabilities,
@@ -319,12 +320,16 @@ describe("emptyCaiView와 서버 리더", () => {
     assert.equal(out.validation.oos_exposure, "UNKNOWN");
   });
 
-  it("빈 서버 리더에 임의 점수·확률·외부 호출이 없음", async () => {
+  it("서버는 재현된 회고 지수를 읽고 공개시점이나 예측 확률을 만들지 않는다", async () => {
     const out = await readCaiPublicView();
-    assert.deepEqual(out, emptyCaiView());
-    const text = JSON.stringify(out);
-    assert.ok(!text.includes("73.3"));
-    assert.ok(!text.includes("64.2"));
+    assert.equal(out.index.score, snapshot.index.score);
+    assert.equal(out.index.mode, "RETROSPECTIVE");
+    assert.equal(out.index.as_of, "2023-12-29");
+    assert.equal(out.index.available_at, null);
+    assert.equal(out.index.observed_at, null);
+    assert.equal(out.forecast.probabilities, null);
+    assert.equal(out.validation.status, "NOT_RUN");
+    assert.deepEqual(out.warnings, []);
   });
 });
 
@@ -636,5 +641,35 @@ describe("R2-F2: URL 구조·인증정보 일관 검사", () => {
     assert.equal(out.evidence.length, 1);
     assert.equal(out.evidence[0].url, null);
     assert.equal(out.evidence[0].access, "team_only");
+  });
+});
+
+// 현재 지수의 공개시점 요건은 유지하며, 회고 산출물은 별도 명시된 근거를 요구한다.
+describe("회고 지수 공개 계약", () => {
+  it("과거 모드·참조기간·이력·구성값이 일치할 때만 지수를 표시한다", () => {
+    assert.equal(parseCaiPublicView(snapshot).index.score, 43.1);
+    const zero = structuredClone(snapshot);
+    zero.index.score = 0; zero.index.history.at(-1).score = 0;
+    zero.constituents.forEach((row) => { row.reading.score = 0; });
+    assert.equal(parseCaiPublicView(zero).index.score, 0);
+    const faults = [
+      (x) => { x.index.mode = "CURRENT"; },
+      (x) => { x.index.reference_period = null; },
+      (x) => { x.index.computed_at = null; },
+      (x) => { x.index.computed_at = "2010-01-01T00:00:00Z"; },
+      (x) => { x.index.reference_period.end = "2024-01-01"; },
+      (x) => { x.index.history.at(-1).score = 99; },
+      (x) => { x.constituents[0].reading.score = 99; },
+      (x) => { x.constituents[0].reading.weight = 1; },
+      (x) => { x.constituents[0].reading.aligned_on = "2024-01-01"; },
+      (x) => { delete x.constituents[0].reading; },
+      (x) => { x.index.coverage = 0.5; },
+    ];
+    for (const fault of faults) {
+      const raw = structuredClone(snapshot); fault(raw);
+      assert.equal(parseCaiPublicView(raw).index.score, null, fault.toString());
+    }
+    const previous = structuredClone(snapshot); previous.index.previous_score = 99;
+    assert.equal(parseCaiPublicView(previous).index.previous_score, null);
   });
 });

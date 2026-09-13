@@ -12,5 +12,7 @@
 
 원문과 시점부터 맞춘 다음, 기존 일별 공통 실험과 외부 월별 실험을 구분해서 다음 실행 범위를 정하면 좋겠습니다.
 
+별도로 기존 교통·유량을 고정 50:50으로 결합한 실험용 CAI v0.1을 대시보드에 연결했습니다. 2023-12-29 기준의 과거 지수이며, 보내주신 후보는 원문 검토 뒤 별도로 판단하겠습니다.
+
 검수 코드·확인 결과: https://github.com/Noah-TaeHwan/ls-crude/blob/main/research/experiments/cai/seongchan/README.md
 연구 화면: https://ls-crude.vercel.app/research

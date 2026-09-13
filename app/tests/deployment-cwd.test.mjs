@@ -196,7 +196,7 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.match(body, /href="\/research"/);
     assert.doesNotMatch(body, /id="research-sample"/, "home no longer embeds the sample explorer");
     assert.doesNotMatch(body, /aria-label="연구 사례 선택"/);
-    assert.match(body, /data-cai-score="none"/);
+    assert.match(body, /data-cai-score="43.1"/);
     assert.match(body, /data-forecast-state="pending"/);
     assert.doesNotMatch(body, /data-up="/, "empty CAI home must not carry example probabilities");
     assert.doesNotMatch(body, /<details[^>]*\sopen/, "CAI란 and volatility fold start collapsed");
