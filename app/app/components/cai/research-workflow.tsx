@@ -7,6 +7,21 @@ import bundledWorkflowJson from "../../data/research-workflow.json";
 /** 후보 수집 가능성 분류. 정본 JSON category와 같다. */
 export type ResearchWorkflowCategory = "used" | "context" | "forward" | "sample" | "route" | "hold";
 
+/** 후보 자료의 분류와 별개인 담당·실행 상태. 제안은 수락을 뜻하지 않는다. */
+export interface CandidateWork {
+  owner: "taehwan" | "seongchan" | null;
+  assignment: "unassigned" | "proposed" | "confirmed";
+  status: "planned" | "in_progress" | "review" | "done" | "blocked";
+  collection: string;
+  processing: string;
+  blocker: string;
+}
+
+/** 실제 작업 상태의 화면 표기. */
+export const WORK_STATUS_LABELS = { planned: "예정", in_progress: "진행 중", review: "검토 요청", done: "완료", blocked: "차단" };
+/** 담당자의 화면 이름. */
+const OWNER_LABELS = { taehwan: "태환", seongchan: "성찬" };
+
 /** 자료 폴더 한 건. 독립 가설 수가 아니다. */
 export interface ResearchWorkflowIdea {
   id: string;
@@ -25,6 +40,7 @@ export interface ResearchWorkflowCandidate {
   period: string;
   nextAction: string;
   sourceUrls: string[];
+  work?: CandidateWork;
 }
 
 /** 연구 워크플로 스냅샷. 값은 JSON 정본만 쓴다. */
@@ -33,6 +49,7 @@ export interface ResearchWorkflowData {
   snapshotDate: string;
   sourceRef: string;
   sourceSha256: string;
+  workUpdatedAt?: string;
   ideas: ResearchWorkflowIdea[];
   candidates: ResearchWorkflowCandidate[];
 }
@@ -58,14 +75,17 @@ export const CATEGORY_ORDER: readonly ResearchWorkflowCategory[] = [
 ];
 
 /** 여섯 단계의 이름. 실제 연구 순서다. */
-export const WORKFLOW_STEP_NAMES = [
-  "아이디어 정리",
-  "쿠싱 후보 추리기",
-  "수집 가능성 확인",
-  "데이터 준비",
-  "지수·모델 비교",
-  "결과 공유",
+export const WORKFLOW_STEPS = [
+  { name: "아이디어 정리", short: "아이디어", purpose: "유가와 연결될 만한 활동과 자료를 폭넓게 찾습니다.", next: "어떤 활동을 측정할지 살펴보고 쿠싱 관련 후보를 고릅니다." },
+  { name: "쿠싱 후보 선별", short: "쿠싱 선별", purpose: "쿠싱과 관련 있고 측정할 이유가 있는 후보를 추립니다.", next: "후보별 담당을 정하고 실제 자료를 구할 수 있는지 확인합니다." },
+  { name: "수집 가능성 확인·수집", short: "자료 수집", purpose: "실제 수치와 필요한 기간이 있는지 확인하고 원자료를 확보합니다.", next: "확보한 자료는 전처리로 넘기고, 막힌 후보는 이유와 재개 조건을 남깁니다." },
+  { name: "전처리·입력 준비", short: "입력 준비", purpose: "날짜·단위·중복·결측을 정리해 프로그램이 읽는 입력을 만듭니다.", next: "입력 검사를 통과한 자료로 공통 설정의 실험을 실행합니다." },
+  { name: "지수 구성·학습·평가", short: "학습·평가", purpose: "자료를 조합한 지수를 만들고 시장정보 기준선과 같은 조건으로 비교합니다.", next: "담당자별 결과 묶음을 제출하고 비교 가능한 조건인지 검토합니다." },
+  { name: "결과 확정·대시보드 연결", short: "결과 연결", purpose: "검토한 결과와 한계를 확정하고 같은 버전을 화면에 연결합니다.", next: "검토된 결과만 반영합니다. 현재 지수·미래 확률은 별도 준비 조건을 확인합니다." },
 ] as const;
+
+/** 목차와 단계 제목이 공유하는 이름. */
+export const WORKFLOW_STEP_NAMES = WORKFLOW_STEPS.map((step) => step.name);
 
 /** 허용된 category 값. */
 const CATEGORY_SET = new Set<string>(CATEGORY_ORDER);
@@ -111,6 +131,15 @@ function parseCandidate(value: unknown): ResearchWorkflowCandidate | null {
   if (!isText(value.id) || !isText(value.name) || !isText(value.role)) return null;
   if (typeof value.summary !== "string" || typeof value.period !== "string" || typeof value.nextAction !== "string") return null;
   if (!Array.isArray(value.sourceUrls) || !value.sourceUrls.every((item) => typeof item === "string")) return null;
+  const work = value.work;
+  if (work !== undefined) {
+    if (!isRecord(work) || (work.owner !== null && work.owner !== "taehwan" && work.owner !== "seongchan")) return null;
+    if (typeof work.assignment !== "string" || !["unassigned", "proposed", "confirmed"].includes(work.assignment)) return null;
+    if (typeof work.status !== "string" || !Object.hasOwn(WORK_STATUS_LABELS, work.status)) return null;
+    if (typeof work.collection !== "string" || typeof work.processing !== "string" || typeof work.blocker !== "string") return null;
+    if ((work.owner === null) !== (work.assignment === "unassigned")) return null;
+    if (work.status === "in_progress" && work.assignment !== "confirmed") return null;
+  }
   return {
     id: value.id,
     name: value.name,
@@ -120,6 +149,7 @@ function parseCandidate(value: unknown): ResearchWorkflowCandidate | null {
     period: value.period,
     nextAction: value.nextAction,
     sourceUrls: value.sourceUrls.filter((item) => item.length > 0),
+    ...(work === undefined ? {} : { work: { owner: work.owner, assignment: work.assignment, status: work.status, collection: work.collection, processing: work.processing, blocker: work.blocker } as CandidateWork }),
   };
 }
 
@@ -134,6 +164,7 @@ export function parseResearchWorkflow(input: unknown): ResearchWorkflowData | nu
     return null;
   }
   if (!Array.isArray(input.ideas) || !Array.isArray(input.candidates)) return null;
+  if (input.workUpdatedAt !== undefined && (typeof input.workUpdatedAt !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(input.workUpdatedAt))) return null;
   const ideas: ResearchWorkflowIdea[] = [];
   for (const row of input.ideas) {
     const idea = parseIdea(row);
@@ -146,11 +177,13 @@ export function parseResearchWorkflow(input: unknown): ResearchWorkflowData | nu
     if (candidate === null) return null;
     candidates.push(candidate);
   }
+  if (new Set(candidates.map((candidate) => candidate.id)).size !== candidates.length) return null;
   return {
     schema: input.schema,
     snapshotDate: input.snapshotDate,
     sourceRef: input.sourceRef,
     sourceSha256: input.sourceSha256,
+    ...(input.workUpdatedAt === undefined ? {} : { workUpdatedAt: input.workUpdatedAt as string }),
     ideas,
     candidates,
   };
@@ -201,28 +234,34 @@ function isHttpUrl(value: string): boolean {
  */
 function StageBlock({
   step,
-  name,
+  status,
   result,
   evidence,
 }: {
   step: number;
-  name: string;
+  status: string;
   result: string;
   evidence: ReactNode;
 }) {
+  const definition = WORKFLOW_STEPS[step - 1];
   return (
     <article
       id={`workflow-stage-${step}`}
       data-workflow-stage={step}
-      className="border-t border-border py-4 sm:py-5"
+      aria-labelledby={`workflow-heading-${step}`}
+      className="workflow-card"
     >
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h2 className="text-xl font-semibold tracking-tight">
-          <span className="font-mono text-primary">{step}</span> {name}
-        </h2>
+      <header className="workflow-card-header">
+        <span className="workflow-number" aria-hidden="true">{String(step).padStart(2, "0")}</span>
+        <div className="min-w-0 flex-1"><p className="workflow-eyebrow">STEP {step} / 6</p><h2 id={`workflow-heading-${step}`} className="workflow-card-title">{definition.name}</h2><p className="workflow-purpose">{definition.purpose}</p></div>
+        <span className="workflow-fact">{status}</span>
+      </header>
+      <div className="workflow-card-body">
+        <p className="workflow-result-label">현재 확인된 결과</p>
+        <p className="mt-2 max-w-3xl text-base leading-7">{result}</p>
+        <p className="workflow-next"><span>다음</span>{definition.next}</p>
+        {evidence}
       </div>
-      <p className="mt-3 max-w-3xl text-base leading-7">{result}</p>
-      {evidence}
     </article>
   );
 }
@@ -302,18 +341,17 @@ function CandidateTable({ candidates }: { candidates: readonly ResearchWorkflowC
         </div>
       </fieldset>
       <p className="mt-3 text-xs leading-6 text-muted-foreground">
-        앞으로 기록할 항목은 지금부터 이력을 쌓아야 합니다. 보류·기각은 이번 입력에서 뺀 상태입니다.
+        자료 분류와 실제 작업 상태는 별개입니다. 담당 제안은 수락 전이며, 표본 확보를 진행 중으로 표시하지 않습니다. 앞으로 기록할 항목과 보류·기각은 이번 입력에서 분리합니다.
       </p>
-      <div className="mt-4 max-h-[36rem] overflow-auto">
-        <table data-workflow-candidates className="w-full min-w-[44rem] border-collapse text-sm">
-          <caption className="sr-only">쿠싱 후보와 수집 가능성</caption>
+      <div className="mt-4 max-h-[36rem] overflow-auto" role="region" aria-label="33개 후보 상태표, 가로와 세로로 스크롤" tabIndex={0}>
+        <table data-workflow-candidates className="w-full min-w-[58rem] border-collapse text-sm">
+          <caption className="sr-only">쿠싱 후보의 자료 분류·담당 제안·수집과 전처리 상태</caption>
           <thead className="sticky top-0 bg-background">
             <tr className="border-b border-border text-left text-xs text-muted-foreground">
               <th scope="col" className="py-2 pr-3">후보</th>
-              <th scope="col" className="py-2 pr-3">역할</th>
-              <th scope="col" className="py-2 pr-3">분류</th>
-              <th scope="col" className="py-2 pr-3">요약</th>
-              <th scope="col" className="py-2 pr-3">기간</th>
+              <th scope="col" className="py-2 pr-3">자료 분류·근거</th>
+              <th scope="col" className="py-2 pr-3">담당·작업 상태</th>
+              <th scope="col" className="py-2 pr-3">수집·전처리</th>
               <th scope="col" className="py-2">다음 할 일</th>
             </tr>
           </thead>
@@ -326,7 +364,7 @@ function CandidateTable({ candidates }: { candidates: readonly ResearchWorkflowC
                 className="border-b border-border/60 align-top"
               >
                 <td className="py-2 pr-3">
-                  <p>{candidate.name}</p>
+                  <p><span className="font-mono text-primary">{candidates.indexOf(candidate) + 1}.</span> {candidate.name}</p>
                   <p className="font-mono text-xs text-muted-foreground">{candidate.id}</p>
                   {candidate.sourceUrls.length === 0 ? null : (
                     <p className="mt-1 flex flex-wrap gap-x-3">
@@ -338,11 +376,10 @@ function CandidateTable({ candidates }: { candidates: readonly ResearchWorkflowC
                     </p>
                   )}
                 </td>
-                <td className="py-2 pr-3">{candidate.role}</td>
-                <td className="py-2 pr-3">{CATEGORY_LABELS[candidate.category]}</td>
-                <td className="py-2 pr-3 text-muted-foreground">{candidate.summary}</td>
-                <td className="py-2 pr-3 font-mono text-xs">{candidate.period}</td>
-                <td className="py-2">{candidate.nextAction}</td>
+                <td className="py-2 pr-3"><p>{CATEGORY_LABELS[candidate.category]}</p><details className="mt-2 max-w-xs"><summary className="min-h-11 text-xs">측정·기간 보기<span className="sr-only"> — {candidate.name}</span></summary><p className="mt-2 text-xs leading-6 text-muted-foreground">{candidate.role}</p><p className="mt-2 text-xs leading-6 text-muted-foreground">{candidate.summary}</p><p className="mt-2 text-xs leading-6">{candidate.period}</p></details></td>
+                <td className="py-2 pr-3 whitespace-nowrap"><p>{candidate.work?.owner ? OWNER_LABELS[candidate.work.owner] : "담당 미정"}{candidate.work?.assignment === "proposed" ? " · 제안" : ""}</p><p className="mt-2 text-xs text-muted-foreground">{candidate.work ? WORK_STATUS_LABELS[candidate.work.status] : "작업 상태 미확인"}</p></td>
+                <td className="py-2 pr-3"><p>수집: {candidate.work?.collection ?? "미확인"}</p><p className="mt-2 text-xs text-muted-foreground">전처리: {candidate.work?.processing ?? "미확인"}</p></td>
+                <td className="max-w-xs py-2"><p>{candidate.nextAction}</p>{candidate.work?.blocker ? <p className="mt-2 text-xs leading-6 text-muted-foreground">조건: {candidate.work.blocker}</p> : null}</td>
               </tr>
             ))}
           </tbody>
@@ -493,21 +530,22 @@ export function ResearchWorkflow({
         <p className="mt-4 max-w-3xl text-sm leading-7 text-muted-foreground">{position}</p>
         {workflow === null ? null : (
           <p className="mt-2 max-w-3xl text-xs leading-6 text-muted-foreground">
-            기준 {workflow.snapshotDate}
+            자료 기준 {workflow.snapshotDate}{workflow.workUpdatedAt ? ` · 작업 제안 ${workflow.workUpdatedAt}` : ""}
           </p>
         )}
+        <p className="workflow-focus">이번 공동 작업의 중심은 <strong>3 자료 수집 → 4 입력 준비 → 5 학습·평가</strong>입니다. 후보마다 도달한 단계는 다릅니다.</p>
         <nav aria-label="연구 6단계" className="mt-6">
           <ol className="grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-6">
-            {WORKFLOW_STEP_NAMES.map((name, index) => {
+            {WORKFLOW_STEPS.map((definition, index) => {
               const step = index + 1;
               return (
-                <li key={name}>
+                <li key={definition.name}>
                   <a
-                    className="source-link min-h-11 w-full justify-start"
+                    className="workflow-step-link"
                     href={`#workflow-stage-${step}`}
                   >
-                    <span className="font-mono text-primary">{step}</span>
-                    {name}
+                    <span>{String(step).padStart(2, "0")}</span>
+                    {definition.short}
                   </a>
                 </li>
               );
@@ -515,6 +553,7 @@ export function ResearchWorkflow({
           </ol>
         </nav>
         <div className="mt-5 flex flex-wrap gap-5 text-sm">
+          <a className="source-link" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/cai/TEAM_START_HERE.md" target="_blank" rel="noreferrer">공동 작업 시작 안내 ↗</a>
           <a className="source-link" href="#past">이전 조사와 상세 기록 보기</a>
           {import.meta.env?.DEV ? <a className="source-link" href="#local-status">개발 작업 현황</a> : null}
         </div>
@@ -522,7 +561,7 @@ export function ResearchWorkflow({
 
       <StageBlock
         step={1}
-        name="아이디어 정리"
+        status={workflow ? "목록 정리" : "자료 미확인"}
         result={
           ideaCount === null
             ? "자료 폴더 목록을 불러오지 못했습니다."
@@ -556,7 +595,7 @@ export function ResearchWorkflow({
 
       <StageBlock
         step={2}
-        name="쿠싱 후보 추리기"
+        status={workflow ? "후보 정리" : "자료 미확인"}
         result={
           candidateCount === null
             ? "후보 목록을 불러오지 못했습니다."
@@ -579,7 +618,7 @@ export function ResearchWorkflow({
 
       <StageBlock
         step={3}
-        name="수집 가능성 확인"
+        status={counts ? `회고 실험 사용 ${counts.used}개` : "자료 미확인"}
         result={
           counts === null
             ? "수집 상태를 불러오지 못했습니다."
@@ -603,7 +642,7 @@ export function ResearchWorkflow({
 
       <StageBlock
         step={4}
-        name="데이터 준비"
+        status={counts ? `회고 입력 ${counts.used}개` : "자료 미확인"}
         result={
           experiments === null
             ? "실험 입력 요약을 불러오지 못했습니다."
@@ -636,7 +675,7 @@ export function ResearchWorkflow({
 
       <StageBlock
         step={5}
-        name="지수·모델 비교"
+        status={experiments ? "대표 실험 확인" : "결과 미확인"}
         result={
           comparison?.result ??
           "모델 비교 결과를 불러오지 못했습니다."
@@ -686,7 +725,7 @@ export function ResearchWorkflow({
 
       <StageBlock
         step={6}
-        name="결과 공유"
+        status={experiments ? "회고 결과 연결" : "결과 미확인"}
         result={
           share?.result ??
           "회고 실험 결과를 불러오지 못했습니다."

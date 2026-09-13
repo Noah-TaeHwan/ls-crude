@@ -654,7 +654,15 @@
         "https://github.com/Noah-TaeHwan/ls-crude/blob/311f8baa55f99b6f3fcd9764f804c849f2608700/research/experiments/cai/REPRODUCE_SENS.md",
         "https://github.com/Noah-TaeHwan/ls-crude/blob/311f8baa55f99b6f3fcd9764f804c849f2608700/research/experiments/cai/pilot_retro_traffic_dmr.config.json",
         "https://www.fhwa.dot.gov/policyinformation/tables/tmasdata/"
-      ]
+      ],
+      "work": {
+        "owner": "taehwan",
+        "assignment": "confirmed",
+        "status": "done",
+        "collection": "완료 · 회고용",
+        "processing": "회고 입력 준비 완료",
+        "blocker": ""
+      }
     },
     {
       "id": "SPP_LOCAL / 091-GC",
@@ -667,7 +675,15 @@
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
         "https://www.spp.org"
-      ]
+      ],
+      "work": {
+        "owner": "taehwan",
+        "assignment": "proposed",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": "9월 11일 접속 실패 이력. 지역 노드·현재 접근 가능성은 재확인 필요."
+      }
     },
     {
       "id": "CHHMI",
@@ -677,7 +693,15 @@
       "summary": "호텔 견적 엔진만 있고 과거 실험 자료는 아직 확보하지 않았습니다. 숙박세(091-A)와는 다른 측정입니다.",
       "period": "장기 공통 기간이 없습니다.",
       "nextAction": "같은 숙박일의 견적을 반복해서 남길 수 있는 적법한 경로를 확인합니다.",
-      "sourceUrls": []
+      "sourceUrls": [],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "blocked",
+        "collection": "전향 이력 필요",
+        "processing": "미완료",
+        "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
+      }
     },
     {
       "id": "CCEDI",
@@ -687,7 +711,15 @@
       "summary": "카페인 관측 코드만 있고 일별 자료는 아직 확보하지 않았습니다. 판매량을 추정해 채우지 않습니다.",
       "period": "학습용 공통 기간이 아직 없습니다.",
       "nextAction": "실제 기록이 있는지 살펴보고 관측 정의와 접근 허용 범위를 확인합니다.",
-      "sourceUrls": []
+      "sourceUrls": [],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "blocked",
+        "collection": "전향 이력 필요",
+        "processing": "미완료",
+        "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
+      }
     },
     {
       "id": "CAAI / 091-O",
@@ -700,7 +732,15 @@
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
         "https://www.cityofcushing.com/cushing-municipal-airport"
-      ]
+      ],
+      "work": {
+        "owner": "seongchan",
+        "assignment": "proposed",
+        "status": "planned",
+        "collection": "표본 확보",
+        "processing": "미완료",
+        "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
+      }
     },
     {
       "id": "CEPI",
@@ -710,7 +750,15 @@
       "summary": "굴착·허가 코드만 있고 실측 자료는 아직 확보하지 않았습니다. 허가 상태 변화(091-V)와는 다른 값입니다.",
       "period": "기간이 확인되지 않았습니다.",
       "nextAction": "실제 허가·굴착 값과 출처부터 확인합니다.",
-      "sourceUrls": []
+      "sourceUrls": [],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": ""
+      }
     },
     {
       "id": "CERSI",
@@ -720,7 +768,15 @@
       "summary": "장비 목록만 있고 품절 이력은 아직 확보하지 않았습니다. 목록은 대여 건수가 아닙니다.",
       "period": "목록만 있고 과거 품절 기록은 없습니다.",
       "nextAction": "반복 관측 기록과 약관을 확인하고 같은 장비를 비교하는지 살펴봅니다.",
-      "sourceUrls": []
+      "sourceUrls": [],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "blocked",
+        "collection": "전향 이력 필요",
+        "processing": "미완료",
+        "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
+      }
     },
     {
       "id": "HSCI",
@@ -730,7 +786,15 @@
       "summary": "작업복·안전모 집계 코드만 있고 자료는 아직 확보하지 않았습니다. 개인 외모·위치는 추적하지 않습니다.",
       "period": "기간이 확인되지 않았습니다.",
       "nextAction": "공개 집계 가능성만 확인하고 개인은 추적하지 않습니다.",
-      "sourceUrls": []
+      "sourceUrls": [],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": ""
+      }
     },
     {
       "id": "CHAI",
@@ -742,7 +806,15 @@
       "nextAction": "DMR 입력과 의미·단위가 맞는지 검토합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/311f8baa55f99b6f3fcd9764f804c849f2608700/research/experiments/cai/REPRODUCE_SENS.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": ""
+      }
     },
     {
       "id": "091-DMR / OK0026701-001",
@@ -758,7 +830,15 @@
         "https://github.com/Noah-TaeHwan/ls-crude/blob/311f8baa55f99b6f3fcd9764f804c849f2608700/research/experiments/cai/pilot_retro_traffic_dmr.config.json",
         "https://echo.epa.gov/tools/data-downloads/icis-npdes-dmr-summary",
         "https://echo.epa.gov/help/reports/effluent-charts-help"
-      ]
+      ],
+      "work": {
+        "owner": "taehwan",
+        "assignment": "confirmed",
+        "status": "done",
+        "collection": "완료 · 회고용",
+        "processing": "회고 입력 준비 완료",
+        "blocker": ""
+      }
     },
     {
       "id": "091-A",
@@ -770,7 +850,15 @@
       "nextAction": "세금월·수령일·게시일을 확인하고 장기 기록이 있는지 살펴봅니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": "seongchan",
+        "assignment": "proposed",
+        "status": "planned",
+        "collection": "표본 확보",
+        "processing": "미완료",
+        "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
+      }
     },
     {
       "id": "091-B",
@@ -782,7 +870,15 @@
       "nextAction": "새 채택 없이 활동 입력으로 다시 넣지 않습니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "blocked",
+        "collection": "보류·기각",
+        "processing": "이번 조합 제외",
+        "blocker": "기존 판정 유지. 새 근거 없이 활동 입력에 재편입하지 않음."
+      }
     },
     {
       "id": "091-D",
@@ -794,7 +890,15 @@
       "nextAction": "탱크별 판독과 반복 관측부터 검증합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": ""
+      }
     },
     {
       "id": "091-E",
@@ -806,7 +910,15 @@
       "nextAction": "공개 공지의 실제 이력과 단위를 확인합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": ""
+      }
     },
     {
       "id": "091-E2",
@@ -818,7 +930,15 @@
       "nextAction": "실제 용량·유량 파일 접근과 정의를 확인합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": ""
+      }
     },
     {
       "id": "091-F / 091-STAX",
@@ -831,7 +951,15 @@
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
-      ]
+      ],
+      "work": {
+        "owner": "seongchan",
+        "assignment": "proposed",
+        "status": "planned",
+        "collection": "표본 확보",
+        "processing": "미완료",
+        "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
+      }
     },
     {
       "id": "091-U",
@@ -843,7 +971,15 @@
       "nextAction": "게시·마감·중복 기준을 지켜 앞으로의 기록만 검토합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "blocked",
+        "collection": "전향 이력 필요",
+        "processing": "미완료",
+        "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
+      }
     },
     {
       "id": "091-V / V2",
@@ -855,7 +991,15 @@
       "nextAction": "같은 허가 사건이 중복됐는지, 실제 날짜는 언제인지 확인합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "blocked",
+        "collection": "전향 이력 필요",
+        "processing": "미완료",
+        "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
+      }
     },
     {
       "id": "091-LM / 092",
@@ -868,7 +1012,15 @@
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md",
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/092-cushing-last-mile-logistics-feasibility/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": ""
+      }
     },
     {
       "id": "091-M",
@@ -880,7 +1032,15 @@
       "nextAction": "같은 공고의 시점·중복·장기 보관을 확인합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "표본 확보",
+        "processing": "미완료",
+        "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
+      }
     },
     {
       "id": "091-N",
@@ -892,7 +1052,15 @@
       "nextAction": "문서에 어떤 실측값이 담겼는지부터 확인합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": ""
+      }
     },
     {
       "id": "091-RAIL",
@@ -904,7 +1072,15 @@
       "nextAction": "쿠싱 연결과 실제 집계 이력부터 확인합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": ""
+      }
     },
     {
       "id": "091-WASTE",
@@ -916,7 +1092,15 @@
       "nextAction": "양식이 아닌 실제 제출 자료를 확보할 수 있는지 확인합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "미완료",
+        "blocker": ""
+      }
     },
     {
       "id": "091-S",
@@ -928,7 +1112,15 @@
       "nextAction": "허용된 관측 범위만 유지하고 새 수집은 따로 승인합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "blocked",
+        "collection": "전향 이력 필요",
+        "processing": "미완료",
+        "blocker": "과거 학습 이력이 없음. 앞으로의 관측은 별도 범위로 정해야 함."
+      }
     },
     {
       "id": "091-G",
@@ -940,7 +1132,15 @@
       "nextAction": "개인 사건이나 신원은 제외하고 집계 정의와 시점만 확인합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/factors/091-cushing-motel-lights-index/README.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "표본 확보",
+        "processing": "미완료",
+        "blocker": "표본은 있으나 같은 정의의 장기 이력과 입력 준비는 미완료."
+      }
     },
     {
       "id": "091-EIA / 038",
@@ -953,7 +1153,15 @@
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md",
         "https://www.eia.gov/petroleum/supply/weekly/"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "기록 확보",
+        "processing": "CAI 성분 대상 아님",
+        "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
+      }
     },
     {
       "id": "Weather / 091-Q",
@@ -965,7 +1173,15 @@
       "nextAction": "교통·유량 설명용으로만 쓰고 활동 입력과 분리합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "기록 확보",
+        "processing": "CAI 성분 대상 아님",
+        "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
+      }
     },
     {
       "id": "Library",
@@ -977,7 +1193,15 @@
       "nextAction": "해당 시점에 맞는 통제 사례로 보존합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "2026 일정만 확보",
+        "processing": "CAI 성분 대상 아님",
+        "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
+      }
     },
     {
       "id": "Community parking",
@@ -989,7 +1213,15 @@
       "nextAction": "산업 활동과 일반 행사를 가르는 통제로만 검토합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "실측 시계열 미확보",
+        "processing": "CAI 성분 대상 아님",
+        "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
+      }
     },
     {
       "id": "091-KUSH / 091-Z",
@@ -1001,7 +1233,15 @@
       "nextAction": "뉴스 관심 신호라는 이름과 별도 역할을 유지합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "기록 확보",
+        "processing": "CAI 성분 대상 아님",
+        "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
+      }
     },
     {
       "id": "091-LAUE / QCEW",
@@ -1013,7 +1253,15 @@
       "nextAction": "비교·통제로만 두고 활동 입력으로 올리지 않습니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "기록 확보",
+        "processing": "CAI 성분 대상 아님",
+        "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
+      }
     },
     {
       "id": "091-Y / YD / X",
@@ -1025,7 +1273,15 @@
       "nextAction": "별도 시장정보로만 검토합니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "가격 경로 확인",
+        "processing": "CAI 성분 대상 아님",
+        "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
+      }
     },
     {
       "id": "091-USGS / GW",
@@ -1037,7 +1293,16 @@
       "nextAction": "날씨와 유량을 해석할 때 보조 자료로만 씁니다.",
       "sourceUrls": [
         "https://github.com/Noah-TaeHwan/ls-crude/blob/cecf1cfe5cca8d1fa0cdfd3fa47208de5e316cef/research/programs/cushing-busy/PROGRAM.md"
-      ]
+      ],
+      "work": {
+        "owner": null,
+        "assignment": "unassigned",
+        "status": "planned",
+        "collection": "기록 확보",
+        "processing": "CAI 성분 대상 아님",
+        "blocker": "배경·통제 역할로 분리. CAI 성분에 자동 포함하지 않음."
+      }
     }
-  ]
+  ],
+  "workUpdatedAt": "2026-09-13"
 }

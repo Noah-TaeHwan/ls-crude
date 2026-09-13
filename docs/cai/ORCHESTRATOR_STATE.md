@@ -4,6 +4,14 @@
 `execution/catalog.json`, 제품 요구는 `WEBSITE_PLAN.md`, 구현 인터페이스는
 `execution/contracts/PUBLIC_VIEW.md`. 진행 상태를 이 파일에 복제하지 않는다.
 
+## 현재 — 공동 작업 패키지와 6단계 카드 (2026-09-13)
+
+- 공동 작업 진입점: [TEAM_START_HERE](TEAM_START_HERE.md) → [33개 작업표](CANDIDATE_WORKLIST.md) → [프롬프트](TEAM_PROMPTS.md). 발송 초안은 [MESSAGE_SEONGCHAN](MESSAGE_SEONGCHAN.md), 미발송.
+- UI는 6개 독립 카드·큰 번호·목적·현재 결과·다음 행동으로 구분. 원래 anchor/hash/Back 유지.
+- 담당 제안은 태환 SPP, 성찬 공항/숙박세/판매·사용세. 수락·착수 미확인으로 예정이며 완료는 기존 TMAS/DMR 2개뿐이다.
+- `cai_team.py check/package`: 기존 engine 유지, 같은 5일/seed7/분할/6모델 규약과 입력·저장 결과를 검사하고 제출4파일 생성. 학습/패키징 환경 구분. 검사 통과는 권리·측정타당성·독립 재현/PIT 승인 아님.
+- 웹308/연구57·typecheck/build·Ego1440/390·키보드·Back PASS. 실제2019 run 읽기 검증·패키징, 새 수집/학습/OOS/발신 없음. 사용자용5173 서버 유지.
+
 ## 현재 — 연구 기준·대표 재현·설명 연결 (2026-09-13)
 
 - 재개 입구: [연구 브리프](RESEARCH_BRIEF.md) → [2019 보강 재현](../../research/experiments/cai/REPRODUCE_2019.md) → 작업 원장 REP-02.
