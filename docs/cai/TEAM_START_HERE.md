@@ -4,6 +4,8 @@
 
 **결과물:** [실험용 CAI v0.1](https://ls-crude.vercel.app/)을 연결했습니다. 2023-12-29 기준 43.1점이며 현재 값은 아닙니다. [산식·자료·재현](../../research/indexes/cai-v0.1/README.md).
 
+**마무리:** [완료·남은 작업·제출 전 확인](CLOSEOUT.md) · [성찬님 보고서 피드백](MESSAGE_SEONGCHAN.md).
+
 **읽는 순서: 이 안내 → [33개 작업표](CANDIDATE_WORKLIST.md) → [담당 단계 AI 프롬프트](TEAM_PROMPTS.md) → 아래 실행·제출 명령.**
 
 | 단계 | 할 일 | 넘길 결과 |
