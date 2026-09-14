@@ -149,7 +149,7 @@ test("serves the public evidence brief routes from the repository root", async (
     assert.doesNotMatch(body, /ALTERNATIVE DATA RESEARCH/);
     const text = body.split("<script")[0].replace(/<[^>]*>/g, "");
     assert.match(text, /쿠싱 액티비티 인덱스/);
-    assert.match(text, /산출 대기/);
+    assert.match(text, /예측 미실행/);
     assert.match(text, /아직 예측하지 않습니다/);
     assert.doesNotMatch(text,/RESEARCH INTAKE|THE SIGNAL HUNT|WHAT REMAINS OPEN/);
     assert.match(body, /href="\/research"[^>]*>연구 기록</);

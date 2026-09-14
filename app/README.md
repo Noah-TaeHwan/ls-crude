@@ -1,6 +1,10 @@
 # app
 
-React Router로 만든 공개 대시보드입니다. `/`에서는 Yahoo Finance `CL=F`의 최근 완료 일봉으로 WTI 실현변동성을 보여주고 `/research`에서는 공개 신호 후보 52개의 검증 기록을 확인할 수 있습니다. 시장 관측값은 `public/wti-market-snapshot.json`, 연구용 인샘플은 `public/baseline-snapshot.json`에 따로 둡니다. 웹에서는 백테스트를 실행하지 않으며 `/backtest`는 `/research`로 이동합니다.
+React Router로 만든 공개 대시보드입니다. **1차 프로젝트는 2026-09-14 18:00 KST부로 공식 종료했습니다.** [종료 기록·인계 상태](../docs/cai/CLOSEOUT.md)를 먼저 확인하세요.
+
+`/`에서는 실험용 CAI v0.1의 과거 날짜별 값과 Yahoo Finance `CL=F` 가격을, `/research`에서는 자료 탐색·후보 선별·실험·한계의 기록을 확인합니다. CAI는 2023-12-29 기준 43.1점인 회고 지수이며 현재 활동이나 유가 상승 확률이 아닙니다. 지수 표시 데이터는 `app/data/cai-public-view.json`, 시장 관측값은 `public/wti-market-snapshot.json`, 연구용 인샘플은 `public/baseline-snapshot.json`에 둡니다. 웹에서 백테스트를 실행하지 않으며 `/backtest`는 `/research`로 이동합니다.
+
+아래는 보관본을 로컬에서 확인하는 방법입니다. 후속 연구와 운영 정책 변경은 별도 요청에 따릅니다.
 
 ```bash
 cd app

@@ -1,7 +1,8 @@
-# 작업표 (파생 뷰)
+# 작업표 (2026-09-11 과거 파생 뷰)
 
-정본은 [tasks.json](tasks.json)이다. 본 문서는 사람이 읽는 파생 표이며,
-JSON과 별도로 상태를 관리하지 않는다. READY·DOING·BLOCKED는 별도 집계한다.
+**1차 프로젝트는 2026-09-14 18:00 KST부로 공식 종료했다.** 현재 종료·인계 상태는 [CLOSEOUT.md](CLOSEOUT.md)를 따른다. 아래 14개 표는 당시 기록이며 지금의 작업 수·배포 차단·역할 수락 여부를 나타내지 않는다.
+
+개별 작업 원장 [tasks.json](tasks.json)은 26개(DONE 24·REVIEW 1·TODO 1)의 이력을 보존한다. 프로젝트 종료를 이유로 남은 연구 검토를 DONE으로 바꾸지 않는다. 아래 표와 원장의 차이는 역사로 보존하며 새 작업을 자동 재개하지 않는다.
 
 <!-- counts: total=14 REVIEW=2 DONE=9 DOING=0 TODO=3 BLOCKED=0 READY=0 -->
 

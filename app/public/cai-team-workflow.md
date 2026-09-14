@@ -1,6 +1,10 @@
-# LS CRUDE · 태환·성찬 작업 가이드
+# LS CRUDE · 태환·성찬 작업 가이드 보관본
 
-현재 공동 작업의 시작 안내: https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/cai/TEAM_START_HERE.md
+**1차 프로젝트는 2026-09-14 18:00 KST 기준 공식 종료했습니다.** 실험용 CAI v0.1·대시보드·연구 기록을 보관하며, 아래 절차와 역할 제안은 당시 작업 기록입니다. 후속 연구는 별도 요청 전 재개하지 않습니다.
+
+현재 종료·인계 기록: https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/cai/CLOSEOUT.md
+
+공동 작업·재현 안내: https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/cai/TEAM_START_HERE.md
 
 위 안내에 33개 상태·담당 제안표, 수집/전처리/학습/검토 AI 프롬프트와 입력·제출 검증 명령을 연결했습니다. 아래는 기존 2019 기준 실험의 상세 재현 참고입니다.
 
