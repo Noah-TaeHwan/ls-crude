@@ -1,4 +1,5 @@
 import { gaugeAngle, type CaiIndexView } from "~/lib/cai-view";
+import type { CaiDateSelection } from "~/lib/cai-selection";
 import { GAUGE_VIEW, arcPath, needlePolygon, polarPoint } from "~/lib/gauge";
 
 /** 게이지의 고정 SVG 좌표. 기존 반원 게이지 좌표계를 재사용한다. */
@@ -48,25 +49,28 @@ function dateLabel(value: string | null): string | null {
 
 /**
  * CAI 반원 계기판을 그린다. 점수는 활동 척도이며 등급이 아니다.
- * 점수가 없으면 큰 반원 대신 한 줄짜리 compact 표시만 둔다.
+ * 공개 지수 자체가 없으면 compact 표시를 쓴다. 날짜 탐색 중 결측이면 높이를 유지한다.
  * null이면 바늘을 숨기고 — 를 표시한다.
  * @param props 검증된 index 영역.
  * @returns 접근 가능한 계기판.
  */
-export function CaiGauge({ index }: { index: CaiIndexView }) {
-  const state = stateLabel(index);
+export function CaiGauge({ index, selection }: { index: CaiIndexView; selection?: CaiDateSelection | null }) {
+  const selected = selection && index.mode === "RETROSPECTIVE" && index.data_origin === "OBSERVED" && index.score !== null ? selection : null;
+  const score = selected ? selected.point.score : index.score;
+  const previousScore = selected ? selected.previousScore : index.previous_score;
+  const state = selected && score === null ? "선택일 자료 없음" : stateLabel(index);
   const weighting = weightingLabel(index.weighting_method);
-  const asOf = dateLabel(index.as_of);
-  const angle = index.score === null ? null : gaugeAngle(index.score);
+  const asOf = dateLabel(selected ? selected.point.date : index.as_of);
+  const angle = score === null ? null : gaugeAngle(score);
   const svgAngle = angle === null ? null : 90 - angle;
   const delta =
-    index.score !== null && index.previous_score !== null
-      ? index.score - index.previous_score
+    score !== null && previousScore !== null
+      ? score - previousScore
       : null;
   const ariaValueText =
-    index.score === null ? "점수 산출 대기" : `${index.score}점 / 100점`;
+    score === null ? selected ? "선택일 지수 자료 없음" : "점수 산출 대기" : `${score}점 / 100점`;
   // 미산출 상태에서는 계기판이 화면을 차지하지 않도록 compact로 전환한다.
-  const compact = index.score === null;
+  const compact = score === null && selected === null;
 
   return (
     <section
@@ -87,7 +91,7 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
           </span>
         )}
       </div>
-      {index.mode === "RETROSPECTIVE" && !compact ? <p className="mt-3 text-sm font-medium text-primary" data-cai-historical-date>기준일 {asOf} · 현재 값이 아닙니다</p> : null}
+      {index.mode === "RETROSPECTIVE" && !compact ? <p className="mt-3 text-sm font-medium text-primary" data-cai-historical-date>{selected ? "선택 기준일" : "기준일"} {asOf} · 현재 값이 아닙니다</p> : null}
       {compact ? (
         <div
           role="meter"
@@ -111,7 +115,7 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
             role="meter"
             aria-valuemin={0}
             aria-valuemax={100}
-            aria-valuenow={index.score ?? undefined}
+            aria-valuenow={score ?? undefined}
             aria-valuetext={ariaValueText}
             className="relative mx-auto mt-1 w-full max-w-2xl"
           >
@@ -170,9 +174,9 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
                 y={cy - 60}
                 textAnchor="middle"
                 className="fill-foreground font-mono text-[50px] font-medium"
-                data-cai-score={index.score === null ? "none" : String(index.score)}
+                data-cai-score={score === null ? "none" : String(score)}
               >
-                {index.score === null ? "—" : index.score}
+                {score === null ? "—" : score}
               </text>
               <text
                 x={cx + 70}
@@ -196,7 +200,7 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
                   {delta >= 0 ? "+" : ""}
                   {delta.toFixed(1)}점
                 </strong>{" "}
-                {index.mode === "RETROSPECTIVE" ? "직전 산출일 대비" : "이전 기준주 대비"}
+                {selected ? `이전 기록일(${selected.previousDate}) 대비` : index.mode === "RETROSPECTIVE" ? "직전 산출일 대비" : "이전 기준주 대비"}
               </span>
             )}
           </div>
@@ -205,6 +209,8 @@ export function CaiGauge({ index }: { index: CaiIndexView }) {
       <p className="mx-auto mt-2 max-w-2xl text-xs leading-6 text-muted-foreground">
         {compact
           ? "공식 지수는 준비 중입니다. 점수는 활동 수준을 나타내며 유가 상승 확률이나 매매 신호가 아닙니다."
+          : selected && score === null
+            ? "선택일에는 필요한 자료가 함께 확보되지 않아 지수를 산출하지 않았습니다. 결측을 0이나 다른 날의 값으로 바꾸지 않습니다."
           : index.mode === "RETROSPECTIVE"
             ? "교통량·시설 신고 유량을 기준 분포와 비교한 실험 지수입니다. 50은 각 자료의 기준 평균 수준이며, 원유 가동률이나 유가 상승 확률이 아닙니다."
             : "점수는 활동 신호의 수준이며 유가 상승 확률이나 매매 신호가 아닙니다. 결측이면 —로 표시하고 바늘을 숨깁니다."}

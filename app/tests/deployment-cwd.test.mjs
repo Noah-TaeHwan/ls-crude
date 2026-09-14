@@ -165,7 +165,10 @@ test("serves the public evidence brief routes from the repository root", async (
     const expectedCheckedAt = new Date(Date.parse(marketSnapshot.checkedAt) + 9 * 60 * 60 * 1_000)
       .toISOString().slice(0, 16).replace("T", " ");
     assert.ok(text.includes(expectedCheckedAt), "SSR timestamp is explicitly KST");
-    assert.doesNotMatch(body, /<form\b/i, "public home must not expose news CRUD forms");
+    const dateForm = body.match(/<form\b(?=[^>]*data-cai-date-form)[\s\S]*?<\/form>/i);
+    assert.ok(dateForm, "read-only date query form is present");
+    assert.match(dateForm[0], /method="get"/);
+    assert.doesNotMatch(body.replace(dateForm[0], ""), /<form\b/i, "no news CRUD forms beyond the date query");
     assert.doesNotMatch(body, /data-local-status=/, "production home hides the developer monitor");
     const researchPage = await fetch(`${baseUrl}/research`);
     const researchHtml = await researchPage.text();

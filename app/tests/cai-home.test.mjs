@@ -135,6 +135,18 @@ test("serves the retrospective CAI dashboard with unpublished forecasts and pres
     assert.match(body, /id="daily-latest-price"/);
     assert.match(text, /WTI 원유 가격/);
 
+    // 주소 직접 방문과 새로고침도 같은 선택값으로 서버 렌더링한다.
+    const selected = await fetch(`${base}/?cai_date=2023-12-28&cai_range=year`);
+    const selectedBody = await selected.text();
+    assert.match(selectedBody, /data-cai-score="41.1"/);
+    assert.match(selectedBody, /2023년 12월 28일/);
+    assert.match(selectedBody, /value="2023-12-28"/);
+    const missing = await fetch(`${base}/?cai_date=2021-01-04&cai_range=all`);
+    const missingBody = await missing.text();
+    assert.match(missingBody, /data-cai-score="none"/);
+    assert.match(missingBody, /선택일 자료 없음/);
+    assert.match(missingBody, /data-cai-history/);
+
     // AC4: 헤더는 작은 LS CRUDE와 정확히 두 메뉴. 설명 문구·캡션 없음.
     assert.match(body, /href="\/"[^>]*>대시보드/);
     assert.match(body, /href="\/research"[^>]*>연구 기록</);

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { WtiDailyChart } from "~/components/wti-daily-chart";
 import { data, Link, redirect, useLocation, useNavigate, useRevalidator } from "react-router";
 import { legacyHashRedirect, legacySampleRedirect, unsupportedSampleNotice } from "~/lib/cai-legacy-routing";
@@ -6,8 +6,9 @@ import { useDisclosureHistory } from "~/lib/use-disclosure-history";
 
 import type { Route } from "./+types/home";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
-import { CaiGauge } from "~/components/cai/cai-gauge";
-import { CaiHistory } from "~/components/cai/cai-history";
+import { CaiExplorer } from "~/components/cai/cai-history";
+import { isCaiDateNavigation } from "~/lib/cai-selection";
+import type { ShouldRevalidateFunctionArgs } from "react-router";
 import { ProjectCloseout } from "~/components/cai/project-closeout";
 import { CaiForecast } from "~/components/cai/cai-forecast";
 import { CaiAbout } from "~/components/cai/cai-about";
@@ -54,6 +55,16 @@ export async function loader({ request }: Route.LoaderArgs) {
   return { daily, market: readWtiMarketSnapshot(), cai, experiments: readExperimentSummary(), unsupportedSample: unsupportedSampleNotice(url.searchParams.get("sample")) };
 }
 
+/**
+ * 날짜 조회는 로컬 공개 이력을 사용한다. 수동·주기 갱신과 다른 조회는 기존 로더 규칙을 따른다.
+ * @param args 라우터의 재조회 판단 정보.
+ * @returns 로더를 다시 실행할지 여부.
+ */
+export function shouldRevalidate({ currentUrl, nextUrl, formMethod, defaultShouldRevalidate }: ShouldRevalidateFunctionArgs) {
+  if (formMethod && formMethod.toUpperCase() !== "GET") return defaultShouldRevalidate;
+  return isCaiDateNavigation(currentUrl, nextUrl) ? false : defaultShouldRevalidate;
+}
+
 /** @returns 공개 화면의 읽기 전용 응답. */
 export function action({}: Route.ActionArgs) {
   return data({ ok: false, message: "공개 관측 화면은 읽기 전용입니다." } satisfies ActionResult, { status: 405 });
@@ -70,16 +81,21 @@ export default function Home({ loaderData: { market, daily, cai, experiments, un
   const location = useLocation();
   const navigate = useNavigate();
   const restoringHistory = useDisclosureHistory();
+  const previousLocation = useRef(location);
   useEffect(() => {
+    const previous = previousLocation.current;
+    previousLocation.current = location;
+    const base = "https://ls-crude.local";
+    const selectingDate = isCaiDateNavigation(new URL(previous.pathname + previous.search + previous.hash, base), new URL(location.pathname + location.search + location.hash, base));
     // hash-only 구주소는 서버가 볼 수 없으므로 클라이언트에서 replace한다.
     const target = legacyHashRedirect(location.pathname, location.hash);
     if (target) {
       void navigate(target, { replace: true });
-    } else if (!location.hash && !restoringHistory) {
+    } else if (!location.hash && !restoringHistory && !selectingDate) {
       document.querySelectorAll<HTMLDetailsElement>("#main-content details[open]").forEach((item) => { item.open = false; });
       window.scrollTo(0, 0);
     }
-  }, [location.pathname, location.hash, location.key, navigate, restoringHistory]);
+  }, [location.pathname, location.search, location.hash, location.key, navigate, restoringHistory]);
   useEffect(() => {
     const timer = window.setInterval(() => {
       if (document.visibilityState === "visible" && revalidator.state === "idle") void revalidator.revalidate();
@@ -97,10 +113,7 @@ export default function Home({ loaderData: { market, daily, cai, experiments, un
           {unsupportedSample ? <p role="status" className="mt-4 text-sm text-muted-foreground">{unsupportedSample} <Link className="source-link" to="/research#research-sample">연구 기록에서 사례 보기</Link></p> : null}
         </header>
         <section className="border-t border-border py-4" aria-label="CAI 계기판과 설명">
-          <div className={cai.index.mode === "RETROSPECTIVE" && cai.index.score !== null && cai.index.history.length > 0 ? "grid items-start gap-4 lg:grid-cols-2" : ""}>
-            <CaiGauge index={cai.index} />
-            <CaiHistory view={cai} />
-          </div>
+          <CaiExplorer view={cai} />
           <CaiAbout view={cai} />
         </section>
         <section className="border-t border-border py-4" aria-label="다음 기간 WTI 방향">

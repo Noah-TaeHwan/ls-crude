@@ -30,3 +30,11 @@ URL fragment는 서버 request에 오지 않는다. sample/candidate의 query �
 ## 필수 검사
 
 모든 지원 sample에 대해 root 진입·research 진입·history 직접 진입을 parameterized test로 실행한다. 미지원 값·빈 값·URL encoding을 검사한다. hash는 실제 브라우저에서 직접 진입/내부 클릭/뒤로가기/새로고침을 확인한다. 브라우저가 없으면 hash 검수는 NOT_RUN이며 정적 코드를 읽었다고 PASS라 하지 않는다.
+
+## CAI 날짜 조회 — 2026-09-14
+
+홈의 선택 상태는 `cai_date=YYYY-MM-DD`, `cai_range=year|all`로 저장한다. 생략하면 최신 산출일과 해당 연도를 표시한다. 날짜는 검증된 공개 history의 정확한 구성원이어야 하며 결측값은 null 그대로 표시한다. 중복·미지원 날짜/범위는 안내와 함께 유효한 기본값으로 표시한다. `year`는 선택 연도다.
+
+날짜 UI는 query/hash를 보존하는 replace 이동을 사용하고 스크롤·펼침 상태를 초기화하지 않는다. 슬라이더 드래그는 방문 key에 묶인 임시 상태로 보여주고 pointerUp/이동키 keyUp/blur 때 한 번 반영한다. pointerCancel은 임시 상태를 취소한다. 서로 다른 방문 key에는 임시 값을 재사용하지 않는다.
+
+홈 shouldRevalidate는 목적지에 cai_date가 있고 두 CAI 매개변수만 달라진 이동을 제외한다. 같은 URL의 수동/주기 갱신, 다른 query/path/hash 변경, bare 홈 메뉴 진입 및 POST는 기존 규칙을 따른다. 예전 sample/candidate/hash 경로 규칙은 유지한다. 날짜 폼은 읽기 전용 GET이며 뉴스 CRUD를 노출하지 않는다.
