@@ -8,6 +8,7 @@ import type { Route } from "./+types/home";
 import { DeskFooter, DeskHeader } from "~/components/desk-chrome";
 import { CaiGauge } from "~/components/cai/cai-gauge";
 import { CaiHistory } from "~/components/cai/cai-history";
+import { ProjectCloseout } from "~/components/cai/project-closeout";
 import { CaiForecast } from "~/components/cai/cai-forecast";
 import { CaiAbout } from "~/components/cai/cai-about";
 import { ExperimentResults } from "~/components/cai/experiment-results";
@@ -106,6 +107,7 @@ export default function Home({ loaderData: { market, daily, cai, experiments, un
           <CaiForecast forecast={cai.forecast} validation={cai.validation} />
         </section>
         <ExperimentResults mode="compact" summary={experiments} />
+        <ProjectCloseout index={cai.index} experiments={experiments} />
         <MarketContext market={market} daily={daily} />
         {import.meta.env.DEV ? <LocalStatus mode="compact" /> : null}
         <p className="border-t border-border py-5 text-sm text-muted-foreground">아이디어부터 실험 결과까지의 과정은 <Link className="source-link" to="/research">연구 기록</Link>에서 이어서 확인합니다.</p>
