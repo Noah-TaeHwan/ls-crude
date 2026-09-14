@@ -1,15 +1,15 @@
 # CAI 실험 프로그램 전달 안내 (cai-exp/0.1.0)
 
-팀 공동 작업은 [TEAM_START_HERE.md](../docs/cai/TEAM_START_HERE.md)에서 시작합니다. 새 후보는 `research/scripts/cai_team.py check/package`의 입력·제출 검사를 사용하고, 아래 기존 엔진과 참조 실행은 그대로 재사용합니다.
+**1차 프로젝트는 2026-09-14 18:00 KST부로 공식 종료했습니다.** [종료 기록·산출물·인계 상태](../docs/cai/CLOSEOUT.md)를 먼저 확인하세요. 아래는 기존 실험 프로그램의 보관·재현 안내이며, 후속 연구는 별도 요청 전 재개하지 않습니다. 공동 절차는 [TEAM_START_HERE.md 보관본](../docs/cai/TEAM_START_HERE.md)에 있습니다.
 
 성찬님 실행용 묶음입니다. 프로젝트 상대경로만 사용하며, 이 컴퓨터의 절대경로·가상환경·
 인증정보는 포함하지 않습니다.
 
-## 받는 방법 (택1)
+## 최신 보관본과 이전 엔진 묶음
 
-1. 기존 private 저장소의 현재 `main`을 사용합니다. 예전 `share/cai-exp-0.1.0`은 main에 통합된 뒤 삭제됐습니다.
-   최신 작업 순서·분담은 `app/public/cai-team-workflow.md`를 먼저 읽어 주세요. 대표 실험의 전체 재현은 [REPRODUCE_2019.md](experiments/cai/REPRODUCE_2019.md)입니다.
-2. 전달 tarball(같은 내용): `research/dist/cai-exp-0.1.0.tar.gz`
+1. 공개 [GitHub 저장소](https://github.com/Noah-TaeHwan/ls-crude)의 현재 `main`을 사용합니다. 예전 `share/cai-exp-0.1.0`은 main에 통합된 뒤 삭제됐습니다.
+   대표 실험의 전체 재현은 [REPRODUCE_2019.md](experiments/cai/REPRODUCE_2019.md), 지수 산식·재현은 [CAI v0.1](indexes/cai-v0.1/README.md)입니다.
+2. 이전 엔진 tarball: `research/dist/cai-exp-0.1.0.tar.gz`. 최신 main과 내용이 다르며 `cai_team.py`, `REPRODUCE_2019.md`, 월별 검수 엔진, CAI v0.1 생성기를 포함하지 않습니다. 최신 결과물 확인에는 위 main 경로를 사용합니다.
 
 ## 설치 (프로젝트 루트 기준)
 

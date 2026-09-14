@@ -596,7 +596,7 @@ export function ResearchWorkflow({
             자료 기준 {workflow.snapshotDate}{workflow.workUpdatedAt ? ` · 작업 제안 ${workflow.workUpdatedAt}` : ""}
           </p>
         )}
-        <p className="workflow-focus">이번 공동 작업의 중심은 <strong>3 자료 수집 → 4 입력 준비 → 5 학습·평가</strong>입니다. 후보마다 도달한 단계는 다릅니다.</p>
+        <p className="workflow-focus"><strong>1차 프로젝트는 2026-09-14 18:00 KST 기준 공식 종료했습니다.</strong> 아래 단계와 후보 상태는 종료 당시 기록이며, 다음 행동은 후속 연구 제안입니다.</p>
         <nav aria-label="연구 6단계" className="mt-6">
           <ol className="grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-6">
             {WORKFLOW_STEPS.map((definition, index) => {
@@ -616,7 +616,8 @@ export function ResearchWorkflow({
           </ol>
         </nav>
         <div className="mt-5 flex flex-wrap gap-5 text-sm">
-          <a className="source-link" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/cai/TEAM_START_HERE.md" target="_blank" rel="noreferrer">공동 작업 시작 안내 ↗</a>
+          <a className="source-link" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/cai/CLOSEOUT.md" target="_blank" rel="noreferrer">1차 종료·인계 기록 ↗</a>
+          <a className="source-link" href="https://github.com/Noah-TaeHwan/ls-crude/blob/main/docs/cai/TEAM_START_HERE.md" target="_blank" rel="noreferrer">공동 작업·재현 안내 ↗</a>
           <a className="source-link" href="#past">연구·검증 기록 더 보기</a>
           {import.meta.env?.DEV ? <a className="source-link" href="#local-status">개발 작업 현황</a> : null}
         </div>

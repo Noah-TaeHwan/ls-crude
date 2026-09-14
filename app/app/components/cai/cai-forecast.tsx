@@ -52,7 +52,7 @@ export function CaiForecast({
     : forecast.data_origin === "DEMO"
       ? "데모 · 미게시"
       : forecast.data_origin === "NO_DATA"
-        ? "산출 대기"
+        ? "예측 미실행"
         : forecast.freshness === "STALE"
           ? "갱신 지연"
           : "예측 미실행";
@@ -133,7 +133,7 @@ export function CaiForecast({
       ) : (
         <div className="empty-state mt-4">
           <h3>아직 예측하지 않습니다.</h3>
-          <p>실제 데이터로 학습하고 검증한 뒤 상승할 확률과 하락·보합일 확률을 공개합니다.</p>
+          <p>1차 프로젝트는 과거 실험용 지수와 회고 비교 결과로 종료했습니다. 현재 날짜의 예측 확률과 독립 예측력 검증은 후속 연구입니다.</p>
         </div>
       )}
     </section>

@@ -123,8 +123,9 @@ test("serves the retrospective CAI dashboard with unpublished forecasts and pres
     assert.match(body, /data-cai-history/);
     assert.match(body, /data-project-closeout/);
     assert.match(text, /입력 준비 2개/);
-    assert.match(text, /3개 후보 검토 중/);
-    assert.match(text, /보고서 표현 정정 대기/);
+    assert.match(text, /3개 후보 · 후속 검토/);
+    assert.match(text, /1차 공식 종료/);
+    assert.doesNotMatch(text, /보고서 표현 정정 대기/);
     assert.match(body, /href="\/research#workflow-review-inputs"/);
     assert.match(body, /CLOSEOUT\.md/);
     assert.match(body, /data-forecast-state="pending"/);
