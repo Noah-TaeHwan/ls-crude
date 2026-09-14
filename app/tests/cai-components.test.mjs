@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { createElement } from "react";
+import { MemoryRouter } from "react-router";
 import { renderToStaticMarkup } from "react-dom/server";
 import ts from "typescript";
 import { emptyCaiView, gaugeAngle, parseCaiPublicView } from "../app/lib/cai-view.ts";
@@ -38,7 +39,9 @@ function importTsx(fileName) {
       JSON.stringify(join(appDir, "lib", `${spec.slice("~/lib/".length)}.ts`)),
     )
     .replace(/"react\/jsx-runtime"/g, JSON.stringify(join(nodeModulesDir, "react", "jsx-runtime.js")))
-    .replace(/"react"/g, JSON.stringify(join(nodeModulesDir, "react", "index.js")));
+    .replace(/"react"/g, JSON.stringify(join(nodeModulesDir, "react", "index.js")))
+    .replace(/"react-router"/g, JSON.stringify(import.meta.resolve("react-router")))
+    .replace(/"~\/components\/cai\/cai-gauge"/g, JSON.stringify(join(compiledDir, "cai-gauge.mjs")));
   const outPath = join(compiledDir, fileName.replace(/\.tsx$/, ".mjs"));
   writeFileSync(outPath, output);
   return import(pathToFileURL(outPath).href);
@@ -47,7 +50,7 @@ function importTsx(fileName) {
 const { CaiGauge } = await importTsx("cai-gauge.tsx");
 const { CaiForecast } = await importTsx("cai-forecast.tsx");
 const { CaiAbout } = await importTsx("cai-about.tsx");
-const { CaiHistory, caiHistoryPlot } = await importTsx("cai-history.tsx");
+const { CaiExplorer, caiHistoryPlot } = await importTsx("cai-history.tsx");
 
 // 아래 숫자는 테스트 전용이며 운영 코드의 기본값이 아니다.
 function validIndex(overrides = {}) {
@@ -310,12 +313,35 @@ describe("CAI 회고 이력", () => {
     assert.match(gauge,/실험용 v0.1 · 과거 자료/);
     assert.match(gauge,/현재 값이 아닙니다/);
     assert.match(gauge,/직전 산출일 대비/);
-    const chart = render(CaiHistory,{view});
+    const chart = renderToStaticMarkup(createElement(MemoryRouter, {}, createElement(CaiExplorer, {view})));
     assert.match(chart,/확인할 지수 기준일/);
     assert.match(chart,/2023-12-29/);
     assert.match(chart,/최신 기준일의 구성/);
     assert.equal((chart.match(/data-cai-input=/g)||[]).length,2);
     assert.match(chart,/53.0/); assert.match(chart,/33.1/);
-    assert.equal(render(CaiHistory,{view:emptyCaiView()}), "");
+    const empty = renderToStaticMarkup(createElement(MemoryRouter, {}, createElement(CaiExplorer, {view:emptyCaiView()})));
+    assert.doesNotMatch(empty, /data-cai-history/);
+  });
+});
+
+describe("주소 기반 CAI 조회", () => {
+  it("선택일의 게이지·차트·입력 날짜를 맞추고 최신 구성은 구분한다", () => {
+    const view = parseCaiPublicView(JSON.parse(readFileSync(join(appDir,"data","cai-public-view.json"),"utf8")));
+    const renderDate = (date) => renderToStaticMarkup(createElement(MemoryRouter, {initialEntries:[`/?cai_date=${date}`]}, createElement(CaiExplorer,{view})));
+    const selected = renderDate("2023-12-28");
+    assert.match(selected,/data-cai-score="41.1"/);
+    assert.match(selected,/2023년 12월 28일/);
+    assert.match(selected,/value="2023-12-28"/);
+    assert.match(selected,/선택일의 성분별 점수는 공개 이력에 포함되지 않았습니다/);
+    const gap = renderDate("2021-01-04");
+    assert.match(gap,/data-cai-gauge="full"/);
+    assert.match(gap,/data-cai-score="none"/);
+    assert.match(gap,/선택일 자료 없음/);
+    assert.match(gap,/data-cai-history/);
+    assert.doesNotMatch(gap,/data-needle/);
+    assert.doesNotMatch(gap,/공식 지수는 준비 중/);
+    const invalid = renderDate("2023-12-25");
+    assert.match(invalid,/data-cai-score="43.1"/);
+    assert.match(invalid,/요청한 날짜의 거래일 기록이 없어/);
   });
 });
