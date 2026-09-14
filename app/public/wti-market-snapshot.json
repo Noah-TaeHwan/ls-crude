@@ -8,38 +8,14 @@
     "library": "yfinance",
     "autoAdjust": true
   },
-  "checkedAt": "2026-09-09T11:45:39Z",
-  "generatedAt": "2026-09-09T11:45:39Z",
-  "asOf": "2026-09-08",
+  "checkedAt": "2026-09-14T13:14:53Z",
+  "generatedAt": "2026-09-14T13:14:53Z",
+  "asOf": "2026-09-11",
   "freshnessPolicy": {
     "maxCheckAgeHours": 36,
     "maxBarAgeDays": 4
   },
   "bars": [
-    {
-      "date": "2026-06-12",
-      "open": 86.63999938964844,
-      "high": 87.2300033569336,
-      "low": 83.19999694824219,
-      "close": 84.87999725341797,
-      "volume": 233924.0
-    },
-    {
-      "date": "2026-06-15",
-      "open": 81.4000015258789,
-      "high": 82.41999816894531,
-      "low": 79.69999694824219,
-      "close": 80.75,
-      "volume": 208395.0
-    },
-    {
-      "date": "2026-06-16",
-      "open": 81.0999984741211,
-      "high": 81.58000183105469,
-      "low": 75.5199966430664,
-      "close": 76.05000305175781,
-      "volume": 205050.0
-    },
     {
       "date": "2026-06-17",
       "open": 76.58999633789062,
@@ -494,25 +470,49 @@
       "high": 94.7300033569336,
       "low": 90.87000274658203,
       "close": 93.02999877929688,
-      "volume": 0.0
+      "volume": 435231.0
+    },
+    {
+      "date": "2026-09-09",
+      "open": 94.30999755859375,
+      "high": 96.93000030517578,
+      "low": 93.76000213623047,
+      "close": 96.05000305175781,
+      "volume": 325209.0
+    },
+    {
+      "date": "2026-09-10",
+      "open": 96.87999725341797,
+      "high": 104.04000091552734,
+      "low": 95.37000274658203,
+      "close": 102.4800033569336,
+      "volume": 437382.0
+    },
+    {
+      "date": "2026-09-11",
+      "open": 104.31999969482422,
+      "high": 104.45999908447266,
+      "low": 98.4800033569336,
+      "close": 100.05000305175781,
+      "volume": 437382.0
     }
   ],
   "volatility": {
     "method": "simple-return-rms",
     "formula": "100 × sqrt((252 / N) × sum(r_t²))",
     "annualization": 252,
-    "rv5AnnualizedPct": 39.41470761050034,
-    "rv20AnnualizedPct": 31.807809467300434,
-    "rv5ReferencePercentile": 67.96632698272043,
+    "rv5AnnualizedPct": 56.74372896773906,
+    "rv20AnnualizedPct": 41.041619430241525,
+    "rv5ReferencePercentile": 88.03721754541426,
     "referenceStart": "2015-01-01",
     "referenceEnd": "2023-12-31",
     "referenceWindowCount": 2257
   },
   "provenance": {
     "firstDate": "2015-01-02",
-    "lastDate": "2026-09-08",
-    "rowCount": 2937,
-    "contentSha256": "e61e77975f10049ee710f42d9982355846403df3d83157b3c842f6a3b4826bcd",
+    "lastDate": "2026-09-11",
+    "rowCount": 2940,
+    "contentSha256": "4e4a0f3d7d7e86422a1b25142104be83c15bf359a11fa30b6a79848748665730",
     "contentSha256Scope": "all-completed-bars"
   }
 }
