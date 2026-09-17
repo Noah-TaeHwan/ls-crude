@@ -8,22 +8,14 @@
     "library": "yfinance",
     "autoAdjust": true
   },
-  "checkedAt": "2026-09-16T11:57:42Z",
-  "generatedAt": "2026-09-16T11:57:42Z",
-  "asOf": "2026-09-15",
+  "checkedAt": "2026-09-17T11:59:46Z",
+  "generatedAt": "2026-09-17T11:59:46Z",
+  "asOf": "2026-09-16",
   "freshnessPolicy": {
     "maxCheckAgeHours": 36,
     "maxBarAgeDays": 4
   },
   "bars": [
-    {
-      "date": "2026-06-22",
-      "open": 78.93000030517578,
-      "high": 78.95999908447266,
-      "low": 74.44999694824219,
-      "close": 74.81999969482422,
-      "volume": 315903.0
-    },
     {
       "date": "2026-06-23",
       "open": 74.13999938964844,
@@ -494,15 +486,23 @@
       "high": 106.75,
       "low": 101.20999908447266,
       "close": 105.83000183105469,
-      "volume": 413090.0
+      "volume": 371490.0
+    },
+    {
+      "date": "2026-09-16",
+      "open": 105.4800033569336,
+      "high": 105.62999725341797,
+      "low": 100.97000122070312,
+      "close": 102.43000030517578,
+      "volume": 371490.0
     }
   ],
   "volatility": {
     "method": "simple-return-rms",
     "formula": "100 × sqrt((252 / N) × sum(r_t²))",
     "annualization": 252,
-    "rv5AnnualizedPct": 64.26600748684501,
-    "rv20AnnualizedPct": 42.91345259249289,
+    "rv5AnnualizedPct": 64.18093303191195,
+    "rv20AnnualizedPct": 44.36438059576936,
     "rv5ReferencePercentile": 91.84758529020824,
     "referenceStart": "2015-01-01",
     "referenceEnd": "2023-12-31",
@@ -510,9 +510,9 @@
   },
   "provenance": {
     "firstDate": "2015-01-02",
-    "lastDate": "2026-09-15",
-    "rowCount": 2942,
-    "contentSha256": "1f37151c28cbddbbfa0f61242204a04ba76d3a8d81013e84634d6ea07084f813",
+    "lastDate": "2026-09-16",
+    "rowCount": 2943,
+    "contentSha256": "519b8041b0250ad5546819441d57853333ae35360b0fc29401ab67a5854b851f",
     "contentSha256Scope": "all-completed-bars"
   }
 }
